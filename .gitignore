@@ -18,3 +18,5 @@ dist/
 
 # Ignore editor temp files
 *~
+
+.DS_Store
