@@ -33,22 +33,22 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAVNS(params *CreateAVNSParams, opts ...ClientOption) (*CreateAVNSOK, *CreateAVNSAccepted, error)
+	CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*CreateAvnsOK, *CreateAvnsAccepted, error)
 
-	GETAllAVNS(params *GETAllAVNSParams, opts ...ClientOption) (*GETAllAVNSOK, error)
+	GETAllAvns(params *GETAllAvnsParams, opts ...ClientOption) (*GETAllAvnsOK, error)
 
-	ValidateAVNS(params *ValidateAVNSParams, opts ...ClientOption) (*ValidateAVNSOK, error)
+	ValidateAvns(params *ValidateAvnsParams, opts ...ClientOption) (*ValidateAvnsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-CreateAVNS creates a v ns
+CreateAvns creates a v ns
 */
-func (a *Client) CreateAVNS(params *CreateAVNSParams, opts ...ClientOption) (*CreateAVNSOK, *CreateAVNSAccepted, error) {
+func (a *Client) CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*CreateAvnsOK, *CreateAvnsAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateAVNSParams()
+		params = NewCreateAvnsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "createAvns",
@@ -58,7 +58,7 @@ func (a *Client) CreateAVNS(params *CreateAVNSParams, opts ...ClientOption) (*Cr
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateAVNSReader{formats: a.formats},
+		Reader:             &CreateAvnsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -71,9 +71,9 @@ func (a *Client) CreateAVNS(params *CreateAVNSParams, opts ...ClientOption) (*Cr
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateAVNSOK:
+	case *CreateAvnsOK:
 		return value, nil, nil
-	case *CreateAVNSAccepted:
+	case *CreateAvnsAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -82,14 +82,14 @@ func (a *Client) CreateAVNS(params *CreateAVNSParams, opts ...ClientOption) (*Cr
 }
 
 /*
-GETAllAVNS fetches all a v ns
+GETAllAvns fetches all a v ns
 
 Returns all matching AVNs
 */
-func (a *Client) GETAllAVNS(params *GETAllAVNSParams, opts ...ClientOption) (*GETAllAVNSOK, error) {
+func (a *Client) GETAllAvns(params *GETAllAvnsParams, opts ...ClientOption) (*GETAllAvnsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETAllAVNSParams()
+		params = NewGETAllAvnsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getAllAvns",
@@ -99,7 +99,7 @@ func (a *Client) GETAllAVNS(params *GETAllAVNSParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETAllAVNSReader{formats: a.formats},
+		Reader:             &GETAllAvnsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,7 +111,7 @@ func (a *Client) GETAllAVNS(params *GETAllAVNSParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETAllAVNSOK)
+	success, ok := result.(*GETAllAvnsOK)
 	if ok {
 		return success, nil
 	}
@@ -122,14 +122,14 @@ func (a *Client) GETAllAVNS(params *GETAllAVNSParams, opts ...ClientOption) (*GE
 }
 
 /*
-ValidateAVNS validates a v n creation spec
+ValidateAvns validates a v n creation spec
 
 Returns Validation report
 */
-func (a *Client) ValidateAVNS(params *ValidateAVNSParams, opts ...ClientOption) (*ValidateAVNSOK, error) {
+func (a *Client) ValidateAvns(params *ValidateAvnsParams, opts ...ClientOption) (*ValidateAvnsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateAVNSParams()
+		params = NewValidateAvnsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "validateAvns",
@@ -139,7 +139,7 @@ func (a *Client) ValidateAVNS(params *ValidateAVNSParams, opts ...ClientOption) 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateAVNSReader{formats: a.formats},
+		Reader:             &ValidateAvnsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -151,7 +151,7 @@ func (a *Client) ValidateAVNS(params *ValidateAVNSParams, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ValidateAVNSOK)
+	success, ok := result.(*ValidateAvnsOK)
 	if ok {
 		return success, nil
 	}

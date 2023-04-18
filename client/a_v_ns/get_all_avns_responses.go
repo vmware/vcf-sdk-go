@@ -15,25 +15,25 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETAllAVNSReader is a Reader for the GETAllAVNS structure.
-type GETAllAVNSReader struct {
+// GETAllAvnsReader is a Reader for the GETAllAvns structure.
+type GETAllAvnsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETAllAVNSReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GETAllAvnsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETAllAVNSOK()
+		result := NewGETAllAvnsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETAllAVNSInternalServerError()
+		result := NewGETAllAvnsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETAllAVNSReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewGETAllAVNSOK creates a GETAllAVNSOK with default headers values
-func NewGETAllAVNSOK() *GETAllAVNSOK {
-	return &GETAllAVNSOK{}
+// NewGETAllAvnsOK creates a GETAllAvnsOK with default headers values
+func NewGETAllAvnsOK() *GETAllAvnsOK {
+	return &GETAllAvnsOK{}
 }
 
 /*
-GETAllAVNSOK describes a response with status code 200, with default header values.
+GETAllAvnsOK describes a response with status code 200, with default header values.
 
 Returns the list of all matching AVNs
 */
-type GETAllAVNSOK struct {
+type GETAllAvnsOK struct {
 	Payload []*models.Avn
 }
 
-// IsSuccess returns true when this get all Avns o k response has a 2xx status code
-func (o *GETAllAVNSOK) IsSuccess() bool {
+// IsSuccess returns true when this get all avns o k response has a 2xx status code
+func (o *GETAllAvnsOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this get all Avns o k response has a 3xx status code
-func (o *GETAllAVNSOK) IsRedirect() bool {
+// IsRedirect returns true when this get all avns o k response has a 3xx status code
+func (o *GETAllAvnsOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get all Avns o k response has a 4xx status code
-func (o *GETAllAVNSOK) IsClientError() bool {
+// IsClientError returns true when this get all avns o k response has a 4xx status code
+func (o *GETAllAvnsOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this get all Avns o k response has a 5xx status code
-func (o *GETAllAVNSOK) IsServerError() bool {
+// IsServerError returns true when this get all avns o k response has a 5xx status code
+func (o *GETAllAvnsOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this get all Avns o k response a status code equal to that given
-func (o *GETAllAVNSOK) IsCode(code int) bool {
+// IsCode returns true when this get all avns o k response a status code equal to that given
+func (o *GETAllAvnsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETAllAVNSOK) Error() string {
+func (o *GETAllAvnsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/avns][%d] getAllAvnsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllAVNSOK) String() string {
+func (o *GETAllAvnsOK) String() string {
 	return fmt.Sprintf("[GET /v1/avns][%d] getAllAvnsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllAVNSOK) GetPayload() []*models.Avn {
+func (o *GETAllAvnsOK) GetPayload() []*models.Avn {
 	return o.Payload
 }
 
-func (o *GETAllAVNSOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GETAllAvnsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -104,58 +104,58 @@ func (o *GETAllAVNSOK) readResponse(response runtime.ClientResponse, consumer ru
 	return nil
 }
 
-// NewGETAllAVNSInternalServerError creates a GETAllAVNSInternalServerError with default headers values
-func NewGETAllAVNSInternalServerError() *GETAllAVNSInternalServerError {
-	return &GETAllAVNSInternalServerError{}
+// NewGETAllAvnsInternalServerError creates a GETAllAvnsInternalServerError with default headers values
+func NewGETAllAvnsInternalServerError() *GETAllAvnsInternalServerError {
+	return &GETAllAvnsInternalServerError{}
 }
 
 /*
-GETAllAVNSInternalServerError describes a response with status code 500, with default header values.
+GETAllAvnsInternalServerError describes a response with status code 500, with default header values.
 
 Unexpected error
 */
-type GETAllAVNSInternalServerError struct {
+type GETAllAvnsInternalServerError struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this get all Avns internal server error response has a 2xx status code
-func (o *GETAllAVNSInternalServerError) IsSuccess() bool {
+// IsSuccess returns true when this get all avns internal server error response has a 2xx status code
+func (o *GETAllAvnsInternalServerError) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this get all Avns internal server error response has a 3xx status code
-func (o *GETAllAVNSInternalServerError) IsRedirect() bool {
+// IsRedirect returns true when this get all avns internal server error response has a 3xx status code
+func (o *GETAllAvnsInternalServerError) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get all Avns internal server error response has a 4xx status code
-func (o *GETAllAVNSInternalServerError) IsClientError() bool {
+// IsClientError returns true when this get all avns internal server error response has a 4xx status code
+func (o *GETAllAvnsInternalServerError) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this get all Avns internal server error response has a 5xx status code
-func (o *GETAllAVNSInternalServerError) IsServerError() bool {
+// IsServerError returns true when this get all avns internal server error response has a 5xx status code
+func (o *GETAllAvnsInternalServerError) IsServerError() bool {
 	return true
 }
 
-// IsCode returns true when this get all Avns internal server error response a status code equal to that given
-func (o *GETAllAVNSInternalServerError) IsCode(code int) bool {
+// IsCode returns true when this get all avns internal server error response a status code equal to that given
+func (o *GETAllAvnsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETAllAVNSInternalServerError) Error() string {
+func (o *GETAllAvnsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/avns][%d] getAllAvnsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETAllAVNSInternalServerError) String() string {
+func (o *GETAllAvnsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/avns][%d] getAllAvnsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETAllAVNSInternalServerError) GetPayload() *models.Error {
+func (o *GETAllAvnsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETAllAVNSInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GETAllAvnsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

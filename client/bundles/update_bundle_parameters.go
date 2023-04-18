@@ -18,7 +18,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
 // NewUpdateBundleParams creates a new UpdateBundleParams object,

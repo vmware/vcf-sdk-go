@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
 // GETHostsReader is a Reader for the GETHosts structure.

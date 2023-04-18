@@ -19,7 +19,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
 // NewValidateSDDCSpecParams creates a new ValidateSDDCSpecParams object,

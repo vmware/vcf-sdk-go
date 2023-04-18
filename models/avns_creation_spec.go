@@ -18,14 +18,14 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// AVNSCreationSpec Defines the spec to create Application virtual Networks (AVNs) and its attributes
+// AvnsCreationSpec Defines the spec to create Application virtual Networks (AVNs) and its attributes
 //
 // swagger:model AvnsCreationSpec
-type AVNSCreationSpec struct {
+type AvnsCreationSpec struct {
 
 	// The list of AVNs to be created
 	// Required: true
-	AVNS []*Avn `json:"avns"`
+	Avns []*Avn `json:"avns"`
 
 	// The UUID of the Edge Cluster to associate AVNs
 	// Example: 3f39d4a1-78d2-11e8-af85-f1cf26258cdc
@@ -33,11 +33,11 @@ type AVNSCreationSpec struct {
 	EdgeClusterID *string `json:"edgeClusterId"`
 }
 
-// Validate validates this Avns creation spec
-func (m *AVNSCreationSpec) Validate(formats strfmt.Registry) error {
+// Validate validates this avns creation spec
+func (m *AvnsCreationSpec) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAVNS(formats); err != nil {
+	if err := m.validateAvns(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -51,19 +51,19 @@ func (m *AVNSCreationSpec) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *AVNSCreationSpec) validateAVNS(formats strfmt.Registry) error {
+func (m *AvnsCreationSpec) validateAvns(formats strfmt.Registry) error {
 
-	if err := validate.Required("avns", "body", m.AVNS); err != nil {
+	if err := validate.Required("avns", "body", m.Avns); err != nil {
 		return err
 	}
 
-	for i := 0; i < len(m.AVNS); i++ {
-		if swag.IsZero(m.AVNS[i]) { // not required
+	for i := 0; i < len(m.Avns); i++ {
+		if swag.IsZero(m.Avns[i]) { // not required
 			continue
 		}
 
-		if m.AVNS[i] != nil {
-			if err := m.AVNS[i].Validate(formats); err != nil {
+		if m.Avns[i] != nil {
+			if err := m.Avns[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("avns" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
@@ -78,7 +78,7 @@ func (m *AVNSCreationSpec) validateAVNS(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *AVNSCreationSpec) validateEdgeClusterID(formats strfmt.Registry) error {
+func (m *AvnsCreationSpec) validateEdgeClusterID(formats strfmt.Registry) error {
 
 	if err := validate.Required("edgeClusterId", "body", m.EdgeClusterID); err != nil {
 		return err
@@ -87,11 +87,11 @@ func (m *AVNSCreationSpec) validateEdgeClusterID(formats strfmt.Registry) error 
 	return nil
 }
 
-// ContextValidate validate this Avns creation spec based on the context it is used
-func (m *AVNSCreationSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this avns creation spec based on the context it is used
+func (m *AvnsCreationSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAVNS(ctx, formats); err != nil {
+	if err := m.contextValidateAvns(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -101,12 +101,12 @@ func (m *AVNSCreationSpec) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *AVNSCreationSpec) contextValidateAVNS(ctx context.Context, formats strfmt.Registry) error {
+func (m *AvnsCreationSpec) contextValidateAvns(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.AVNS); i++ {
+	for i := 0; i < len(m.Avns); i++ {
 
-		if m.AVNS[i] != nil {
-			if err := m.AVNS[i].ContextValidate(ctx, formats); err != nil {
+		if m.Avns[i] != nil {
+			if err := m.Avns[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("avns" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
@@ -122,7 +122,7 @@ func (m *AVNSCreationSpec) contextValidateAVNS(ctx context.Context, formats strf
 }
 
 // MarshalBinary interface implementation
-func (m *AVNSCreationSpec) MarshalBinary() ([]byte, error) {
+func (m *AvnsCreationSpec) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -130,8 +130,8 @@ func (m *AVNSCreationSpec) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *AVNSCreationSpec) UnmarshalBinary(b []byte) error {
-	var res AVNSCreationSpec
+func (m *AvnsCreationSpec) UnmarshalBinary(b []byte) error {
+	var res AvnsCreationSpec
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

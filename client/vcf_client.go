@@ -13,53 +13,53 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/client/a_v_ns"
-	"vcf-sdk-go/client/backup_restore"
-	"vcf-sdk-go/client/bundles"
-	"vcf-sdk-go/client/ceip"
-	"vcf-sdk-go/client/certificates"
-	"vcf-sdk-go/client/clusters"
-	"vcf-sdk-go/client/credentials"
-	"vcf-sdk-go/client/depot_settings"
-	"vcf-sdk-go/client/domains"
-	"vcf-sdk-go/client/fips_mode_details"
-	"vcf-sdk-go/client/hosts"
-	"vcf-sdk-go/client/identity_providers"
-	"vcf-sdk-go/client/license_keys"
-	"vcf-sdk-go/client/manifests"
-	"vcf-sdk-go/client/n_s_x_t_clusters"
-	"vcf-sdk-go/client/network_pools"
-	"vcf-sdk-go/client/nsx_t_edge_clusters"
-	"vcf-sdk-go/client/p_s_cs"
-	"vcf-sdk-go/client/personalities"
-	"vcf-sdk-go/client/proxy_configuration"
-	"vcf-sdk-go/client/releases"
-	"vcf-sdk-go/client/resource_functionalities"
-	"vcf-sdk-go/client/resource_warnings"
-	"vcf-sdk-go/client/sddc"
-	"vcf-sdk-go/client/sddc_managers"
-	"vcf-sdk-go/client/sos"
-	"vcf-sdk-go/client/system"
-	"vcf-sdk-go/client/system_prechecks"
-	"vcf-sdk-go/client/tasks"
-	"vcf-sdk-go/client/tokens"
-	"vcf-sdk-go/client/trusted_certificates"
-	"vcf-sdk-go/client/upgradables"
-	"vcf-sdk-go/client/upgrades"
-	"vcf-sdk-go/client/users"
-	"vcf-sdk-go/client/v_centers"
-	"vcf-sdk-go/client/v_r_l_i"
-	"vcf-sdk-go/client/v_r_o_ps"
-	"vcf-sdk-go/client/v_r_s_l_c_m"
-	"vcf-sdk-go/client/vasa_providers"
-	"vcf-sdk-go/client/vcf_services"
-	"vcf-sdk-go/client/version_aliases_for_bundle_component_type"
-	"vcf-sdk-go/client/vra"
-	"vcf-sdk-go/client/vsan_health_check"
-	"vcf-sdk-go/client/wsa"
+	"github.com/vmware/vcf-sdk-go/client/a_v_ns"
+	"github.com/vmware/vcf-sdk-go/client/backup_restore"
+	"github.com/vmware/vcf-sdk-go/client/bundles"
+	"github.com/vmware/vcf-sdk-go/client/ceip"
+	"github.com/vmware/vcf-sdk-go/client/certificates"
+	"github.com/vmware/vcf-sdk-go/client/clusters"
+	"github.com/vmware/vcf-sdk-go/client/credentials"
+	"github.com/vmware/vcf-sdk-go/client/depot_settings"
+	"github.com/vmware/vcf-sdk-go/client/domains"
+	"github.com/vmware/vcf-sdk-go/client/fips_mode_details"
+	"github.com/vmware/vcf-sdk-go/client/hosts"
+	"github.com/vmware/vcf-sdk-go/client/identity_providers"
+	"github.com/vmware/vcf-sdk-go/client/license_keys"
+	"github.com/vmware/vcf-sdk-go/client/manifests"
+	"github.com/vmware/vcf-sdk-go/client/n_s_x_t_clusters"
+	"github.com/vmware/vcf-sdk-go/client/network_pools"
+	"github.com/vmware/vcf-sdk-go/client/nsx_t_edge_clusters"
+	"github.com/vmware/vcf-sdk-go/client/p_s_cs"
+	"github.com/vmware/vcf-sdk-go/client/personalities"
+	"github.com/vmware/vcf-sdk-go/client/proxy_configuration"
+	"github.com/vmware/vcf-sdk-go/client/releases"
+	"github.com/vmware/vcf-sdk-go/client/resource_functionalities"
+	"github.com/vmware/vcf-sdk-go/client/resource_warnings"
+	"github.com/vmware/vcf-sdk-go/client/sddc"
+	"github.com/vmware/vcf-sdk-go/client/sddc_managers"
+	"github.com/vmware/vcf-sdk-go/client/sos"
+	"github.com/vmware/vcf-sdk-go/client/system"
+	"github.com/vmware/vcf-sdk-go/client/system_prechecks"
+	"github.com/vmware/vcf-sdk-go/client/tasks"
+	"github.com/vmware/vcf-sdk-go/client/tokens"
+	"github.com/vmware/vcf-sdk-go/client/trusted_certificates"
+	"github.com/vmware/vcf-sdk-go/client/upgradables"
+	"github.com/vmware/vcf-sdk-go/client/upgrades"
+	"github.com/vmware/vcf-sdk-go/client/users"
+	"github.com/vmware/vcf-sdk-go/client/v_centers"
+	"github.com/vmware/vcf-sdk-go/client/v_r_l_i"
+	"github.com/vmware/vcf-sdk-go/client/v_r_o_ps"
+	"github.com/vmware/vcf-sdk-go/client/v_r_s_l_c_m"
+	"github.com/vmware/vcf-sdk-go/client/vasa_providers"
+	"github.com/vmware/vcf-sdk-go/client/vcf_services"
+	"github.com/vmware/vcf-sdk-go/client/version_aliases_for_bundle_component_type"
+	"github.com/vmware/vcf-sdk-go/client/vra"
+	"github.com/vmware/vcf-sdk-go/client/vsan_health_check"
+	"github.com/vmware/vcf-sdk-go/client/wsa"
 )
 
-// Default v mware cloud foundation API reference guide HTTP client.
+// Default vcf client HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -74,14 +74,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new v mware cloud foundation API reference guide HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *VMwareCloudFoundationAPIReferenceGuide {
+// NewHTTPClient creates a new vcf client HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *VcfClient {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new v mware cloud foundation API reference guide HTTP client,
+// NewHTTPClientWithConfig creates a new vcf client HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *VMwareCloudFoundationAPIReferenceGuide {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *VcfClient {
 	// ensure nullable parameters have default
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
@@ -92,14 +92,14 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *VMw
 	return New(transport, formats)
 }
 
-// New creates a new v mware cloud foundation API reference guide client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *VMwareCloudFoundationAPIReferenceGuide {
+// New creates a new vcf client client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
 	}
 
-	cli := new(VMwareCloudFoundationAPIReferenceGuide)
+	cli := new(VcfClient)
 	cli.Transport = transport
 	cli.AvNs = a_v_ns.New(transport, formats)
 	cli.BackupRestore = backup_restore.New(transport, formats)
@@ -187,8 +187,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// VMwareCloudFoundationAPIReferenceGuide is a client for v mware cloud foundation API reference guide
-type VMwareCloudFoundationAPIReferenceGuide struct {
+// VcfClient is a client for vcf client
+type VcfClient struct {
 	AvNs a_v_ns.ClientService
 
 	BackupRestore backup_restore.ClientService
@@ -281,7 +281,7 @@ type VMwareCloudFoundationAPIReferenceGuide struct {
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *VMwareCloudFoundationAPIReferenceGuide) SetTransport(transport runtime.ClientTransport) {
+func (c *VcfClient) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.AvNs.SetTransport(transport)
 	c.BackupRestore.SetTransport(transport)

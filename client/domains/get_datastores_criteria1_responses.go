@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
 // GETDatastoresCriteria1Reader is a Reader for the GETDatastoresCriteria1 structure.

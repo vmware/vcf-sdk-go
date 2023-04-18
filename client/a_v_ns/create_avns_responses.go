@@ -15,37 +15,37 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// CreateAVNSReader is a Reader for the CreateAVNS structure.
-type CreateAVNSReader struct {
+// CreateAvnsReader is a Reader for the CreateAvns structure.
+type CreateAvnsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *CreateAVNSReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *CreateAvnsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewCreateAVNSOK()
+		result := NewCreateAvnsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 202:
-		result := NewCreateAVNSAccepted()
+		result := NewCreateAvnsAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewCreateAVNSBadRequest()
+		result := NewCreateAvnsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewCreateAVNSInternalServerError()
+		result := NewCreateAvnsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *CreateAVNSReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewCreateAVNSOK creates a CreateAVNSOK with default headers values
-func NewCreateAVNSOK() *CreateAVNSOK {
-	return &CreateAVNSOK{}
+// NewCreateAvnsOK creates a CreateAvnsOK with default headers values
+func NewCreateAvnsOK() *CreateAvnsOK {
+	return &CreateAvnsOK{}
 }
 
 /*
-CreateAVNSOK describes a response with status code 200, with default header values.
+CreateAvnsOK describes a response with status code 200, with default header values.
 
 OK
 */
-type CreateAVNSOK struct {
+type CreateAvnsOK struct {
 	Payload *models.Task
 }
 
-// IsSuccess returns true when this create Avns o k response has a 2xx status code
-func (o *CreateAVNSOK) IsSuccess() bool {
+// IsSuccess returns true when this create avns o k response has a 2xx status code
+func (o *CreateAvnsOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this create Avns o k response has a 3xx status code
-func (o *CreateAVNSOK) IsRedirect() bool {
+// IsRedirect returns true when this create avns o k response has a 3xx status code
+func (o *CreateAvnsOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this create Avns o k response has a 4xx status code
-func (o *CreateAVNSOK) IsClientError() bool {
+// IsClientError returns true when this create avns o k response has a 4xx status code
+func (o *CreateAvnsOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this create Avns o k response has a 5xx status code
-func (o *CreateAVNSOK) IsServerError() bool {
+// IsServerError returns true when this create avns o k response has a 5xx status code
+func (o *CreateAvnsOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this create Avns o k response a status code equal to that given
-func (o *CreateAVNSOK) IsCode(code int) bool {
+// IsCode returns true when this create avns o k response a status code equal to that given
+func (o *CreateAvnsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *CreateAVNSOK) Error() string {
+func (o *CreateAvnsOK) Error() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsOK  %+v", 200, o.Payload)
 }
 
-func (o *CreateAVNSOK) String() string {
+func (o *CreateAvnsOK) String() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsOK  %+v", 200, o.Payload)
 }
 
-func (o *CreateAVNSOK) GetPayload() *models.Task {
+func (o *CreateAvnsOK) GetPayload() *models.Task {
 	return o.Payload
 }
 
-func (o *CreateAVNSOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateAvnsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Task)
 
@@ -118,58 +118,58 @@ func (o *CreateAVNSOK) readResponse(response runtime.ClientResponse, consumer ru
 	return nil
 }
 
-// NewCreateAVNSAccepted creates a CreateAVNSAccepted with default headers values
-func NewCreateAVNSAccepted() *CreateAVNSAccepted {
-	return &CreateAVNSAccepted{}
+// NewCreateAvnsAccepted creates a CreateAvnsAccepted with default headers values
+func NewCreateAvnsAccepted() *CreateAvnsAccepted {
+	return &CreateAvnsAccepted{}
 }
 
 /*
-CreateAVNSAccepted describes a response with status code 202, with default header values.
+CreateAvnsAccepted describes a response with status code 202, with default header values.
 
 Accepted
 */
-type CreateAVNSAccepted struct {
+type CreateAvnsAccepted struct {
 	Payload *models.Task
 }
 
-// IsSuccess returns true when this create Avns accepted response has a 2xx status code
-func (o *CreateAVNSAccepted) IsSuccess() bool {
+// IsSuccess returns true when this create avns accepted response has a 2xx status code
+func (o *CreateAvnsAccepted) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this create Avns accepted response has a 3xx status code
-func (o *CreateAVNSAccepted) IsRedirect() bool {
+// IsRedirect returns true when this create avns accepted response has a 3xx status code
+func (o *CreateAvnsAccepted) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this create Avns accepted response has a 4xx status code
-func (o *CreateAVNSAccepted) IsClientError() bool {
+// IsClientError returns true when this create avns accepted response has a 4xx status code
+func (o *CreateAvnsAccepted) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this create Avns accepted response has a 5xx status code
-func (o *CreateAVNSAccepted) IsServerError() bool {
+// IsServerError returns true when this create avns accepted response has a 5xx status code
+func (o *CreateAvnsAccepted) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this create Avns accepted response a status code equal to that given
-func (o *CreateAVNSAccepted) IsCode(code int) bool {
+// IsCode returns true when this create avns accepted response a status code equal to that given
+func (o *CreateAvnsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-func (o *CreateAVNSAccepted) Error() string {
+func (o *CreateAvnsAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsAccepted  %+v", 202, o.Payload)
 }
 
-func (o *CreateAVNSAccepted) String() string {
+func (o *CreateAvnsAccepted) String() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsAccepted  %+v", 202, o.Payload)
 }
 
-func (o *CreateAVNSAccepted) GetPayload() *models.Task {
+func (o *CreateAvnsAccepted) GetPayload() *models.Task {
 	return o.Payload
 }
 
-func (o *CreateAVNSAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateAvnsAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Task)
 
@@ -181,58 +181,58 @@ func (o *CreateAVNSAccepted) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewCreateAVNSBadRequest creates a CreateAVNSBadRequest with default headers values
-func NewCreateAVNSBadRequest() *CreateAVNSBadRequest {
-	return &CreateAVNSBadRequest{}
+// NewCreateAvnsBadRequest creates a CreateAvnsBadRequest with default headers values
+func NewCreateAvnsBadRequest() *CreateAvnsBadRequest {
+	return &CreateAvnsBadRequest{}
 }
 
 /*
-CreateAVNSBadRequest describes a response with status code 400, with default header values.
+CreateAvnsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type CreateAVNSBadRequest struct {
+type CreateAvnsBadRequest struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this create Avns bad request response has a 2xx status code
-func (o *CreateAVNSBadRequest) IsSuccess() bool {
+// IsSuccess returns true when this create avns bad request response has a 2xx status code
+func (o *CreateAvnsBadRequest) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this create Avns bad request response has a 3xx status code
-func (o *CreateAVNSBadRequest) IsRedirect() bool {
+// IsRedirect returns true when this create avns bad request response has a 3xx status code
+func (o *CreateAvnsBadRequest) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this create Avns bad request response has a 4xx status code
-func (o *CreateAVNSBadRequest) IsClientError() bool {
+// IsClientError returns true when this create avns bad request response has a 4xx status code
+func (o *CreateAvnsBadRequest) IsClientError() bool {
 	return true
 }
 
-// IsServerError returns true when this create Avns bad request response has a 5xx status code
-func (o *CreateAVNSBadRequest) IsServerError() bool {
+// IsServerError returns true when this create avns bad request response has a 5xx status code
+func (o *CreateAvnsBadRequest) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this create Avns bad request response a status code equal to that given
-func (o *CreateAVNSBadRequest) IsCode(code int) bool {
+// IsCode returns true when this create avns bad request response a status code equal to that given
+func (o *CreateAvnsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *CreateAVNSBadRequest) Error() string {
+func (o *CreateAvnsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CreateAVNSBadRequest) String() string {
+func (o *CreateAvnsBadRequest) String() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CreateAVNSBadRequest) GetPayload() *models.Error {
+func (o *CreateAvnsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *CreateAVNSBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateAvnsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -244,58 +244,58 @@ func (o *CreateAVNSBadRequest) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewCreateAVNSInternalServerError creates a CreateAVNSInternalServerError with default headers values
-func NewCreateAVNSInternalServerError() *CreateAVNSInternalServerError {
-	return &CreateAVNSInternalServerError{}
+// NewCreateAvnsInternalServerError creates a CreateAvnsInternalServerError with default headers values
+func NewCreateAvnsInternalServerError() *CreateAvnsInternalServerError {
+	return &CreateAvnsInternalServerError{}
 }
 
 /*
-CreateAVNSInternalServerError describes a response with status code 500, with default header values.
+CreateAvnsInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type CreateAVNSInternalServerError struct {
+type CreateAvnsInternalServerError struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this create Avns internal server error response has a 2xx status code
-func (o *CreateAVNSInternalServerError) IsSuccess() bool {
+// IsSuccess returns true when this create avns internal server error response has a 2xx status code
+func (o *CreateAvnsInternalServerError) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this create Avns internal server error response has a 3xx status code
-func (o *CreateAVNSInternalServerError) IsRedirect() bool {
+// IsRedirect returns true when this create avns internal server error response has a 3xx status code
+func (o *CreateAvnsInternalServerError) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this create Avns internal server error response has a 4xx status code
-func (o *CreateAVNSInternalServerError) IsClientError() bool {
+// IsClientError returns true when this create avns internal server error response has a 4xx status code
+func (o *CreateAvnsInternalServerError) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this create Avns internal server error response has a 5xx status code
-func (o *CreateAVNSInternalServerError) IsServerError() bool {
+// IsServerError returns true when this create avns internal server error response has a 5xx status code
+func (o *CreateAvnsInternalServerError) IsServerError() bool {
 	return true
 }
 
-// IsCode returns true when this create Avns internal server error response a status code equal to that given
-func (o *CreateAVNSInternalServerError) IsCode(code int) bool {
+// IsCode returns true when this create avns internal server error response a status code equal to that given
+func (o *CreateAvnsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *CreateAVNSInternalServerError) Error() string {
+func (o *CreateAvnsInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *CreateAVNSInternalServerError) String() string {
+func (o *CreateAvnsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *CreateAVNSInternalServerError) GetPayload() *models.Error {
+func (o *CreateAvnsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *CreateAVNSInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateAvnsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

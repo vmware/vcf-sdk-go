@@ -1,4 +1,4 @@
-module vcf-sdk-go
+module github.com/vmware/vcf-sdk-go
 
 go 1.19
 

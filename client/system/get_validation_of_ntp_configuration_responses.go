@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
 // GETValidationOfNtpConfigurationReader is a Reader for the GETValidationOfNtpConfiguration structure.

@@ -18,133 +18,133 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"vcf-sdk-go/models"
+	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// NewCreateAVNSParams creates a new CreateAVNSParams object,
+// NewCreateAvnsParams creates a new CreateAvnsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewCreateAVNSParams() *CreateAVNSParams {
-	return &CreateAVNSParams{
+func NewCreateAvnsParams() *CreateAvnsParams {
+	return &CreateAvnsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewCreateAVNSParamsWithTimeout creates a new CreateAVNSParams object
+// NewCreateAvnsParamsWithTimeout creates a new CreateAvnsParams object
 // with the ability to set a timeout on a request.
-func NewCreateAVNSParamsWithTimeout(timeout time.Duration) *CreateAVNSParams {
-	return &CreateAVNSParams{
+func NewCreateAvnsParamsWithTimeout(timeout time.Duration) *CreateAvnsParams {
+	return &CreateAvnsParams{
 		timeout: timeout,
 	}
 }
 
-// NewCreateAVNSParamsWithContext creates a new CreateAVNSParams object
+// NewCreateAvnsParamsWithContext creates a new CreateAvnsParams object
 // with the ability to set a context for a request.
-func NewCreateAVNSParamsWithContext(ctx context.Context) *CreateAVNSParams {
-	return &CreateAVNSParams{
+func NewCreateAvnsParamsWithContext(ctx context.Context) *CreateAvnsParams {
+	return &CreateAvnsParams{
 		Context: ctx,
 	}
 }
 
-// NewCreateAVNSParamsWithHTTPClient creates a new CreateAVNSParams object
+// NewCreateAvnsParamsWithHTTPClient creates a new CreateAvnsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewCreateAVNSParamsWithHTTPClient(client *http.Client) *CreateAVNSParams {
-	return &CreateAVNSParams{
+func NewCreateAvnsParamsWithHTTPClient(client *http.Client) *CreateAvnsParams {
+	return &CreateAvnsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-CreateAVNSParams contains all the parameters to send to the API endpoint
+CreateAvnsParams contains all the parameters to send to the API endpoint
 
-	for the create Avns operation.
+	for the create avns operation.
 
 	Typically these are written to a http.Request.
 */
-type CreateAVNSParams struct {
+type CreateAvnsParams struct {
 
-	/* AVNSCreationSpec.
+	/* AvnsCreationSpec.
 
 	   Avn creation data
 	*/
-	AVNSCreationSpec *models.AVNSCreationSpec
+	AvnsCreationSpec *models.AvnsCreationSpec
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the create Avns params (not the query body).
+// WithDefaults hydrates default values in the create avns params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *CreateAVNSParams) WithDefaults() *CreateAVNSParams {
+func (o *CreateAvnsParams) WithDefaults() *CreateAvnsParams {
 	o.SetDefaults()
 	return o
 }
 
-// SetDefaults hydrates default values in the create Avns params (not the query body).
+// SetDefaults hydrates default values in the create avns params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *CreateAVNSParams) SetDefaults() {
+func (o *CreateAvnsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the create Avns params
-func (o *CreateAVNSParams) WithTimeout(timeout time.Duration) *CreateAVNSParams {
+// WithTimeout adds the timeout to the create avns params
+func (o *CreateAvnsParams) WithTimeout(timeout time.Duration) *CreateAvnsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the create Avns params
-func (o *CreateAVNSParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the create avns params
+func (o *CreateAvnsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the create Avns params
-func (o *CreateAVNSParams) WithContext(ctx context.Context) *CreateAVNSParams {
+// WithContext adds the context to the create avns params
+func (o *CreateAvnsParams) WithContext(ctx context.Context) *CreateAvnsParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the create Avns params
-func (o *CreateAVNSParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the create avns params
+func (o *CreateAvnsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the create Avns params
-func (o *CreateAVNSParams) WithHTTPClient(client *http.Client) *CreateAVNSParams {
+// WithHTTPClient adds the HTTPClient to the create avns params
+func (o *CreateAvnsParams) WithHTTPClient(client *http.Client) *CreateAvnsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the create Avns params
-func (o *CreateAVNSParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the create avns params
+func (o *CreateAvnsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithAVNSCreationSpec adds the aVNSCreationSpec to the create Avns params
-func (o *CreateAVNSParams) WithAVNSCreationSpec(aVNSCreationSpec *models.AVNSCreationSpec) *CreateAVNSParams {
-	o.SetAVNSCreationSpec(aVNSCreationSpec)
+// WithAvnsCreationSpec adds the avnsCreationSpec to the create avns params
+func (o *CreateAvnsParams) WithAvnsCreationSpec(avnsCreationSpec *models.AvnsCreationSpec) *CreateAvnsParams {
+	o.SetAvnsCreationSpec(avnsCreationSpec)
 	return o
 }
 
-// SetAVNSCreationSpec adds the avnsCreationSpec to the create Avns params
-func (o *CreateAVNSParams) SetAVNSCreationSpec(aVNSCreationSpec *models.AVNSCreationSpec) {
-	o.AVNSCreationSpec = aVNSCreationSpec
+// SetAvnsCreationSpec adds the avnsCreationSpec to the create avns params
+func (o *CreateAvnsParams) SetAvnsCreationSpec(avnsCreationSpec *models.AvnsCreationSpec) {
+	o.AvnsCreationSpec = avnsCreationSpec
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateAVNSParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *CreateAvnsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
 	}
 	var res []error
-	if o.AVNSCreationSpec != nil {
-		if err := r.SetBodyParam(o.AVNSCreationSpec); err != nil {
+	if o.AvnsCreationSpec != nil {
+		if err := r.SetBodyParam(o.AvnsCreationSpec); err != nil {
 			return err
 		}
 	}
