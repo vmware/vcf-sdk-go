@@ -17,20 +17,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PageOfSsoDomainEntity Represents a page of elements of a single type
+// PageOfSSODomainEntity Represents a page of elements of a single type
 //
 // swagger:model PageOfSsoDomainEntity
-type PageOfSsoDomainEntity struct {
+type PageOfSSODomainEntity struct {
 
 	// The list of elements included in this page
-	Elements []*SsoDomainEntity `json:"elements"`
+	Elements []*SSODomainEntity `json:"elements"`
 
 	// Pageable elements pagination metadata information
 	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
 }
 
-// Validate validates this page of sso domain entity
-func (m *PageOfSsoDomainEntity) Validate(formats strfmt.Registry) error {
+// Validate validates this page of Sso domain entity
+func (m *PageOfSSODomainEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateElements(formats); err != nil {
@@ -47,7 +47,7 @@ func (m *PageOfSsoDomainEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PageOfSsoDomainEntity) validateElements(formats strfmt.Registry) error {
+func (m *PageOfSSODomainEntity) validateElements(formats strfmt.Registry) error {
 	if swag.IsZero(m.Elements) { // not required
 		return nil
 	}
@@ -73,7 +73,7 @@ func (m *PageOfSsoDomainEntity) validateElements(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *PageOfSsoDomainEntity) validatePageMetadata(formats strfmt.Registry) error {
+func (m *PageOfSSODomainEntity) validatePageMetadata(formats strfmt.Registry) error {
 	if swag.IsZero(m.PageMetadata) { // not required
 		return nil
 	}
@@ -92,8 +92,8 @@ func (m *PageOfSsoDomainEntity) validatePageMetadata(formats strfmt.Registry) er
 	return nil
 }
 
-// ContextValidate validate this page of sso domain entity based on the context it is used
-func (m *PageOfSsoDomainEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this page of Sso domain entity based on the context it is used
+func (m *PageOfSSODomainEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateElements(ctx, formats); err != nil {
@@ -110,7 +110,7 @@ func (m *PageOfSsoDomainEntity) ContextValidate(ctx context.Context, formats str
 	return nil
 }
 
-func (m *PageOfSsoDomainEntity) contextValidateElements(ctx context.Context, formats strfmt.Registry) error {
+func (m *PageOfSSODomainEntity) contextValidateElements(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Elements); i++ {
 
@@ -130,7 +130,7 @@ func (m *PageOfSsoDomainEntity) contextValidateElements(ctx context.Context, for
 	return nil
 }
 
-func (m *PageOfSsoDomainEntity) contextValidatePageMetadata(ctx context.Context, formats strfmt.Registry) error {
+func (m *PageOfSSODomainEntity) contextValidatePageMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PageMetadata != nil {
 		if err := m.PageMetadata.ContextValidate(ctx, formats); err != nil {
@@ -147,7 +147,7 @@ func (m *PageOfSsoDomainEntity) contextValidatePageMetadata(ctx context.Context,
 }
 
 // MarshalBinary interface implementation
-func (m *PageOfSsoDomainEntity) MarshalBinary() ([]byte, error) {
+func (m *PageOfSSODomainEntity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -155,8 +155,8 @@ func (m *PageOfSsoDomainEntity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *PageOfSsoDomainEntity) UnmarshalBinary(b []byte) error {
-	var res PageOfSsoDomainEntity
+func (m *PageOfSSODomainEntity) UnmarshalBinary(b []byte) error {
+	var res PageOfSSODomainEntity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

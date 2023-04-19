@@ -4,6 +4,8 @@
 *.dll
 *.so
 *.dylib
+# Ignore any built binaries with default name
+vcf-sdk-go
 
 # Test binary, built with `go test -c`
 *.test
@@ -15,8 +17,10 @@ secrets.yml
 dist/
 .idea/
 .vscode/
+*.iml
 
 # Ignore editor temp files
 *~
 
+# Ignore Mac folder index file
 .DS_Store

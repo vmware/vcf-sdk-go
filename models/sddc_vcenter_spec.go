@@ -35,7 +35,7 @@ type SDDCVcenterSpec struct {
 	SSHThumbprint string `json:"sshThumbprint,omitempty"`
 
 	// vCenter Server SSL thumbprint (SHA256)
-	SslThumbprint string `json:"sslThumbprint,omitempty"`
+	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 
 	// vCenter VM storage size
 	// Example: One among:lstorage, xlstorage

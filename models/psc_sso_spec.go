@@ -15,27 +15,27 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PscSsoSpec Spec contains parameters for Platform Services Controller SSO
+// PscSSOSpec Spec contains parameters for Platform Services Controller SSO
 //
 // swagger:model PscSsoSpec
-type PscSsoSpec struct {
+type PscSSOSpec struct {
 
 	// PSC SSO Domain
-	SsoDomain string `json:"ssoDomain,omitempty"`
+	SSODomain string `json:"ssoDomain,omitempty"`
 }
 
-// Validate validates this psc sso spec
-func (m *PscSsoSpec) Validate(formats strfmt.Registry) error {
+// Validate validates this psc Sso spec
+func (m *PscSSOSpec) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this psc sso spec based on context it is used
-func (m *PscSsoSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this psc Sso spec based on context it is used
+func (m *PscSSOSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *PscSsoSpec) MarshalBinary() ([]byte, error) {
+func (m *PscSSOSpec) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -43,8 +43,8 @@ func (m *PscSsoSpec) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *PscSsoSpec) UnmarshalBinary(b []byte) error {
-	var res PscSsoSpec
+func (m *PscSSOSpec) UnmarshalBinary(b []byte) error {
+	var res PscSSOSpec
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

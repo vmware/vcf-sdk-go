@@ -26,24 +26,24 @@ type PscSpec struct {
 	// Required: true
 	// Max Length: 20
 	// Min Length: 8
-	AdminUserSsoPassword *string `json:"adminUserSsoPassword"`
+	AdminUserSSOPassword *string `json:"adminUserSsoPassword"`
 
 	// PSC Name
 	PscID string `json:"pscId,omitempty"`
 
 	// PSC SSO Domain
-	PscSsoSpec *PscSsoSpec `json:"pscSsoSpec,omitempty"`
+	PscSSOSpec *PscSSOSpec `json:"pscSsoSpec,omitempty"`
 }
 
 // Validate validates this psc spec
 func (m *PscSpec) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAdminUserSsoPassword(formats); err != nil {
+	if err := m.validateAdminUserSSOPassword(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validatePscSsoSpec(formats); err != nil {
+	if err := m.validatePscSSOSpec(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -53,30 +53,30 @@ func (m *PscSpec) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PscSpec) validateAdminUserSsoPassword(formats strfmt.Registry) error {
+func (m *PscSpec) validateAdminUserSSOPassword(formats strfmt.Registry) error {
 
-	if err := validate.Required("adminUserSsoPassword", "body", m.AdminUserSsoPassword); err != nil {
+	if err := validate.Required("adminUserSsoPassword", "body", m.AdminUserSSOPassword); err != nil {
 		return err
 	}
 
-	if err := validate.MinLength("adminUserSsoPassword", "body", *m.AdminUserSsoPassword, 8); err != nil {
+	if err := validate.MinLength("adminUserSsoPassword", "body", *m.AdminUserSSOPassword, 8); err != nil {
 		return err
 	}
 
-	if err := validate.MaxLength("adminUserSsoPassword", "body", *m.AdminUserSsoPassword, 20); err != nil {
+	if err := validate.MaxLength("adminUserSsoPassword", "body", *m.AdminUserSSOPassword, 20); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *PscSpec) validatePscSsoSpec(formats strfmt.Registry) error {
-	if swag.IsZero(m.PscSsoSpec) { // not required
+func (m *PscSpec) validatePscSSOSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.PscSSOSpec) { // not required
 		return nil
 	}
 
-	if m.PscSsoSpec != nil {
-		if err := m.PscSsoSpec.Validate(formats); err != nil {
+	if m.PscSSOSpec != nil {
+		if err := m.PscSSOSpec.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pscSsoSpec")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
@@ -93,7 +93,7 @@ func (m *PscSpec) validatePscSsoSpec(formats strfmt.Registry) error {
 func (m *PscSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidatePscSsoSpec(ctx, formats); err != nil {
+	if err := m.contextValidatePscSSOSpec(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -103,10 +103,10 @@ func (m *PscSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 	return nil
 }
 
-func (m *PscSpec) contextValidatePscSsoSpec(ctx context.Context, formats strfmt.Registry) error {
+func (m *PscSpec) contextValidatePscSSOSpec(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.PscSsoSpec != nil {
-		if err := m.PscSsoSpec.ContextValidate(ctx, formats); err != nil {
+	if m.PscSSOSpec != nil {
+		if err := m.PscSSOSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pscSsoSpec")
 			} else if ce, ok := err.(*errors.CompositeError); ok {

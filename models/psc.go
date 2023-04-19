@@ -37,10 +37,10 @@ type Psc struct {
 	IsReplica bool `json:"isReplica,omitempty"`
 
 	// SSO Domain name of the Psc
-	SsoDomainName string `json:"ssoDomainName,omitempty"`
+	SSODomainName string `json:"ssoDomainName,omitempty"`
 
 	// SSO sub domain name of the Psc
-	SsoSubDomainName string `json:"ssoSubDomainName,omitempty"`
+	SSOSubDomainName string `json:"ssoSubDomainName,omitempty"`
 }
 
 // Validate validates this psc

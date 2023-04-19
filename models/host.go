@@ -77,7 +77,7 @@ type Host struct {
 	SSHThumbprint *OptionalOfstring `json:"sshThumbprint,omitempty"`
 
 	// SSL Thumbprint of the host
-	SslThumbprint *OptionalOfstring `json:"sslThumbprint,omitempty"`
+	SSLThumbprint *OptionalOfstring `json:"sslThumbprint,omitempty"`
 
 	// Status of the host
 	// Example: One among: ASSIGNED, UNASSIGNED_USEABLE, UNASSIGNED_UNUSEABLE
@@ -130,7 +130,7 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateSslThumbprint(formats); err != nil {
+	if err := m.validateSSLThumbprint(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -333,13 +333,13 @@ func (m *Host) validateSSHThumbprint(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Host) validateSslThumbprint(formats strfmt.Registry) error {
-	if swag.IsZero(m.SslThumbprint) { // not required
+func (m *Host) validateSSLThumbprint(formats strfmt.Registry) error {
+	if swag.IsZero(m.SSLThumbprint) { // not required
 		return nil
 	}
 
-	if m.SslThumbprint != nil {
-		if err := m.SslThumbprint.Validate(formats); err != nil {
+	if m.SSLThumbprint != nil {
+		if err := m.SSLThumbprint.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sslThumbprint")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
@@ -437,7 +437,7 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateSslThumbprint(ctx, formats); err != nil {
+	if err := m.contextValidateSSLThumbprint(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -607,10 +607,10 @@ func (m *Host) contextValidateSSHThumbprint(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *Host) contextValidateSslThumbprint(ctx context.Context, formats strfmt.Registry) error {
+func (m *Host) contextValidateSSLThumbprint(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.SslThumbprint != nil {
-		if err := m.SslThumbprint.ContextValidate(ctx, formats); err != nil {
+	if m.SSLThumbprint != nil {
+		if err := m.SSLThumbprint.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sslThumbprint")
 			} else if ce, ok := err.(*errors.CompositeError); ok {

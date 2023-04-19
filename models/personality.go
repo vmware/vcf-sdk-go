@@ -70,7 +70,7 @@ type Personality struct {
 
 	// Personality depot path
 	// Required: true
-	VsphereExportedIsoPath *string `json:"vsphereExportedIsoPath"`
+	VsphereExportedISOPath *string `json:"vsphereExportedIsoPath"`
 
 	// Personality depot path
 	// Required: true
@@ -121,7 +121,7 @@ func (m *Personality) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateVsphereExportedIsoPath(formats); err != nil {
+	if err := m.validateVsphereExportedISOPath(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -241,9 +241,9 @@ func (m *Personality) validateVersion(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Personality) validateVsphereExportedIsoPath(formats strfmt.Registry) error {
+func (m *Personality) validateVsphereExportedISOPath(formats strfmt.Registry) error {
 
-	if err := validate.Required("vsphereExportedIsoPath", "body", m.VsphereExportedIsoPath); err != nil {
+	if err := validate.Required("vsphereExportedIsoPath", "body", m.VsphereExportedISOPath); err != nil {
 		return err
 	}
 

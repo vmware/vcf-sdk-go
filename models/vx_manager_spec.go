@@ -34,7 +34,7 @@ type VxManagerSpec struct {
 	SSHThumbprint string `json:"sshThumbprint,omitempty"`
 
 	// VxRail Manager SSL thumbprint (SHA256)
-	SslThumbprint string `json:"sslThumbprint,omitempty"`
+	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 
 	// VxManager host name
 	// Required: true

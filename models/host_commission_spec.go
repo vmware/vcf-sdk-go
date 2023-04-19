@@ -41,7 +41,7 @@ type HostCommissionSpec struct {
 	SSHThumbprint string `json:"sshThumbprint,omitempty"`
 
 	// SSL thumbprint of the host
-	SslThumbprint string `json:"sslThumbprint,omitempty"`
+	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 
 	// Storage Type
 	// Example: One among: VSAN, VSAN_REMOTE, NFS, VMFS_FC, VVOL

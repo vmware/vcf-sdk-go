@@ -23,9 +23,12 @@ swagger: check-swagger
 		--additional-initialism=POST \
 		--additional-initialism=CSR \
 		--additional-initialism=CSRS \
+		--additional-initialism=SSO \
+		--additional-initialism=ISO \
+		--additional-initialism=SSL \
 		--additional-initialism=VMWARE \
 		-f ./swagger_dev.json
-	mv client/vcf_client_client.go client/vcf_client.go
+	./scripts/fix_abbreviations.sh
 
 
 modified:

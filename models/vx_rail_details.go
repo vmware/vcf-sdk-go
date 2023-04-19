@@ -47,7 +47,7 @@ type VxRailDetails struct {
 	SSHThumbprint string `json:"sshThumbprint,omitempty"`
 
 	// SSL thumbprint of the VxRail Manager
-	SslThumbprint string `json:"sslThumbprint,omitempty"`
+	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 }
 
 // Validate validates this vx rail details

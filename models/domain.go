@@ -32,7 +32,7 @@ type Domain struct {
 	ID string `json:"id,omitempty"`
 
 	// Shows whether the workload domain is joined to the Management domain SSO
-	IsManagementSsoDomain bool `json:"isManagementSsoDomain,omitempty"`
+	IsManagementSSODomain bool `json:"isManagementSsoDomain,omitempty"`
 
 	// Name of the workload domain
 	Name string `json:"name,omitempty"`
@@ -41,10 +41,10 @@ type Domain struct {
 	NSXTCluster *NsxTClusterReference `json:"nsxtCluster,omitempty"`
 
 	// ID of the SSO domain associated with the workload domain
-	SsoID string `json:"ssoId,omitempty"`
+	SSOID string `json:"ssoId,omitempty"`
 
 	// Name of the SSO domain associated with the workload domain
-	SsoName string `json:"ssoName,omitempty"`
+	SSOName string `json:"ssoName,omitempty"`
 
 	// Status of the workload domain
 	Status string `json:"status,omitempty"`

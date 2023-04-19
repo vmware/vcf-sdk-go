@@ -17,10 +17,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SsoDomainEntity Represents SSO domain entity
+// SSODomainEntity Represents SSO domain entity
 //
 // swagger:model SsoDomainEntity
-type SsoDomainEntity struct {
+type SSODomainEntity struct {
 
 	// The ID of the SSO domain entity
 	ID string `json:"id,omitempty"`
@@ -34,8 +34,8 @@ type SsoDomainEntity struct {
 	Type *string `json:"type"`
 }
 
-// Validate validates this sso domain entity
-func (m *SsoDomainEntity) Validate(formats strfmt.Registry) error {
+// Validate validates this Sso domain entity
+func (m *SSODomainEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateType(formats); err != nil {
@@ -48,7 +48,7 @@ func (m *SsoDomainEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SsoDomainEntity) validateType(formats strfmt.Registry) error {
+func (m *SSODomainEntity) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
 		return err
@@ -57,13 +57,13 @@ func (m *SsoDomainEntity) validateType(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this sso domain entity based on context it is used
-func (m *SsoDomainEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this Sso domain entity based on context it is used
+func (m *SSODomainEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *SsoDomainEntity) MarshalBinary() ([]byte, error) {
+func (m *SSODomainEntity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -71,8 +71,8 @@ func (m *SsoDomainEntity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *SsoDomainEntity) UnmarshalBinary(b []byte) error {
-	var res SsoDomainEntity
+func (m *SSODomainEntity) UnmarshalBinary(b []byte) error {
+	var res SSODomainEntity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

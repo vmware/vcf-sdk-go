@@ -254,7 +254,7 @@ func (a *Client) GETRoles(params *GETRolesParams, opts ...ClientOption) (*GETRol
 }
 
 /*
-GETSSODomainEntities Gets all entities of s s o domain
+GETSSODomainEntities Gets all entities of SSO domain
 
 Get a list of all entities in the SSO domain
 */
@@ -294,7 +294,7 @@ func (a *Client) GETSSODomainEntities(params *GETSSODomainEntitiesParams, opts .
 }
 
 /*
-GETSSODomains Gets all s s o domains
+GETSSODomains Gets all SSO domains
 
 Get a list of all SSO domains
 */

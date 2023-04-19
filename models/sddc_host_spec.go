@@ -52,7 +52,7 @@ type SDDCHostSpec struct {
 	SSHThumbprint string `json:"sshThumbprint,omitempty"`
 
 	// Host SSL thumbprint (SHA256)
-	SslThumbprint string `json:"sslThumbprint,omitempty"`
+	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 
 	// v switch
 	// Required: true

@@ -25,7 +25,7 @@ type RemoteSiteSpec struct {
 	PscAddress string `json:"pscAddress,omitempty"`
 
 	// Remote region vCenter SSL thumbprint (SHA256)
-	SslThumbprint string `json:"sslThumbprint,omitempty"`
+	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 
 	// Remote region vCenter credentials
 	VcCredentials *SDDCCredentials `json:"vcCredentials,omitempty"`

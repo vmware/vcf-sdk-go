@@ -13,7 +13,7 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/vmware/vcf-sdk-go/client/a_v_ns"
+	"github.com/vmware/vcf-sdk-go/client/avns"
 	"github.com/vmware/vcf-sdk-go/client/backup_restore"
 	"github.com/vmware/vcf-sdk-go/client/bundles"
 	"github.com/vmware/vcf-sdk-go/client/ceip"
@@ -27,10 +27,10 @@ import (
 	"github.com/vmware/vcf-sdk-go/client/identity_providers"
 	"github.com/vmware/vcf-sdk-go/client/license_keys"
 	"github.com/vmware/vcf-sdk-go/client/manifests"
-	"github.com/vmware/vcf-sdk-go/client/n_s_x_t_clusters"
+	"github.com/vmware/vcf-sdk-go/client/nsxt_clusters"
 	"github.com/vmware/vcf-sdk-go/client/network_pools"
-	"github.com/vmware/vcf-sdk-go/client/nsx_t_edge_clusters"
-	"github.com/vmware/vcf-sdk-go/client/p_s_cs"
+	"github.com/vmware/vcf-sdk-go/client/nsxt_edge_clusters"
+	"github.com/vmware/vcf-sdk-go/client/pscs"
 	"github.com/vmware/vcf-sdk-go/client/personalities"
 	"github.com/vmware/vcf-sdk-go/client/proxy_configuration"
 	"github.com/vmware/vcf-sdk-go/client/releases"
@@ -47,10 +47,10 @@ import (
 	"github.com/vmware/vcf-sdk-go/client/upgradables"
 	"github.com/vmware/vcf-sdk-go/client/upgrades"
 	"github.com/vmware/vcf-sdk-go/client/users"
-	"github.com/vmware/vcf-sdk-go/client/v_centers"
-	"github.com/vmware/vcf-sdk-go/client/v_r_l_i"
-	"github.com/vmware/vcf-sdk-go/client/v_r_o_ps"
-	"github.com/vmware/vcf-sdk-go/client/v_r_s_l_c_m"
+	"github.com/vmware/vcf-sdk-go/client/vcenters"
+	"github.com/vmware/vcf-sdk-go/client/vrli"
+	"github.com/vmware/vcf-sdk-go/client/vrops"
+	"github.com/vmware/vcf-sdk-go/client/vrslcm"
 	"github.com/vmware/vcf-sdk-go/client/vasa_providers"
 	"github.com/vmware/vcf-sdk-go/client/vcf_services"
 	"github.com/vmware/vcf-sdk-go/client/version_aliases_for_bundle_component_type"
@@ -101,7 +101,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 
 	cli := new(VcfClient)
 	cli.Transport = transport
-	cli.AvNs = a_v_ns.New(transport, formats)
+	cli.AvNs = avns.New(transport, formats)
 	cli.BackupRestore = backup_restore.New(transport, formats)
 	cli.Bundles = bundles.New(transport, formats)
 	cli.CEIP = ceip.New(transport, formats)
@@ -115,10 +115,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli.IdentityProviders = identity_providers.New(transport, formats)
 	cli.LicenseKeys = license_keys.New(transport, formats)
 	cli.Manifests = manifests.New(transport, formats)
-	cli.NSXTClusters = n_s_x_t_clusters.New(transport, formats)
+	cli.NSXTClusters = nsxt_clusters.New(transport, formats)
 	cli.NetworkPools = network_pools.New(transport, formats)
-	cli.NSXTEdgeClusters = nsx_t_edge_clusters.New(transport, formats)
-	cli.PsCs = p_s_cs.New(transport, formats)
+	cli.NSXTEdgeClusters = nsxt_edge_clusters.New(transport, formats)
+	cli.PsCs = pscs.New(transport, formats)
 	cli.Personalities = personalities.New(transport, formats)
 	cli.ProxyConfiguration = proxy_configuration.New(transport, formats)
 	cli.Releases = releases.New(transport, formats)
@@ -135,10 +135,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli.Upgradables = upgradables.New(transport, formats)
 	cli.Upgrades = upgrades.New(transport, formats)
 	cli.Users = users.New(transport, formats)
-	cli.VCenters = v_centers.New(transport, formats)
-	cli.Vrli = v_r_l_i.New(transport, formats)
-	cli.VroPs = v_r_o_ps.New(transport, formats)
-	cli.VRSLCM = v_r_s_l_c_m.New(transport, formats)
+	cli.VCenters = vcenters.New(transport, formats)
+	cli.Vrli = vrli.New(transport, formats)
+	cli.VroPs = vrops.New(transport, formats)
+	cli.VRSLCM = vrslcm.New(transport, formats)
 	cli.VasaProviders = vasa_providers.New(transport, formats)
 	cli.VcfServices = vcf_services.New(transport, formats)
 	cli.VersionAliasesForBundleComponentType = version_aliases_for_bundle_component_type.New(transport, formats)
@@ -189,7 +189,7 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // VcfClient is a client for vcf client
 type VcfClient struct {
-	AvNs a_v_ns.ClientService
+	AvNs avns.ClientService
 
 	BackupRestore backup_restore.ClientService
 
@@ -217,13 +217,13 @@ type VcfClient struct {
 
 	Manifests manifests.ClientService
 
-	NSXTClusters n_s_x_t_clusters.ClientService
+	NSXTClusters nsxt_clusters.ClientService
 
 	NetworkPools network_pools.ClientService
 
-	NSXTEdgeClusters nsx_t_edge_clusters.ClientService
+	NSXTEdgeClusters nsxt_edge_clusters.ClientService
 
-	PsCs p_s_cs.ClientService
+	PsCs pscs.ClientService
 
 	Personalities personalities.ClientService
 
@@ -257,13 +257,13 @@ type VcfClient struct {
 
 	Users users.ClientService
 
-	VCenters v_centers.ClientService
+	VCenters vcenters.ClientService
 
-	Vrli v_r_l_i.ClientService
+	Vrli vrli.ClientService
 
-	VroPs v_r_o_ps.ClientService
+	VroPs vrops.ClientService
 
-	VRSLCM v_r_s_l_c_m.ClientService
+	VRSLCM vrslcm.ClientService
 
 	VasaProviders vasa_providers.ClientService
 
