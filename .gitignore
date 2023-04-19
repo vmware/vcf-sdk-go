@@ -22,5 +22,6 @@ dist/
 # Ignore editor temp files
 *~
 
-# Ignore Mac folder index file
-.DS_Store
+# MacOS
+## Ignore desktop services store files.
+**/.DS_Store

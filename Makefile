@@ -27,7 +27,7 @@ swagger: check-swagger
 		--additional-initialism=ISO \
 		--additional-initialism=SSL \
 		--additional-initialism=VMWARE \
-		-f ./swagger_dev.json
+		-f ./swagger.json
 	./scripts/fix_abbreviations.sh
 
 

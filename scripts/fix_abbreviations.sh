@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#Copyright 2023 VMware, Inc.
+#SPDX-License-Identifier: BSD-2-Clause
 
 # These operations are required due to way initialisms are handled in the go-swagger tool
 
@@ -7,7 +9,7 @@ rename() {
     find client -type f -name "*$1*" | sed "s/\(.*\)$1\(.*\)/mv & \1$2\2/" | sh
 }
 
-echo "Fix directory names"
+echo "Renaming directories under /client"
 rename a_v_ns avns
 rename n_s_x_t_clusters nsxt_clusters
 rename nsx_t_edge_clusters nsxt_edge_clusters
@@ -17,7 +19,7 @@ rename v_r_l_i vrli
 rename v_r_o_ps vrops
 rename v_r_s_l_c_m vrslcm
 
-echo "Replace package names and occurrences of messed up abbreviations with correct ones"
+echo "Replace package names and occurrences of incorrect abbreviations with correct ones"
 find client -type f -name '*.go' -exec sed -i "" 's/a_v_ns/avns/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/n_s_x_t/nsxt/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/nsx_t/nsxt/g' {} +
