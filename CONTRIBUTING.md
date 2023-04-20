@@ -5,7 +5,7 @@ of Origin. All contributions to this repository must be signed as described on
 that page. Your signature certifies that you wrote the patch or have the right
 to pass it on as an open-source patch
 
-For any questions about the CLA process, please refer to our [FAQ](https://cla.vmware.com/faq).
+For any questions about the DCO process, please refer to our [FAQ](https://cla.vmware.com/dco).
 
 ## Getting Started
 
