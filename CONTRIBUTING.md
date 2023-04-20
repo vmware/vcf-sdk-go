@@ -1,8 +1,9 @@
 # Contributing to vcf-sdk-go
 
-The vcf-sdk-go project team welcomes contributions from the community. If you
-wish to contribute code and you have not signed our contributor license
-agreement (CLA), our bot will update the issue when you open a pull request.
+Before you start working with vcf-sdk-go please read our Developer Certificate
+of Origin. All contributions to this repository must be signed as described on
+that page. Your signature certifies that you wrote the patch or have the right
+to pass it on as an open-source patch
 
 For any questions about the CLA process, please refer to our [FAQ](https://cla.vmware.com/faq).
 
