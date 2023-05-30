@@ -37,17 +37,17 @@ type ClientService interface {
 
 	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserNoContent, error)
 
-	GETAllUIUsersUsingGET(params *GETAllUIUsersUsingGETParams, opts ...ClientOption) (*GETAllUIUsersUsingGETOK, error)
+	GetAllUIUsersUsingGET(params *GetAllUIUsersUsingGETParams, opts ...ClientOption) (*GetAllUIUsersUsingGETOK, error)
 
-	GETLocalAccount(params *GETLocalAccountParams, opts ...ClientOption) (*GETLocalAccountOK, error)
+	GetLocalAccount(params *GetLocalAccountParams, opts ...ClientOption) (*GetLocalAccountOK, error)
 
-	GETRoles(params *GETRolesParams, opts ...ClientOption) (*GETRolesOK, error)
+	GetRoles(params *GetRolesParams, opts ...ClientOption) (*GetRolesOK, error)
 
-	GETSSODomainEntities(params *GETSSODomainEntitiesParams, opts ...ClientOption) (*GETSSODomainEntitiesOK, error)
+	GetSSODomainEntities(params *GetSSODomainEntitiesParams, opts ...ClientOption) (*GetSSODomainEntitiesOK, error)
 
-	GETSSODomains(params *GETSSODomainsParams, opts ...ClientOption) (*GETSSODomainsOK, error)
+	GetSSODomains(params *GetSSODomainsParams, opts ...ClientOption) (*GetSSODomainsOK, error)
 
-	GETUsers(params *GETUsersParams, opts ...ClientOption) (*GETUsersOK, error)
+	GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error)
 
 	UpdateLocalUserPassword(params *UpdateLocalUserPasswordParams, opts ...ClientOption) (*UpdateLocalUserPasswordNoContent, error)
 
@@ -136,12 +136,12 @@ func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*De
 }
 
 /*
-GETAllUIUsersUsingGET gets all Ui users
+GetAllUIUsersUsingGET gets all Ui users
 */
-func (a *Client) GETAllUIUsersUsingGET(params *GETAllUIUsersUsingGETParams, opts ...ClientOption) (*GETAllUIUsersUsingGETOK, error) {
+func (a *Client) GetAllUIUsersUsingGET(params *GetAllUIUsersUsingGETParams, opts ...ClientOption) (*GetAllUIUsersUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETAllUIUsersUsingGETParams()
+		params = NewGetAllUIUsersUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getAllUiUsersUsingGET",
@@ -151,7 +151,7 @@ func (a *Client) GETAllUIUsersUsingGET(params *GETAllUIUsersUsingGETParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETAllUIUsersUsingGETReader{formats: a.formats},
+		Reader:             &GetAllUIUsersUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -163,7 +163,7 @@ func (a *Client) GETAllUIUsersUsingGET(params *GETAllUIUsersUsingGETParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETAllUIUsersUsingGETOK)
+	success, ok := result.(*GetAllUIUsersUsingGETOK)
 	if ok {
 		return success, nil
 	}
@@ -174,14 +174,14 @@ func (a *Client) GETAllUIUsersUsingGET(params *GETAllUIUsersUsingGETParams, opts
 }
 
 /*
-GETLocalAccount Gets local account details
+GetLocalAccount gets local account details
 
 Get information on the local account
 */
-func (a *Client) GETLocalAccount(params *GETLocalAccountParams, opts ...ClientOption) (*GETLocalAccountOK, error) {
+func (a *Client) GetLocalAccount(params *GetLocalAccountParams, opts ...ClientOption) (*GetLocalAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETLocalAccountParams()
+		params = NewGetLocalAccountParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getLocalAccount",
@@ -191,7 +191,7 @@ func (a *Client) GETLocalAccount(params *GETLocalAccountParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETLocalAccountReader{formats: a.formats},
+		Reader:             &GetLocalAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -203,7 +203,7 @@ func (a *Client) GETLocalAccount(params *GETLocalAccountParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETLocalAccountOK)
+	success, ok := result.(*GetLocalAccountOK)
 	if ok {
 		return success, nil
 	}
@@ -214,14 +214,14 @@ func (a *Client) GETLocalAccount(params *GETLocalAccountParams, opts ...ClientOp
 }
 
 /*
-GETRoles Gets all roles
+GetRoles gets all roles
 
 Get a list of all roles
 */
-func (a *Client) GETRoles(params *GETRolesParams, opts ...ClientOption) (*GETRolesOK, error) {
+func (a *Client) GetRoles(params *GetRolesParams, opts ...ClientOption) (*GetRolesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETRolesParams()
+		params = NewGetRolesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getRoles",
@@ -231,7 +231,7 @@ func (a *Client) GETRoles(params *GETRolesParams, opts ...ClientOption) (*GETRol
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETRolesReader{formats: a.formats},
+		Reader:             &GetRolesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -243,7 +243,7 @@ func (a *Client) GETRoles(params *GETRolesParams, opts ...ClientOption) (*GETRol
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETRolesOK)
+	success, ok := result.(*GetRolesOK)
 	if ok {
 		return success, nil
 	}
@@ -254,14 +254,14 @@ func (a *Client) GETRoles(params *GETRolesParams, opts ...ClientOption) (*GETRol
 }
 
 /*
-GETSSODomainEntities Gets all entities of SSO domain
+GetSSODomainEntities gets all entities of SSO domain
 
 Get a list of all entities in the SSO domain
 */
-func (a *Client) GETSSODomainEntities(params *GETSSODomainEntitiesParams, opts ...ClientOption) (*GETSSODomainEntitiesOK, error) {
+func (a *Client) GetSSODomainEntities(params *GetSSODomainEntitiesParams, opts ...ClientOption) (*GetSSODomainEntitiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSSODomainEntitiesParams()
+		params = NewGetSSODomainEntitiesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSSODomainEntities",
@@ -271,7 +271,7 @@ func (a *Client) GETSSODomainEntities(params *GETSSODomainEntitiesParams, opts .
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSSODomainEntitiesReader{formats: a.formats},
+		Reader:             &GetSSODomainEntitiesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -283,7 +283,7 @@ func (a *Client) GETSSODomainEntities(params *GETSSODomainEntitiesParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSSODomainEntitiesOK)
+	success, ok := result.(*GetSSODomainEntitiesOK)
 	if ok {
 		return success, nil
 	}
@@ -294,14 +294,14 @@ func (a *Client) GETSSODomainEntities(params *GETSSODomainEntitiesParams, opts .
 }
 
 /*
-GETSSODomains Gets all SSO domains
+GetSSODomains gets all SSO domains
 
 Get a list of all SSO domains
 */
-func (a *Client) GETSSODomains(params *GETSSODomainsParams, opts ...ClientOption) (*GETSSODomainsOK, error) {
+func (a *Client) GetSSODomains(params *GetSSODomainsParams, opts ...ClientOption) (*GetSSODomainsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSSODomainsParams()
+		params = NewGetSSODomainsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSSODomains",
@@ -311,7 +311,7 @@ func (a *Client) GETSSODomains(params *GETSSODomainsParams, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSSODomainsReader{formats: a.formats},
+		Reader:             &GetSSODomainsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -323,7 +323,7 @@ func (a *Client) GETSSODomains(params *GETSSODomainsParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSSODomainsOK)
+	success, ok := result.(*GetSSODomainsOK)
 	if ok {
 		return success, nil
 	}
@@ -334,14 +334,14 @@ func (a *Client) GETSSODomains(params *GETSSODomainsParams, opts ...ClientOption
 }
 
 /*
-GETUsers Gets all users
+GetUsers gets all users
 
 Get a list of all users
 */
-func (a *Client) GETUsers(params *GETUsersParams, opts ...ClientOption) (*GETUsersOK, error) {
+func (a *Client) GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUsersParams()
+		params = NewGetUsersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUsers",
@@ -351,7 +351,7 @@ func (a *Client) GETUsers(params *GETUsersParams, opts ...ClientOption) (*GETUse
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUsersReader{formats: a.formats},
+		Reader:             &GetUsersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -363,7 +363,7 @@ func (a *Client) GETUsers(params *GETUsersParams, opts ...ClientOption) (*GETUse
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUsersOK)
+	success, ok := result.(*GetUsersOK)
 	if ok {
 		return success, nil
 	}

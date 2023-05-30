@@ -35,11 +35,11 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CommitRescheduleUpgrade(params *CommitRescheduleUpgradeParams, opts ...ClientOption) (*CommitRescheduleUpgradeOK, error)
 
-	GETPrecheckUsingGET(params *GETPrecheckUsingGETParams, opts ...ClientOption) (*GETPrecheckUsingGETOK, error)
+	GetPrecheckUsingGET(params *GetPrecheckUsingGETParams, opts ...ClientOption) (*GetPrecheckUsingGETOK, error)
 
-	GETUpgradeByID(params *GETUpgradeByIDParams, opts ...ClientOption) (*GETUpgradeByIDOK, error)
+	GetUpgradeByID(params *GetUpgradeByIDParams, opts ...ClientOption) (*GetUpgradeByIDOK, error)
 
-	GETUpgrades(params *GETUpgradesParams, opts ...ClientOption) (*GETUpgradesOK, error)
+	GetUpgrades(params *GetUpgradesParams, opts ...ClientOption) (*GetUpgradesOK, error)
 
 	PerformPrechecksUsingPOST(params *PerformPrechecksUsingPOSTParams, opts ...ClientOption) (*PerformPrechecksUsingPOSTOK, *PerformPrechecksUsingPOSTAccepted, error)
 
@@ -89,12 +89,12 @@ func (a *Client) CommitRescheduleUpgrade(params *CommitRescheduleUpgradeParams, 
 }
 
 /*
-GETPrecheckUsingGET gets precheck
+GetPrecheckUsingGET gets precheck
 */
-func (a *Client) GETPrecheckUsingGET(params *GETPrecheckUsingGETParams, opts ...ClientOption) (*GETPrecheckUsingGETOK, error) {
+func (a *Client) GetPrecheckUsingGET(params *GetPrecheckUsingGETParams, opts ...ClientOption) (*GetPrecheckUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETPrecheckUsingGETParams()
+		params = NewGetPrecheckUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getPrecheckUsingGET",
@@ -104,7 +104,7 @@ func (a *Client) GETPrecheckUsingGET(params *GETPrecheckUsingGETParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETPrecheckUsingGETReader{formats: a.formats},
+		Reader:             &GetPrecheckUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -116,7 +116,7 @@ func (a *Client) GETPrecheckUsingGET(params *GETPrecheckUsingGETParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETPrecheckUsingGETOK)
+	success, ok := result.(*GetPrecheckUsingGETOK)
 	if ok {
 		return success, nil
 	}
@@ -127,14 +127,14 @@ func (a *Client) GETPrecheckUsingGET(params *GETPrecheckUsingGETParams, opts ...
 }
 
 /*
-GETUpgradeByID Gets upgrade by Id
+GetUpgradeByID gets upgrade by Id
 
 Get Upgrade By Id
 */
-func (a *Client) GETUpgradeByID(params *GETUpgradeByIDParams, opts ...ClientOption) (*GETUpgradeByIDOK, error) {
+func (a *Client) GetUpgradeByID(params *GetUpgradeByIDParams, opts ...ClientOption) (*GetUpgradeByIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUpgradeByIDParams()
+		params = NewGetUpgradeByIDParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUpgradeById",
@@ -144,7 +144,7 @@ func (a *Client) GETUpgradeByID(params *GETUpgradeByIDParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUpgradeByIDReader{formats: a.formats},
+		Reader:             &GetUpgradeByIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -156,7 +156,7 @@ func (a *Client) GETUpgradeByID(params *GETUpgradeByIDParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUpgradeByIDOK)
+	success, ok := result.(*GetUpgradeByIDOK)
 	if ok {
 		return success, nil
 	}
@@ -167,14 +167,14 @@ func (a *Client) GETUpgradeByID(params *GETUpgradeByIDParams, opts ...ClientOpti
 }
 
 /*
-GETUpgrades Gets upgrades
+GetUpgrades gets upgrades
 
 Get Upgrades
 */
-func (a *Client) GETUpgrades(params *GETUpgradesParams, opts ...ClientOption) (*GETUpgradesOK, error) {
+func (a *Client) GetUpgrades(params *GetUpgradesParams, opts ...ClientOption) (*GetUpgradesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUpgradesParams()
+		params = NewGetUpgradesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUpgrades",
@@ -184,7 +184,7 @@ func (a *Client) GETUpgrades(params *GETUpgradesParams, opts ...ClientOption) (*
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUpgradesReader{formats: a.formats},
+		Reader:             &GetUpgradesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -196,7 +196,7 @@ func (a *Client) GETUpgrades(params *GETUpgradesParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUpgradesOK)
+	success, ok := result.(*GetUpgradesOK)
 	if ok {
 		return success, nil
 	}

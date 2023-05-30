@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHostsReader is a Reader for the GETHosts structure.
-type GETHostsReader struct {
+// GetHostsReader is a Reader for the GetHosts structure.
+type GetHostsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHostsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHostsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHostsOK()
+		result := NewGetHostsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETHostsBadRequest()
+		result := NewGetHostsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETHostsInternalServerError()
+		result := NewGetHostsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETHostsReader) ReadResponse(response runtime.ClientResponse, consumer 
 	}
 }
 
-// NewGETHostsOK creates a GETHostsOK with default headers values
-func NewGETHostsOK() *GETHostsOK {
-	return &GETHostsOK{}
+// NewGetHostsOK creates a GetHostsOK with default headers values
+func NewGetHostsOK() *GetHostsOK {
+	return &GetHostsOK{}
 }
 
 /*
-GETHostsOK describes a response with status code 200, with default header values.
+GetHostsOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETHostsOK struct {
+type GetHostsOK struct {
 	Payload *models.PageOfHost
 }
 
 // IsSuccess returns true when this get hosts o k response has a 2xx status code
-func (o *GETHostsOK) IsSuccess() bool {
+func (o *GetHostsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get hosts o k response has a 3xx status code
-func (o *GETHostsOK) IsRedirect() bool {
+func (o *GetHostsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get hosts o k response has a 4xx status code
-func (o *GETHostsOK) IsClientError() bool {
+func (o *GetHostsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get hosts o k response has a 5xx status code
-func (o *GETHostsOK) IsServerError() bool {
+func (o *GetHostsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get hosts o k response a status code equal to that given
-func (o *GETHostsOK) IsCode(code int) bool {
+func (o *GetHostsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHostsOK) Error() string {
+func (o *GetHostsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts][%d] getHostsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostsOK) String() string {
+func (o *GetHostsOK) String() string {
 	return fmt.Sprintf("[GET /v1/hosts][%d] getHostsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostsOK) GetPayload() *models.PageOfHost {
+func (o *GetHostsOK) GetPayload() *models.PageOfHost {
 	return o.Payload
 }
 
-func (o *GETHostsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfHost)
 
@@ -112,58 +112,58 @@ func (o *GETHostsOK) readResponse(response runtime.ClientResponse, consumer runt
 	return nil
 }
 
-// NewGETHostsBadRequest creates a GETHostsBadRequest with default headers values
-func NewGETHostsBadRequest() *GETHostsBadRequest {
-	return &GETHostsBadRequest{}
+// NewGetHostsBadRequest creates a GetHostsBadRequest with default headers values
+func NewGetHostsBadRequest() *GetHostsBadRequest {
+	return &GetHostsBadRequest{}
 }
 
 /*
-GETHostsBadRequest describes a response with status code 400, with default header values.
+GetHostsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETHostsBadRequest struct {
+type GetHostsBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get hosts bad request response has a 2xx status code
-func (o *GETHostsBadRequest) IsSuccess() bool {
+func (o *GetHostsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get hosts bad request response has a 3xx status code
-func (o *GETHostsBadRequest) IsRedirect() bool {
+func (o *GetHostsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get hosts bad request response has a 4xx status code
-func (o *GETHostsBadRequest) IsClientError() bool {
+func (o *GetHostsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get hosts bad request response has a 5xx status code
-func (o *GETHostsBadRequest) IsServerError() bool {
+func (o *GetHostsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get hosts bad request response a status code equal to that given
-func (o *GETHostsBadRequest) IsCode(code int) bool {
+func (o *GetHostsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETHostsBadRequest) Error() string {
+func (o *GetHostsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts][%d] getHostsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHostsBadRequest) String() string {
+func (o *GetHostsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/hosts][%d] getHostsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHostsBadRequest) GetPayload() *models.Error {
+func (o *GetHostsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETHostsBadRequest) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETHostsInternalServerError creates a GETHostsInternalServerError with default headers values
-func NewGETHostsInternalServerError() *GETHostsInternalServerError {
-	return &GETHostsInternalServerError{}
+// NewGetHostsInternalServerError creates a GetHostsInternalServerError with default headers values
+func NewGetHostsInternalServerError() *GetHostsInternalServerError {
+	return &GetHostsInternalServerError{}
 }
 
 /*
-GETHostsInternalServerError describes a response with status code 500, with default header values.
+GetHostsInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETHostsInternalServerError struct {
+type GetHostsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get hosts internal server error response has a 2xx status code
-func (o *GETHostsInternalServerError) IsSuccess() bool {
+func (o *GetHostsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get hosts internal server error response has a 3xx status code
-func (o *GETHostsInternalServerError) IsRedirect() bool {
+func (o *GetHostsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get hosts internal server error response has a 4xx status code
-func (o *GETHostsInternalServerError) IsClientError() bool {
+func (o *GetHostsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get hosts internal server error response has a 5xx status code
-func (o *GETHostsInternalServerError) IsServerError() bool {
+func (o *GetHostsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get hosts internal server error response a status code equal to that given
-func (o *GETHostsInternalServerError) IsCode(code int) bool {
+func (o *GetHostsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETHostsInternalServerError) Error() string {
+func (o *GetHostsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts][%d] getHostsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHostsInternalServerError) String() string {
+func (o *GetHostsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/hosts][%d] getHostsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHostsInternalServerError) GetPayload() *models.Error {
+func (o *GetHostsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

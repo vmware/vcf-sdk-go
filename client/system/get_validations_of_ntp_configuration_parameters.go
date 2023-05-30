@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETValidationsOfNtpConfigurationParams creates a new GETValidationsOfNtpConfigurationParams object,
+// NewGetValidationsOfNtpConfigurationParams creates a new GetValidationsOfNtpConfigurationParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETValidationsOfNtpConfigurationParams() *GETValidationsOfNtpConfigurationParams {
-	return &GETValidationsOfNtpConfigurationParams{
+func NewGetValidationsOfNtpConfigurationParams() *GetValidationsOfNtpConfigurationParams {
+	return &GetValidationsOfNtpConfigurationParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETValidationsOfNtpConfigurationParamsWithTimeout creates a new GETValidationsOfNtpConfigurationParams object
+// NewGetValidationsOfNtpConfigurationParamsWithTimeout creates a new GetValidationsOfNtpConfigurationParams object
 // with the ability to set a timeout on a request.
-func NewGETValidationsOfNtpConfigurationParamsWithTimeout(timeout time.Duration) *GETValidationsOfNtpConfigurationParams {
-	return &GETValidationsOfNtpConfigurationParams{
+func NewGetValidationsOfNtpConfigurationParamsWithTimeout(timeout time.Duration) *GetValidationsOfNtpConfigurationParams {
+	return &GetValidationsOfNtpConfigurationParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETValidationsOfNtpConfigurationParamsWithContext creates a new GETValidationsOfNtpConfigurationParams object
+// NewGetValidationsOfNtpConfigurationParamsWithContext creates a new GetValidationsOfNtpConfigurationParams object
 // with the ability to set a context for a request.
-func NewGETValidationsOfNtpConfigurationParamsWithContext(ctx context.Context) *GETValidationsOfNtpConfigurationParams {
-	return &GETValidationsOfNtpConfigurationParams{
+func NewGetValidationsOfNtpConfigurationParamsWithContext(ctx context.Context) *GetValidationsOfNtpConfigurationParams {
+	return &GetValidationsOfNtpConfigurationParams{
 		Context: ctx,
 	}
 }
 
-// NewGETValidationsOfNtpConfigurationParamsWithHTTPClient creates a new GETValidationsOfNtpConfigurationParams object
+// NewGetValidationsOfNtpConfigurationParamsWithHTTPClient creates a new GetValidationsOfNtpConfigurationParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETValidationsOfNtpConfigurationParamsWithHTTPClient(client *http.Client) *GETValidationsOfNtpConfigurationParams {
-	return &GETValidationsOfNtpConfigurationParams{
+func NewGetValidationsOfNtpConfigurationParamsWithHTTPClient(client *http.Client) *GetValidationsOfNtpConfigurationParams {
+	return &GetValidationsOfNtpConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETValidationsOfNtpConfigurationParams contains all the parameters to send to the API endpoint
+GetValidationsOfNtpConfigurationParams contains all the parameters to send to the API endpoint
 
 	for the get validations of ntp configuration operation.
 
 	Typically these are written to a http.Request.
 */
-type GETValidationsOfNtpConfigurationParams struct {
+type GetValidationsOfNtpConfigurationParams struct {
 
 	/* ExecutionStatus.
 
@@ -78,7 +78,7 @@ type GETValidationsOfNtpConfigurationParams struct {
 // WithDefaults hydrates default values in the get validations of ntp configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationsOfNtpConfigurationParams) WithDefaults() *GETValidationsOfNtpConfigurationParams {
+func (o *GetValidationsOfNtpConfigurationParams) WithDefaults() *GetValidationsOfNtpConfigurationParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETValidationsOfNtpConfigurationParams) WithDefaults() *GETValidationsO
 // SetDefaults hydrates default values in the get validations of ntp configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationsOfNtpConfigurationParams) SetDefaults() {
+func (o *GetValidationsOfNtpConfigurationParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) WithTimeout(timeout time.Duration) *GETValidationsOfNtpConfigurationParams {
+func (o *GetValidationsOfNtpConfigurationParams) WithTimeout(timeout time.Duration) *GetValidationsOfNtpConfigurationParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) SetTimeout(timeout time.Duration) {
+func (o *GetValidationsOfNtpConfigurationParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) WithContext(ctx context.Context) *GETValidationsOfNtpConfigurationParams {
+func (o *GetValidationsOfNtpConfigurationParams) WithContext(ctx context.Context) *GetValidationsOfNtpConfigurationParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) SetContext(ctx context.Context) {
+func (o *GetValidationsOfNtpConfigurationParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) WithHTTPClient(client *http.Client) *GETValidationsOfNtpConfigurationParams {
+func (o *GetValidationsOfNtpConfigurationParams) WithHTTPClient(client *http.Client) *GetValidationsOfNtpConfigurationParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) SetHTTPClient(client *http.Client) {
+func (o *GetValidationsOfNtpConfigurationParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithExecutionStatus adds the executionStatus to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) WithExecutionStatus(executionStatus *string) *GETValidationsOfNtpConfigurationParams {
+func (o *GetValidationsOfNtpConfigurationParams) WithExecutionStatus(executionStatus *string) *GetValidationsOfNtpConfigurationParams {
 	o.SetExecutionStatus(executionStatus)
 	return o
 }
 
 // SetExecutionStatus adds the executionStatus to the get validations of ntp configuration params
-func (o *GETValidationsOfNtpConfigurationParams) SetExecutionStatus(executionStatus *string) {
+func (o *GetValidationsOfNtpConfigurationParams) SetExecutionStatus(executionStatus *string) {
 	o.ExecutionStatus = executionStatus
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETValidationsOfNtpConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetValidationsOfNtpConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

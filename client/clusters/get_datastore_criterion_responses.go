@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETDatastoreCriterionReader is a Reader for the GETDatastoreCriterion structure.
-type GETDatastoreCriterionReader struct {
+// GetDatastoreCriterionReader is a Reader for the GetDatastoreCriterion structure.
+type GetDatastoreCriterionReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETDatastoreCriterionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetDatastoreCriterionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETDatastoreCriterionOK()
+		result := NewGetDatastoreCriterionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETDatastoreCriterionNotFound()
+		result := NewGetDatastoreCriterionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETDatastoreCriterionReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewGETDatastoreCriterionOK creates a GETDatastoreCriterionOK with default headers values
-func NewGETDatastoreCriterionOK() *GETDatastoreCriterionOK {
-	return &GETDatastoreCriterionOK{}
+// NewGetDatastoreCriterionOK creates a GetDatastoreCriterionOK with default headers values
+func NewGetDatastoreCriterionOK() *GetDatastoreCriterionOK {
+	return &GetDatastoreCriterionOK{}
 }
 
 /*
-GETDatastoreCriterionOK describes a response with status code 200, with default header values.
+GetDatastoreCriterionOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETDatastoreCriterionOK struct {
+type GetDatastoreCriterionOK struct {
 	Payload *models.DatastoreCriterion
 }
 
 // IsSuccess returns true when this get datastore criterion o k response has a 2xx status code
-func (o *GETDatastoreCriterionOK) IsSuccess() bool {
+func (o *GetDatastoreCriterionOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get datastore criterion o k response has a 3xx status code
-func (o *GETDatastoreCriterionOK) IsRedirect() bool {
+func (o *GetDatastoreCriterionOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastore criterion o k response has a 4xx status code
-func (o *GETDatastoreCriterionOK) IsClientError() bool {
+func (o *GetDatastoreCriterionOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get datastore criterion o k response has a 5xx status code
-func (o *GETDatastoreCriterionOK) IsServerError() bool {
+func (o *GetDatastoreCriterionOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get datastore criterion o k response a status code equal to that given
-func (o *GETDatastoreCriterionOK) IsCode(code int) bool {
+func (o *GetDatastoreCriterionOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETDatastoreCriterionOK) Error() string {
+func (o *GetDatastoreCriterionOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria/{name}][%d] getDatastoreCriterionOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDatastoreCriterionOK) String() string {
+func (o *GetDatastoreCriterionOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria/{name}][%d] getDatastoreCriterionOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDatastoreCriterionOK) GetPayload() *models.DatastoreCriterion {
+func (o *GetDatastoreCriterionOK) GetPayload() *models.DatastoreCriterion {
 	return o.Payload
 }
 
-func (o *GETDatastoreCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoreCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.DatastoreCriterion)
 
@@ -106,58 +106,58 @@ func (o *GETDatastoreCriterionOK) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETDatastoreCriterionNotFound creates a GETDatastoreCriterionNotFound with default headers values
-func NewGETDatastoreCriterionNotFound() *GETDatastoreCriterionNotFound {
-	return &GETDatastoreCriterionNotFound{}
+// NewGetDatastoreCriterionNotFound creates a GetDatastoreCriterionNotFound with default headers values
+func NewGetDatastoreCriterionNotFound() *GetDatastoreCriterionNotFound {
+	return &GetDatastoreCriterionNotFound{}
 }
 
 /*
-GETDatastoreCriterionNotFound describes a response with status code 404, with default header values.
+GetDatastoreCriterionNotFound describes a response with status code 404, with default header values.
 
 Criterion Not Found
 */
-type GETDatastoreCriterionNotFound struct {
+type GetDatastoreCriterionNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get datastore criterion not found response has a 2xx status code
-func (o *GETDatastoreCriterionNotFound) IsSuccess() bool {
+func (o *GetDatastoreCriterionNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get datastore criterion not found response has a 3xx status code
-func (o *GETDatastoreCriterionNotFound) IsRedirect() bool {
+func (o *GetDatastoreCriterionNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastore criterion not found response has a 4xx status code
-func (o *GETDatastoreCriterionNotFound) IsClientError() bool {
+func (o *GetDatastoreCriterionNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get datastore criterion not found response has a 5xx status code
-func (o *GETDatastoreCriterionNotFound) IsServerError() bool {
+func (o *GetDatastoreCriterionNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get datastore criterion not found response a status code equal to that given
-func (o *GETDatastoreCriterionNotFound) IsCode(code int) bool {
+func (o *GetDatastoreCriterionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETDatastoreCriterionNotFound) Error() string {
+func (o *GetDatastoreCriterionNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria/{name}][%d] getDatastoreCriterionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETDatastoreCriterionNotFound) String() string {
+func (o *GetDatastoreCriterionNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria/{name}][%d] getDatastoreCriterionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETDatastoreCriterionNotFound) GetPayload() *models.Error {
+func (o *GetDatastoreCriterionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDatastoreCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoreCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

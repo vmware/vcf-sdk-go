@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETDepotSettingsReader is a Reader for the GETDepotSettings structure.
-type GETDepotSettingsReader struct {
+// GetDepotSettingsReader is a Reader for the GetDepotSettings structure.
+type GetDepotSettingsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETDepotSettingsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetDepotSettingsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETDepotSettingsOK()
+		result := NewGetDepotSettingsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETDepotSettingsInternalServerError()
+		result := NewGetDepotSettingsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETDepotSettingsReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewGETDepotSettingsOK creates a GETDepotSettingsOK with default headers values
-func NewGETDepotSettingsOK() *GETDepotSettingsOK {
-	return &GETDepotSettingsOK{}
+// NewGetDepotSettingsOK creates a GetDepotSettingsOK with default headers values
+func NewGetDepotSettingsOK() *GetDepotSettingsOK {
+	return &GetDepotSettingsOK{}
 }
 
 /*
-GETDepotSettingsOK describes a response with status code 200, with default header values.
+GetDepotSettingsOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETDepotSettingsOK struct {
+type GetDepotSettingsOK struct {
 	Payload []*models.DepotSettings
 }
 
 // IsSuccess returns true when this get depot settings o k response has a 2xx status code
-func (o *GETDepotSettingsOK) IsSuccess() bool {
+func (o *GetDepotSettingsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get depot settings o k response has a 3xx status code
-func (o *GETDepotSettingsOK) IsRedirect() bool {
+func (o *GetDepotSettingsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get depot settings o k response has a 4xx status code
-func (o *GETDepotSettingsOK) IsClientError() bool {
+func (o *GetDepotSettingsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get depot settings o k response has a 5xx status code
-func (o *GETDepotSettingsOK) IsServerError() bool {
+func (o *GetDepotSettingsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get depot settings o k response a status code equal to that given
-func (o *GETDepotSettingsOK) IsCode(code int) bool {
+func (o *GetDepotSettingsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETDepotSettingsOK) Error() string {
+func (o *GetDepotSettingsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/settings/depot][%d] getDepotSettingsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDepotSettingsOK) String() string {
+func (o *GetDepotSettingsOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/settings/depot][%d] getDepotSettingsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDepotSettingsOK) GetPayload() []*models.DepotSettings {
+func (o *GetDepotSettingsOK) GetPayload() []*models.DepotSettings {
 	return o.Payload
 }
 
-func (o *GETDepotSettingsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDepotSettingsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -104,58 +104,58 @@ func (o *GETDepotSettingsOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETDepotSettingsInternalServerError creates a GETDepotSettingsInternalServerError with default headers values
-func NewGETDepotSettingsInternalServerError() *GETDepotSettingsInternalServerError {
-	return &GETDepotSettingsInternalServerError{}
+// NewGetDepotSettingsInternalServerError creates a GetDepotSettingsInternalServerError with default headers values
+func NewGetDepotSettingsInternalServerError() *GetDepotSettingsInternalServerError {
+	return &GetDepotSettingsInternalServerError{}
 }
 
 /*
-GETDepotSettingsInternalServerError describes a response with status code 500, with default header values.
+GetDepotSettingsInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETDepotSettingsInternalServerError struct {
+type GetDepotSettingsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get depot settings internal server error response has a 2xx status code
-func (o *GETDepotSettingsInternalServerError) IsSuccess() bool {
+func (o *GetDepotSettingsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get depot settings internal server error response has a 3xx status code
-func (o *GETDepotSettingsInternalServerError) IsRedirect() bool {
+func (o *GetDepotSettingsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get depot settings internal server error response has a 4xx status code
-func (o *GETDepotSettingsInternalServerError) IsClientError() bool {
+func (o *GetDepotSettingsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get depot settings internal server error response has a 5xx status code
-func (o *GETDepotSettingsInternalServerError) IsServerError() bool {
+func (o *GetDepotSettingsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get depot settings internal server error response a status code equal to that given
-func (o *GETDepotSettingsInternalServerError) IsCode(code int) bool {
+func (o *GetDepotSettingsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETDepotSettingsInternalServerError) Error() string {
+func (o *GetDepotSettingsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/settings/depot][%d] getDepotSettingsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDepotSettingsInternalServerError) String() string {
+func (o *GetDepotSettingsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/settings/depot][%d] getDepotSettingsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDepotSettingsInternalServerError) GetPayload() *models.Error {
+func (o *GetDepotSettingsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDepotSettingsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDepotSettingsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

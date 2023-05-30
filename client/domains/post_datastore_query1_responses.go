@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// POSTDatastoreQuery1Reader is a Reader for the POSTDatastoreQuery1 structure.
-type POSTDatastoreQuery1Reader struct {
+// PostDatastoreQuery1Reader is a Reader for the PostDatastoreQuery1 structure.
+type PostDatastoreQuery1Reader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *POSTDatastoreQuery1Reader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PostDatastoreQuery1Reader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewPOSTDatastoreQuery1OK()
+		result := NewPostDatastoreQuery1OK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewPOSTDatastoreQuery1BadRequest()
+		result := NewPostDatastoreQuery1BadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewPOSTDatastoreQuery1InternalServerError()
+		result := NewPostDatastoreQuery1InternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *POSTDatastoreQuery1Reader) ReadResponse(response runtime.ClientResponse
 	}
 }
 
-// NewPOSTDatastoreQuery1OK creates a POSTDatastoreQuery1OK with default headers values
-func NewPOSTDatastoreQuery1OK() *POSTDatastoreQuery1OK {
-	return &POSTDatastoreQuery1OK{}
+// NewPostDatastoreQuery1OK creates a PostDatastoreQuery1OK with default headers values
+func NewPostDatastoreQuery1OK() *PostDatastoreQuery1OK {
+	return &PostDatastoreQuery1OK{}
 }
 
 /*
-POSTDatastoreQuery1OK describes a response with status code 200, with default header values.
+PostDatastoreQuery1OK describes a response with status code 200, with default header values.
 
 Ok
 */
-type POSTDatastoreQuery1OK struct {
+type PostDatastoreQuery1OK struct {
 	Payload *models.DatastoreQueryResponse
 }
 
 // IsSuccess returns true when this post datastore query1 o k response has a 2xx status code
-func (o *POSTDatastoreQuery1OK) IsSuccess() bool {
+func (o *PostDatastoreQuery1OK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this post datastore query1 o k response has a 3xx status code
-func (o *POSTDatastoreQuery1OK) IsRedirect() bool {
+func (o *PostDatastoreQuery1OK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post datastore query1 o k response has a 4xx status code
-func (o *POSTDatastoreQuery1OK) IsClientError() bool {
+func (o *PostDatastoreQuery1OK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this post datastore query1 o k response has a 5xx status code
-func (o *POSTDatastoreQuery1OK) IsServerError() bool {
+func (o *PostDatastoreQuery1OK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this post datastore query1 o k response a status code equal to that given
-func (o *POSTDatastoreQuery1OK) IsCode(code int) bool {
+func (o *PostDatastoreQuery1OK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *POSTDatastoreQuery1OK) Error() string {
+func (o *PostDatastoreQuery1OK) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1OK  %+v", 200, o.Payload)
 }
 
-func (o *POSTDatastoreQuery1OK) String() string {
+func (o *PostDatastoreQuery1OK) String() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1OK  %+v", 200, o.Payload)
 }
 
-func (o *POSTDatastoreQuery1OK) GetPayload() *models.DatastoreQueryResponse {
+func (o *PostDatastoreQuery1OK) GetPayload() *models.DatastoreQueryResponse {
 	return o.Payload
 }
 
-func (o *POSTDatastoreQuery1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostDatastoreQuery1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.DatastoreQueryResponse)
 
@@ -112,58 +112,58 @@ func (o *POSTDatastoreQuery1OK) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewPOSTDatastoreQuery1BadRequest creates a POSTDatastoreQuery1BadRequest with default headers values
-func NewPOSTDatastoreQuery1BadRequest() *POSTDatastoreQuery1BadRequest {
-	return &POSTDatastoreQuery1BadRequest{}
+// NewPostDatastoreQuery1BadRequest creates a PostDatastoreQuery1BadRequest with default headers values
+func NewPostDatastoreQuery1BadRequest() *PostDatastoreQuery1BadRequest {
+	return &PostDatastoreQuery1BadRequest{}
 }
 
 /*
-POSTDatastoreQuery1BadRequest describes a response with status code 400, with default header values.
+PostDatastoreQuery1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type POSTDatastoreQuery1BadRequest struct {
+type PostDatastoreQuery1BadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this post datastore query1 bad request response has a 2xx status code
-func (o *POSTDatastoreQuery1BadRequest) IsSuccess() bool {
+func (o *PostDatastoreQuery1BadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this post datastore query1 bad request response has a 3xx status code
-func (o *POSTDatastoreQuery1BadRequest) IsRedirect() bool {
+func (o *PostDatastoreQuery1BadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post datastore query1 bad request response has a 4xx status code
-func (o *POSTDatastoreQuery1BadRequest) IsClientError() bool {
+func (o *PostDatastoreQuery1BadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this post datastore query1 bad request response has a 5xx status code
-func (o *POSTDatastoreQuery1BadRequest) IsServerError() bool {
+func (o *PostDatastoreQuery1BadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this post datastore query1 bad request response a status code equal to that given
-func (o *POSTDatastoreQuery1BadRequest) IsCode(code int) bool {
+func (o *PostDatastoreQuery1BadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *POSTDatastoreQuery1BadRequest) Error() string {
+func (o *PostDatastoreQuery1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1BadRequest  %+v", 400, o.Payload)
 }
 
-func (o *POSTDatastoreQuery1BadRequest) String() string {
+func (o *PostDatastoreQuery1BadRequest) String() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1BadRequest  %+v", 400, o.Payload)
 }
 
-func (o *POSTDatastoreQuery1BadRequest) GetPayload() *models.Error {
+func (o *PostDatastoreQuery1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *POSTDatastoreQuery1BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostDatastoreQuery1BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *POSTDatastoreQuery1BadRequest) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewPOSTDatastoreQuery1InternalServerError creates a POSTDatastoreQuery1InternalServerError with default headers values
-func NewPOSTDatastoreQuery1InternalServerError() *POSTDatastoreQuery1InternalServerError {
-	return &POSTDatastoreQuery1InternalServerError{}
+// NewPostDatastoreQuery1InternalServerError creates a PostDatastoreQuery1InternalServerError with default headers values
+func NewPostDatastoreQuery1InternalServerError() *PostDatastoreQuery1InternalServerError {
+	return &PostDatastoreQuery1InternalServerError{}
 }
 
 /*
-POSTDatastoreQuery1InternalServerError describes a response with status code 500, with default header values.
+PostDatastoreQuery1InternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type POSTDatastoreQuery1InternalServerError struct {
+type PostDatastoreQuery1InternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this post datastore query1 internal server error response has a 2xx status code
-func (o *POSTDatastoreQuery1InternalServerError) IsSuccess() bool {
+func (o *PostDatastoreQuery1InternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this post datastore query1 internal server error response has a 3xx status code
-func (o *POSTDatastoreQuery1InternalServerError) IsRedirect() bool {
+func (o *PostDatastoreQuery1InternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post datastore query1 internal server error response has a 4xx status code
-func (o *POSTDatastoreQuery1InternalServerError) IsClientError() bool {
+func (o *PostDatastoreQuery1InternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this post datastore query1 internal server error response has a 5xx status code
-func (o *POSTDatastoreQuery1InternalServerError) IsServerError() bool {
+func (o *PostDatastoreQuery1InternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this post datastore query1 internal server error response a status code equal to that given
-func (o *POSTDatastoreQuery1InternalServerError) IsCode(code int) bool {
+func (o *PostDatastoreQuery1InternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *POSTDatastoreQuery1InternalServerError) Error() string {
+func (o *PostDatastoreQuery1InternalServerError) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1InternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *POSTDatastoreQuery1InternalServerError) String() string {
+func (o *PostDatastoreQuery1InternalServerError) String() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1InternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *POSTDatastoreQuery1InternalServerError) GetPayload() *models.Error {
+func (o *PostDatastoreQuery1InternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *POSTDatastoreQuery1InternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostDatastoreQuery1InternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

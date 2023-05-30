@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVRSLCMValidationReader is a Reader for the GETVRSLCMValidation structure.
-type GETVRSLCMValidationReader struct {
+// GetVRSLCMValidationReader is a Reader for the GetVRSLCMValidation structure.
+type GetVRSLCMValidationReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVRSLCMValidationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVRSLCMValidationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVRSLCMValidationOK()
+		result := NewGetVRSLCMValidationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETVRSLCMValidationBadRequest()
+		result := NewGetVRSLCMValidationBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETVRSLCMValidationNotFound()
+		result := NewGetVRSLCMValidationNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETVRSLCMValidationReader) ReadResponse(response runtime.ClientResponse
 	}
 }
 
-// NewGETVRSLCMValidationOK creates a GETVRSLCMValidationOK with default headers values
-func NewGETVRSLCMValidationOK() *GETVRSLCMValidationOK {
-	return &GETVRSLCMValidationOK{}
+// NewGetVRSLCMValidationOK creates a GetVRSLCMValidationOK with default headers values
+func NewGetVRSLCMValidationOK() *GetVRSLCMValidationOK {
+	return &GetVRSLCMValidationOK{}
 }
 
 /*
-GETVRSLCMValidationOK describes a response with status code 200, with default header values.
+GetVRSLCMValidationOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETVRSLCMValidationOK struct {
+type GetVRSLCMValidationOK struct {
 	Payload *models.Validation
 }
 
 // IsSuccess returns true when this get Vrslcm validation o k response has a 2xx status code
-func (o *GETVRSLCMValidationOK) IsSuccess() bool {
+func (o *GetVRSLCMValidationOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Vrslcm validation o k response has a 3xx status code
-func (o *GETVRSLCMValidationOK) IsRedirect() bool {
+func (o *GetVRSLCMValidationOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Vrslcm validation o k response has a 4xx status code
-func (o *GETVRSLCMValidationOK) IsClientError() bool {
+func (o *GetVRSLCMValidationOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Vrslcm validation o k response has a 5xx status code
-func (o *GETVRSLCMValidationOK) IsServerError() bool {
+func (o *GetVRSLCMValidationOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Vrslcm validation o k response a status code equal to that given
-func (o *GETVRSLCMValidationOK) IsCode(code int) bool {
+func (o *GetVRSLCMValidationOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVRSLCMValidationOK) Error() string {
+func (o *GetVRSLCMValidationOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vrslcms/validations/{id}][%d] getVrslcmValidationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVRSLCMValidationOK) String() string {
+func (o *GetVRSLCMValidationOK) String() string {
 	return fmt.Sprintf("[GET /v1/vrslcms/validations/{id}][%d] getVrslcmValidationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVRSLCMValidationOK) GetPayload() *models.Validation {
+func (o *GetVRSLCMValidationOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETVRSLCMValidationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVRSLCMValidationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 
@@ -112,58 +112,58 @@ func (o *GETVRSLCMValidationOK) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewGETVRSLCMValidationBadRequest creates a GETVRSLCMValidationBadRequest with default headers values
-func NewGETVRSLCMValidationBadRequest() *GETVRSLCMValidationBadRequest {
-	return &GETVRSLCMValidationBadRequest{}
+// NewGetVRSLCMValidationBadRequest creates a GetVRSLCMValidationBadRequest with default headers values
+func NewGetVRSLCMValidationBadRequest() *GetVRSLCMValidationBadRequest {
+	return &GetVRSLCMValidationBadRequest{}
 }
 
 /*
-GETVRSLCMValidationBadRequest describes a response with status code 400, with default header values.
+GetVRSLCMValidationBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETVRSLCMValidationBadRequest struct {
+type GetVRSLCMValidationBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Vrslcm validation bad request response has a 2xx status code
-func (o *GETVRSLCMValidationBadRequest) IsSuccess() bool {
+func (o *GetVRSLCMValidationBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Vrslcm validation bad request response has a 3xx status code
-func (o *GETVRSLCMValidationBadRequest) IsRedirect() bool {
+func (o *GetVRSLCMValidationBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Vrslcm validation bad request response has a 4xx status code
-func (o *GETVRSLCMValidationBadRequest) IsClientError() bool {
+func (o *GetVRSLCMValidationBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Vrslcm validation bad request response has a 5xx status code
-func (o *GETVRSLCMValidationBadRequest) IsServerError() bool {
+func (o *GetVRSLCMValidationBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Vrslcm validation bad request response a status code equal to that given
-func (o *GETVRSLCMValidationBadRequest) IsCode(code int) bool {
+func (o *GetVRSLCMValidationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETVRSLCMValidationBadRequest) Error() string {
+func (o *GetVRSLCMValidationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/vrslcms/validations/{id}][%d] getVrslcmValidationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETVRSLCMValidationBadRequest) String() string {
+func (o *GetVRSLCMValidationBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/vrslcms/validations/{id}][%d] getVrslcmValidationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETVRSLCMValidationBadRequest) GetPayload() *models.Error {
+func (o *GetVRSLCMValidationBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVRSLCMValidationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVRSLCMValidationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETVRSLCMValidationBadRequest) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewGETVRSLCMValidationNotFound creates a GETVRSLCMValidationNotFound with default headers values
-func NewGETVRSLCMValidationNotFound() *GETVRSLCMValidationNotFound {
-	return &GETVRSLCMValidationNotFound{}
+// NewGetVRSLCMValidationNotFound creates a GetVRSLCMValidationNotFound with default headers values
+func NewGetVRSLCMValidationNotFound() *GetVRSLCMValidationNotFound {
+	return &GetVRSLCMValidationNotFound{}
 }
 
 /*
-GETVRSLCMValidationNotFound describes a response with status code 404, with default header values.
+GetVRSLCMValidationNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETVRSLCMValidationNotFound struct {
+type GetVRSLCMValidationNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Vrslcm validation not found response has a 2xx status code
-func (o *GETVRSLCMValidationNotFound) IsSuccess() bool {
+func (o *GetVRSLCMValidationNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Vrslcm validation not found response has a 3xx status code
-func (o *GETVRSLCMValidationNotFound) IsRedirect() bool {
+func (o *GetVRSLCMValidationNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Vrslcm validation not found response has a 4xx status code
-func (o *GETVRSLCMValidationNotFound) IsClientError() bool {
+func (o *GetVRSLCMValidationNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Vrslcm validation not found response has a 5xx status code
-func (o *GETVRSLCMValidationNotFound) IsServerError() bool {
+func (o *GetVRSLCMValidationNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Vrslcm validation not found response a status code equal to that given
-func (o *GETVRSLCMValidationNotFound) IsCode(code int) bool {
+func (o *GetVRSLCMValidationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETVRSLCMValidationNotFound) Error() string {
+func (o *GetVRSLCMValidationNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vrslcms/validations/{id}][%d] getVrslcmValidationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVRSLCMValidationNotFound) String() string {
+func (o *GetVRSLCMValidationNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vrslcms/validations/{id}][%d] getVrslcmValidationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVRSLCMValidationNotFound) GetPayload() *models.Error {
+func (o *GetVRSLCMValidationNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVRSLCMValidationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVRSLCMValidationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

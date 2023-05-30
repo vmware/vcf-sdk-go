@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVropsesParams creates a new GETVropsesParams object,
+// NewGetVropsesParams creates a new GetVropsesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVropsesParams() *GETVropsesParams {
-	return &GETVropsesParams{
+func NewGetVropsesParams() *GetVropsesParams {
+	return &GetVropsesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVropsesParamsWithTimeout creates a new GETVropsesParams object
+// NewGetVropsesParamsWithTimeout creates a new GetVropsesParams object
 // with the ability to set a timeout on a request.
-func NewGETVropsesParamsWithTimeout(timeout time.Duration) *GETVropsesParams {
-	return &GETVropsesParams{
+func NewGetVropsesParamsWithTimeout(timeout time.Duration) *GetVropsesParams {
+	return &GetVropsesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVropsesParamsWithContext creates a new GETVropsesParams object
+// NewGetVropsesParamsWithContext creates a new GetVropsesParams object
 // with the ability to set a context for a request.
-func NewGETVropsesParamsWithContext(ctx context.Context) *GETVropsesParams {
-	return &GETVropsesParams{
+func NewGetVropsesParamsWithContext(ctx context.Context) *GetVropsesParams {
+	return &GetVropsesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVropsesParamsWithHTTPClient creates a new GETVropsesParams object
+// NewGetVropsesParamsWithHTTPClient creates a new GetVropsesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVropsesParamsWithHTTPClient(client *http.Client) *GETVropsesParams {
-	return &GETVropsesParams{
+func NewGetVropsesParamsWithHTTPClient(client *http.Client) *GetVropsesParams {
+	return &GetVropsesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVropsesParams contains all the parameters to send to the API endpoint
+GetVropsesParams contains all the parameters to send to the API endpoint
 
 	for the get vropses operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVropsesParams struct {
+type GetVropsesParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETVropsesParams struct {
 // WithDefaults hydrates default values in the get vropses params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVropsesParams) WithDefaults() *GETVropsesParams {
+func (o *GetVropsesParams) WithDefaults() *GetVropsesParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETVropsesParams) WithDefaults() *GETVropsesParams {
 // SetDefaults hydrates default values in the get vropses params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVropsesParams) SetDefaults() {
+func (o *GetVropsesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vropses params
-func (o *GETVropsesParams) WithTimeout(timeout time.Duration) *GETVropsesParams {
+func (o *GetVropsesParams) WithTimeout(timeout time.Duration) *GetVropsesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vropses params
-func (o *GETVropsesParams) SetTimeout(timeout time.Duration) {
+func (o *GetVropsesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vropses params
-func (o *GETVropsesParams) WithContext(ctx context.Context) *GETVropsesParams {
+func (o *GetVropsesParams) WithContext(ctx context.Context) *GetVropsesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vropses params
-func (o *GETVropsesParams) SetContext(ctx context.Context) {
+func (o *GetVropsesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vropses params
-func (o *GETVropsesParams) WithHTTPClient(client *http.Client) *GETVropsesParams {
+func (o *GetVropsesParams) WithHTTPClient(client *http.Client) *GetVropsesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vropses params
-func (o *GETVropsesParams) SetHTTPClient(client *http.Client) {
+func (o *GetVropsesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVropsesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVropsesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

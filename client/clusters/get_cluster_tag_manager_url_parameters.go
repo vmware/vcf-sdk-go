@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETClusterTagManagerURLParams creates a new GETClusterTagManagerURLParams object,
+// NewGetClusterTagManagerURLParams creates a new GetClusterTagManagerURLParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETClusterTagManagerURLParams() *GETClusterTagManagerURLParams {
-	return &GETClusterTagManagerURLParams{
+func NewGetClusterTagManagerURLParams() *GetClusterTagManagerURLParams {
+	return &GetClusterTagManagerURLParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETClusterTagManagerURLParamsWithTimeout creates a new GETClusterTagManagerURLParams object
+// NewGetClusterTagManagerURLParamsWithTimeout creates a new GetClusterTagManagerURLParams object
 // with the ability to set a timeout on a request.
-func NewGETClusterTagManagerURLParamsWithTimeout(timeout time.Duration) *GETClusterTagManagerURLParams {
-	return &GETClusterTagManagerURLParams{
+func NewGetClusterTagManagerURLParamsWithTimeout(timeout time.Duration) *GetClusterTagManagerURLParams {
+	return &GetClusterTagManagerURLParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETClusterTagManagerURLParamsWithContext creates a new GETClusterTagManagerURLParams object
+// NewGetClusterTagManagerURLParamsWithContext creates a new GetClusterTagManagerURLParams object
 // with the ability to set a context for a request.
-func NewGETClusterTagManagerURLParamsWithContext(ctx context.Context) *GETClusterTagManagerURLParams {
-	return &GETClusterTagManagerURLParams{
+func NewGetClusterTagManagerURLParamsWithContext(ctx context.Context) *GetClusterTagManagerURLParams {
+	return &GetClusterTagManagerURLParams{
 		Context: ctx,
 	}
 }
 
-// NewGETClusterTagManagerURLParamsWithHTTPClient creates a new GETClusterTagManagerURLParams object
+// NewGetClusterTagManagerURLParamsWithHTTPClient creates a new GetClusterTagManagerURLParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETClusterTagManagerURLParamsWithHTTPClient(client *http.Client) *GETClusterTagManagerURLParams {
-	return &GETClusterTagManagerURLParams{
+func NewGetClusterTagManagerURLParamsWithHTTPClient(client *http.Client) *GetClusterTagManagerURLParams {
+	return &GetClusterTagManagerURLParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETClusterTagManagerURLParams contains all the parameters to send to the API endpoint
+GetClusterTagManagerURLParams contains all the parameters to send to the API endpoint
 
 	for the get cluster tag manager Url operation.
 
 	Typically these are written to a http.Request.
 */
-type GETClusterTagManagerURLParams struct {
+type GetClusterTagManagerURLParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETClusterTagManagerURLParams struct {
 // WithDefaults hydrates default values in the get cluster tag manager Url params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterTagManagerURLParams) WithDefaults() *GETClusterTagManagerURLParams {
+func (o *GetClusterTagManagerURLParams) WithDefaults() *GetClusterTagManagerURLParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETClusterTagManagerURLParams) WithDefaults() *GETClusterTagManagerURLP
 // SetDefaults hydrates default values in the get cluster tag manager Url params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterTagManagerURLParams) SetDefaults() {
+func (o *GetClusterTagManagerURLParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) WithTimeout(timeout time.Duration) *GETClusterTagManagerURLParams {
+func (o *GetClusterTagManagerURLParams) WithTimeout(timeout time.Duration) *GetClusterTagManagerURLParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) SetTimeout(timeout time.Duration) {
+func (o *GetClusterTagManagerURLParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) WithContext(ctx context.Context) *GETClusterTagManagerURLParams {
+func (o *GetClusterTagManagerURLParams) WithContext(ctx context.Context) *GetClusterTagManagerURLParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) SetContext(ctx context.Context) {
+func (o *GetClusterTagManagerURLParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) WithHTTPClient(client *http.Client) *GETClusterTagManagerURLParams {
+func (o *GetClusterTagManagerURLParams) WithHTTPClient(client *http.Client) *GetClusterTagManagerURLParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) SetHTTPClient(client *http.Client) {
+func (o *GetClusterTagManagerURLParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) WithID(id string) *GETClusterTagManagerURLParams {
+func (o *GetClusterTagManagerURLParams) WithID(id string) *GetClusterTagManagerURLParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get cluster tag manager Url params
-func (o *GETClusterTagManagerURLParams) SetID(id string) {
+func (o *GetClusterTagManagerURLParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETClusterTagManagerURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetClusterTagManagerURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

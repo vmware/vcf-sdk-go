@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETTagsAssignedToClusterParams creates a new GETTagsAssignedToClusterParams object,
+// NewGetTagsAssignedToClusterParams creates a new GetTagsAssignedToClusterParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETTagsAssignedToClusterParams() *GETTagsAssignedToClusterParams {
-	return &GETTagsAssignedToClusterParams{
+func NewGetTagsAssignedToClusterParams() *GetTagsAssignedToClusterParams {
+	return &GetTagsAssignedToClusterParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETTagsAssignedToClusterParamsWithTimeout creates a new GETTagsAssignedToClusterParams object
+// NewGetTagsAssignedToClusterParamsWithTimeout creates a new GetTagsAssignedToClusterParams object
 // with the ability to set a timeout on a request.
-func NewGETTagsAssignedToClusterParamsWithTimeout(timeout time.Duration) *GETTagsAssignedToClusterParams {
-	return &GETTagsAssignedToClusterParams{
+func NewGetTagsAssignedToClusterParamsWithTimeout(timeout time.Duration) *GetTagsAssignedToClusterParams {
+	return &GetTagsAssignedToClusterParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETTagsAssignedToClusterParamsWithContext creates a new GETTagsAssignedToClusterParams object
+// NewGetTagsAssignedToClusterParamsWithContext creates a new GetTagsAssignedToClusterParams object
 // with the ability to set a context for a request.
-func NewGETTagsAssignedToClusterParamsWithContext(ctx context.Context) *GETTagsAssignedToClusterParams {
-	return &GETTagsAssignedToClusterParams{
+func NewGetTagsAssignedToClusterParamsWithContext(ctx context.Context) *GetTagsAssignedToClusterParams {
+	return &GetTagsAssignedToClusterParams{
 		Context: ctx,
 	}
 }
 
-// NewGETTagsAssignedToClusterParamsWithHTTPClient creates a new GETTagsAssignedToClusterParams object
+// NewGetTagsAssignedToClusterParamsWithHTTPClient creates a new GetTagsAssignedToClusterParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETTagsAssignedToClusterParamsWithHTTPClient(client *http.Client) *GETTagsAssignedToClusterParams {
-	return &GETTagsAssignedToClusterParams{
+func NewGetTagsAssignedToClusterParamsWithHTTPClient(client *http.Client) *GetTagsAssignedToClusterParams {
+	return &GetTagsAssignedToClusterParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETTagsAssignedToClusterParams contains all the parameters to send to the API endpoint
+GetTagsAssignedToClusterParams contains all the parameters to send to the API endpoint
 
 	for the get tags assigned to cluster operation.
 
 	Typically these are written to a http.Request.
 */
-type GETTagsAssignedToClusterParams struct {
+type GetTagsAssignedToClusterParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETTagsAssignedToClusterParams struct {
 // WithDefaults hydrates default values in the get tags assigned to cluster params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToClusterParams) WithDefaults() *GETTagsAssignedToClusterParams {
+func (o *GetTagsAssignedToClusterParams) WithDefaults() *GetTagsAssignedToClusterParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETTagsAssignedToClusterParams) WithDefaults() *GETTagsAssignedToCluste
 // SetDefaults hydrates default values in the get tags assigned to cluster params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToClusterParams) SetDefaults() {
+func (o *GetTagsAssignedToClusterParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) WithTimeout(timeout time.Duration) *GETTagsAssignedToClusterParams {
+func (o *GetTagsAssignedToClusterParams) WithTimeout(timeout time.Duration) *GetTagsAssignedToClusterParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) SetTimeout(timeout time.Duration) {
+func (o *GetTagsAssignedToClusterParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) WithContext(ctx context.Context) *GETTagsAssignedToClusterParams {
+func (o *GetTagsAssignedToClusterParams) WithContext(ctx context.Context) *GetTagsAssignedToClusterParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) SetContext(ctx context.Context) {
+func (o *GetTagsAssignedToClusterParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) WithHTTPClient(client *http.Client) *GETTagsAssignedToClusterParams {
+func (o *GetTagsAssignedToClusterParams) WithHTTPClient(client *http.Client) *GetTagsAssignedToClusterParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) SetHTTPClient(client *http.Client) {
+func (o *GetTagsAssignedToClusterParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) WithID(id string) *GETTagsAssignedToClusterParams {
+func (o *GetTagsAssignedToClusterParams) WithID(id string) *GetTagsAssignedToClusterParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get tags assigned to cluster params
-func (o *GETTagsAssignedToClusterParams) SetID(id string) {
+func (o *GetTagsAssignedToClusterParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETTagsAssignedToClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetTagsAssignedToClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

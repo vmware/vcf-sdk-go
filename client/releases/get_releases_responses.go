@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETReleasesReader is a Reader for the GETReleases structure.
-type GETReleasesReader struct {
+// GetReleasesReader is a Reader for the GetReleases structure.
+type GetReleasesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETReleasesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetReleasesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETReleasesOK()
+		result := NewGetReleasesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETReleasesNotFound()
+		result := NewGetReleasesNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETReleasesInternalServerError()
+		result := NewGetReleasesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETReleasesReader) ReadResponse(response runtime.ClientResponse, consum
 	}
 }
 
-// NewGETReleasesOK creates a GETReleasesOK with default headers values
-func NewGETReleasesOK() *GETReleasesOK {
-	return &GETReleasesOK{}
+// NewGetReleasesOK creates a GetReleasesOK with default headers values
+func NewGetReleasesOK() *GetReleasesOK {
+	return &GetReleasesOK{}
 }
 
 /*
-GETReleasesOK describes a response with status code 200, with default header values.
+GetReleasesOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETReleasesOK struct {
+type GetReleasesOK struct {
 	Payload *models.PageOfRelease
 }
 
 // IsSuccess returns true when this get releases o k response has a 2xx status code
-func (o *GETReleasesOK) IsSuccess() bool {
+func (o *GetReleasesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get releases o k response has a 3xx status code
-func (o *GETReleasesOK) IsRedirect() bool {
+func (o *GetReleasesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get releases o k response has a 4xx status code
-func (o *GETReleasesOK) IsClientError() bool {
+func (o *GetReleasesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get releases o k response has a 5xx status code
-func (o *GETReleasesOK) IsServerError() bool {
+func (o *GetReleasesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get releases o k response a status code equal to that given
-func (o *GETReleasesOK) IsCode(code int) bool {
+func (o *GetReleasesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETReleasesOK) Error() string {
+func (o *GetReleasesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETReleasesOK) String() string {
+func (o *GetReleasesOK) String() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETReleasesOK) GetPayload() *models.PageOfRelease {
+func (o *GetReleasesOK) GetPayload() *models.PageOfRelease {
 	return o.Payload
 }
 
-func (o *GETReleasesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetReleasesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfRelease)
 
@@ -112,58 +112,58 @@ func (o *GETReleasesOK) readResponse(response runtime.ClientResponse, consumer r
 	return nil
 }
 
-// NewGETReleasesNotFound creates a GETReleasesNotFound with default headers values
-func NewGETReleasesNotFound() *GETReleasesNotFound {
-	return &GETReleasesNotFound{}
+// NewGetReleasesNotFound creates a GetReleasesNotFound with default headers values
+func NewGetReleasesNotFound() *GetReleasesNotFound {
+	return &GetReleasesNotFound{}
 }
 
 /*
-GETReleasesNotFound describes a response with status code 404, with default header values.
+GetReleasesNotFound describes a response with status code 404, with default header values.
 
 Release not found
 */
-type GETReleasesNotFound struct {
+type GetReleasesNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get releases not found response has a 2xx status code
-func (o *GETReleasesNotFound) IsSuccess() bool {
+func (o *GetReleasesNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get releases not found response has a 3xx status code
-func (o *GETReleasesNotFound) IsRedirect() bool {
+func (o *GetReleasesNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get releases not found response has a 4xx status code
-func (o *GETReleasesNotFound) IsClientError() bool {
+func (o *GetReleasesNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get releases not found response has a 5xx status code
-func (o *GETReleasesNotFound) IsServerError() bool {
+func (o *GetReleasesNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get releases not found response a status code equal to that given
-func (o *GETReleasesNotFound) IsCode(code int) bool {
+func (o *GetReleasesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETReleasesNotFound) Error() string {
+func (o *GetReleasesNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETReleasesNotFound) String() string {
+func (o *GetReleasesNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETReleasesNotFound) GetPayload() *models.Error {
+func (o *GetReleasesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETReleasesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetReleasesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETReleasesNotFound) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-// NewGETReleasesInternalServerError creates a GETReleasesInternalServerError with default headers values
-func NewGETReleasesInternalServerError() *GETReleasesInternalServerError {
-	return &GETReleasesInternalServerError{}
+// NewGetReleasesInternalServerError creates a GetReleasesInternalServerError with default headers values
+func NewGetReleasesInternalServerError() *GetReleasesInternalServerError {
+	return &GetReleasesInternalServerError{}
 }
 
 /*
-GETReleasesInternalServerError describes a response with status code 500, with default header values.
+GetReleasesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETReleasesInternalServerError struct {
+type GetReleasesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get releases internal server error response has a 2xx status code
-func (o *GETReleasesInternalServerError) IsSuccess() bool {
+func (o *GetReleasesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get releases internal server error response has a 3xx status code
-func (o *GETReleasesInternalServerError) IsRedirect() bool {
+func (o *GetReleasesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get releases internal server error response has a 4xx status code
-func (o *GETReleasesInternalServerError) IsClientError() bool {
+func (o *GetReleasesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get releases internal server error response has a 5xx status code
-func (o *GETReleasesInternalServerError) IsServerError() bool {
+func (o *GetReleasesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get releases internal server error response a status code equal to that given
-func (o *GETReleasesInternalServerError) IsCode(code int) bool {
+func (o *GetReleasesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETReleasesInternalServerError) Error() string {
+func (o *GetReleasesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETReleasesInternalServerError) String() string {
+func (o *GetReleasesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETReleasesInternalServerError) GetPayload() *models.Error {
+func (o *GetReleasesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETReleasesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetReleasesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETBringupInfoReader is a Reader for the GETBringupInfo structure.
-type GETBringupInfoReader struct {
+// GetBringupInfoReader is a Reader for the GetBringupInfo structure.
+type GetBringupInfoReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETBringupInfoReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetBringupInfoReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETBringupInfoOK()
+		result := NewGetBringupInfoOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETBringupInfoNotFound()
+		result := NewGetBringupInfoNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETBringupInfoInternalServerError()
+		result := NewGetBringupInfoInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 501:
-		result := NewGETBringupInfoNotImplemented()
+		result := NewGetBringupInfoNotImplemented()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETBringupInfoReader) ReadResponse(response runtime.ClientResponse, con
 	}
 }
 
-// NewGETBringupInfoOK creates a GETBringupInfoOK with default headers values
-func NewGETBringupInfoOK() *GETBringupInfoOK {
-	return &GETBringupInfoOK{}
+// NewGetBringupInfoOK creates a GetBringupInfoOK with default headers values
+func NewGetBringupInfoOK() *GetBringupInfoOK {
+	return &GetBringupInfoOK{}
 }
 
 /*
-GETBringupInfoOK describes a response with status code 200, with default header values.
+GetBringupInfoOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETBringupInfoOK struct {
+type GetBringupInfoOK struct {
 	Payload *models.VcfService
 }
 
 // IsSuccess returns true when this get bringup info o k response has a 2xx status code
-func (o *GETBringupInfoOK) IsSuccess() bool {
+func (o *GetBringupInfoOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get bringup info o k response has a 3xx status code
-func (o *GETBringupInfoOK) IsRedirect() bool {
+func (o *GetBringupInfoOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup info o k response has a 4xx status code
-func (o *GETBringupInfoOK) IsClientError() bool {
+func (o *GetBringupInfoOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup info o k response has a 5xx status code
-func (o *GETBringupInfoOK) IsServerError() bool {
+func (o *GetBringupInfoOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bringup info o k response a status code equal to that given
-func (o *GETBringupInfoOK) IsCode(code int) bool {
+func (o *GetBringupInfoOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETBringupInfoOK) Error() string {
+func (o *GetBringupInfoOK) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBringupInfoOK) String() string {
+func (o *GetBringupInfoOK) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBringupInfoOK) GetPayload() *models.VcfService {
+func (o *GetBringupInfoOK) GetPayload() *models.VcfService {
 	return o.Payload
 }
 
-func (o *GETBringupInfoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupInfoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.VcfService)
 
@@ -118,155 +118,155 @@ func (o *GETBringupInfoOK) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-// NewGETBringupInfoNotFound creates a GETBringupInfoNotFound with default headers values
-func NewGETBringupInfoNotFound() *GETBringupInfoNotFound {
-	return &GETBringupInfoNotFound{}
+// NewGetBringupInfoNotFound creates a GetBringupInfoNotFound with default headers values
+func NewGetBringupInfoNotFound() *GetBringupInfoNotFound {
+	return &GetBringupInfoNotFound{}
 }
 
 /*
-GETBringupInfoNotFound describes a response with status code 404, with default header values.
+GetBringupInfoNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETBringupInfoNotFound struct {
+type GetBringupInfoNotFound struct {
 }
 
 // IsSuccess returns true when this get bringup info not found response has a 2xx status code
-func (o *GETBringupInfoNotFound) IsSuccess() bool {
+func (o *GetBringupInfoNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup info not found response has a 3xx status code
-func (o *GETBringupInfoNotFound) IsRedirect() bool {
+func (o *GetBringupInfoNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup info not found response has a 4xx status code
-func (o *GETBringupInfoNotFound) IsClientError() bool {
+func (o *GetBringupInfoNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get bringup info not found response has a 5xx status code
-func (o *GETBringupInfoNotFound) IsServerError() bool {
+func (o *GetBringupInfoNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bringup info not found response a status code equal to that given
-func (o *GETBringupInfoNotFound) IsCode(code int) bool {
+func (o *GetBringupInfoNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETBringupInfoNotFound) Error() string {
+func (o *GetBringupInfoNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoNotFound ", 404)
 }
 
-func (o *GETBringupInfoNotFound) String() string {
+func (o *GetBringupInfoNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoNotFound ", 404)
 }
 
-func (o *GETBringupInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
 
-// NewGETBringupInfoInternalServerError creates a GETBringupInfoInternalServerError with default headers values
-func NewGETBringupInfoInternalServerError() *GETBringupInfoInternalServerError {
-	return &GETBringupInfoInternalServerError{}
+// NewGetBringupInfoInternalServerError creates a GetBringupInfoInternalServerError with default headers values
+func NewGetBringupInfoInternalServerError() *GetBringupInfoInternalServerError {
+	return &GetBringupInfoInternalServerError{}
 }
 
 /*
-GETBringupInfoInternalServerError describes a response with status code 500, with default header values.
+GetBringupInfoInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETBringupInfoInternalServerError struct {
+type GetBringupInfoInternalServerError struct {
 }
 
 // IsSuccess returns true when this get bringup info internal server error response has a 2xx status code
-func (o *GETBringupInfoInternalServerError) IsSuccess() bool {
+func (o *GetBringupInfoInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup info internal server error response has a 3xx status code
-func (o *GETBringupInfoInternalServerError) IsRedirect() bool {
+func (o *GetBringupInfoInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup info internal server error response has a 4xx status code
-func (o *GETBringupInfoInternalServerError) IsClientError() bool {
+func (o *GetBringupInfoInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup info internal server error response has a 5xx status code
-func (o *GETBringupInfoInternalServerError) IsServerError() bool {
+func (o *GetBringupInfoInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bringup info internal server error response a status code equal to that given
-func (o *GETBringupInfoInternalServerError) IsCode(code int) bool {
+func (o *GetBringupInfoInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETBringupInfoInternalServerError) Error() string {
+func (o *GetBringupInfoInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoInternalServerError ", 500)
 }
 
-func (o *GETBringupInfoInternalServerError) String() string {
+func (o *GetBringupInfoInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoInternalServerError ", 500)
 }
 
-func (o *GETBringupInfoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupInfoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
 
-// NewGETBringupInfoNotImplemented creates a GETBringupInfoNotImplemented with default headers values
-func NewGETBringupInfoNotImplemented() *GETBringupInfoNotImplemented {
-	return &GETBringupInfoNotImplemented{}
+// NewGetBringupInfoNotImplemented creates a GetBringupInfoNotImplemented with default headers values
+func NewGetBringupInfoNotImplemented() *GetBringupInfoNotImplemented {
+	return &GetBringupInfoNotImplemented{}
 }
 
 /*
-GETBringupInfoNotImplemented describes a response with status code 501, with default header values.
+GetBringupInfoNotImplemented describes a response with status code 501, with default header values.
 
 Not Implemented
 */
-type GETBringupInfoNotImplemented struct {
+type GetBringupInfoNotImplemented struct {
 }
 
 // IsSuccess returns true when this get bringup info not implemented response has a 2xx status code
-func (o *GETBringupInfoNotImplemented) IsSuccess() bool {
+func (o *GetBringupInfoNotImplemented) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup info not implemented response has a 3xx status code
-func (o *GETBringupInfoNotImplemented) IsRedirect() bool {
+func (o *GetBringupInfoNotImplemented) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup info not implemented response has a 4xx status code
-func (o *GETBringupInfoNotImplemented) IsClientError() bool {
+func (o *GetBringupInfoNotImplemented) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup info not implemented response has a 5xx status code
-func (o *GETBringupInfoNotImplemented) IsServerError() bool {
+func (o *GetBringupInfoNotImplemented) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bringup info not implemented response a status code equal to that given
-func (o *GETBringupInfoNotImplemented) IsCode(code int) bool {
+func (o *GetBringupInfoNotImplemented) IsCode(code int) bool {
 	return code == 501
 }
 
-func (o *GETBringupInfoNotImplemented) Error() string {
+func (o *GetBringupInfoNotImplemented) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoNotImplemented ", 501)
 }
 
-func (o *GETBringupInfoNotImplemented) String() string {
+func (o *GetBringupInfoNotImplemented) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/about][%d] getBringupInfoNotImplemented ", 501)
 }
 
-func (o *GETBringupInfoNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupInfoNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

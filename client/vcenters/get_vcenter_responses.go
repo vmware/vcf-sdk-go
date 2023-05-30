@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVcenterReader is a Reader for the GETVcenter structure.
-type GETVcenterReader struct {
+// GetVcenterReader is a Reader for the GetVcenter structure.
+type GetVcenterReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVcenterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVcenterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVcenterOK()
+		result := NewGetVcenterOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETVcenterNotFound()
+		result := NewGetVcenterNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETVcenterInternalServerError()
+		result := NewGetVcenterInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETVcenterReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewGETVcenterOK creates a GETVcenterOK with default headers values
-func NewGETVcenterOK() *GETVcenterOK {
-	return &GETVcenterOK{}
+// NewGetVcenterOK creates a GetVcenterOK with default headers values
+func NewGetVcenterOK() *GetVcenterOK {
+	return &GetVcenterOK{}
 }
 
 /*
-GETVcenterOK describes a response with status code 200, with default header values.
+GetVcenterOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETVcenterOK struct {
+type GetVcenterOK struct {
 	Payload *models.Vcenter
 }
 
 // IsSuccess returns true when this get vcenter o k response has a 2xx status code
-func (o *GETVcenterOK) IsSuccess() bool {
+func (o *GetVcenterOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vcenter o k response has a 3xx status code
-func (o *GETVcenterOK) IsRedirect() bool {
+func (o *GetVcenterOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vcenter o k response has a 4xx status code
-func (o *GETVcenterOK) IsClientError() bool {
+func (o *GetVcenterOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vcenter o k response has a 5xx status code
-func (o *GETVcenterOK) IsServerError() bool {
+func (o *GetVcenterOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vcenter o k response a status code equal to that given
-func (o *GETVcenterOK) IsCode(code int) bool {
+func (o *GetVcenterOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVcenterOK) Error() string {
+func (o *GetVcenterOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vcenters/{id}][%d] getVcenterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVcenterOK) String() string {
+func (o *GetVcenterOK) String() string {
 	return fmt.Sprintf("[GET /v1/vcenters/{id}][%d] getVcenterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVcenterOK) GetPayload() *models.Vcenter {
+func (o *GetVcenterOK) GetPayload() *models.Vcenter {
 	return o.Payload
 }
 
-func (o *GETVcenterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVcenterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Vcenter)
 
@@ -112,58 +112,58 @@ func (o *GETVcenterOK) readResponse(response runtime.ClientResponse, consumer ru
 	return nil
 }
 
-// NewGETVcenterNotFound creates a GETVcenterNotFound with default headers values
-func NewGETVcenterNotFound() *GETVcenterNotFound {
-	return &GETVcenterNotFound{}
+// NewGetVcenterNotFound creates a GetVcenterNotFound with default headers values
+func NewGetVcenterNotFound() *GetVcenterNotFound {
+	return &GetVcenterNotFound{}
 }
 
 /*
-GETVcenterNotFound describes a response with status code 404, with default header values.
+GetVcenterNotFound describes a response with status code 404, with default header values.
 
 vCenter not found
 */
-type GETVcenterNotFound struct {
+type GetVcenterNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vcenter not found response has a 2xx status code
-func (o *GETVcenterNotFound) IsSuccess() bool {
+func (o *GetVcenterNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vcenter not found response has a 3xx status code
-func (o *GETVcenterNotFound) IsRedirect() bool {
+func (o *GetVcenterNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vcenter not found response has a 4xx status code
-func (o *GETVcenterNotFound) IsClientError() bool {
+func (o *GetVcenterNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get vcenter not found response has a 5xx status code
-func (o *GETVcenterNotFound) IsServerError() bool {
+func (o *GetVcenterNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vcenter not found response a status code equal to that given
-func (o *GETVcenterNotFound) IsCode(code int) bool {
+func (o *GetVcenterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETVcenterNotFound) Error() string {
+func (o *GetVcenterNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vcenters/{id}][%d] getVcenterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVcenterNotFound) String() string {
+func (o *GetVcenterNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vcenters/{id}][%d] getVcenterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVcenterNotFound) GetPayload() *models.Error {
+func (o *GetVcenterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVcenterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVcenterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETVcenterNotFound) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETVcenterInternalServerError creates a GETVcenterInternalServerError with default headers values
-func NewGETVcenterInternalServerError() *GETVcenterInternalServerError {
-	return &GETVcenterInternalServerError{}
+// NewGetVcenterInternalServerError creates a GetVcenterInternalServerError with default headers values
+func NewGetVcenterInternalServerError() *GetVcenterInternalServerError {
+	return &GetVcenterInternalServerError{}
 }
 
 /*
-GETVcenterInternalServerError describes a response with status code 500, with default header values.
+GetVcenterInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETVcenterInternalServerError struct {
+type GetVcenterInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vcenter internal server error response has a 2xx status code
-func (o *GETVcenterInternalServerError) IsSuccess() bool {
+func (o *GetVcenterInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vcenter internal server error response has a 3xx status code
-func (o *GETVcenterInternalServerError) IsRedirect() bool {
+func (o *GetVcenterInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vcenter internal server error response has a 4xx status code
-func (o *GETVcenterInternalServerError) IsClientError() bool {
+func (o *GetVcenterInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vcenter internal server error response has a 5xx status code
-func (o *GETVcenterInternalServerError) IsServerError() bool {
+func (o *GetVcenterInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get vcenter internal server error response a status code equal to that given
-func (o *GETVcenterInternalServerError) IsCode(code int) bool {
+func (o *GetVcenterInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETVcenterInternalServerError) Error() string {
+func (o *GetVcenterInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/vcenters/{id}][%d] getVcenterInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVcenterInternalServerError) String() string {
+func (o *GetVcenterInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/vcenters/{id}][%d] getVcenterInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVcenterInternalServerError) GetPayload() *models.Error {
+func (o *GetVcenterInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVcenterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVcenterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

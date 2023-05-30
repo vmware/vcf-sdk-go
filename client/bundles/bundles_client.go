@@ -33,11 +33,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETBundle(params *GETBundleParams, opts ...ClientOption) (*GETBundleOK, error)
+	GetBundle(params *GetBundleParams, opts ...ClientOption) (*GetBundleOK, error)
 
-	GETBundles(params *GETBundlesParams, opts ...ClientOption) (*GETBundlesOK, error)
+	GetBundles(params *GetBundlesParams, opts ...ClientOption) (*GetBundlesOK, error)
 
-	GETBundlesForSkipUpgradeUsingGET(params *GETBundlesForSkipUpgradeUsingGETParams, opts ...ClientOption) (*GETBundlesForSkipUpgradeUsingGETOK, error)
+	GetBundlesForSkipUpgradeUsingGET(params *GetBundlesForSkipUpgradeUsingGETParams, opts ...ClientOption) (*GetBundlesForSkipUpgradeUsingGETOK, error)
 
 	UpdateBundle(params *UpdateBundleParams, opts ...ClientOption) (*UpdateBundleOK, *UpdateBundleAccepted, error)
 
@@ -49,14 +49,14 @@ type ClientService interface {
 }
 
 /*
-GETBundle Gets a bundle
+GetBundle gets a bundle
 
 Get a Bundle
 */
-func (a *Client) GETBundle(params *GETBundleParams, opts ...ClientOption) (*GETBundleOK, error) {
+func (a *Client) GetBundle(params *GetBundleParams, opts ...ClientOption) (*GetBundleOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBundleParams()
+		params = NewGetBundleParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBundle",
@@ -66,7 +66,7 @@ func (a *Client) GETBundle(params *GETBundleParams, opts ...ClientOption) (*GETB
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBundleReader{formats: a.formats},
+		Reader:             &GetBundleReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -78,7 +78,7 @@ func (a *Client) GETBundle(params *GETBundleParams, opts ...ClientOption) (*GETB
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETBundleOK)
+	success, ok := result.(*GetBundleOK)
 	if ok {
 		return success, nil
 	}
@@ -89,14 +89,14 @@ func (a *Client) GETBundle(params *GETBundleParams, opts ...ClientOption) (*GETB
 }
 
 /*
-GETBundles Gets the bundles
+GetBundles gets the bundles
 
 Get all Bundles i.e uploaded bundles and also bundles available via depot access.
 */
-func (a *Client) GETBundles(params *GETBundlesParams, opts ...ClientOption) (*GETBundlesOK, error) {
+func (a *Client) GetBundles(params *GetBundlesParams, opts ...ClientOption) (*GetBundlesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBundlesParams()
+		params = NewGetBundlesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBundles",
@@ -106,7 +106,7 @@ func (a *Client) GETBundles(params *GETBundlesParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBundlesReader{formats: a.formats},
+		Reader:             &GetBundlesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -118,7 +118,7 @@ func (a *Client) GETBundles(params *GETBundlesParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETBundlesOK)
+	success, ok := result.(*GetBundlesOK)
 	if ok {
 		return success, nil
 	}
@@ -129,12 +129,12 @@ func (a *Client) GETBundles(params *GETBundlesParams, opts ...ClientOption) (*GE
 }
 
 /*
-GETBundlesForSkipUpgradeUsingGET Gets bundles for skip upgrade a domain from current version to target version
+GetBundlesForSkipUpgradeUsingGET gets bundles for skip upgrade a domain from current version to target version
 */
-func (a *Client) GETBundlesForSkipUpgradeUsingGET(params *GETBundlesForSkipUpgradeUsingGETParams, opts ...ClientOption) (*GETBundlesForSkipUpgradeUsingGETOK, error) {
+func (a *Client) GetBundlesForSkipUpgradeUsingGET(params *GetBundlesForSkipUpgradeUsingGETParams, opts ...ClientOption) (*GetBundlesForSkipUpgradeUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBundlesForSkipUpgradeUsingGETParams()
+		params = NewGetBundlesForSkipUpgradeUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBundlesForSkipUpgradeUsingGET",
@@ -144,7 +144,7 @@ func (a *Client) GETBundlesForSkipUpgradeUsingGET(params *GETBundlesForSkipUpgra
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBundlesForSkipUpgradeUsingGETReader{formats: a.formats},
+		Reader:             &GetBundlesForSkipUpgradeUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -156,7 +156,7 @@ func (a *Client) GETBundlesForSkipUpgradeUsingGET(params *GETBundlesForSkipUpgra
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETBundlesForSkipUpgradeUsingGETOK)
+	success, ok := result.(*GetBundlesForSkipUpgradeUsingGETOK)
 	if ok {
 		return success, nil
 	}

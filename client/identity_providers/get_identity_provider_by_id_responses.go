@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETIdentityProviderByIDReader is a Reader for the GETIdentityProviderByID structure.
-type GETIdentityProviderByIDReader struct {
+// GetIdentityProviderByIDReader is a Reader for the GetIdentityProviderByID structure.
+type GetIdentityProviderByIDReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETIdentityProviderByIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetIdentityProviderByIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETIdentityProviderByIDOK()
+		result := NewGetIdentityProviderByIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 401:
-		result := NewGETIdentityProviderByIDUnauthorized()
+		result := NewGetIdentityProviderByIDUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETIdentityProviderByIDInternalServerError()
+		result := NewGetIdentityProviderByIDInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETIdentityProviderByIDReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewGETIdentityProviderByIDOK creates a GETIdentityProviderByIDOK with default headers values
-func NewGETIdentityProviderByIDOK() *GETIdentityProviderByIDOK {
-	return &GETIdentityProviderByIDOK{}
+// NewGetIdentityProviderByIDOK creates a GetIdentityProviderByIDOK with default headers values
+func NewGetIdentityProviderByIDOK() *GetIdentityProviderByIDOK {
+	return &GetIdentityProviderByIDOK{}
 }
 
 /*
-GETIdentityProviderByIDOK describes a response with status code 200, with default header values.
+GetIdentityProviderByIDOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETIdentityProviderByIDOK struct {
+type GetIdentityProviderByIDOK struct {
 	Payload *models.IdentityProvider
 }
 
 // IsSuccess returns true when this get identity provider by Id o k response has a 2xx status code
-func (o *GETIdentityProviderByIDOK) IsSuccess() bool {
+func (o *GetIdentityProviderByIDOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get identity provider by Id o k response has a 3xx status code
-func (o *GETIdentityProviderByIDOK) IsRedirect() bool {
+func (o *GetIdentityProviderByIDOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get identity provider by Id o k response has a 4xx status code
-func (o *GETIdentityProviderByIDOK) IsClientError() bool {
+func (o *GetIdentityProviderByIDOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get identity provider by Id o k response has a 5xx status code
-func (o *GETIdentityProviderByIDOK) IsServerError() bool {
+func (o *GetIdentityProviderByIDOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get identity provider by Id o k response a status code equal to that given
-func (o *GETIdentityProviderByIDOK) IsCode(code int) bool {
+func (o *GetIdentityProviderByIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETIdentityProviderByIDOK) Error() string {
+func (o *GetIdentityProviderByIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GETIdentityProviderByIDOK) String() string {
+func (o *GetIdentityProviderByIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GETIdentityProviderByIDOK) GetPayload() *models.IdentityProvider {
+func (o *GetIdentityProviderByIDOK) GetPayload() *models.IdentityProvider {
 	return o.Payload
 }
 
-func (o *GETIdentityProviderByIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetIdentityProviderByIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.IdentityProvider)
 
@@ -112,58 +112,58 @@ func (o *GETIdentityProviderByIDOK) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGETIdentityProviderByIDUnauthorized creates a GETIdentityProviderByIDUnauthorized with default headers values
-func NewGETIdentityProviderByIDUnauthorized() *GETIdentityProviderByIDUnauthorized {
-	return &GETIdentityProviderByIDUnauthorized{}
+// NewGetIdentityProviderByIDUnauthorized creates a GetIdentityProviderByIDUnauthorized with default headers values
+func NewGetIdentityProviderByIDUnauthorized() *GetIdentityProviderByIDUnauthorized {
+	return &GetIdentityProviderByIDUnauthorized{}
 }
 
 /*
-GETIdentityProviderByIDUnauthorized describes a response with status code 401, with default header values.
+GetIdentityProviderByIDUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
-type GETIdentityProviderByIDUnauthorized struct {
+type GetIdentityProviderByIDUnauthorized struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get identity provider by Id unauthorized response has a 2xx status code
-func (o *GETIdentityProviderByIDUnauthorized) IsSuccess() bool {
+func (o *GetIdentityProviderByIDUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get identity provider by Id unauthorized response has a 3xx status code
-func (o *GETIdentityProviderByIDUnauthorized) IsRedirect() bool {
+func (o *GetIdentityProviderByIDUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get identity provider by Id unauthorized response has a 4xx status code
-func (o *GETIdentityProviderByIDUnauthorized) IsClientError() bool {
+func (o *GetIdentityProviderByIDUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get identity provider by Id unauthorized response has a 5xx status code
-func (o *GETIdentityProviderByIDUnauthorized) IsServerError() bool {
+func (o *GetIdentityProviderByIDUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get identity provider by Id unauthorized response a status code equal to that given
-func (o *GETIdentityProviderByIDUnauthorized) IsCode(code int) bool {
+func (o *GetIdentityProviderByIDUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETIdentityProviderByIDUnauthorized) Error() string {
+func (o *GetIdentityProviderByIDUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETIdentityProviderByIDUnauthorized) String() string {
+func (o *GetIdentityProviderByIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETIdentityProviderByIDUnauthorized) GetPayload() *models.ErrorResponse {
+func (o *GetIdentityProviderByIDUnauthorized) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETIdentityProviderByIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetIdentityProviderByIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -175,58 +175,58 @@ func (o *GETIdentityProviderByIDUnauthorized) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETIdentityProviderByIDInternalServerError creates a GETIdentityProviderByIDInternalServerError with default headers values
-func NewGETIdentityProviderByIDInternalServerError() *GETIdentityProviderByIDInternalServerError {
-	return &GETIdentityProviderByIDInternalServerError{}
+// NewGetIdentityProviderByIDInternalServerError creates a GetIdentityProviderByIDInternalServerError with default headers values
+func NewGetIdentityProviderByIDInternalServerError() *GetIdentityProviderByIDInternalServerError {
+	return &GetIdentityProviderByIDInternalServerError{}
 }
 
 /*
-GETIdentityProviderByIDInternalServerError describes a response with status code 500, with default header values.
+GetIdentityProviderByIDInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETIdentityProviderByIDInternalServerError struct {
+type GetIdentityProviderByIDInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get identity provider by Id internal server error response has a 2xx status code
-func (o *GETIdentityProviderByIDInternalServerError) IsSuccess() bool {
+func (o *GetIdentityProviderByIDInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get identity provider by Id internal server error response has a 3xx status code
-func (o *GETIdentityProviderByIDInternalServerError) IsRedirect() bool {
+func (o *GetIdentityProviderByIDInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get identity provider by Id internal server error response has a 4xx status code
-func (o *GETIdentityProviderByIDInternalServerError) IsClientError() bool {
+func (o *GetIdentityProviderByIDInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get identity provider by Id internal server error response has a 5xx status code
-func (o *GETIdentityProviderByIDInternalServerError) IsServerError() bool {
+func (o *GetIdentityProviderByIDInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get identity provider by Id internal server error response a status code equal to that given
-func (o *GETIdentityProviderByIDInternalServerError) IsCode(code int) bool {
+func (o *GetIdentityProviderByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETIdentityProviderByIDInternalServerError) Error() string {
+func (o *GetIdentityProviderByIDInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETIdentityProviderByIDInternalServerError) String() string {
+func (o *GetIdentityProviderByIDInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETIdentityProviderByIDInternalServerError) GetPayload() *models.Error {
+func (o *GetIdentityProviderByIDInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETIdentityProviderByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetIdentityProviderByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

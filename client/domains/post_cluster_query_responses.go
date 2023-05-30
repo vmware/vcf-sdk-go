@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// POSTClusterQueryReader is a Reader for the POSTClusterQuery structure.
-type POSTClusterQueryReader struct {
+// PostClusterQueryReader is a Reader for the PostClusterQuery structure.
+type PostClusterQueryReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *POSTClusterQueryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PostClusterQueryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewPOSTClusterQueryOK()
+		result := NewPostClusterQueryOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewPOSTClusterQueryBadRequest()
+		result := NewPostClusterQueryBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewPOSTClusterQueryInternalServerError()
+		result := NewPostClusterQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *POSTClusterQueryReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewPOSTClusterQueryOK creates a POSTClusterQueryOK with default headers values
-func NewPOSTClusterQueryOK() *POSTClusterQueryOK {
-	return &POSTClusterQueryOK{}
+// NewPostClusterQueryOK creates a PostClusterQueryOK with default headers values
+func NewPostClusterQueryOK() *PostClusterQueryOK {
+	return &PostClusterQueryOK{}
 }
 
 /*
-POSTClusterQueryOK describes a response with status code 200, with default header values.
+PostClusterQueryOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type POSTClusterQueryOK struct {
+type PostClusterQueryOK struct {
 	Payload *models.ClusterQueryResponse
 }
 
 // IsSuccess returns true when this post cluster query o k response has a 2xx status code
-func (o *POSTClusterQueryOK) IsSuccess() bool {
+func (o *PostClusterQueryOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this post cluster query o k response has a 3xx status code
-func (o *POSTClusterQueryOK) IsRedirect() bool {
+func (o *PostClusterQueryOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post cluster query o k response has a 4xx status code
-func (o *POSTClusterQueryOK) IsClientError() bool {
+func (o *PostClusterQueryOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this post cluster query o k response has a 5xx status code
-func (o *POSTClusterQueryOK) IsServerError() bool {
+func (o *PostClusterQueryOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this post cluster query o k response a status code equal to that given
-func (o *POSTClusterQueryOK) IsCode(code int) bool {
+func (o *PostClusterQueryOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *POSTClusterQueryOK) Error() string {
+func (o *PostClusterQueryOK) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *POSTClusterQueryOK) String() string {
+func (o *PostClusterQueryOK) String() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *POSTClusterQueryOK) GetPayload() *models.ClusterQueryResponse {
+func (o *PostClusterQueryOK) GetPayload() *models.ClusterQueryResponse {
 	return o.Payload
 }
 
-func (o *POSTClusterQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostClusterQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ClusterQueryResponse)
 
@@ -112,58 +112,58 @@ func (o *POSTClusterQueryOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewPOSTClusterQueryBadRequest creates a POSTClusterQueryBadRequest with default headers values
-func NewPOSTClusterQueryBadRequest() *POSTClusterQueryBadRequest {
-	return &POSTClusterQueryBadRequest{}
+// NewPostClusterQueryBadRequest creates a PostClusterQueryBadRequest with default headers values
+func NewPostClusterQueryBadRequest() *PostClusterQueryBadRequest {
+	return &PostClusterQueryBadRequest{}
 }
 
 /*
-POSTClusterQueryBadRequest describes a response with status code 400, with default header values.
+PostClusterQueryBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type POSTClusterQueryBadRequest struct {
+type PostClusterQueryBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this post cluster query bad request response has a 2xx status code
-func (o *POSTClusterQueryBadRequest) IsSuccess() bool {
+func (o *PostClusterQueryBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this post cluster query bad request response has a 3xx status code
-func (o *POSTClusterQueryBadRequest) IsRedirect() bool {
+func (o *PostClusterQueryBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post cluster query bad request response has a 4xx status code
-func (o *POSTClusterQueryBadRequest) IsClientError() bool {
+func (o *PostClusterQueryBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this post cluster query bad request response has a 5xx status code
-func (o *POSTClusterQueryBadRequest) IsServerError() bool {
+func (o *PostClusterQueryBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this post cluster query bad request response a status code equal to that given
-func (o *POSTClusterQueryBadRequest) IsCode(code int) bool {
+func (o *PostClusterQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *POSTClusterQueryBadRequest) Error() string {
+func (o *PostClusterQueryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *POSTClusterQueryBadRequest) String() string {
+func (o *PostClusterQueryBadRequest) String() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *POSTClusterQueryBadRequest) GetPayload() *models.Error {
+func (o *PostClusterQueryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *POSTClusterQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostClusterQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *POSTClusterQueryBadRequest) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-// NewPOSTClusterQueryInternalServerError creates a POSTClusterQueryInternalServerError with default headers values
-func NewPOSTClusterQueryInternalServerError() *POSTClusterQueryInternalServerError {
-	return &POSTClusterQueryInternalServerError{}
+// NewPostClusterQueryInternalServerError creates a PostClusterQueryInternalServerError with default headers values
+func NewPostClusterQueryInternalServerError() *PostClusterQueryInternalServerError {
+	return &PostClusterQueryInternalServerError{}
 }
 
 /*
-POSTClusterQueryInternalServerError describes a response with status code 500, with default header values.
+PostClusterQueryInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type POSTClusterQueryInternalServerError struct {
+type PostClusterQueryInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this post cluster query internal server error response has a 2xx status code
-func (o *POSTClusterQueryInternalServerError) IsSuccess() bool {
+func (o *PostClusterQueryInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this post cluster query internal server error response has a 3xx status code
-func (o *POSTClusterQueryInternalServerError) IsRedirect() bool {
+func (o *PostClusterQueryInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post cluster query internal server error response has a 4xx status code
-func (o *POSTClusterQueryInternalServerError) IsClientError() bool {
+func (o *PostClusterQueryInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this post cluster query internal server error response has a 5xx status code
-func (o *POSTClusterQueryInternalServerError) IsServerError() bool {
+func (o *PostClusterQueryInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this post cluster query internal server error response a status code equal to that given
-func (o *POSTClusterQueryInternalServerError) IsCode(code int) bool {
+func (o *PostClusterQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *POSTClusterQueryInternalServerError) Error() string {
+func (o *PostClusterQueryInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *POSTClusterQueryInternalServerError) String() string {
+func (o *PostClusterQueryInternalServerError) String() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *POSTClusterQueryInternalServerError) GetPayload() *models.Error {
+func (o *PostClusterQueryInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *POSTClusterQueryInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostClusterQueryInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

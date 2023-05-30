@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETProxyConfigurationParams creates a new GETProxyConfigurationParams object,
+// NewGetProxyConfigurationParams creates a new GetProxyConfigurationParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETProxyConfigurationParams() *GETProxyConfigurationParams {
-	return &GETProxyConfigurationParams{
+func NewGetProxyConfigurationParams() *GetProxyConfigurationParams {
+	return &GetProxyConfigurationParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETProxyConfigurationParamsWithTimeout creates a new GETProxyConfigurationParams object
+// NewGetProxyConfigurationParamsWithTimeout creates a new GetProxyConfigurationParams object
 // with the ability to set a timeout on a request.
-func NewGETProxyConfigurationParamsWithTimeout(timeout time.Duration) *GETProxyConfigurationParams {
-	return &GETProxyConfigurationParams{
+func NewGetProxyConfigurationParamsWithTimeout(timeout time.Duration) *GetProxyConfigurationParams {
+	return &GetProxyConfigurationParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETProxyConfigurationParamsWithContext creates a new GETProxyConfigurationParams object
+// NewGetProxyConfigurationParamsWithContext creates a new GetProxyConfigurationParams object
 // with the ability to set a context for a request.
-func NewGETProxyConfigurationParamsWithContext(ctx context.Context) *GETProxyConfigurationParams {
-	return &GETProxyConfigurationParams{
+func NewGetProxyConfigurationParamsWithContext(ctx context.Context) *GetProxyConfigurationParams {
+	return &GetProxyConfigurationParams{
 		Context: ctx,
 	}
 }
 
-// NewGETProxyConfigurationParamsWithHTTPClient creates a new GETProxyConfigurationParams object
+// NewGetProxyConfigurationParamsWithHTTPClient creates a new GetProxyConfigurationParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETProxyConfigurationParamsWithHTTPClient(client *http.Client) *GETProxyConfigurationParams {
-	return &GETProxyConfigurationParams{
+func NewGetProxyConfigurationParamsWithHTTPClient(client *http.Client) *GetProxyConfigurationParams {
+	return &GetProxyConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETProxyConfigurationParams contains all the parameters to send to the API endpoint
+GetProxyConfigurationParams contains all the parameters to send to the API endpoint
 
 	for the get proxy configuration operation.
 
 	Typically these are written to a http.Request.
 */
-type GETProxyConfigurationParams struct {
+type GetProxyConfigurationParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETProxyConfigurationParams struct {
 // WithDefaults hydrates default values in the get proxy configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETProxyConfigurationParams) WithDefaults() *GETProxyConfigurationParams {
+func (o *GetProxyConfigurationParams) WithDefaults() *GetProxyConfigurationParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETProxyConfigurationParams) WithDefaults() *GETProxyConfigurationParam
 // SetDefaults hydrates default values in the get proxy configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETProxyConfigurationParams) SetDefaults() {
+func (o *GetProxyConfigurationParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get proxy configuration params
-func (o *GETProxyConfigurationParams) WithTimeout(timeout time.Duration) *GETProxyConfigurationParams {
+func (o *GetProxyConfigurationParams) WithTimeout(timeout time.Duration) *GetProxyConfigurationParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get proxy configuration params
-func (o *GETProxyConfigurationParams) SetTimeout(timeout time.Duration) {
+func (o *GetProxyConfigurationParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get proxy configuration params
-func (o *GETProxyConfigurationParams) WithContext(ctx context.Context) *GETProxyConfigurationParams {
+func (o *GetProxyConfigurationParams) WithContext(ctx context.Context) *GetProxyConfigurationParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get proxy configuration params
-func (o *GETProxyConfigurationParams) SetContext(ctx context.Context) {
+func (o *GetProxyConfigurationParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get proxy configuration params
-func (o *GETProxyConfigurationParams) WithHTTPClient(client *http.Client) *GETProxyConfigurationParams {
+func (o *GetProxyConfigurationParams) WithHTTPClient(client *http.Client) *GetProxyConfigurationParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get proxy configuration params
-func (o *GETProxyConfigurationParams) SetHTTPClient(client *http.Client) {
+func (o *GetProxyConfigurationParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETProxyConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetProxyConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

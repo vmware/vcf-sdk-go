@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETUpgradablesReader is a Reader for the GETUpgradables structure.
-type GETUpgradablesReader struct {
+// GetUpgradablesReader is a Reader for the GetUpgradables structure.
+type GetUpgradablesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETUpgradablesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetUpgradablesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETUpgradablesOK()
+		result := NewGetUpgradablesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETUpgradablesInternalServerError()
+		result := NewGetUpgradablesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETUpgradablesReader) ReadResponse(response runtime.ClientResponse, con
 	}
 }
 
-// NewGETUpgradablesOK creates a GETUpgradablesOK with default headers values
-func NewGETUpgradablesOK() *GETUpgradablesOK {
-	return &GETUpgradablesOK{}
+// NewGetUpgradablesOK creates a GetUpgradablesOK with default headers values
+func NewGetUpgradablesOK() *GetUpgradablesOK {
+	return &GetUpgradablesOK{}
 }
 
 /*
-GETUpgradablesOK describes a response with status code 200, with default header values.
+GetUpgradablesOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETUpgradablesOK struct {
+type GetUpgradablesOK struct {
 	Payload *models.PageOfUpgradable
 }
 
 // IsSuccess returns true when this get upgradables o k response has a 2xx status code
-func (o *GETUpgradablesOK) IsSuccess() bool {
+func (o *GetUpgradablesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get upgradables o k response has a 3xx status code
-func (o *GETUpgradablesOK) IsRedirect() bool {
+func (o *GetUpgradablesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgradables o k response has a 4xx status code
-func (o *GETUpgradablesOK) IsClientError() bool {
+func (o *GetUpgradablesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get upgradables o k response has a 5xx status code
-func (o *GETUpgradablesOK) IsServerError() bool {
+func (o *GetUpgradablesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get upgradables o k response a status code equal to that given
-func (o *GETUpgradablesOK) IsCode(code int) bool {
+func (o *GetUpgradablesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETUpgradablesOK) Error() string {
+func (o *GetUpgradablesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/upgradables][%d] getUpgradablesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUpgradablesOK) String() string {
+func (o *GetUpgradablesOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/upgradables][%d] getUpgradablesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUpgradablesOK) GetPayload() *models.PageOfUpgradable {
+func (o *GetUpgradablesOK) GetPayload() *models.PageOfUpgradable {
 	return o.Payload
 }
 
-func (o *GETUpgradablesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradablesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfUpgradable)
 
@@ -106,58 +106,58 @@ func (o *GETUpgradablesOK) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-// NewGETUpgradablesInternalServerError creates a GETUpgradablesInternalServerError with default headers values
-func NewGETUpgradablesInternalServerError() *GETUpgradablesInternalServerError {
-	return &GETUpgradablesInternalServerError{}
+// NewGetUpgradablesInternalServerError creates a GetUpgradablesInternalServerError with default headers values
+func NewGetUpgradablesInternalServerError() *GetUpgradablesInternalServerError {
+	return &GetUpgradablesInternalServerError{}
 }
 
 /*
-GETUpgradablesInternalServerError describes a response with status code 500, with default header values.
+GetUpgradablesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETUpgradablesInternalServerError struct {
+type GetUpgradablesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get upgradables internal server error response has a 2xx status code
-func (o *GETUpgradablesInternalServerError) IsSuccess() bool {
+func (o *GetUpgradablesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get upgradables internal server error response has a 3xx status code
-func (o *GETUpgradablesInternalServerError) IsRedirect() bool {
+func (o *GetUpgradablesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgradables internal server error response has a 4xx status code
-func (o *GETUpgradablesInternalServerError) IsClientError() bool {
+func (o *GetUpgradablesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get upgradables internal server error response has a 5xx status code
-func (o *GETUpgradablesInternalServerError) IsServerError() bool {
+func (o *GetUpgradablesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get upgradables internal server error response a status code equal to that given
-func (o *GETUpgradablesInternalServerError) IsCode(code int) bool {
+func (o *GetUpgradablesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETUpgradablesInternalServerError) Error() string {
+func (o *GetUpgradablesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/upgradables][%d] getUpgradablesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUpgradablesInternalServerError) String() string {
+func (o *GetUpgradablesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/upgradables][%d] getUpgradablesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUpgradablesInternalServerError) GetPayload() *models.Error {
+func (o *GetUpgradablesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETUpgradablesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradablesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

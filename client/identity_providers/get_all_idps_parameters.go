@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETAllIdpsParams creates a new GETAllIdpsParams object,
+// NewGetAllIdpsParams creates a new GetAllIdpsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETAllIdpsParams() *GETAllIdpsParams {
-	return &GETAllIdpsParams{
+func NewGetAllIdpsParams() *GetAllIdpsParams {
+	return &GetAllIdpsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETAllIdpsParamsWithTimeout creates a new GETAllIdpsParams object
+// NewGetAllIdpsParamsWithTimeout creates a new GetAllIdpsParams object
 // with the ability to set a timeout on a request.
-func NewGETAllIdpsParamsWithTimeout(timeout time.Duration) *GETAllIdpsParams {
-	return &GETAllIdpsParams{
+func NewGetAllIdpsParamsWithTimeout(timeout time.Duration) *GetAllIdpsParams {
+	return &GetAllIdpsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETAllIdpsParamsWithContext creates a new GETAllIdpsParams object
+// NewGetAllIdpsParamsWithContext creates a new GetAllIdpsParams object
 // with the ability to set a context for a request.
-func NewGETAllIdpsParamsWithContext(ctx context.Context) *GETAllIdpsParams {
-	return &GETAllIdpsParams{
+func NewGetAllIdpsParamsWithContext(ctx context.Context) *GetAllIdpsParams {
+	return &GetAllIdpsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETAllIdpsParamsWithHTTPClient creates a new GETAllIdpsParams object
+// NewGetAllIdpsParamsWithHTTPClient creates a new GetAllIdpsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETAllIdpsParamsWithHTTPClient(client *http.Client) *GETAllIdpsParams {
-	return &GETAllIdpsParams{
+func NewGetAllIdpsParamsWithHTTPClient(client *http.Client) *GetAllIdpsParams {
+	return &GetAllIdpsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETAllIdpsParams contains all the parameters to send to the API endpoint
+GetAllIdpsParams contains all the parameters to send to the API endpoint
 
 	for the get all idps operation.
 
 	Typically these are written to a http.Request.
 */
-type GETAllIdpsParams struct {
+type GetAllIdpsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETAllIdpsParams struct {
 // WithDefaults hydrates default values in the get all idps params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllIdpsParams) WithDefaults() *GETAllIdpsParams {
+func (o *GetAllIdpsParams) WithDefaults() *GetAllIdpsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETAllIdpsParams) WithDefaults() *GETAllIdpsParams {
 // SetDefaults hydrates default values in the get all idps params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllIdpsParams) SetDefaults() {
+func (o *GetAllIdpsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get all idps params
-func (o *GETAllIdpsParams) WithTimeout(timeout time.Duration) *GETAllIdpsParams {
+func (o *GetAllIdpsParams) WithTimeout(timeout time.Duration) *GetAllIdpsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get all idps params
-func (o *GETAllIdpsParams) SetTimeout(timeout time.Duration) {
+func (o *GetAllIdpsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get all idps params
-func (o *GETAllIdpsParams) WithContext(ctx context.Context) *GETAllIdpsParams {
+func (o *GetAllIdpsParams) WithContext(ctx context.Context) *GetAllIdpsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get all idps params
-func (o *GETAllIdpsParams) SetContext(ctx context.Context) {
+func (o *GetAllIdpsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get all idps params
-func (o *GETAllIdpsParams) WithHTTPClient(client *http.Client) *GETAllIdpsParams {
+func (o *GetAllIdpsParams) WithHTTPClient(client *http.Client) *GetAllIdpsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get all idps params
-func (o *GETAllIdpsParams) SetHTTPClient(client *http.Client) {
+func (o *GetAllIdpsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETAllIdpsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetAllIdpsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

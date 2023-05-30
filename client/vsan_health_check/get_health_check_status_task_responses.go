@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHealthCheckStatusTaskReader is a Reader for the GETHealthCheckStatusTask structure.
-type GETHealthCheckStatusTaskReader struct {
+// GetHealthCheckStatusTaskReader is a Reader for the GetHealthCheckStatusTask structure.
+type GetHealthCheckStatusTaskReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHealthCheckStatusTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHealthCheckStatusTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHealthCheckStatusTaskOK()
+		result := NewGetHealthCheckStatusTaskOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETHealthCheckStatusTaskBadRequest()
+		result := NewGetHealthCheckStatusTaskBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETHealthCheckStatusTaskInternalServerError()
+		result := NewGetHealthCheckStatusTaskInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETHealthCheckStatusTaskReader) ReadResponse(response runtime.ClientRes
 	}
 }
 
-// NewGETHealthCheckStatusTaskOK creates a GETHealthCheckStatusTaskOK with default headers values
-func NewGETHealthCheckStatusTaskOK() *GETHealthCheckStatusTaskOK {
-	return &GETHealthCheckStatusTaskOK{}
+// NewGetHealthCheckStatusTaskOK creates a GetHealthCheckStatusTaskOK with default headers values
+func NewGetHealthCheckStatusTaskOK() *GetHealthCheckStatusTaskOK {
+	return &GetHealthCheckStatusTaskOK{}
 }
 
 /*
-GETHealthCheckStatusTaskOK describes a response with status code 200, with default header values.
+GetHealthCheckStatusTaskOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETHealthCheckStatusTaskOK struct {
+type GetHealthCheckStatusTaskOK struct {
 	Payload *models.HealthCheckTask
 }
 
 // IsSuccess returns true when this get health check status task o k response has a 2xx status code
-func (o *GETHealthCheckStatusTaskOK) IsSuccess() bool {
+func (o *GetHealthCheckStatusTaskOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get health check status task o k response has a 3xx status code
-func (o *GETHealthCheckStatusTaskOK) IsRedirect() bool {
+func (o *GetHealthCheckStatusTaskOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check status task o k response has a 4xx status code
-func (o *GETHealthCheckStatusTaskOK) IsClientError() bool {
+func (o *GetHealthCheckStatusTaskOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get health check status task o k response has a 5xx status code
-func (o *GETHealthCheckStatusTaskOK) IsServerError() bool {
+func (o *GetHealthCheckStatusTaskOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get health check status task o k response a status code equal to that given
-func (o *GETHealthCheckStatusTaskOK) IsCode(code int) bool {
+func (o *GetHealthCheckStatusTaskOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHealthCheckStatusTaskOK) Error() string {
+func (o *GetHealthCheckStatusTaskOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks/tasks/{taskId}][%d] getHealthCheckStatusTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHealthCheckStatusTaskOK) String() string {
+func (o *GetHealthCheckStatusTaskOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks/tasks/{taskId}][%d] getHealthCheckStatusTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHealthCheckStatusTaskOK) GetPayload() *models.HealthCheckTask {
+func (o *GetHealthCheckStatusTaskOK) GetPayload() *models.HealthCheckTask {
 	return o.Payload
 }
 
-func (o *GETHealthCheckStatusTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckStatusTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HealthCheckTask)
 
@@ -112,58 +112,58 @@ func (o *GETHealthCheckStatusTaskOK) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-// NewGETHealthCheckStatusTaskBadRequest creates a GETHealthCheckStatusTaskBadRequest with default headers values
-func NewGETHealthCheckStatusTaskBadRequest() *GETHealthCheckStatusTaskBadRequest {
-	return &GETHealthCheckStatusTaskBadRequest{}
+// NewGetHealthCheckStatusTaskBadRequest creates a GetHealthCheckStatusTaskBadRequest with default headers values
+func NewGetHealthCheckStatusTaskBadRequest() *GetHealthCheckStatusTaskBadRequest {
+	return &GetHealthCheckStatusTaskBadRequest{}
 }
 
 /*
-GETHealthCheckStatusTaskBadRequest describes a response with status code 400, with default header values.
+GetHealthCheckStatusTaskBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETHealthCheckStatusTaskBadRequest struct {
+type GetHealthCheckStatusTaskBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get health check status task bad request response has a 2xx status code
-func (o *GETHealthCheckStatusTaskBadRequest) IsSuccess() bool {
+func (o *GetHealthCheckStatusTaskBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get health check status task bad request response has a 3xx status code
-func (o *GETHealthCheckStatusTaskBadRequest) IsRedirect() bool {
+func (o *GetHealthCheckStatusTaskBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check status task bad request response has a 4xx status code
-func (o *GETHealthCheckStatusTaskBadRequest) IsClientError() bool {
+func (o *GetHealthCheckStatusTaskBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get health check status task bad request response has a 5xx status code
-func (o *GETHealthCheckStatusTaskBadRequest) IsServerError() bool {
+func (o *GetHealthCheckStatusTaskBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get health check status task bad request response a status code equal to that given
-func (o *GETHealthCheckStatusTaskBadRequest) IsCode(code int) bool {
+func (o *GetHealthCheckStatusTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETHealthCheckStatusTaskBadRequest) Error() string {
+func (o *GetHealthCheckStatusTaskBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks/tasks/{taskId}][%d] getHealthCheckStatusTaskBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHealthCheckStatusTaskBadRequest) String() string {
+func (o *GetHealthCheckStatusTaskBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks/tasks/{taskId}][%d] getHealthCheckStatusTaskBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHealthCheckStatusTaskBadRequest) GetPayload() *models.Error {
+func (o *GetHealthCheckStatusTaskBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHealthCheckStatusTaskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckStatusTaskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETHealthCheckStatusTaskBadRequest) readResponse(response runtime.Clien
 	return nil
 }
 
-// NewGETHealthCheckStatusTaskInternalServerError creates a GETHealthCheckStatusTaskInternalServerError with default headers values
-func NewGETHealthCheckStatusTaskInternalServerError() *GETHealthCheckStatusTaskInternalServerError {
-	return &GETHealthCheckStatusTaskInternalServerError{}
+// NewGetHealthCheckStatusTaskInternalServerError creates a GetHealthCheckStatusTaskInternalServerError with default headers values
+func NewGetHealthCheckStatusTaskInternalServerError() *GetHealthCheckStatusTaskInternalServerError {
+	return &GetHealthCheckStatusTaskInternalServerError{}
 }
 
 /*
-GETHealthCheckStatusTaskInternalServerError describes a response with status code 500, with default header values.
+GetHealthCheckStatusTaskInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETHealthCheckStatusTaskInternalServerError struct {
+type GetHealthCheckStatusTaskInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get health check status task internal server error response has a 2xx status code
-func (o *GETHealthCheckStatusTaskInternalServerError) IsSuccess() bool {
+func (o *GetHealthCheckStatusTaskInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get health check status task internal server error response has a 3xx status code
-func (o *GETHealthCheckStatusTaskInternalServerError) IsRedirect() bool {
+func (o *GetHealthCheckStatusTaskInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check status task internal server error response has a 4xx status code
-func (o *GETHealthCheckStatusTaskInternalServerError) IsClientError() bool {
+func (o *GetHealthCheckStatusTaskInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get health check status task internal server error response has a 5xx status code
-func (o *GETHealthCheckStatusTaskInternalServerError) IsServerError() bool {
+func (o *GetHealthCheckStatusTaskInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get health check status task internal server error response a status code equal to that given
-func (o *GETHealthCheckStatusTaskInternalServerError) IsCode(code int) bool {
+func (o *GetHealthCheckStatusTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETHealthCheckStatusTaskInternalServerError) Error() string {
+func (o *GetHealthCheckStatusTaskInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks/tasks/{taskId}][%d] getHealthCheckStatusTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHealthCheckStatusTaskInternalServerError) String() string {
+func (o *GetHealthCheckStatusTaskInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks/tasks/{taskId}][%d] getHealthCheckStatusTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHealthCheckStatusTaskInternalServerError) GetPayload() *models.Error {
+func (o *GetHealthCheckStatusTaskInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHealthCheckStatusTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckStatusTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

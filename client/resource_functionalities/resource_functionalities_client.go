@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETResourceFunctionalities(params *GETResourceFunctionalitiesParams, opts ...ClientOption) (*GETResourceFunctionalitiesOK, error)
+	GetResourceFunctionalities(params *GetResourceFunctionalitiesParams, opts ...ClientOption) (*GetResourceFunctionalitiesOK, error)
 
-	GETResourcesFunctionalitiesAllowedGlobal(params *GETResourcesFunctionalitiesAllowedGlobalParams, opts ...ClientOption) (*GETResourcesFunctionalitiesAllowedGlobalOK, error)
+	GetResourcesFunctionalitiesAllowedGlobal(params *GetResourcesFunctionalitiesAllowedGlobalParams, opts ...ClientOption) (*GetResourcesFunctionalitiesAllowedGlobalOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETResourceFunctionalities Gets resource functionalities
+GetResourceFunctionalities gets resource functionalities
 */
-func (a *Client) GETResourceFunctionalities(params *GETResourceFunctionalitiesParams, opts ...ClientOption) (*GETResourceFunctionalitiesOK, error) {
+func (a *Client) GetResourceFunctionalities(params *GetResourceFunctionalitiesParams, opts ...ClientOption) (*GetResourceFunctionalitiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETResourceFunctionalitiesParams()
+		params = NewGetResourceFunctionalitiesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getResourceFunctionalities",
@@ -56,7 +56,7 @@ func (a *Client) GETResourceFunctionalities(params *GETResourceFunctionalitiesPa
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETResourceFunctionalitiesReader{formats: a.formats},
+		Reader:             &GetResourceFunctionalitiesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETResourceFunctionalities(params *GETResourceFunctionalitiesPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETResourceFunctionalitiesOK)
+	success, ok := result.(*GetResourceFunctionalitiesOK)
 	if ok {
 		return success, nil
 	}
@@ -79,12 +79,12 @@ func (a *Client) GETResourceFunctionalities(params *GETResourceFunctionalitiesPa
 }
 
 /*
-GETResourcesFunctionalitiesAllowedGlobal Gets resource functionalities allowed global configuration
+GetResourcesFunctionalitiesAllowedGlobal gets resource functionalities allowed global configuration
 */
-func (a *Client) GETResourcesFunctionalitiesAllowedGlobal(params *GETResourcesFunctionalitiesAllowedGlobalParams, opts ...ClientOption) (*GETResourcesFunctionalitiesAllowedGlobalOK, error) {
+func (a *Client) GetResourcesFunctionalitiesAllowedGlobal(params *GetResourcesFunctionalitiesAllowedGlobalParams, opts ...ClientOption) (*GetResourcesFunctionalitiesAllowedGlobalOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETResourcesFunctionalitiesAllowedGlobalParams()
+		params = NewGetResourcesFunctionalitiesAllowedGlobalParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getResourcesFunctionalitiesAllowedGlobal",
@@ -94,7 +94,7 @@ func (a *Client) GETResourcesFunctionalitiesAllowedGlobal(params *GETResourcesFu
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETResourcesFunctionalitiesAllowedGlobalReader{formats: a.formats},
+		Reader:             &GetResourcesFunctionalitiesAllowedGlobalReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -106,7 +106,7 @@ func (a *Client) GETResourcesFunctionalitiesAllowedGlobal(params *GETResourcesFu
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETResourcesFunctionalitiesAllowedGlobalOK)
+	success, ok := result.(*GetResourcesFunctionalitiesAllowedGlobalOK)
 	if ok {
 		return success, nil
 	}

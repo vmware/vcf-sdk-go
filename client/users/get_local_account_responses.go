@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETLocalAccountReader is a Reader for the GETLocalAccount structure.
-type GETLocalAccountReader struct {
+// GetLocalAccountReader is a Reader for the GetLocalAccount structure.
+type GetLocalAccountReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETLocalAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetLocalAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETLocalAccountOK()
+		result := NewGetLocalAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETLocalAccountBadRequest()
+		result := NewGetLocalAccountBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 401:
-		result := NewGETLocalAccountUnauthorized()
+		result := NewGetLocalAccountUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETLocalAccountInternalServerError()
+		result := NewGetLocalAccountInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETLocalAccountReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETLocalAccountOK creates a GETLocalAccountOK with default headers values
-func NewGETLocalAccountOK() *GETLocalAccountOK {
-	return &GETLocalAccountOK{}
+// NewGetLocalAccountOK creates a GetLocalAccountOK with default headers values
+func NewGetLocalAccountOK() *GetLocalAccountOK {
+	return &GetLocalAccountOK{}
 }
 
 /*
-GETLocalAccountOK describes a response with status code 200, with default header values.
+GetLocalAccountOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETLocalAccountOK struct {
+type GetLocalAccountOK struct {
 	Payload *models.LocalUser
 }
 
 // IsSuccess returns true when this get local account o k response has a 2xx status code
-func (o *GETLocalAccountOK) IsSuccess() bool {
+func (o *GetLocalAccountOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get local account o k response has a 3xx status code
-func (o *GETLocalAccountOK) IsRedirect() bool {
+func (o *GetLocalAccountOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get local account o k response has a 4xx status code
-func (o *GETLocalAccountOK) IsClientError() bool {
+func (o *GetLocalAccountOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get local account o k response has a 5xx status code
-func (o *GETLocalAccountOK) IsServerError() bool {
+func (o *GetLocalAccountOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get local account o k response a status code equal to that given
-func (o *GETLocalAccountOK) IsCode(code int) bool {
+func (o *GetLocalAccountOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETLocalAccountOK) Error() string {
+func (o *GetLocalAccountOK) Error() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountOK  %+v", 200, o.Payload)
 }
 
-func (o *GETLocalAccountOK) String() string {
+func (o *GetLocalAccountOK) String() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountOK  %+v", 200, o.Payload)
 }
 
-func (o *GETLocalAccountOK) GetPayload() *models.LocalUser {
+func (o *GetLocalAccountOK) GetPayload() *models.LocalUser {
 	return o.Payload
 }
 
-func (o *GETLocalAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLocalAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.LocalUser)
 
@@ -118,58 +118,58 @@ func (o *GETLocalAccountOK) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETLocalAccountBadRequest creates a GETLocalAccountBadRequest with default headers values
-func NewGETLocalAccountBadRequest() *GETLocalAccountBadRequest {
-	return &GETLocalAccountBadRequest{}
+// NewGetLocalAccountBadRequest creates a GetLocalAccountBadRequest with default headers values
+func NewGetLocalAccountBadRequest() *GetLocalAccountBadRequest {
+	return &GetLocalAccountBadRequest{}
 }
 
 /*
-GETLocalAccountBadRequest describes a response with status code 400, with default header values.
+GetLocalAccountBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
-type GETLocalAccountBadRequest struct {
+type GetLocalAccountBadRequest struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get local account bad request response has a 2xx status code
-func (o *GETLocalAccountBadRequest) IsSuccess() bool {
+func (o *GetLocalAccountBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get local account bad request response has a 3xx status code
-func (o *GETLocalAccountBadRequest) IsRedirect() bool {
+func (o *GetLocalAccountBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get local account bad request response has a 4xx status code
-func (o *GETLocalAccountBadRequest) IsClientError() bool {
+func (o *GetLocalAccountBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get local account bad request response has a 5xx status code
-func (o *GETLocalAccountBadRequest) IsServerError() bool {
+func (o *GetLocalAccountBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get local account bad request response a status code equal to that given
-func (o *GETLocalAccountBadRequest) IsCode(code int) bool {
+func (o *GetLocalAccountBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETLocalAccountBadRequest) Error() string {
+func (o *GetLocalAccountBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETLocalAccountBadRequest) String() string {
+func (o *GetLocalAccountBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETLocalAccountBadRequest) GetPayload() *models.ErrorResponse {
+func (o *GetLocalAccountBadRequest) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETLocalAccountBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLocalAccountBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -181,58 +181,58 @@ func (o *GETLocalAccountBadRequest) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGETLocalAccountUnauthorized creates a GETLocalAccountUnauthorized with default headers values
-func NewGETLocalAccountUnauthorized() *GETLocalAccountUnauthorized {
-	return &GETLocalAccountUnauthorized{}
+// NewGetLocalAccountUnauthorized creates a GetLocalAccountUnauthorized with default headers values
+func NewGetLocalAccountUnauthorized() *GetLocalAccountUnauthorized {
+	return &GetLocalAccountUnauthorized{}
 }
 
 /*
-GETLocalAccountUnauthorized describes a response with status code 401, with default header values.
+GetLocalAccountUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
-type GETLocalAccountUnauthorized struct {
+type GetLocalAccountUnauthorized struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get local account unauthorized response has a 2xx status code
-func (o *GETLocalAccountUnauthorized) IsSuccess() bool {
+func (o *GetLocalAccountUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get local account unauthorized response has a 3xx status code
-func (o *GETLocalAccountUnauthorized) IsRedirect() bool {
+func (o *GetLocalAccountUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get local account unauthorized response has a 4xx status code
-func (o *GETLocalAccountUnauthorized) IsClientError() bool {
+func (o *GetLocalAccountUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get local account unauthorized response has a 5xx status code
-func (o *GETLocalAccountUnauthorized) IsServerError() bool {
+func (o *GetLocalAccountUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get local account unauthorized response a status code equal to that given
-func (o *GETLocalAccountUnauthorized) IsCode(code int) bool {
+func (o *GetLocalAccountUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETLocalAccountUnauthorized) Error() string {
+func (o *GetLocalAccountUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETLocalAccountUnauthorized) String() string {
+func (o *GetLocalAccountUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETLocalAccountUnauthorized) GetPayload() *models.ErrorResponse {
+func (o *GetLocalAccountUnauthorized) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETLocalAccountUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLocalAccountUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -244,58 +244,58 @@ func (o *GETLocalAccountUnauthorized) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewGETLocalAccountInternalServerError creates a GETLocalAccountInternalServerError with default headers values
-func NewGETLocalAccountInternalServerError() *GETLocalAccountInternalServerError {
-	return &GETLocalAccountInternalServerError{}
+// NewGetLocalAccountInternalServerError creates a GetLocalAccountInternalServerError with default headers values
+func NewGetLocalAccountInternalServerError() *GetLocalAccountInternalServerError {
+	return &GetLocalAccountInternalServerError{}
 }
 
 /*
-GETLocalAccountInternalServerError describes a response with status code 500, with default header values.
+GetLocalAccountInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETLocalAccountInternalServerError struct {
+type GetLocalAccountInternalServerError struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get local account internal server error response has a 2xx status code
-func (o *GETLocalAccountInternalServerError) IsSuccess() bool {
+func (o *GetLocalAccountInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get local account internal server error response has a 3xx status code
-func (o *GETLocalAccountInternalServerError) IsRedirect() bool {
+func (o *GetLocalAccountInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get local account internal server error response has a 4xx status code
-func (o *GETLocalAccountInternalServerError) IsClientError() bool {
+func (o *GetLocalAccountInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get local account internal server error response has a 5xx status code
-func (o *GETLocalAccountInternalServerError) IsServerError() bool {
+func (o *GetLocalAccountInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get local account internal server error response a status code equal to that given
-func (o *GETLocalAccountInternalServerError) IsCode(code int) bool {
+func (o *GetLocalAccountInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETLocalAccountInternalServerError) Error() string {
+func (o *GetLocalAccountInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETLocalAccountInternalServerError) String() string {
+func (o *GetLocalAccountInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETLocalAccountInternalServerError) GetPayload() *models.ErrorResponse {
+func (o *GetLocalAccountInternalServerError) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETLocalAccountInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLocalAccountInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 

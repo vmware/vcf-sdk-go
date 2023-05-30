@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHostQueryResponseReader is a Reader for the GETHostQueryResponse structure.
-type GETHostQueryResponseReader struct {
+// GetHostQueryResponseReader is a Reader for the GetHostQueryResponse structure.
+type GetHostQueryResponseReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHostQueryResponseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHostQueryResponseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHostQueryResponseOK()
+		result := NewGetHostQueryResponseOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETHostQueryResponseBadRequest()
+		result := NewGetHostQueryResponseBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETHostQueryResponseNotFound()
+		result := NewGetHostQueryResponseNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETHostQueryResponseInternalServerError()
+		result := NewGetHostQueryResponseInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETHostQueryResponseReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewGETHostQueryResponseOK creates a GETHostQueryResponseOK with default headers values
-func NewGETHostQueryResponseOK() *GETHostQueryResponseOK {
-	return &GETHostQueryResponseOK{}
+// NewGetHostQueryResponseOK creates a GetHostQueryResponseOK with default headers values
+func NewGetHostQueryResponseOK() *GetHostQueryResponseOK {
+	return &GetHostQueryResponseOK{}
 }
 
 /*
-GETHostQueryResponseOK describes a response with status code 200, with default header values.
+GetHostQueryResponseOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETHostQueryResponseOK struct {
+type GetHostQueryResponseOK struct {
 	Payload *models.HostQueryResponse
 }
 
 // IsSuccess returns true when this get host query response o k response has a 2xx status code
-func (o *GETHostQueryResponseOK) IsSuccess() bool {
+func (o *GetHostQueryResponseOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get host query response o k response has a 3xx status code
-func (o *GETHostQueryResponseOK) IsRedirect() bool {
+func (o *GetHostQueryResponseOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host query response o k response has a 4xx status code
-func (o *GETHostQueryResponseOK) IsClientError() bool {
+func (o *GetHostQueryResponseOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get host query response o k response has a 5xx status code
-func (o *GETHostQueryResponseOK) IsServerError() bool {
+func (o *GetHostQueryResponseOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host query response o k response a status code equal to that given
-func (o *GETHostQueryResponseOK) IsCode(code int) bool {
+func (o *GetHostQueryResponseOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHostQueryResponseOK) Error() string {
+func (o *GetHostQueryResponseOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostQueryResponseOK) String() string {
+func (o *GetHostQueryResponseOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostQueryResponseOK) GetPayload() *models.HostQueryResponse {
+func (o *GetHostQueryResponseOK) GetPayload() *models.HostQueryResponse {
 	return o.Payload
 }
 
-func (o *GETHostQueryResponseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostQueryResponseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HostQueryResponse)
 
@@ -118,58 +118,58 @@ func (o *GETHostQueryResponseOK) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETHostQueryResponseBadRequest creates a GETHostQueryResponseBadRequest with default headers values
-func NewGETHostQueryResponseBadRequest() *GETHostQueryResponseBadRequest {
-	return &GETHostQueryResponseBadRequest{}
+// NewGetHostQueryResponseBadRequest creates a GetHostQueryResponseBadRequest with default headers values
+func NewGetHostQueryResponseBadRequest() *GetHostQueryResponseBadRequest {
+	return &GetHostQueryResponseBadRequest{}
 }
 
 /*
-GETHostQueryResponseBadRequest describes a response with status code 400, with default header values.
+GetHostQueryResponseBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETHostQueryResponseBadRequest struct {
+type GetHostQueryResponseBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get host query response bad request response has a 2xx status code
-func (o *GETHostQueryResponseBadRequest) IsSuccess() bool {
+func (o *GetHostQueryResponseBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get host query response bad request response has a 3xx status code
-func (o *GETHostQueryResponseBadRequest) IsRedirect() bool {
+func (o *GetHostQueryResponseBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host query response bad request response has a 4xx status code
-func (o *GETHostQueryResponseBadRequest) IsClientError() bool {
+func (o *GetHostQueryResponseBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get host query response bad request response has a 5xx status code
-func (o *GETHostQueryResponseBadRequest) IsServerError() bool {
+func (o *GetHostQueryResponseBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host query response bad request response a status code equal to that given
-func (o *GETHostQueryResponseBadRequest) IsCode(code int) bool {
+func (o *GetHostQueryResponseBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETHostQueryResponseBadRequest) Error() string {
+func (o *GetHostQueryResponseBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHostQueryResponseBadRequest) String() string {
+func (o *GetHostQueryResponseBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHostQueryResponseBadRequest) GetPayload() *models.Error {
+func (o *GetHostQueryResponseBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostQueryResponseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostQueryResponseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -181,58 +181,58 @@ func (o *GETHostQueryResponseBadRequest) readResponse(response runtime.ClientRes
 	return nil
 }
 
-// NewGETHostQueryResponseNotFound creates a GETHostQueryResponseNotFound with default headers values
-func NewGETHostQueryResponseNotFound() *GETHostQueryResponseNotFound {
-	return &GETHostQueryResponseNotFound{}
+// NewGetHostQueryResponseNotFound creates a GetHostQueryResponseNotFound with default headers values
+func NewGetHostQueryResponseNotFound() *GetHostQueryResponseNotFound {
+	return &GetHostQueryResponseNotFound{}
 }
 
 /*
-GETHostQueryResponseNotFound describes a response with status code 404, with default header values.
+GetHostQueryResponseNotFound describes a response with status code 404, with default header values.
 
 Query Not Found
 */
-type GETHostQueryResponseNotFound struct {
+type GetHostQueryResponseNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get host query response not found response has a 2xx status code
-func (o *GETHostQueryResponseNotFound) IsSuccess() bool {
+func (o *GetHostQueryResponseNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get host query response not found response has a 3xx status code
-func (o *GETHostQueryResponseNotFound) IsRedirect() bool {
+func (o *GetHostQueryResponseNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host query response not found response has a 4xx status code
-func (o *GETHostQueryResponseNotFound) IsClientError() bool {
+func (o *GetHostQueryResponseNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get host query response not found response has a 5xx status code
-func (o *GETHostQueryResponseNotFound) IsServerError() bool {
+func (o *GetHostQueryResponseNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host query response not found response a status code equal to that given
-func (o *GETHostQueryResponseNotFound) IsCode(code int) bool {
+func (o *GetHostQueryResponseNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETHostQueryResponseNotFound) Error() string {
+func (o *GetHostQueryResponseNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETHostQueryResponseNotFound) String() string {
+func (o *GetHostQueryResponseNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETHostQueryResponseNotFound) GetPayload() *models.Error {
+func (o *GetHostQueryResponseNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostQueryResponseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostQueryResponseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -244,58 +244,58 @@ func (o *GETHostQueryResponseNotFound) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGETHostQueryResponseInternalServerError creates a GETHostQueryResponseInternalServerError with default headers values
-func NewGETHostQueryResponseInternalServerError() *GETHostQueryResponseInternalServerError {
-	return &GETHostQueryResponseInternalServerError{}
+// NewGetHostQueryResponseInternalServerError creates a GetHostQueryResponseInternalServerError with default headers values
+func NewGetHostQueryResponseInternalServerError() *GetHostQueryResponseInternalServerError {
+	return &GetHostQueryResponseInternalServerError{}
 }
 
 /*
-GETHostQueryResponseInternalServerError describes a response with status code 500, with default header values.
+GetHostQueryResponseInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETHostQueryResponseInternalServerError struct {
+type GetHostQueryResponseInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get host query response internal server error response has a 2xx status code
-func (o *GETHostQueryResponseInternalServerError) IsSuccess() bool {
+func (o *GetHostQueryResponseInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get host query response internal server error response has a 3xx status code
-func (o *GETHostQueryResponseInternalServerError) IsRedirect() bool {
+func (o *GetHostQueryResponseInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host query response internal server error response has a 4xx status code
-func (o *GETHostQueryResponseInternalServerError) IsClientError() bool {
+func (o *GetHostQueryResponseInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get host query response internal server error response has a 5xx status code
-func (o *GETHostQueryResponseInternalServerError) IsServerError() bool {
+func (o *GetHostQueryResponseInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get host query response internal server error response a status code equal to that given
-func (o *GETHostQueryResponseInternalServerError) IsCode(code int) bool {
+func (o *GetHostQueryResponseInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETHostQueryResponseInternalServerError) Error() string {
+func (o *GetHostQueryResponseInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHostQueryResponseInternalServerError) String() string {
+func (o *GetHostQueryResponseInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/hosts/queries/{queryId}][%d] getHostQueryResponseInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHostQueryResponseInternalServerError) GetPayload() *models.Error {
+func (o *GetHostQueryResponseInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostQueryResponseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostQueryResponseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

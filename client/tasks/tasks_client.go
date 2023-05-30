@@ -35,9 +35,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CancelTask(params *CancelTaskParams, opts ...ClientOption) (*CancelTaskOK, error)
 
-	GETTask(params *GETTaskParams, opts ...ClientOption) (*GETTaskOK, error)
+	GetTask(params *GetTaskParams, opts ...ClientOption) (*GetTaskOK, error)
 
-	GETTasks(params *GETTasksParams, opts ...ClientOption) (*GETTasksOK, error)
+	GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error)
 
 	RetryTask(params *RetryTaskParams, opts ...ClientOption) (*RetryTaskOK, error)
 
@@ -85,14 +85,14 @@ func (a *Client) CancelTask(params *CancelTaskParams, opts ...ClientOption) (*Ca
 }
 
 /*
-GETTask Gets a task
+GetTask gets a task
 
 Get a Task by ID, if it exists
 */
-func (a *Client) GETTask(params *GETTaskParams, opts ...ClientOption) (*GETTaskOK, error) {
+func (a *Client) GetTask(params *GetTaskParams, opts ...ClientOption) (*GetTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETTaskParams()
+		params = NewGetTaskParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getTask",
@@ -102,7 +102,7 @@ func (a *Client) GETTask(params *GETTaskParams, opts ...ClientOption) (*GETTaskO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETTaskReader{formats: a.formats},
+		Reader:             &GetTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -114,7 +114,7 @@ func (a *Client) GETTask(params *GETTaskParams, opts ...ClientOption) (*GETTaskO
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETTaskOK)
+	success, ok := result.(*GetTaskOK)
 	if ok {
 		return success, nil
 	}
@@ -125,14 +125,14 @@ func (a *Client) GETTask(params *GETTaskParams, opts ...ClientOption) (*GETTaskO
 }
 
 /*
-GETTasks Gets the tasks
+GetTasks gets the tasks
 
 Get the Tasks
 */
-func (a *Client) GETTasks(params *GETTasksParams, opts ...ClientOption) (*GETTasksOK, error) {
+func (a *Client) GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETTasksParams()
+		params = NewGetTasksParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getTasks",
@@ -142,7 +142,7 @@ func (a *Client) GETTasks(params *GETTasksParams, opts ...ClientOption) (*GETTas
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETTasksReader{formats: a.formats},
+		Reader:             &GetTasksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -154,7 +154,7 @@ func (a *Client) GETTasks(params *GETTasksParams, opts ...ClientOption) (*GETTas
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETTasksOK)
+	success, ok := result.(*GetTasksOK)
 	if ok {
 		return success, nil
 	}

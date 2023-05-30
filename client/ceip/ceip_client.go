@@ -33,7 +33,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETCEIPStatus(params *GETCEIPStatusParams, opts ...ClientOption) (*GETCEIPStatusOK, error)
+	GetCEIPStatus(params *GetCEIPStatusParams, opts ...ClientOption) (*GetCEIPStatusOK, error)
 
 	UpdateCEIPStatus(params *UpdateCEIPStatusParams, opts ...ClientOption) (*UpdateCEIPStatusOK, *UpdateCEIPStatusAccepted, error)
 
@@ -41,14 +41,14 @@ type ClientService interface {
 }
 
 /*
-GETCEIPStatus Gets CEIP status
+GetCEIPStatus gets CEIP status
 
 Get CEIP status and instance id
 */
-func (a *Client) GETCEIPStatus(params *GETCEIPStatusParams, opts ...ClientOption) (*GETCEIPStatusOK, error) {
+func (a *Client) GetCEIPStatus(params *GetCEIPStatusParams, opts ...ClientOption) (*GetCEIPStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCEIPStatusParams()
+		params = NewGetCEIPStatusParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCeipStatus",
@@ -58,7 +58,7 @@ func (a *Client) GETCEIPStatus(params *GETCEIPStatusParams, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCEIPStatusReader{formats: a.formats},
+		Reader:             &GetCEIPStatusReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -70,7 +70,7 @@ func (a *Client) GETCEIPStatus(params *GETCEIPStatusParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCEIPStatusOK)
+	success, ok := result.(*GetCEIPStatusOK)
 	if ok {
 		return success, nil
 	}

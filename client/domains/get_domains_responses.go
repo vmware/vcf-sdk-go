@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETDomainsReader is a Reader for the GETDomains structure.
-type GETDomainsReader struct {
+// GetDomainsReader is a Reader for the GetDomains structure.
+type GetDomainsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETDomainsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetDomainsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETDomainsOK()
+		result := NewGetDomainsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETDomainsBadRequest()
+		result := NewGetDomainsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETDomainsInternalServerError()
+		result := NewGetDomainsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETDomainsReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewGETDomainsOK creates a GETDomainsOK with default headers values
-func NewGETDomainsOK() *GETDomainsOK {
-	return &GETDomainsOK{}
+// NewGetDomainsOK creates a GetDomainsOK with default headers values
+func NewGetDomainsOK() *GetDomainsOK {
+	return &GetDomainsOK{}
 }
 
 /*
-GETDomainsOK describes a response with status code 200, with default header values.
+GetDomainsOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETDomainsOK struct {
+type GetDomainsOK struct {
 	Payload *models.PageOfDomain
 }
 
 // IsSuccess returns true when this get domains o k response has a 2xx status code
-func (o *GETDomainsOK) IsSuccess() bool {
+func (o *GetDomainsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get domains o k response has a 3xx status code
-func (o *GETDomainsOK) IsRedirect() bool {
+func (o *GetDomainsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get domains o k response has a 4xx status code
-func (o *GETDomainsOK) IsClientError() bool {
+func (o *GetDomainsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get domains o k response has a 5xx status code
-func (o *GETDomainsOK) IsServerError() bool {
+func (o *GetDomainsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get domains o k response a status code equal to that given
-func (o *GETDomainsOK) IsCode(code int) bool {
+func (o *GetDomainsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETDomainsOK) Error() string {
+func (o *GetDomainsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDomainsOK) String() string {
+func (o *GetDomainsOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDomainsOK) GetPayload() *models.PageOfDomain {
+func (o *GetDomainsOK) GetPayload() *models.PageOfDomain {
 	return o.Payload
 }
 
-func (o *GETDomainsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDomainsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfDomain)
 
@@ -112,58 +112,58 @@ func (o *GETDomainsOK) readResponse(response runtime.ClientResponse, consumer ru
 	return nil
 }
 
-// NewGETDomainsBadRequest creates a GETDomainsBadRequest with default headers values
-func NewGETDomainsBadRequest() *GETDomainsBadRequest {
-	return &GETDomainsBadRequest{}
+// NewGetDomainsBadRequest creates a GetDomainsBadRequest with default headers values
+func NewGetDomainsBadRequest() *GetDomainsBadRequest {
+	return &GetDomainsBadRequest{}
 }
 
 /*
-GETDomainsBadRequest describes a response with status code 400, with default header values.
+GetDomainsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETDomainsBadRequest struct {
+type GetDomainsBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get domains bad request response has a 2xx status code
-func (o *GETDomainsBadRequest) IsSuccess() bool {
+func (o *GetDomainsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get domains bad request response has a 3xx status code
-func (o *GETDomainsBadRequest) IsRedirect() bool {
+func (o *GetDomainsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get domains bad request response has a 4xx status code
-func (o *GETDomainsBadRequest) IsClientError() bool {
+func (o *GetDomainsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get domains bad request response has a 5xx status code
-func (o *GETDomainsBadRequest) IsServerError() bool {
+func (o *GetDomainsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get domains bad request response a status code equal to that given
-func (o *GETDomainsBadRequest) IsCode(code int) bool {
+func (o *GetDomainsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETDomainsBadRequest) Error() string {
+func (o *GetDomainsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETDomainsBadRequest) String() string {
+func (o *GetDomainsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETDomainsBadRequest) GetPayload() *models.Error {
+func (o *GetDomainsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDomainsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDomainsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETDomainsBadRequest) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewGETDomainsInternalServerError creates a GETDomainsInternalServerError with default headers values
-func NewGETDomainsInternalServerError() *GETDomainsInternalServerError {
-	return &GETDomainsInternalServerError{}
+// NewGetDomainsInternalServerError creates a GetDomainsInternalServerError with default headers values
+func NewGetDomainsInternalServerError() *GetDomainsInternalServerError {
+	return &GetDomainsInternalServerError{}
 }
 
 /*
-GETDomainsInternalServerError describes a response with status code 500, with default header values.
+GetDomainsInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETDomainsInternalServerError struct {
+type GetDomainsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get domains internal server error response has a 2xx status code
-func (o *GETDomainsInternalServerError) IsSuccess() bool {
+func (o *GetDomainsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get domains internal server error response has a 3xx status code
-func (o *GETDomainsInternalServerError) IsRedirect() bool {
+func (o *GetDomainsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get domains internal server error response has a 4xx status code
-func (o *GETDomainsInternalServerError) IsClientError() bool {
+func (o *GetDomainsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get domains internal server error response has a 5xx status code
-func (o *GETDomainsInternalServerError) IsServerError() bool {
+func (o *GetDomainsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get domains internal server error response a status code equal to that given
-func (o *GETDomainsInternalServerError) IsCode(code int) bool {
+func (o *GetDomainsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETDomainsInternalServerError) Error() string {
+func (o *GetDomainsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDomainsInternalServerError) String() string {
+func (o *GetDomainsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDomainsInternalServerError) GetPayload() *models.Error {
+func (o *GetDomainsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDomainsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDomainsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

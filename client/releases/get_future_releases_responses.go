@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETFutureReleasesReader is a Reader for the GETFutureReleases structure.
-type GETFutureReleasesReader struct {
+// GetFutureReleasesReader is a Reader for the GetFutureReleases structure.
+type GetFutureReleasesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETFutureReleasesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetFutureReleasesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETFutureReleasesOK()
+		result := NewGetFutureReleasesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETFutureReleasesNotFound()
+		result := NewGetFutureReleasesNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETFutureReleasesInternalServerError()
+		result := NewGetFutureReleasesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETFutureReleasesReader) ReadResponse(response runtime.ClientResponse, 
 	}
 }
 
-// NewGETFutureReleasesOK creates a GETFutureReleasesOK with default headers values
-func NewGETFutureReleasesOK() *GETFutureReleasesOK {
-	return &GETFutureReleasesOK{}
+// NewGetFutureReleasesOK creates a GetFutureReleasesOK with default headers values
+func NewGetFutureReleasesOK() *GetFutureReleasesOK {
+	return &GetFutureReleasesOK{}
 }
 
 /*
-GETFutureReleasesOK describes a response with status code 200, with default header values.
+GetFutureReleasesOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETFutureReleasesOK struct {
+type GetFutureReleasesOK struct {
 	Payload *models.PageOfDomainFutureRelease
 }
 
 // IsSuccess returns true when this get future releases o k response has a 2xx status code
-func (o *GETFutureReleasesOK) IsSuccess() bool {
+func (o *GetFutureReleasesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get future releases o k response has a 3xx status code
-func (o *GETFutureReleasesOK) IsRedirect() bool {
+func (o *GetFutureReleasesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get future releases o k response has a 4xx status code
-func (o *GETFutureReleasesOK) IsClientError() bool {
+func (o *GetFutureReleasesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get future releases o k response has a 5xx status code
-func (o *GETFutureReleasesOK) IsServerError() bool {
+func (o *GetFutureReleasesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get future releases o k response a status code equal to that given
-func (o *GETFutureReleasesOK) IsCode(code int) bool {
+func (o *GetFutureReleasesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETFutureReleasesOK) Error() string {
+func (o *GetFutureReleasesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/releases/domains/{domainId}/future-releases][%d] getFutureReleasesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETFutureReleasesOK) String() string {
+func (o *GetFutureReleasesOK) String() string {
 	return fmt.Sprintf("[GET /v1/releases/domains/{domainId}/future-releases][%d] getFutureReleasesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETFutureReleasesOK) GetPayload() *models.PageOfDomainFutureRelease {
+func (o *GetFutureReleasesOK) GetPayload() *models.PageOfDomainFutureRelease {
 	return o.Payload
 }
 
-func (o *GETFutureReleasesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFutureReleasesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfDomainFutureRelease)
 
@@ -112,58 +112,58 @@ func (o *GETFutureReleasesOK) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-// NewGETFutureReleasesNotFound creates a GETFutureReleasesNotFound with default headers values
-func NewGETFutureReleasesNotFound() *GETFutureReleasesNotFound {
-	return &GETFutureReleasesNotFound{}
+// NewGetFutureReleasesNotFound creates a GetFutureReleasesNotFound with default headers values
+func NewGetFutureReleasesNotFound() *GetFutureReleasesNotFound {
+	return &GetFutureReleasesNotFound{}
 }
 
 /*
-GETFutureReleasesNotFound describes a response with status code 404, with default header values.
+GetFutureReleasesNotFound describes a response with status code 404, with default header values.
 
 Domain not found with given ID.
 */
-type GETFutureReleasesNotFound struct {
+type GetFutureReleasesNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get future releases not found response has a 2xx status code
-func (o *GETFutureReleasesNotFound) IsSuccess() bool {
+func (o *GetFutureReleasesNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get future releases not found response has a 3xx status code
-func (o *GETFutureReleasesNotFound) IsRedirect() bool {
+func (o *GetFutureReleasesNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get future releases not found response has a 4xx status code
-func (o *GETFutureReleasesNotFound) IsClientError() bool {
+func (o *GetFutureReleasesNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get future releases not found response has a 5xx status code
-func (o *GETFutureReleasesNotFound) IsServerError() bool {
+func (o *GetFutureReleasesNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get future releases not found response a status code equal to that given
-func (o *GETFutureReleasesNotFound) IsCode(code int) bool {
+func (o *GetFutureReleasesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETFutureReleasesNotFound) Error() string {
+func (o *GetFutureReleasesNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/releases/domains/{domainId}/future-releases][%d] getFutureReleasesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETFutureReleasesNotFound) String() string {
+func (o *GetFutureReleasesNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/releases/domains/{domainId}/future-releases][%d] getFutureReleasesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETFutureReleasesNotFound) GetPayload() *models.Error {
+func (o *GetFutureReleasesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETFutureReleasesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFutureReleasesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETFutureReleasesNotFound) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGETFutureReleasesInternalServerError creates a GETFutureReleasesInternalServerError with default headers values
-func NewGETFutureReleasesInternalServerError() *GETFutureReleasesInternalServerError {
-	return &GETFutureReleasesInternalServerError{}
+// NewGetFutureReleasesInternalServerError creates a GetFutureReleasesInternalServerError with default headers values
+func NewGetFutureReleasesInternalServerError() *GetFutureReleasesInternalServerError {
+	return &GetFutureReleasesInternalServerError{}
 }
 
 /*
-GETFutureReleasesInternalServerError describes a response with status code 500, with default header values.
+GetFutureReleasesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETFutureReleasesInternalServerError struct {
+type GetFutureReleasesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get future releases internal server error response has a 2xx status code
-func (o *GETFutureReleasesInternalServerError) IsSuccess() bool {
+func (o *GetFutureReleasesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get future releases internal server error response has a 3xx status code
-func (o *GETFutureReleasesInternalServerError) IsRedirect() bool {
+func (o *GetFutureReleasesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get future releases internal server error response has a 4xx status code
-func (o *GETFutureReleasesInternalServerError) IsClientError() bool {
+func (o *GetFutureReleasesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get future releases internal server error response has a 5xx status code
-func (o *GETFutureReleasesInternalServerError) IsServerError() bool {
+func (o *GetFutureReleasesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get future releases internal server error response a status code equal to that given
-func (o *GETFutureReleasesInternalServerError) IsCode(code int) bool {
+func (o *GetFutureReleasesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETFutureReleasesInternalServerError) Error() string {
+func (o *GetFutureReleasesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/releases/domains/{domainId}/future-releases][%d] getFutureReleasesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETFutureReleasesInternalServerError) String() string {
+func (o *GetFutureReleasesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/releases/domains/{domainId}/future-releases][%d] getFutureReleasesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETFutureReleasesInternalServerError) GetPayload() *models.Error {
+func (o *GetFutureReleasesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETFutureReleasesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFutureReleasesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

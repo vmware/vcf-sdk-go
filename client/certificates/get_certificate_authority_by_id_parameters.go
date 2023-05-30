@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCertificateAuthorityByIDParams creates a new GETCertificateAuthorityByIDParams object,
+// NewGetCertificateAuthorityByIDParams creates a new GetCertificateAuthorityByIDParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCertificateAuthorityByIDParams() *GETCertificateAuthorityByIDParams {
-	return &GETCertificateAuthorityByIDParams{
+func NewGetCertificateAuthorityByIDParams() *GetCertificateAuthorityByIDParams {
+	return &GetCertificateAuthorityByIDParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCertificateAuthorityByIDParamsWithTimeout creates a new GETCertificateAuthorityByIDParams object
+// NewGetCertificateAuthorityByIDParamsWithTimeout creates a new GetCertificateAuthorityByIDParams object
 // with the ability to set a timeout on a request.
-func NewGETCertificateAuthorityByIDParamsWithTimeout(timeout time.Duration) *GETCertificateAuthorityByIDParams {
-	return &GETCertificateAuthorityByIDParams{
+func NewGetCertificateAuthorityByIDParamsWithTimeout(timeout time.Duration) *GetCertificateAuthorityByIDParams {
+	return &GetCertificateAuthorityByIDParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCertificateAuthorityByIDParamsWithContext creates a new GETCertificateAuthorityByIDParams object
+// NewGetCertificateAuthorityByIDParamsWithContext creates a new GetCertificateAuthorityByIDParams object
 // with the ability to set a context for a request.
-func NewGETCertificateAuthorityByIDParamsWithContext(ctx context.Context) *GETCertificateAuthorityByIDParams {
-	return &GETCertificateAuthorityByIDParams{
+func NewGetCertificateAuthorityByIDParamsWithContext(ctx context.Context) *GetCertificateAuthorityByIDParams {
+	return &GetCertificateAuthorityByIDParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCertificateAuthorityByIDParamsWithHTTPClient creates a new GETCertificateAuthorityByIDParams object
+// NewGetCertificateAuthorityByIDParamsWithHTTPClient creates a new GetCertificateAuthorityByIDParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCertificateAuthorityByIDParamsWithHTTPClient(client *http.Client) *GETCertificateAuthorityByIDParams {
-	return &GETCertificateAuthorityByIDParams{
+func NewGetCertificateAuthorityByIDParamsWithHTTPClient(client *http.Client) *GetCertificateAuthorityByIDParams {
+	return &GetCertificateAuthorityByIDParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCertificateAuthorityByIDParams contains all the parameters to send to the API endpoint
+GetCertificateAuthorityByIDParams contains all the parameters to send to the API endpoint
 
 	for the get certificate authority by Id operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCertificateAuthorityByIDParams struct {
+type GetCertificateAuthorityByIDParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETCertificateAuthorityByIDParams struct {
 // WithDefaults hydrates default values in the get certificate authority by Id params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCertificateAuthorityByIDParams) WithDefaults() *GETCertificateAuthorityByIDParams {
+func (o *GetCertificateAuthorityByIDParams) WithDefaults() *GetCertificateAuthorityByIDParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETCertificateAuthorityByIDParams) WithDefaults() *GETCertificateAuthor
 // SetDefaults hydrates default values in the get certificate authority by Id params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCertificateAuthorityByIDParams) SetDefaults() {
+func (o *GetCertificateAuthorityByIDParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) WithTimeout(timeout time.Duration) *GETCertificateAuthorityByIDParams {
+func (o *GetCertificateAuthorityByIDParams) WithTimeout(timeout time.Duration) *GetCertificateAuthorityByIDParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) SetTimeout(timeout time.Duration) {
+func (o *GetCertificateAuthorityByIDParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) WithContext(ctx context.Context) *GETCertificateAuthorityByIDParams {
+func (o *GetCertificateAuthorityByIDParams) WithContext(ctx context.Context) *GetCertificateAuthorityByIDParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) SetContext(ctx context.Context) {
+func (o *GetCertificateAuthorityByIDParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) WithHTTPClient(client *http.Client) *GETCertificateAuthorityByIDParams {
+func (o *GetCertificateAuthorityByIDParams) WithHTTPClient(client *http.Client) *GetCertificateAuthorityByIDParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) SetHTTPClient(client *http.Client) {
+func (o *GetCertificateAuthorityByIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) WithID(id string) *GETCertificateAuthorityByIDParams {
+func (o *GetCertificateAuthorityByIDParams) WithID(id string) *GetCertificateAuthorityByIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get certificate authority by Id params
-func (o *GETCertificateAuthorityByIDParams) SetID(id string) {
+func (o *GetCertificateAuthorityByIDParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCertificateAuthorityByIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCertificateAuthorityByIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

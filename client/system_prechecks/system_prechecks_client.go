@@ -33,7 +33,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETPrecheckTask(params *GETPrecheckTaskParams, opts ...ClientOption) (*GETPrecheckTaskOK, error)
+	GetPrecheckTask(params *GetPrecheckTaskParams, opts ...ClientOption) (*GetPrecheckTaskOK, error)
 
 	PrecheckSystem(params *PrecheckSystemParams, opts ...ClientOption) (*PrecheckSystemOK, *PrecheckSystemAccepted, error)
 
@@ -41,14 +41,14 @@ type ClientService interface {
 }
 
 /*
-GETPrecheckTask Gets precheck task by ID
+GetPrecheckTask gets precheck task by ID
 
 Monitor the progress of precheck task by the precheck task ID
 */
-func (a *Client) GETPrecheckTask(params *GETPrecheckTaskParams, opts ...ClientOption) (*GETPrecheckTaskOK, error) {
+func (a *Client) GetPrecheckTask(params *GetPrecheckTaskParams, opts ...ClientOption) (*GetPrecheckTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETPrecheckTaskParams()
+		params = NewGetPrecheckTaskParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getPrecheckTask",
@@ -58,7 +58,7 @@ func (a *Client) GETPrecheckTask(params *GETPrecheckTaskParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETPrecheckTaskReader{formats: a.formats},
+		Reader:             &GetPrecheckTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -70,7 +70,7 @@ func (a *Client) GETPrecheckTask(params *GETPrecheckTaskParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETPrecheckTaskOK)
+	success, ok := result.(*GetPrecheckTaskOK)
 	if ok {
 		return success, nil
 	}

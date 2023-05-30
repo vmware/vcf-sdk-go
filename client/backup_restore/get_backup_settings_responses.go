@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETBackupSettingsReader is a Reader for the GETBackupSettings structure.
-type GETBackupSettingsReader struct {
+// GetBackupSettingsReader is a Reader for the GetBackupSettings structure.
+type GetBackupSettingsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETBackupSettingsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetBackupSettingsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETBackupSettingsOK()
+		result := NewGetBackupSettingsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETBackupSettingsBadRequest()
+		result := NewGetBackupSettingsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETBackupSettingsInternalServerError()
+		result := NewGetBackupSettingsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETBackupSettingsReader) ReadResponse(response runtime.ClientResponse, 
 	}
 }
 
-// NewGETBackupSettingsOK creates a GETBackupSettingsOK with default headers values
-func NewGETBackupSettingsOK() *GETBackupSettingsOK {
-	return &GETBackupSettingsOK{}
+// NewGetBackupSettingsOK creates a GetBackupSettingsOK with default headers values
+func NewGetBackupSettingsOK() *GetBackupSettingsOK {
+	return &GetBackupSettingsOK{}
 }
 
 /*
-GETBackupSettingsOK describes a response with status code 200, with default header values.
+GetBackupSettingsOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETBackupSettingsOK struct {
+type GetBackupSettingsOK struct {
 	Payload *models.BackupConfiguration
 }
 
 // IsSuccess returns true when this get backup settings o k response has a 2xx status code
-func (o *GETBackupSettingsOK) IsSuccess() bool {
+func (o *GetBackupSettingsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get backup settings o k response has a 3xx status code
-func (o *GETBackupSettingsOK) IsRedirect() bool {
+func (o *GetBackupSettingsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get backup settings o k response has a 4xx status code
-func (o *GETBackupSettingsOK) IsClientError() bool {
+func (o *GetBackupSettingsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get backup settings o k response has a 5xx status code
-func (o *GETBackupSettingsOK) IsServerError() bool {
+func (o *GetBackupSettingsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get backup settings o k response a status code equal to that given
-func (o *GETBackupSettingsOK) IsCode(code int) bool {
+func (o *GetBackupSettingsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETBackupSettingsOK) Error() string {
+func (o *GetBackupSettingsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/backup-configuration][%d] getBackupSettingsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBackupSettingsOK) String() string {
+func (o *GetBackupSettingsOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/backup-configuration][%d] getBackupSettingsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBackupSettingsOK) GetPayload() *models.BackupConfiguration {
+func (o *GetBackupSettingsOK) GetPayload() *models.BackupConfiguration {
 	return o.Payload
 }
 
-func (o *GETBackupSettingsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBackupSettingsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.BackupConfiguration)
 
@@ -112,58 +112,58 @@ func (o *GETBackupSettingsOK) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-// NewGETBackupSettingsBadRequest creates a GETBackupSettingsBadRequest with default headers values
-func NewGETBackupSettingsBadRequest() *GETBackupSettingsBadRequest {
-	return &GETBackupSettingsBadRequest{}
+// NewGetBackupSettingsBadRequest creates a GetBackupSettingsBadRequest with default headers values
+func NewGetBackupSettingsBadRequest() *GetBackupSettingsBadRequest {
+	return &GetBackupSettingsBadRequest{}
 }
 
 /*
-GETBackupSettingsBadRequest describes a response with status code 400, with default header values.
+GetBackupSettingsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETBackupSettingsBadRequest struct {
+type GetBackupSettingsBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get backup settings bad request response has a 2xx status code
-func (o *GETBackupSettingsBadRequest) IsSuccess() bool {
+func (o *GetBackupSettingsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get backup settings bad request response has a 3xx status code
-func (o *GETBackupSettingsBadRequest) IsRedirect() bool {
+func (o *GetBackupSettingsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get backup settings bad request response has a 4xx status code
-func (o *GETBackupSettingsBadRequest) IsClientError() bool {
+func (o *GetBackupSettingsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get backup settings bad request response has a 5xx status code
-func (o *GETBackupSettingsBadRequest) IsServerError() bool {
+func (o *GetBackupSettingsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get backup settings bad request response a status code equal to that given
-func (o *GETBackupSettingsBadRequest) IsCode(code int) bool {
+func (o *GetBackupSettingsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETBackupSettingsBadRequest) Error() string {
+func (o *GetBackupSettingsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/backup-configuration][%d] getBackupSettingsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETBackupSettingsBadRequest) String() string {
+func (o *GetBackupSettingsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/system/backup-configuration][%d] getBackupSettingsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETBackupSettingsBadRequest) GetPayload() *models.Error {
+func (o *GetBackupSettingsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETBackupSettingsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBackupSettingsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETBackupSettingsBadRequest) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewGETBackupSettingsInternalServerError creates a GETBackupSettingsInternalServerError with default headers values
-func NewGETBackupSettingsInternalServerError() *GETBackupSettingsInternalServerError {
-	return &GETBackupSettingsInternalServerError{}
+// NewGetBackupSettingsInternalServerError creates a GetBackupSettingsInternalServerError with default headers values
+func NewGetBackupSettingsInternalServerError() *GetBackupSettingsInternalServerError {
+	return &GetBackupSettingsInternalServerError{}
 }
 
 /*
-GETBackupSettingsInternalServerError describes a response with status code 500, with default header values.
+GetBackupSettingsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETBackupSettingsInternalServerError struct {
+type GetBackupSettingsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get backup settings internal server error response has a 2xx status code
-func (o *GETBackupSettingsInternalServerError) IsSuccess() bool {
+func (o *GetBackupSettingsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get backup settings internal server error response has a 3xx status code
-func (o *GETBackupSettingsInternalServerError) IsRedirect() bool {
+func (o *GetBackupSettingsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get backup settings internal server error response has a 4xx status code
-func (o *GETBackupSettingsInternalServerError) IsClientError() bool {
+func (o *GetBackupSettingsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get backup settings internal server error response has a 5xx status code
-func (o *GETBackupSettingsInternalServerError) IsServerError() bool {
+func (o *GetBackupSettingsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get backup settings internal server error response a status code equal to that given
-func (o *GETBackupSettingsInternalServerError) IsCode(code int) bool {
+func (o *GetBackupSettingsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETBackupSettingsInternalServerError) Error() string {
+func (o *GetBackupSettingsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/backup-configuration][%d] getBackupSettingsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETBackupSettingsInternalServerError) String() string {
+func (o *GetBackupSettingsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/backup-configuration][%d] getBackupSettingsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETBackupSettingsInternalServerError) GetPayload() *models.Error {
+func (o *GetBackupSettingsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETBackupSettingsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBackupSettingsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETExpirationsForPasswordsReader is a Reader for the GETExpirationsForPasswords structure.
-type GETExpirationsForPasswordsReader struct {
+// GetExpirationsForPasswordsReader is a Reader for the GetExpirationsForPasswords structure.
+type GetExpirationsForPasswordsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETExpirationsForPasswordsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetExpirationsForPasswordsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETExpirationsForPasswordsOK()
+		result := NewGetExpirationsForPasswordsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETExpirationsForPasswordsBadRequest()
+		result := NewGetExpirationsForPasswordsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETExpirationsForPasswordsNotFound()
+		result := NewGetExpirationsForPasswordsNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETExpirationsForPasswordsInternalServerError()
+		result := NewGetExpirationsForPasswordsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETExpirationsForPasswordsReader) ReadResponse(response runtime.ClientR
 	}
 }
 
-// NewGETExpirationsForPasswordsOK creates a GETExpirationsForPasswordsOK with default headers values
-func NewGETExpirationsForPasswordsOK() *GETExpirationsForPasswordsOK {
-	return &GETExpirationsForPasswordsOK{}
+// NewGetExpirationsForPasswordsOK creates a GetExpirationsForPasswordsOK with default headers values
+func NewGetExpirationsForPasswordsOK() *GetExpirationsForPasswordsOK {
+	return &GetExpirationsForPasswordsOK{}
 }
 
 /*
-GETExpirationsForPasswordsOK describes a response with status code 200, with default header values.
+GetExpirationsForPasswordsOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETExpirationsForPasswordsOK struct {
+type GetExpirationsForPasswordsOK struct {
 	Payload *models.CredentialsValidation
 }
 
 // IsSuccess returns true when this get expirations for passwords o k response has a 2xx status code
-func (o *GETExpirationsForPasswordsOK) IsSuccess() bool {
+func (o *GetExpirationsForPasswordsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get expirations for passwords o k response has a 3xx status code
-func (o *GETExpirationsForPasswordsOK) IsRedirect() bool {
+func (o *GetExpirationsForPasswordsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get expirations for passwords o k response has a 4xx status code
-func (o *GETExpirationsForPasswordsOK) IsClientError() bool {
+func (o *GetExpirationsForPasswordsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get expirations for passwords o k response has a 5xx status code
-func (o *GETExpirationsForPasswordsOK) IsServerError() bool {
+func (o *GetExpirationsForPasswordsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get expirations for passwords o k response a status code equal to that given
-func (o *GETExpirationsForPasswordsOK) IsCode(code int) bool {
+func (o *GetExpirationsForPasswordsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETExpirationsForPasswordsOK) Error() string {
+func (o *GetExpirationsForPasswordsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETExpirationsForPasswordsOK) String() string {
+func (o *GetExpirationsForPasswordsOK) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETExpirationsForPasswordsOK) GetPayload() *models.CredentialsValidation {
+func (o *GetExpirationsForPasswordsOK) GetPayload() *models.CredentialsValidation {
 	return o.Payload
 }
 
-func (o *GETExpirationsForPasswordsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetExpirationsForPasswordsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CredentialsValidation)
 
@@ -118,58 +118,58 @@ func (o *GETExpirationsForPasswordsOK) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGETExpirationsForPasswordsBadRequest creates a GETExpirationsForPasswordsBadRequest with default headers values
-func NewGETExpirationsForPasswordsBadRequest() *GETExpirationsForPasswordsBadRequest {
-	return &GETExpirationsForPasswordsBadRequest{}
+// NewGetExpirationsForPasswordsBadRequest creates a GetExpirationsForPasswordsBadRequest with default headers values
+func NewGetExpirationsForPasswordsBadRequest() *GetExpirationsForPasswordsBadRequest {
+	return &GetExpirationsForPasswordsBadRequest{}
 }
 
 /*
-GETExpirationsForPasswordsBadRequest describes a response with status code 400, with default header values.
+GetExpirationsForPasswordsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETExpirationsForPasswordsBadRequest struct {
+type GetExpirationsForPasswordsBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get expirations for passwords bad request response has a 2xx status code
-func (o *GETExpirationsForPasswordsBadRequest) IsSuccess() bool {
+func (o *GetExpirationsForPasswordsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get expirations for passwords bad request response has a 3xx status code
-func (o *GETExpirationsForPasswordsBadRequest) IsRedirect() bool {
+func (o *GetExpirationsForPasswordsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get expirations for passwords bad request response has a 4xx status code
-func (o *GETExpirationsForPasswordsBadRequest) IsClientError() bool {
+func (o *GetExpirationsForPasswordsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get expirations for passwords bad request response has a 5xx status code
-func (o *GETExpirationsForPasswordsBadRequest) IsServerError() bool {
+func (o *GetExpirationsForPasswordsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get expirations for passwords bad request response a status code equal to that given
-func (o *GETExpirationsForPasswordsBadRequest) IsCode(code int) bool {
+func (o *GetExpirationsForPasswordsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETExpirationsForPasswordsBadRequest) Error() string {
+func (o *GetExpirationsForPasswordsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETExpirationsForPasswordsBadRequest) String() string {
+func (o *GetExpirationsForPasswordsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETExpirationsForPasswordsBadRequest) GetPayload() *models.Error {
+func (o *GetExpirationsForPasswordsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETExpirationsForPasswordsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetExpirationsForPasswordsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -181,58 +181,58 @@ func (o *GETExpirationsForPasswordsBadRequest) readResponse(response runtime.Cli
 	return nil
 }
 
-// NewGETExpirationsForPasswordsNotFound creates a GETExpirationsForPasswordsNotFound with default headers values
-func NewGETExpirationsForPasswordsNotFound() *GETExpirationsForPasswordsNotFound {
-	return &GETExpirationsForPasswordsNotFound{}
+// NewGetExpirationsForPasswordsNotFound creates a GetExpirationsForPasswordsNotFound with default headers values
+func NewGetExpirationsForPasswordsNotFound() *GetExpirationsForPasswordsNotFound {
+	return &GetExpirationsForPasswordsNotFound{}
 }
 
 /*
-GETExpirationsForPasswordsNotFound describes a response with status code 404, with default header values.
+GetExpirationsForPasswordsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETExpirationsForPasswordsNotFound struct {
+type GetExpirationsForPasswordsNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get expirations for passwords not found response has a 2xx status code
-func (o *GETExpirationsForPasswordsNotFound) IsSuccess() bool {
+func (o *GetExpirationsForPasswordsNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get expirations for passwords not found response has a 3xx status code
-func (o *GETExpirationsForPasswordsNotFound) IsRedirect() bool {
+func (o *GetExpirationsForPasswordsNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get expirations for passwords not found response has a 4xx status code
-func (o *GETExpirationsForPasswordsNotFound) IsClientError() bool {
+func (o *GetExpirationsForPasswordsNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get expirations for passwords not found response has a 5xx status code
-func (o *GETExpirationsForPasswordsNotFound) IsServerError() bool {
+func (o *GetExpirationsForPasswordsNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get expirations for passwords not found response a status code equal to that given
-func (o *GETExpirationsForPasswordsNotFound) IsCode(code int) bool {
+func (o *GetExpirationsForPasswordsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETExpirationsForPasswordsNotFound) Error() string {
+func (o *GetExpirationsForPasswordsNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETExpirationsForPasswordsNotFound) String() string {
+func (o *GetExpirationsForPasswordsNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETExpirationsForPasswordsNotFound) GetPayload() *models.Error {
+func (o *GetExpirationsForPasswordsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETExpirationsForPasswordsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetExpirationsForPasswordsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -244,53 +244,53 @@ func (o *GETExpirationsForPasswordsNotFound) readResponse(response runtime.Clien
 	return nil
 }
 
-// NewGETExpirationsForPasswordsInternalServerError creates a GETExpirationsForPasswordsInternalServerError with default headers values
-func NewGETExpirationsForPasswordsInternalServerError() *GETExpirationsForPasswordsInternalServerError {
-	return &GETExpirationsForPasswordsInternalServerError{}
+// NewGetExpirationsForPasswordsInternalServerError creates a GetExpirationsForPasswordsInternalServerError with default headers values
+func NewGetExpirationsForPasswordsInternalServerError() *GetExpirationsForPasswordsInternalServerError {
+	return &GetExpirationsForPasswordsInternalServerError{}
 }
 
 /*
-GETExpirationsForPasswordsInternalServerError describes a response with status code 500, with default header values.
+GetExpirationsForPasswordsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETExpirationsForPasswordsInternalServerError struct {
+type GetExpirationsForPasswordsInternalServerError struct {
 }
 
 // IsSuccess returns true when this get expirations for passwords internal server error response has a 2xx status code
-func (o *GETExpirationsForPasswordsInternalServerError) IsSuccess() bool {
+func (o *GetExpirationsForPasswordsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get expirations for passwords internal server error response has a 3xx status code
-func (o *GETExpirationsForPasswordsInternalServerError) IsRedirect() bool {
+func (o *GetExpirationsForPasswordsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get expirations for passwords internal server error response has a 4xx status code
-func (o *GETExpirationsForPasswordsInternalServerError) IsClientError() bool {
+func (o *GetExpirationsForPasswordsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get expirations for passwords internal server error response has a 5xx status code
-func (o *GETExpirationsForPasswordsInternalServerError) IsServerError() bool {
+func (o *GetExpirationsForPasswordsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get expirations for passwords internal server error response a status code equal to that given
-func (o *GETExpirationsForPasswordsInternalServerError) IsCode(code int) bool {
+func (o *GetExpirationsForPasswordsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETExpirationsForPasswordsInternalServerError) Error() string {
+func (o *GetExpirationsForPasswordsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsInternalServerError ", 500)
 }
 
-func (o *GETExpirationsForPasswordsInternalServerError) String() string {
+func (o *GetExpirationsForPasswordsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/expirations/{id}][%d] getExpirationsForPasswordsInternalServerError ", 500)
 }
 
-func (o *GETExpirationsForPasswordsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetExpirationsForPasswordsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

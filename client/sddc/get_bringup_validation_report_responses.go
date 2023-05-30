@@ -16,28 +16,28 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// GETBringupValidationReportReader is a Reader for the GETBringupValidationReport structure.
-type GETBringupValidationReportReader struct {
+// GetBringupValidationReportReader is a Reader for the GetBringupValidationReport structure.
+type GetBringupValidationReportReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETBringupValidationReportReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetBringupValidationReportReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETBringupValidationReportOK()
+		result := NewGetBringupValidationReportOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETBringupValidationReportInternalServerError()
+		result := NewGetBringupValidationReportInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 501:
-		result := NewGETBringupValidationReportNotImplemented()
+		result := NewGetBringupValidationReportNotImplemented()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -47,58 +47,58 @@ func (o *GETBringupValidationReportReader) ReadResponse(response runtime.ClientR
 	}
 }
 
-// NewGETBringupValidationReportOK creates a GETBringupValidationReportOK with default headers values
-func NewGETBringupValidationReportOK() *GETBringupValidationReportOK {
-	return &GETBringupValidationReportOK{}
+// NewGetBringupValidationReportOK creates a GetBringupValidationReportOK with default headers values
+func NewGetBringupValidationReportOK() *GetBringupValidationReportOK {
+	return &GetBringupValidationReportOK{}
 }
 
 /*
-GETBringupValidationReportOK describes a response with status code 200, with default header values.
+GetBringupValidationReportOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETBringupValidationReportOK struct {
+type GetBringupValidationReportOK struct {
 	Payload string
 }
 
 // IsSuccess returns true when this get bringup validation report o k response has a 2xx status code
-func (o *GETBringupValidationReportOK) IsSuccess() bool {
+func (o *GetBringupValidationReportOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get bringup validation report o k response has a 3xx status code
-func (o *GETBringupValidationReportOK) IsRedirect() bool {
+func (o *GetBringupValidationReportOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup validation report o k response has a 4xx status code
-func (o *GETBringupValidationReportOK) IsClientError() bool {
+func (o *GetBringupValidationReportOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup validation report o k response has a 5xx status code
-func (o *GETBringupValidationReportOK) IsServerError() bool {
+func (o *GetBringupValidationReportOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bringup validation report o k response a status code equal to that given
-func (o *GETBringupValidationReportOK) IsCode(code int) bool {
+func (o *GetBringupValidationReportOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETBringupValidationReportOK) Error() string {
+func (o *GetBringupValidationReportOK) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations/{validationId}/report][%d] getBringupValidationReportOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBringupValidationReportOK) String() string {
+func (o *GetBringupValidationReportOK) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations/{validationId}/report][%d] getBringupValidationReportOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBringupValidationReportOK) GetPayload() string {
+func (o *GetBringupValidationReportOK) GetPayload() string {
 	return o.Payload
 }
 
-func (o *GETBringupValidationReportOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupValidationReportOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -108,104 +108,104 @@ func (o *GETBringupValidationReportOK) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGETBringupValidationReportInternalServerError creates a GETBringupValidationReportInternalServerError with default headers values
-func NewGETBringupValidationReportInternalServerError() *GETBringupValidationReportInternalServerError {
-	return &GETBringupValidationReportInternalServerError{}
+// NewGetBringupValidationReportInternalServerError creates a GetBringupValidationReportInternalServerError with default headers values
+func NewGetBringupValidationReportInternalServerError() *GetBringupValidationReportInternalServerError {
+	return &GetBringupValidationReportInternalServerError{}
 }
 
 /*
-GETBringupValidationReportInternalServerError describes a response with status code 500, with default header values.
+GetBringupValidationReportInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETBringupValidationReportInternalServerError struct {
+type GetBringupValidationReportInternalServerError struct {
 }
 
 // IsSuccess returns true when this get bringup validation report internal server error response has a 2xx status code
-func (o *GETBringupValidationReportInternalServerError) IsSuccess() bool {
+func (o *GetBringupValidationReportInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup validation report internal server error response has a 3xx status code
-func (o *GETBringupValidationReportInternalServerError) IsRedirect() bool {
+func (o *GetBringupValidationReportInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup validation report internal server error response has a 4xx status code
-func (o *GETBringupValidationReportInternalServerError) IsClientError() bool {
+func (o *GetBringupValidationReportInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup validation report internal server error response has a 5xx status code
-func (o *GETBringupValidationReportInternalServerError) IsServerError() bool {
+func (o *GetBringupValidationReportInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bringup validation report internal server error response a status code equal to that given
-func (o *GETBringupValidationReportInternalServerError) IsCode(code int) bool {
+func (o *GetBringupValidationReportInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETBringupValidationReportInternalServerError) Error() string {
+func (o *GetBringupValidationReportInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations/{validationId}/report][%d] getBringupValidationReportInternalServerError ", 500)
 }
 
-func (o *GETBringupValidationReportInternalServerError) String() string {
+func (o *GetBringupValidationReportInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations/{validationId}/report][%d] getBringupValidationReportInternalServerError ", 500)
 }
 
-func (o *GETBringupValidationReportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupValidationReportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
 
-// NewGETBringupValidationReportNotImplemented creates a GETBringupValidationReportNotImplemented with default headers values
-func NewGETBringupValidationReportNotImplemented() *GETBringupValidationReportNotImplemented {
-	return &GETBringupValidationReportNotImplemented{}
+// NewGetBringupValidationReportNotImplemented creates a GetBringupValidationReportNotImplemented with default headers values
+func NewGetBringupValidationReportNotImplemented() *GetBringupValidationReportNotImplemented {
+	return &GetBringupValidationReportNotImplemented{}
 }
 
 /*
-GETBringupValidationReportNotImplemented describes a response with status code 501, with default header values.
+GetBringupValidationReportNotImplemented describes a response with status code 501, with default header values.
 
 Not Implemented
 */
-type GETBringupValidationReportNotImplemented struct {
+type GetBringupValidationReportNotImplemented struct {
 }
 
 // IsSuccess returns true when this get bringup validation report not implemented response has a 2xx status code
-func (o *GETBringupValidationReportNotImplemented) IsSuccess() bool {
+func (o *GetBringupValidationReportNotImplemented) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup validation report not implemented response has a 3xx status code
-func (o *GETBringupValidationReportNotImplemented) IsRedirect() bool {
+func (o *GetBringupValidationReportNotImplemented) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup validation report not implemented response has a 4xx status code
-func (o *GETBringupValidationReportNotImplemented) IsClientError() bool {
+func (o *GetBringupValidationReportNotImplemented) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup validation report not implemented response has a 5xx status code
-func (o *GETBringupValidationReportNotImplemented) IsServerError() bool {
+func (o *GetBringupValidationReportNotImplemented) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bringup validation report not implemented response a status code equal to that given
-func (o *GETBringupValidationReportNotImplemented) IsCode(code int) bool {
+func (o *GetBringupValidationReportNotImplemented) IsCode(code int) bool {
 	return code == 501
 }
 
-func (o *GETBringupValidationReportNotImplemented) Error() string {
+func (o *GetBringupValidationReportNotImplemented) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations/{validationId}/report][%d] getBringupValidationReportNotImplemented ", 501)
 }
 
-func (o *GETBringupValidationReportNotImplemented) String() string {
+func (o *GetBringupValidationReportNotImplemented) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations/{validationId}/report][%d] getBringupValidationReportNotImplemented ", 501)
 }
 
-func (o *GETBringupValidationReportNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupValidationReportNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETResourceFunctionalitiesParams creates a new GETResourceFunctionalitiesParams object,
+// NewGetResourceFunctionalitiesParams creates a new GetResourceFunctionalitiesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETResourceFunctionalitiesParams() *GETResourceFunctionalitiesParams {
-	return &GETResourceFunctionalitiesParams{
+func NewGetResourceFunctionalitiesParams() *GetResourceFunctionalitiesParams {
+	return &GetResourceFunctionalitiesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETResourceFunctionalitiesParamsWithTimeout creates a new GETResourceFunctionalitiesParams object
+// NewGetResourceFunctionalitiesParamsWithTimeout creates a new GetResourceFunctionalitiesParams object
 // with the ability to set a timeout on a request.
-func NewGETResourceFunctionalitiesParamsWithTimeout(timeout time.Duration) *GETResourceFunctionalitiesParams {
-	return &GETResourceFunctionalitiesParams{
+func NewGetResourceFunctionalitiesParamsWithTimeout(timeout time.Duration) *GetResourceFunctionalitiesParams {
+	return &GetResourceFunctionalitiesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETResourceFunctionalitiesParamsWithContext creates a new GETResourceFunctionalitiesParams object
+// NewGetResourceFunctionalitiesParamsWithContext creates a new GetResourceFunctionalitiesParams object
 // with the ability to set a context for a request.
-func NewGETResourceFunctionalitiesParamsWithContext(ctx context.Context) *GETResourceFunctionalitiesParams {
-	return &GETResourceFunctionalitiesParams{
+func NewGetResourceFunctionalitiesParamsWithContext(ctx context.Context) *GetResourceFunctionalitiesParams {
+	return &GetResourceFunctionalitiesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETResourceFunctionalitiesParamsWithHTTPClient creates a new GETResourceFunctionalitiesParams object
+// NewGetResourceFunctionalitiesParamsWithHTTPClient creates a new GetResourceFunctionalitiesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETResourceFunctionalitiesParamsWithHTTPClient(client *http.Client) *GETResourceFunctionalitiesParams {
-	return &GETResourceFunctionalitiesParams{
+func NewGetResourceFunctionalitiesParamsWithHTTPClient(client *http.Client) *GetResourceFunctionalitiesParams {
+	return &GetResourceFunctionalitiesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETResourceFunctionalitiesParams contains all the parameters to send to the API endpoint
+GetResourceFunctionalitiesParams contains all the parameters to send to the API endpoint
 
 	for the get resource functionalities operation.
 
 	Typically these are written to a http.Request.
 */
-type GETResourceFunctionalitiesParams struct {
+type GetResourceFunctionalitiesParams struct {
 
 	/* FunctionalityType.
 
@@ -103,7 +103,7 @@ type GETResourceFunctionalitiesParams struct {
 // WithDefaults hydrates default values in the get resource functionalities params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourceFunctionalitiesParams) WithDefaults() *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithDefaults() *GetResourceFunctionalitiesParams {
 	o.SetDefaults()
 	return o
 }
@@ -111,100 +111,100 @@ func (o *GETResourceFunctionalitiesParams) WithDefaults() *GETResourceFunctional
 // SetDefaults hydrates default values in the get resource functionalities params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourceFunctionalitiesParams) SetDefaults() {
+func (o *GetResourceFunctionalitiesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithTimeout(timeout time.Duration) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithTimeout(timeout time.Duration) *GetResourceFunctionalitiesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetTimeout(timeout time.Duration) {
+func (o *GetResourceFunctionalitiesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithContext(ctx context.Context) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithContext(ctx context.Context) *GetResourceFunctionalitiesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetContext(ctx context.Context) {
+func (o *GetResourceFunctionalitiesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithHTTPClient(client *http.Client) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithHTTPClient(client *http.Client) *GetResourceFunctionalitiesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetHTTPClient(client *http.Client) {
+func (o *GetResourceFunctionalitiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithFunctionalityType adds the functionalityType to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithFunctionalityType(functionalityType *string) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithFunctionalityType(functionalityType *string) *GetResourceFunctionalitiesParams {
 	o.SetFunctionalityType(functionalityType)
 	return o
 }
 
 // SetFunctionalityType adds the functionalityType to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetFunctionalityType(functionalityType *string) {
+func (o *GetResourceFunctionalitiesParams) SetFunctionalityType(functionalityType *string) {
 	o.FunctionalityType = functionalityType
 }
 
 // WithIsAllowed adds the isAllowed to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithIsAllowed(isAllowed *bool) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithIsAllowed(isAllowed *bool) *GetResourceFunctionalitiesParams {
 	o.SetIsAllowed(isAllowed)
 	return o
 }
 
 // SetIsAllowed adds the isAllowed to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetIsAllowed(isAllowed *bool) {
+func (o *GetResourceFunctionalitiesParams) SetIsAllowed(isAllowed *bool) {
 	o.IsAllowed = isAllowed
 }
 
 // WithParentResourceType adds the parentResourceType to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithParentResourceType(parentResourceType *string) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithParentResourceType(parentResourceType *string) *GetResourceFunctionalitiesParams {
 	o.SetParentResourceType(parentResourceType)
 	return o
 }
 
 // SetParentResourceType adds the parentResourceType to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetParentResourceType(parentResourceType *string) {
+func (o *GetResourceFunctionalitiesParams) SetParentResourceType(parentResourceType *string) {
 	o.ParentResourceType = parentResourceType
 }
 
 // WithResourceIds adds the resourceIds to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithResourceIds(resourceIds []string) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithResourceIds(resourceIds []string) *GetResourceFunctionalitiesParams {
 	o.SetResourceIds(resourceIds)
 	return o
 }
 
 // SetResourceIds adds the resourceIds to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetResourceIds(resourceIds []string) {
+func (o *GetResourceFunctionalitiesParams) SetResourceIds(resourceIds []string) {
 	o.ResourceIds = resourceIds
 }
 
 // WithResourceType adds the resourceType to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) WithResourceType(resourceType *string) *GETResourceFunctionalitiesParams {
+func (o *GetResourceFunctionalitiesParams) WithResourceType(resourceType *string) *GetResourceFunctionalitiesParams {
 	o.SetResourceType(resourceType)
 	return o
 }
 
 // SetResourceType adds the resourceType to the get resource functionalities params
-func (o *GETResourceFunctionalitiesParams) SetResourceType(resourceType *string) {
+func (o *GetResourceFunctionalitiesParams) SetResourceType(resourceType *string) {
 	o.ResourceType = resourceType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETResourceFunctionalitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetResourceFunctionalitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
@@ -296,8 +296,8 @@ func (o *GETResourceFunctionalitiesParams) WriteToRequest(r runtime.ClientReques
 	return nil
 }
 
-// bindParamGETResourceFunctionalities binds the parameter resourceIds
-func (o *GETResourceFunctionalitiesParams) bindParamResourceIds(formats strfmt.Registry) []string {
+// bindParamGetResourceFunctionalities binds the parameter resourceIds
+func (o *GetResourceFunctionalitiesParams) bindParamResourceIds(formats strfmt.Registry) []string {
 	resourceIdsIR := o.ResourceIds
 
 	var resourceIdsIC []string

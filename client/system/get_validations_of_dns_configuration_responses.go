@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETValidationsOfDNSConfigurationReader is a Reader for the GETValidationsOfDNSConfiguration structure.
-type GETValidationsOfDNSConfigurationReader struct {
+// GetValidationsOfDNSConfigurationReader is a Reader for the GetValidationsOfDNSConfiguration structure.
+type GetValidationsOfDNSConfigurationReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETValidationsOfDNSConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetValidationsOfDNSConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETValidationsOfDNSConfigurationOK()
+		result := NewGetValidationsOfDNSConfigurationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETValidationsOfDNSConfigurationBadRequest()
+		result := NewGetValidationsOfDNSConfigurationBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETValidationsOfDNSConfigurationInternalServerError()
+		result := NewGetValidationsOfDNSConfigurationInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETValidationsOfDNSConfigurationReader) ReadResponse(response runtime.C
 	}
 }
 
-// NewGETValidationsOfDNSConfigurationOK creates a GETValidationsOfDNSConfigurationOK with default headers values
-func NewGETValidationsOfDNSConfigurationOK() *GETValidationsOfDNSConfigurationOK {
-	return &GETValidationsOfDNSConfigurationOK{}
+// NewGetValidationsOfDNSConfigurationOK creates a GetValidationsOfDNSConfigurationOK with default headers values
+func NewGetValidationsOfDNSConfigurationOK() *GetValidationsOfDNSConfigurationOK {
+	return &GetValidationsOfDNSConfigurationOK{}
 }
 
 /*
-GETValidationsOfDNSConfigurationOK describes a response with status code 200, with default header values.
+GetValidationsOfDNSConfigurationOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETValidationsOfDNSConfigurationOK struct {
+type GetValidationsOfDNSConfigurationOK struct {
 	Payload *models.Validation
 }
 
 // IsSuccess returns true when this get validations of Dns configuration o k response has a 2xx status code
-func (o *GETValidationsOfDNSConfigurationOK) IsSuccess() bool {
+func (o *GetValidationsOfDNSConfigurationOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get validations of Dns configuration o k response has a 3xx status code
-func (o *GETValidationsOfDNSConfigurationOK) IsRedirect() bool {
+func (o *GetValidationsOfDNSConfigurationOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validations of Dns configuration o k response has a 4xx status code
-func (o *GETValidationsOfDNSConfigurationOK) IsClientError() bool {
+func (o *GetValidationsOfDNSConfigurationOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validations of Dns configuration o k response has a 5xx status code
-func (o *GETValidationsOfDNSConfigurationOK) IsServerError() bool {
+func (o *GetValidationsOfDNSConfigurationOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validations of Dns configuration o k response a status code equal to that given
-func (o *GETValidationsOfDNSConfigurationOK) IsCode(code int) bool {
+func (o *GetValidationsOfDNSConfigurationOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETValidationsOfDNSConfigurationOK) Error() string {
+func (o *GetValidationsOfDNSConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationsOfDNSConfigurationOK) String() string {
+func (o *GetValidationsOfDNSConfigurationOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationsOfDNSConfigurationOK) GetPayload() *models.Validation {
+func (o *GetValidationsOfDNSConfigurationOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETValidationsOfDNSConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationsOfDNSConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 
@@ -112,58 +112,58 @@ func (o *GETValidationsOfDNSConfigurationOK) readResponse(response runtime.Clien
 	return nil
 }
 
-// NewGETValidationsOfDNSConfigurationBadRequest creates a GETValidationsOfDNSConfigurationBadRequest with default headers values
-func NewGETValidationsOfDNSConfigurationBadRequest() *GETValidationsOfDNSConfigurationBadRequest {
-	return &GETValidationsOfDNSConfigurationBadRequest{}
+// NewGetValidationsOfDNSConfigurationBadRequest creates a GetValidationsOfDNSConfigurationBadRequest with default headers values
+func NewGetValidationsOfDNSConfigurationBadRequest() *GetValidationsOfDNSConfigurationBadRequest {
+	return &GetValidationsOfDNSConfigurationBadRequest{}
 }
 
 /*
-GETValidationsOfDNSConfigurationBadRequest describes a response with status code 400, with default header values.
+GetValidationsOfDNSConfigurationBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETValidationsOfDNSConfigurationBadRequest struct {
+type GetValidationsOfDNSConfigurationBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get validations of Dns configuration bad request response has a 2xx status code
-func (o *GETValidationsOfDNSConfigurationBadRequest) IsSuccess() bool {
+func (o *GetValidationsOfDNSConfigurationBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validations of Dns configuration bad request response has a 3xx status code
-func (o *GETValidationsOfDNSConfigurationBadRequest) IsRedirect() bool {
+func (o *GetValidationsOfDNSConfigurationBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validations of Dns configuration bad request response has a 4xx status code
-func (o *GETValidationsOfDNSConfigurationBadRequest) IsClientError() bool {
+func (o *GetValidationsOfDNSConfigurationBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get validations of Dns configuration bad request response has a 5xx status code
-func (o *GETValidationsOfDNSConfigurationBadRequest) IsServerError() bool {
+func (o *GetValidationsOfDNSConfigurationBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validations of Dns configuration bad request response a status code equal to that given
-func (o *GETValidationsOfDNSConfigurationBadRequest) IsCode(code int) bool {
+func (o *GetValidationsOfDNSConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETValidationsOfDNSConfigurationBadRequest) Error() string {
+func (o *GetValidationsOfDNSConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationsOfDNSConfigurationBadRequest) String() string {
+func (o *GetValidationsOfDNSConfigurationBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationsOfDNSConfigurationBadRequest) GetPayload() *models.Error {
+func (o *GetValidationsOfDNSConfigurationBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETValidationsOfDNSConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationsOfDNSConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,53 +175,53 @@ func (o *GETValidationsOfDNSConfigurationBadRequest) readResponse(response runti
 	return nil
 }
 
-// NewGETValidationsOfDNSConfigurationInternalServerError creates a GETValidationsOfDNSConfigurationInternalServerError with default headers values
-func NewGETValidationsOfDNSConfigurationInternalServerError() *GETValidationsOfDNSConfigurationInternalServerError {
-	return &GETValidationsOfDNSConfigurationInternalServerError{}
+// NewGetValidationsOfDNSConfigurationInternalServerError creates a GetValidationsOfDNSConfigurationInternalServerError with default headers values
+func NewGetValidationsOfDNSConfigurationInternalServerError() *GetValidationsOfDNSConfigurationInternalServerError {
+	return &GetValidationsOfDNSConfigurationInternalServerError{}
 }
 
 /*
-GETValidationsOfDNSConfigurationInternalServerError describes a response with status code 500, with default header values.
+GetValidationsOfDNSConfigurationInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETValidationsOfDNSConfigurationInternalServerError struct {
+type GetValidationsOfDNSConfigurationInternalServerError struct {
 }
 
 // IsSuccess returns true when this get validations of Dns configuration internal server error response has a 2xx status code
-func (o *GETValidationsOfDNSConfigurationInternalServerError) IsSuccess() bool {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validations of Dns configuration internal server error response has a 3xx status code
-func (o *GETValidationsOfDNSConfigurationInternalServerError) IsRedirect() bool {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validations of Dns configuration internal server error response has a 4xx status code
-func (o *GETValidationsOfDNSConfigurationInternalServerError) IsClientError() bool {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validations of Dns configuration internal server error response has a 5xx status code
-func (o *GETValidationsOfDNSConfigurationInternalServerError) IsServerError() bool {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get validations of Dns configuration internal server error response a status code equal to that given
-func (o *GETValidationsOfDNSConfigurationInternalServerError) IsCode(code int) bool {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETValidationsOfDNSConfigurationInternalServerError) Error() string {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationInternalServerError ", 500)
 }
 
-func (o *GETValidationsOfDNSConfigurationInternalServerError) String() string {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationInternalServerError ", 500)
 }
 
-func (o *GETValidationsOfDNSConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationsOfDNSConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

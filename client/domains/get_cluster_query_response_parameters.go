@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETClusterQueryResponseParams creates a new GETClusterQueryResponseParams object,
+// NewGetClusterQueryResponseParams creates a new GetClusterQueryResponseParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETClusterQueryResponseParams() *GETClusterQueryResponseParams {
-	return &GETClusterQueryResponseParams{
+func NewGetClusterQueryResponseParams() *GetClusterQueryResponseParams {
+	return &GetClusterQueryResponseParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETClusterQueryResponseParamsWithTimeout creates a new GETClusterQueryResponseParams object
+// NewGetClusterQueryResponseParamsWithTimeout creates a new GetClusterQueryResponseParams object
 // with the ability to set a timeout on a request.
-func NewGETClusterQueryResponseParamsWithTimeout(timeout time.Duration) *GETClusterQueryResponseParams {
-	return &GETClusterQueryResponseParams{
+func NewGetClusterQueryResponseParamsWithTimeout(timeout time.Duration) *GetClusterQueryResponseParams {
+	return &GetClusterQueryResponseParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETClusterQueryResponseParamsWithContext creates a new GETClusterQueryResponseParams object
+// NewGetClusterQueryResponseParamsWithContext creates a new GetClusterQueryResponseParams object
 // with the ability to set a context for a request.
-func NewGETClusterQueryResponseParamsWithContext(ctx context.Context) *GETClusterQueryResponseParams {
-	return &GETClusterQueryResponseParams{
+func NewGetClusterQueryResponseParamsWithContext(ctx context.Context) *GetClusterQueryResponseParams {
+	return &GetClusterQueryResponseParams{
 		Context: ctx,
 	}
 }
 
-// NewGETClusterQueryResponseParamsWithHTTPClient creates a new GETClusterQueryResponseParams object
+// NewGetClusterQueryResponseParamsWithHTTPClient creates a new GetClusterQueryResponseParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETClusterQueryResponseParamsWithHTTPClient(client *http.Client) *GETClusterQueryResponseParams {
-	return &GETClusterQueryResponseParams{
+func NewGetClusterQueryResponseParamsWithHTTPClient(client *http.Client) *GetClusterQueryResponseParams {
+	return &GetClusterQueryResponseParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETClusterQueryResponseParams contains all the parameters to send to the API endpoint
+GetClusterQueryResponseParams contains all the parameters to send to the API endpoint
 
 	for the get cluster query response operation.
 
 	Typically these are written to a http.Request.
 */
-type GETClusterQueryResponseParams struct {
+type GetClusterQueryResponseParams struct {
 
 	/* ClusterName.
 
@@ -90,7 +90,7 @@ type GETClusterQueryResponseParams struct {
 // WithDefaults hydrates default values in the get cluster query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterQueryResponseParams) WithDefaults() *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithDefaults() *GetClusterQueryResponseParams {
 	o.SetDefaults()
 	return o
 }
@@ -98,78 +98,78 @@ func (o *GETClusterQueryResponseParams) WithDefaults() *GETClusterQueryResponseP
 // SetDefaults hydrates default values in the get cluster query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterQueryResponseParams) SetDefaults() {
+func (o *GetClusterQueryResponseParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get cluster query response params
-func (o *GETClusterQueryResponseParams) WithTimeout(timeout time.Duration) *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithTimeout(timeout time.Duration) *GetClusterQueryResponseParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get cluster query response params
-func (o *GETClusterQueryResponseParams) SetTimeout(timeout time.Duration) {
+func (o *GetClusterQueryResponseParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get cluster query response params
-func (o *GETClusterQueryResponseParams) WithContext(ctx context.Context) *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithContext(ctx context.Context) *GetClusterQueryResponseParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get cluster query response params
-func (o *GETClusterQueryResponseParams) SetContext(ctx context.Context) {
+func (o *GetClusterQueryResponseParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get cluster query response params
-func (o *GETClusterQueryResponseParams) WithHTTPClient(client *http.Client) *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithHTTPClient(client *http.Client) *GetClusterQueryResponseParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get cluster query response params
-func (o *GETClusterQueryResponseParams) SetHTTPClient(client *http.Client) {
+func (o *GetClusterQueryResponseParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterName adds the clusterName to the get cluster query response params
-func (o *GETClusterQueryResponseParams) WithClusterName(clusterName string) *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithClusterName(clusterName string) *GetClusterQueryResponseParams {
 	o.SetClusterName(clusterName)
 	return o
 }
 
 // SetClusterName adds the clusterName to the get cluster query response params
-func (o *GETClusterQueryResponseParams) SetClusterName(clusterName string) {
+func (o *GetClusterQueryResponseParams) SetClusterName(clusterName string) {
 	o.ClusterName = clusterName
 }
 
 // WithDomainID adds the domainID to the get cluster query response params
-func (o *GETClusterQueryResponseParams) WithDomainID(domainID string) *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithDomainID(domainID string) *GetClusterQueryResponseParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get cluster query response params
-func (o *GETClusterQueryResponseParams) SetDomainID(domainID string) {
+func (o *GetClusterQueryResponseParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WithQueryID adds the queryID to the get cluster query response params
-func (o *GETClusterQueryResponseParams) WithQueryID(queryID string) *GETClusterQueryResponseParams {
+func (o *GetClusterQueryResponseParams) WithQueryID(queryID string) *GetClusterQueryResponseParams {
 	o.SetQueryID(queryID)
 	return o
 }
 
 // SetQueryID adds the queryId to the get cluster query response params
-func (o *GETClusterQueryResponseParams) SetQueryID(queryID string) {
+func (o *GetClusterQueryResponseParams) SetQueryID(queryID string) {
 	o.QueryID = queryID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETClusterQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetClusterQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVrslcmsReader is a Reader for the GETVrslcms structure.
-type GETVrslcmsReader struct {
+// GetVrslcmsReader is a Reader for the GetVrslcms structure.
+type GetVrslcmsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVrslcmsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVrslcmsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVrslcmsOK()
+		result := NewGetVrslcmsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETVrslcmsReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewGETVrslcmsOK creates a GETVrslcmsOK with default headers values
-func NewGETVrslcmsOK() *GETVrslcmsOK {
-	return &GETVrslcmsOK{}
+// NewGetVrslcmsOK creates a GetVrslcmsOK with default headers values
+func NewGetVrslcmsOK() *GetVrslcmsOK {
+	return &GetVrslcmsOK{}
 }
 
 /*
-GETVrslcmsOK describes a response with status code 200, with default header values.
+GetVrslcmsOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETVrslcmsOK struct {
+type GetVrslcmsOK struct {
 	Payload *models.PageOfVRSLCM
 }
 
 // IsSuccess returns true when this get vrslcms o k response has a 2xx status code
-func (o *GETVrslcmsOK) IsSuccess() bool {
+func (o *GetVrslcmsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vrslcms o k response has a 3xx status code
-func (o *GETVrslcmsOK) IsRedirect() bool {
+func (o *GetVrslcmsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vrslcms o k response has a 4xx status code
-func (o *GETVrslcmsOK) IsClientError() bool {
+func (o *GetVrslcmsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vrslcms o k response has a 5xx status code
-func (o *GETVrslcmsOK) IsServerError() bool {
+func (o *GetVrslcmsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vrslcms o k response a status code equal to that given
-func (o *GETVrslcmsOK) IsCode(code int) bool {
+func (o *GetVrslcmsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVrslcmsOK) Error() string {
+func (o *GetVrslcmsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vrslcms][%d] getVrslcmsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVrslcmsOK) String() string {
+func (o *GetVrslcmsOK) String() string {
 	return fmt.Sprintf("[GET /v1/vrslcms][%d] getVrslcmsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVrslcmsOK) GetPayload() *models.PageOfVRSLCM {
+func (o *GetVrslcmsOK) GetPayload() *models.PageOfVRSLCM {
 	return o.Payload
 }
 
-func (o *GETVrslcmsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVrslcmsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfVRSLCM)
 

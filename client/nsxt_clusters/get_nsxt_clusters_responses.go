@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETNSXTClustersReader is a Reader for the GETNSXTClusters structure.
-type GETNSXTClustersReader struct {
+// GetNSXTClustersReader is a Reader for the GetNSXTClusters structure.
+type GetNSXTClustersReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETNSXTClustersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetNSXTClustersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETNSXTClustersOK()
+		result := NewGetNSXTClustersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETNSXTClustersBadRequest()
+		result := NewGetNSXTClustersBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETNSXTClustersInternalServerError()
+		result := NewGetNSXTClustersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETNSXTClustersReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETNSXTClustersOK creates a GETNSXTClustersOK with default headers values
-func NewGETNSXTClustersOK() *GETNSXTClustersOK {
-	return &GETNSXTClustersOK{}
+// NewGetNSXTClustersOK creates a GetNSXTClustersOK with default headers values
+func NewGetNSXTClustersOK() *GetNSXTClustersOK {
+	return &GetNSXTClustersOK{}
 }
 
 /*
-GETNSXTClustersOK describes a response with status code 200, with default header values.
+GetNSXTClustersOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETNSXTClustersOK struct {
+type GetNSXTClustersOK struct {
 	Payload *models.PageOfNsxTCluster
 }
 
 // IsSuccess returns true when this get Nsxt clusters o k response has a 2xx status code
-func (o *GETNSXTClustersOK) IsSuccess() bool {
+func (o *GetNSXTClustersOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Nsxt clusters o k response has a 3xx status code
-func (o *GETNSXTClustersOK) IsRedirect() bool {
+func (o *GetNSXTClustersOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Nsxt clusters o k response has a 4xx status code
-func (o *GETNSXTClustersOK) IsClientError() bool {
+func (o *GetNSXTClustersOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Nsxt clusters o k response has a 5xx status code
-func (o *GETNSXTClustersOK) IsServerError() bool {
+func (o *GetNSXTClustersOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Nsxt clusters o k response a status code equal to that given
-func (o *GETNSXTClustersOK) IsCode(code int) bool {
+func (o *GetNSXTClustersOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETNSXTClustersOK) Error() string {
+func (o *GetNSXTClustersOK) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters][%d] getNsxtClustersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETNSXTClustersOK) String() string {
+func (o *GetNSXTClustersOK) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters][%d] getNsxtClustersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETNSXTClustersOK) GetPayload() *models.PageOfNsxTCluster {
+func (o *GetNSXTClustersOK) GetPayload() *models.PageOfNsxTCluster {
 	return o.Payload
 }
 
-func (o *GETNSXTClustersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNSXTClustersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfNsxTCluster)
 
@@ -112,58 +112,58 @@ func (o *GETNSXTClustersOK) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETNSXTClustersBadRequest creates a GETNSXTClustersBadRequest with default headers values
-func NewGETNSXTClustersBadRequest() *GETNSXTClustersBadRequest {
-	return &GETNSXTClustersBadRequest{}
+// NewGetNSXTClustersBadRequest creates a GetNSXTClustersBadRequest with default headers values
+func NewGetNSXTClustersBadRequest() *GetNSXTClustersBadRequest {
+	return &GetNSXTClustersBadRequest{}
 }
 
 /*
-GETNSXTClustersBadRequest describes a response with status code 400, with default header values.
+GetNSXTClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETNSXTClustersBadRequest struct {
+type GetNSXTClustersBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Nsxt clusters bad request response has a 2xx status code
-func (o *GETNSXTClustersBadRequest) IsSuccess() bool {
+func (o *GetNSXTClustersBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Nsxt clusters bad request response has a 3xx status code
-func (o *GETNSXTClustersBadRequest) IsRedirect() bool {
+func (o *GetNSXTClustersBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Nsxt clusters bad request response has a 4xx status code
-func (o *GETNSXTClustersBadRequest) IsClientError() bool {
+func (o *GetNSXTClustersBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Nsxt clusters bad request response has a 5xx status code
-func (o *GETNSXTClustersBadRequest) IsServerError() bool {
+func (o *GetNSXTClustersBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Nsxt clusters bad request response a status code equal to that given
-func (o *GETNSXTClustersBadRequest) IsCode(code int) bool {
+func (o *GetNSXTClustersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETNSXTClustersBadRequest) Error() string {
+func (o *GetNSXTClustersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters][%d] getNsxtClustersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETNSXTClustersBadRequest) String() string {
+func (o *GetNSXTClustersBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters][%d] getNsxtClustersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETNSXTClustersBadRequest) GetPayload() *models.Error {
+func (o *GetNSXTClustersBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETNSXTClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNSXTClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETNSXTClustersBadRequest) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGETNSXTClustersInternalServerError creates a GETNSXTClustersInternalServerError with default headers values
-func NewGETNSXTClustersInternalServerError() *GETNSXTClustersInternalServerError {
-	return &GETNSXTClustersInternalServerError{}
+// NewGetNSXTClustersInternalServerError creates a GetNSXTClustersInternalServerError with default headers values
+func NewGetNSXTClustersInternalServerError() *GetNSXTClustersInternalServerError {
+	return &GetNSXTClustersInternalServerError{}
 }
 
 /*
-GETNSXTClustersInternalServerError describes a response with status code 500, with default header values.
+GetNSXTClustersInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETNSXTClustersInternalServerError struct {
+type GetNSXTClustersInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Nsxt clusters internal server error response has a 2xx status code
-func (o *GETNSXTClustersInternalServerError) IsSuccess() bool {
+func (o *GetNSXTClustersInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Nsxt clusters internal server error response has a 3xx status code
-func (o *GETNSXTClustersInternalServerError) IsRedirect() bool {
+func (o *GetNSXTClustersInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Nsxt clusters internal server error response has a 4xx status code
-func (o *GETNSXTClustersInternalServerError) IsClientError() bool {
+func (o *GetNSXTClustersInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Nsxt clusters internal server error response has a 5xx status code
-func (o *GETNSXTClustersInternalServerError) IsServerError() bool {
+func (o *GetNSXTClustersInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get Nsxt clusters internal server error response a status code equal to that given
-func (o *GETNSXTClustersInternalServerError) IsCode(code int) bool {
+func (o *GetNSXTClustersInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETNSXTClustersInternalServerError) Error() string {
+func (o *GetNSXTClustersInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters][%d] getNsxtClustersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETNSXTClustersInternalServerError) String() string {
+func (o *GetNSXTClustersInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters][%d] getNsxtClustersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETNSXTClustersInternalServerError) GetPayload() *models.Error {
+func (o *GetNSXTClustersInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETNSXTClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNSXTClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

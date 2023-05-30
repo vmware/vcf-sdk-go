@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETIntegratedDomainsVROPSParams creates a new GETIntegratedDomainsVROPSParams object,
+// NewGetIntegratedDomainsVROPSParams creates a new GetIntegratedDomainsVROPSParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETIntegratedDomainsVROPSParams() *GETIntegratedDomainsVROPSParams {
-	return &GETIntegratedDomainsVROPSParams{
+func NewGetIntegratedDomainsVROPSParams() *GetIntegratedDomainsVROPSParams {
+	return &GetIntegratedDomainsVROPSParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETIntegratedDomainsVROPSParamsWithTimeout creates a new GETIntegratedDomainsVROPSParams object
+// NewGetIntegratedDomainsVROPSParamsWithTimeout creates a new GetIntegratedDomainsVROPSParams object
 // with the ability to set a timeout on a request.
-func NewGETIntegratedDomainsVROPSParamsWithTimeout(timeout time.Duration) *GETIntegratedDomainsVROPSParams {
-	return &GETIntegratedDomainsVROPSParams{
+func NewGetIntegratedDomainsVROPSParamsWithTimeout(timeout time.Duration) *GetIntegratedDomainsVROPSParams {
+	return &GetIntegratedDomainsVROPSParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETIntegratedDomainsVROPSParamsWithContext creates a new GETIntegratedDomainsVROPSParams object
+// NewGetIntegratedDomainsVROPSParamsWithContext creates a new GetIntegratedDomainsVROPSParams object
 // with the ability to set a context for a request.
-func NewGETIntegratedDomainsVROPSParamsWithContext(ctx context.Context) *GETIntegratedDomainsVROPSParams {
-	return &GETIntegratedDomainsVROPSParams{
+func NewGetIntegratedDomainsVROPSParamsWithContext(ctx context.Context) *GetIntegratedDomainsVROPSParams {
+	return &GetIntegratedDomainsVROPSParams{
 		Context: ctx,
 	}
 }
 
-// NewGETIntegratedDomainsVROPSParamsWithHTTPClient creates a new GETIntegratedDomainsVROPSParams object
+// NewGetIntegratedDomainsVROPSParamsWithHTTPClient creates a new GetIntegratedDomainsVROPSParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETIntegratedDomainsVROPSParamsWithHTTPClient(client *http.Client) *GETIntegratedDomainsVROPSParams {
-	return &GETIntegratedDomainsVROPSParams{
+func NewGetIntegratedDomainsVROPSParamsWithHTTPClient(client *http.Client) *GetIntegratedDomainsVROPSParams {
+	return &GetIntegratedDomainsVROPSParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETIntegratedDomainsVROPSParams contains all the parameters to send to the API endpoint
+GetIntegratedDomainsVROPSParams contains all the parameters to send to the API endpoint
 
 	for the get integrated domains Vrops operation.
 
 	Typically these are written to a http.Request.
 */
-type GETIntegratedDomainsVROPSParams struct {
+type GetIntegratedDomainsVROPSParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETIntegratedDomainsVROPSParams struct {
 // WithDefaults hydrates default values in the get integrated domains Vrops params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETIntegratedDomainsVROPSParams) WithDefaults() *GETIntegratedDomainsVROPSParams {
+func (o *GetIntegratedDomainsVROPSParams) WithDefaults() *GetIntegratedDomainsVROPSParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETIntegratedDomainsVROPSParams) WithDefaults() *GETIntegratedDomainsVR
 // SetDefaults hydrates default values in the get integrated domains Vrops params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETIntegratedDomainsVROPSParams) SetDefaults() {
+func (o *GetIntegratedDomainsVROPSParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get integrated domains Vrops params
-func (o *GETIntegratedDomainsVROPSParams) WithTimeout(timeout time.Duration) *GETIntegratedDomainsVROPSParams {
+func (o *GetIntegratedDomainsVROPSParams) WithTimeout(timeout time.Duration) *GetIntegratedDomainsVROPSParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get integrated domains Vrops params
-func (o *GETIntegratedDomainsVROPSParams) SetTimeout(timeout time.Duration) {
+func (o *GetIntegratedDomainsVROPSParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get integrated domains Vrops params
-func (o *GETIntegratedDomainsVROPSParams) WithContext(ctx context.Context) *GETIntegratedDomainsVROPSParams {
+func (o *GetIntegratedDomainsVROPSParams) WithContext(ctx context.Context) *GetIntegratedDomainsVROPSParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get integrated domains Vrops params
-func (o *GETIntegratedDomainsVROPSParams) SetContext(ctx context.Context) {
+func (o *GetIntegratedDomainsVROPSParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get integrated domains Vrops params
-func (o *GETIntegratedDomainsVROPSParams) WithHTTPClient(client *http.Client) *GETIntegratedDomainsVROPSParams {
+func (o *GetIntegratedDomainsVROPSParams) WithHTTPClient(client *http.Client) *GetIntegratedDomainsVROPSParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get integrated domains Vrops params
-func (o *GETIntegratedDomainsVROPSParams) SetHTTPClient(client *http.Client) {
+func (o *GetIntegratedDomainsVROPSParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETIntegratedDomainsVROPSParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetIntegratedDomainsVROPSParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

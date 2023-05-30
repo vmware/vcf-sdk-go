@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHealthCheckQueryReader is a Reader for the GETHealthCheckQuery structure.
-type GETHealthCheckQueryReader struct {
+// GetHealthCheckQueryReader is a Reader for the GetHealthCheckQuery structure.
+type GetHealthCheckQueryReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHealthCheckQueryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHealthCheckQueryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHealthCheckQueryOK()
+		result := NewGetHealthCheckQueryOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 202:
-		result := NewGETHealthCheckQueryAccepted()
+		result := NewGetHealthCheckQueryAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETHealthCheckQueryBadRequest()
+		result := NewGetHealthCheckQueryBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETHealthCheckQueryInternalServerError()
+		result := NewGetHealthCheckQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETHealthCheckQueryReader) ReadResponse(response runtime.ClientResponse
 	}
 }
 
-// NewGETHealthCheckQueryOK creates a GETHealthCheckQueryOK with default headers values
-func NewGETHealthCheckQueryOK() *GETHealthCheckQueryOK {
-	return &GETHealthCheckQueryOK{}
+// NewGetHealthCheckQueryOK creates a GetHealthCheckQueryOK with default headers values
+func NewGetHealthCheckQueryOK() *GetHealthCheckQueryOK {
+	return &GetHealthCheckQueryOK{}
 }
 
 /*
-GETHealthCheckQueryOK describes a response with status code 200, with default header values.
+GetHealthCheckQueryOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETHealthCheckQueryOK struct {
+type GetHealthCheckQueryOK struct {
 	Payload *models.HealthCheckQueryResult
 }
 
 // IsSuccess returns true when this get health check query o k response has a 2xx status code
-func (o *GETHealthCheckQueryOK) IsSuccess() bool {
+func (o *GetHealthCheckQueryOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get health check query o k response has a 3xx status code
-func (o *GETHealthCheckQueryOK) IsRedirect() bool {
+func (o *GetHealthCheckQueryOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check query o k response has a 4xx status code
-func (o *GETHealthCheckQueryOK) IsClientError() bool {
+func (o *GetHealthCheckQueryOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get health check query o k response has a 5xx status code
-func (o *GETHealthCheckQueryOK) IsServerError() bool {
+func (o *GetHealthCheckQueryOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get health check query o k response a status code equal to that given
-func (o *GETHealthCheckQueryOK) IsCode(code int) bool {
+func (o *GetHealthCheckQueryOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHealthCheckQueryOK) Error() string {
+func (o *GetHealthCheckQueryOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHealthCheckQueryOK) String() string {
+func (o *GetHealthCheckQueryOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHealthCheckQueryOK) GetPayload() *models.HealthCheckQueryResult {
+func (o *GetHealthCheckQueryOK) GetPayload() *models.HealthCheckQueryResult {
 	return o.Payload
 }
 
-func (o *GETHealthCheckQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HealthCheckQueryResult)
 
@@ -118,58 +118,58 @@ func (o *GETHealthCheckQueryOK) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewGETHealthCheckQueryAccepted creates a GETHealthCheckQueryAccepted with default headers values
-func NewGETHealthCheckQueryAccepted() *GETHealthCheckQueryAccepted {
-	return &GETHealthCheckQueryAccepted{}
+// NewGetHealthCheckQueryAccepted creates a GetHealthCheckQueryAccepted with default headers values
+func NewGetHealthCheckQueryAccepted() *GetHealthCheckQueryAccepted {
+	return &GetHealthCheckQueryAccepted{}
 }
 
 /*
-GETHealthCheckQueryAccepted describes a response with status code 202, with default header values.
+GetHealthCheckQueryAccepted describes a response with status code 202, with default header values.
 
 Accepted
 */
-type GETHealthCheckQueryAccepted struct {
+type GetHealthCheckQueryAccepted struct {
 	Payload *models.HealthCheckQueryResult
 }
 
 // IsSuccess returns true when this get health check query accepted response has a 2xx status code
-func (o *GETHealthCheckQueryAccepted) IsSuccess() bool {
+func (o *GetHealthCheckQueryAccepted) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get health check query accepted response has a 3xx status code
-func (o *GETHealthCheckQueryAccepted) IsRedirect() bool {
+func (o *GetHealthCheckQueryAccepted) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check query accepted response has a 4xx status code
-func (o *GETHealthCheckQueryAccepted) IsClientError() bool {
+func (o *GetHealthCheckQueryAccepted) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get health check query accepted response has a 5xx status code
-func (o *GETHealthCheckQueryAccepted) IsServerError() bool {
+func (o *GetHealthCheckQueryAccepted) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get health check query accepted response a status code equal to that given
-func (o *GETHealthCheckQueryAccepted) IsCode(code int) bool {
+func (o *GetHealthCheckQueryAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-func (o *GETHealthCheckQueryAccepted) Error() string {
+func (o *GetHealthCheckQueryAccepted) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryAccepted  %+v", 202, o.Payload)
 }
 
-func (o *GETHealthCheckQueryAccepted) String() string {
+func (o *GetHealthCheckQueryAccepted) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryAccepted  %+v", 202, o.Payload)
 }
 
-func (o *GETHealthCheckQueryAccepted) GetPayload() *models.HealthCheckQueryResult {
+func (o *GetHealthCheckQueryAccepted) GetPayload() *models.HealthCheckQueryResult {
 	return o.Payload
 }
 
-func (o *GETHealthCheckQueryAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckQueryAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HealthCheckQueryResult)
 
@@ -181,58 +181,58 @@ func (o *GETHealthCheckQueryAccepted) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewGETHealthCheckQueryBadRequest creates a GETHealthCheckQueryBadRequest with default headers values
-func NewGETHealthCheckQueryBadRequest() *GETHealthCheckQueryBadRequest {
-	return &GETHealthCheckQueryBadRequest{}
+// NewGetHealthCheckQueryBadRequest creates a GetHealthCheckQueryBadRequest with default headers values
+func NewGetHealthCheckQueryBadRequest() *GetHealthCheckQueryBadRequest {
+	return &GetHealthCheckQueryBadRequest{}
 }
 
 /*
-GETHealthCheckQueryBadRequest describes a response with status code 400, with default header values.
+GetHealthCheckQueryBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETHealthCheckQueryBadRequest struct {
+type GetHealthCheckQueryBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get health check query bad request response has a 2xx status code
-func (o *GETHealthCheckQueryBadRequest) IsSuccess() bool {
+func (o *GetHealthCheckQueryBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get health check query bad request response has a 3xx status code
-func (o *GETHealthCheckQueryBadRequest) IsRedirect() bool {
+func (o *GetHealthCheckQueryBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check query bad request response has a 4xx status code
-func (o *GETHealthCheckQueryBadRequest) IsClientError() bool {
+func (o *GetHealthCheckQueryBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get health check query bad request response has a 5xx status code
-func (o *GETHealthCheckQueryBadRequest) IsServerError() bool {
+func (o *GetHealthCheckQueryBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get health check query bad request response a status code equal to that given
-func (o *GETHealthCheckQueryBadRequest) IsCode(code int) bool {
+func (o *GetHealthCheckQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETHealthCheckQueryBadRequest) Error() string {
+func (o *GetHealthCheckQueryBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHealthCheckQueryBadRequest) String() string {
+func (o *GetHealthCheckQueryBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHealthCheckQueryBadRequest) GetPayload() *models.Error {
+func (o *GetHealthCheckQueryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHealthCheckQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -244,58 +244,58 @@ func (o *GETHealthCheckQueryBadRequest) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewGETHealthCheckQueryInternalServerError creates a GETHealthCheckQueryInternalServerError with default headers values
-func NewGETHealthCheckQueryInternalServerError() *GETHealthCheckQueryInternalServerError {
-	return &GETHealthCheckQueryInternalServerError{}
+// NewGetHealthCheckQueryInternalServerError creates a GetHealthCheckQueryInternalServerError with default headers values
+func NewGetHealthCheckQueryInternalServerError() *GetHealthCheckQueryInternalServerError {
+	return &GetHealthCheckQueryInternalServerError{}
 }
 
 /*
-GETHealthCheckQueryInternalServerError describes a response with status code 500, with default header values.
+GetHealthCheckQueryInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETHealthCheckQueryInternalServerError struct {
+type GetHealthCheckQueryInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get health check query internal server error response has a 2xx status code
-func (o *GETHealthCheckQueryInternalServerError) IsSuccess() bool {
+func (o *GetHealthCheckQueryInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get health check query internal server error response has a 3xx status code
-func (o *GETHealthCheckQueryInternalServerError) IsRedirect() bool {
+func (o *GetHealthCheckQueryInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get health check query internal server error response has a 4xx status code
-func (o *GETHealthCheckQueryInternalServerError) IsClientError() bool {
+func (o *GetHealthCheckQueryInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get health check query internal server error response has a 5xx status code
-func (o *GETHealthCheckQueryInternalServerError) IsServerError() bool {
+func (o *GetHealthCheckQueryInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get health check query internal server error response a status code equal to that given
-func (o *GETHealthCheckQueryInternalServerError) IsCode(code int) bool {
+func (o *GetHealthCheckQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETHealthCheckQueryInternalServerError) Error() string {
+func (o *GetHealthCheckQueryInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHealthCheckQueryInternalServerError) String() string {
+func (o *GetHealthCheckQueryInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/health-checks][%d] getHealthCheckQueryInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHealthCheckQueryInternalServerError) GetPayload() *models.Error {
+func (o *GetHealthCheckQueryInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHealthCheckQueryInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHealthCheckQueryInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

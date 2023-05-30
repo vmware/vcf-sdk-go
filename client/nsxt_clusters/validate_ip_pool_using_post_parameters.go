@@ -60,7 +60,7 @@ func NewValidateIPPoolUsingPOSTParamsWithHTTPClient(client *http.Client) *Valida
 /*
 ValidateIPPoolUsingPOSTParams contains all the parameters to send to the API endpoint
 
-	for the validate Ip pool using POST operation.
+	for the validate Ip pool using p o s t operation.
 
 	Typically these are written to a http.Request.
 */
@@ -77,7 +77,7 @@ type ValidateIPPoolUsingPOSTParams struct {
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the validate Ip pool using POST params (not the query body).
+// WithDefaults hydrates default values in the validate Ip pool using p o s t params (not the query body).
 //
 // All values with no default are reset to their zero value.
 func (o *ValidateIPPoolUsingPOSTParams) WithDefaults() *ValidateIPPoolUsingPOSTParams {
@@ -85,53 +85,53 @@ func (o *ValidateIPPoolUsingPOSTParams) WithDefaults() *ValidateIPPoolUsingPOSTP
 	return o
 }
 
-// SetDefaults hydrates default values in the validate Ip pool using POST params (not the query body).
+// SetDefaults hydrates default values in the validate Ip pool using p o s t params (not the query body).
 //
 // All values with no default are reset to their zero value.
 func (o *ValidateIPPoolUsingPOSTParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the validate Ip pool using POST params
+// WithTimeout adds the timeout to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) WithTimeout(timeout time.Duration) *ValidateIPPoolUsingPOSTParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the validate Ip pool using POST params
+// SetTimeout adds the timeout to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the validate Ip pool using POST params
+// WithContext adds the context to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) WithContext(ctx context.Context) *ValidateIPPoolUsingPOSTParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the validate Ip pool using POST params
+// SetContext adds the context to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the validate Ip pool using POST params
+// WithHTTPClient adds the HTTPClient to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) WithHTTPClient(client *http.Client) *ValidateIPPoolUsingPOSTParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the validate Ip pool using POST params
+// SetHTTPClient adds the HTTPClient to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithNSXTIPAddressPoolValidationSpec adds the nSXTIPAddressPoolValidationSpec to the validate Ip pool using POST params
+// WithNSXTIPAddressPoolValidationSpec adds the nSXTIPAddressPoolValidationSpec to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) WithNSXTIPAddressPoolValidationSpec(nSXTIPAddressPoolValidationSpec *models.NSXTIPAddressPoolValidationSpec) *ValidateIPPoolUsingPOSTParams {
 	o.SetNSXTIPAddressPoolValidationSpec(nSXTIPAddressPoolValidationSpec)
 	return o
 }
 
-// SetNSXTIPAddressPoolValidationSpec adds the nsxtIpAddressPoolValidationSpec to the validate Ip pool using POST params
+// SetNSXTIPAddressPoolValidationSpec adds the nsxtIpAddressPoolValidationSpec to the validate Ip pool using p o s t params
 func (o *ValidateIPPoolUsingPOSTParams) SetNSXTIPAddressPoolValidationSpec(nSXTIPAddressPoolValidationSpec *models.NSXTIPAddressPoolValidationSpec) {
 	o.NSXTIPAddressPoolValidationSpec = nSXTIPAddressPoolValidationSpec
 }

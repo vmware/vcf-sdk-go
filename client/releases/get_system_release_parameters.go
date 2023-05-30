@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETSystemReleaseParams creates a new GETSystemReleaseParams object,
+// NewGetSystemReleaseParams creates a new GetSystemReleaseParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETSystemReleaseParams() *GETSystemReleaseParams {
-	return &GETSystemReleaseParams{
+func NewGetSystemReleaseParams() *GetSystemReleaseParams {
+	return &GetSystemReleaseParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETSystemReleaseParamsWithTimeout creates a new GETSystemReleaseParams object
+// NewGetSystemReleaseParamsWithTimeout creates a new GetSystemReleaseParams object
 // with the ability to set a timeout on a request.
-func NewGETSystemReleaseParamsWithTimeout(timeout time.Duration) *GETSystemReleaseParams {
-	return &GETSystemReleaseParams{
+func NewGetSystemReleaseParamsWithTimeout(timeout time.Duration) *GetSystemReleaseParams {
+	return &GetSystemReleaseParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETSystemReleaseParamsWithContext creates a new GETSystemReleaseParams object
+// NewGetSystemReleaseParamsWithContext creates a new GetSystemReleaseParams object
 // with the ability to set a context for a request.
-func NewGETSystemReleaseParamsWithContext(ctx context.Context) *GETSystemReleaseParams {
-	return &GETSystemReleaseParams{
+func NewGetSystemReleaseParamsWithContext(ctx context.Context) *GetSystemReleaseParams {
+	return &GetSystemReleaseParams{
 		Context: ctx,
 	}
 }
 
-// NewGETSystemReleaseParamsWithHTTPClient creates a new GETSystemReleaseParams object
+// NewGetSystemReleaseParamsWithHTTPClient creates a new GetSystemReleaseParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETSystemReleaseParamsWithHTTPClient(client *http.Client) *GETSystemReleaseParams {
-	return &GETSystemReleaseParams{
+func NewGetSystemReleaseParamsWithHTTPClient(client *http.Client) *GetSystemReleaseParams {
+	return &GetSystemReleaseParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETSystemReleaseParams contains all the parameters to send to the API endpoint
+GetSystemReleaseParams contains all the parameters to send to the API endpoint
 
 	for the get system release operation.
 
 	Typically these are written to a http.Request.
 */
-type GETSystemReleaseParams struct {
+type GetSystemReleaseParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETSystemReleaseParams struct {
 // WithDefaults hydrates default values in the get system release params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSystemReleaseParams) WithDefaults() *GETSystemReleaseParams {
+func (o *GetSystemReleaseParams) WithDefaults() *GetSystemReleaseParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETSystemReleaseParams) WithDefaults() *GETSystemReleaseParams {
 // SetDefaults hydrates default values in the get system release params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSystemReleaseParams) SetDefaults() {
+func (o *GetSystemReleaseParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get system release params
-func (o *GETSystemReleaseParams) WithTimeout(timeout time.Duration) *GETSystemReleaseParams {
+func (o *GetSystemReleaseParams) WithTimeout(timeout time.Duration) *GetSystemReleaseParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get system release params
-func (o *GETSystemReleaseParams) SetTimeout(timeout time.Duration) {
+func (o *GetSystemReleaseParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get system release params
-func (o *GETSystemReleaseParams) WithContext(ctx context.Context) *GETSystemReleaseParams {
+func (o *GetSystemReleaseParams) WithContext(ctx context.Context) *GetSystemReleaseParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get system release params
-func (o *GETSystemReleaseParams) SetContext(ctx context.Context) {
+func (o *GetSystemReleaseParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get system release params
-func (o *GETSystemReleaseParams) WithHTTPClient(client *http.Client) *GETSystemReleaseParams {
+func (o *GetSystemReleaseParams) WithHTTPClient(client *http.Client) *GetSystemReleaseParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get system release params
-func (o *GETSystemReleaseParams) SetHTTPClient(client *http.Client) {
+func (o *GetSystemReleaseParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETSystemReleaseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetSystemReleaseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -58,7 +58,7 @@ func NewPerformPrechecksUsingPOSTParamsWithHTTPClient(client *http.Client) *Perf
 /*
 PerformPrechecksUsingPOSTParams contains all the parameters to send to the API endpoint
 
-	for the perform prechecks using POST operation.
+	for the perform prechecks using p o s t operation.
 
 	Typically these are written to a http.Request.
 */
@@ -75,7 +75,7 @@ type PerformPrechecksUsingPOSTParams struct {
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the perform prechecks using POST params (not the query body).
+// WithDefaults hydrates default values in the perform prechecks using p o s t params (not the query body).
 //
 // All values with no default are reset to their zero value.
 func (o *PerformPrechecksUsingPOSTParams) WithDefaults() *PerformPrechecksUsingPOSTParams {
@@ -83,53 +83,53 @@ func (o *PerformPrechecksUsingPOSTParams) WithDefaults() *PerformPrechecksUsingP
 	return o
 }
 
-// SetDefaults hydrates default values in the perform prechecks using POST params (not the query body).
+// SetDefaults hydrates default values in the perform prechecks using p o s t params (not the query body).
 //
 // All values with no default are reset to their zero value.
 func (o *PerformPrechecksUsingPOSTParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the perform prechecks using POST params
+// WithTimeout adds the timeout to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) WithTimeout(timeout time.Duration) *PerformPrechecksUsingPOSTParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the perform prechecks using POST params
+// SetTimeout adds the timeout to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the perform prechecks using POST params
+// WithContext adds the context to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) WithContext(ctx context.Context) *PerformPrechecksUsingPOSTParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the perform prechecks using POST params
+// SetContext adds the context to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the perform prechecks using POST params
+// WithHTTPClient adds the HTTPClient to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) WithHTTPClient(client *http.Client) *PerformPrechecksUsingPOSTParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the perform prechecks using POST params
+// SetHTTPClient adds the HTTPClient to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithUpgradeID adds the upgradeID to the perform prechecks using POST params
+// WithUpgradeID adds the upgradeID to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) WithUpgradeID(upgradeID string) *PerformPrechecksUsingPOSTParams {
 	o.SetUpgradeID(upgradeID)
 	return o
 }
 
-// SetUpgradeID adds the upgradeId to the perform prechecks using POST params
+// SetUpgradeID adds the upgradeId to the perform prechecks using p o s t params
 func (o *PerformPrechecksUsingPOSTParams) SetUpgradeID(upgradeID string) {
 	o.UpgradeID = upgradeID
 }

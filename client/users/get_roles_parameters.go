@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETRolesParams creates a new GETRolesParams object,
+// NewGetRolesParams creates a new GetRolesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETRolesParams() *GETRolesParams {
-	return &GETRolesParams{
+func NewGetRolesParams() *GetRolesParams {
+	return &GetRolesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETRolesParamsWithTimeout creates a new GETRolesParams object
+// NewGetRolesParamsWithTimeout creates a new GetRolesParams object
 // with the ability to set a timeout on a request.
-func NewGETRolesParamsWithTimeout(timeout time.Duration) *GETRolesParams {
-	return &GETRolesParams{
+func NewGetRolesParamsWithTimeout(timeout time.Duration) *GetRolesParams {
+	return &GetRolesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETRolesParamsWithContext creates a new GETRolesParams object
+// NewGetRolesParamsWithContext creates a new GetRolesParams object
 // with the ability to set a context for a request.
-func NewGETRolesParamsWithContext(ctx context.Context) *GETRolesParams {
-	return &GETRolesParams{
+func NewGetRolesParamsWithContext(ctx context.Context) *GetRolesParams {
+	return &GetRolesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETRolesParamsWithHTTPClient creates a new GETRolesParams object
+// NewGetRolesParamsWithHTTPClient creates a new GetRolesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETRolesParamsWithHTTPClient(client *http.Client) *GETRolesParams {
-	return &GETRolesParams{
+func NewGetRolesParamsWithHTTPClient(client *http.Client) *GetRolesParams {
+	return &GetRolesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETRolesParams contains all the parameters to send to the API endpoint
+GetRolesParams contains all the parameters to send to the API endpoint
 
 	for the get roles operation.
 
 	Typically these are written to a http.Request.
 */
-type GETRolesParams struct {
+type GetRolesParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETRolesParams struct {
 // WithDefaults hydrates default values in the get roles params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETRolesParams) WithDefaults() *GETRolesParams {
+func (o *GetRolesParams) WithDefaults() *GetRolesParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETRolesParams) WithDefaults() *GETRolesParams {
 // SetDefaults hydrates default values in the get roles params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETRolesParams) SetDefaults() {
+func (o *GetRolesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get roles params
-func (o *GETRolesParams) WithTimeout(timeout time.Duration) *GETRolesParams {
+func (o *GetRolesParams) WithTimeout(timeout time.Duration) *GetRolesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get roles params
-func (o *GETRolesParams) SetTimeout(timeout time.Duration) {
+func (o *GetRolesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get roles params
-func (o *GETRolesParams) WithContext(ctx context.Context) *GETRolesParams {
+func (o *GetRolesParams) WithContext(ctx context.Context) *GetRolesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get roles params
-func (o *GETRolesParams) SetContext(ctx context.Context) {
+func (o *GetRolesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get roles params
-func (o *GETRolesParams) WithHTTPClient(client *http.Client) *GETRolesParams {
+func (o *GetRolesParams) WithHTTPClient(client *http.Client) *GetRolesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get roles params
-func (o *GETRolesParams) SetHTTPClient(client *http.Client) {
+func (o *GetRolesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETRolesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetRolesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

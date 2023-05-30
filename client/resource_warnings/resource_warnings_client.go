@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETResourceWarning(params *GETResourceWarningParams, opts ...ClientOption) (*GETResourceWarningOK, error)
+	GetResourceWarning(params *GetResourceWarningParams, opts ...ClientOption) (*GetResourceWarningOK, error)
 
-	GETResourceWarnings(params *GETResourceWarningsParams, opts ...ClientOption) (*GETResourceWarningsOK, error)
+	GetResourceWarnings(params *GetResourceWarningsParams, opts ...ClientOption) (*GetResourceWarningsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETResourceWarning Gets a resource warning by ID
+GetResourceWarning gets a resource warning by ID
 */
-func (a *Client) GETResourceWarning(params *GETResourceWarningParams, opts ...ClientOption) (*GETResourceWarningOK, error) {
+func (a *Client) GetResourceWarning(params *GetResourceWarningParams, opts ...ClientOption) (*GetResourceWarningOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETResourceWarningParams()
+		params = NewGetResourceWarningParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getResourceWarning",
@@ -56,7 +56,7 @@ func (a *Client) GETResourceWarning(params *GETResourceWarningParams, opts ...Cl
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETResourceWarningReader{formats: a.formats},
+		Reader:             &GetResourceWarningReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETResourceWarning(params *GETResourceWarningParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETResourceWarningOK)
+	success, ok := result.(*GetResourceWarningOK)
 	if ok {
 		return success, nil
 	}
@@ -79,12 +79,12 @@ func (a *Client) GETResourceWarning(params *GETResourceWarningParams, opts ...Cl
 }
 
 /*
-GETResourceWarnings Gets resource warnings
+GetResourceWarnings gets resource warnings
 */
-func (a *Client) GETResourceWarnings(params *GETResourceWarningsParams, opts ...ClientOption) (*GETResourceWarningsOK, error) {
+func (a *Client) GetResourceWarnings(params *GetResourceWarningsParams, opts ...ClientOption) (*GetResourceWarningsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETResourceWarningsParams()
+		params = NewGetResourceWarningsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getResourceWarnings",
@@ -94,7 +94,7 @@ func (a *Client) GETResourceWarnings(params *GETResourceWarningsParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETResourceWarningsReader{formats: a.formats},
+		Reader:             &GetResourceWarningsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -106,7 +106,7 @@ func (a *Client) GETResourceWarnings(params *GETResourceWarningsParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETResourceWarningsOK)
+	success, ok := result.(*GetResourceWarningsOK)
 	if ok {
 		return success, nil
 	}

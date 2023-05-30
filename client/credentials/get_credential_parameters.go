@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCredentialParams creates a new GETCredentialParams object,
+// NewGetCredentialParams creates a new GetCredentialParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCredentialParams() *GETCredentialParams {
-	return &GETCredentialParams{
+func NewGetCredentialParams() *GetCredentialParams {
+	return &GetCredentialParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCredentialParamsWithTimeout creates a new GETCredentialParams object
+// NewGetCredentialParamsWithTimeout creates a new GetCredentialParams object
 // with the ability to set a timeout on a request.
-func NewGETCredentialParamsWithTimeout(timeout time.Duration) *GETCredentialParams {
-	return &GETCredentialParams{
+func NewGetCredentialParamsWithTimeout(timeout time.Duration) *GetCredentialParams {
+	return &GetCredentialParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCredentialParamsWithContext creates a new GETCredentialParams object
+// NewGetCredentialParamsWithContext creates a new GetCredentialParams object
 // with the ability to set a context for a request.
-func NewGETCredentialParamsWithContext(ctx context.Context) *GETCredentialParams {
-	return &GETCredentialParams{
+func NewGetCredentialParamsWithContext(ctx context.Context) *GetCredentialParams {
+	return &GetCredentialParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCredentialParamsWithHTTPClient creates a new GETCredentialParams object
+// NewGetCredentialParamsWithHTTPClient creates a new GetCredentialParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCredentialParamsWithHTTPClient(client *http.Client) *GETCredentialParams {
-	return &GETCredentialParams{
+func NewGetCredentialParamsWithHTTPClient(client *http.Client) *GetCredentialParams {
+	return &GetCredentialParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCredentialParams contains all the parameters to send to the API endpoint
+GetCredentialParams contains all the parameters to send to the API endpoint
 
 	for the get credential operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCredentialParams struct {
+type GetCredentialParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETCredentialParams struct {
 // WithDefaults hydrates default values in the get credential params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialParams) WithDefaults() *GETCredentialParams {
+func (o *GetCredentialParams) WithDefaults() *GetCredentialParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETCredentialParams) WithDefaults() *GETCredentialParams {
 // SetDefaults hydrates default values in the get credential params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialParams) SetDefaults() {
+func (o *GetCredentialParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get credential params
-func (o *GETCredentialParams) WithTimeout(timeout time.Duration) *GETCredentialParams {
+func (o *GetCredentialParams) WithTimeout(timeout time.Duration) *GetCredentialParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get credential params
-func (o *GETCredentialParams) SetTimeout(timeout time.Duration) {
+func (o *GetCredentialParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get credential params
-func (o *GETCredentialParams) WithContext(ctx context.Context) *GETCredentialParams {
+func (o *GetCredentialParams) WithContext(ctx context.Context) *GetCredentialParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get credential params
-func (o *GETCredentialParams) SetContext(ctx context.Context) {
+func (o *GetCredentialParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get credential params
-func (o *GETCredentialParams) WithHTTPClient(client *http.Client) *GETCredentialParams {
+func (o *GetCredentialParams) WithHTTPClient(client *http.Client) *GetCredentialParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get credential params
-func (o *GETCredentialParams) SetHTTPClient(client *http.Client) {
+func (o *GetCredentialParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get credential params
-func (o *GETCredentialParams) WithID(id string) *GETCredentialParams {
+func (o *GetCredentialParams) WithID(id string) *GetCredentialParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get credential params
-func (o *GETCredentialParams) SetID(id string) {
+func (o *GetCredentialParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCredentialParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCredentialParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

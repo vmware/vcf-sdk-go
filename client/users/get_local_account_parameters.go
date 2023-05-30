@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETLocalAccountParams creates a new GETLocalAccountParams object,
+// NewGetLocalAccountParams creates a new GetLocalAccountParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETLocalAccountParams() *GETLocalAccountParams {
-	return &GETLocalAccountParams{
+func NewGetLocalAccountParams() *GetLocalAccountParams {
+	return &GetLocalAccountParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETLocalAccountParamsWithTimeout creates a new GETLocalAccountParams object
+// NewGetLocalAccountParamsWithTimeout creates a new GetLocalAccountParams object
 // with the ability to set a timeout on a request.
-func NewGETLocalAccountParamsWithTimeout(timeout time.Duration) *GETLocalAccountParams {
-	return &GETLocalAccountParams{
+func NewGetLocalAccountParamsWithTimeout(timeout time.Duration) *GetLocalAccountParams {
+	return &GetLocalAccountParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETLocalAccountParamsWithContext creates a new GETLocalAccountParams object
+// NewGetLocalAccountParamsWithContext creates a new GetLocalAccountParams object
 // with the ability to set a context for a request.
-func NewGETLocalAccountParamsWithContext(ctx context.Context) *GETLocalAccountParams {
-	return &GETLocalAccountParams{
+func NewGetLocalAccountParamsWithContext(ctx context.Context) *GetLocalAccountParams {
+	return &GetLocalAccountParams{
 		Context: ctx,
 	}
 }
 
-// NewGETLocalAccountParamsWithHTTPClient creates a new GETLocalAccountParams object
+// NewGetLocalAccountParamsWithHTTPClient creates a new GetLocalAccountParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETLocalAccountParamsWithHTTPClient(client *http.Client) *GETLocalAccountParams {
-	return &GETLocalAccountParams{
+func NewGetLocalAccountParamsWithHTTPClient(client *http.Client) *GetLocalAccountParams {
+	return &GetLocalAccountParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETLocalAccountParams contains all the parameters to send to the API endpoint
+GetLocalAccountParams contains all the parameters to send to the API endpoint
 
 	for the get local account operation.
 
 	Typically these are written to a http.Request.
 */
-type GETLocalAccountParams struct {
+type GetLocalAccountParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETLocalAccountParams struct {
 // WithDefaults hydrates default values in the get local account params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETLocalAccountParams) WithDefaults() *GETLocalAccountParams {
+func (o *GetLocalAccountParams) WithDefaults() *GetLocalAccountParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETLocalAccountParams) WithDefaults() *GETLocalAccountParams {
 // SetDefaults hydrates default values in the get local account params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETLocalAccountParams) SetDefaults() {
+func (o *GetLocalAccountParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get local account params
-func (o *GETLocalAccountParams) WithTimeout(timeout time.Duration) *GETLocalAccountParams {
+func (o *GetLocalAccountParams) WithTimeout(timeout time.Duration) *GetLocalAccountParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get local account params
-func (o *GETLocalAccountParams) SetTimeout(timeout time.Duration) {
+func (o *GetLocalAccountParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get local account params
-func (o *GETLocalAccountParams) WithContext(ctx context.Context) *GETLocalAccountParams {
+func (o *GetLocalAccountParams) WithContext(ctx context.Context) *GetLocalAccountParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get local account params
-func (o *GETLocalAccountParams) SetContext(ctx context.Context) {
+func (o *GetLocalAccountParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get local account params
-func (o *GETLocalAccountParams) WithHTTPClient(client *http.Client) *GETLocalAccountParams {
+func (o *GetLocalAccountParams) WithHTTPClient(client *http.Client) *GetLocalAccountParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get local account params
-func (o *GETLocalAccountParams) SetHTTPClient(client *http.Client) {
+func (o *GetLocalAccountParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETLocalAccountParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetLocalAccountParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

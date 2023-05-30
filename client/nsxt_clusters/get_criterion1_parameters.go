@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCriterion1Params creates a new GETCriterion1Params object,
+// NewGetCriterion1Params creates a new GetCriterion1Params object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCriterion1Params() *GETCriterion1Params {
-	return &GETCriterion1Params{
+func NewGetCriterion1Params() *GetCriterion1Params {
+	return &GetCriterion1Params{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCriterion1ParamsWithTimeout creates a new GETCriterion1Params object
+// NewGetCriterion1ParamsWithTimeout creates a new GetCriterion1Params object
 // with the ability to set a timeout on a request.
-func NewGETCriterion1ParamsWithTimeout(timeout time.Duration) *GETCriterion1Params {
-	return &GETCriterion1Params{
+func NewGetCriterion1ParamsWithTimeout(timeout time.Duration) *GetCriterion1Params {
+	return &GetCriterion1Params{
 		timeout: timeout,
 	}
 }
 
-// NewGETCriterion1ParamsWithContext creates a new GETCriterion1Params object
+// NewGetCriterion1ParamsWithContext creates a new GetCriterion1Params object
 // with the ability to set a context for a request.
-func NewGETCriterion1ParamsWithContext(ctx context.Context) *GETCriterion1Params {
-	return &GETCriterion1Params{
+func NewGetCriterion1ParamsWithContext(ctx context.Context) *GetCriterion1Params {
+	return &GetCriterion1Params{
 		Context: ctx,
 	}
 }
 
-// NewGETCriterion1ParamsWithHTTPClient creates a new GETCriterion1Params object
+// NewGetCriterion1ParamsWithHTTPClient creates a new GetCriterion1Params object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCriterion1ParamsWithHTTPClient(client *http.Client) *GETCriterion1Params {
-	return &GETCriterion1Params{
+func NewGetCriterion1ParamsWithHTTPClient(client *http.Client) *GetCriterion1Params {
+	return &GetCriterion1Params{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCriterion1Params contains all the parameters to send to the API endpoint
+GetCriterion1Params contains all the parameters to send to the API endpoint
 
 	for the get criterion 1 operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCriterion1Params struct {
+type GetCriterion1Params struct {
 
 	/* Name.
 
@@ -78,7 +78,7 @@ type GETCriterion1Params struct {
 // WithDefaults hydrates default values in the get criterion 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCriterion1Params) WithDefaults() *GETCriterion1Params {
+func (o *GetCriterion1Params) WithDefaults() *GetCriterion1Params {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETCriterion1Params) WithDefaults() *GETCriterion1Params {
 // SetDefaults hydrates default values in the get criterion 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCriterion1Params) SetDefaults() {
+func (o *GetCriterion1Params) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get criterion 1 params
-func (o *GETCriterion1Params) WithTimeout(timeout time.Duration) *GETCriterion1Params {
+func (o *GetCriterion1Params) WithTimeout(timeout time.Duration) *GetCriterion1Params {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get criterion 1 params
-func (o *GETCriterion1Params) SetTimeout(timeout time.Duration) {
+func (o *GetCriterion1Params) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get criterion 1 params
-func (o *GETCriterion1Params) WithContext(ctx context.Context) *GETCriterion1Params {
+func (o *GetCriterion1Params) WithContext(ctx context.Context) *GetCriterion1Params {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get criterion 1 params
-func (o *GETCriterion1Params) SetContext(ctx context.Context) {
+func (o *GetCriterion1Params) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get criterion 1 params
-func (o *GETCriterion1Params) WithHTTPClient(client *http.Client) *GETCriterion1Params {
+func (o *GetCriterion1Params) WithHTTPClient(client *http.Client) *GetCriterion1Params {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get criterion 1 params
-func (o *GETCriterion1Params) SetHTTPClient(client *http.Client) {
+func (o *GetCriterion1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithName adds the name to the get criterion 1 params
-func (o *GETCriterion1Params) WithName(name string) *GETCriterion1Params {
+func (o *GetCriterion1Params) WithName(name string) *GetCriterion1Params {
 	o.SetName(name)
 	return o
 }
 
 // SetName adds the name to the get criterion 1 params
-func (o *GETCriterion1Params) SetName(name string) {
+func (o *GetCriterion1Params) SetName(name string) {
 	o.Name = name
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCriterion1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCriterion1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

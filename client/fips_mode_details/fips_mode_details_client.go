@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETSecurityConfig(params *GETSecurityConfigParams, opts ...ClientOption) (*GETSecurityConfigOK, error)
+	GetSecurityConfig(params *GetSecurityConfigParams, opts ...ClientOption) (*GetSecurityConfigOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETSecurityConfig Gets v c f security configuration
+GetSecurityConfig gets v c f security configuration
 
 Retrieve VCF security FIPS mode.
 */
-func (a *Client) GETSecurityConfig(params *GETSecurityConfigParams, opts ...ClientOption) (*GETSecurityConfigOK, error) {
+func (a *Client) GetSecurityConfig(params *GetSecurityConfigParams, opts ...ClientOption) (*GetSecurityConfigOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSecurityConfigParams()
+		params = NewGetSecurityConfigParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSecurityConfig",
@@ -56,7 +56,7 @@ func (a *Client) GETSecurityConfig(params *GETSecurityConfigParams, opts ...Clie
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSecurityConfigReader{formats: a.formats},
+		Reader:             &GetSecurityConfigReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETSecurityConfig(params *GETSecurityConfigParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSecurityConfigOK)
+	success, ok := result.(*GetSecurityConfigOK)
 	if ok {
 		return success, nil
 	}

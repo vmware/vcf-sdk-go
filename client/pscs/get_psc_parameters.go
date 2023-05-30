@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETPscParams creates a new GETPscParams object,
+// NewGetPscParams creates a new GetPscParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETPscParams() *GETPscParams {
-	return &GETPscParams{
+func NewGetPscParams() *GetPscParams {
+	return &GetPscParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETPscParamsWithTimeout creates a new GETPscParams object
+// NewGetPscParamsWithTimeout creates a new GetPscParams object
 // with the ability to set a timeout on a request.
-func NewGETPscParamsWithTimeout(timeout time.Duration) *GETPscParams {
-	return &GETPscParams{
+func NewGetPscParamsWithTimeout(timeout time.Duration) *GetPscParams {
+	return &GetPscParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETPscParamsWithContext creates a new GETPscParams object
+// NewGetPscParamsWithContext creates a new GetPscParams object
 // with the ability to set a context for a request.
-func NewGETPscParamsWithContext(ctx context.Context) *GETPscParams {
-	return &GETPscParams{
+func NewGetPscParamsWithContext(ctx context.Context) *GetPscParams {
+	return &GetPscParams{
 		Context: ctx,
 	}
 }
 
-// NewGETPscParamsWithHTTPClient creates a new GETPscParams object
+// NewGetPscParamsWithHTTPClient creates a new GetPscParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETPscParamsWithHTTPClient(client *http.Client) *GETPscParams {
-	return &GETPscParams{
+func NewGetPscParamsWithHTTPClient(client *http.Client) *GetPscParams {
+	return &GetPscParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETPscParams contains all the parameters to send to the API endpoint
+GetPscParams contains all the parameters to send to the API endpoint
 
 	for the get psc operation.
 
 	Typically these are written to a http.Request.
 */
-type GETPscParams struct {
+type GetPscParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETPscParams struct {
 // WithDefaults hydrates default values in the get psc params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPscParams) WithDefaults() *GETPscParams {
+func (o *GetPscParams) WithDefaults() *GetPscParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETPscParams) WithDefaults() *GETPscParams {
 // SetDefaults hydrates default values in the get psc params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPscParams) SetDefaults() {
+func (o *GetPscParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get psc params
-func (o *GETPscParams) WithTimeout(timeout time.Duration) *GETPscParams {
+func (o *GetPscParams) WithTimeout(timeout time.Duration) *GetPscParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get psc params
-func (o *GETPscParams) SetTimeout(timeout time.Duration) {
+func (o *GetPscParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get psc params
-func (o *GETPscParams) WithContext(ctx context.Context) *GETPscParams {
+func (o *GetPscParams) WithContext(ctx context.Context) *GetPscParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get psc params
-func (o *GETPscParams) SetContext(ctx context.Context) {
+func (o *GetPscParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get psc params
-func (o *GETPscParams) WithHTTPClient(client *http.Client) *GETPscParams {
+func (o *GetPscParams) WithHTTPClient(client *http.Client) *GetPscParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get psc params
-func (o *GETPscParams) SetHTTPClient(client *http.Client) {
+func (o *GetPscParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get psc params
-func (o *GETPscParams) WithID(id string) *GETPscParams {
+func (o *GetPscParams) WithID(id string) *GetPscParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get psc params
-func (o *GETPscParams) SetID(id string) {
+func (o *GetPscParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETPscParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetPscParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

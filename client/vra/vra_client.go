@@ -33,18 +33,18 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETVras(params *GETVrasParams, opts ...ClientOption) (*GETVrasOK, error)
+	GetVras(params *GetVrasParams, opts ...ClientOption) (*GetVrasOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETVras Gets all existing v realize automation instances
+GetVras gets all existing v realize automation instances
 */
-func (a *Client) GETVras(params *GETVrasParams, opts ...ClientOption) (*GETVrasOK, error) {
+func (a *Client) GetVras(params *GetVrasParams, opts ...ClientOption) (*GetVrasOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVrasParams()
+		params = NewGetVrasParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVras",
@@ -54,7 +54,7 @@ func (a *Client) GETVras(params *GETVrasParams, opts ...ClientOption) (*GETVrasO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVrasReader{formats: a.formats},
+		Reader:             &GetVrasReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -66,7 +66,7 @@ func (a *Client) GETVras(params *GETVrasParams, opts ...ClientOption) (*GETVrasO
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVrasOK)
+	success, ok := result.(*GetVrasOK)
 	if ok {
 		return success, nil
 	}

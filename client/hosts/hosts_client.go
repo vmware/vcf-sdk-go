@@ -41,25 +41,25 @@ type ClientService interface {
 
 	DecommissionHosts(params *DecommissionHostsParams, opts ...ClientOption) (*DecommissionHostsOK, *DecommissionHostsAccepted, error)
 
-	GETCriteria(params *GETCriteriaParams, opts ...ClientOption) (*GETCriteriaOK, error)
+	GetCriteria(params *GetCriteriaParams, opts ...ClientOption) (*GetCriteriaOK, error)
 
-	GETCriterion(params *GETCriterionParams, opts ...ClientOption) (*GETCriterionOK, error)
+	GetCriterion(params *GetCriterionParams, opts ...ClientOption) (*GetCriterionOK, error)
 
-	GETHost(params *GETHostParams, opts ...ClientOption) (*GETHostOK, error)
+	GetHost(params *GetHostParams, opts ...ClientOption) (*GetHostOK, error)
 
-	GETHostQueryResponse1(params *GETHostQueryResponse1Params, opts ...ClientOption) (*GETHostQueryResponse1OK, error)
+	GetHostQueryResponse1(params *GetHostQueryResponse1Params, opts ...ClientOption) (*GetHostQueryResponse1OK, error)
 
-	GETHostTagManagerURL(params *GETHostTagManagerURLParams, opts ...ClientOption) (*GETHostTagManagerURLOK, error)
+	GetHostTagManagerURL(params *GetHostTagManagerURLParams, opts ...ClientOption) (*GetHostTagManagerURLOK, error)
 
-	GETHosts(params *GETHostsParams, opts ...ClientOption) (*GETHostsOK, error)
+	GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHostsOK, error)
 
-	GETTagsAssignedToHost(params *GETTagsAssignedToHostParams, opts ...ClientOption) (*GETTagsAssignedToHostOK, error)
+	GetTagsAssignedToHost(params *GetTagsAssignedToHostParams, opts ...ClientOption) (*GetTagsAssignedToHostOK, error)
 
-	GETTagsAssignedToHosts(params *GETTagsAssignedToHostsParams, opts ...ClientOption) (*GETTagsAssignedToHostsOK, error)
+	GetTagsAssignedToHosts(params *GetTagsAssignedToHostsParams, opts ...ClientOption) (*GetTagsAssignedToHostsOK, error)
 
-	GETValidationForCommissionHosts(params *GETValidationForCommissionHostsParams, opts ...ClientOption) (*GETValidationForCommissionHostsOK, error)
+	GetValidationForCommissionHosts(params *GetValidationForCommissionHostsParams, opts ...ClientOption) (*GetValidationForCommissionHostsOK, error)
 
-	POSTQuery(params *POSTQueryParams, opts ...ClientOption) (*POSTQueryOK, error)
+	PostQuery(params *PostQueryParams, opts ...ClientOption) (*PostQueryOK, error)
 
 	RemoveTagsFromHost(params *RemoveTagsFromHostParams, opts ...ClientOption) (*RemoveTagsFromHostOK, error)
 
@@ -223,12 +223,12 @@ func (a *Client) DecommissionHosts(params *DecommissionHostsParams, opts ...Clie
 }
 
 /*
-GETCriteria Gets all criteria
+GetCriteria gets all criteria
 */
-func (a *Client) GETCriteria(params *GETCriteriaParams, opts ...ClientOption) (*GETCriteriaOK, error) {
+func (a *Client) GetCriteria(params *GetCriteriaParams, opts ...ClientOption) (*GetCriteriaOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCriteriaParams()
+		params = NewGetCriteriaParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCriteria",
@@ -238,7 +238,7 @@ func (a *Client) GETCriteria(params *GETCriteriaParams, opts ...ClientOption) (*
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCriteriaReader{formats: a.formats},
+		Reader:             &GetCriteriaReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -250,7 +250,7 @@ func (a *Client) GETCriteria(params *GETCriteriaParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCriteriaOK)
+	success, ok := result.(*GetCriteriaOK)
 	if ok {
 		return success, nil
 	}
@@ -261,12 +261,12 @@ func (a *Client) GETCriteria(params *GETCriteriaParams, opts ...ClientOption) (*
 }
 
 /*
-GETCriterion Gets a criterion
+GetCriterion gets a criterion
 */
-func (a *Client) GETCriterion(params *GETCriterionParams, opts ...ClientOption) (*GETCriterionOK, error) {
+func (a *Client) GetCriterion(params *GetCriterionParams, opts ...ClientOption) (*GetCriterionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCriterionParams()
+		params = NewGetCriterionParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCriterion",
@@ -276,7 +276,7 @@ func (a *Client) GETCriterion(params *GETCriterionParams, opts ...ClientOption) 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCriterionReader{formats: a.formats},
+		Reader:             &GetCriterionReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -288,7 +288,7 @@ func (a *Client) GETCriterion(params *GETCriterionParams, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCriterionOK)
+	success, ok := result.(*GetCriterionOK)
 	if ok {
 		return success, nil
 	}
@@ -299,12 +299,12 @@ func (a *Client) GETCriterion(params *GETCriterionParams, opts ...ClientOption) 
 }
 
 /*
-GETHost Gets a host
+GetHost gets a host
 */
-func (a *Client) GETHost(params *GETHostParams, opts ...ClientOption) (*GETHostOK, error) {
+func (a *Client) GetHost(params *GetHostParams, opts ...ClientOption) (*GetHostOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostParams()
+		params = NewGetHostParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHost",
@@ -314,7 +314,7 @@ func (a *Client) GETHost(params *GETHostParams, opts ...ClientOption) (*GETHostO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostReader{formats: a.formats},
+		Reader:             &GetHostReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -326,7 +326,7 @@ func (a *Client) GETHost(params *GETHostParams, opts ...ClientOption) (*GETHostO
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostOK)
+	success, ok := result.(*GetHostOK)
 	if ok {
 		return success, nil
 	}
@@ -337,12 +337,12 @@ func (a *Client) GETHost(params *GETHostParams, opts ...ClientOption) (*GETHostO
 }
 
 /*
-GETHostQueryResponse1 Gets query response
+GetHostQueryResponse1 gets query response
 */
-func (a *Client) GETHostQueryResponse1(params *GETHostQueryResponse1Params, opts ...ClientOption) (*GETHostQueryResponse1OK, error) {
+func (a *Client) GetHostQueryResponse1(params *GetHostQueryResponse1Params, opts ...ClientOption) (*GetHostQueryResponse1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostQueryResponse1Params()
+		params = NewGetHostQueryResponse1Params()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHostQueryResponse_1",
@@ -352,7 +352,7 @@ func (a *Client) GETHostQueryResponse1(params *GETHostQueryResponse1Params, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostQueryResponse1Reader{formats: a.formats},
+		Reader:             &GetHostQueryResponse1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -364,7 +364,7 @@ func (a *Client) GETHostQueryResponse1(params *GETHostQueryResponse1Params, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostQueryResponse1OK)
+	success, ok := result.(*GetHostQueryResponse1OK)
 	if ok {
 		return success, nil
 	}
@@ -375,12 +375,12 @@ func (a *Client) GETHostQueryResponse1(params *GETHostQueryResponse1Params, opts
 }
 
 /*
-GETHostTagManagerURL Gets host tag manager Url
+GetHostTagManagerURL gets host tag manager Url
 */
-func (a *Client) GETHostTagManagerURL(params *GETHostTagManagerURLParams, opts ...ClientOption) (*GETHostTagManagerURLOK, error) {
+func (a *Client) GetHostTagManagerURL(params *GetHostTagManagerURLParams, opts ...ClientOption) (*GetHostTagManagerURLOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostTagManagerURLParams()
+		params = NewGetHostTagManagerURLParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHostTagManagerUrl",
@@ -390,7 +390,7 @@ func (a *Client) GETHostTagManagerURL(params *GETHostTagManagerURLParams, opts .
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostTagManagerURLReader{formats: a.formats},
+		Reader:             &GetHostTagManagerURLReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -402,7 +402,7 @@ func (a *Client) GETHostTagManagerURL(params *GETHostTagManagerURLParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostTagManagerURLOK)
+	success, ok := result.(*GetHostTagManagerURLOK)
 	if ok {
 		return success, nil
 	}
@@ -413,12 +413,12 @@ func (a *Client) GETHostTagManagerURL(params *GETHostTagManagerURLParams, opts .
 }
 
 /*
-GETHosts Gets the hosts
+GetHosts gets the hosts
 */
-func (a *Client) GETHosts(params *GETHostsParams, opts ...ClientOption) (*GETHostsOK, error) {
+func (a *Client) GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostsParams()
+		params = NewGetHostsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHosts",
@@ -428,7 +428,7 @@ func (a *Client) GETHosts(params *GETHostsParams, opts ...ClientOption) (*GETHos
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostsReader{formats: a.formats},
+		Reader:             &GetHostsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -440,7 +440,7 @@ func (a *Client) GETHosts(params *GETHostsParams, opts ...ClientOption) (*GETHos
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostsOK)
+	success, ok := result.(*GetHostsOK)
 	if ok {
 		return success, nil
 	}
@@ -451,12 +451,12 @@ func (a *Client) GETHosts(params *GETHostsParams, opts ...ClientOption) (*GETHos
 }
 
 /*
-GETTagsAssignedToHost Gets tags assigned to host
+GetTagsAssignedToHost gets tags assigned to host
 */
-func (a *Client) GETTagsAssignedToHost(params *GETTagsAssignedToHostParams, opts ...ClientOption) (*GETTagsAssignedToHostOK, error) {
+func (a *Client) GetTagsAssignedToHost(params *GetTagsAssignedToHostParams, opts ...ClientOption) (*GetTagsAssignedToHostOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETTagsAssignedToHostParams()
+		params = NewGetTagsAssignedToHostParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getTagsAssignedToHost",
@@ -466,7 +466,7 @@ func (a *Client) GETTagsAssignedToHost(params *GETTagsAssignedToHostParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETTagsAssignedToHostReader{formats: a.formats},
+		Reader:             &GetTagsAssignedToHostReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -478,7 +478,7 @@ func (a *Client) GETTagsAssignedToHost(params *GETTagsAssignedToHostParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETTagsAssignedToHostOK)
+	success, ok := result.(*GetTagsAssignedToHostOK)
 	if ok {
 		return success, nil
 	}
@@ -489,12 +489,12 @@ func (a *Client) GETTagsAssignedToHost(params *GETTagsAssignedToHostParams, opts
 }
 
 /*
-GETTagsAssignedToHosts Gets tags assigned to hosts
+GetTagsAssignedToHosts gets tags assigned to hosts
 */
-func (a *Client) GETTagsAssignedToHosts(params *GETTagsAssignedToHostsParams, opts ...ClientOption) (*GETTagsAssignedToHostsOK, error) {
+func (a *Client) GetTagsAssignedToHosts(params *GetTagsAssignedToHostsParams, opts ...ClientOption) (*GetTagsAssignedToHostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETTagsAssignedToHostsParams()
+		params = NewGetTagsAssignedToHostsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getTagsAssignedToHosts",
@@ -504,7 +504,7 @@ func (a *Client) GETTagsAssignedToHosts(params *GETTagsAssignedToHostsParams, op
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETTagsAssignedToHostsReader{formats: a.formats},
+		Reader:             &GetTagsAssignedToHostsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -516,7 +516,7 @@ func (a *Client) GETTagsAssignedToHosts(params *GETTagsAssignedToHostsParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETTagsAssignedToHostsOK)
+	success, ok := result.(*GetTagsAssignedToHostsOK)
 	if ok {
 		return success, nil
 	}
@@ -527,12 +527,12 @@ func (a *Client) GETTagsAssignedToHosts(params *GETTagsAssignedToHostsParams, op
 }
 
 /*
-GETValidationForCommissionHosts Gets the status of the validation of the input specification to commission the hosts
+GetValidationForCommissionHosts gets the status of the validation of the input specification to commission the hosts
 */
-func (a *Client) GETValidationForCommissionHosts(params *GETValidationForCommissionHostsParams, opts ...ClientOption) (*GETValidationForCommissionHostsOK, error) {
+func (a *Client) GetValidationForCommissionHosts(params *GetValidationForCommissionHostsParams, opts ...ClientOption) (*GetValidationForCommissionHostsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationForCommissionHostsParams()
+		params = NewGetValidationForCommissionHostsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationForCommissionHosts",
@@ -542,7 +542,7 @@ func (a *Client) GETValidationForCommissionHosts(params *GETValidationForCommiss
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationForCommissionHostsReader{formats: a.formats},
+		Reader:             &GetValidationForCommissionHostsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -554,7 +554,7 @@ func (a *Client) GETValidationForCommissionHosts(params *GETValidationForCommiss
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationForCommissionHostsOK)
+	success, ok := result.(*GetValidationForCommissionHostsOK)
 	if ok {
 		return success, nil
 	}
@@ -565,12 +565,12 @@ func (a *Client) GETValidationForCommissionHosts(params *GETValidationForCommiss
 }
 
 /*
-POSTQuery Posts a query
+PostQuery posts a query
 */
-func (a *Client) POSTQuery(params *POSTQueryParams, opts ...ClientOption) (*POSTQueryOK, error) {
+func (a *Client) PostQuery(params *PostQueryParams, opts ...ClientOption) (*PostQueryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPOSTQueryParams()
+		params = NewPostQueryParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "postQuery",
@@ -580,7 +580,7 @@ func (a *Client) POSTQuery(params *POSTQueryParams, opts ...ClientOption) (*POST
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &POSTQueryReader{formats: a.formats},
+		Reader:             &PostQueryReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -592,7 +592,7 @@ func (a *Client) POSTQuery(params *POSTQueryParams, opts ...ClientOption) (*POST
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*POSTQueryOK)
+	success, ok := result.(*PostQueryOK)
 	if ok {
 		return success, nil
 	}

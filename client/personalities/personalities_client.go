@@ -35,9 +35,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeletePersonality(params *DeletePersonalityParams, opts ...ClientOption) (*DeletePersonalityOK, error)
 
-	GETPersonalities(params *GETPersonalitiesParams, opts ...ClientOption) (*GETPersonalitiesOK, error)
+	GetPersonalities(params *GetPersonalitiesParams, opts ...ClientOption) (*GetPersonalitiesOK, error)
 
-	GETPersonality(params *GETPersonalityParams, opts ...ClientOption) (*GETPersonalityOK, error)
+	GetPersonality(params *GetPersonalityParams, opts ...ClientOption) (*GetPersonalityOK, error)
 
 	UploadPersonality(params *UploadPersonalityParams, opts ...ClientOption) (*UploadPersonalityOK, *UploadPersonalityAccepted, error)
 
@@ -85,14 +85,14 @@ func (a *Client) DeletePersonality(params *DeletePersonalityParams, opts ...Clie
 }
 
 /*
-GETPersonalities Gets the personalities
+GetPersonalities gets the personalities
 
 Get the Personalities which are available via depot access.
 */
-func (a *Client) GETPersonalities(params *GETPersonalitiesParams, opts ...ClientOption) (*GETPersonalitiesOK, error) {
+func (a *Client) GetPersonalities(params *GetPersonalitiesParams, opts ...ClientOption) (*GetPersonalitiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETPersonalitiesParams()
+		params = NewGetPersonalitiesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getPersonalities",
@@ -102,7 +102,7 @@ func (a *Client) GETPersonalities(params *GETPersonalitiesParams, opts ...Client
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETPersonalitiesReader{formats: a.formats},
+		Reader:             &GetPersonalitiesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -114,7 +114,7 @@ func (a *Client) GETPersonalities(params *GETPersonalitiesParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETPersonalitiesOK)
+	success, ok := result.(*GetPersonalitiesOK)
 	if ok {
 		return success, nil
 	}
@@ -125,14 +125,14 @@ func (a *Client) GETPersonalities(params *GETPersonalitiesParams, opts ...Client
 }
 
 /*
-GETPersonality Gets personalities by Id
+GetPersonality gets personalities by Id
 
 Get the Personality for id
 */
-func (a *Client) GETPersonality(params *GETPersonalityParams, opts ...ClientOption) (*GETPersonalityOK, error) {
+func (a *Client) GetPersonality(params *GetPersonalityParams, opts ...ClientOption) (*GetPersonalityOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETPersonalityParams()
+		params = NewGetPersonalityParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getPersonality",
@@ -142,7 +142,7 @@ func (a *Client) GETPersonality(params *GETPersonalityParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETPersonalityReader{formats: a.formats},
+		Reader:             &GetPersonalityReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -154,7 +154,7 @@ func (a *Client) GETPersonality(params *GETPersonalityParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETPersonalityOK)
+	success, ok := result.(*GetPersonalityOK)
 	if ok {
 		return success, nil
 	}

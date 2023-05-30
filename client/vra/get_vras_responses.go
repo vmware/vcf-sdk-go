@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVrasReader is a Reader for the GETVras structure.
-type GETVrasReader struct {
+// GetVrasReader is a Reader for the GetVras structure.
+type GetVrasReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVrasReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVrasReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVrasOK()
+		result := NewGetVrasOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETVrasReader) ReadResponse(response runtime.ClientResponse, consumer r
 	}
 }
 
-// NewGETVrasOK creates a GETVrasOK with default headers values
-func NewGETVrasOK() *GETVrasOK {
-	return &GETVrasOK{}
+// NewGetVrasOK creates a GetVrasOK with default headers values
+func NewGetVrasOK() *GetVrasOK {
+	return &GetVrasOK{}
 }
 
 /*
-GETVrasOK describes a response with status code 200, with default header values.
+GetVrasOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETVrasOK struct {
+type GetVrasOK struct {
 	Payload *models.PageOfVRA
 }
 
 // IsSuccess returns true when this get vras o k response has a 2xx status code
-func (o *GETVrasOK) IsSuccess() bool {
+func (o *GetVrasOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vras o k response has a 3xx status code
-func (o *GETVrasOK) IsRedirect() bool {
+func (o *GetVrasOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vras o k response has a 4xx status code
-func (o *GETVrasOK) IsClientError() bool {
+func (o *GetVrasOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vras o k response has a 5xx status code
-func (o *GETVrasOK) IsServerError() bool {
+func (o *GetVrasOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vras o k response a status code equal to that given
-func (o *GETVrasOK) IsCode(code int) bool {
+func (o *GetVrasOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVrasOK) Error() string {
+func (o *GetVrasOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vras][%d] getVrasOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVrasOK) String() string {
+func (o *GetVrasOK) String() string {
 	return fmt.Sprintf("[GET /v1/vras][%d] getVrasOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVrasOK) GetPayload() *models.PageOfVRA {
+func (o *GetVrasOK) GetPayload() *models.PageOfVRA {
 	return o.Payload
 }
 
-func (o *GETVrasOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVrasOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfVRA)
 

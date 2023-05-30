@@ -37,11 +37,11 @@ type ClientService interface {
 
 	DeleteLicenseKey(params *DeleteLicenseKeyParams, opts ...ClientOption) (*DeleteLicenseKeyOK, *DeleteLicenseKeyNoContent, error)
 
-	GETLicenseKey(params *GETLicenseKeyParams, opts ...ClientOption) (*GETLicenseKeyOK, error)
+	GetLicenseKey(params *GetLicenseKeyParams, opts ...ClientOption) (*GetLicenseKeyOK, error)
 
-	GETLicenseKeys(params *GETLicenseKeysParams, opts ...ClientOption) (*GETLicenseKeysOK, error)
+	GetLicenseKeys(params *GetLicenseKeysParams, opts ...ClientOption) (*GetLicenseKeysOK, error)
 
-	GETLicensingInfo(params *GETLicensingInfoParams, opts ...ClientOption) (*GETLicensingInfoOK, error)
+	GetLicensingInfo(params *GetLicensingInfoParams, opts ...ClientOption) (*GetLicensingInfoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -125,12 +125,12 @@ func (a *Client) DeleteLicenseKey(params *DeleteLicenseKeyParams, opts ...Client
 }
 
 /*
-GETLicenseKey Gets a license key by key
+GetLicenseKey gets a license key by key
 */
-func (a *Client) GETLicenseKey(params *GETLicenseKeyParams, opts ...ClientOption) (*GETLicenseKeyOK, error) {
+func (a *Client) GetLicenseKey(params *GetLicenseKeyParams, opts ...ClientOption) (*GetLicenseKeyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETLicenseKeyParams()
+		params = NewGetLicenseKeyParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getLicenseKey",
@@ -140,7 +140,7 @@ func (a *Client) GETLicenseKey(params *GETLicenseKeyParams, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETLicenseKeyReader{formats: a.formats},
+		Reader:             &GetLicenseKeyReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -152,7 +152,7 @@ func (a *Client) GETLicenseKey(params *GETLicenseKeyParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETLicenseKeyOK)
+	success, ok := result.(*GetLicenseKeyOK)
 	if ok {
 		return success, nil
 	}
@@ -163,12 +163,12 @@ func (a *Client) GETLicenseKey(params *GETLicenseKeyParams, opts ...ClientOption
 }
 
 /*
-GETLicenseKeys Gets the license keys
+GetLicenseKeys gets the license keys
 */
-func (a *Client) GETLicenseKeys(params *GETLicenseKeysParams, opts ...ClientOption) (*GETLicenseKeysOK, error) {
+func (a *Client) GetLicenseKeys(params *GetLicenseKeysParams, opts ...ClientOption) (*GetLicenseKeysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETLicenseKeysParams()
+		params = NewGetLicenseKeysParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getLicenseKeys",
@@ -178,7 +178,7 @@ func (a *Client) GETLicenseKeys(params *GETLicenseKeysParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETLicenseKeysReader{formats: a.formats},
+		Reader:             &GetLicenseKeysReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -190,7 +190,7 @@ func (a *Client) GETLicenseKeys(params *GETLicenseKeysParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETLicenseKeysOK)
+	success, ok := result.(*GetLicenseKeysOK)
 	if ok {
 		return success, nil
 	}
@@ -201,12 +201,12 @@ func (a *Client) GETLicenseKeys(params *GETLicenseKeysParams, opts ...ClientOpti
 }
 
 /*
-GETLicensingInfo Gets the licensing information
+GetLicensingInfo gets the licensing information
 */
-func (a *Client) GETLicensingInfo(params *GETLicensingInfoParams, opts ...ClientOption) (*GETLicensingInfoOK, error) {
+func (a *Client) GetLicensingInfo(params *GetLicensingInfoParams, opts ...ClientOption) (*GetLicensingInfoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETLicensingInfoParams()
+		params = NewGetLicensingInfoParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getLicensingInfo",
@@ -216,7 +216,7 @@ func (a *Client) GETLicensingInfo(params *GETLicensingInfoParams, opts ...Client
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETLicensingInfoReader{formats: a.formats},
+		Reader:             &GetLicensingInfoReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -228,7 +228,7 @@ func (a *Client) GETLicensingInfo(params *GETLicensingInfoParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETLicensingInfoOK)
+	success, ok := result.(*GetLicensingInfoOK)
 	if ok {
 		return success, nil
 	}

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUsersParams creates a new GETUsersParams object,
+// NewGetUsersParams creates a new GetUsersParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUsersParams() *GETUsersParams {
-	return &GETUsersParams{
+func NewGetUsersParams() *GetUsersParams {
+	return &GetUsersParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUsersParamsWithTimeout creates a new GETUsersParams object
+// NewGetUsersParamsWithTimeout creates a new GetUsersParams object
 // with the ability to set a timeout on a request.
-func NewGETUsersParamsWithTimeout(timeout time.Duration) *GETUsersParams {
-	return &GETUsersParams{
+func NewGetUsersParamsWithTimeout(timeout time.Duration) *GetUsersParams {
+	return &GetUsersParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUsersParamsWithContext creates a new GETUsersParams object
+// NewGetUsersParamsWithContext creates a new GetUsersParams object
 // with the ability to set a context for a request.
-func NewGETUsersParamsWithContext(ctx context.Context) *GETUsersParams {
-	return &GETUsersParams{
+func NewGetUsersParamsWithContext(ctx context.Context) *GetUsersParams {
+	return &GetUsersParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUsersParamsWithHTTPClient creates a new GETUsersParams object
+// NewGetUsersParamsWithHTTPClient creates a new GetUsersParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUsersParamsWithHTTPClient(client *http.Client) *GETUsersParams {
-	return &GETUsersParams{
+func NewGetUsersParamsWithHTTPClient(client *http.Client) *GetUsersParams {
+	return &GetUsersParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUsersParams contains all the parameters to send to the API endpoint
+GetUsersParams contains all the parameters to send to the API endpoint
 
 	for the get users operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUsersParams struct {
+type GetUsersParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETUsersParams struct {
 // WithDefaults hydrates default values in the get users params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUsersParams) WithDefaults() *GETUsersParams {
+func (o *GetUsersParams) WithDefaults() *GetUsersParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETUsersParams) WithDefaults() *GETUsersParams {
 // SetDefaults hydrates default values in the get users params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUsersParams) SetDefaults() {
+func (o *GetUsersParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get users params
-func (o *GETUsersParams) WithTimeout(timeout time.Duration) *GETUsersParams {
+func (o *GetUsersParams) WithTimeout(timeout time.Duration) *GetUsersParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get users params
-func (o *GETUsersParams) SetTimeout(timeout time.Duration) {
+func (o *GetUsersParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get users params
-func (o *GETUsersParams) WithContext(ctx context.Context) *GETUsersParams {
+func (o *GetUsersParams) WithContext(ctx context.Context) *GetUsersParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get users params
-func (o *GETUsersParams) SetContext(ctx context.Context) {
+func (o *GetUsersParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get users params
-func (o *GETUsersParams) WithHTTPClient(client *http.Client) *GETUsersParams {
+func (o *GetUsersParams) WithHTTPClient(client *http.Client) *GetUsersParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get users params
-func (o *GETUsersParams) SetHTTPClient(client *http.Client) {
+func (o *GetUsersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUsersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUsersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

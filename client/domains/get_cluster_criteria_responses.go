@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETClusterCriteriaReader is a Reader for the GETClusterCriteria structure.
-type GETClusterCriteriaReader struct {
+// GetClusterCriteriaReader is a Reader for the GetClusterCriteria structure.
+type GetClusterCriteriaReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETClusterCriteriaReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetClusterCriteriaReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETClusterCriteriaOK()
+		result := NewGetClusterCriteriaOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETClusterCriteriaReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewGETClusterCriteriaOK creates a GETClusterCriteriaOK with default headers values
-func NewGETClusterCriteriaOK() *GETClusterCriteriaOK {
-	return &GETClusterCriteriaOK{}
+// NewGetClusterCriteriaOK creates a GetClusterCriteriaOK with default headers values
+func NewGetClusterCriteriaOK() *GetClusterCriteriaOK {
+	return &GetClusterCriteriaOK{}
 }
 
 /*
-GETClusterCriteriaOK describes a response with status code 200, with default header values.
+GetClusterCriteriaOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETClusterCriteriaOK struct {
+type GetClusterCriteriaOK struct {
 	Payload *models.PageOfClusterCriterion
 }
 
 // IsSuccess returns true when this get cluster criteria o k response has a 2xx status code
-func (o *GETClusterCriteriaOK) IsSuccess() bool {
+func (o *GetClusterCriteriaOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get cluster criteria o k response has a 3xx status code
-func (o *GETClusterCriteriaOK) IsRedirect() bool {
+func (o *GetClusterCriteriaOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster criteria o k response has a 4xx status code
-func (o *GETClusterCriteriaOK) IsClientError() bool {
+func (o *GetClusterCriteriaOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get cluster criteria o k response has a 5xx status code
-func (o *GETClusterCriteriaOK) IsServerError() bool {
+func (o *GetClusterCriteriaOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster criteria o k response a status code equal to that given
-func (o *GETClusterCriteriaOK) IsCode(code int) bool {
+func (o *GetClusterCriteriaOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETClusterCriteriaOK) Error() string {
+func (o *GetClusterCriteriaOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria][%d] getClusterCriteriaOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterCriteriaOK) String() string {
+func (o *GetClusterCriteriaOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria][%d] getClusterCriteriaOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterCriteriaOK) GetPayload() *models.PageOfClusterCriterion {
+func (o *GetClusterCriteriaOK) GetPayload() *models.PageOfClusterCriterion {
 	return o.Payload
 }
 
-func (o *GETClusterCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfClusterCriterion)
 

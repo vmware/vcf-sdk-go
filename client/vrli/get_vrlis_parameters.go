@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVrlisParams creates a new GETVrlisParams object,
+// NewGetVrlisParams creates a new GetVrlisParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVrlisParams() *GETVrlisParams {
-	return &GETVrlisParams{
+func NewGetVrlisParams() *GetVrlisParams {
+	return &GetVrlisParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVrlisParamsWithTimeout creates a new GETVrlisParams object
+// NewGetVrlisParamsWithTimeout creates a new GetVrlisParams object
 // with the ability to set a timeout on a request.
-func NewGETVrlisParamsWithTimeout(timeout time.Duration) *GETVrlisParams {
-	return &GETVrlisParams{
+func NewGetVrlisParamsWithTimeout(timeout time.Duration) *GetVrlisParams {
+	return &GetVrlisParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVrlisParamsWithContext creates a new GETVrlisParams object
+// NewGetVrlisParamsWithContext creates a new GetVrlisParams object
 // with the ability to set a context for a request.
-func NewGETVrlisParamsWithContext(ctx context.Context) *GETVrlisParams {
-	return &GETVrlisParams{
+func NewGetVrlisParamsWithContext(ctx context.Context) *GetVrlisParams {
+	return &GetVrlisParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVrlisParamsWithHTTPClient creates a new GETVrlisParams object
+// NewGetVrlisParamsWithHTTPClient creates a new GetVrlisParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVrlisParamsWithHTTPClient(client *http.Client) *GETVrlisParams {
-	return &GETVrlisParams{
+func NewGetVrlisParamsWithHTTPClient(client *http.Client) *GetVrlisParams {
+	return &GetVrlisParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVrlisParams contains all the parameters to send to the API endpoint
+GetVrlisParams contains all the parameters to send to the API endpoint
 
 	for the get vrlis operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVrlisParams struct {
+type GetVrlisParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETVrlisParams struct {
 // WithDefaults hydrates default values in the get vrlis params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVrlisParams) WithDefaults() *GETVrlisParams {
+func (o *GetVrlisParams) WithDefaults() *GetVrlisParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETVrlisParams) WithDefaults() *GETVrlisParams {
 // SetDefaults hydrates default values in the get vrlis params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVrlisParams) SetDefaults() {
+func (o *GetVrlisParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vrlis params
-func (o *GETVrlisParams) WithTimeout(timeout time.Duration) *GETVrlisParams {
+func (o *GetVrlisParams) WithTimeout(timeout time.Duration) *GetVrlisParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vrlis params
-func (o *GETVrlisParams) SetTimeout(timeout time.Duration) {
+func (o *GetVrlisParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vrlis params
-func (o *GETVrlisParams) WithContext(ctx context.Context) *GETVrlisParams {
+func (o *GetVrlisParams) WithContext(ctx context.Context) *GetVrlisParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vrlis params
-func (o *GETVrlisParams) SetContext(ctx context.Context) {
+func (o *GetVrlisParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vrlis params
-func (o *GETVrlisParams) WithHTTPClient(client *http.Client) *GETVrlisParams {
+func (o *GetVrlisParams) WithHTTPClient(client *http.Client) *GetVrlisParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vrlis params
-func (o *GETVrlisParams) SetHTTPClient(client *http.Client) {
+func (o *GetVrlisParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVrlisParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVrlisParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

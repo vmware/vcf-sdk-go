@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETTagsAssignedToClustersReader is a Reader for the GETTagsAssignedToClusters structure.
-type GETTagsAssignedToClustersReader struct {
+// GetTagsAssignedToClustersReader is a Reader for the GetTagsAssignedToClusters structure.
+type GetTagsAssignedToClustersReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETTagsAssignedToClustersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetTagsAssignedToClustersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETTagsAssignedToClustersOK()
+		result := NewGetTagsAssignedToClustersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETTagsAssignedToClustersBadRequest()
+		result := NewGetTagsAssignedToClustersBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETTagsAssignedToClustersInternalServerError()
+		result := NewGetTagsAssignedToClustersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETTagsAssignedToClustersReader) ReadResponse(response runtime.ClientRe
 	}
 }
 
-// NewGETTagsAssignedToClustersOK creates a GETTagsAssignedToClustersOK with default headers values
-func NewGETTagsAssignedToClustersOK() *GETTagsAssignedToClustersOK {
-	return &GETTagsAssignedToClustersOK{}
+// NewGetTagsAssignedToClustersOK creates a GetTagsAssignedToClustersOK with default headers values
+func NewGetTagsAssignedToClustersOK() *GetTagsAssignedToClustersOK {
+	return &GetTagsAssignedToClustersOK{}
 }
 
 /*
-GETTagsAssignedToClustersOK describes a response with status code 200, with default header values.
+GetTagsAssignedToClustersOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETTagsAssignedToClustersOK struct {
+type GetTagsAssignedToClustersOK struct {
 	Payload *models.PageOfTagsForResource
 }
 
 // IsSuccess returns true when this get tags assigned to clusters o k response has a 2xx status code
-func (o *GETTagsAssignedToClustersOK) IsSuccess() bool {
+func (o *GetTagsAssignedToClustersOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get tags assigned to clusters o k response has a 3xx status code
-func (o *GETTagsAssignedToClustersOK) IsRedirect() bool {
+func (o *GetTagsAssignedToClustersOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get tags assigned to clusters o k response has a 4xx status code
-func (o *GETTagsAssignedToClustersOK) IsClientError() bool {
+func (o *GetTagsAssignedToClustersOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get tags assigned to clusters o k response has a 5xx status code
-func (o *GETTagsAssignedToClustersOK) IsServerError() bool {
+func (o *GetTagsAssignedToClustersOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get tags assigned to clusters o k response a status code equal to that given
-func (o *GETTagsAssignedToClustersOK) IsCode(code int) bool {
+func (o *GetTagsAssignedToClustersOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETTagsAssignedToClustersOK) Error() string {
+func (o *GetTagsAssignedToClustersOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETTagsAssignedToClustersOK) String() string {
+func (o *GetTagsAssignedToClustersOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETTagsAssignedToClustersOK) GetPayload() *models.PageOfTagsForResource {
+func (o *GetTagsAssignedToClustersOK) GetPayload() *models.PageOfTagsForResource {
 	return o.Payload
 }
 
-func (o *GETTagsAssignedToClustersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTagsAssignedToClustersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfTagsForResource)
 
@@ -112,58 +112,58 @@ func (o *GETTagsAssignedToClustersOK) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewGETTagsAssignedToClustersBadRequest creates a GETTagsAssignedToClustersBadRequest with default headers values
-func NewGETTagsAssignedToClustersBadRequest() *GETTagsAssignedToClustersBadRequest {
-	return &GETTagsAssignedToClustersBadRequest{}
+// NewGetTagsAssignedToClustersBadRequest creates a GetTagsAssignedToClustersBadRequest with default headers values
+func NewGetTagsAssignedToClustersBadRequest() *GetTagsAssignedToClustersBadRequest {
+	return &GetTagsAssignedToClustersBadRequest{}
 }
 
 /*
-GETTagsAssignedToClustersBadRequest describes a response with status code 400, with default header values.
+GetTagsAssignedToClustersBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETTagsAssignedToClustersBadRequest struct {
+type GetTagsAssignedToClustersBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get tags assigned to clusters bad request response has a 2xx status code
-func (o *GETTagsAssignedToClustersBadRequest) IsSuccess() bool {
+func (o *GetTagsAssignedToClustersBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get tags assigned to clusters bad request response has a 3xx status code
-func (o *GETTagsAssignedToClustersBadRequest) IsRedirect() bool {
+func (o *GetTagsAssignedToClustersBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get tags assigned to clusters bad request response has a 4xx status code
-func (o *GETTagsAssignedToClustersBadRequest) IsClientError() bool {
+func (o *GetTagsAssignedToClustersBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get tags assigned to clusters bad request response has a 5xx status code
-func (o *GETTagsAssignedToClustersBadRequest) IsServerError() bool {
+func (o *GetTagsAssignedToClustersBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get tags assigned to clusters bad request response a status code equal to that given
-func (o *GETTagsAssignedToClustersBadRequest) IsCode(code int) bool {
+func (o *GetTagsAssignedToClustersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETTagsAssignedToClustersBadRequest) Error() string {
+func (o *GetTagsAssignedToClustersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETTagsAssignedToClustersBadRequest) String() string {
+func (o *GetTagsAssignedToClustersBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETTagsAssignedToClustersBadRequest) GetPayload() *models.Error {
+func (o *GetTagsAssignedToClustersBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETTagsAssignedToClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTagsAssignedToClustersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETTagsAssignedToClustersBadRequest) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETTagsAssignedToClustersInternalServerError creates a GETTagsAssignedToClustersInternalServerError with default headers values
-func NewGETTagsAssignedToClustersInternalServerError() *GETTagsAssignedToClustersInternalServerError {
-	return &GETTagsAssignedToClustersInternalServerError{}
+// NewGetTagsAssignedToClustersInternalServerError creates a GetTagsAssignedToClustersInternalServerError with default headers values
+func NewGetTagsAssignedToClustersInternalServerError() *GetTagsAssignedToClustersInternalServerError {
+	return &GetTagsAssignedToClustersInternalServerError{}
 }
 
 /*
-GETTagsAssignedToClustersInternalServerError describes a response with status code 500, with default header values.
+GetTagsAssignedToClustersInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETTagsAssignedToClustersInternalServerError struct {
+type GetTagsAssignedToClustersInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get tags assigned to clusters internal server error response has a 2xx status code
-func (o *GETTagsAssignedToClustersInternalServerError) IsSuccess() bool {
+func (o *GetTagsAssignedToClustersInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get tags assigned to clusters internal server error response has a 3xx status code
-func (o *GETTagsAssignedToClustersInternalServerError) IsRedirect() bool {
+func (o *GetTagsAssignedToClustersInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get tags assigned to clusters internal server error response has a 4xx status code
-func (o *GETTagsAssignedToClustersInternalServerError) IsClientError() bool {
+func (o *GetTagsAssignedToClustersInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get tags assigned to clusters internal server error response has a 5xx status code
-func (o *GETTagsAssignedToClustersInternalServerError) IsServerError() bool {
+func (o *GetTagsAssignedToClustersInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get tags assigned to clusters internal server error response a status code equal to that given
-func (o *GETTagsAssignedToClustersInternalServerError) IsCode(code int) bool {
+func (o *GetTagsAssignedToClustersInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETTagsAssignedToClustersInternalServerError) Error() string {
+func (o *GetTagsAssignedToClustersInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETTagsAssignedToClustersInternalServerError) String() string {
+func (o *GetTagsAssignedToClustersInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETTagsAssignedToClustersInternalServerError) GetPayload() *models.Error {
+func (o *GetTagsAssignedToClustersInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETTagsAssignedToClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTagsAssignedToClustersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

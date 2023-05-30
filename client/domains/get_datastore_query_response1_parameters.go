@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDatastoreQueryResponse1Params creates a new GETDatastoreQueryResponse1Params object,
+// NewGetDatastoreQueryResponse1Params creates a new GetDatastoreQueryResponse1Params object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDatastoreQueryResponse1Params() *GETDatastoreQueryResponse1Params {
-	return &GETDatastoreQueryResponse1Params{
+func NewGetDatastoreQueryResponse1Params() *GetDatastoreQueryResponse1Params {
+	return &GetDatastoreQueryResponse1Params{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDatastoreQueryResponse1ParamsWithTimeout creates a new GETDatastoreQueryResponse1Params object
+// NewGetDatastoreQueryResponse1ParamsWithTimeout creates a new GetDatastoreQueryResponse1Params object
 // with the ability to set a timeout on a request.
-func NewGETDatastoreQueryResponse1ParamsWithTimeout(timeout time.Duration) *GETDatastoreQueryResponse1Params {
-	return &GETDatastoreQueryResponse1Params{
+func NewGetDatastoreQueryResponse1ParamsWithTimeout(timeout time.Duration) *GetDatastoreQueryResponse1Params {
+	return &GetDatastoreQueryResponse1Params{
 		timeout: timeout,
 	}
 }
 
-// NewGETDatastoreQueryResponse1ParamsWithContext creates a new GETDatastoreQueryResponse1Params object
+// NewGetDatastoreQueryResponse1ParamsWithContext creates a new GetDatastoreQueryResponse1Params object
 // with the ability to set a context for a request.
-func NewGETDatastoreQueryResponse1ParamsWithContext(ctx context.Context) *GETDatastoreQueryResponse1Params {
-	return &GETDatastoreQueryResponse1Params{
+func NewGetDatastoreQueryResponse1ParamsWithContext(ctx context.Context) *GetDatastoreQueryResponse1Params {
+	return &GetDatastoreQueryResponse1Params{
 		Context: ctx,
 	}
 }
 
-// NewGETDatastoreQueryResponse1ParamsWithHTTPClient creates a new GETDatastoreQueryResponse1Params object
+// NewGetDatastoreQueryResponse1ParamsWithHTTPClient creates a new GetDatastoreQueryResponse1Params object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDatastoreQueryResponse1ParamsWithHTTPClient(client *http.Client) *GETDatastoreQueryResponse1Params {
-	return &GETDatastoreQueryResponse1Params{
+func NewGetDatastoreQueryResponse1ParamsWithHTTPClient(client *http.Client) *GetDatastoreQueryResponse1Params {
+	return &GetDatastoreQueryResponse1Params{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDatastoreQueryResponse1Params contains all the parameters to send to the API endpoint
+GetDatastoreQueryResponse1Params contains all the parameters to send to the API endpoint
 
 	for the get datastore query response 1 operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDatastoreQueryResponse1Params struct {
+type GetDatastoreQueryResponse1Params struct {
 
 	/* DomainID.
 
@@ -84,7 +84,7 @@ type GETDatastoreQueryResponse1Params struct {
 // WithDefaults hydrates default values in the get datastore query response 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoreQueryResponse1Params) WithDefaults() *GETDatastoreQueryResponse1Params {
+func (o *GetDatastoreQueryResponse1Params) WithDefaults() *GetDatastoreQueryResponse1Params {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETDatastoreQueryResponse1Params) WithDefaults() *GETDatastoreQueryResp
 // SetDefaults hydrates default values in the get datastore query response 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoreQueryResponse1Params) SetDefaults() {
+func (o *GetDatastoreQueryResponse1Params) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) WithTimeout(timeout time.Duration) *GETDatastoreQueryResponse1Params {
+func (o *GetDatastoreQueryResponse1Params) WithTimeout(timeout time.Duration) *GetDatastoreQueryResponse1Params {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) SetTimeout(timeout time.Duration) {
+func (o *GetDatastoreQueryResponse1Params) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) WithContext(ctx context.Context) *GETDatastoreQueryResponse1Params {
+func (o *GetDatastoreQueryResponse1Params) WithContext(ctx context.Context) *GetDatastoreQueryResponse1Params {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) SetContext(ctx context.Context) {
+func (o *GetDatastoreQueryResponse1Params) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) WithHTTPClient(client *http.Client) *GETDatastoreQueryResponse1Params {
+func (o *GetDatastoreQueryResponse1Params) WithHTTPClient(client *http.Client) *GetDatastoreQueryResponse1Params {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) SetHTTPClient(client *http.Client) {
+func (o *GetDatastoreQueryResponse1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) WithDomainID(domainID string) *GETDatastoreQueryResponse1Params {
+func (o *GetDatastoreQueryResponse1Params) WithDomainID(domainID string) *GetDatastoreQueryResponse1Params {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) SetDomainID(domainID string) {
+func (o *GetDatastoreQueryResponse1Params) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WithQueryID adds the queryID to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) WithQueryID(queryID string) *GETDatastoreQueryResponse1Params {
+func (o *GetDatastoreQueryResponse1Params) WithQueryID(queryID string) *GetDatastoreQueryResponse1Params {
 	o.SetQueryID(queryID)
 	return o
 }
 
 // SetQueryID adds the queryId to the get datastore query response 1 params
-func (o *GETDatastoreQueryResponse1Params) SetQueryID(queryID string) {
+func (o *GetDatastoreQueryResponse1Params) SetQueryID(queryID string) {
 	o.QueryID = queryID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDatastoreQueryResponse1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDatastoreQueryResponse1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

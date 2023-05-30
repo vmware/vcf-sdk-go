@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETVcfService(params *GETVcfServiceParams, opts ...ClientOption) (*GETVcfServiceOK, error)
+	GetVcfService(params *GetVcfServiceParams, opts ...ClientOption) (*GetVcfServiceOK, error)
 
-	GETVcfServices(params *GETVcfServicesParams, opts ...ClientOption) (*GETVcfServicesOK, error)
+	GetVcfServices(params *GetVcfServicesParams, opts ...ClientOption) (*GetVcfServicesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETVcfService Gets a vcf service
+GetVcfService gets a vcf service
 */
-func (a *Client) GETVcfService(params *GETVcfServiceParams, opts ...ClientOption) (*GETVcfServiceOK, error) {
+func (a *Client) GetVcfService(params *GetVcfServiceParams, opts ...ClientOption) (*GetVcfServiceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVcfServiceParams()
+		params = NewGetVcfServiceParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVcfService",
@@ -56,7 +56,7 @@ func (a *Client) GETVcfService(params *GETVcfServiceParams, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVcfServiceReader{formats: a.formats},
+		Reader:             &GetVcfServiceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETVcfService(params *GETVcfServiceParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVcfServiceOK)
+	success, ok := result.(*GetVcfServiceOK)
 	if ok {
 		return success, nil
 	}
@@ -79,12 +79,12 @@ func (a *Client) GETVcfService(params *GETVcfServiceParams, opts ...ClientOption
 }
 
 /*
-GETVcfServices Gets the vcf services
+GetVcfServices gets the vcf services
 */
-func (a *Client) GETVcfServices(params *GETVcfServicesParams, opts ...ClientOption) (*GETVcfServicesOK, error) {
+func (a *Client) GetVcfServices(params *GetVcfServicesParams, opts ...ClientOption) (*GetVcfServicesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVcfServicesParams()
+		params = NewGetVcfServicesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVcfServices",
@@ -94,7 +94,7 @@ func (a *Client) GETVcfServices(params *GETVcfServicesParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVcfServicesReader{formats: a.formats},
+		Reader:             &GetVcfServicesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -106,7 +106,7 @@ func (a *Client) GETVcfServices(params *GETVcfServicesParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVcfServicesOK)
+	success, ok := result.(*GetVcfServicesOK)
 	if ok {
 		return success, nil
 	}

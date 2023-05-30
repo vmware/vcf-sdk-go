@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETBundlesForSkipUpgradeUsingGETParams creates a new GETBundlesForSkipUpgradeUsingGETParams object,
+// NewGetBundlesForSkipUpgradeUsingGETParams creates a new GetBundlesForSkipUpgradeUsingGETParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBundlesForSkipUpgradeUsingGETParams() *GETBundlesForSkipUpgradeUsingGETParams {
-	return &GETBundlesForSkipUpgradeUsingGETParams{
+func NewGetBundlesForSkipUpgradeUsingGETParams() *GetBundlesForSkipUpgradeUsingGETParams {
+	return &GetBundlesForSkipUpgradeUsingGETParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBundlesForSkipUpgradeUsingGETParamsWithTimeout creates a new GETBundlesForSkipUpgradeUsingGETParams object
+// NewGetBundlesForSkipUpgradeUsingGETParamsWithTimeout creates a new GetBundlesForSkipUpgradeUsingGETParams object
 // with the ability to set a timeout on a request.
-func NewGETBundlesForSkipUpgradeUsingGETParamsWithTimeout(timeout time.Duration) *GETBundlesForSkipUpgradeUsingGETParams {
-	return &GETBundlesForSkipUpgradeUsingGETParams{
+func NewGetBundlesForSkipUpgradeUsingGETParamsWithTimeout(timeout time.Duration) *GetBundlesForSkipUpgradeUsingGETParams {
+	return &GetBundlesForSkipUpgradeUsingGETParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBundlesForSkipUpgradeUsingGETParamsWithContext creates a new GETBundlesForSkipUpgradeUsingGETParams object
+// NewGetBundlesForSkipUpgradeUsingGETParamsWithContext creates a new GetBundlesForSkipUpgradeUsingGETParams object
 // with the ability to set a context for a request.
-func NewGETBundlesForSkipUpgradeUsingGETParamsWithContext(ctx context.Context) *GETBundlesForSkipUpgradeUsingGETParams {
-	return &GETBundlesForSkipUpgradeUsingGETParams{
+func NewGetBundlesForSkipUpgradeUsingGETParamsWithContext(ctx context.Context) *GetBundlesForSkipUpgradeUsingGETParams {
+	return &GetBundlesForSkipUpgradeUsingGETParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBundlesForSkipUpgradeUsingGETParamsWithHTTPClient creates a new GETBundlesForSkipUpgradeUsingGETParams object
+// NewGetBundlesForSkipUpgradeUsingGETParamsWithHTTPClient creates a new GetBundlesForSkipUpgradeUsingGETParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBundlesForSkipUpgradeUsingGETParamsWithHTTPClient(client *http.Client) *GETBundlesForSkipUpgradeUsingGETParams {
-	return &GETBundlesForSkipUpgradeUsingGETParams{
+func NewGetBundlesForSkipUpgradeUsingGETParamsWithHTTPClient(client *http.Client) *GetBundlesForSkipUpgradeUsingGETParams {
+	return &GetBundlesForSkipUpgradeUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBundlesForSkipUpgradeUsingGETParams contains all the parameters to send to the API endpoint
+GetBundlesForSkipUpgradeUsingGETParams contains all the parameters to send to the API endpoint
 
-	for the get bundles for skip upgrade using GET operation.
+	for the get bundles for skip upgrade using g e t operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBundlesForSkipUpgradeUsingGETParams struct {
+type GetBundlesForSkipUpgradeUsingGETParams struct {
 
 	/* ID.
 
@@ -81,78 +81,78 @@ type GETBundlesForSkipUpgradeUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the get bundles for skip upgrade using GET params (not the query body).
+// WithDefaults hydrates default values in the get bundles for skip upgrade using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WithDefaults() *GETBundlesForSkipUpgradeUsingGETParams {
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WithDefaults() *GetBundlesForSkipUpgradeUsingGETParams {
 	o.SetDefaults()
 	return o
 }
 
-// SetDefaults hydrates default values in the get bundles for skip upgrade using GET params (not the query body).
+// SetDefaults hydrates default values in the get bundles for skip upgrade using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBundlesForSkipUpgradeUsingGETParams) SetDefaults() {
+func (o *GetBundlesForSkipUpgradeUsingGETParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WithTimeout(timeout time.Duration) *GETBundlesForSkipUpgradeUsingGETParams {
+// WithTimeout adds the timeout to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WithTimeout(timeout time.Duration) *GetBundlesForSkipUpgradeUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WithContext(ctx context.Context) *GETBundlesForSkipUpgradeUsingGETParams {
+// WithContext adds the context to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WithContext(ctx context.Context) *GetBundlesForSkipUpgradeUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WithHTTPClient(client *http.Client) *GETBundlesForSkipUpgradeUsingGETParams {
+// WithHTTPClient adds the HTTPClient to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WithHTTPClient(client *http.Client) *GetBundlesForSkipUpgradeUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WithID(id string) *GETBundlesForSkipUpgradeUsingGETParams {
+// WithID adds the id to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WithID(id string) *GetBundlesForSkipUpgradeUsingGETParams {
 	o.SetID(id)
 	return o
 }
 
-// SetID adds the id to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) SetID(id string) {
+// SetID adds the id to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithTargetVersion adds the targetVersion to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WithTargetVersion(targetVersion *string) *GETBundlesForSkipUpgradeUsingGETParams {
+// WithTargetVersion adds the targetVersion to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WithTargetVersion(targetVersion *string) *GetBundlesForSkipUpgradeUsingGETParams {
 	o.SetTargetVersion(targetVersion)
 	return o
 }
 
-// SetTargetVersion adds the targetVersion to the get bundles for skip upgrade using GET params
-func (o *GETBundlesForSkipUpgradeUsingGETParams) SetTargetVersion(targetVersion *string) {
+// SetTargetVersion adds the targetVersion to the get bundles for skip upgrade using g e t params
+func (o *GetBundlesForSkipUpgradeUsingGETParams) SetTargetVersion(targetVersion *string) {
 	o.TargetVersion = targetVersion
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBundlesForSkipUpgradeUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBundlesForSkipUpgradeUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

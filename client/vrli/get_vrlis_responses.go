@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVrlisReader is a Reader for the GETVrlis structure.
-type GETVrlisReader struct {
+// GetVrlisReader is a Reader for the GetVrlis structure.
+type GetVrlisReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVrlisReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVrlisReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVrlisOK()
+		result := NewGetVrlisOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETVrlisReader) ReadResponse(response runtime.ClientResponse, consumer 
 	}
 }
 
-// NewGETVrlisOK creates a GETVrlisOK with default headers values
-func NewGETVrlisOK() *GETVrlisOK {
-	return &GETVrlisOK{}
+// NewGetVrlisOK creates a GetVrlisOK with default headers values
+func NewGetVrlisOK() *GetVrlisOK {
+	return &GetVrlisOK{}
 }
 
 /*
-GETVrlisOK describes a response with status code 200, with default header values.
+GetVrlisOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETVrlisOK struct {
+type GetVrlisOK struct {
 	Payload *models.PageOfVrli
 }
 
 // IsSuccess returns true when this get vrlis o k response has a 2xx status code
-func (o *GETVrlisOK) IsSuccess() bool {
+func (o *GetVrlisOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vrlis o k response has a 3xx status code
-func (o *GETVrlisOK) IsRedirect() bool {
+func (o *GetVrlisOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vrlis o k response has a 4xx status code
-func (o *GETVrlisOK) IsClientError() bool {
+func (o *GetVrlisOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vrlis o k response has a 5xx status code
-func (o *GETVrlisOK) IsServerError() bool {
+func (o *GetVrlisOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vrlis o k response a status code equal to that given
-func (o *GETVrlisOK) IsCode(code int) bool {
+func (o *GetVrlisOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVrlisOK) Error() string {
+func (o *GetVrlisOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vrlis][%d] getVrlisOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVrlisOK) String() string {
+func (o *GetVrlisOK) String() string {
 	return fmt.Sprintf("[GET /v1/vrlis][%d] getVrlisOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVrlisOK) GetPayload() *models.PageOfVrli {
+func (o *GetVrlisOK) GetPayload() *models.PageOfVrli {
 	return o.Payload
 }
 
-func (o *GETVrlisOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVrlisOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfVrli)
 

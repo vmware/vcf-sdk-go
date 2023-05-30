@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETStorageContainersOfVasaProviderParams creates a new GETStorageContainersOfVasaProviderParams object,
+// NewGetStorageContainersOfVasaProviderParams creates a new GetStorageContainersOfVasaProviderParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETStorageContainersOfVasaProviderParams() *GETStorageContainersOfVasaProviderParams {
-	return &GETStorageContainersOfVasaProviderParams{
+func NewGetStorageContainersOfVasaProviderParams() *GetStorageContainersOfVasaProviderParams {
+	return &GetStorageContainersOfVasaProviderParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETStorageContainersOfVasaProviderParamsWithTimeout creates a new GETStorageContainersOfVasaProviderParams object
+// NewGetStorageContainersOfVasaProviderParamsWithTimeout creates a new GetStorageContainersOfVasaProviderParams object
 // with the ability to set a timeout on a request.
-func NewGETStorageContainersOfVasaProviderParamsWithTimeout(timeout time.Duration) *GETStorageContainersOfVasaProviderParams {
-	return &GETStorageContainersOfVasaProviderParams{
+func NewGetStorageContainersOfVasaProviderParamsWithTimeout(timeout time.Duration) *GetStorageContainersOfVasaProviderParams {
+	return &GetStorageContainersOfVasaProviderParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETStorageContainersOfVasaProviderParamsWithContext creates a new GETStorageContainersOfVasaProviderParams object
+// NewGetStorageContainersOfVasaProviderParamsWithContext creates a new GetStorageContainersOfVasaProviderParams object
 // with the ability to set a context for a request.
-func NewGETStorageContainersOfVasaProviderParamsWithContext(ctx context.Context) *GETStorageContainersOfVasaProviderParams {
-	return &GETStorageContainersOfVasaProviderParams{
+func NewGetStorageContainersOfVasaProviderParamsWithContext(ctx context.Context) *GetStorageContainersOfVasaProviderParams {
+	return &GetStorageContainersOfVasaProviderParams{
 		Context: ctx,
 	}
 }
 
-// NewGETStorageContainersOfVasaProviderParamsWithHTTPClient creates a new GETStorageContainersOfVasaProviderParams object
+// NewGetStorageContainersOfVasaProviderParamsWithHTTPClient creates a new GetStorageContainersOfVasaProviderParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETStorageContainersOfVasaProviderParamsWithHTTPClient(client *http.Client) *GETStorageContainersOfVasaProviderParams {
-	return &GETStorageContainersOfVasaProviderParams{
+func NewGetStorageContainersOfVasaProviderParamsWithHTTPClient(client *http.Client) *GetStorageContainersOfVasaProviderParams {
+	return &GetStorageContainersOfVasaProviderParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETStorageContainersOfVasaProviderParams contains all the parameters to send to the API endpoint
+GetStorageContainersOfVasaProviderParams contains all the parameters to send to the API endpoint
 
 	for the get storage containers of vasa provider operation.
 
 	Typically these are written to a http.Request.
 */
-type GETStorageContainersOfVasaProviderParams struct {
+type GetStorageContainersOfVasaProviderParams struct {
 
 	/* ID.
 
@@ -84,7 +84,7 @@ type GETStorageContainersOfVasaProviderParams struct {
 // WithDefaults hydrates default values in the get storage containers of vasa provider params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETStorageContainersOfVasaProviderParams) WithDefaults() *GETStorageContainersOfVasaProviderParams {
+func (o *GetStorageContainersOfVasaProviderParams) WithDefaults() *GetStorageContainersOfVasaProviderParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETStorageContainersOfVasaProviderParams) WithDefaults() *GETStorageCon
 // SetDefaults hydrates default values in the get storage containers of vasa provider params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETStorageContainersOfVasaProviderParams) SetDefaults() {
+func (o *GetStorageContainersOfVasaProviderParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) WithTimeout(timeout time.Duration) *GETStorageContainersOfVasaProviderParams {
+func (o *GetStorageContainersOfVasaProviderParams) WithTimeout(timeout time.Duration) *GetStorageContainersOfVasaProviderParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) SetTimeout(timeout time.Duration) {
+func (o *GetStorageContainersOfVasaProviderParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) WithContext(ctx context.Context) *GETStorageContainersOfVasaProviderParams {
+func (o *GetStorageContainersOfVasaProviderParams) WithContext(ctx context.Context) *GetStorageContainersOfVasaProviderParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) SetContext(ctx context.Context) {
+func (o *GetStorageContainersOfVasaProviderParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) WithHTTPClient(client *http.Client) *GETStorageContainersOfVasaProviderParams {
+func (o *GetStorageContainersOfVasaProviderParams) WithHTTPClient(client *http.Client) *GetStorageContainersOfVasaProviderParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) SetHTTPClient(client *http.Client) {
+func (o *GetStorageContainersOfVasaProviderParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) WithID(id string) *GETStorageContainersOfVasaProviderParams {
+func (o *GetStorageContainersOfVasaProviderParams) WithID(id string) *GetStorageContainersOfVasaProviderParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) SetID(id string) {
+func (o *GetStorageContainersOfVasaProviderParams) SetID(id string) {
 	o.ID = id
 }
 
 // WithProtocolType adds the protocolType to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) WithProtocolType(protocolType *string) *GETStorageContainersOfVasaProviderParams {
+func (o *GetStorageContainersOfVasaProviderParams) WithProtocolType(protocolType *string) *GetStorageContainersOfVasaProviderParams {
 	o.SetProtocolType(protocolType)
 	return o
 }
 
 // SetProtocolType adds the protocolType to the get storage containers of vasa provider params
-func (o *GETStorageContainersOfVasaProviderParams) SetProtocolType(protocolType *string) {
+func (o *GetStorageContainersOfVasaProviderParams) SetProtocolType(protocolType *string) {
 	o.ProtocolType = protocolType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETStorageContainersOfVasaProviderParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetStorageContainersOfVasaProviderParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

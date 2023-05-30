@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETBackupSettingsParams creates a new GETBackupSettingsParams object,
+// NewGetBackupSettingsParams creates a new GetBackupSettingsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBackupSettingsParams() *GETBackupSettingsParams {
-	return &GETBackupSettingsParams{
+func NewGetBackupSettingsParams() *GetBackupSettingsParams {
+	return &GetBackupSettingsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBackupSettingsParamsWithTimeout creates a new GETBackupSettingsParams object
+// NewGetBackupSettingsParamsWithTimeout creates a new GetBackupSettingsParams object
 // with the ability to set a timeout on a request.
-func NewGETBackupSettingsParamsWithTimeout(timeout time.Duration) *GETBackupSettingsParams {
-	return &GETBackupSettingsParams{
+func NewGetBackupSettingsParamsWithTimeout(timeout time.Duration) *GetBackupSettingsParams {
+	return &GetBackupSettingsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBackupSettingsParamsWithContext creates a new GETBackupSettingsParams object
+// NewGetBackupSettingsParamsWithContext creates a new GetBackupSettingsParams object
 // with the ability to set a context for a request.
-func NewGETBackupSettingsParamsWithContext(ctx context.Context) *GETBackupSettingsParams {
-	return &GETBackupSettingsParams{
+func NewGetBackupSettingsParamsWithContext(ctx context.Context) *GetBackupSettingsParams {
+	return &GetBackupSettingsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBackupSettingsParamsWithHTTPClient creates a new GETBackupSettingsParams object
+// NewGetBackupSettingsParamsWithHTTPClient creates a new GetBackupSettingsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBackupSettingsParamsWithHTTPClient(client *http.Client) *GETBackupSettingsParams {
-	return &GETBackupSettingsParams{
+func NewGetBackupSettingsParamsWithHTTPClient(client *http.Client) *GetBackupSettingsParams {
+	return &GetBackupSettingsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBackupSettingsParams contains all the parameters to send to the API endpoint
+GetBackupSettingsParams contains all the parameters to send to the API endpoint
 
 	for the get backup settings operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBackupSettingsParams struct {
+type GetBackupSettingsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETBackupSettingsParams struct {
 // WithDefaults hydrates default values in the get backup settings params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBackupSettingsParams) WithDefaults() *GETBackupSettingsParams {
+func (o *GetBackupSettingsParams) WithDefaults() *GetBackupSettingsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETBackupSettingsParams) WithDefaults() *GETBackupSettingsParams {
 // SetDefaults hydrates default values in the get backup settings params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBackupSettingsParams) SetDefaults() {
+func (o *GetBackupSettingsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get backup settings params
-func (o *GETBackupSettingsParams) WithTimeout(timeout time.Duration) *GETBackupSettingsParams {
+func (o *GetBackupSettingsParams) WithTimeout(timeout time.Duration) *GetBackupSettingsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get backup settings params
-func (o *GETBackupSettingsParams) SetTimeout(timeout time.Duration) {
+func (o *GetBackupSettingsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get backup settings params
-func (o *GETBackupSettingsParams) WithContext(ctx context.Context) *GETBackupSettingsParams {
+func (o *GetBackupSettingsParams) WithContext(ctx context.Context) *GetBackupSettingsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get backup settings params
-func (o *GETBackupSettingsParams) SetContext(ctx context.Context) {
+func (o *GetBackupSettingsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get backup settings params
-func (o *GETBackupSettingsParams) WithHTTPClient(client *http.Client) *GETBackupSettingsParams {
+func (o *GetBackupSettingsParams) WithHTTPClient(client *http.Client) *GetBackupSettingsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get backup settings params
-func (o *GETBackupSettingsParams) SetHTTPClient(client *http.Client) {
+func (o *GetBackupSettingsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBackupSettingsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBackupSettingsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

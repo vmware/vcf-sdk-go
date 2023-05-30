@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVRSLCMValidationParams creates a new GETVRSLCMValidationParams object,
+// NewGetVRSLCMValidationParams creates a new GetVRSLCMValidationParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVRSLCMValidationParams() *GETVRSLCMValidationParams {
-	return &GETVRSLCMValidationParams{
+func NewGetVRSLCMValidationParams() *GetVRSLCMValidationParams {
+	return &GetVRSLCMValidationParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVRSLCMValidationParamsWithTimeout creates a new GETVRSLCMValidationParams object
+// NewGetVRSLCMValidationParamsWithTimeout creates a new GetVRSLCMValidationParams object
 // with the ability to set a timeout on a request.
-func NewGETVRSLCMValidationParamsWithTimeout(timeout time.Duration) *GETVRSLCMValidationParams {
-	return &GETVRSLCMValidationParams{
+func NewGetVRSLCMValidationParamsWithTimeout(timeout time.Duration) *GetVRSLCMValidationParams {
+	return &GetVRSLCMValidationParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVRSLCMValidationParamsWithContext creates a new GETVRSLCMValidationParams object
+// NewGetVRSLCMValidationParamsWithContext creates a new GetVRSLCMValidationParams object
 // with the ability to set a context for a request.
-func NewGETVRSLCMValidationParamsWithContext(ctx context.Context) *GETVRSLCMValidationParams {
-	return &GETVRSLCMValidationParams{
+func NewGetVRSLCMValidationParamsWithContext(ctx context.Context) *GetVRSLCMValidationParams {
+	return &GetVRSLCMValidationParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVRSLCMValidationParamsWithHTTPClient creates a new GETVRSLCMValidationParams object
+// NewGetVRSLCMValidationParamsWithHTTPClient creates a new GetVRSLCMValidationParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVRSLCMValidationParamsWithHTTPClient(client *http.Client) *GETVRSLCMValidationParams {
-	return &GETVRSLCMValidationParams{
+func NewGetVRSLCMValidationParamsWithHTTPClient(client *http.Client) *GetVRSLCMValidationParams {
+	return &GetVRSLCMValidationParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVRSLCMValidationParams contains all the parameters to send to the API endpoint
+GetVRSLCMValidationParams contains all the parameters to send to the API endpoint
 
 	for the get Vrslcm validation operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVRSLCMValidationParams struct {
+type GetVRSLCMValidationParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETVRSLCMValidationParams struct {
 // WithDefaults hydrates default values in the get Vrslcm validation params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVRSLCMValidationParams) WithDefaults() *GETVRSLCMValidationParams {
+func (o *GetVRSLCMValidationParams) WithDefaults() *GetVRSLCMValidationParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETVRSLCMValidationParams) WithDefaults() *GETVRSLCMValidationParams {
 // SetDefaults hydrates default values in the get Vrslcm validation params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVRSLCMValidationParams) SetDefaults() {
+func (o *GetVRSLCMValidationParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) WithTimeout(timeout time.Duration) *GETVRSLCMValidationParams {
+func (o *GetVRSLCMValidationParams) WithTimeout(timeout time.Duration) *GetVRSLCMValidationParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) SetTimeout(timeout time.Duration) {
+func (o *GetVRSLCMValidationParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) WithContext(ctx context.Context) *GETVRSLCMValidationParams {
+func (o *GetVRSLCMValidationParams) WithContext(ctx context.Context) *GetVRSLCMValidationParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) SetContext(ctx context.Context) {
+func (o *GetVRSLCMValidationParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) WithHTTPClient(client *http.Client) *GETVRSLCMValidationParams {
+func (o *GetVRSLCMValidationParams) WithHTTPClient(client *http.Client) *GetVRSLCMValidationParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) SetHTTPClient(client *http.Client) {
+func (o *GetVRSLCMValidationParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) WithID(id string) *GETVRSLCMValidationParams {
+func (o *GetVRSLCMValidationParams) WithID(id string) *GetVRSLCMValidationParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get Vrslcm validation params
-func (o *GETVRSLCMValidationParams) SetID(id string) {
+func (o *GetVRSLCMValidationParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVRSLCMValidationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVRSLCMValidationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

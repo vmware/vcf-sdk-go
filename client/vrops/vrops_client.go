@@ -35,9 +35,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ConnectVROPSWithDomain(params *ConnectVROPSWithDomainParams, opts ...ClientOption) (*ConnectVROPSWithDomainOK, *ConnectVROPSWithDomainAccepted, error)
 
-	GETIntegratedDomainsVROPS(params *GETIntegratedDomainsVROPSParams, opts ...ClientOption) (*GETIntegratedDomainsVROPSOK, error)
+	GetIntegratedDomainsVROPS(params *GetIntegratedDomainsVROPSParams, opts ...ClientOption) (*GetIntegratedDomainsVROPSOK, error)
 
-	GETVropses(params *GETVropsesParams, opts ...ClientOption) (*GETVropsesOK, error)
+	GetVropses(params *GetVropsesParams, opts ...ClientOption) (*GetVropsesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -84,14 +84,14 @@ func (a *Client) ConnectVROPSWithDomain(params *ConnectVROPSWithDomainParams, op
 }
 
 /*
-GETIntegratedDomainsVROPS gets v realize operations integration status for workload domains
+GetIntegratedDomainsVROPS gets v realize operations integration status for workload domains
 
 Retrieves the existing  domains and their connection status with vRealize Operations.
 */
-func (a *Client) GETIntegratedDomainsVROPS(params *GETIntegratedDomainsVROPSParams, opts ...ClientOption) (*GETIntegratedDomainsVROPSOK, error) {
+func (a *Client) GetIntegratedDomainsVROPS(params *GetIntegratedDomainsVROPSParams, opts ...ClientOption) (*GetIntegratedDomainsVROPSOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETIntegratedDomainsVROPSParams()
+		params = NewGetIntegratedDomainsVROPSParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getIntegratedDomainsVrops",
@@ -101,7 +101,7 @@ func (a *Client) GETIntegratedDomainsVROPS(params *GETIntegratedDomainsVROPSPara
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETIntegratedDomainsVROPSReader{formats: a.formats},
+		Reader:             &GetIntegratedDomainsVROPSReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -113,7 +113,7 @@ func (a *Client) GETIntegratedDomainsVROPS(params *GETIntegratedDomainsVROPSPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETIntegratedDomainsVROPSOK)
+	success, ok := result.(*GetIntegratedDomainsVROPSOK)
 	if ok {
 		return success, nil
 	}
@@ -124,12 +124,12 @@ func (a *Client) GETIntegratedDomainsVROPS(params *GETIntegratedDomainsVROPSPara
 }
 
 /*
-GETVropses Gets all existing v realize operations instances
+GetVropses gets all existing v realize operations instances
 */
-func (a *Client) GETVropses(params *GETVropsesParams, opts ...ClientOption) (*GETVropsesOK, error) {
+func (a *Client) GetVropses(params *GetVropsesParams, opts ...ClientOption) (*GetVropsesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVropsesParams()
+		params = NewGetVropsesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVropses",
@@ -139,7 +139,7 @@ func (a *Client) GETVropses(params *GETVropsesParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVropsesReader{formats: a.formats},
+		Reader:             &GetVropsesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -151,7 +151,7 @@ func (a *Client) GETVropses(params *GETVropsesParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVropsesOK)
+	success, ok := result.(*GetVropsesOK)
 	if ok {
 		return success, nil
 	}

@@ -37,19 +37,19 @@ type ClientService interface {
 
 	ConfigureNtp(params *ConfigureNtpParams, opts ...ClientOption) (*ConfigureNtpOK, *ConfigureNtpAccepted, error)
 
-	GETDNSConfiguration(params *GETDNSConfigurationParams, opts ...ClientOption) (*GETDNSConfigurationOK, error)
+	GetDNSConfiguration(params *GetDNSConfigurationParams, opts ...ClientOption) (*GetDNSConfigurationOK, error)
 
-	GETNtpConfiguration(params *GETNtpConfigurationParams, opts ...ClientOption) (*GETNtpConfigurationOK, error)
+	GetNtpConfiguration(params *GetNtpConfigurationParams, opts ...ClientOption) (*GetNtpConfigurationOK, error)
 
-	GETSystem(params *GETSystemParams, opts ...ClientOption) (*GETSystemOK, error)
+	GetSystem(params *GetSystemParams, opts ...ClientOption) (*GetSystemOK, error)
 
-	GETValidationOfDNSConfiguration(params *GETValidationOfDNSConfigurationParams, opts ...ClientOption) (*GETValidationOfDNSConfigurationOK, error)
+	GetValidationOfDNSConfiguration(params *GetValidationOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationOfDNSConfigurationOK, error)
 
-	GETValidationOfNtpConfiguration(params *GETValidationOfNtpConfigurationParams, opts ...ClientOption) (*GETValidationOfNtpConfigurationOK, error)
+	GetValidationOfNtpConfiguration(params *GetValidationOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationOfNtpConfigurationOK, error)
 
-	GETValidationsOfDNSConfiguration(params *GETValidationsOfDNSConfigurationParams, opts ...ClientOption) (*GETValidationsOfDNSConfigurationOK, error)
+	GetValidationsOfDNSConfiguration(params *GetValidationsOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationsOfDNSConfigurationOK, error)
 
-	GETValidationsOfNtpConfiguration(params *GETValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GETValidationsOfNtpConfigurationOK, error)
+	GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationsOfNtpConfigurationOK, error)
 
 	ValidateDNSConfiguration(params *ValidateDNSConfigurationParams, opts ...ClientOption) (*ValidateDNSConfigurationOK, *ValidateDNSConfigurationAccepted, error)
 
@@ -137,12 +137,12 @@ func (a *Client) ConfigureNtp(params *ConfigureNtpParams, opts ...ClientOption) 
 }
 
 /*
-GETDNSConfiguration Gets the current Dns configuration
+GetDNSConfiguration gets the current Dns configuration
 */
-func (a *Client) GETDNSConfiguration(params *GETDNSConfigurationParams, opts ...ClientOption) (*GETDNSConfigurationOK, error) {
+func (a *Client) GetDNSConfiguration(params *GetDNSConfigurationParams, opts ...ClientOption) (*GetDNSConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETDNSConfigurationParams()
+		params = NewGetDNSConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getDnsConfiguration",
@@ -152,7 +152,7 @@ func (a *Client) GETDNSConfiguration(params *GETDNSConfigurationParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETDNSConfigurationReader{formats: a.formats},
+		Reader:             &GetDNSConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -164,7 +164,7 @@ func (a *Client) GETDNSConfiguration(params *GETDNSConfigurationParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETDNSConfigurationOK)
+	success, ok := result.(*GetDNSConfigurationOK)
 	if ok {
 		return success, nil
 	}
@@ -175,12 +175,12 @@ func (a *Client) GETDNSConfiguration(params *GETDNSConfigurationParams, opts ...
 }
 
 /*
-GETNtpConfiguration Gets the current ntp configuration
+GetNtpConfiguration gets the current ntp configuration
 */
-func (a *Client) GETNtpConfiguration(params *GETNtpConfigurationParams, opts ...ClientOption) (*GETNtpConfigurationOK, error) {
+func (a *Client) GetNtpConfiguration(params *GetNtpConfigurationParams, opts ...ClientOption) (*GetNtpConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNtpConfigurationParams()
+		params = NewGetNtpConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNtpConfiguration",
@@ -190,7 +190,7 @@ func (a *Client) GETNtpConfiguration(params *GETNtpConfigurationParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNtpConfigurationReader{formats: a.formats},
+		Reader:             &GetNtpConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -202,7 +202,7 @@ func (a *Client) GETNtpConfiguration(params *GETNtpConfigurationParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNtpConfigurationOK)
+	success, ok := result.(*GetNtpConfigurationOK)
 	if ok {
 		return success, nil
 	}
@@ -213,14 +213,14 @@ func (a *Client) GETNtpConfiguration(params *GETNtpConfigurationParams, opts ...
 }
 
 /*
-GETSystem Gets the system
+GetSystem gets the system
 
 Get the system
 */
-func (a *Client) GETSystem(params *GETSystemParams, opts ...ClientOption) (*GETSystemOK, error) {
+func (a *Client) GetSystem(params *GetSystemParams, opts ...ClientOption) (*GetSystemOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSystemParams()
+		params = NewGetSystemParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSystem",
@@ -230,7 +230,7 @@ func (a *Client) GETSystem(params *GETSystemParams, opts ...ClientOption) (*GETS
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSystemReader{formats: a.formats},
+		Reader:             &GetSystemReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -242,7 +242,7 @@ func (a *Client) GETSystem(params *GETSystemParams, opts ...ClientOption) (*GETS
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSystemOK)
+	success, ok := result.(*GetSystemOK)
 	if ok {
 		return success, nil
 	}
@@ -253,12 +253,12 @@ func (a *Client) GETSystem(params *GETSystemParams, opts ...ClientOption) (*GETS
 }
 
 /*
-GETValidationOfDNSConfiguration Gets the status of the validation of the input Dns configuration
+GetValidationOfDNSConfiguration gets the status of the validation of the input Dns configuration
 */
-func (a *Client) GETValidationOfDNSConfiguration(params *GETValidationOfDNSConfigurationParams, opts ...ClientOption) (*GETValidationOfDNSConfigurationOK, error) {
+func (a *Client) GetValidationOfDNSConfiguration(params *GetValidationOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationOfDNSConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationOfDNSConfigurationParams()
+		params = NewGetValidationOfDNSConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationOfDnsConfiguration",
@@ -268,7 +268,7 @@ func (a *Client) GETValidationOfDNSConfiguration(params *GETValidationOfDNSConfi
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationOfDNSConfigurationReader{formats: a.formats},
+		Reader:             &GetValidationOfDNSConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -280,7 +280,7 @@ func (a *Client) GETValidationOfDNSConfiguration(params *GETValidationOfDNSConfi
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationOfDNSConfigurationOK)
+	success, ok := result.(*GetValidationOfDNSConfigurationOK)
 	if ok {
 		return success, nil
 	}
@@ -291,12 +291,12 @@ func (a *Client) GETValidationOfDNSConfiguration(params *GETValidationOfDNSConfi
 }
 
 /*
-GETValidationOfNtpConfiguration Gets the status of the validation of the input ntp servers to configure new ntp server
+GetValidationOfNtpConfiguration gets the status of the validation of the input ntp servers to configure new ntp server
 */
-func (a *Client) GETValidationOfNtpConfiguration(params *GETValidationOfNtpConfigurationParams, opts ...ClientOption) (*GETValidationOfNtpConfigurationOK, error) {
+func (a *Client) GetValidationOfNtpConfiguration(params *GetValidationOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationOfNtpConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationOfNtpConfigurationParams()
+		params = NewGetValidationOfNtpConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationOfNtpConfiguration",
@@ -306,7 +306,7 @@ func (a *Client) GETValidationOfNtpConfiguration(params *GETValidationOfNtpConfi
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationOfNtpConfigurationReader{formats: a.formats},
+		Reader:             &GetValidationOfNtpConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -318,7 +318,7 @@ func (a *Client) GETValidationOfNtpConfiguration(params *GETValidationOfNtpConfi
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationOfNtpConfigurationOK)
+	success, ok := result.(*GetValidationOfNtpConfigurationOK)
 	if ok {
 		return success, nil
 	}
@@ -329,12 +329,12 @@ func (a *Client) GETValidationOfNtpConfiguration(params *GETValidationOfNtpConfi
 }
 
 /*
-GETValidationsOfDNSConfiguration Gets the validations of the input dns servers to configure new DNS server
+GetValidationsOfDNSConfiguration gets the validations of the input dns servers to configure new DNS server
 */
-func (a *Client) GETValidationsOfDNSConfiguration(params *GETValidationsOfDNSConfigurationParams, opts ...ClientOption) (*GETValidationsOfDNSConfigurationOK, error) {
+func (a *Client) GetValidationsOfDNSConfiguration(params *GetValidationsOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationsOfDNSConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationsOfDNSConfigurationParams()
+		params = NewGetValidationsOfDNSConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationsOfDNSConfiguration",
@@ -344,7 +344,7 @@ func (a *Client) GETValidationsOfDNSConfiguration(params *GETValidationsOfDNSCon
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationsOfDNSConfigurationReader{formats: a.formats},
+		Reader:             &GetValidationsOfDNSConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -356,7 +356,7 @@ func (a *Client) GETValidationsOfDNSConfiguration(params *GETValidationsOfDNSCon
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationsOfDNSConfigurationOK)
+	success, ok := result.(*GetValidationsOfDNSConfigurationOK)
 	if ok {
 		return success, nil
 	}
@@ -367,12 +367,12 @@ func (a *Client) GETValidationsOfDNSConfiguration(params *GETValidationsOfDNSCon
 }
 
 /*
-GETValidationsOfNtpConfiguration Gets the validations of the input ntp servers to configure new ntp server
+GetValidationsOfNtpConfiguration gets the validations of the input ntp servers to configure new ntp server
 */
-func (a *Client) GETValidationsOfNtpConfiguration(params *GETValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GETValidationsOfNtpConfigurationOK, error) {
+func (a *Client) GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationsOfNtpConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationsOfNtpConfigurationParams()
+		params = NewGetValidationsOfNtpConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationsOfNtpConfiguration",
@@ -382,7 +382,7 @@ func (a *Client) GETValidationsOfNtpConfiguration(params *GETValidationsOfNtpCon
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationsOfNtpConfigurationReader{formats: a.formats},
+		Reader:             &GetValidationsOfNtpConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -394,7 +394,7 @@ func (a *Client) GETValidationsOfNtpConfiguration(params *GETValidationsOfNtpCon
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationsOfNtpConfigurationOK)
+	success, ok := result.(*GetValidationsOfNtpConfigurationOK)
 	if ok {
 		return success, nil
 	}

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVdsesParams creates a new GETVdsesParams object,
+// NewGetVdsesParams creates a new GetVdsesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVdsesParams() *GETVdsesParams {
-	return &GETVdsesParams{
+func NewGetVdsesParams() *GetVdsesParams {
+	return &GetVdsesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVdsesParamsWithTimeout creates a new GETVdsesParams object
+// NewGetVdsesParamsWithTimeout creates a new GetVdsesParams object
 // with the ability to set a timeout on a request.
-func NewGETVdsesParamsWithTimeout(timeout time.Duration) *GETVdsesParams {
-	return &GETVdsesParams{
+func NewGetVdsesParamsWithTimeout(timeout time.Duration) *GetVdsesParams {
+	return &GetVdsesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVdsesParamsWithContext creates a new GETVdsesParams object
+// NewGetVdsesParamsWithContext creates a new GetVdsesParams object
 // with the ability to set a context for a request.
-func NewGETVdsesParamsWithContext(ctx context.Context) *GETVdsesParams {
-	return &GETVdsesParams{
+func NewGetVdsesParamsWithContext(ctx context.Context) *GetVdsesParams {
+	return &GetVdsesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVdsesParamsWithHTTPClient creates a new GETVdsesParams object
+// NewGetVdsesParamsWithHTTPClient creates a new GetVdsesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVdsesParamsWithHTTPClient(client *http.Client) *GETVdsesParams {
-	return &GETVdsesParams{
+func NewGetVdsesParamsWithHTTPClient(client *http.Client) *GetVdsesParams {
+	return &GetVdsesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVdsesParams contains all the parameters to send to the API endpoint
+GetVdsesParams contains all the parameters to send to the API endpoint
 
 	for the get vdses operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVdsesParams struct {
+type GetVdsesParams struct {
 
 	/* ClusterID.
 
@@ -78,7 +78,7 @@ type GETVdsesParams struct {
 // WithDefaults hydrates default values in the get vdses params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVdsesParams) WithDefaults() *GETVdsesParams {
+func (o *GetVdsesParams) WithDefaults() *GetVdsesParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETVdsesParams) WithDefaults() *GETVdsesParams {
 // SetDefaults hydrates default values in the get vdses params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVdsesParams) SetDefaults() {
+func (o *GetVdsesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vdses params
-func (o *GETVdsesParams) WithTimeout(timeout time.Duration) *GETVdsesParams {
+func (o *GetVdsesParams) WithTimeout(timeout time.Duration) *GetVdsesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vdses params
-func (o *GETVdsesParams) SetTimeout(timeout time.Duration) {
+func (o *GetVdsesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vdses params
-func (o *GETVdsesParams) WithContext(ctx context.Context) *GETVdsesParams {
+func (o *GetVdsesParams) WithContext(ctx context.Context) *GetVdsesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vdses params
-func (o *GETVdsesParams) SetContext(ctx context.Context) {
+func (o *GetVdsesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vdses params
-func (o *GETVdsesParams) WithHTTPClient(client *http.Client) *GETVdsesParams {
+func (o *GetVdsesParams) WithHTTPClient(client *http.Client) *GetVdsesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vdses params
-func (o *GETVdsesParams) SetHTTPClient(client *http.Client) {
+func (o *GetVdsesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterID adds the clusterID to the get vdses params
-func (o *GETVdsesParams) WithClusterID(clusterID string) *GETVdsesParams {
+func (o *GetVdsesParams) WithClusterID(clusterID string) *GetVdsesParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the get vdses params
-func (o *GETVdsesParams) SetClusterID(clusterID string) {
+func (o *GetVdsesParams) SetClusterID(clusterID string) {
 	o.ClusterID = clusterID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVdsesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVdsesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

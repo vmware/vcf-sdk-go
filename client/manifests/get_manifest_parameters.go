@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETManifestParams creates a new GETManifestParams object,
+// NewGetManifestParams creates a new GetManifestParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETManifestParams() *GETManifestParams {
-	return &GETManifestParams{
+func NewGetManifestParams() *GetManifestParams {
+	return &GetManifestParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETManifestParamsWithTimeout creates a new GETManifestParams object
+// NewGetManifestParamsWithTimeout creates a new GetManifestParams object
 // with the ability to set a timeout on a request.
-func NewGETManifestParamsWithTimeout(timeout time.Duration) *GETManifestParams {
-	return &GETManifestParams{
+func NewGetManifestParamsWithTimeout(timeout time.Duration) *GetManifestParams {
+	return &GetManifestParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETManifestParamsWithContext creates a new GETManifestParams object
+// NewGetManifestParamsWithContext creates a new GetManifestParams object
 // with the ability to set a context for a request.
-func NewGETManifestParamsWithContext(ctx context.Context) *GETManifestParams {
-	return &GETManifestParams{
+func NewGetManifestParamsWithContext(ctx context.Context) *GetManifestParams {
+	return &GetManifestParams{
 		Context: ctx,
 	}
 }
 
-// NewGETManifestParamsWithHTTPClient creates a new GETManifestParams object
+// NewGetManifestParamsWithHTTPClient creates a new GetManifestParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETManifestParamsWithHTTPClient(client *http.Client) *GETManifestParams {
-	return &GETManifestParams{
+func NewGetManifestParamsWithHTTPClient(client *http.Client) *GetManifestParams {
+	return &GetManifestParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETManifestParams contains all the parameters to send to the API endpoint
+GetManifestParams contains all the parameters to send to the API endpoint
 
 	for the get manifest operation.
 
 	Typically these are written to a http.Request.
 */
-type GETManifestParams struct {
+type GetManifestParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETManifestParams struct {
 // WithDefaults hydrates default values in the get manifest params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETManifestParams) WithDefaults() *GETManifestParams {
+func (o *GetManifestParams) WithDefaults() *GetManifestParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETManifestParams) WithDefaults() *GETManifestParams {
 // SetDefaults hydrates default values in the get manifest params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETManifestParams) SetDefaults() {
+func (o *GetManifestParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get manifest params
-func (o *GETManifestParams) WithTimeout(timeout time.Duration) *GETManifestParams {
+func (o *GetManifestParams) WithTimeout(timeout time.Duration) *GetManifestParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get manifest params
-func (o *GETManifestParams) SetTimeout(timeout time.Duration) {
+func (o *GetManifestParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get manifest params
-func (o *GETManifestParams) WithContext(ctx context.Context) *GETManifestParams {
+func (o *GetManifestParams) WithContext(ctx context.Context) *GetManifestParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get manifest params
-func (o *GETManifestParams) SetContext(ctx context.Context) {
+func (o *GetManifestParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get manifest params
-func (o *GETManifestParams) WithHTTPClient(client *http.Client) *GETManifestParams {
+func (o *GetManifestParams) WithHTTPClient(client *http.Client) *GetManifestParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get manifest params
-func (o *GETManifestParams) SetHTTPClient(client *http.Client) {
+func (o *GetManifestParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETManifestParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetManifestParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

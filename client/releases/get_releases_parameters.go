@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETReleasesParams creates a new GETReleasesParams object,
+// NewGetReleasesParams creates a new GetReleasesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETReleasesParams() *GETReleasesParams {
-	return &GETReleasesParams{
+func NewGetReleasesParams() *GetReleasesParams {
+	return &GetReleasesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETReleasesParamsWithTimeout creates a new GETReleasesParams object
+// NewGetReleasesParamsWithTimeout creates a new GetReleasesParams object
 // with the ability to set a timeout on a request.
-func NewGETReleasesParamsWithTimeout(timeout time.Duration) *GETReleasesParams {
-	return &GETReleasesParams{
+func NewGetReleasesParamsWithTimeout(timeout time.Duration) *GetReleasesParams {
+	return &GetReleasesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETReleasesParamsWithContext creates a new GETReleasesParams object
+// NewGetReleasesParamsWithContext creates a new GetReleasesParams object
 // with the ability to set a context for a request.
-func NewGETReleasesParamsWithContext(ctx context.Context) *GETReleasesParams {
-	return &GETReleasesParams{
+func NewGetReleasesParamsWithContext(ctx context.Context) *GetReleasesParams {
+	return &GetReleasesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETReleasesParamsWithHTTPClient creates a new GETReleasesParams object
+// NewGetReleasesParamsWithHTTPClient creates a new GetReleasesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETReleasesParamsWithHTTPClient(client *http.Client) *GETReleasesParams {
-	return &GETReleasesParams{
+func NewGetReleasesParamsWithHTTPClient(client *http.Client) *GetReleasesParams {
+	return &GetReleasesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETReleasesParams contains all the parameters to send to the API endpoint
+GetReleasesParams contains all the parameters to send to the API endpoint
 
 	for the get releases operation.
 
 	Typically these are written to a http.Request.
 */
-type GETReleasesParams struct {
+type GetReleasesParams struct {
 
 	/* ApplicableForVersion.
 
@@ -83,11 +83,11 @@ type GETReleasesParams struct {
 	*/
 	DomainID *string
 
-	/* GETFutureReleases.
+	/* GetFutureReleases.
 
 	   [Deprecated] Get all future releases for a given domain
 	*/
-	GETFutureReleases *bool
+	GetFutureReleases *bool
 
 	/* VersionEq.
 
@@ -121,7 +121,7 @@ type GETReleasesParams struct {
 // WithDefaults hydrates default values in the get releases params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETReleasesParams) WithDefaults() *GETReleasesParams {
+func (o *GetReleasesParams) WithDefaults() *GetReleasesParams {
 	o.SetDefaults()
 	return o
 }
@@ -129,133 +129,133 @@ func (o *GETReleasesParams) WithDefaults() *GETReleasesParams {
 // SetDefaults hydrates default values in the get releases params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETReleasesParams) SetDefaults() {
+func (o *GetReleasesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get releases params
-func (o *GETReleasesParams) WithTimeout(timeout time.Duration) *GETReleasesParams {
+func (o *GetReleasesParams) WithTimeout(timeout time.Duration) *GetReleasesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get releases params
-func (o *GETReleasesParams) SetTimeout(timeout time.Duration) {
+func (o *GetReleasesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get releases params
-func (o *GETReleasesParams) WithContext(ctx context.Context) *GETReleasesParams {
+func (o *GetReleasesParams) WithContext(ctx context.Context) *GetReleasesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get releases params
-func (o *GETReleasesParams) SetContext(ctx context.Context) {
+func (o *GetReleasesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get releases params
-func (o *GETReleasesParams) WithHTTPClient(client *http.Client) *GETReleasesParams {
+func (o *GetReleasesParams) WithHTTPClient(client *http.Client) *GetReleasesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get releases params
-func (o *GETReleasesParams) SetHTTPClient(client *http.Client) {
+func (o *GetReleasesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithApplicableForVersion adds the applicableForVersion to the get releases params
-func (o *GETReleasesParams) WithApplicableForVersion(applicableForVersion *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithApplicableForVersion(applicableForVersion *string) *GetReleasesParams {
 	o.SetApplicableForVersion(applicableForVersion)
 	return o
 }
 
 // SetApplicableForVersion adds the applicableForVersion to the get releases params
-func (o *GETReleasesParams) SetApplicableForVersion(applicableForVersion *string) {
+func (o *GetReleasesParams) SetApplicableForVersion(applicableForVersion *string) {
 	o.ApplicableForVersion = applicableForVersion
 }
 
 // WithApplicableForVxRailVersion adds the applicableForVxRailVersion to the get releases params
-func (o *GETReleasesParams) WithApplicableForVxRailVersion(applicableForVxRailVersion *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithApplicableForVxRailVersion(applicableForVxRailVersion *string) *GetReleasesParams {
 	o.SetApplicableForVxRailVersion(applicableForVxRailVersion)
 	return o
 }
 
 // SetApplicableForVxRailVersion adds the applicableForVxRailVersion to the get releases params
-func (o *GETReleasesParams) SetApplicableForVxRailVersion(applicableForVxRailVersion *string) {
+func (o *GetReleasesParams) SetApplicableForVxRailVersion(applicableForVxRailVersion *string) {
 	o.ApplicableForVxRailVersion = applicableForVxRailVersion
 }
 
 // WithDomainID adds the domainID to the get releases params
-func (o *GETReleasesParams) WithDomainID(domainID *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithDomainID(domainID *string) *GetReleasesParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get releases params
-func (o *GETReleasesParams) SetDomainID(domainID *string) {
+func (o *GetReleasesParams) SetDomainID(domainID *string) {
 	o.DomainID = domainID
 }
 
-// WithGETFutureReleases adds the gETFutureReleases to the get releases params
-func (o *GETReleasesParams) WithGETFutureReleases(gETFutureReleases *bool) *GETReleasesParams {
-	o.SetGETFutureReleases(gETFutureReleases)
+// WithGetFutureReleases adds the getFutureReleases to the get releases params
+func (o *GetReleasesParams) WithGetFutureReleases(getFutureReleases *bool) *GetReleasesParams {
+	o.SetGetFutureReleases(getFutureReleases)
 	return o
 }
 
-// SetGETFutureReleases adds the getFutureReleases to the get releases params
-func (o *GETReleasesParams) SetGETFutureReleases(gETFutureReleases *bool) {
-	o.GETFutureReleases = gETFutureReleases
+// SetGetFutureReleases adds the getFutureReleases to the get releases params
+func (o *GetReleasesParams) SetGetFutureReleases(getFutureReleases *bool) {
+	o.GetFutureReleases = getFutureReleases
 }
 
 // WithVersionEq adds the versionEq to the get releases params
-func (o *GETReleasesParams) WithVersionEq(versionEq *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithVersionEq(versionEq *string) *GetReleasesParams {
 	o.SetVersionEq(versionEq)
 	return o
 }
 
 // SetVersionEq adds the versionEq to the get releases params
-func (o *GETReleasesParams) SetVersionEq(versionEq *string) {
+func (o *GetReleasesParams) SetVersionEq(versionEq *string) {
 	o.VersionEq = versionEq
 }
 
 // WithVersionGt adds the versionGt to the get releases params
-func (o *GETReleasesParams) WithVersionGt(versionGt *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithVersionGt(versionGt *string) *GetReleasesParams {
 	o.SetVersionGt(versionGt)
 	return o
 }
 
 // SetVersionGt adds the versionGt to the get releases params
-func (o *GETReleasesParams) SetVersionGt(versionGt *string) {
+func (o *GetReleasesParams) SetVersionGt(versionGt *string) {
 	o.VersionGt = versionGt
 }
 
 // WithVxRailVersionEq adds the vxRailVersionEq to the get releases params
-func (o *GETReleasesParams) WithVxRailVersionEq(vxRailVersionEq *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithVxRailVersionEq(vxRailVersionEq *string) *GetReleasesParams {
 	o.SetVxRailVersionEq(vxRailVersionEq)
 	return o
 }
 
 // SetVxRailVersionEq adds the vxRailVersionEq to the get releases params
-func (o *GETReleasesParams) SetVxRailVersionEq(vxRailVersionEq *string) {
+func (o *GetReleasesParams) SetVxRailVersionEq(vxRailVersionEq *string) {
 	o.VxRailVersionEq = vxRailVersionEq
 }
 
 // WithVxRailVersionGt adds the vxRailVersionGt to the get releases params
-func (o *GETReleasesParams) WithVxRailVersionGt(vxRailVersionGt *string) *GETReleasesParams {
+func (o *GetReleasesParams) WithVxRailVersionGt(vxRailVersionGt *string) *GetReleasesParams {
 	o.SetVxRailVersionGt(vxRailVersionGt)
 	return o
 }
 
 // SetVxRailVersionGt adds the vxRailVersionGt to the get releases params
-func (o *GETReleasesParams) SetVxRailVersionGt(vxRailVersionGt *string) {
+func (o *GetReleasesParams) SetVxRailVersionGt(vxRailVersionGt *string) {
 	o.VxRailVersionGt = vxRailVersionGt
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETReleasesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetReleasesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
@@ -313,18 +313,18 @@ func (o *GETReleasesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		}
 	}
 
-	if o.GETFutureReleases != nil {
+	if o.GetFutureReleases != nil {
 
 		// query param getFutureReleases
-		var qrGETFutureReleases bool
+		var qrGetFutureReleases bool
 
-		if o.GETFutureReleases != nil {
-			qrGETFutureReleases = *o.GETFutureReleases
+		if o.GetFutureReleases != nil {
+			qrGetFutureReleases = *o.GetFutureReleases
 		}
-		qGETFutureReleases := swag.FormatBool(qrGETFutureReleases)
-		if qGETFutureReleases != "" {
+		qGetFutureReleases := swag.FormatBool(qrGetFutureReleases)
+		if qGetFutureReleases != "" {
 
-			if err := r.SetQueryParam("getFutureReleases", qGETFutureReleases); err != nil {
+			if err := r.SetQueryParam("getFutureReleases", qGetFutureReleases); err != nil {
 				return err
 			}
 		}

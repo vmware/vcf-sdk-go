@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHostCriterionReader is a Reader for the GETHostCriterion structure.
-type GETHostCriterionReader struct {
+// GetHostCriterionReader is a Reader for the GetHostCriterion structure.
+type GetHostCriterionReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHostCriterionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHostCriterionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHostCriterionOK()
+		result := NewGetHostCriterionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETHostCriterionNotFound()
+		result := NewGetHostCriterionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETHostCriterionReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewGETHostCriterionOK creates a GETHostCriterionOK with default headers values
-func NewGETHostCriterionOK() *GETHostCriterionOK {
-	return &GETHostCriterionOK{}
+// NewGetHostCriterionOK creates a GetHostCriterionOK with default headers values
+func NewGetHostCriterionOK() *GetHostCriterionOK {
+	return &GetHostCriterionOK{}
 }
 
 /*
-GETHostCriterionOK describes a response with status code 200, with default header values.
+GetHostCriterionOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETHostCriterionOK struct {
+type GetHostCriterionOK struct {
 	Payload *models.HostCriterion
 }
 
 // IsSuccess returns true when this get host criterion o k response has a 2xx status code
-func (o *GETHostCriterionOK) IsSuccess() bool {
+func (o *GetHostCriterionOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get host criterion o k response has a 3xx status code
-func (o *GETHostCriterionOK) IsRedirect() bool {
+func (o *GetHostCriterionOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host criterion o k response has a 4xx status code
-func (o *GETHostCriterionOK) IsClientError() bool {
+func (o *GetHostCriterionOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get host criterion o k response has a 5xx status code
-func (o *GETHostCriterionOK) IsServerError() bool {
+func (o *GetHostCriterionOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host criterion o k response a status code equal to that given
-func (o *GETHostCriterionOK) IsCode(code int) bool {
+func (o *GetHostCriterionOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHostCriterionOK) Error() string {
+func (o *GetHostCriterionOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostCriterionOK) String() string {
+func (o *GetHostCriterionOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostCriterionOK) GetPayload() *models.HostCriterion {
+func (o *GetHostCriterionOK) GetPayload() *models.HostCriterion {
 	return o.Payload
 }
 
-func (o *GETHostCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HostCriterion)
 
@@ -106,58 +106,58 @@ func (o *GETHostCriterionOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETHostCriterionNotFound creates a GETHostCriterionNotFound with default headers values
-func NewGETHostCriterionNotFound() *GETHostCriterionNotFound {
-	return &GETHostCriterionNotFound{}
+// NewGetHostCriterionNotFound creates a GetHostCriterionNotFound with default headers values
+func NewGetHostCriterionNotFound() *GetHostCriterionNotFound {
+	return &GetHostCriterionNotFound{}
 }
 
 /*
-GETHostCriterionNotFound describes a response with status code 404, with default header values.
+GetHostCriterionNotFound describes a response with status code 404, with default header values.
 
 Criterion Not Found
 */
-type GETHostCriterionNotFound struct {
+type GetHostCriterionNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get host criterion not found response has a 2xx status code
-func (o *GETHostCriterionNotFound) IsSuccess() bool {
+func (o *GetHostCriterionNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get host criterion not found response has a 3xx status code
-func (o *GETHostCriterionNotFound) IsRedirect() bool {
+func (o *GetHostCriterionNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host criterion not found response has a 4xx status code
-func (o *GETHostCriterionNotFound) IsClientError() bool {
+func (o *GetHostCriterionNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get host criterion not found response has a 5xx status code
-func (o *GETHostCriterionNotFound) IsServerError() bool {
+func (o *GetHostCriterionNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host criterion not found response a status code equal to that given
-func (o *GETHostCriterionNotFound) IsCode(code int) bool {
+func (o *GetHostCriterionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETHostCriterionNotFound) Error() string {
+func (o *GetHostCriterionNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETHostCriterionNotFound) String() string {
+func (o *GetHostCriterionNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETHostCriterionNotFound) GetPayload() *models.Error {
+func (o *GetHostCriterionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

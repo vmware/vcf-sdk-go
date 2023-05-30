@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDatastoreQueryResponseParams creates a new GETDatastoreQueryResponseParams object,
+// NewGetDatastoreQueryResponseParams creates a new GetDatastoreQueryResponseParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDatastoreQueryResponseParams() *GETDatastoreQueryResponseParams {
-	return &GETDatastoreQueryResponseParams{
+func NewGetDatastoreQueryResponseParams() *GetDatastoreQueryResponseParams {
+	return &GetDatastoreQueryResponseParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDatastoreQueryResponseParamsWithTimeout creates a new GETDatastoreQueryResponseParams object
+// NewGetDatastoreQueryResponseParamsWithTimeout creates a new GetDatastoreQueryResponseParams object
 // with the ability to set a timeout on a request.
-func NewGETDatastoreQueryResponseParamsWithTimeout(timeout time.Duration) *GETDatastoreQueryResponseParams {
-	return &GETDatastoreQueryResponseParams{
+func NewGetDatastoreQueryResponseParamsWithTimeout(timeout time.Duration) *GetDatastoreQueryResponseParams {
+	return &GetDatastoreQueryResponseParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDatastoreQueryResponseParamsWithContext creates a new GETDatastoreQueryResponseParams object
+// NewGetDatastoreQueryResponseParamsWithContext creates a new GetDatastoreQueryResponseParams object
 // with the ability to set a context for a request.
-func NewGETDatastoreQueryResponseParamsWithContext(ctx context.Context) *GETDatastoreQueryResponseParams {
-	return &GETDatastoreQueryResponseParams{
+func NewGetDatastoreQueryResponseParamsWithContext(ctx context.Context) *GetDatastoreQueryResponseParams {
+	return &GetDatastoreQueryResponseParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDatastoreQueryResponseParamsWithHTTPClient creates a new GETDatastoreQueryResponseParams object
+// NewGetDatastoreQueryResponseParamsWithHTTPClient creates a new GetDatastoreQueryResponseParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDatastoreQueryResponseParamsWithHTTPClient(client *http.Client) *GETDatastoreQueryResponseParams {
-	return &GETDatastoreQueryResponseParams{
+func NewGetDatastoreQueryResponseParamsWithHTTPClient(client *http.Client) *GetDatastoreQueryResponseParams {
+	return &GetDatastoreQueryResponseParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDatastoreQueryResponseParams contains all the parameters to send to the API endpoint
+GetDatastoreQueryResponseParams contains all the parameters to send to the API endpoint
 
 	for the get datastore query response operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDatastoreQueryResponseParams struct {
+type GetDatastoreQueryResponseParams struct {
 
 	/* ClusterID.
 
@@ -84,7 +84,7 @@ type GETDatastoreQueryResponseParams struct {
 // WithDefaults hydrates default values in the get datastore query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoreQueryResponseParams) WithDefaults() *GETDatastoreQueryResponseParams {
+func (o *GetDatastoreQueryResponseParams) WithDefaults() *GetDatastoreQueryResponseParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETDatastoreQueryResponseParams) WithDefaults() *GETDatastoreQueryRespo
 // SetDefaults hydrates default values in the get datastore query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoreQueryResponseParams) SetDefaults() {
+func (o *GetDatastoreQueryResponseParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) WithTimeout(timeout time.Duration) *GETDatastoreQueryResponseParams {
+func (o *GetDatastoreQueryResponseParams) WithTimeout(timeout time.Duration) *GetDatastoreQueryResponseParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) SetTimeout(timeout time.Duration) {
+func (o *GetDatastoreQueryResponseParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) WithContext(ctx context.Context) *GETDatastoreQueryResponseParams {
+func (o *GetDatastoreQueryResponseParams) WithContext(ctx context.Context) *GetDatastoreQueryResponseParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) SetContext(ctx context.Context) {
+func (o *GetDatastoreQueryResponseParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) WithHTTPClient(client *http.Client) *GETDatastoreQueryResponseParams {
+func (o *GetDatastoreQueryResponseParams) WithHTTPClient(client *http.Client) *GetDatastoreQueryResponseParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) SetHTTPClient(client *http.Client) {
+func (o *GetDatastoreQueryResponseParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterID adds the clusterID to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) WithClusterID(clusterID string) *GETDatastoreQueryResponseParams {
+func (o *GetDatastoreQueryResponseParams) WithClusterID(clusterID string) *GetDatastoreQueryResponseParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) SetClusterID(clusterID string) {
+func (o *GetDatastoreQueryResponseParams) SetClusterID(clusterID string) {
 	o.ClusterID = clusterID
 }
 
 // WithQueryID adds the queryID to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) WithQueryID(queryID string) *GETDatastoreQueryResponseParams {
+func (o *GetDatastoreQueryResponseParams) WithQueryID(queryID string) *GetDatastoreQueryResponseParams {
 	o.SetQueryID(queryID)
 	return o
 }
 
 // SetQueryID adds the queryId to the get datastore query response params
-func (o *GETDatastoreQueryResponseParams) SetQueryID(queryID string) {
+func (o *GetDatastoreQueryResponseParams) SetQueryID(queryID string) {
 	o.QueryID = queryID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDatastoreQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDatastoreQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

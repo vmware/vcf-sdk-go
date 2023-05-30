@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETManifestReader is a Reader for the GETManifest structure.
-type GETManifestReader struct {
+// GetManifestReader is a Reader for the GetManifest structure.
+type GetManifestReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETManifestReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetManifestReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETManifestOK()
+		result := NewGetManifestOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETManifestNotFound()
+		result := NewGetManifestNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETManifestInternalServerError()
+		result := NewGetManifestInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETManifestReader) ReadResponse(response runtime.ClientResponse, consum
 	}
 }
 
-// NewGETManifestOK creates a GETManifestOK with default headers values
-func NewGETManifestOK() *GETManifestOK {
-	return &GETManifestOK{}
+// NewGetManifestOK creates a GetManifestOK with default headers values
+func NewGetManifestOK() *GetManifestOK {
+	return &GetManifestOK{}
 }
 
 /*
-GETManifestOK describes a response with status code 200, with default header values.
+GetManifestOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETManifestOK struct {
+type GetManifestOK struct {
 	Payload *models.Manifest
 }
 
 // IsSuccess returns true when this get manifest o k response has a 2xx status code
-func (o *GETManifestOK) IsSuccess() bool {
+func (o *GetManifestOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get manifest o k response has a 3xx status code
-func (o *GETManifestOK) IsRedirect() bool {
+func (o *GetManifestOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get manifest o k response has a 4xx status code
-func (o *GETManifestOK) IsClientError() bool {
+func (o *GetManifestOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get manifest o k response has a 5xx status code
-func (o *GETManifestOK) IsServerError() bool {
+func (o *GetManifestOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get manifest o k response a status code equal to that given
-func (o *GETManifestOK) IsCode(code int) bool {
+func (o *GetManifestOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETManifestOK) Error() string {
+func (o *GetManifestOK) Error() string {
 	return fmt.Sprintf("[GET /v1/manifests][%d] getManifestOK  %+v", 200, o.Payload)
 }
 
-func (o *GETManifestOK) String() string {
+func (o *GetManifestOK) String() string {
 	return fmt.Sprintf("[GET /v1/manifests][%d] getManifestOK  %+v", 200, o.Payload)
 }
 
-func (o *GETManifestOK) GetPayload() *models.Manifest {
+func (o *GetManifestOK) GetPayload() *models.Manifest {
 	return o.Payload
 }
 
-func (o *GETManifestOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetManifestOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Manifest)
 
@@ -112,58 +112,58 @@ func (o *GETManifestOK) readResponse(response runtime.ClientResponse, consumer r
 	return nil
 }
 
-// NewGETManifestNotFound creates a GETManifestNotFound with default headers values
-func NewGETManifestNotFound() *GETManifestNotFound {
-	return &GETManifestNotFound{}
+// NewGetManifestNotFound creates a GetManifestNotFound with default headers values
+func NewGetManifestNotFound() *GetManifestNotFound {
+	return &GetManifestNotFound{}
 }
 
 /*
-GETManifestNotFound describes a response with status code 404, with default header values.
+GetManifestNotFound describes a response with status code 404, with default header values.
 
 Manifest Not Found
 */
-type GETManifestNotFound struct {
+type GetManifestNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get manifest not found response has a 2xx status code
-func (o *GETManifestNotFound) IsSuccess() bool {
+func (o *GetManifestNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get manifest not found response has a 3xx status code
-func (o *GETManifestNotFound) IsRedirect() bool {
+func (o *GetManifestNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get manifest not found response has a 4xx status code
-func (o *GETManifestNotFound) IsClientError() bool {
+func (o *GetManifestNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get manifest not found response has a 5xx status code
-func (o *GETManifestNotFound) IsServerError() bool {
+func (o *GetManifestNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get manifest not found response a status code equal to that given
-func (o *GETManifestNotFound) IsCode(code int) bool {
+func (o *GetManifestNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETManifestNotFound) Error() string {
+func (o *GetManifestNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/manifests][%d] getManifestNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETManifestNotFound) String() string {
+func (o *GetManifestNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/manifests][%d] getManifestNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETManifestNotFound) GetPayload() *models.Error {
+func (o *GetManifestNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETManifestNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetManifestNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETManifestNotFound) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-// NewGETManifestInternalServerError creates a GETManifestInternalServerError with default headers values
-func NewGETManifestInternalServerError() *GETManifestInternalServerError {
-	return &GETManifestInternalServerError{}
+// NewGetManifestInternalServerError creates a GetManifestInternalServerError with default headers values
+func NewGetManifestInternalServerError() *GetManifestInternalServerError {
+	return &GetManifestInternalServerError{}
 }
 
 /*
-GETManifestInternalServerError describes a response with status code 500, with default header values.
+GetManifestInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETManifestInternalServerError struct {
+type GetManifestInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get manifest internal server error response has a 2xx status code
-func (o *GETManifestInternalServerError) IsSuccess() bool {
+func (o *GetManifestInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get manifest internal server error response has a 3xx status code
-func (o *GETManifestInternalServerError) IsRedirect() bool {
+func (o *GetManifestInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get manifest internal server error response has a 4xx status code
-func (o *GETManifestInternalServerError) IsClientError() bool {
+func (o *GetManifestInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get manifest internal server error response has a 5xx status code
-func (o *GETManifestInternalServerError) IsServerError() bool {
+func (o *GetManifestInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get manifest internal server error response a status code equal to that given
-func (o *GETManifestInternalServerError) IsCode(code int) bool {
+func (o *GetManifestInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETManifestInternalServerError) Error() string {
+func (o *GetManifestInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/manifests][%d] getManifestInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETManifestInternalServerError) String() string {
+func (o *GetManifestInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/manifests][%d] getManifestInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETManifestInternalServerError) GetPayload() *models.Error {
+func (o *GetManifestInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETManifestInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetManifestInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

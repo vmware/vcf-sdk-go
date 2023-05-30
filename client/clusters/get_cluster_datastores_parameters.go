@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETClusterDatastoresParams creates a new GETClusterDatastoresParams object,
+// NewGetClusterDatastoresParams creates a new GetClusterDatastoresParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETClusterDatastoresParams() *GETClusterDatastoresParams {
-	return &GETClusterDatastoresParams{
+func NewGetClusterDatastoresParams() *GetClusterDatastoresParams {
+	return &GetClusterDatastoresParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETClusterDatastoresParamsWithTimeout creates a new GETClusterDatastoresParams object
+// NewGetClusterDatastoresParamsWithTimeout creates a new GetClusterDatastoresParams object
 // with the ability to set a timeout on a request.
-func NewGETClusterDatastoresParamsWithTimeout(timeout time.Duration) *GETClusterDatastoresParams {
-	return &GETClusterDatastoresParams{
+func NewGetClusterDatastoresParamsWithTimeout(timeout time.Duration) *GetClusterDatastoresParams {
+	return &GetClusterDatastoresParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETClusterDatastoresParamsWithContext creates a new GETClusterDatastoresParams object
+// NewGetClusterDatastoresParamsWithContext creates a new GetClusterDatastoresParams object
 // with the ability to set a context for a request.
-func NewGETClusterDatastoresParamsWithContext(ctx context.Context) *GETClusterDatastoresParams {
-	return &GETClusterDatastoresParams{
+func NewGetClusterDatastoresParamsWithContext(ctx context.Context) *GetClusterDatastoresParams {
+	return &GetClusterDatastoresParams{
 		Context: ctx,
 	}
 }
 
-// NewGETClusterDatastoresParamsWithHTTPClient creates a new GETClusterDatastoresParams object
+// NewGetClusterDatastoresParamsWithHTTPClient creates a new GetClusterDatastoresParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETClusterDatastoresParamsWithHTTPClient(client *http.Client) *GETClusterDatastoresParams {
-	return &GETClusterDatastoresParams{
+func NewGetClusterDatastoresParamsWithHTTPClient(client *http.Client) *GetClusterDatastoresParams {
+	return &GetClusterDatastoresParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETClusterDatastoresParams contains all the parameters to send to the API endpoint
+GetClusterDatastoresParams contains all the parameters to send to the API endpoint
 
 	for the get cluster datastores operation.
 
 	Typically these are written to a http.Request.
 */
-type GETClusterDatastoresParams struct {
+type GetClusterDatastoresParams struct {
 
 	/* ClusterID.
 
@@ -78,7 +78,7 @@ type GETClusterDatastoresParams struct {
 // WithDefaults hydrates default values in the get cluster datastores params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterDatastoresParams) WithDefaults() *GETClusterDatastoresParams {
+func (o *GetClusterDatastoresParams) WithDefaults() *GetClusterDatastoresParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETClusterDatastoresParams) WithDefaults() *GETClusterDatastoresParams 
 // SetDefaults hydrates default values in the get cluster datastores params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterDatastoresParams) SetDefaults() {
+func (o *GetClusterDatastoresParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get cluster datastores params
-func (o *GETClusterDatastoresParams) WithTimeout(timeout time.Duration) *GETClusterDatastoresParams {
+func (o *GetClusterDatastoresParams) WithTimeout(timeout time.Duration) *GetClusterDatastoresParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get cluster datastores params
-func (o *GETClusterDatastoresParams) SetTimeout(timeout time.Duration) {
+func (o *GetClusterDatastoresParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get cluster datastores params
-func (o *GETClusterDatastoresParams) WithContext(ctx context.Context) *GETClusterDatastoresParams {
+func (o *GetClusterDatastoresParams) WithContext(ctx context.Context) *GetClusterDatastoresParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get cluster datastores params
-func (o *GETClusterDatastoresParams) SetContext(ctx context.Context) {
+func (o *GetClusterDatastoresParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get cluster datastores params
-func (o *GETClusterDatastoresParams) WithHTTPClient(client *http.Client) *GETClusterDatastoresParams {
+func (o *GetClusterDatastoresParams) WithHTTPClient(client *http.Client) *GetClusterDatastoresParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get cluster datastores params
-func (o *GETClusterDatastoresParams) SetHTTPClient(client *http.Client) {
+func (o *GetClusterDatastoresParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterID adds the clusterID to the get cluster datastores params
-func (o *GETClusterDatastoresParams) WithClusterID(clusterID string) *GETClusterDatastoresParams {
+func (o *GetClusterDatastoresParams) WithClusterID(clusterID string) *GetClusterDatastoresParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the get cluster datastores params
-func (o *GETClusterDatastoresParams) SetClusterID(clusterID string) {
+func (o *GetClusterDatastoresParams) SetClusterID(clusterID string) {
 	o.ClusterID = clusterID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETClusterDatastoresParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetClusterDatastoresParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

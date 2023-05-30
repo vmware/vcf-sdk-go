@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETNetworkPoolsReader is a Reader for the GETNetworkPools structure.
-type GETNetworkPoolsReader struct {
+// GetNetworkPoolsReader is a Reader for the GetNetworkPools structure.
+type GetNetworkPoolsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETNetworkPoolsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetNetworkPoolsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETNetworkPoolsOK()
+		result := NewGetNetworkPoolsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETNetworkPoolsNotFound()
+		result := NewGetNetworkPoolsNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETNetworkPoolsInternalServerError()
+		result := NewGetNetworkPoolsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETNetworkPoolsReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETNetworkPoolsOK creates a GETNetworkPoolsOK with default headers values
-func NewGETNetworkPoolsOK() *GETNetworkPoolsOK {
-	return &GETNetworkPoolsOK{}
+// NewGetNetworkPoolsOK creates a GetNetworkPoolsOK with default headers values
+func NewGetNetworkPoolsOK() *GetNetworkPoolsOK {
+	return &GetNetworkPoolsOK{}
 }
 
 /*
-GETNetworkPoolsOK describes a response with status code 200, with default header values.
+GetNetworkPoolsOK describes a response with status code 200, with default header values.
 
 Referenced network pool
 */
-type GETNetworkPoolsOK struct {
+type GetNetworkPoolsOK struct {
 	Payload *models.PageOfNetworkPool
 }
 
 // IsSuccess returns true when this get network pools o k response has a 2xx status code
-func (o *GETNetworkPoolsOK) IsSuccess() bool {
+func (o *GetNetworkPoolsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get network pools o k response has a 3xx status code
-func (o *GETNetworkPoolsOK) IsRedirect() bool {
+func (o *GetNetworkPoolsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get network pools o k response has a 4xx status code
-func (o *GETNetworkPoolsOK) IsClientError() bool {
+func (o *GetNetworkPoolsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get network pools o k response has a 5xx status code
-func (o *GETNetworkPoolsOK) IsServerError() bool {
+func (o *GetNetworkPoolsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get network pools o k response a status code equal to that given
-func (o *GETNetworkPoolsOK) IsCode(code int) bool {
+func (o *GetNetworkPoolsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETNetworkPoolsOK) Error() string {
+func (o *GetNetworkPoolsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETNetworkPoolsOK) String() string {
+func (o *GetNetworkPoolsOK) String() string {
 	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETNetworkPoolsOK) GetPayload() *models.PageOfNetworkPool {
+func (o *GetNetworkPoolsOK) GetPayload() *models.PageOfNetworkPool {
 	return o.Payload
 }
 
-func (o *GETNetworkPoolsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNetworkPoolsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfNetworkPool)
 
@@ -112,58 +112,58 @@ func (o *GETNetworkPoolsOK) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETNetworkPoolsNotFound creates a GETNetworkPoolsNotFound with default headers values
-func NewGETNetworkPoolsNotFound() *GETNetworkPoolsNotFound {
-	return &GETNetworkPoolsNotFound{}
+// NewGetNetworkPoolsNotFound creates a GetNetworkPoolsNotFound with default headers values
+func NewGetNetworkPoolsNotFound() *GetNetworkPoolsNotFound {
+	return &GetNetworkPoolsNotFound{}
 }
 
 /*
-GETNetworkPoolsNotFound describes a response with status code 404, with default header values.
+GetNetworkPoolsNotFound describes a response with status code 404, with default header values.
 
 Referenced network pool not found
 */
-type GETNetworkPoolsNotFound struct {
+type GetNetworkPoolsNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get network pools not found response has a 2xx status code
-func (o *GETNetworkPoolsNotFound) IsSuccess() bool {
+func (o *GetNetworkPoolsNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get network pools not found response has a 3xx status code
-func (o *GETNetworkPoolsNotFound) IsRedirect() bool {
+func (o *GetNetworkPoolsNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get network pools not found response has a 4xx status code
-func (o *GETNetworkPoolsNotFound) IsClientError() bool {
+func (o *GetNetworkPoolsNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get network pools not found response has a 5xx status code
-func (o *GETNetworkPoolsNotFound) IsServerError() bool {
+func (o *GetNetworkPoolsNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get network pools not found response a status code equal to that given
-func (o *GETNetworkPoolsNotFound) IsCode(code int) bool {
+func (o *GetNetworkPoolsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETNetworkPoolsNotFound) Error() string {
+func (o *GetNetworkPoolsNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETNetworkPoolsNotFound) String() string {
+func (o *GetNetworkPoolsNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETNetworkPoolsNotFound) GetPayload() *models.Error {
+func (o *GetNetworkPoolsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETNetworkPoolsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNetworkPoolsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETNetworkPoolsNotFound) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETNetworkPoolsInternalServerError creates a GETNetworkPoolsInternalServerError with default headers values
-func NewGETNetworkPoolsInternalServerError() *GETNetworkPoolsInternalServerError {
-	return &GETNetworkPoolsInternalServerError{}
+// NewGetNetworkPoolsInternalServerError creates a GetNetworkPoolsInternalServerError with default headers values
+func NewGetNetworkPoolsInternalServerError() *GetNetworkPoolsInternalServerError {
+	return &GetNetworkPoolsInternalServerError{}
 }
 
 /*
-GETNetworkPoolsInternalServerError describes a response with status code 500, with default header values.
+GetNetworkPoolsInternalServerError describes a response with status code 500, with default header values.
 
 Unexpected error
 */
-type GETNetworkPoolsInternalServerError struct {
+type GetNetworkPoolsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get network pools internal server error response has a 2xx status code
-func (o *GETNetworkPoolsInternalServerError) IsSuccess() bool {
+func (o *GetNetworkPoolsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get network pools internal server error response has a 3xx status code
-func (o *GETNetworkPoolsInternalServerError) IsRedirect() bool {
+func (o *GetNetworkPoolsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get network pools internal server error response has a 4xx status code
-func (o *GETNetworkPoolsInternalServerError) IsClientError() bool {
+func (o *GetNetworkPoolsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get network pools internal server error response has a 5xx status code
-func (o *GETNetworkPoolsInternalServerError) IsServerError() bool {
+func (o *GetNetworkPoolsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get network pools internal server error response a status code equal to that given
-func (o *GETNetworkPoolsInternalServerError) IsCode(code int) bool {
+func (o *GetNetworkPoolsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETNetworkPoolsInternalServerError) Error() string {
+func (o *GetNetworkPoolsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETNetworkPoolsInternalServerError) String() string {
+func (o *GetNetworkPoolsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETNetworkPoolsInternalServerError) GetPayload() *models.Error {
+func (o *GetNetworkPoolsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETNetworkPoolsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNetworkPoolsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

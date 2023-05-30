@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDomainTagManagerURLParams creates a new GETDomainTagManagerURLParams object,
+// NewGetDomainTagManagerURLParams creates a new GetDomainTagManagerURLParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDomainTagManagerURLParams() *GETDomainTagManagerURLParams {
-	return &GETDomainTagManagerURLParams{
+func NewGetDomainTagManagerURLParams() *GetDomainTagManagerURLParams {
+	return &GetDomainTagManagerURLParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDomainTagManagerURLParamsWithTimeout creates a new GETDomainTagManagerURLParams object
+// NewGetDomainTagManagerURLParamsWithTimeout creates a new GetDomainTagManagerURLParams object
 // with the ability to set a timeout on a request.
-func NewGETDomainTagManagerURLParamsWithTimeout(timeout time.Duration) *GETDomainTagManagerURLParams {
-	return &GETDomainTagManagerURLParams{
+func NewGetDomainTagManagerURLParamsWithTimeout(timeout time.Duration) *GetDomainTagManagerURLParams {
+	return &GetDomainTagManagerURLParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDomainTagManagerURLParamsWithContext creates a new GETDomainTagManagerURLParams object
+// NewGetDomainTagManagerURLParamsWithContext creates a new GetDomainTagManagerURLParams object
 // with the ability to set a context for a request.
-func NewGETDomainTagManagerURLParamsWithContext(ctx context.Context) *GETDomainTagManagerURLParams {
-	return &GETDomainTagManagerURLParams{
+func NewGetDomainTagManagerURLParamsWithContext(ctx context.Context) *GetDomainTagManagerURLParams {
+	return &GetDomainTagManagerURLParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDomainTagManagerURLParamsWithHTTPClient creates a new GETDomainTagManagerURLParams object
+// NewGetDomainTagManagerURLParamsWithHTTPClient creates a new GetDomainTagManagerURLParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDomainTagManagerURLParamsWithHTTPClient(client *http.Client) *GETDomainTagManagerURLParams {
-	return &GETDomainTagManagerURLParams{
+func NewGetDomainTagManagerURLParamsWithHTTPClient(client *http.Client) *GetDomainTagManagerURLParams {
+	return &GetDomainTagManagerURLParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDomainTagManagerURLParams contains all the parameters to send to the API endpoint
+GetDomainTagManagerURLParams contains all the parameters to send to the API endpoint
 
 	for the get domain tag manager Url operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDomainTagManagerURLParams struct {
+type GetDomainTagManagerURLParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETDomainTagManagerURLParams struct {
 // WithDefaults hydrates default values in the get domain tag manager Url params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDomainTagManagerURLParams) WithDefaults() *GETDomainTagManagerURLParams {
+func (o *GetDomainTagManagerURLParams) WithDefaults() *GetDomainTagManagerURLParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETDomainTagManagerURLParams) WithDefaults() *GETDomainTagManagerURLPar
 // SetDefaults hydrates default values in the get domain tag manager Url params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDomainTagManagerURLParams) SetDefaults() {
+func (o *GetDomainTagManagerURLParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) WithTimeout(timeout time.Duration) *GETDomainTagManagerURLParams {
+func (o *GetDomainTagManagerURLParams) WithTimeout(timeout time.Duration) *GetDomainTagManagerURLParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) SetTimeout(timeout time.Duration) {
+func (o *GetDomainTagManagerURLParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) WithContext(ctx context.Context) *GETDomainTagManagerURLParams {
+func (o *GetDomainTagManagerURLParams) WithContext(ctx context.Context) *GetDomainTagManagerURLParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) SetContext(ctx context.Context) {
+func (o *GetDomainTagManagerURLParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) WithHTTPClient(client *http.Client) *GETDomainTagManagerURLParams {
+func (o *GetDomainTagManagerURLParams) WithHTTPClient(client *http.Client) *GetDomainTagManagerURLParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) SetHTTPClient(client *http.Client) {
+func (o *GetDomainTagManagerURLParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) WithID(id string) *GETDomainTagManagerURLParams {
+func (o *GetDomainTagManagerURLParams) WithID(id string) *GetDomainTagManagerURLParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get domain tag manager Url params
-func (o *GETDomainTagManagerURLParams) SetID(id string) {
+func (o *GetDomainTagManagerURLParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDomainTagManagerURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDomainTagManagerURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

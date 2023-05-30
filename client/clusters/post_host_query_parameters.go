@@ -21,50 +21,50 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// NewPOSTHostQueryParams creates a new POSTHostQueryParams object,
+// NewPostHostQueryParams creates a new PostHostQueryParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewPOSTHostQueryParams() *POSTHostQueryParams {
-	return &POSTHostQueryParams{
+func NewPostHostQueryParams() *PostHostQueryParams {
+	return &PostHostQueryParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewPOSTHostQueryParamsWithTimeout creates a new POSTHostQueryParams object
+// NewPostHostQueryParamsWithTimeout creates a new PostHostQueryParams object
 // with the ability to set a timeout on a request.
-func NewPOSTHostQueryParamsWithTimeout(timeout time.Duration) *POSTHostQueryParams {
-	return &POSTHostQueryParams{
+func NewPostHostQueryParamsWithTimeout(timeout time.Duration) *PostHostQueryParams {
+	return &PostHostQueryParams{
 		timeout: timeout,
 	}
 }
 
-// NewPOSTHostQueryParamsWithContext creates a new POSTHostQueryParams object
+// NewPostHostQueryParamsWithContext creates a new PostHostQueryParams object
 // with the ability to set a context for a request.
-func NewPOSTHostQueryParamsWithContext(ctx context.Context) *POSTHostQueryParams {
-	return &POSTHostQueryParams{
+func NewPostHostQueryParamsWithContext(ctx context.Context) *PostHostQueryParams {
+	return &PostHostQueryParams{
 		Context: ctx,
 	}
 }
 
-// NewPOSTHostQueryParamsWithHTTPClient creates a new POSTHostQueryParams object
+// NewPostHostQueryParamsWithHTTPClient creates a new PostHostQueryParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewPOSTHostQueryParamsWithHTTPClient(client *http.Client) *POSTHostQueryParams {
-	return &POSTHostQueryParams{
+func NewPostHostQueryParamsWithHTTPClient(client *http.Client) *PostHostQueryParams {
+	return &PostHostQueryParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-POSTHostQueryParams contains all the parameters to send to the API endpoint
+PostHostQueryParams contains all the parameters to send to the API endpoint
 
 	for the post host query operation.
 
 	Typically these are written to a http.Request.
 */
-type POSTHostQueryParams struct {
+type PostHostQueryParams struct {
 
 	/* HostCriterion.
 
@@ -86,7 +86,7 @@ type POSTHostQueryParams struct {
 // WithDefaults hydrates default values in the post host query params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *POSTHostQueryParams) WithDefaults() *POSTHostQueryParams {
+func (o *PostHostQueryParams) WithDefaults() *PostHostQueryParams {
 	o.SetDefaults()
 	return o
 }
@@ -94,67 +94,67 @@ func (o *POSTHostQueryParams) WithDefaults() *POSTHostQueryParams {
 // SetDefaults hydrates default values in the post host query params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *POSTHostQueryParams) SetDefaults() {
+func (o *PostHostQueryParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post host query params
-func (o *POSTHostQueryParams) WithTimeout(timeout time.Duration) *POSTHostQueryParams {
+func (o *PostHostQueryParams) WithTimeout(timeout time.Duration) *PostHostQueryParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the post host query params
-func (o *POSTHostQueryParams) SetTimeout(timeout time.Duration) {
+func (o *PostHostQueryParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the post host query params
-func (o *POSTHostQueryParams) WithContext(ctx context.Context) *POSTHostQueryParams {
+func (o *PostHostQueryParams) WithContext(ctx context.Context) *PostHostQueryParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the post host query params
-func (o *POSTHostQueryParams) SetContext(ctx context.Context) {
+func (o *PostHostQueryParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the post host query params
-func (o *POSTHostQueryParams) WithHTTPClient(client *http.Client) *POSTHostQueryParams {
+func (o *PostHostQueryParams) WithHTTPClient(client *http.Client) *PostHostQueryParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the post host query params
-func (o *POSTHostQueryParams) SetHTTPClient(client *http.Client) {
+func (o *PostHostQueryParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithHostCriterion adds the hostCriterion to the post host query params
-func (o *POSTHostQueryParams) WithHostCriterion(hostCriterion *models.HostCriterion) *POSTHostQueryParams {
+func (o *PostHostQueryParams) WithHostCriterion(hostCriterion *models.HostCriterion) *PostHostQueryParams {
 	o.SetHostCriterion(hostCriterion)
 	return o
 }
 
 // SetHostCriterion adds the hostCriterion to the post host query params
-func (o *POSTHostQueryParams) SetHostCriterion(hostCriterion *models.HostCriterion) {
+func (o *PostHostQueryParams) SetHostCriterion(hostCriterion *models.HostCriterion) {
 	o.HostCriterion = hostCriterion
 }
 
 // WithID adds the id to the post host query params
-func (o *POSTHostQueryParams) WithID(id string) *POSTHostQueryParams {
+func (o *PostHostQueryParams) WithID(id string) *PostHostQueryParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the post host query params
-func (o *POSTHostQueryParams) SetID(id string) {
+func (o *PostHostQueryParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *POSTHostQueryParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *PostHostQueryParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

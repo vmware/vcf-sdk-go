@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDatastoresCriteriaParams creates a new GETDatastoresCriteriaParams object,
+// NewGetDatastoresCriteriaParams creates a new GetDatastoresCriteriaParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDatastoresCriteriaParams() *GETDatastoresCriteriaParams {
-	return &GETDatastoresCriteriaParams{
+func NewGetDatastoresCriteriaParams() *GetDatastoresCriteriaParams {
+	return &GetDatastoresCriteriaParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDatastoresCriteriaParamsWithTimeout creates a new GETDatastoresCriteriaParams object
+// NewGetDatastoresCriteriaParamsWithTimeout creates a new GetDatastoresCriteriaParams object
 // with the ability to set a timeout on a request.
-func NewGETDatastoresCriteriaParamsWithTimeout(timeout time.Duration) *GETDatastoresCriteriaParams {
-	return &GETDatastoresCriteriaParams{
+func NewGetDatastoresCriteriaParamsWithTimeout(timeout time.Duration) *GetDatastoresCriteriaParams {
+	return &GetDatastoresCriteriaParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDatastoresCriteriaParamsWithContext creates a new GETDatastoresCriteriaParams object
+// NewGetDatastoresCriteriaParamsWithContext creates a new GetDatastoresCriteriaParams object
 // with the ability to set a context for a request.
-func NewGETDatastoresCriteriaParamsWithContext(ctx context.Context) *GETDatastoresCriteriaParams {
-	return &GETDatastoresCriteriaParams{
+func NewGetDatastoresCriteriaParamsWithContext(ctx context.Context) *GetDatastoresCriteriaParams {
+	return &GetDatastoresCriteriaParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDatastoresCriteriaParamsWithHTTPClient creates a new GETDatastoresCriteriaParams object
+// NewGetDatastoresCriteriaParamsWithHTTPClient creates a new GetDatastoresCriteriaParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDatastoresCriteriaParamsWithHTTPClient(client *http.Client) *GETDatastoresCriteriaParams {
-	return &GETDatastoresCriteriaParams{
+func NewGetDatastoresCriteriaParamsWithHTTPClient(client *http.Client) *GetDatastoresCriteriaParams {
+	return &GetDatastoresCriteriaParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDatastoresCriteriaParams contains all the parameters to send to the API endpoint
+GetDatastoresCriteriaParams contains all the parameters to send to the API endpoint
 
 	for the get datastores criteria operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDatastoresCriteriaParams struct {
+type GetDatastoresCriteriaParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETDatastoresCriteriaParams struct {
 // WithDefaults hydrates default values in the get datastores criteria params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoresCriteriaParams) WithDefaults() *GETDatastoresCriteriaParams {
+func (o *GetDatastoresCriteriaParams) WithDefaults() *GetDatastoresCriteriaParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETDatastoresCriteriaParams) WithDefaults() *GETDatastoresCriteriaParam
 // SetDefaults hydrates default values in the get datastores criteria params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoresCriteriaParams) SetDefaults() {
+func (o *GetDatastoresCriteriaParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) WithTimeout(timeout time.Duration) *GETDatastoresCriteriaParams {
+func (o *GetDatastoresCriteriaParams) WithTimeout(timeout time.Duration) *GetDatastoresCriteriaParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) SetTimeout(timeout time.Duration) {
+func (o *GetDatastoresCriteriaParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) WithContext(ctx context.Context) *GETDatastoresCriteriaParams {
+func (o *GetDatastoresCriteriaParams) WithContext(ctx context.Context) *GetDatastoresCriteriaParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) SetContext(ctx context.Context) {
+func (o *GetDatastoresCriteriaParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) WithHTTPClient(client *http.Client) *GETDatastoresCriteriaParams {
+func (o *GetDatastoresCriteriaParams) WithHTTPClient(client *http.Client) *GetDatastoresCriteriaParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) SetHTTPClient(client *http.Client) {
+func (o *GetDatastoresCriteriaParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) WithID(id string) *GETDatastoresCriteriaParams {
+func (o *GetDatastoresCriteriaParams) WithID(id string) *GetDatastoresCriteriaParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get datastores criteria params
-func (o *GETDatastoresCriteriaParams) SetID(id string) {
+func (o *GetDatastoresCriteriaParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDatastoresCriteriaParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDatastoresCriteriaParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

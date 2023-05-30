@@ -39,7 +39,7 @@ type ClientService interface {
 
 	EditBackupSettings(params *EditBackupSettingsParams, opts ...ClientOption) (*EditBackupSettingsOK, *EditBackupSettingsAccepted, error)
 
-	GETBackupSettings(params *GETBackupSettingsParams, opts ...ClientOption) (*GETBackupSettingsOK, error)
+	GetBackupSettings(params *GetBackupSettingsParams, opts ...ClientOption) (*GetBackupSettingsOK, error)
 
 	RestoresTasks(params *RestoresTasksParams, opts ...ClientOption) (*RestoresTasksOK, error)
 
@@ -166,12 +166,12 @@ func (a *Client) EditBackupSettings(params *EditBackupSettingsParams, opts ...Cl
 }
 
 /*
-GETBackupSettings Gets backup configuration used to backup n s x and SDDC manager
+GetBackupSettings gets backup configuration used to backup n s x and SDDC manager
 */
-func (a *Client) GETBackupSettings(params *GETBackupSettingsParams, opts ...ClientOption) (*GETBackupSettingsOK, error) {
+func (a *Client) GetBackupSettings(params *GetBackupSettingsParams, opts ...ClientOption) (*GetBackupSettingsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBackupSettingsParams()
+		params = NewGetBackupSettingsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBackupSettings",
@@ -181,7 +181,7 @@ func (a *Client) GETBackupSettings(params *GETBackupSettingsParams, opts ...Clie
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBackupSettingsReader{formats: a.formats},
+		Reader:             &GetBackupSettingsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -193,7 +193,7 @@ func (a *Client) GETBackupSettings(params *GETBackupSettingsParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETBackupSettingsOK)
+	success, ok := result.(*GetBackupSettingsOK)
 	if ok {
 		return success, nil
 	}

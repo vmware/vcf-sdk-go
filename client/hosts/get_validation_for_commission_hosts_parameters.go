@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETValidationForCommissionHostsParams creates a new GETValidationForCommissionHostsParams object,
+// NewGetValidationForCommissionHostsParams creates a new GetValidationForCommissionHostsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETValidationForCommissionHostsParams() *GETValidationForCommissionHostsParams {
-	return &GETValidationForCommissionHostsParams{
+func NewGetValidationForCommissionHostsParams() *GetValidationForCommissionHostsParams {
+	return &GetValidationForCommissionHostsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETValidationForCommissionHostsParamsWithTimeout creates a new GETValidationForCommissionHostsParams object
+// NewGetValidationForCommissionHostsParamsWithTimeout creates a new GetValidationForCommissionHostsParams object
 // with the ability to set a timeout on a request.
-func NewGETValidationForCommissionHostsParamsWithTimeout(timeout time.Duration) *GETValidationForCommissionHostsParams {
-	return &GETValidationForCommissionHostsParams{
+func NewGetValidationForCommissionHostsParamsWithTimeout(timeout time.Duration) *GetValidationForCommissionHostsParams {
+	return &GetValidationForCommissionHostsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETValidationForCommissionHostsParamsWithContext creates a new GETValidationForCommissionHostsParams object
+// NewGetValidationForCommissionHostsParamsWithContext creates a new GetValidationForCommissionHostsParams object
 // with the ability to set a context for a request.
-func NewGETValidationForCommissionHostsParamsWithContext(ctx context.Context) *GETValidationForCommissionHostsParams {
-	return &GETValidationForCommissionHostsParams{
+func NewGetValidationForCommissionHostsParamsWithContext(ctx context.Context) *GetValidationForCommissionHostsParams {
+	return &GetValidationForCommissionHostsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETValidationForCommissionHostsParamsWithHTTPClient creates a new GETValidationForCommissionHostsParams object
+// NewGetValidationForCommissionHostsParamsWithHTTPClient creates a new GetValidationForCommissionHostsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETValidationForCommissionHostsParamsWithHTTPClient(client *http.Client) *GETValidationForCommissionHostsParams {
-	return &GETValidationForCommissionHostsParams{
+func NewGetValidationForCommissionHostsParamsWithHTTPClient(client *http.Client) *GetValidationForCommissionHostsParams {
+	return &GetValidationForCommissionHostsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETValidationForCommissionHostsParams contains all the parameters to send to the API endpoint
+GetValidationForCommissionHostsParams contains all the parameters to send to the API endpoint
 
 	for the get validation for commission hosts operation.
 
 	Typically these are written to a http.Request.
 */
-type GETValidationForCommissionHostsParams struct {
+type GetValidationForCommissionHostsParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETValidationForCommissionHostsParams struct {
 // WithDefaults hydrates default values in the get validation for commission hosts params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationForCommissionHostsParams) WithDefaults() *GETValidationForCommissionHostsParams {
+func (o *GetValidationForCommissionHostsParams) WithDefaults() *GetValidationForCommissionHostsParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETValidationForCommissionHostsParams) WithDefaults() *GETValidationFor
 // SetDefaults hydrates default values in the get validation for commission hosts params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationForCommissionHostsParams) SetDefaults() {
+func (o *GetValidationForCommissionHostsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) WithTimeout(timeout time.Duration) *GETValidationForCommissionHostsParams {
+func (o *GetValidationForCommissionHostsParams) WithTimeout(timeout time.Duration) *GetValidationForCommissionHostsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) SetTimeout(timeout time.Duration) {
+func (o *GetValidationForCommissionHostsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) WithContext(ctx context.Context) *GETValidationForCommissionHostsParams {
+func (o *GetValidationForCommissionHostsParams) WithContext(ctx context.Context) *GetValidationForCommissionHostsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) SetContext(ctx context.Context) {
+func (o *GetValidationForCommissionHostsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) WithHTTPClient(client *http.Client) *GETValidationForCommissionHostsParams {
+func (o *GetValidationForCommissionHostsParams) WithHTTPClient(client *http.Client) *GetValidationForCommissionHostsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) SetHTTPClient(client *http.Client) {
+func (o *GetValidationForCommissionHostsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) WithID(id string) *GETValidationForCommissionHostsParams {
+func (o *GetValidationForCommissionHostsParams) WithID(id string) *GetValidationForCommissionHostsParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get validation for commission hosts params
-func (o *GETValidationForCommissionHostsParams) SetID(id string) {
+func (o *GetValidationForCommissionHostsParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETValidationForCommissionHostsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetValidationForCommissionHostsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

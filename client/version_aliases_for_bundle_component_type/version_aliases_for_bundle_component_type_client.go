@@ -37,7 +37,7 @@ type ClientService interface {
 
 	DeleteVersionAliasBySoftwareType(params *DeleteVersionAliasBySoftwareTypeParams, opts ...ClientOption) (*DeleteVersionAliasBySoftwareTypeOK, *DeleteVersionAliasBySoftwareTypeNoContent, error)
 
-	GETVersionAliasConfiguration(params *GETVersionAliasConfigurationParams, opts ...ClientOption) (*GETVersionAliasConfigurationOK, error)
+	GetVersionAliasConfiguration(params *GetVersionAliasConfigurationParams, opts ...ClientOption) (*GetVersionAliasConfigurationOK, error)
 
 	UpdateVersionAliasConfiguration(params *UpdateVersionAliasConfigurationParams, opts ...ClientOption) (*UpdateVersionAliasConfigurationOK, error)
 
@@ -129,14 +129,14 @@ func (a *Client) DeleteVersionAliasBySoftwareType(params *DeleteVersionAliasBySo
 }
 
 /*
-GETVersionAliasConfiguration Gets version alias configuration
+GetVersionAliasConfiguration gets version alias configuration
 
 Get the Version Alias Configuration.
 */
-func (a *Client) GETVersionAliasConfiguration(params *GETVersionAliasConfigurationParams, opts ...ClientOption) (*GETVersionAliasConfigurationOK, error) {
+func (a *Client) GetVersionAliasConfiguration(params *GetVersionAliasConfigurationParams, opts ...ClientOption) (*GetVersionAliasConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVersionAliasConfigurationParams()
+		params = NewGetVersionAliasConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVersionAliasConfiguration",
@@ -146,7 +146,7 @@ func (a *Client) GETVersionAliasConfiguration(params *GETVersionAliasConfigurati
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVersionAliasConfigurationReader{formats: a.formats},
+		Reader:             &GetVersionAliasConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -158,7 +158,7 @@ func (a *Client) GETVersionAliasConfiguration(params *GETVersionAliasConfigurati
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVersionAliasConfigurationOK)
+	success, ok := result.(*GetVersionAliasConfigurationOK)
 	if ok {
 		return success, nil
 	}

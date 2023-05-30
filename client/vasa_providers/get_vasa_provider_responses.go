@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVasaProviderReader is a Reader for the GETVasaProvider structure.
-type GETVasaProviderReader struct {
+// GetVasaProviderReader is a Reader for the GetVasaProvider structure.
+type GetVasaProviderReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVasaProviderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVasaProviderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVasaProviderOK()
+		result := NewGetVasaProviderOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETVasaProviderNotFound()
+		result := NewGetVasaProviderNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETVasaProviderInternalServerError()
+		result := NewGetVasaProviderInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETVasaProviderReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETVasaProviderOK creates a GETVasaProviderOK with default headers values
-func NewGETVasaProviderOK() *GETVasaProviderOK {
-	return &GETVasaProviderOK{}
+// NewGetVasaProviderOK creates a GetVasaProviderOK with default headers values
+func NewGetVasaProviderOK() *GetVasaProviderOK {
+	return &GetVasaProviderOK{}
 }
 
 /*
-GETVasaProviderOK describes a response with status code 200, with default header values.
+GetVasaProviderOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETVasaProviderOK struct {
+type GetVasaProviderOK struct {
 	Payload *models.VasaProvider
 }
 
 // IsSuccess returns true when this get vasa provider o k response has a 2xx status code
-func (o *GETVasaProviderOK) IsSuccess() bool {
+func (o *GetVasaProviderOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vasa provider o k response has a 3xx status code
-func (o *GETVasaProviderOK) IsRedirect() bool {
+func (o *GetVasaProviderOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vasa provider o k response has a 4xx status code
-func (o *GETVasaProviderOK) IsClientError() bool {
+func (o *GetVasaProviderOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vasa provider o k response has a 5xx status code
-func (o *GETVasaProviderOK) IsServerError() bool {
+func (o *GetVasaProviderOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vasa provider o k response a status code equal to that given
-func (o *GETVasaProviderOK) IsCode(code int) bool {
+func (o *GetVasaProviderOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVasaProviderOK) Error() string {
+func (o *GetVasaProviderOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}][%d] getVasaProviderOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVasaProviderOK) String() string {
+func (o *GetVasaProviderOK) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}][%d] getVasaProviderOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVasaProviderOK) GetPayload() *models.VasaProvider {
+func (o *GetVasaProviderOK) GetPayload() *models.VasaProvider {
 	return o.Payload
 }
 
-func (o *GETVasaProviderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVasaProviderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.VasaProvider)
 
@@ -112,58 +112,58 @@ func (o *GETVasaProviderOK) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETVasaProviderNotFound creates a GETVasaProviderNotFound with default headers values
-func NewGETVasaProviderNotFound() *GETVasaProviderNotFound {
-	return &GETVasaProviderNotFound{}
+// NewGetVasaProviderNotFound creates a GetVasaProviderNotFound with default headers values
+func NewGetVasaProviderNotFound() *GetVasaProviderNotFound {
+	return &GetVasaProviderNotFound{}
 }
 
 /*
-GETVasaProviderNotFound describes a response with status code 404, with default header values.
+GetVasaProviderNotFound describes a response with status code 404, with default header values.
 
 VASA Provider not found
 */
-type GETVasaProviderNotFound struct {
+type GetVasaProviderNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vasa provider not found response has a 2xx status code
-func (o *GETVasaProviderNotFound) IsSuccess() bool {
+func (o *GetVasaProviderNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vasa provider not found response has a 3xx status code
-func (o *GETVasaProviderNotFound) IsRedirect() bool {
+func (o *GetVasaProviderNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vasa provider not found response has a 4xx status code
-func (o *GETVasaProviderNotFound) IsClientError() bool {
+func (o *GetVasaProviderNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get vasa provider not found response has a 5xx status code
-func (o *GETVasaProviderNotFound) IsServerError() bool {
+func (o *GetVasaProviderNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vasa provider not found response a status code equal to that given
-func (o *GETVasaProviderNotFound) IsCode(code int) bool {
+func (o *GetVasaProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETVasaProviderNotFound) Error() string {
+func (o *GetVasaProviderNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}][%d] getVasaProviderNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVasaProviderNotFound) String() string {
+func (o *GetVasaProviderNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}][%d] getVasaProviderNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVasaProviderNotFound) GetPayload() *models.Error {
+func (o *GetVasaProviderNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVasaProviderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVasaProviderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETVasaProviderNotFound) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETVasaProviderInternalServerError creates a GETVasaProviderInternalServerError with default headers values
-func NewGETVasaProviderInternalServerError() *GETVasaProviderInternalServerError {
-	return &GETVasaProviderInternalServerError{}
+// NewGetVasaProviderInternalServerError creates a GetVasaProviderInternalServerError with default headers values
+func NewGetVasaProviderInternalServerError() *GetVasaProviderInternalServerError {
+	return &GetVasaProviderInternalServerError{}
 }
 
 /*
-GETVasaProviderInternalServerError describes a response with status code 500, with default header values.
+GetVasaProviderInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETVasaProviderInternalServerError struct {
+type GetVasaProviderInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vasa provider internal server error response has a 2xx status code
-func (o *GETVasaProviderInternalServerError) IsSuccess() bool {
+func (o *GetVasaProviderInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vasa provider internal server error response has a 3xx status code
-func (o *GETVasaProviderInternalServerError) IsRedirect() bool {
+func (o *GetVasaProviderInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vasa provider internal server error response has a 4xx status code
-func (o *GETVasaProviderInternalServerError) IsClientError() bool {
+func (o *GetVasaProviderInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vasa provider internal server error response has a 5xx status code
-func (o *GETVasaProviderInternalServerError) IsServerError() bool {
+func (o *GetVasaProviderInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get vasa provider internal server error response a status code equal to that given
-func (o *GETVasaProviderInternalServerError) IsCode(code int) bool {
+func (o *GetVasaProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETVasaProviderInternalServerError) Error() string {
+func (o *GetVasaProviderInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}][%d] getVasaProviderInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVasaProviderInternalServerError) String() string {
+func (o *GetVasaProviderInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}][%d] getVasaProviderInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVasaProviderInternalServerError) GetPayload() *models.Error {
+func (o *GetVasaProviderInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVasaProviderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVasaProviderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

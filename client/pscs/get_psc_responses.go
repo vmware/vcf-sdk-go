@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETPscReader is a Reader for the GETPsc structure.
-type GETPscReader struct {
+// GetPscReader is a Reader for the GetPsc structure.
+type GetPscReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETPscReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetPscReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETPscOK()
+		result := NewGetPscOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETPscNotFound()
+		result := NewGetPscNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETPscInternalServerError()
+		result := NewGetPscInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETPscReader) ReadResponse(response runtime.ClientResponse, consumer ru
 	}
 }
 
-// NewGETPscOK creates a GETPscOK with default headers values
-func NewGETPscOK() *GETPscOK {
-	return &GETPscOK{}
+// NewGetPscOK creates a GetPscOK with default headers values
+func NewGetPscOK() *GetPscOK {
+	return &GetPscOK{}
 }
 
 /*
-GETPscOK describes a response with status code 200, with default header values.
+GetPscOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETPscOK struct {
+type GetPscOK struct {
 	Payload *models.Psc
 }
 
 // IsSuccess returns true when this get psc o k response has a 2xx status code
-func (o *GETPscOK) IsSuccess() bool {
+func (o *GetPscOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get psc o k response has a 3xx status code
-func (o *GETPscOK) IsRedirect() bool {
+func (o *GetPscOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get psc o k response has a 4xx status code
-func (o *GETPscOK) IsClientError() bool {
+func (o *GetPscOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get psc o k response has a 5xx status code
-func (o *GETPscOK) IsServerError() bool {
+func (o *GetPscOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get psc o k response a status code equal to that given
-func (o *GETPscOK) IsCode(code int) bool {
+func (o *GetPscOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETPscOK) Error() string {
+func (o *GetPscOK) Error() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscOK  %+v", 200, o.Payload)
 }
 
-func (o *GETPscOK) String() string {
+func (o *GetPscOK) String() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscOK  %+v", 200, o.Payload)
 }
 
-func (o *GETPscOK) GetPayload() *models.Psc {
+func (o *GetPscOK) GetPayload() *models.Psc {
 	return o.Payload
 }
 
-func (o *GETPscOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPscOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Psc)
 
@@ -112,58 +112,58 @@ func (o *GETPscOK) readResponse(response runtime.ClientResponse, consumer runtim
 	return nil
 }
 
-// NewGETPscNotFound creates a GETPscNotFound with default headers values
-func NewGETPscNotFound() *GETPscNotFound {
-	return &GETPscNotFound{}
+// NewGetPscNotFound creates a GetPscNotFound with default headers values
+func NewGetPscNotFound() *GetPscNotFound {
+	return &GetPscNotFound{}
 }
 
 /*
-GETPscNotFound describes a response with status code 404, with default header values.
+GetPscNotFound describes a response with status code 404, with default header values.
 
 Psc not found
 */
-type GETPscNotFound struct {
+type GetPscNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get psc not found response has a 2xx status code
-func (o *GETPscNotFound) IsSuccess() bool {
+func (o *GetPscNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get psc not found response has a 3xx status code
-func (o *GETPscNotFound) IsRedirect() bool {
+func (o *GetPscNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get psc not found response has a 4xx status code
-func (o *GETPscNotFound) IsClientError() bool {
+func (o *GetPscNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get psc not found response has a 5xx status code
-func (o *GETPscNotFound) IsServerError() bool {
+func (o *GetPscNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get psc not found response a status code equal to that given
-func (o *GETPscNotFound) IsCode(code int) bool {
+func (o *GetPscNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETPscNotFound) Error() string {
+func (o *GetPscNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETPscNotFound) String() string {
+func (o *GetPscNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETPscNotFound) GetPayload() *models.Error {
+func (o *GetPscNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETPscNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPscNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETPscNotFound) readResponse(response runtime.ClientResponse, consumer 
 	return nil
 }
 
-// NewGETPscInternalServerError creates a GETPscInternalServerError with default headers values
-func NewGETPscInternalServerError() *GETPscInternalServerError {
-	return &GETPscInternalServerError{}
+// NewGetPscInternalServerError creates a GetPscInternalServerError with default headers values
+func NewGetPscInternalServerError() *GetPscInternalServerError {
+	return &GetPscInternalServerError{}
 }
 
 /*
-GETPscInternalServerError describes a response with status code 500, with default header values.
+GetPscInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETPscInternalServerError struct {
+type GetPscInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get psc internal server error response has a 2xx status code
-func (o *GETPscInternalServerError) IsSuccess() bool {
+func (o *GetPscInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get psc internal server error response has a 3xx status code
-func (o *GETPscInternalServerError) IsRedirect() bool {
+func (o *GetPscInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get psc internal server error response has a 4xx status code
-func (o *GETPscInternalServerError) IsClientError() bool {
+func (o *GetPscInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get psc internal server error response has a 5xx status code
-func (o *GETPscInternalServerError) IsServerError() bool {
+func (o *GetPscInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get psc internal server error response a status code equal to that given
-func (o *GETPscInternalServerError) IsCode(code int) bool {
+func (o *GetPscInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETPscInternalServerError) Error() string {
+func (o *GetPscInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETPscInternalServerError) String() string {
+func (o *GetPscInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETPscInternalServerError) GetPayload() *models.Error {
+func (o *GetPscInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETPscInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPscInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

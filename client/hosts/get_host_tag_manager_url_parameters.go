@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHostTagManagerURLParams creates a new GETHostTagManagerURLParams object,
+// NewGetHostTagManagerURLParams creates a new GetHostTagManagerURLParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHostTagManagerURLParams() *GETHostTagManagerURLParams {
-	return &GETHostTagManagerURLParams{
+func NewGetHostTagManagerURLParams() *GetHostTagManagerURLParams {
+	return &GetHostTagManagerURLParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHostTagManagerURLParamsWithTimeout creates a new GETHostTagManagerURLParams object
+// NewGetHostTagManagerURLParamsWithTimeout creates a new GetHostTagManagerURLParams object
 // with the ability to set a timeout on a request.
-func NewGETHostTagManagerURLParamsWithTimeout(timeout time.Duration) *GETHostTagManagerURLParams {
-	return &GETHostTagManagerURLParams{
+func NewGetHostTagManagerURLParamsWithTimeout(timeout time.Duration) *GetHostTagManagerURLParams {
+	return &GetHostTagManagerURLParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETHostTagManagerURLParamsWithContext creates a new GETHostTagManagerURLParams object
+// NewGetHostTagManagerURLParamsWithContext creates a new GetHostTagManagerURLParams object
 // with the ability to set a context for a request.
-func NewGETHostTagManagerURLParamsWithContext(ctx context.Context) *GETHostTagManagerURLParams {
-	return &GETHostTagManagerURLParams{
+func NewGetHostTagManagerURLParamsWithContext(ctx context.Context) *GetHostTagManagerURLParams {
+	return &GetHostTagManagerURLParams{
 		Context: ctx,
 	}
 }
 
-// NewGETHostTagManagerURLParamsWithHTTPClient creates a new GETHostTagManagerURLParams object
+// NewGetHostTagManagerURLParamsWithHTTPClient creates a new GetHostTagManagerURLParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHostTagManagerURLParamsWithHTTPClient(client *http.Client) *GETHostTagManagerURLParams {
-	return &GETHostTagManagerURLParams{
+func NewGetHostTagManagerURLParamsWithHTTPClient(client *http.Client) *GetHostTagManagerURLParams {
+	return &GetHostTagManagerURLParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHostTagManagerURLParams contains all the parameters to send to the API endpoint
+GetHostTagManagerURLParams contains all the parameters to send to the API endpoint
 
 	for the get host tag manager Url operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHostTagManagerURLParams struct {
+type GetHostTagManagerURLParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETHostTagManagerURLParams struct {
 // WithDefaults hydrates default values in the get host tag manager Url params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostTagManagerURLParams) WithDefaults() *GETHostTagManagerURLParams {
+func (o *GetHostTagManagerURLParams) WithDefaults() *GetHostTagManagerURLParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETHostTagManagerURLParams) WithDefaults() *GETHostTagManagerURLParams 
 // SetDefaults hydrates default values in the get host tag manager Url params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostTagManagerURLParams) SetDefaults() {
+func (o *GetHostTagManagerURLParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) WithTimeout(timeout time.Duration) *GETHostTagManagerURLParams {
+func (o *GetHostTagManagerURLParams) WithTimeout(timeout time.Duration) *GetHostTagManagerURLParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) SetTimeout(timeout time.Duration) {
+func (o *GetHostTagManagerURLParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) WithContext(ctx context.Context) *GETHostTagManagerURLParams {
+func (o *GetHostTagManagerURLParams) WithContext(ctx context.Context) *GetHostTagManagerURLParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) SetContext(ctx context.Context) {
+func (o *GetHostTagManagerURLParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) WithHTTPClient(client *http.Client) *GETHostTagManagerURLParams {
+func (o *GetHostTagManagerURLParams) WithHTTPClient(client *http.Client) *GetHostTagManagerURLParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) SetHTTPClient(client *http.Client) {
+func (o *GetHostTagManagerURLParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) WithID(id string) *GETHostTagManagerURLParams {
+func (o *GetHostTagManagerURLParams) WithID(id string) *GetHostTagManagerURLParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get host tag manager Url params
-func (o *GETHostTagManagerURLParams) SetID(id string) {
+func (o *GetHostTagManagerURLParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHostTagManagerURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHostTagManagerURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

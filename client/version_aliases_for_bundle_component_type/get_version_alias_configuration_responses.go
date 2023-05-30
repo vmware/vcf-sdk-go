@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVersionAliasConfigurationReader is a Reader for the GETVersionAliasConfiguration structure.
-type GETVersionAliasConfigurationReader struct {
+// GetVersionAliasConfigurationReader is a Reader for the GetVersionAliasConfiguration structure.
+type GetVersionAliasConfigurationReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVersionAliasConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVersionAliasConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVersionAliasConfigurationOK()
+		result := NewGetVersionAliasConfigurationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETVersionAliasConfigurationInternalServerError()
+		result := NewGetVersionAliasConfigurationInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETVersionAliasConfigurationReader) ReadResponse(response runtime.Clien
 	}
 }
 
-// NewGETVersionAliasConfigurationOK creates a GETVersionAliasConfigurationOK with default headers values
-func NewGETVersionAliasConfigurationOK() *GETVersionAliasConfigurationOK {
-	return &GETVersionAliasConfigurationOK{}
+// NewGetVersionAliasConfigurationOK creates a GetVersionAliasConfigurationOK with default headers values
+func NewGetVersionAliasConfigurationOK() *GetVersionAliasConfigurationOK {
+	return &GetVersionAliasConfigurationOK{}
 }
 
 /*
-GETVersionAliasConfigurationOK describes a response with status code 200, with default header values.
+GetVersionAliasConfigurationOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETVersionAliasConfigurationOK struct {
+type GetVersionAliasConfigurationOK struct {
 	Payload *models.PageOfVersionAliasesForBundleComponentType
 }
 
 // IsSuccess returns true when this get version alias configuration o k response has a 2xx status code
-func (o *GETVersionAliasConfigurationOK) IsSuccess() bool {
+func (o *GetVersionAliasConfigurationOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get version alias configuration o k response has a 3xx status code
-func (o *GETVersionAliasConfigurationOK) IsRedirect() bool {
+func (o *GetVersionAliasConfigurationOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get version alias configuration o k response has a 4xx status code
-func (o *GETVersionAliasConfigurationOK) IsClientError() bool {
+func (o *GetVersionAliasConfigurationOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get version alias configuration o k response has a 5xx status code
-func (o *GETVersionAliasConfigurationOK) IsServerError() bool {
+func (o *GetVersionAliasConfigurationOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get version alias configuration o k response a status code equal to that given
-func (o *GETVersionAliasConfigurationOK) IsCode(code int) bool {
+func (o *GetVersionAliasConfigurationOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVersionAliasConfigurationOK) Error() string {
+func (o *GetVersionAliasConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/settings/version-aliases][%d] getVersionAliasConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVersionAliasConfigurationOK) String() string {
+func (o *GetVersionAliasConfigurationOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/settings/version-aliases][%d] getVersionAliasConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVersionAliasConfigurationOK) GetPayload() *models.PageOfVersionAliasesForBundleComponentType {
+func (o *GetVersionAliasConfigurationOK) GetPayload() *models.PageOfVersionAliasesForBundleComponentType {
 	return o.Payload
 }
 
-func (o *GETVersionAliasConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVersionAliasConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfVersionAliasesForBundleComponentType)
 
@@ -106,58 +106,58 @@ func (o *GETVersionAliasConfigurationOK) readResponse(response runtime.ClientRes
 	return nil
 }
 
-// NewGETVersionAliasConfigurationInternalServerError creates a GETVersionAliasConfigurationInternalServerError with default headers values
-func NewGETVersionAliasConfigurationInternalServerError() *GETVersionAliasConfigurationInternalServerError {
-	return &GETVersionAliasConfigurationInternalServerError{}
+// NewGetVersionAliasConfigurationInternalServerError creates a GetVersionAliasConfigurationInternalServerError with default headers values
+func NewGetVersionAliasConfigurationInternalServerError() *GetVersionAliasConfigurationInternalServerError {
+	return &GetVersionAliasConfigurationInternalServerError{}
 }
 
 /*
-GETVersionAliasConfigurationInternalServerError describes a response with status code 500, with default header values.
+GetVersionAliasConfigurationInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETVersionAliasConfigurationInternalServerError struct {
+type GetVersionAliasConfigurationInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get version alias configuration internal server error response has a 2xx status code
-func (o *GETVersionAliasConfigurationInternalServerError) IsSuccess() bool {
+func (o *GetVersionAliasConfigurationInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get version alias configuration internal server error response has a 3xx status code
-func (o *GETVersionAliasConfigurationInternalServerError) IsRedirect() bool {
+func (o *GetVersionAliasConfigurationInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get version alias configuration internal server error response has a 4xx status code
-func (o *GETVersionAliasConfigurationInternalServerError) IsClientError() bool {
+func (o *GetVersionAliasConfigurationInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get version alias configuration internal server error response has a 5xx status code
-func (o *GETVersionAliasConfigurationInternalServerError) IsServerError() bool {
+func (o *GetVersionAliasConfigurationInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get version alias configuration internal server error response a status code equal to that given
-func (o *GETVersionAliasConfigurationInternalServerError) IsCode(code int) bool {
+func (o *GetVersionAliasConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETVersionAliasConfigurationInternalServerError) Error() string {
+func (o *GetVersionAliasConfigurationInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/settings/version-aliases][%d] getVersionAliasConfigurationInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVersionAliasConfigurationInternalServerError) String() string {
+func (o *GetVersionAliasConfigurationInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/settings/version-aliases][%d] getVersionAliasConfigurationInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVersionAliasConfigurationInternalServerError) GetPayload() *models.Error {
+func (o *GetVersionAliasConfigurationInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVersionAliasConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVersionAliasConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

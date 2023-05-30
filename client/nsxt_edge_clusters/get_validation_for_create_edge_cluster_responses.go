@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETValidationForCreateEdgeClusterReader is a Reader for the GETValidationForCreateEdgeCluster structure.
-type GETValidationForCreateEdgeClusterReader struct {
+// GetValidationForCreateEdgeClusterReader is a Reader for the GetValidationForCreateEdgeCluster structure.
+type GetValidationForCreateEdgeClusterReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETValidationForCreateEdgeClusterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetValidationForCreateEdgeClusterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETValidationForCreateEdgeClusterOK()
+		result := NewGetValidationForCreateEdgeClusterOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETValidationForCreateEdgeClusterBadRequest()
+		result := NewGetValidationForCreateEdgeClusterBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETValidationForCreateEdgeClusterInternalServerError()
+		result := NewGetValidationForCreateEdgeClusterInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETValidationForCreateEdgeClusterReader) ReadResponse(response runtime.
 	}
 }
 
-// NewGETValidationForCreateEdgeClusterOK creates a GETValidationForCreateEdgeClusterOK with default headers values
-func NewGETValidationForCreateEdgeClusterOK() *GETValidationForCreateEdgeClusterOK {
-	return &GETValidationForCreateEdgeClusterOK{}
+// NewGetValidationForCreateEdgeClusterOK creates a GetValidationForCreateEdgeClusterOK with default headers values
+func NewGetValidationForCreateEdgeClusterOK() *GetValidationForCreateEdgeClusterOK {
+	return &GetValidationForCreateEdgeClusterOK{}
 }
 
 /*
-GETValidationForCreateEdgeClusterOK describes a response with status code 200, with default header values.
+GetValidationForCreateEdgeClusterOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETValidationForCreateEdgeClusterOK struct {
+type GetValidationForCreateEdgeClusterOK struct {
 	Payload *models.Validation
 }
 
 // IsSuccess returns true when this get validation for create edge cluster o k response has a 2xx status code
-func (o *GETValidationForCreateEdgeClusterOK) IsSuccess() bool {
+func (o *GetValidationForCreateEdgeClusterOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get validation for create edge cluster o k response has a 3xx status code
-func (o *GETValidationForCreateEdgeClusterOK) IsRedirect() bool {
+func (o *GetValidationForCreateEdgeClusterOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation for create edge cluster o k response has a 4xx status code
-func (o *GETValidationForCreateEdgeClusterOK) IsClientError() bool {
+func (o *GetValidationForCreateEdgeClusterOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation for create edge cluster o k response has a 5xx status code
-func (o *GETValidationForCreateEdgeClusterOK) IsServerError() bool {
+func (o *GetValidationForCreateEdgeClusterOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation for create edge cluster o k response a status code equal to that given
-func (o *GETValidationForCreateEdgeClusterOK) IsCode(code int) bool {
+func (o *GetValidationForCreateEdgeClusterOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETValidationForCreateEdgeClusterOK) Error() string {
+func (o *GetValidationForCreateEdgeClusterOK) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/validations/{id}][%d] getValidationForCreateEdgeClusterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationForCreateEdgeClusterOK) String() string {
+func (o *GetValidationForCreateEdgeClusterOK) String() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/validations/{id}][%d] getValidationForCreateEdgeClusterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationForCreateEdgeClusterOK) GetPayload() *models.Validation {
+func (o *GetValidationForCreateEdgeClusterOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETValidationForCreateEdgeClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationForCreateEdgeClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 
@@ -112,58 +112,58 @@ func (o *GETValidationForCreateEdgeClusterOK) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETValidationForCreateEdgeClusterBadRequest creates a GETValidationForCreateEdgeClusterBadRequest with default headers values
-func NewGETValidationForCreateEdgeClusterBadRequest() *GETValidationForCreateEdgeClusterBadRequest {
-	return &GETValidationForCreateEdgeClusterBadRequest{}
+// NewGetValidationForCreateEdgeClusterBadRequest creates a GetValidationForCreateEdgeClusterBadRequest with default headers values
+func NewGetValidationForCreateEdgeClusterBadRequest() *GetValidationForCreateEdgeClusterBadRequest {
+	return &GetValidationForCreateEdgeClusterBadRequest{}
 }
 
 /*
-GETValidationForCreateEdgeClusterBadRequest describes a response with status code 400, with default header values.
+GetValidationForCreateEdgeClusterBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETValidationForCreateEdgeClusterBadRequest struct {
+type GetValidationForCreateEdgeClusterBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get validation for create edge cluster bad request response has a 2xx status code
-func (o *GETValidationForCreateEdgeClusterBadRequest) IsSuccess() bool {
+func (o *GetValidationForCreateEdgeClusterBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation for create edge cluster bad request response has a 3xx status code
-func (o *GETValidationForCreateEdgeClusterBadRequest) IsRedirect() bool {
+func (o *GetValidationForCreateEdgeClusterBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation for create edge cluster bad request response has a 4xx status code
-func (o *GETValidationForCreateEdgeClusterBadRequest) IsClientError() bool {
+func (o *GetValidationForCreateEdgeClusterBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get validation for create edge cluster bad request response has a 5xx status code
-func (o *GETValidationForCreateEdgeClusterBadRequest) IsServerError() bool {
+func (o *GetValidationForCreateEdgeClusterBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation for create edge cluster bad request response a status code equal to that given
-func (o *GETValidationForCreateEdgeClusterBadRequest) IsCode(code int) bool {
+func (o *GetValidationForCreateEdgeClusterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETValidationForCreateEdgeClusterBadRequest) Error() string {
+func (o *GetValidationForCreateEdgeClusterBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/validations/{id}][%d] getValidationForCreateEdgeClusterBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationForCreateEdgeClusterBadRequest) String() string {
+func (o *GetValidationForCreateEdgeClusterBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/validations/{id}][%d] getValidationForCreateEdgeClusterBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationForCreateEdgeClusterBadRequest) GetPayload() *models.Error {
+func (o *GetValidationForCreateEdgeClusterBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETValidationForCreateEdgeClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationForCreateEdgeClusterBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,53 +175,53 @@ func (o *GETValidationForCreateEdgeClusterBadRequest) readResponse(response runt
 	return nil
 }
 
-// NewGETValidationForCreateEdgeClusterInternalServerError creates a GETValidationForCreateEdgeClusterInternalServerError with default headers values
-func NewGETValidationForCreateEdgeClusterInternalServerError() *GETValidationForCreateEdgeClusterInternalServerError {
-	return &GETValidationForCreateEdgeClusterInternalServerError{}
+// NewGetValidationForCreateEdgeClusterInternalServerError creates a GetValidationForCreateEdgeClusterInternalServerError with default headers values
+func NewGetValidationForCreateEdgeClusterInternalServerError() *GetValidationForCreateEdgeClusterInternalServerError {
+	return &GetValidationForCreateEdgeClusterInternalServerError{}
 }
 
 /*
-GETValidationForCreateEdgeClusterInternalServerError describes a response with status code 500, with default header values.
+GetValidationForCreateEdgeClusterInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETValidationForCreateEdgeClusterInternalServerError struct {
+type GetValidationForCreateEdgeClusterInternalServerError struct {
 }
 
 // IsSuccess returns true when this get validation for create edge cluster internal server error response has a 2xx status code
-func (o *GETValidationForCreateEdgeClusterInternalServerError) IsSuccess() bool {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation for create edge cluster internal server error response has a 3xx status code
-func (o *GETValidationForCreateEdgeClusterInternalServerError) IsRedirect() bool {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation for create edge cluster internal server error response has a 4xx status code
-func (o *GETValidationForCreateEdgeClusterInternalServerError) IsClientError() bool {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation for create edge cluster internal server error response has a 5xx status code
-func (o *GETValidationForCreateEdgeClusterInternalServerError) IsServerError() bool {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get validation for create edge cluster internal server error response a status code equal to that given
-func (o *GETValidationForCreateEdgeClusterInternalServerError) IsCode(code int) bool {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETValidationForCreateEdgeClusterInternalServerError) Error() string {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/validations/{id}][%d] getValidationForCreateEdgeClusterInternalServerError ", 500)
 }
 
-func (o *GETValidationForCreateEdgeClusterInternalServerError) String() string {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/validations/{id}][%d] getValidationForCreateEdgeClusterInternalServerError ", 500)
 }
 
-func (o *GETValidationForCreateEdgeClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationForCreateEdgeClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETBringupInfoParams creates a new GETBringupInfoParams object,
+// NewGetBringupInfoParams creates a new GetBringupInfoParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBringupInfoParams() *GETBringupInfoParams {
-	return &GETBringupInfoParams{
+func NewGetBringupInfoParams() *GetBringupInfoParams {
+	return &GetBringupInfoParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBringupInfoParamsWithTimeout creates a new GETBringupInfoParams object
+// NewGetBringupInfoParamsWithTimeout creates a new GetBringupInfoParams object
 // with the ability to set a timeout on a request.
-func NewGETBringupInfoParamsWithTimeout(timeout time.Duration) *GETBringupInfoParams {
-	return &GETBringupInfoParams{
+func NewGetBringupInfoParamsWithTimeout(timeout time.Duration) *GetBringupInfoParams {
+	return &GetBringupInfoParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBringupInfoParamsWithContext creates a new GETBringupInfoParams object
+// NewGetBringupInfoParamsWithContext creates a new GetBringupInfoParams object
 // with the ability to set a context for a request.
-func NewGETBringupInfoParamsWithContext(ctx context.Context) *GETBringupInfoParams {
-	return &GETBringupInfoParams{
+func NewGetBringupInfoParamsWithContext(ctx context.Context) *GetBringupInfoParams {
+	return &GetBringupInfoParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBringupInfoParamsWithHTTPClient creates a new GETBringupInfoParams object
+// NewGetBringupInfoParamsWithHTTPClient creates a new GetBringupInfoParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBringupInfoParamsWithHTTPClient(client *http.Client) *GETBringupInfoParams {
-	return &GETBringupInfoParams{
+func NewGetBringupInfoParamsWithHTTPClient(client *http.Client) *GetBringupInfoParams {
+	return &GetBringupInfoParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBringupInfoParams contains all the parameters to send to the API endpoint
+GetBringupInfoParams contains all the parameters to send to the API endpoint
 
 	for the get bringup info operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBringupInfoParams struct {
+type GetBringupInfoParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETBringupInfoParams struct {
 // WithDefaults hydrates default values in the get bringup info params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBringupInfoParams) WithDefaults() *GETBringupInfoParams {
+func (o *GetBringupInfoParams) WithDefaults() *GetBringupInfoParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETBringupInfoParams) WithDefaults() *GETBringupInfoParams {
 // SetDefaults hydrates default values in the get bringup info params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBringupInfoParams) SetDefaults() {
+func (o *GetBringupInfoParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get bringup info params
-func (o *GETBringupInfoParams) WithTimeout(timeout time.Duration) *GETBringupInfoParams {
+func (o *GetBringupInfoParams) WithTimeout(timeout time.Duration) *GetBringupInfoParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get bringup info params
-func (o *GETBringupInfoParams) SetTimeout(timeout time.Duration) {
+func (o *GetBringupInfoParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get bringup info params
-func (o *GETBringupInfoParams) WithContext(ctx context.Context) *GETBringupInfoParams {
+func (o *GetBringupInfoParams) WithContext(ctx context.Context) *GetBringupInfoParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get bringup info params
-func (o *GETBringupInfoParams) SetContext(ctx context.Context) {
+func (o *GetBringupInfoParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get bringup info params
-func (o *GETBringupInfoParams) WithHTTPClient(client *http.Client) *GETBringupInfoParams {
+func (o *GetBringupInfoParams) WithHTTPClient(client *http.Client) *GetBringupInfoParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get bringup info params
-func (o *GETBringupInfoParams) SetHTTPClient(client *http.Client) {
+func (o *GetBringupInfoParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBringupInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBringupInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

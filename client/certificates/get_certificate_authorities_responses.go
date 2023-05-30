@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCertificateAuthoritiesReader is a Reader for the GETCertificateAuthorities structure.
-type GETCertificateAuthoritiesReader struct {
+// GetCertificateAuthoritiesReader is a Reader for the GetCertificateAuthorities structure.
+type GetCertificateAuthoritiesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCertificateAuthoritiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCertificateAuthoritiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCertificateAuthoritiesOK()
+		result := NewGetCertificateAuthoritiesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETCertificateAuthoritiesBadRequest()
+		result := NewGetCertificateAuthoritiesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETCertificateAuthoritiesInternalServerError()
+		result := NewGetCertificateAuthoritiesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETCertificateAuthoritiesReader) ReadResponse(response runtime.ClientRe
 	}
 }
 
-// NewGETCertificateAuthoritiesOK creates a GETCertificateAuthoritiesOK with default headers values
-func NewGETCertificateAuthoritiesOK() *GETCertificateAuthoritiesOK {
-	return &GETCertificateAuthoritiesOK{}
+// NewGetCertificateAuthoritiesOK creates a GetCertificateAuthoritiesOK with default headers values
+func NewGetCertificateAuthoritiesOK() *GetCertificateAuthoritiesOK {
+	return &GetCertificateAuthoritiesOK{}
 }
 
 /*
-GETCertificateAuthoritiesOK describes a response with status code 200, with default header values.
+GetCertificateAuthoritiesOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETCertificateAuthoritiesOK struct {
+type GetCertificateAuthoritiesOK struct {
 	Payload *models.PageOfCertificateAuthority
 }
 
 // IsSuccess returns true when this get certificate authorities o k response has a 2xx status code
-func (o *GETCertificateAuthoritiesOK) IsSuccess() bool {
+func (o *GetCertificateAuthoritiesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get certificate authorities o k response has a 3xx status code
-func (o *GETCertificateAuthoritiesOK) IsRedirect() bool {
+func (o *GetCertificateAuthoritiesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificate authorities o k response has a 4xx status code
-func (o *GETCertificateAuthoritiesOK) IsClientError() bool {
+func (o *GetCertificateAuthoritiesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get certificate authorities o k response has a 5xx status code
-func (o *GETCertificateAuthoritiesOK) IsServerError() bool {
+func (o *GetCertificateAuthoritiesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get certificate authorities o k response a status code equal to that given
-func (o *GETCertificateAuthoritiesOK) IsCode(code int) bool {
+func (o *GetCertificateAuthoritiesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCertificateAuthoritiesOK) Error() string {
+func (o *GetCertificateAuthoritiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities][%d] getCertificateAuthoritiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCertificateAuthoritiesOK) String() string {
+func (o *GetCertificateAuthoritiesOK) String() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities][%d] getCertificateAuthoritiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCertificateAuthoritiesOK) GetPayload() *models.PageOfCertificateAuthority {
+func (o *GetCertificateAuthoritiesOK) GetPayload() *models.PageOfCertificateAuthority {
 	return o.Payload
 }
 
-func (o *GETCertificateAuthoritiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificateAuthoritiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfCertificateAuthority)
 
@@ -112,58 +112,58 @@ func (o *GETCertificateAuthoritiesOK) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewGETCertificateAuthoritiesBadRequest creates a GETCertificateAuthoritiesBadRequest with default headers values
-func NewGETCertificateAuthoritiesBadRequest() *GETCertificateAuthoritiesBadRequest {
-	return &GETCertificateAuthoritiesBadRequest{}
+// NewGetCertificateAuthoritiesBadRequest creates a GetCertificateAuthoritiesBadRequest with default headers values
+func NewGetCertificateAuthoritiesBadRequest() *GetCertificateAuthoritiesBadRequest {
+	return &GetCertificateAuthoritiesBadRequest{}
 }
 
 /*
-GETCertificateAuthoritiesBadRequest describes a response with status code 400, with default header values.
+GetCertificateAuthoritiesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
-type GETCertificateAuthoritiesBadRequest struct {
+type GetCertificateAuthoritiesBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get certificate authorities bad request response has a 2xx status code
-func (o *GETCertificateAuthoritiesBadRequest) IsSuccess() bool {
+func (o *GetCertificateAuthoritiesBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get certificate authorities bad request response has a 3xx status code
-func (o *GETCertificateAuthoritiesBadRequest) IsRedirect() bool {
+func (o *GetCertificateAuthoritiesBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificate authorities bad request response has a 4xx status code
-func (o *GETCertificateAuthoritiesBadRequest) IsClientError() bool {
+func (o *GetCertificateAuthoritiesBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get certificate authorities bad request response has a 5xx status code
-func (o *GETCertificateAuthoritiesBadRequest) IsServerError() bool {
+func (o *GetCertificateAuthoritiesBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get certificate authorities bad request response a status code equal to that given
-func (o *GETCertificateAuthoritiesBadRequest) IsCode(code int) bool {
+func (o *GetCertificateAuthoritiesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETCertificateAuthoritiesBadRequest) Error() string {
+func (o *GetCertificateAuthoritiesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities][%d] getCertificateAuthoritiesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETCertificateAuthoritiesBadRequest) String() string {
+func (o *GetCertificateAuthoritiesBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities][%d] getCertificateAuthoritiesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETCertificateAuthoritiesBadRequest) GetPayload() *models.Error {
+func (o *GetCertificateAuthoritiesBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCertificateAuthoritiesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificateAuthoritiesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETCertificateAuthoritiesBadRequest) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETCertificateAuthoritiesInternalServerError creates a GETCertificateAuthoritiesInternalServerError with default headers values
-func NewGETCertificateAuthoritiesInternalServerError() *GETCertificateAuthoritiesInternalServerError {
-	return &GETCertificateAuthoritiesInternalServerError{}
+// NewGetCertificateAuthoritiesInternalServerError creates a GetCertificateAuthoritiesInternalServerError with default headers values
+func NewGetCertificateAuthoritiesInternalServerError() *GetCertificateAuthoritiesInternalServerError {
+	return &GetCertificateAuthoritiesInternalServerError{}
 }
 
 /*
-GETCertificateAuthoritiesInternalServerError describes a response with status code 500, with default header values.
+GetCertificateAuthoritiesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETCertificateAuthoritiesInternalServerError struct {
+type GetCertificateAuthoritiesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get certificate authorities internal server error response has a 2xx status code
-func (o *GETCertificateAuthoritiesInternalServerError) IsSuccess() bool {
+func (o *GetCertificateAuthoritiesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get certificate authorities internal server error response has a 3xx status code
-func (o *GETCertificateAuthoritiesInternalServerError) IsRedirect() bool {
+func (o *GetCertificateAuthoritiesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificate authorities internal server error response has a 4xx status code
-func (o *GETCertificateAuthoritiesInternalServerError) IsClientError() bool {
+func (o *GetCertificateAuthoritiesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get certificate authorities internal server error response has a 5xx status code
-func (o *GETCertificateAuthoritiesInternalServerError) IsServerError() bool {
+func (o *GetCertificateAuthoritiesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get certificate authorities internal server error response a status code equal to that given
-func (o *GETCertificateAuthoritiesInternalServerError) IsCode(code int) bool {
+func (o *GetCertificateAuthoritiesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCertificateAuthoritiesInternalServerError) Error() string {
+func (o *GetCertificateAuthoritiesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities][%d] getCertificateAuthoritiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCertificateAuthoritiesInternalServerError) String() string {
+func (o *GetCertificateAuthoritiesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities][%d] getCertificateAuthoritiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCertificateAuthoritiesInternalServerError) GetPayload() *models.Error {
+func (o *GetCertificateAuthoritiesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCertificateAuthoritiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificateAuthoritiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

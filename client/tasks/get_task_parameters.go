@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETTaskParams creates a new GETTaskParams object,
+// NewGetTaskParams creates a new GetTaskParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETTaskParams() *GETTaskParams {
-	return &GETTaskParams{
+func NewGetTaskParams() *GetTaskParams {
+	return &GetTaskParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETTaskParamsWithTimeout creates a new GETTaskParams object
+// NewGetTaskParamsWithTimeout creates a new GetTaskParams object
 // with the ability to set a timeout on a request.
-func NewGETTaskParamsWithTimeout(timeout time.Duration) *GETTaskParams {
-	return &GETTaskParams{
+func NewGetTaskParamsWithTimeout(timeout time.Duration) *GetTaskParams {
+	return &GetTaskParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETTaskParamsWithContext creates a new GETTaskParams object
+// NewGetTaskParamsWithContext creates a new GetTaskParams object
 // with the ability to set a context for a request.
-func NewGETTaskParamsWithContext(ctx context.Context) *GETTaskParams {
-	return &GETTaskParams{
+func NewGetTaskParamsWithContext(ctx context.Context) *GetTaskParams {
+	return &GetTaskParams{
 		Context: ctx,
 	}
 }
 
-// NewGETTaskParamsWithHTTPClient creates a new GETTaskParams object
+// NewGetTaskParamsWithHTTPClient creates a new GetTaskParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETTaskParamsWithHTTPClient(client *http.Client) *GETTaskParams {
-	return &GETTaskParams{
+func NewGetTaskParamsWithHTTPClient(client *http.Client) *GetTaskParams {
+	return &GetTaskParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETTaskParams contains all the parameters to send to the API endpoint
+GetTaskParams contains all the parameters to send to the API endpoint
 
 	for the get task operation.
 
 	Typically these are written to a http.Request.
 */
-type GETTaskParams struct {
+type GetTaskParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETTaskParams struct {
 // WithDefaults hydrates default values in the get task params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTaskParams) WithDefaults() *GETTaskParams {
+func (o *GetTaskParams) WithDefaults() *GetTaskParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETTaskParams) WithDefaults() *GETTaskParams {
 // SetDefaults hydrates default values in the get task params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTaskParams) SetDefaults() {
+func (o *GetTaskParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get task params
-func (o *GETTaskParams) WithTimeout(timeout time.Duration) *GETTaskParams {
+func (o *GetTaskParams) WithTimeout(timeout time.Duration) *GetTaskParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get task params
-func (o *GETTaskParams) SetTimeout(timeout time.Duration) {
+func (o *GetTaskParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get task params
-func (o *GETTaskParams) WithContext(ctx context.Context) *GETTaskParams {
+func (o *GetTaskParams) WithContext(ctx context.Context) *GetTaskParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get task params
-func (o *GETTaskParams) SetContext(ctx context.Context) {
+func (o *GetTaskParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get task params
-func (o *GETTaskParams) WithHTTPClient(client *http.Client) *GETTaskParams {
+func (o *GetTaskParams) WithHTTPClient(client *http.Client) *GetTaskParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get task params
-func (o *GETTaskParams) SetHTTPClient(client *http.Client) {
+func (o *GetTaskParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get task params
-func (o *GETTaskParams) WithID(id string) *GETTaskParams {
+func (o *GetTaskParams) WithID(id string) *GetTaskParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get task params
-func (o *GETTaskParams) SetID(id string) {
+func (o *GetTaskParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

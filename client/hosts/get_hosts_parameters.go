@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHostsParams creates a new GETHostsParams object,
+// NewGetHostsParams creates a new GetHostsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHostsParams() *GETHostsParams {
-	return &GETHostsParams{
+func NewGetHostsParams() *GetHostsParams {
+	return &GetHostsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHostsParamsWithTimeout creates a new GETHostsParams object
+// NewGetHostsParamsWithTimeout creates a new GetHostsParams object
 // with the ability to set a timeout on a request.
-func NewGETHostsParamsWithTimeout(timeout time.Duration) *GETHostsParams {
-	return &GETHostsParams{
+func NewGetHostsParamsWithTimeout(timeout time.Duration) *GetHostsParams {
+	return &GetHostsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETHostsParamsWithContext creates a new GETHostsParams object
+// NewGetHostsParamsWithContext creates a new GetHostsParams object
 // with the ability to set a context for a request.
-func NewGETHostsParamsWithContext(ctx context.Context) *GETHostsParams {
-	return &GETHostsParams{
+func NewGetHostsParamsWithContext(ctx context.Context) *GetHostsParams {
+	return &GetHostsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETHostsParamsWithHTTPClient creates a new GETHostsParams object
+// NewGetHostsParamsWithHTTPClient creates a new GetHostsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHostsParamsWithHTTPClient(client *http.Client) *GETHostsParams {
-	return &GETHostsParams{
+func NewGetHostsParamsWithHTTPClient(client *http.Client) *GetHostsParams {
+	return &GetHostsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHostsParams contains all the parameters to send to the API endpoint
+GetHostsParams contains all the parameters to send to the API endpoint
 
 	for the get hosts operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHostsParams struct {
+type GetHostsParams struct {
 
 	/* ClusterID.
 
@@ -108,7 +108,7 @@ type GETHostsParams struct {
 // WithDefaults hydrates default values in the get hosts params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostsParams) WithDefaults() *GETHostsParams {
+func (o *GetHostsParams) WithDefaults() *GetHostsParams {
 	o.SetDefaults()
 	return o
 }
@@ -116,111 +116,111 @@ func (o *GETHostsParams) WithDefaults() *GETHostsParams {
 // SetDefaults hydrates default values in the get hosts params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostsParams) SetDefaults() {
+func (o *GetHostsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get hosts params
-func (o *GETHostsParams) WithTimeout(timeout time.Duration) *GETHostsParams {
+func (o *GetHostsParams) WithTimeout(timeout time.Duration) *GetHostsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get hosts params
-func (o *GETHostsParams) SetTimeout(timeout time.Duration) {
+func (o *GetHostsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get hosts params
-func (o *GETHostsParams) WithContext(ctx context.Context) *GETHostsParams {
+func (o *GetHostsParams) WithContext(ctx context.Context) *GetHostsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get hosts params
-func (o *GETHostsParams) SetContext(ctx context.Context) {
+func (o *GetHostsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get hosts params
-func (o *GETHostsParams) WithHTTPClient(client *http.Client) *GETHostsParams {
+func (o *GetHostsParams) WithHTTPClient(client *http.Client) *GetHostsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get hosts params
-func (o *GETHostsParams) SetHTTPClient(client *http.Client) {
+func (o *GetHostsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterID adds the clusterID to the get hosts params
-func (o *GETHostsParams) WithClusterID(clusterID *string) *GETHostsParams {
+func (o *GetHostsParams) WithClusterID(clusterID *string) *GetHostsParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the get hosts params
-func (o *GETHostsParams) SetClusterID(clusterID *string) {
+func (o *GetHostsParams) SetClusterID(clusterID *string) {
 	o.ClusterID = clusterID
 }
 
 // WithDatastoreName adds the datastoreName to the get hosts params
-func (o *GETHostsParams) WithDatastoreName(datastoreName *string) *GETHostsParams {
+func (o *GetHostsParams) WithDatastoreName(datastoreName *string) *GetHostsParams {
 	o.SetDatastoreName(datastoreName)
 	return o
 }
 
 // SetDatastoreName adds the datastoreName to the get hosts params
-func (o *GETHostsParams) SetDatastoreName(datastoreName *string) {
+func (o *GetHostsParams) SetDatastoreName(datastoreName *string) {
 	o.DatastoreName = datastoreName
 }
 
 // WithDomainID adds the domainID to the get hosts params
-func (o *GETHostsParams) WithDomainID(domainID *string) *GETHostsParams {
+func (o *GetHostsParams) WithDomainID(domainID *string) *GetHostsParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get hosts params
-func (o *GETHostsParams) SetDomainID(domainID *string) {
+func (o *GetHostsParams) SetDomainID(domainID *string) {
 	o.DomainID = domainID
 }
 
 // WithNetworkpoolID adds the networkpoolID to the get hosts params
-func (o *GETHostsParams) WithNetworkpoolID(networkpoolID *string) *GETHostsParams {
+func (o *GetHostsParams) WithNetworkpoolID(networkpoolID *string) *GetHostsParams {
 	o.SetNetworkpoolID(networkpoolID)
 	return o
 }
 
 // SetNetworkpoolID adds the networkpoolId to the get hosts params
-func (o *GETHostsParams) SetNetworkpoolID(networkpoolID *string) {
+func (o *GetHostsParams) SetNetworkpoolID(networkpoolID *string) {
 	o.NetworkpoolID = networkpoolID
 }
 
 // WithStatus adds the status to the get hosts params
-func (o *GETHostsParams) WithStatus(status *string) *GETHostsParams {
+func (o *GetHostsParams) WithStatus(status *string) *GetHostsParams {
 	o.SetStatus(status)
 	return o
 }
 
 // SetStatus adds the status to the get hosts params
-func (o *GETHostsParams) SetStatus(status *string) {
+func (o *GetHostsParams) SetStatus(status *string) {
 	o.Status = status
 }
 
 // WithStorageType adds the storageType to the get hosts params
-func (o *GETHostsParams) WithStorageType(storageType *string) *GETHostsParams {
+func (o *GetHostsParams) WithStorageType(storageType *string) *GetHostsParams {
 	o.SetStorageType(storageType)
 	return o
 }
 
 // SetStorageType adds the storageType to the get hosts params
-func (o *GETHostsParams) SetStorageType(storageType *string) {
+func (o *GetHostsParams) SetStorageType(storageType *string) {
 	o.StorageType = storageType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHostsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHostsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

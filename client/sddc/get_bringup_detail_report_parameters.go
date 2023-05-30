@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETBringupDetailReportParams creates a new GETBringupDetailReportParams object,
+// NewGetBringupDetailReportParams creates a new GetBringupDetailReportParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBringupDetailReportParams() *GETBringupDetailReportParams {
-	return &GETBringupDetailReportParams{
+func NewGetBringupDetailReportParams() *GetBringupDetailReportParams {
+	return &GetBringupDetailReportParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBringupDetailReportParamsWithTimeout creates a new GETBringupDetailReportParams object
+// NewGetBringupDetailReportParamsWithTimeout creates a new GetBringupDetailReportParams object
 // with the ability to set a timeout on a request.
-func NewGETBringupDetailReportParamsWithTimeout(timeout time.Duration) *GETBringupDetailReportParams {
-	return &GETBringupDetailReportParams{
+func NewGetBringupDetailReportParamsWithTimeout(timeout time.Duration) *GetBringupDetailReportParams {
+	return &GetBringupDetailReportParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBringupDetailReportParamsWithContext creates a new GETBringupDetailReportParams object
+// NewGetBringupDetailReportParamsWithContext creates a new GetBringupDetailReportParams object
 // with the ability to set a context for a request.
-func NewGETBringupDetailReportParamsWithContext(ctx context.Context) *GETBringupDetailReportParams {
-	return &GETBringupDetailReportParams{
+func NewGetBringupDetailReportParamsWithContext(ctx context.Context) *GetBringupDetailReportParams {
+	return &GetBringupDetailReportParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBringupDetailReportParamsWithHTTPClient creates a new GETBringupDetailReportParams object
+// NewGetBringupDetailReportParamsWithHTTPClient creates a new GetBringupDetailReportParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBringupDetailReportParamsWithHTTPClient(client *http.Client) *GETBringupDetailReportParams {
-	return &GETBringupDetailReportParams{
+func NewGetBringupDetailReportParamsWithHTTPClient(client *http.Client) *GetBringupDetailReportParams {
+	return &GetBringupDetailReportParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBringupDetailReportParams contains all the parameters to send to the API endpoint
+GetBringupDetailReportParams contains all the parameters to send to the API endpoint
 
 	for the get bringup detail report operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBringupDetailReportParams struct {
+type GetBringupDetailReportParams struct {
 
 	/* Format.
 
@@ -86,7 +86,7 @@ type GETBringupDetailReportParams struct {
 // WithDefaults hydrates default values in the get bringup detail report params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBringupDetailReportParams) WithDefaults() *GETBringupDetailReportParams {
+func (o *GetBringupDetailReportParams) WithDefaults() *GetBringupDetailReportParams {
 	o.SetDefaults()
 	return o
 }
@@ -94,12 +94,12 @@ func (o *GETBringupDetailReportParams) WithDefaults() *GETBringupDetailReportPar
 // SetDefaults hydrates default values in the get bringup detail report params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBringupDetailReportParams) SetDefaults() {
+func (o *GetBringupDetailReportParams) SetDefaults() {
 	var (
 		formatDefault = string("PDF")
 	)
 
-	val := GETBringupDetailReportParams{
+	val := GetBringupDetailReportParams{
 		Format: &formatDefault,
 	}
 
@@ -110,62 +110,62 @@ func (o *GETBringupDetailReportParams) SetDefaults() {
 }
 
 // WithTimeout adds the timeout to the get bringup detail report params
-func (o *GETBringupDetailReportParams) WithTimeout(timeout time.Duration) *GETBringupDetailReportParams {
+func (o *GetBringupDetailReportParams) WithTimeout(timeout time.Duration) *GetBringupDetailReportParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get bringup detail report params
-func (o *GETBringupDetailReportParams) SetTimeout(timeout time.Duration) {
+func (o *GetBringupDetailReportParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get bringup detail report params
-func (o *GETBringupDetailReportParams) WithContext(ctx context.Context) *GETBringupDetailReportParams {
+func (o *GetBringupDetailReportParams) WithContext(ctx context.Context) *GetBringupDetailReportParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get bringup detail report params
-func (o *GETBringupDetailReportParams) SetContext(ctx context.Context) {
+func (o *GetBringupDetailReportParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get bringup detail report params
-func (o *GETBringupDetailReportParams) WithHTTPClient(client *http.Client) *GETBringupDetailReportParams {
+func (o *GetBringupDetailReportParams) WithHTTPClient(client *http.Client) *GetBringupDetailReportParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get bringup detail report params
-func (o *GETBringupDetailReportParams) SetHTTPClient(client *http.Client) {
+func (o *GetBringupDetailReportParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithFormat adds the format to the get bringup detail report params
-func (o *GETBringupDetailReportParams) WithFormat(format *string) *GETBringupDetailReportParams {
+func (o *GetBringupDetailReportParams) WithFormat(format *string) *GetBringupDetailReportParams {
 	o.SetFormat(format)
 	return o
 }
 
 // SetFormat adds the format to the get bringup detail report params
-func (o *GETBringupDetailReportParams) SetFormat(format *string) {
+func (o *GetBringupDetailReportParams) SetFormat(format *string) {
 	o.Format = format
 }
 
 // WithID adds the id to the get bringup detail report params
-func (o *GETBringupDetailReportParams) WithID(id string) *GETBringupDetailReportParams {
+func (o *GetBringupDetailReportParams) WithID(id string) *GetBringupDetailReportParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get bringup detail report params
-func (o *GETBringupDetailReportParams) SetID(id string) {
+func (o *GetBringupDetailReportParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBringupDetailReportParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBringupDetailReportParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

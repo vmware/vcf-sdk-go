@@ -21,50 +21,50 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// NewPOSTClusterQueryParams creates a new POSTClusterQueryParams object,
+// NewPostClusterQueryParams creates a new PostClusterQueryParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewPOSTClusterQueryParams() *POSTClusterQueryParams {
-	return &POSTClusterQueryParams{
+func NewPostClusterQueryParams() *PostClusterQueryParams {
+	return &PostClusterQueryParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewPOSTClusterQueryParamsWithTimeout creates a new POSTClusterQueryParams object
+// NewPostClusterQueryParamsWithTimeout creates a new PostClusterQueryParams object
 // with the ability to set a timeout on a request.
-func NewPOSTClusterQueryParamsWithTimeout(timeout time.Duration) *POSTClusterQueryParams {
-	return &POSTClusterQueryParams{
+func NewPostClusterQueryParamsWithTimeout(timeout time.Duration) *PostClusterQueryParams {
+	return &PostClusterQueryParams{
 		timeout: timeout,
 	}
 }
 
-// NewPOSTClusterQueryParamsWithContext creates a new POSTClusterQueryParams object
+// NewPostClusterQueryParamsWithContext creates a new PostClusterQueryParams object
 // with the ability to set a context for a request.
-func NewPOSTClusterQueryParamsWithContext(ctx context.Context) *POSTClusterQueryParams {
-	return &POSTClusterQueryParams{
+func NewPostClusterQueryParamsWithContext(ctx context.Context) *PostClusterQueryParams {
+	return &PostClusterQueryParams{
 		Context: ctx,
 	}
 }
 
-// NewPOSTClusterQueryParamsWithHTTPClient creates a new POSTClusterQueryParams object
+// NewPostClusterQueryParamsWithHTTPClient creates a new PostClusterQueryParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewPOSTClusterQueryParamsWithHTTPClient(client *http.Client) *POSTClusterQueryParams {
-	return &POSTClusterQueryParams{
+func NewPostClusterQueryParamsWithHTTPClient(client *http.Client) *PostClusterQueryParams {
+	return &PostClusterQueryParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-POSTClusterQueryParams contains all the parameters to send to the API endpoint
+PostClusterQueryParams contains all the parameters to send to the API endpoint
 
 	for the post cluster query operation.
 
 	Typically these are written to a http.Request.
 */
-type POSTClusterQueryParams struct {
+type PostClusterQueryParams struct {
 
 	/* ClusterCriterion.
 
@@ -92,7 +92,7 @@ type POSTClusterQueryParams struct {
 // WithDefaults hydrates default values in the post cluster query params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *POSTClusterQueryParams) WithDefaults() *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithDefaults() *PostClusterQueryParams {
 	o.SetDefaults()
 	return o
 }
@@ -100,78 +100,78 @@ func (o *POSTClusterQueryParams) WithDefaults() *POSTClusterQueryParams {
 // SetDefaults hydrates default values in the post cluster query params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *POSTClusterQueryParams) SetDefaults() {
+func (o *PostClusterQueryParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post cluster query params
-func (o *POSTClusterQueryParams) WithTimeout(timeout time.Duration) *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithTimeout(timeout time.Duration) *PostClusterQueryParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the post cluster query params
-func (o *POSTClusterQueryParams) SetTimeout(timeout time.Duration) {
+func (o *PostClusterQueryParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the post cluster query params
-func (o *POSTClusterQueryParams) WithContext(ctx context.Context) *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithContext(ctx context.Context) *PostClusterQueryParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the post cluster query params
-func (o *POSTClusterQueryParams) SetContext(ctx context.Context) {
+func (o *PostClusterQueryParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the post cluster query params
-func (o *POSTClusterQueryParams) WithHTTPClient(client *http.Client) *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithHTTPClient(client *http.Client) *PostClusterQueryParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the post cluster query params
-func (o *POSTClusterQueryParams) SetHTTPClient(client *http.Client) {
+func (o *PostClusterQueryParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterCriterion adds the clusterCriterion to the post cluster query params
-func (o *POSTClusterQueryParams) WithClusterCriterion(clusterCriterion *models.ClusterCriterion) *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithClusterCriterion(clusterCriterion *models.ClusterCriterion) *PostClusterQueryParams {
 	o.SetClusterCriterion(clusterCriterion)
 	return o
 }
 
 // SetClusterCriterion adds the clusterCriterion to the post cluster query params
-func (o *POSTClusterQueryParams) SetClusterCriterion(clusterCriterion *models.ClusterCriterion) {
+func (o *PostClusterQueryParams) SetClusterCriterion(clusterCriterion *models.ClusterCriterion) {
 	o.ClusterCriterion = clusterCriterion
 }
 
 // WithClusterName adds the clusterName to the post cluster query params
-func (o *POSTClusterQueryParams) WithClusterName(clusterName string) *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithClusterName(clusterName string) *PostClusterQueryParams {
 	o.SetClusterName(clusterName)
 	return o
 }
 
 // SetClusterName adds the clusterName to the post cluster query params
-func (o *POSTClusterQueryParams) SetClusterName(clusterName string) {
+func (o *PostClusterQueryParams) SetClusterName(clusterName string) {
 	o.ClusterName = clusterName
 }
 
 // WithDomainID adds the domainID to the post cluster query params
-func (o *POSTClusterQueryParams) WithDomainID(domainID string) *POSTClusterQueryParams {
+func (o *PostClusterQueryParams) WithDomainID(domainID string) *PostClusterQueryParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the post cluster query params
-func (o *POSTClusterQueryParams) SetDomainID(domainID string) {
+func (o *PostClusterQueryParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *POSTClusterQueryParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *PostClusterQueryParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

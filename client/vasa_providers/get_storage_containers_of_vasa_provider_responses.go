@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETStorageContainersOfVasaProviderReader is a Reader for the GETStorageContainersOfVasaProvider structure.
-type GETStorageContainersOfVasaProviderReader struct {
+// GetStorageContainersOfVasaProviderReader is a Reader for the GetStorageContainersOfVasaProvider structure.
+type GetStorageContainersOfVasaProviderReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETStorageContainersOfVasaProviderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetStorageContainersOfVasaProviderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETStorageContainersOfVasaProviderOK()
+		result := NewGetStorageContainersOfVasaProviderOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETStorageContainersOfVasaProviderBadRequest()
+		result := NewGetStorageContainersOfVasaProviderBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETStorageContainersOfVasaProviderNotFound()
+		result := NewGetStorageContainersOfVasaProviderNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETStorageContainersOfVasaProviderInternalServerError()
+		result := NewGetStorageContainersOfVasaProviderInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETStorageContainersOfVasaProviderReader) ReadResponse(response runtime
 	}
 }
 
-// NewGETStorageContainersOfVasaProviderOK creates a GETStorageContainersOfVasaProviderOK with default headers values
-func NewGETStorageContainersOfVasaProviderOK() *GETStorageContainersOfVasaProviderOK {
-	return &GETStorageContainersOfVasaProviderOK{}
+// NewGetStorageContainersOfVasaProviderOK creates a GetStorageContainersOfVasaProviderOK with default headers values
+func NewGetStorageContainersOfVasaProviderOK() *GetStorageContainersOfVasaProviderOK {
+	return &GetStorageContainersOfVasaProviderOK{}
 }
 
 /*
-GETStorageContainersOfVasaProviderOK describes a response with status code 200, with default header values.
+GetStorageContainersOfVasaProviderOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETStorageContainersOfVasaProviderOK struct {
+type GetStorageContainersOfVasaProviderOK struct {
 	Payload []*models.StorageContainer
 }
 
 // IsSuccess returns true when this get storage containers of vasa provider o k response has a 2xx status code
-func (o *GETStorageContainersOfVasaProviderOK) IsSuccess() bool {
+func (o *GetStorageContainersOfVasaProviderOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get storage containers of vasa provider o k response has a 3xx status code
-func (o *GETStorageContainersOfVasaProviderOK) IsRedirect() bool {
+func (o *GetStorageContainersOfVasaProviderOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get storage containers of vasa provider o k response has a 4xx status code
-func (o *GETStorageContainersOfVasaProviderOK) IsClientError() bool {
+func (o *GetStorageContainersOfVasaProviderOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get storage containers of vasa provider o k response has a 5xx status code
-func (o *GETStorageContainersOfVasaProviderOK) IsServerError() bool {
+func (o *GetStorageContainersOfVasaProviderOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get storage containers of vasa provider o k response a status code equal to that given
-func (o *GETStorageContainersOfVasaProviderOK) IsCode(code int) bool {
+func (o *GetStorageContainersOfVasaProviderOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETStorageContainersOfVasaProviderOK) Error() string {
+func (o *GetStorageContainersOfVasaProviderOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderOK  %+v", 200, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderOK) String() string {
+func (o *GetStorageContainersOfVasaProviderOK) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderOK  %+v", 200, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderOK) GetPayload() []*models.StorageContainer {
+func (o *GetStorageContainersOfVasaProviderOK) GetPayload() []*models.StorageContainer {
 	return o.Payload
 }
 
-func (o *GETStorageContainersOfVasaProviderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetStorageContainersOfVasaProviderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -116,58 +116,58 @@ func (o *GETStorageContainersOfVasaProviderOK) readResponse(response runtime.Cli
 	return nil
 }
 
-// NewGETStorageContainersOfVasaProviderBadRequest creates a GETStorageContainersOfVasaProviderBadRequest with default headers values
-func NewGETStorageContainersOfVasaProviderBadRequest() *GETStorageContainersOfVasaProviderBadRequest {
-	return &GETStorageContainersOfVasaProviderBadRequest{}
+// NewGetStorageContainersOfVasaProviderBadRequest creates a GetStorageContainersOfVasaProviderBadRequest with default headers values
+func NewGetStorageContainersOfVasaProviderBadRequest() *GetStorageContainersOfVasaProviderBadRequest {
+	return &GetStorageContainersOfVasaProviderBadRequest{}
 }
 
 /*
-GETStorageContainersOfVasaProviderBadRequest describes a response with status code 400, with default header values.
+GetStorageContainersOfVasaProviderBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETStorageContainersOfVasaProviderBadRequest struct {
+type GetStorageContainersOfVasaProviderBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get storage containers of vasa provider bad request response has a 2xx status code
-func (o *GETStorageContainersOfVasaProviderBadRequest) IsSuccess() bool {
+func (o *GetStorageContainersOfVasaProviderBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get storage containers of vasa provider bad request response has a 3xx status code
-func (o *GETStorageContainersOfVasaProviderBadRequest) IsRedirect() bool {
+func (o *GetStorageContainersOfVasaProviderBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get storage containers of vasa provider bad request response has a 4xx status code
-func (o *GETStorageContainersOfVasaProviderBadRequest) IsClientError() bool {
+func (o *GetStorageContainersOfVasaProviderBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get storage containers of vasa provider bad request response has a 5xx status code
-func (o *GETStorageContainersOfVasaProviderBadRequest) IsServerError() bool {
+func (o *GetStorageContainersOfVasaProviderBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get storage containers of vasa provider bad request response a status code equal to that given
-func (o *GETStorageContainersOfVasaProviderBadRequest) IsCode(code int) bool {
+func (o *GetStorageContainersOfVasaProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETStorageContainersOfVasaProviderBadRequest) Error() string {
+func (o *GetStorageContainersOfVasaProviderBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderBadRequest) String() string {
+func (o *GetStorageContainersOfVasaProviderBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderBadRequest) GetPayload() *models.Error {
+func (o *GetStorageContainersOfVasaProviderBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETStorageContainersOfVasaProviderBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetStorageContainersOfVasaProviderBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -179,58 +179,58 @@ func (o *GETStorageContainersOfVasaProviderBadRequest) readResponse(response run
 	return nil
 }
 
-// NewGETStorageContainersOfVasaProviderNotFound creates a GETStorageContainersOfVasaProviderNotFound with default headers values
-func NewGETStorageContainersOfVasaProviderNotFound() *GETStorageContainersOfVasaProviderNotFound {
-	return &GETStorageContainersOfVasaProviderNotFound{}
+// NewGetStorageContainersOfVasaProviderNotFound creates a GetStorageContainersOfVasaProviderNotFound with default headers values
+func NewGetStorageContainersOfVasaProviderNotFound() *GetStorageContainersOfVasaProviderNotFound {
+	return &GetStorageContainersOfVasaProviderNotFound{}
 }
 
 /*
-GETStorageContainersOfVasaProviderNotFound describes a response with status code 404, with default header values.
+GetStorageContainersOfVasaProviderNotFound describes a response with status code 404, with default header values.
 
 VASA Provider not found
 */
-type GETStorageContainersOfVasaProviderNotFound struct {
+type GetStorageContainersOfVasaProviderNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get storage containers of vasa provider not found response has a 2xx status code
-func (o *GETStorageContainersOfVasaProviderNotFound) IsSuccess() bool {
+func (o *GetStorageContainersOfVasaProviderNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get storage containers of vasa provider not found response has a 3xx status code
-func (o *GETStorageContainersOfVasaProviderNotFound) IsRedirect() bool {
+func (o *GetStorageContainersOfVasaProviderNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get storage containers of vasa provider not found response has a 4xx status code
-func (o *GETStorageContainersOfVasaProviderNotFound) IsClientError() bool {
+func (o *GetStorageContainersOfVasaProviderNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get storage containers of vasa provider not found response has a 5xx status code
-func (o *GETStorageContainersOfVasaProviderNotFound) IsServerError() bool {
+func (o *GetStorageContainersOfVasaProviderNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get storage containers of vasa provider not found response a status code equal to that given
-func (o *GETStorageContainersOfVasaProviderNotFound) IsCode(code int) bool {
+func (o *GetStorageContainersOfVasaProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETStorageContainersOfVasaProviderNotFound) Error() string {
+func (o *GetStorageContainersOfVasaProviderNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderNotFound) String() string {
+func (o *GetStorageContainersOfVasaProviderNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderNotFound) GetPayload() *models.Error {
+func (o *GetStorageContainersOfVasaProviderNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETStorageContainersOfVasaProviderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetStorageContainersOfVasaProviderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -242,58 +242,58 @@ func (o *GETStorageContainersOfVasaProviderNotFound) readResponse(response runti
 	return nil
 }
 
-// NewGETStorageContainersOfVasaProviderInternalServerError creates a GETStorageContainersOfVasaProviderInternalServerError with default headers values
-func NewGETStorageContainersOfVasaProviderInternalServerError() *GETStorageContainersOfVasaProviderInternalServerError {
-	return &GETStorageContainersOfVasaProviderInternalServerError{}
+// NewGetStorageContainersOfVasaProviderInternalServerError creates a GetStorageContainersOfVasaProviderInternalServerError with default headers values
+func NewGetStorageContainersOfVasaProviderInternalServerError() *GetStorageContainersOfVasaProviderInternalServerError {
+	return &GetStorageContainersOfVasaProviderInternalServerError{}
 }
 
 /*
-GETStorageContainersOfVasaProviderInternalServerError describes a response with status code 500, with default header values.
+GetStorageContainersOfVasaProviderInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETStorageContainersOfVasaProviderInternalServerError struct {
+type GetStorageContainersOfVasaProviderInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get storage containers of vasa provider internal server error response has a 2xx status code
-func (o *GETStorageContainersOfVasaProviderInternalServerError) IsSuccess() bool {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get storage containers of vasa provider internal server error response has a 3xx status code
-func (o *GETStorageContainersOfVasaProviderInternalServerError) IsRedirect() bool {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get storage containers of vasa provider internal server error response has a 4xx status code
-func (o *GETStorageContainersOfVasaProviderInternalServerError) IsClientError() bool {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get storage containers of vasa provider internal server error response has a 5xx status code
-func (o *GETStorageContainersOfVasaProviderInternalServerError) IsServerError() bool {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get storage containers of vasa provider internal server error response a status code equal to that given
-func (o *GETStorageContainersOfVasaProviderInternalServerError) IsCode(code int) bool {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETStorageContainersOfVasaProviderInternalServerError) Error() string {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderInternalServerError) String() string {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/{id}/storage-containers][%d] getStorageContainersOfVasaProviderInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETStorageContainersOfVasaProviderInternalServerError) GetPayload() *models.Error {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETStorageContainersOfVasaProviderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetStorageContainersOfVasaProviderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

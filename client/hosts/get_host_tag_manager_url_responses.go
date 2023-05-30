@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHostTagManagerURLReader is a Reader for the GETHostTagManagerURL structure.
-type GETHostTagManagerURLReader struct {
+// GetHostTagManagerURLReader is a Reader for the GetHostTagManagerURL structure.
+type GetHostTagManagerURLReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHostTagManagerURLReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHostTagManagerURLReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHostTagManagerURLOK()
+		result := NewGetHostTagManagerURLOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETHostTagManagerURLBadRequest()
+		result := NewGetHostTagManagerURLBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETHostTagManagerURLInternalServerError()
+		result := NewGetHostTagManagerURLInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETHostTagManagerURLReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewGETHostTagManagerURLOK creates a GETHostTagManagerURLOK with default headers values
-func NewGETHostTagManagerURLOK() *GETHostTagManagerURLOK {
-	return &GETHostTagManagerURLOK{}
+// NewGetHostTagManagerURLOK creates a GetHostTagManagerURLOK with default headers values
+func NewGetHostTagManagerURLOK() *GetHostTagManagerURLOK {
+	return &GetHostTagManagerURLOK{}
 }
 
 /*
-GETHostTagManagerURLOK describes a response with status code 200, with default header values.
+GetHostTagManagerURLOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETHostTagManagerURLOK struct {
+type GetHostTagManagerURLOK struct {
 	Payload *models.TagManagerModel
 }
 
 // IsSuccess returns true when this get host tag manager Url o k response has a 2xx status code
-func (o *GETHostTagManagerURLOK) IsSuccess() bool {
+func (o *GetHostTagManagerURLOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get host tag manager Url o k response has a 3xx status code
-func (o *GETHostTagManagerURLOK) IsRedirect() bool {
+func (o *GetHostTagManagerURLOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host tag manager Url o k response has a 4xx status code
-func (o *GETHostTagManagerURLOK) IsClientError() bool {
+func (o *GetHostTagManagerURLOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get host tag manager Url o k response has a 5xx status code
-func (o *GETHostTagManagerURLOK) IsServerError() bool {
+func (o *GetHostTagManagerURLOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host tag manager Url o k response a status code equal to that given
-func (o *GETHostTagManagerURLOK) IsCode(code int) bool {
+func (o *GetHostTagManagerURLOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHostTagManagerURLOK) Error() string {
+func (o *GetHostTagManagerURLOK) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostTagManagerURLOK) String() string {
+func (o *GetHostTagManagerURLOK) String() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostTagManagerURLOK) GetPayload() *models.TagManagerModel {
+func (o *GetHostTagManagerURLOK) GetPayload() *models.TagManagerModel {
 	return o.Payload
 }
 
-func (o *GETHostTagManagerURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostTagManagerURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.TagManagerModel)
 
@@ -112,58 +112,58 @@ func (o *GETHostTagManagerURLOK) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETHostTagManagerURLBadRequest creates a GETHostTagManagerURLBadRequest with default headers values
-func NewGETHostTagManagerURLBadRequest() *GETHostTagManagerURLBadRequest {
-	return &GETHostTagManagerURLBadRequest{}
+// NewGetHostTagManagerURLBadRequest creates a GetHostTagManagerURLBadRequest with default headers values
+func NewGetHostTagManagerURLBadRequest() *GetHostTagManagerURLBadRequest {
+	return &GetHostTagManagerURLBadRequest{}
 }
 
 /*
-GETHostTagManagerURLBadRequest describes a response with status code 400, with default header values.
+GetHostTagManagerURLBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETHostTagManagerURLBadRequest struct {
+type GetHostTagManagerURLBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get host tag manager Url bad request response has a 2xx status code
-func (o *GETHostTagManagerURLBadRequest) IsSuccess() bool {
+func (o *GetHostTagManagerURLBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get host tag manager Url bad request response has a 3xx status code
-func (o *GETHostTagManagerURLBadRequest) IsRedirect() bool {
+func (o *GetHostTagManagerURLBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host tag manager Url bad request response has a 4xx status code
-func (o *GETHostTagManagerURLBadRequest) IsClientError() bool {
+func (o *GetHostTagManagerURLBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get host tag manager Url bad request response has a 5xx status code
-func (o *GETHostTagManagerURLBadRequest) IsServerError() bool {
+func (o *GetHostTagManagerURLBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host tag manager Url bad request response a status code equal to that given
-func (o *GETHostTagManagerURLBadRequest) IsCode(code int) bool {
+func (o *GetHostTagManagerURLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETHostTagManagerURLBadRequest) Error() string {
+func (o *GetHostTagManagerURLBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHostTagManagerURLBadRequest) String() string {
+func (o *GetHostTagManagerURLBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETHostTagManagerURLBadRequest) GetPayload() *models.Error {
+func (o *GetHostTagManagerURLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostTagManagerURLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostTagManagerURLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETHostTagManagerURLBadRequest) readResponse(response runtime.ClientRes
 	return nil
 }
 
-// NewGETHostTagManagerURLInternalServerError creates a GETHostTagManagerURLInternalServerError with default headers values
-func NewGETHostTagManagerURLInternalServerError() *GETHostTagManagerURLInternalServerError {
-	return &GETHostTagManagerURLInternalServerError{}
+// NewGetHostTagManagerURLInternalServerError creates a GetHostTagManagerURLInternalServerError with default headers values
+func NewGetHostTagManagerURLInternalServerError() *GetHostTagManagerURLInternalServerError {
+	return &GetHostTagManagerURLInternalServerError{}
 }
 
 /*
-GETHostTagManagerURLInternalServerError describes a response with status code 500, with default header values.
+GetHostTagManagerURLInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETHostTagManagerURLInternalServerError struct {
+type GetHostTagManagerURLInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get host tag manager Url internal server error response has a 2xx status code
-func (o *GETHostTagManagerURLInternalServerError) IsSuccess() bool {
+func (o *GetHostTagManagerURLInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get host tag manager Url internal server error response has a 3xx status code
-func (o *GETHostTagManagerURLInternalServerError) IsRedirect() bool {
+func (o *GetHostTagManagerURLInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host tag manager Url internal server error response has a 4xx status code
-func (o *GETHostTagManagerURLInternalServerError) IsClientError() bool {
+func (o *GetHostTagManagerURLInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get host tag manager Url internal server error response has a 5xx status code
-func (o *GETHostTagManagerURLInternalServerError) IsServerError() bool {
+func (o *GetHostTagManagerURLInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get host tag manager Url internal server error response a status code equal to that given
-func (o *GETHostTagManagerURLInternalServerError) IsCode(code int) bool {
+func (o *GetHostTagManagerURLInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETHostTagManagerURLInternalServerError) Error() string {
+func (o *GetHostTagManagerURLInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHostTagManagerURLInternalServerError) String() string {
+func (o *GetHostTagManagerURLInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETHostTagManagerURLInternalServerError) GetPayload() *models.Error {
+func (o *GetHostTagManagerURLInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETHostTagManagerURLInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostTagManagerURLInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

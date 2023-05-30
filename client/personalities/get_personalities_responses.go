@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETPersonalitiesReader is a Reader for the GETPersonalities structure.
-type GETPersonalitiesReader struct {
+// GetPersonalitiesReader is a Reader for the GetPersonalities structure.
+type GetPersonalitiesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETPersonalitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetPersonalitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETPersonalitiesOK()
+		result := NewGetPersonalitiesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETPersonalitiesInternalServerError()
+		result := NewGetPersonalitiesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETPersonalitiesReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewGETPersonalitiesOK creates a GETPersonalitiesOK with default headers values
-func NewGETPersonalitiesOK() *GETPersonalitiesOK {
-	return &GETPersonalitiesOK{}
+// NewGetPersonalitiesOK creates a GetPersonalitiesOK with default headers values
+func NewGetPersonalitiesOK() *GetPersonalitiesOK {
+	return &GetPersonalitiesOK{}
 }
 
 /*
-GETPersonalitiesOK describes a response with status code 200, with default header values.
+GetPersonalitiesOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETPersonalitiesOK struct {
+type GetPersonalitiesOK struct {
 	Payload []*models.Personality
 }
 
 // IsSuccess returns true when this get personalities o k response has a 2xx status code
-func (o *GETPersonalitiesOK) IsSuccess() bool {
+func (o *GetPersonalitiesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get personalities o k response has a 3xx status code
-func (o *GETPersonalitiesOK) IsRedirect() bool {
+func (o *GetPersonalitiesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get personalities o k response has a 4xx status code
-func (o *GETPersonalitiesOK) IsClientError() bool {
+func (o *GetPersonalitiesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get personalities o k response has a 5xx status code
-func (o *GETPersonalitiesOK) IsServerError() bool {
+func (o *GetPersonalitiesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get personalities o k response a status code equal to that given
-func (o *GETPersonalitiesOK) IsCode(code int) bool {
+func (o *GetPersonalitiesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETPersonalitiesOK) Error() string {
+func (o *GetPersonalitiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/personalities][%d] getPersonalitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETPersonalitiesOK) String() string {
+func (o *GetPersonalitiesOK) String() string {
 	return fmt.Sprintf("[GET /v1/personalities][%d] getPersonalitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETPersonalitiesOK) GetPayload() []*models.Personality {
+func (o *GetPersonalitiesOK) GetPayload() []*models.Personality {
 	return o.Payload
 }
 
-func (o *GETPersonalitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPersonalitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -104,58 +104,58 @@ func (o *GETPersonalitiesOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETPersonalitiesInternalServerError creates a GETPersonalitiesInternalServerError with default headers values
-func NewGETPersonalitiesInternalServerError() *GETPersonalitiesInternalServerError {
-	return &GETPersonalitiesInternalServerError{}
+// NewGetPersonalitiesInternalServerError creates a GetPersonalitiesInternalServerError with default headers values
+func NewGetPersonalitiesInternalServerError() *GetPersonalitiesInternalServerError {
+	return &GetPersonalitiesInternalServerError{}
 }
 
 /*
-GETPersonalitiesInternalServerError describes a response with status code 500, with default header values.
+GetPersonalitiesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETPersonalitiesInternalServerError struct {
+type GetPersonalitiesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get personalities internal server error response has a 2xx status code
-func (o *GETPersonalitiesInternalServerError) IsSuccess() bool {
+func (o *GetPersonalitiesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get personalities internal server error response has a 3xx status code
-func (o *GETPersonalitiesInternalServerError) IsRedirect() bool {
+func (o *GetPersonalitiesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get personalities internal server error response has a 4xx status code
-func (o *GETPersonalitiesInternalServerError) IsClientError() bool {
+func (o *GetPersonalitiesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get personalities internal server error response has a 5xx status code
-func (o *GETPersonalitiesInternalServerError) IsServerError() bool {
+func (o *GetPersonalitiesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get personalities internal server error response a status code equal to that given
-func (o *GETPersonalitiesInternalServerError) IsCode(code int) bool {
+func (o *GetPersonalitiesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETPersonalitiesInternalServerError) Error() string {
+func (o *GetPersonalitiesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/personalities][%d] getPersonalitiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETPersonalitiesInternalServerError) String() string {
+func (o *GetPersonalitiesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/personalities][%d] getPersonalitiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETPersonalitiesInternalServerError) GetPayload() *models.Error {
+func (o *GetPersonalitiesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETPersonalitiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPersonalitiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

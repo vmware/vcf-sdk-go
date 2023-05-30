@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHostCriteriaParams creates a new GETHostCriteriaParams object,
+// NewGetHostCriteriaParams creates a new GetHostCriteriaParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHostCriteriaParams() *GETHostCriteriaParams {
-	return &GETHostCriteriaParams{
+func NewGetHostCriteriaParams() *GetHostCriteriaParams {
+	return &GetHostCriteriaParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHostCriteriaParamsWithTimeout creates a new GETHostCriteriaParams object
+// NewGetHostCriteriaParamsWithTimeout creates a new GetHostCriteriaParams object
 // with the ability to set a timeout on a request.
-func NewGETHostCriteriaParamsWithTimeout(timeout time.Duration) *GETHostCriteriaParams {
-	return &GETHostCriteriaParams{
+func NewGetHostCriteriaParamsWithTimeout(timeout time.Duration) *GetHostCriteriaParams {
+	return &GetHostCriteriaParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETHostCriteriaParamsWithContext creates a new GETHostCriteriaParams object
+// NewGetHostCriteriaParamsWithContext creates a new GetHostCriteriaParams object
 // with the ability to set a context for a request.
-func NewGETHostCriteriaParamsWithContext(ctx context.Context) *GETHostCriteriaParams {
-	return &GETHostCriteriaParams{
+func NewGetHostCriteriaParamsWithContext(ctx context.Context) *GetHostCriteriaParams {
+	return &GetHostCriteriaParams{
 		Context: ctx,
 	}
 }
 
-// NewGETHostCriteriaParamsWithHTTPClient creates a new GETHostCriteriaParams object
+// NewGetHostCriteriaParamsWithHTTPClient creates a new GetHostCriteriaParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHostCriteriaParamsWithHTTPClient(client *http.Client) *GETHostCriteriaParams {
-	return &GETHostCriteriaParams{
+func NewGetHostCriteriaParamsWithHTTPClient(client *http.Client) *GetHostCriteriaParams {
+	return &GetHostCriteriaParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHostCriteriaParams contains all the parameters to send to the API endpoint
+GetHostCriteriaParams contains all the parameters to send to the API endpoint
 
 	for the get host criteria operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHostCriteriaParams struct {
+type GetHostCriteriaParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETHostCriteriaParams struct {
 // WithDefaults hydrates default values in the get host criteria params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostCriteriaParams) WithDefaults() *GETHostCriteriaParams {
+func (o *GetHostCriteriaParams) WithDefaults() *GetHostCriteriaParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETHostCriteriaParams) WithDefaults() *GETHostCriteriaParams {
 // SetDefaults hydrates default values in the get host criteria params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostCriteriaParams) SetDefaults() {
+func (o *GetHostCriteriaParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get host criteria params
-func (o *GETHostCriteriaParams) WithTimeout(timeout time.Duration) *GETHostCriteriaParams {
+func (o *GetHostCriteriaParams) WithTimeout(timeout time.Duration) *GetHostCriteriaParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get host criteria params
-func (o *GETHostCriteriaParams) SetTimeout(timeout time.Duration) {
+func (o *GetHostCriteriaParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get host criteria params
-func (o *GETHostCriteriaParams) WithContext(ctx context.Context) *GETHostCriteriaParams {
+func (o *GetHostCriteriaParams) WithContext(ctx context.Context) *GetHostCriteriaParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get host criteria params
-func (o *GETHostCriteriaParams) SetContext(ctx context.Context) {
+func (o *GetHostCriteriaParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get host criteria params
-func (o *GETHostCriteriaParams) WithHTTPClient(client *http.Client) *GETHostCriteriaParams {
+func (o *GetHostCriteriaParams) WithHTTPClient(client *http.Client) *GetHostCriteriaParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get host criteria params
-func (o *GETHostCriteriaParams) SetHTTPClient(client *http.Client) {
+func (o *GetHostCriteriaParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get host criteria params
-func (o *GETHostCriteriaParams) WithID(id string) *GETHostCriteriaParams {
+func (o *GetHostCriteriaParams) WithID(id string) *GetHostCriteriaParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get host criteria params
-func (o *GETHostCriteriaParams) SetID(id string) {
+func (o *GetHostCriteriaParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHostCriteriaParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHostCriteriaParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHostQueryResponse1Params creates a new GETHostQueryResponse1Params object,
+// NewGetHostQueryResponse1Params creates a new GetHostQueryResponse1Params object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHostQueryResponse1Params() *GETHostQueryResponse1Params {
-	return &GETHostQueryResponse1Params{
+func NewGetHostQueryResponse1Params() *GetHostQueryResponse1Params {
+	return &GetHostQueryResponse1Params{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHostQueryResponse1ParamsWithTimeout creates a new GETHostQueryResponse1Params object
+// NewGetHostQueryResponse1ParamsWithTimeout creates a new GetHostQueryResponse1Params object
 // with the ability to set a timeout on a request.
-func NewGETHostQueryResponse1ParamsWithTimeout(timeout time.Duration) *GETHostQueryResponse1Params {
-	return &GETHostQueryResponse1Params{
+func NewGetHostQueryResponse1ParamsWithTimeout(timeout time.Duration) *GetHostQueryResponse1Params {
+	return &GetHostQueryResponse1Params{
 		timeout: timeout,
 	}
 }
 
-// NewGETHostQueryResponse1ParamsWithContext creates a new GETHostQueryResponse1Params object
+// NewGetHostQueryResponse1ParamsWithContext creates a new GetHostQueryResponse1Params object
 // with the ability to set a context for a request.
-func NewGETHostQueryResponse1ParamsWithContext(ctx context.Context) *GETHostQueryResponse1Params {
-	return &GETHostQueryResponse1Params{
+func NewGetHostQueryResponse1ParamsWithContext(ctx context.Context) *GetHostQueryResponse1Params {
+	return &GetHostQueryResponse1Params{
 		Context: ctx,
 	}
 }
 
-// NewGETHostQueryResponse1ParamsWithHTTPClient creates a new GETHostQueryResponse1Params object
+// NewGetHostQueryResponse1ParamsWithHTTPClient creates a new GetHostQueryResponse1Params object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHostQueryResponse1ParamsWithHTTPClient(client *http.Client) *GETHostQueryResponse1Params {
-	return &GETHostQueryResponse1Params{
+func NewGetHostQueryResponse1ParamsWithHTTPClient(client *http.Client) *GetHostQueryResponse1Params {
+	return &GetHostQueryResponse1Params{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHostQueryResponse1Params contains all the parameters to send to the API endpoint
+GetHostQueryResponse1Params contains all the parameters to send to the API endpoint
 
 	for the get host query response 1 operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHostQueryResponse1Params struct {
+type GetHostQueryResponse1Params struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETHostQueryResponse1Params struct {
 // WithDefaults hydrates default values in the get host query response 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostQueryResponse1Params) WithDefaults() *GETHostQueryResponse1Params {
+func (o *GetHostQueryResponse1Params) WithDefaults() *GetHostQueryResponse1Params {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETHostQueryResponse1Params) WithDefaults() *GETHostQueryResponse1Param
 // SetDefaults hydrates default values in the get host query response 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostQueryResponse1Params) SetDefaults() {
+func (o *GetHostQueryResponse1Params) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) WithTimeout(timeout time.Duration) *GETHostQueryResponse1Params {
+func (o *GetHostQueryResponse1Params) WithTimeout(timeout time.Duration) *GetHostQueryResponse1Params {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) SetTimeout(timeout time.Duration) {
+func (o *GetHostQueryResponse1Params) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) WithContext(ctx context.Context) *GETHostQueryResponse1Params {
+func (o *GetHostQueryResponse1Params) WithContext(ctx context.Context) *GetHostQueryResponse1Params {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) SetContext(ctx context.Context) {
+func (o *GetHostQueryResponse1Params) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) WithHTTPClient(client *http.Client) *GETHostQueryResponse1Params {
+func (o *GetHostQueryResponse1Params) WithHTTPClient(client *http.Client) *GetHostQueryResponse1Params {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) SetHTTPClient(client *http.Client) {
+func (o *GetHostQueryResponse1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) WithID(id string) *GETHostQueryResponse1Params {
+func (o *GetHostQueryResponse1Params) WithID(id string) *GetHostQueryResponse1Params {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get host query response 1 params
-func (o *GETHostQueryResponse1Params) SetID(id string) {
+func (o *GetHostQueryResponse1Params) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHostQueryResponse1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHostQueryResponse1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

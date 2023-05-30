@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETTagsAssignedToHostsParams creates a new GETTagsAssignedToHostsParams object,
+// NewGetTagsAssignedToHostsParams creates a new GetTagsAssignedToHostsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETTagsAssignedToHostsParams() *GETTagsAssignedToHostsParams {
-	return &GETTagsAssignedToHostsParams{
+func NewGetTagsAssignedToHostsParams() *GetTagsAssignedToHostsParams {
+	return &GetTagsAssignedToHostsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETTagsAssignedToHostsParamsWithTimeout creates a new GETTagsAssignedToHostsParams object
+// NewGetTagsAssignedToHostsParamsWithTimeout creates a new GetTagsAssignedToHostsParams object
 // with the ability to set a timeout on a request.
-func NewGETTagsAssignedToHostsParamsWithTimeout(timeout time.Duration) *GETTagsAssignedToHostsParams {
-	return &GETTagsAssignedToHostsParams{
+func NewGetTagsAssignedToHostsParamsWithTimeout(timeout time.Duration) *GetTagsAssignedToHostsParams {
+	return &GetTagsAssignedToHostsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETTagsAssignedToHostsParamsWithContext creates a new GETTagsAssignedToHostsParams object
+// NewGetTagsAssignedToHostsParamsWithContext creates a new GetTagsAssignedToHostsParams object
 // with the ability to set a context for a request.
-func NewGETTagsAssignedToHostsParamsWithContext(ctx context.Context) *GETTagsAssignedToHostsParams {
-	return &GETTagsAssignedToHostsParams{
+func NewGetTagsAssignedToHostsParamsWithContext(ctx context.Context) *GetTagsAssignedToHostsParams {
+	return &GetTagsAssignedToHostsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETTagsAssignedToHostsParamsWithHTTPClient creates a new GETTagsAssignedToHostsParams object
+// NewGetTagsAssignedToHostsParamsWithHTTPClient creates a new GetTagsAssignedToHostsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETTagsAssignedToHostsParamsWithHTTPClient(client *http.Client) *GETTagsAssignedToHostsParams {
-	return &GETTagsAssignedToHostsParams{
+func NewGetTagsAssignedToHostsParamsWithHTTPClient(client *http.Client) *GetTagsAssignedToHostsParams {
+	return &GetTagsAssignedToHostsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETTagsAssignedToHostsParams contains all the parameters to send to the API endpoint
+GetTagsAssignedToHostsParams contains all the parameters to send to the API endpoint
 
 	for the get tags assigned to hosts operation.
 
 	Typically these are written to a http.Request.
 */
-type GETTagsAssignedToHostsParams struct {
+type GetTagsAssignedToHostsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETTagsAssignedToHostsParams struct {
 // WithDefaults hydrates default values in the get tags assigned to hosts params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToHostsParams) WithDefaults() *GETTagsAssignedToHostsParams {
+func (o *GetTagsAssignedToHostsParams) WithDefaults() *GetTagsAssignedToHostsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETTagsAssignedToHostsParams) WithDefaults() *GETTagsAssignedToHostsPar
 // SetDefaults hydrates default values in the get tags assigned to hosts params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToHostsParams) SetDefaults() {
+func (o *GetTagsAssignedToHostsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get tags assigned to hosts params
-func (o *GETTagsAssignedToHostsParams) WithTimeout(timeout time.Duration) *GETTagsAssignedToHostsParams {
+func (o *GetTagsAssignedToHostsParams) WithTimeout(timeout time.Duration) *GetTagsAssignedToHostsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get tags assigned to hosts params
-func (o *GETTagsAssignedToHostsParams) SetTimeout(timeout time.Duration) {
+func (o *GetTagsAssignedToHostsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get tags assigned to hosts params
-func (o *GETTagsAssignedToHostsParams) WithContext(ctx context.Context) *GETTagsAssignedToHostsParams {
+func (o *GetTagsAssignedToHostsParams) WithContext(ctx context.Context) *GetTagsAssignedToHostsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get tags assigned to hosts params
-func (o *GETTagsAssignedToHostsParams) SetContext(ctx context.Context) {
+func (o *GetTagsAssignedToHostsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get tags assigned to hosts params
-func (o *GETTagsAssignedToHostsParams) WithHTTPClient(client *http.Client) *GETTagsAssignedToHostsParams {
+func (o *GetTagsAssignedToHostsParams) WithHTTPClient(client *http.Client) *GetTagsAssignedToHostsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get tags assigned to hosts params
-func (o *GETTagsAssignedToHostsParams) SetHTTPClient(client *http.Client) {
+func (o *GetTagsAssignedToHostsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETTagsAssignedToHostsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetTagsAssignedToHostsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

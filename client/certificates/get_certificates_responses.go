@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCertificatesReader is a Reader for the GETCertificates structure.
-type GETCertificatesReader struct {
+// GetCertificatesReader is a Reader for the GetCertificates structure.
+type GetCertificatesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCertificatesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCertificatesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCertificatesOK()
+		result := NewGetCertificatesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETCertificatesNotFound()
+		result := NewGetCertificatesNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETCertificatesInternalServerError()
+		result := NewGetCertificatesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETCertificatesReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETCertificatesOK creates a GETCertificatesOK with default headers values
-func NewGETCertificatesOK() *GETCertificatesOK {
-	return &GETCertificatesOK{}
+// NewGetCertificatesOK creates a GetCertificatesOK with default headers values
+func NewGetCertificatesOK() *GetCertificatesOK {
+	return &GetCertificatesOK{}
 }
 
 /*
-GETCertificatesOK describes a response with status code 200, with default header values.
+GetCertificatesOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETCertificatesOK struct {
+type GetCertificatesOK struct {
 	Payload *models.PageOfCertificate
 }
 
 // IsSuccess returns true when this get certificates o k response has a 2xx status code
-func (o *GETCertificatesOK) IsSuccess() bool {
+func (o *GetCertificatesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get certificates o k response has a 3xx status code
-func (o *GETCertificatesOK) IsRedirect() bool {
+func (o *GetCertificatesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificates o k response has a 4xx status code
-func (o *GETCertificatesOK) IsClientError() bool {
+func (o *GetCertificatesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get certificates o k response has a 5xx status code
-func (o *GETCertificatesOK) IsServerError() bool {
+func (o *GetCertificatesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get certificates o k response a status code equal to that given
-func (o *GETCertificatesOK) IsCode(code int) bool {
+func (o *GetCertificatesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCertificatesOK) Error() string {
+func (o *GetCertificatesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/certificates][%d] getCertificatesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCertificatesOK) String() string {
+func (o *GetCertificatesOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/certificates][%d] getCertificatesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCertificatesOK) GetPayload() *models.PageOfCertificate {
+func (o *GetCertificatesOK) GetPayload() *models.PageOfCertificate {
 	return o.Payload
 }
 
-func (o *GETCertificatesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificatesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfCertificate)
 
@@ -112,58 +112,58 @@ func (o *GETCertificatesOK) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETCertificatesNotFound creates a GETCertificatesNotFound with default headers values
-func NewGETCertificatesNotFound() *GETCertificatesNotFound {
-	return &GETCertificatesNotFound{}
+// NewGetCertificatesNotFound creates a GetCertificatesNotFound with default headers values
+func NewGetCertificatesNotFound() *GetCertificatesNotFound {
+	return &GetCertificatesNotFound{}
 }
 
 /*
-GETCertificatesNotFound describes a response with status code 404, with default header values.
+GetCertificatesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETCertificatesNotFound struct {
+type GetCertificatesNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get certificates not found response has a 2xx status code
-func (o *GETCertificatesNotFound) IsSuccess() bool {
+func (o *GetCertificatesNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get certificates not found response has a 3xx status code
-func (o *GETCertificatesNotFound) IsRedirect() bool {
+func (o *GetCertificatesNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificates not found response has a 4xx status code
-func (o *GETCertificatesNotFound) IsClientError() bool {
+func (o *GetCertificatesNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get certificates not found response has a 5xx status code
-func (o *GETCertificatesNotFound) IsServerError() bool {
+func (o *GetCertificatesNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get certificates not found response a status code equal to that given
-func (o *GETCertificatesNotFound) IsCode(code int) bool {
+func (o *GetCertificatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETCertificatesNotFound) Error() string {
+func (o *GetCertificatesNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/certificates][%d] getCertificatesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCertificatesNotFound) String() string {
+func (o *GetCertificatesNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/certificates][%d] getCertificatesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCertificatesNotFound) GetPayload() *models.Error {
+func (o *GetCertificatesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCertificatesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificatesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETCertificatesNotFound) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETCertificatesInternalServerError creates a GETCertificatesInternalServerError with default headers values
-func NewGETCertificatesInternalServerError() *GETCertificatesInternalServerError {
-	return &GETCertificatesInternalServerError{}
+// NewGetCertificatesInternalServerError creates a GetCertificatesInternalServerError with default headers values
+func NewGetCertificatesInternalServerError() *GetCertificatesInternalServerError {
+	return &GetCertificatesInternalServerError{}
 }
 
 /*
-GETCertificatesInternalServerError describes a response with status code 500, with default header values.
+GetCertificatesInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETCertificatesInternalServerError struct {
+type GetCertificatesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get certificates internal server error response has a 2xx status code
-func (o *GETCertificatesInternalServerError) IsSuccess() bool {
+func (o *GetCertificatesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get certificates internal server error response has a 3xx status code
-func (o *GETCertificatesInternalServerError) IsRedirect() bool {
+func (o *GetCertificatesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificates internal server error response has a 4xx status code
-func (o *GETCertificatesInternalServerError) IsClientError() bool {
+func (o *GetCertificatesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get certificates internal server error response has a 5xx status code
-func (o *GETCertificatesInternalServerError) IsServerError() bool {
+func (o *GetCertificatesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get certificates internal server error response a status code equal to that given
-func (o *GETCertificatesInternalServerError) IsCode(code int) bool {
+func (o *GetCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCertificatesInternalServerError) Error() string {
+func (o *GetCertificatesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/certificates][%d] getCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCertificatesInternalServerError) String() string {
+func (o *GetCertificatesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/certificates][%d] getCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCertificatesInternalServerError) GetPayload() *models.Error {
+func (o *GetCertificatesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCertificatesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificatesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETLicenseKeysParams creates a new GETLicenseKeysParams object,
+// NewGetLicenseKeysParams creates a new GetLicenseKeysParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETLicenseKeysParams() *GETLicenseKeysParams {
-	return &GETLicenseKeysParams{
+func NewGetLicenseKeysParams() *GetLicenseKeysParams {
+	return &GetLicenseKeysParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETLicenseKeysParamsWithTimeout creates a new GETLicenseKeysParams object
+// NewGetLicenseKeysParamsWithTimeout creates a new GetLicenseKeysParams object
 // with the ability to set a timeout on a request.
-func NewGETLicenseKeysParamsWithTimeout(timeout time.Duration) *GETLicenseKeysParams {
-	return &GETLicenseKeysParams{
+func NewGetLicenseKeysParamsWithTimeout(timeout time.Duration) *GetLicenseKeysParams {
+	return &GetLicenseKeysParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETLicenseKeysParamsWithContext creates a new GETLicenseKeysParams object
+// NewGetLicenseKeysParamsWithContext creates a new GetLicenseKeysParams object
 // with the ability to set a context for a request.
-func NewGETLicenseKeysParamsWithContext(ctx context.Context) *GETLicenseKeysParams {
-	return &GETLicenseKeysParams{
+func NewGetLicenseKeysParamsWithContext(ctx context.Context) *GetLicenseKeysParams {
+	return &GetLicenseKeysParams{
 		Context: ctx,
 	}
 }
 
-// NewGETLicenseKeysParamsWithHTTPClient creates a new GETLicenseKeysParams object
+// NewGetLicenseKeysParamsWithHTTPClient creates a new GetLicenseKeysParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETLicenseKeysParamsWithHTTPClient(client *http.Client) *GETLicenseKeysParams {
-	return &GETLicenseKeysParams{
+func NewGetLicenseKeysParamsWithHTTPClient(client *http.Client) *GetLicenseKeysParams {
+	return &GetLicenseKeysParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETLicenseKeysParams contains all the parameters to send to the API endpoint
+GetLicenseKeysParams contains all the parameters to send to the API endpoint
 
 	for the get license keys operation.
 
 	Typically these are written to a http.Request.
 */
-type GETLicenseKeysParams struct {
+type GetLicenseKeysParams struct {
 
 	/* LicenseKeyStatus.
 
@@ -85,7 +85,7 @@ type GETLicenseKeysParams struct {
 // WithDefaults hydrates default values in the get license keys params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETLicenseKeysParams) WithDefaults() *GETLicenseKeysParams {
+func (o *GetLicenseKeysParams) WithDefaults() *GetLicenseKeysParams {
 	o.SetDefaults()
 	return o
 }
@@ -93,67 +93,67 @@ func (o *GETLicenseKeysParams) WithDefaults() *GETLicenseKeysParams {
 // SetDefaults hydrates default values in the get license keys params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETLicenseKeysParams) SetDefaults() {
+func (o *GetLicenseKeysParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get license keys params
-func (o *GETLicenseKeysParams) WithTimeout(timeout time.Duration) *GETLicenseKeysParams {
+func (o *GetLicenseKeysParams) WithTimeout(timeout time.Duration) *GetLicenseKeysParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get license keys params
-func (o *GETLicenseKeysParams) SetTimeout(timeout time.Duration) {
+func (o *GetLicenseKeysParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get license keys params
-func (o *GETLicenseKeysParams) WithContext(ctx context.Context) *GETLicenseKeysParams {
+func (o *GetLicenseKeysParams) WithContext(ctx context.Context) *GetLicenseKeysParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get license keys params
-func (o *GETLicenseKeysParams) SetContext(ctx context.Context) {
+func (o *GetLicenseKeysParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get license keys params
-func (o *GETLicenseKeysParams) WithHTTPClient(client *http.Client) *GETLicenseKeysParams {
+func (o *GetLicenseKeysParams) WithHTTPClient(client *http.Client) *GetLicenseKeysParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get license keys params
-func (o *GETLicenseKeysParams) SetHTTPClient(client *http.Client) {
+func (o *GetLicenseKeysParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithLicenseKeyStatus adds the licenseKeyStatus to the get license keys params
-func (o *GETLicenseKeysParams) WithLicenseKeyStatus(licenseKeyStatus []string) *GETLicenseKeysParams {
+func (o *GetLicenseKeysParams) WithLicenseKeyStatus(licenseKeyStatus []string) *GetLicenseKeysParams {
 	o.SetLicenseKeyStatus(licenseKeyStatus)
 	return o
 }
 
 // SetLicenseKeyStatus adds the licenseKeyStatus to the get license keys params
-func (o *GETLicenseKeysParams) SetLicenseKeyStatus(licenseKeyStatus []string) {
+func (o *GetLicenseKeysParams) SetLicenseKeyStatus(licenseKeyStatus []string) {
 	o.LicenseKeyStatus = licenseKeyStatus
 }
 
 // WithProductType adds the productType to the get license keys params
-func (o *GETLicenseKeysParams) WithProductType(productType []string) *GETLicenseKeysParams {
+func (o *GetLicenseKeysParams) WithProductType(productType []string) *GetLicenseKeysParams {
 	o.SetProductType(productType)
 	return o
 }
 
 // SetProductType adds the productType to the get license keys params
-func (o *GETLicenseKeysParams) SetProductType(productType []string) {
+func (o *GetLicenseKeysParams) SetProductType(productType []string) {
 	o.ProductType = productType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETLicenseKeysParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetLicenseKeysParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
@@ -188,8 +188,8 @@ func (o *GETLicenseKeysParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	return nil
 }
 
-// bindParamGETLicenseKeys binds the parameter licenseKeyStatus
-func (o *GETLicenseKeysParams) bindParamLicenseKeyStatus(formats strfmt.Registry) []string {
+// bindParamGetLicenseKeys binds the parameter licenseKeyStatus
+func (o *GetLicenseKeysParams) bindParamLicenseKeyStatus(formats strfmt.Registry) []string {
 	licenseKeyStatusIR := o.LicenseKeyStatus
 
 	var licenseKeyStatusIC []string
@@ -205,8 +205,8 @@ func (o *GETLicenseKeysParams) bindParamLicenseKeyStatus(formats strfmt.Registry
 	return licenseKeyStatusIS
 }
 
-// bindParamGETLicenseKeys binds the parameter productType
-func (o *GETLicenseKeysParams) bindParamProductType(formats strfmt.Registry) []string {
+// bindParamGetLicenseKeys binds the parameter productType
+func (o *GetLicenseKeysParams) bindParamProductType(formats strfmt.Registry) []string {
 	productTypeIR := o.ProductType
 
 	var productTypeIC []string

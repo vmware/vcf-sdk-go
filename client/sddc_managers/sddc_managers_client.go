@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETSDDCManager(params *GETSDDCManagerParams, opts ...ClientOption) (*GETSDDCManagerOK, error)
+	GetSDDCManager(params *GetSDDCManagerParams, opts ...ClientOption) (*GetSDDCManagerOK, error)
 
-	GETSDDCManagers(params *GETSDDCManagersParams, opts ...ClientOption) (*GETSDDCManagersOK, error)
+	GetSDDCManagers(params *GetSDDCManagersParams, opts ...ClientOption) (*GetSDDCManagersOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETSDDCManager Gets a SDDC manager
+GetSDDCManager gets a SDDC manager
 */
-func (a *Client) GETSDDCManager(params *GETSDDCManagerParams, opts ...ClientOption) (*GETSDDCManagerOK, error) {
+func (a *Client) GetSDDCManager(params *GetSDDCManagerParams, opts ...ClientOption) (*GetSDDCManagerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSDDCManagerParams()
+		params = NewGetSDDCManagerParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSddcManager",
@@ -56,7 +56,7 @@ func (a *Client) GETSDDCManager(params *GETSDDCManagerParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSDDCManagerReader{formats: a.formats},
+		Reader:             &GetSDDCManagerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETSDDCManager(params *GETSDDCManagerParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSDDCManagerOK)
+	success, ok := result.(*GetSDDCManagerOK)
 	if ok {
 		return success, nil
 	}
@@ -79,12 +79,12 @@ func (a *Client) GETSDDCManager(params *GETSDDCManagerParams, opts ...ClientOpti
 }
 
 /*
-GETSDDCManagers Gets the SDDC managers
+GetSDDCManagers gets the SDDC managers
 */
-func (a *Client) GETSDDCManagers(params *GETSDDCManagersParams, opts ...ClientOption) (*GETSDDCManagersOK, error) {
+func (a *Client) GetSDDCManagers(params *GetSDDCManagersParams, opts ...ClientOption) (*GetSDDCManagersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSDDCManagersParams()
+		params = NewGetSDDCManagersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSddcManagers",
@@ -94,7 +94,7 @@ func (a *Client) GETSDDCManagers(params *GETSDDCManagersParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSDDCManagersReader{formats: a.formats},
+		Reader:             &GetSDDCManagersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -106,7 +106,7 @@ func (a *Client) GETSDDCManagers(params *GETSDDCManagersParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSDDCManagersOK)
+	success, ok := result.(*GetSDDCManagersOK)
 	if ok {
 		return success, nil
 	}

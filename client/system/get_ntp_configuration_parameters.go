@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETNtpConfigurationParams creates a new GETNtpConfigurationParams object,
+// NewGetNtpConfigurationParams creates a new GetNtpConfigurationParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETNtpConfigurationParams() *GETNtpConfigurationParams {
-	return &GETNtpConfigurationParams{
+func NewGetNtpConfigurationParams() *GetNtpConfigurationParams {
+	return &GetNtpConfigurationParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETNtpConfigurationParamsWithTimeout creates a new GETNtpConfigurationParams object
+// NewGetNtpConfigurationParamsWithTimeout creates a new GetNtpConfigurationParams object
 // with the ability to set a timeout on a request.
-func NewGETNtpConfigurationParamsWithTimeout(timeout time.Duration) *GETNtpConfigurationParams {
-	return &GETNtpConfigurationParams{
+func NewGetNtpConfigurationParamsWithTimeout(timeout time.Duration) *GetNtpConfigurationParams {
+	return &GetNtpConfigurationParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETNtpConfigurationParamsWithContext creates a new GETNtpConfigurationParams object
+// NewGetNtpConfigurationParamsWithContext creates a new GetNtpConfigurationParams object
 // with the ability to set a context for a request.
-func NewGETNtpConfigurationParamsWithContext(ctx context.Context) *GETNtpConfigurationParams {
-	return &GETNtpConfigurationParams{
+func NewGetNtpConfigurationParamsWithContext(ctx context.Context) *GetNtpConfigurationParams {
+	return &GetNtpConfigurationParams{
 		Context: ctx,
 	}
 }
 
-// NewGETNtpConfigurationParamsWithHTTPClient creates a new GETNtpConfigurationParams object
+// NewGetNtpConfigurationParamsWithHTTPClient creates a new GetNtpConfigurationParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETNtpConfigurationParamsWithHTTPClient(client *http.Client) *GETNtpConfigurationParams {
-	return &GETNtpConfigurationParams{
+func NewGetNtpConfigurationParamsWithHTTPClient(client *http.Client) *GetNtpConfigurationParams {
+	return &GetNtpConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETNtpConfigurationParams contains all the parameters to send to the API endpoint
+GetNtpConfigurationParams contains all the parameters to send to the API endpoint
 
 	for the get ntp configuration operation.
 
 	Typically these are written to a http.Request.
 */
-type GETNtpConfigurationParams struct {
+type GetNtpConfigurationParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETNtpConfigurationParams struct {
 // WithDefaults hydrates default values in the get ntp configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNtpConfigurationParams) WithDefaults() *GETNtpConfigurationParams {
+func (o *GetNtpConfigurationParams) WithDefaults() *GetNtpConfigurationParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETNtpConfigurationParams) WithDefaults() *GETNtpConfigurationParams {
 // SetDefaults hydrates default values in the get ntp configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNtpConfigurationParams) SetDefaults() {
+func (o *GetNtpConfigurationParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get ntp configuration params
-func (o *GETNtpConfigurationParams) WithTimeout(timeout time.Duration) *GETNtpConfigurationParams {
+func (o *GetNtpConfigurationParams) WithTimeout(timeout time.Duration) *GetNtpConfigurationParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get ntp configuration params
-func (o *GETNtpConfigurationParams) SetTimeout(timeout time.Duration) {
+func (o *GetNtpConfigurationParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get ntp configuration params
-func (o *GETNtpConfigurationParams) WithContext(ctx context.Context) *GETNtpConfigurationParams {
+func (o *GetNtpConfigurationParams) WithContext(ctx context.Context) *GetNtpConfigurationParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get ntp configuration params
-func (o *GETNtpConfigurationParams) SetContext(ctx context.Context) {
+func (o *GetNtpConfigurationParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get ntp configuration params
-func (o *GETNtpConfigurationParams) WithHTTPClient(client *http.Client) *GETNtpConfigurationParams {
+func (o *GetNtpConfigurationParams) WithHTTPClient(client *http.Client) *GetNtpConfigurationParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get ntp configuration params
-func (o *GETNtpConfigurationParams) SetHTTPClient(client *http.Client) {
+func (o *GetNtpConfigurationParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETNtpConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetNtpConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

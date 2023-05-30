@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETClusterTagManagerURLReader is a Reader for the GETClusterTagManagerURL structure.
-type GETClusterTagManagerURLReader struct {
+// GetClusterTagManagerURLReader is a Reader for the GetClusterTagManagerURL structure.
+type GetClusterTagManagerURLReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETClusterTagManagerURLReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetClusterTagManagerURLReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETClusterTagManagerURLOK()
+		result := NewGetClusterTagManagerURLOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETClusterTagManagerURLBadRequest()
+		result := NewGetClusterTagManagerURLBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETClusterTagManagerURLInternalServerError()
+		result := NewGetClusterTagManagerURLInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETClusterTagManagerURLReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewGETClusterTagManagerURLOK creates a GETClusterTagManagerURLOK with default headers values
-func NewGETClusterTagManagerURLOK() *GETClusterTagManagerURLOK {
-	return &GETClusterTagManagerURLOK{}
+// NewGetClusterTagManagerURLOK creates a GetClusterTagManagerURLOK with default headers values
+func NewGetClusterTagManagerURLOK() *GetClusterTagManagerURLOK {
+	return &GetClusterTagManagerURLOK{}
 }
 
 /*
-GETClusterTagManagerURLOK describes a response with status code 200, with default header values.
+GetClusterTagManagerURLOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETClusterTagManagerURLOK struct {
+type GetClusterTagManagerURLOK struct {
 	Payload *models.TagManagerModel
 }
 
 // IsSuccess returns true when this get cluster tag manager Url o k response has a 2xx status code
-func (o *GETClusterTagManagerURLOK) IsSuccess() bool {
+func (o *GetClusterTagManagerURLOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get cluster tag manager Url o k response has a 3xx status code
-func (o *GETClusterTagManagerURLOK) IsRedirect() bool {
+func (o *GetClusterTagManagerURLOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster tag manager Url o k response has a 4xx status code
-func (o *GETClusterTagManagerURLOK) IsClientError() bool {
+func (o *GetClusterTagManagerURLOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get cluster tag manager Url o k response has a 5xx status code
-func (o *GETClusterTagManagerURLOK) IsServerError() bool {
+func (o *GetClusterTagManagerURLOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster tag manager Url o k response a status code equal to that given
-func (o *GETClusterTagManagerURLOK) IsCode(code int) bool {
+func (o *GetClusterTagManagerURLOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETClusterTagManagerURLOK) Error() string {
+func (o *GetClusterTagManagerURLOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterTagManagerURLOK) String() string {
+func (o *GetClusterTagManagerURLOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterTagManagerURLOK) GetPayload() *models.TagManagerModel {
+func (o *GetClusterTagManagerURLOK) GetPayload() *models.TagManagerModel {
 	return o.Payload
 }
 
-func (o *GETClusterTagManagerURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterTagManagerURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.TagManagerModel)
 
@@ -112,58 +112,58 @@ func (o *GETClusterTagManagerURLOK) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGETClusterTagManagerURLBadRequest creates a GETClusterTagManagerURLBadRequest with default headers values
-func NewGETClusterTagManagerURLBadRequest() *GETClusterTagManagerURLBadRequest {
-	return &GETClusterTagManagerURLBadRequest{}
+// NewGetClusterTagManagerURLBadRequest creates a GetClusterTagManagerURLBadRequest with default headers values
+func NewGetClusterTagManagerURLBadRequest() *GetClusterTagManagerURLBadRequest {
+	return &GetClusterTagManagerURLBadRequest{}
 }
 
 /*
-GETClusterTagManagerURLBadRequest describes a response with status code 400, with default header values.
+GetClusterTagManagerURLBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETClusterTagManagerURLBadRequest struct {
+type GetClusterTagManagerURLBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get cluster tag manager Url bad request response has a 2xx status code
-func (o *GETClusterTagManagerURLBadRequest) IsSuccess() bool {
+func (o *GetClusterTagManagerURLBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get cluster tag manager Url bad request response has a 3xx status code
-func (o *GETClusterTagManagerURLBadRequest) IsRedirect() bool {
+func (o *GetClusterTagManagerURLBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster tag manager Url bad request response has a 4xx status code
-func (o *GETClusterTagManagerURLBadRequest) IsClientError() bool {
+func (o *GetClusterTagManagerURLBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get cluster tag manager Url bad request response has a 5xx status code
-func (o *GETClusterTagManagerURLBadRequest) IsServerError() bool {
+func (o *GetClusterTagManagerURLBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster tag manager Url bad request response a status code equal to that given
-func (o *GETClusterTagManagerURLBadRequest) IsCode(code int) bool {
+func (o *GetClusterTagManagerURLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETClusterTagManagerURLBadRequest) Error() string {
+func (o *GetClusterTagManagerURLBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETClusterTagManagerURLBadRequest) String() string {
+func (o *GetClusterTagManagerURLBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETClusterTagManagerURLBadRequest) GetPayload() *models.Error {
+func (o *GetClusterTagManagerURLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETClusterTagManagerURLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterTagManagerURLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETClusterTagManagerURLBadRequest) readResponse(response runtime.Client
 	return nil
 }
 
-// NewGETClusterTagManagerURLInternalServerError creates a GETClusterTagManagerURLInternalServerError with default headers values
-func NewGETClusterTagManagerURLInternalServerError() *GETClusterTagManagerURLInternalServerError {
-	return &GETClusterTagManagerURLInternalServerError{}
+// NewGetClusterTagManagerURLInternalServerError creates a GetClusterTagManagerURLInternalServerError with default headers values
+func NewGetClusterTagManagerURLInternalServerError() *GetClusterTagManagerURLInternalServerError {
+	return &GetClusterTagManagerURLInternalServerError{}
 }
 
 /*
-GETClusterTagManagerURLInternalServerError describes a response with status code 500, with default header values.
+GetClusterTagManagerURLInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETClusterTagManagerURLInternalServerError struct {
+type GetClusterTagManagerURLInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get cluster tag manager Url internal server error response has a 2xx status code
-func (o *GETClusterTagManagerURLInternalServerError) IsSuccess() bool {
+func (o *GetClusterTagManagerURLInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get cluster tag manager Url internal server error response has a 3xx status code
-func (o *GETClusterTagManagerURLInternalServerError) IsRedirect() bool {
+func (o *GetClusterTagManagerURLInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster tag manager Url internal server error response has a 4xx status code
-func (o *GETClusterTagManagerURLInternalServerError) IsClientError() bool {
+func (o *GetClusterTagManagerURLInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get cluster tag manager Url internal server error response has a 5xx status code
-func (o *GETClusterTagManagerURLInternalServerError) IsServerError() bool {
+func (o *GetClusterTagManagerURLInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get cluster tag manager Url internal server error response a status code equal to that given
-func (o *GETClusterTagManagerURLInternalServerError) IsCode(code int) bool {
+func (o *GetClusterTagManagerURLInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETClusterTagManagerURLInternalServerError) Error() string {
+func (o *GetClusterTagManagerURLInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETClusterTagManagerURLInternalServerError) String() string {
+func (o *GetClusterTagManagerURLInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETClusterTagManagerURLInternalServerError) GetPayload() *models.Error {
+func (o *GetClusterTagManagerURLInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETClusterTagManagerURLInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterTagManagerURLInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

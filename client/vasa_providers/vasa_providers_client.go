@@ -43,15 +43,15 @@ type ClientService interface {
 
 	DeleteVasaProvider(params *DeleteVasaProviderParams, opts ...ClientOption) (*DeleteVasaProviderNoContent, error)
 
-	GETStorageContainersOfVasaProvider(params *GETStorageContainersOfVasaProviderParams, opts ...ClientOption) (*GETStorageContainersOfVasaProviderOK, error)
+	GetStorageContainersOfVasaProvider(params *GetStorageContainersOfVasaProviderParams, opts ...ClientOption) (*GetStorageContainersOfVasaProviderOK, error)
 
-	GETUsersOfVasaProvider(params *GETUsersOfVasaProviderParams, opts ...ClientOption) (*GETUsersOfVasaProviderOK, error)
+	GetUsersOfVasaProvider(params *GetUsersOfVasaProviderParams, opts ...ClientOption) (*GetUsersOfVasaProviderOK, error)
 
-	GETValidationOfVasaProvider(params *GETValidationOfVasaProviderParams, opts ...ClientOption) (*GETValidationOfVasaProviderOK, error)
+	GetValidationOfVasaProvider(params *GetValidationOfVasaProviderParams, opts ...ClientOption) (*GetValidationOfVasaProviderOK, error)
 
-	GETVasaProvider(params *GETVasaProviderParams, opts ...ClientOption) (*GETVasaProviderOK, error)
+	GetVasaProvider(params *GetVasaProviderParams, opts ...ClientOption) (*GetVasaProviderOK, error)
 
-	GETVasaProviders(params *GETVasaProvidersParams, opts ...ClientOption) (*GETVasaProvidersOK, error)
+	GetVasaProviders(params *GetVasaProvidersParams, opts ...ClientOption) (*GetVasaProvidersOK, error)
 
 	UpdateStorageContainerOfVasaProvider(params *UpdateStorageContainerOfVasaProviderParams, opts ...ClientOption) (*UpdateStorageContainerOfVasaProviderOK, error)
 
@@ -255,12 +255,12 @@ func (a *Client) DeleteVasaProvider(params *DeleteVasaProviderParams, opts ...Cl
 }
 
 /*
-GETStorageContainersOfVasaProvider Gets the storage containers of a v a s a provider
+GetStorageContainersOfVasaProvider gets the storage containers of a v a s a provider
 */
-func (a *Client) GETStorageContainersOfVasaProvider(params *GETStorageContainersOfVasaProviderParams, opts ...ClientOption) (*GETStorageContainersOfVasaProviderOK, error) {
+func (a *Client) GetStorageContainersOfVasaProvider(params *GetStorageContainersOfVasaProviderParams, opts ...ClientOption) (*GetStorageContainersOfVasaProviderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETStorageContainersOfVasaProviderParams()
+		params = NewGetStorageContainersOfVasaProviderParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getStorageContainersOfVasaProvider",
@@ -270,7 +270,7 @@ func (a *Client) GETStorageContainersOfVasaProvider(params *GETStorageContainers
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETStorageContainersOfVasaProviderReader{formats: a.formats},
+		Reader:             &GetStorageContainersOfVasaProviderReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -282,7 +282,7 @@ func (a *Client) GETStorageContainersOfVasaProvider(params *GETStorageContainers
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETStorageContainersOfVasaProviderOK)
+	success, ok := result.(*GetStorageContainersOfVasaProviderOK)
 	if ok {
 		return success, nil
 	}
@@ -293,12 +293,12 @@ func (a *Client) GETStorageContainersOfVasaProvider(params *GETStorageContainers
 }
 
 /*
-GETUsersOfVasaProvider Gets the users of a v a s a provider
+GetUsersOfVasaProvider gets the users of a v a s a provider
 */
-func (a *Client) GETUsersOfVasaProvider(params *GETUsersOfVasaProviderParams, opts ...ClientOption) (*GETUsersOfVasaProviderOK, error) {
+func (a *Client) GetUsersOfVasaProvider(params *GetUsersOfVasaProviderParams, opts ...ClientOption) (*GetUsersOfVasaProviderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUsersOfVasaProviderParams()
+		params = NewGetUsersOfVasaProviderParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUsersOfVasaProvider",
@@ -308,7 +308,7 @@ func (a *Client) GETUsersOfVasaProvider(params *GETUsersOfVasaProviderParams, op
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUsersOfVasaProviderReader{formats: a.formats},
+		Reader:             &GetUsersOfVasaProviderReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -320,7 +320,7 @@ func (a *Client) GETUsersOfVasaProvider(params *GETUsersOfVasaProviderParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUsersOfVasaProviderOK)
+	success, ok := result.(*GetUsersOfVasaProviderOK)
 	if ok {
 		return success, nil
 	}
@@ -331,12 +331,12 @@ func (a *Client) GETUsersOfVasaProvider(params *GETUsersOfVasaProviderParams, op
 }
 
 /*
-GETValidationOfVasaProvider Gets the status of the validation of the v a s a provider
+GetValidationOfVasaProvider gets the status of the validation of the v a s a provider
 */
-func (a *Client) GETValidationOfVasaProvider(params *GETValidationOfVasaProviderParams, opts ...ClientOption) (*GETValidationOfVasaProviderOK, error) {
+func (a *Client) GetValidationOfVasaProvider(params *GetValidationOfVasaProviderParams, opts ...ClientOption) (*GetValidationOfVasaProviderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationOfVasaProviderParams()
+		params = NewGetValidationOfVasaProviderParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationOfVasaProvider",
@@ -346,7 +346,7 @@ func (a *Client) GETValidationOfVasaProvider(params *GETValidationOfVasaProvider
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationOfVasaProviderReader{formats: a.formats},
+		Reader:             &GetValidationOfVasaProviderReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -358,7 +358,7 @@ func (a *Client) GETValidationOfVasaProvider(params *GETValidationOfVasaProvider
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationOfVasaProviderOK)
+	success, ok := result.(*GetValidationOfVasaProviderOK)
 	if ok {
 		return success, nil
 	}
@@ -369,12 +369,12 @@ func (a *Client) GETValidationOfVasaProvider(params *GETValidationOfVasaProvider
 }
 
 /*
-GETVasaProvider Gets a v a s a provider
+GetVasaProvider gets a v a s a provider
 */
-func (a *Client) GETVasaProvider(params *GETVasaProviderParams, opts ...ClientOption) (*GETVasaProviderOK, error) {
+func (a *Client) GetVasaProvider(params *GetVasaProviderParams, opts ...ClientOption) (*GetVasaProviderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVasaProviderParams()
+		params = NewGetVasaProviderParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVasaProvider",
@@ -384,7 +384,7 @@ func (a *Client) GETVasaProvider(params *GETVasaProviderParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVasaProviderReader{formats: a.formats},
+		Reader:             &GetVasaProviderReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -396,7 +396,7 @@ func (a *Client) GETVasaProvider(params *GETVasaProviderParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVasaProviderOK)
+	success, ok := result.(*GetVasaProviderOK)
 	if ok {
 		return success, nil
 	}
@@ -407,12 +407,12 @@ func (a *Client) GETVasaProvider(params *GETVasaProviderParams, opts ...ClientOp
 }
 
 /*
-GETVasaProviders Gets the v a s a providers
+GetVasaProviders gets the v a s a providers
 */
-func (a *Client) GETVasaProviders(params *GETVasaProvidersParams, opts ...ClientOption) (*GETVasaProvidersOK, error) {
+func (a *Client) GetVasaProviders(params *GetVasaProvidersParams, opts ...ClientOption) (*GetVasaProvidersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVasaProvidersParams()
+		params = NewGetVasaProvidersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVasaProviders",
@@ -422,7 +422,7 @@ func (a *Client) GETVasaProviders(params *GETVasaProvidersParams, opts ...Client
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVasaProvidersReader{formats: a.formats},
+		Reader:             &GetVasaProvidersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -434,7 +434,7 @@ func (a *Client) GETVasaProviders(params *GETVasaProvidersParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVasaProvidersOK)
+	success, ok := result.(*GetVasaProvidersOK)
 	if ok {
 		return success, nil
 	}

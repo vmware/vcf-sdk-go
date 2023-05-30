@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETWsasParams creates a new GETWsasParams object,
+// NewGetWsasParams creates a new GetWsasParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETWsasParams() *GETWsasParams {
-	return &GETWsasParams{
+func NewGetWsasParams() *GetWsasParams {
+	return &GetWsasParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETWsasParamsWithTimeout creates a new GETWsasParams object
+// NewGetWsasParamsWithTimeout creates a new GetWsasParams object
 // with the ability to set a timeout on a request.
-func NewGETWsasParamsWithTimeout(timeout time.Duration) *GETWsasParams {
-	return &GETWsasParams{
+func NewGetWsasParamsWithTimeout(timeout time.Duration) *GetWsasParams {
+	return &GetWsasParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETWsasParamsWithContext creates a new GETWsasParams object
+// NewGetWsasParamsWithContext creates a new GetWsasParams object
 // with the ability to set a context for a request.
-func NewGETWsasParamsWithContext(ctx context.Context) *GETWsasParams {
-	return &GETWsasParams{
+func NewGetWsasParamsWithContext(ctx context.Context) *GetWsasParams {
+	return &GetWsasParams{
 		Context: ctx,
 	}
 }
 
-// NewGETWsasParamsWithHTTPClient creates a new GETWsasParams object
+// NewGetWsasParamsWithHTTPClient creates a new GetWsasParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETWsasParamsWithHTTPClient(client *http.Client) *GETWsasParams {
-	return &GETWsasParams{
+func NewGetWsasParamsWithHTTPClient(client *http.Client) *GetWsasParams {
+	return &GetWsasParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETWsasParams contains all the parameters to send to the API endpoint
+GetWsasParams contains all the parameters to send to the API endpoint
 
 	for the get wsas operation.
 
 	Typically these are written to a http.Request.
 */
-type GETWsasParams struct {
+type GetWsasParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETWsasParams struct {
 // WithDefaults hydrates default values in the get wsas params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETWsasParams) WithDefaults() *GETWsasParams {
+func (o *GetWsasParams) WithDefaults() *GetWsasParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETWsasParams) WithDefaults() *GETWsasParams {
 // SetDefaults hydrates default values in the get wsas params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETWsasParams) SetDefaults() {
+func (o *GetWsasParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get wsas params
-func (o *GETWsasParams) WithTimeout(timeout time.Duration) *GETWsasParams {
+func (o *GetWsasParams) WithTimeout(timeout time.Duration) *GetWsasParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get wsas params
-func (o *GETWsasParams) SetTimeout(timeout time.Duration) {
+func (o *GetWsasParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get wsas params
-func (o *GETWsasParams) WithContext(ctx context.Context) *GETWsasParams {
+func (o *GetWsasParams) WithContext(ctx context.Context) *GetWsasParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get wsas params
-func (o *GETWsasParams) SetContext(ctx context.Context) {
+func (o *GetWsasParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get wsas params
-func (o *GETWsasParams) WithHTTPClient(client *http.Client) *GETWsasParams {
+func (o *GetWsasParams) WithHTTPClient(client *http.Client) *GetWsasParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get wsas params
-func (o *GETWsasParams) SetHTTPClient(client *http.Client) {
+func (o *GetWsasParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETWsasParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetWsasParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

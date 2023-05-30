@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETAllAvnsParams creates a new GETAllAvnsParams object,
+// NewGetAllAvnsParams creates a new GetAllAvnsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETAllAvnsParams() *GETAllAvnsParams {
-	return &GETAllAvnsParams{
+func NewGetAllAvnsParams() *GetAllAvnsParams {
+	return &GetAllAvnsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETAllAvnsParamsWithTimeout creates a new GETAllAvnsParams object
+// NewGetAllAvnsParamsWithTimeout creates a new GetAllAvnsParams object
 // with the ability to set a timeout on a request.
-func NewGETAllAvnsParamsWithTimeout(timeout time.Duration) *GETAllAvnsParams {
-	return &GETAllAvnsParams{
+func NewGetAllAvnsParamsWithTimeout(timeout time.Duration) *GetAllAvnsParams {
+	return &GetAllAvnsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETAllAvnsParamsWithContext creates a new GETAllAvnsParams object
+// NewGetAllAvnsParamsWithContext creates a new GetAllAvnsParams object
 // with the ability to set a context for a request.
-func NewGETAllAvnsParamsWithContext(ctx context.Context) *GETAllAvnsParams {
-	return &GETAllAvnsParams{
+func NewGetAllAvnsParamsWithContext(ctx context.Context) *GetAllAvnsParams {
+	return &GetAllAvnsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETAllAvnsParamsWithHTTPClient creates a new GETAllAvnsParams object
+// NewGetAllAvnsParamsWithHTTPClient creates a new GetAllAvnsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETAllAvnsParamsWithHTTPClient(client *http.Client) *GETAllAvnsParams {
-	return &GETAllAvnsParams{
+func NewGetAllAvnsParamsWithHTTPClient(client *http.Client) *GetAllAvnsParams {
+	return &GetAllAvnsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETAllAvnsParams contains all the parameters to send to the API endpoint
+GetAllAvnsParams contains all the parameters to send to the API endpoint
 
 	for the get all avns operation.
 
 	Typically these are written to a http.Request.
 */
-type GETAllAvnsParams struct {
+type GetAllAvnsParams struct {
 
 	/* RegionType.
 
@@ -78,7 +78,7 @@ type GETAllAvnsParams struct {
 // WithDefaults hydrates default values in the get all avns params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllAvnsParams) WithDefaults() *GETAllAvnsParams {
+func (o *GetAllAvnsParams) WithDefaults() *GetAllAvnsParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETAllAvnsParams) WithDefaults() *GETAllAvnsParams {
 // SetDefaults hydrates default values in the get all avns params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllAvnsParams) SetDefaults() {
+func (o *GetAllAvnsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get all avns params
-func (o *GETAllAvnsParams) WithTimeout(timeout time.Duration) *GETAllAvnsParams {
+func (o *GetAllAvnsParams) WithTimeout(timeout time.Duration) *GetAllAvnsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get all avns params
-func (o *GETAllAvnsParams) SetTimeout(timeout time.Duration) {
+func (o *GetAllAvnsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get all avns params
-func (o *GETAllAvnsParams) WithContext(ctx context.Context) *GETAllAvnsParams {
+func (o *GetAllAvnsParams) WithContext(ctx context.Context) *GetAllAvnsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get all avns params
-func (o *GETAllAvnsParams) SetContext(ctx context.Context) {
+func (o *GetAllAvnsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get all avns params
-func (o *GETAllAvnsParams) WithHTTPClient(client *http.Client) *GETAllAvnsParams {
+func (o *GetAllAvnsParams) WithHTTPClient(client *http.Client) *GetAllAvnsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get all avns params
-func (o *GETAllAvnsParams) SetHTTPClient(client *http.Client) {
+func (o *GetAllAvnsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithRegionType adds the regionType to the get all avns params
-func (o *GETAllAvnsParams) WithRegionType(regionType *string) *GETAllAvnsParams {
+func (o *GetAllAvnsParams) WithRegionType(regionType *string) *GetAllAvnsParams {
 	o.SetRegionType(regionType)
 	return o
 }
 
 // SetRegionType adds the regionType to the get all avns params
-func (o *GETAllAvnsParams) SetRegionType(regionType *string) {
+func (o *GetAllAvnsParams) SetRegionType(regionType *string) {
 	o.RegionType = regionType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETAllAvnsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetAllAvnsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

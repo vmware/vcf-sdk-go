@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVasaProvidersReader is a Reader for the GETVasaProviders structure.
-type GETVasaProvidersReader struct {
+// GetVasaProvidersReader is a Reader for the GetVasaProviders structure.
+type GetVasaProvidersReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVasaProvidersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVasaProvidersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVasaProvidersOK()
+		result := NewGetVasaProvidersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETVasaProvidersBadRequest()
+		result := NewGetVasaProvidersBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETVasaProvidersInternalServerError()
+		result := NewGetVasaProvidersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETVasaProvidersReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewGETVasaProvidersOK creates a GETVasaProvidersOK with default headers values
-func NewGETVasaProvidersOK() *GETVasaProvidersOK {
-	return &GETVasaProvidersOK{}
+// NewGetVasaProvidersOK creates a GetVasaProvidersOK with default headers values
+func NewGetVasaProvidersOK() *GetVasaProvidersOK {
+	return &GetVasaProvidersOK{}
 }
 
 /*
-GETVasaProvidersOK describes a response with status code 200, with default header values.
+GetVasaProvidersOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETVasaProvidersOK struct {
+type GetVasaProvidersOK struct {
 	Payload *models.PageOfVasaProvider
 }
 
 // IsSuccess returns true when this get vasa providers o k response has a 2xx status code
-func (o *GETVasaProvidersOK) IsSuccess() bool {
+func (o *GetVasaProvidersOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vasa providers o k response has a 3xx status code
-func (o *GETVasaProvidersOK) IsRedirect() bool {
+func (o *GetVasaProvidersOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vasa providers o k response has a 4xx status code
-func (o *GETVasaProvidersOK) IsClientError() bool {
+func (o *GetVasaProvidersOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vasa providers o k response has a 5xx status code
-func (o *GETVasaProvidersOK) IsServerError() bool {
+func (o *GetVasaProvidersOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vasa providers o k response a status code equal to that given
-func (o *GETVasaProvidersOK) IsCode(code int) bool {
+func (o *GetVasaProvidersOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVasaProvidersOK) Error() string {
+func (o *GetVasaProvidersOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers][%d] getVasaProvidersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVasaProvidersOK) String() string {
+func (o *GetVasaProvidersOK) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers][%d] getVasaProvidersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVasaProvidersOK) GetPayload() *models.PageOfVasaProvider {
+func (o *GetVasaProvidersOK) GetPayload() *models.PageOfVasaProvider {
 	return o.Payload
 }
 
-func (o *GETVasaProvidersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVasaProvidersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfVasaProvider)
 
@@ -112,58 +112,58 @@ func (o *GETVasaProvidersOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETVasaProvidersBadRequest creates a GETVasaProvidersBadRequest with default headers values
-func NewGETVasaProvidersBadRequest() *GETVasaProvidersBadRequest {
-	return &GETVasaProvidersBadRequest{}
+// NewGetVasaProvidersBadRequest creates a GetVasaProvidersBadRequest with default headers values
+func NewGetVasaProvidersBadRequest() *GetVasaProvidersBadRequest {
+	return &GetVasaProvidersBadRequest{}
 }
 
 /*
-GETVasaProvidersBadRequest describes a response with status code 400, with default header values.
+GetVasaProvidersBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETVasaProvidersBadRequest struct {
+type GetVasaProvidersBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vasa providers bad request response has a 2xx status code
-func (o *GETVasaProvidersBadRequest) IsSuccess() bool {
+func (o *GetVasaProvidersBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vasa providers bad request response has a 3xx status code
-func (o *GETVasaProvidersBadRequest) IsRedirect() bool {
+func (o *GetVasaProvidersBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vasa providers bad request response has a 4xx status code
-func (o *GETVasaProvidersBadRequest) IsClientError() bool {
+func (o *GetVasaProvidersBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get vasa providers bad request response has a 5xx status code
-func (o *GETVasaProvidersBadRequest) IsServerError() bool {
+func (o *GetVasaProvidersBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vasa providers bad request response a status code equal to that given
-func (o *GETVasaProvidersBadRequest) IsCode(code int) bool {
+func (o *GetVasaProvidersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETVasaProvidersBadRequest) Error() string {
+func (o *GetVasaProvidersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers][%d] getVasaProvidersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETVasaProvidersBadRequest) String() string {
+func (o *GetVasaProvidersBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers][%d] getVasaProvidersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETVasaProvidersBadRequest) GetPayload() *models.Error {
+func (o *GetVasaProvidersBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVasaProvidersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVasaProvidersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETVasaProvidersBadRequest) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-// NewGETVasaProvidersInternalServerError creates a GETVasaProvidersInternalServerError with default headers values
-func NewGETVasaProvidersInternalServerError() *GETVasaProvidersInternalServerError {
-	return &GETVasaProvidersInternalServerError{}
+// NewGetVasaProvidersInternalServerError creates a GetVasaProvidersInternalServerError with default headers values
+func NewGetVasaProvidersInternalServerError() *GetVasaProvidersInternalServerError {
+	return &GetVasaProvidersInternalServerError{}
 }
 
 /*
-GETVasaProvidersInternalServerError describes a response with status code 500, with default header values.
+GetVasaProvidersInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETVasaProvidersInternalServerError struct {
+type GetVasaProvidersInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vasa providers internal server error response has a 2xx status code
-func (o *GETVasaProvidersInternalServerError) IsSuccess() bool {
+func (o *GetVasaProvidersInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vasa providers internal server error response has a 3xx status code
-func (o *GETVasaProvidersInternalServerError) IsRedirect() bool {
+func (o *GetVasaProvidersInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vasa providers internal server error response has a 4xx status code
-func (o *GETVasaProvidersInternalServerError) IsClientError() bool {
+func (o *GetVasaProvidersInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vasa providers internal server error response has a 5xx status code
-func (o *GETVasaProvidersInternalServerError) IsServerError() bool {
+func (o *GetVasaProvidersInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get vasa providers internal server error response a status code equal to that given
-func (o *GETVasaProvidersInternalServerError) IsCode(code int) bool {
+func (o *GetVasaProvidersInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETVasaProvidersInternalServerError) Error() string {
+func (o *GetVasaProvidersInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers][%d] getVasaProvidersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVasaProvidersInternalServerError) String() string {
+func (o *GetVasaProvidersInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers][%d] getVasaProvidersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVasaProvidersInternalServerError) GetPayload() *models.Error {
+func (o *GetVasaProvidersInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVasaProvidersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVasaProvidersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETRolesReader is a Reader for the GETRoles structure.
-type GETRolesReader struct {
+// GetRolesReader is a Reader for the GetRoles structure.
+type GetRolesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETRolesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetRolesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETRolesOK()
+		result := NewGetRolesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETRolesBadRequest()
+		result := NewGetRolesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 401:
-		result := NewGETRolesUnauthorized()
+		result := NewGetRolesUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETRolesInternalServerError()
+		result := NewGetRolesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETRolesReader) ReadResponse(response runtime.ClientResponse, consumer 
 	}
 }
 
-// NewGETRolesOK creates a GETRolesOK with default headers values
-func NewGETRolesOK() *GETRolesOK {
-	return &GETRolesOK{}
+// NewGetRolesOK creates a GetRolesOK with default headers values
+func NewGetRolesOK() *GetRolesOK {
+	return &GetRolesOK{}
 }
 
 /*
-GETRolesOK describes a response with status code 200, with default header values.
+GetRolesOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETRolesOK struct {
+type GetRolesOK struct {
 	Payload *models.PageOfRole
 }
 
 // IsSuccess returns true when this get roles o k response has a 2xx status code
-func (o *GETRolesOK) IsSuccess() bool {
+func (o *GetRolesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get roles o k response has a 3xx status code
-func (o *GETRolesOK) IsRedirect() bool {
+func (o *GetRolesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get roles o k response has a 4xx status code
-func (o *GETRolesOK) IsClientError() bool {
+func (o *GetRolesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get roles o k response has a 5xx status code
-func (o *GETRolesOK) IsServerError() bool {
+func (o *GetRolesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get roles o k response a status code equal to that given
-func (o *GETRolesOK) IsCode(code int) bool {
+func (o *GetRolesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETRolesOK) Error() string {
+func (o *GetRolesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETRolesOK) String() string {
+func (o *GetRolesOK) String() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETRolesOK) GetPayload() *models.PageOfRole {
+func (o *GetRolesOK) GetPayload() *models.PageOfRole {
 	return o.Payload
 }
 
-func (o *GETRolesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetRolesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfRole)
 
@@ -118,58 +118,58 @@ func (o *GETRolesOK) readResponse(response runtime.ClientResponse, consumer runt
 	return nil
 }
 
-// NewGETRolesBadRequest creates a GETRolesBadRequest with default headers values
-func NewGETRolesBadRequest() *GETRolesBadRequest {
-	return &GETRolesBadRequest{}
+// NewGetRolesBadRequest creates a GetRolesBadRequest with default headers values
+func NewGetRolesBadRequest() *GetRolesBadRequest {
+	return &GetRolesBadRequest{}
 }
 
 /*
-GETRolesBadRequest describes a response with status code 400, with default header values.
+GetRolesBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
-type GETRolesBadRequest struct {
+type GetRolesBadRequest struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get roles bad request response has a 2xx status code
-func (o *GETRolesBadRequest) IsSuccess() bool {
+func (o *GetRolesBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get roles bad request response has a 3xx status code
-func (o *GETRolesBadRequest) IsRedirect() bool {
+func (o *GetRolesBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get roles bad request response has a 4xx status code
-func (o *GETRolesBadRequest) IsClientError() bool {
+func (o *GetRolesBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get roles bad request response has a 5xx status code
-func (o *GETRolesBadRequest) IsServerError() bool {
+func (o *GetRolesBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get roles bad request response a status code equal to that given
-func (o *GETRolesBadRequest) IsCode(code int) bool {
+func (o *GetRolesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETRolesBadRequest) Error() string {
+func (o *GetRolesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETRolesBadRequest) String() string {
+func (o *GetRolesBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETRolesBadRequest) GetPayload() *models.ErrorResponse {
+func (o *GetRolesBadRequest) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETRolesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetRolesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -181,58 +181,58 @@ func (o *GETRolesBadRequest) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETRolesUnauthorized creates a GETRolesUnauthorized with default headers values
-func NewGETRolesUnauthorized() *GETRolesUnauthorized {
-	return &GETRolesUnauthorized{}
+// NewGetRolesUnauthorized creates a GetRolesUnauthorized with default headers values
+func NewGetRolesUnauthorized() *GetRolesUnauthorized {
+	return &GetRolesUnauthorized{}
 }
 
 /*
-GETRolesUnauthorized describes a response with status code 401, with default header values.
+GetRolesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
-type GETRolesUnauthorized struct {
+type GetRolesUnauthorized struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get roles unauthorized response has a 2xx status code
-func (o *GETRolesUnauthorized) IsSuccess() bool {
+func (o *GetRolesUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get roles unauthorized response has a 3xx status code
-func (o *GETRolesUnauthorized) IsRedirect() bool {
+func (o *GetRolesUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get roles unauthorized response has a 4xx status code
-func (o *GETRolesUnauthorized) IsClientError() bool {
+func (o *GetRolesUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get roles unauthorized response has a 5xx status code
-func (o *GETRolesUnauthorized) IsServerError() bool {
+func (o *GetRolesUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get roles unauthorized response a status code equal to that given
-func (o *GETRolesUnauthorized) IsCode(code int) bool {
+func (o *GetRolesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETRolesUnauthorized) Error() string {
+func (o *GetRolesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETRolesUnauthorized) String() string {
+func (o *GetRolesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETRolesUnauthorized) GetPayload() *models.ErrorResponse {
+func (o *GetRolesUnauthorized) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETRolesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetRolesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -244,58 +244,58 @@ func (o *GETRolesUnauthorized) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewGETRolesInternalServerError creates a GETRolesInternalServerError with default headers values
-func NewGETRolesInternalServerError() *GETRolesInternalServerError {
-	return &GETRolesInternalServerError{}
+// NewGetRolesInternalServerError creates a GetRolesInternalServerError with default headers values
+func NewGetRolesInternalServerError() *GetRolesInternalServerError {
+	return &GetRolesInternalServerError{}
 }
 
 /*
-GETRolesInternalServerError describes a response with status code 500, with default header values.
+GetRolesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETRolesInternalServerError struct {
+type GetRolesInternalServerError struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get roles internal server error response has a 2xx status code
-func (o *GETRolesInternalServerError) IsSuccess() bool {
+func (o *GetRolesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get roles internal server error response has a 3xx status code
-func (o *GETRolesInternalServerError) IsRedirect() bool {
+func (o *GetRolesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get roles internal server error response has a 4xx status code
-func (o *GETRolesInternalServerError) IsClientError() bool {
+func (o *GetRolesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get roles internal server error response has a 5xx status code
-func (o *GETRolesInternalServerError) IsServerError() bool {
+func (o *GetRolesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get roles internal server error response a status code equal to that given
-func (o *GETRolesInternalServerError) IsCode(code int) bool {
+func (o *GetRolesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETRolesInternalServerError) Error() string {
+func (o *GetRolesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETRolesInternalServerError) String() string {
+func (o *GetRolesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/roles][%d] getRolesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETRolesInternalServerError) GetPayload() *models.ErrorResponse {
+func (o *GetRolesInternalServerError) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETRolesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetRolesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 

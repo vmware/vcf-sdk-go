@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCSRsParams creates a new GETCSRsParams object,
+// NewGetCSRsParams creates a new GetCSRsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCSRsParams() *GETCSRsParams {
-	return &GETCSRsParams{
+func NewGetCSRsParams() *GetCSRsParams {
+	return &GetCSRsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCSRsParamsWithTimeout creates a new GETCSRsParams object
+// NewGetCSRsParamsWithTimeout creates a new GetCSRsParams object
 // with the ability to set a timeout on a request.
-func NewGETCSRsParamsWithTimeout(timeout time.Duration) *GETCSRsParams {
-	return &GETCSRsParams{
+func NewGetCSRsParamsWithTimeout(timeout time.Duration) *GetCSRsParams {
+	return &GetCSRsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCSRsParamsWithContext creates a new GETCSRsParams object
+// NewGetCSRsParamsWithContext creates a new GetCSRsParams object
 // with the ability to set a context for a request.
-func NewGETCSRsParamsWithContext(ctx context.Context) *GETCSRsParams {
-	return &GETCSRsParams{
+func NewGetCSRsParamsWithContext(ctx context.Context) *GetCSRsParams {
+	return &GetCSRsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCSRsParamsWithHTTPClient creates a new GETCSRsParams object
+// NewGetCSRsParamsWithHTTPClient creates a new GetCSRsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCSRsParamsWithHTTPClient(client *http.Client) *GETCSRsParams {
-	return &GETCSRsParams{
+func NewGetCSRsParamsWithHTTPClient(client *http.Client) *GetCSRsParams {
+	return &GetCSRsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCSRsParams contains all the parameters to send to the API endpoint
+GetCSRsParams contains all the parameters to send to the API endpoint
 
 	for the get c s rs operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCSRsParams struct {
+type GetCSRsParams struct {
 
 	/* DomainName.
 
@@ -78,7 +78,7 @@ type GETCSRsParams struct {
 // WithDefaults hydrates default values in the get c s rs params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCSRsParams) WithDefaults() *GETCSRsParams {
+func (o *GetCSRsParams) WithDefaults() *GetCSRsParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETCSRsParams) WithDefaults() *GETCSRsParams {
 // SetDefaults hydrates default values in the get c s rs params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCSRsParams) SetDefaults() {
+func (o *GetCSRsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get c s rs params
-func (o *GETCSRsParams) WithTimeout(timeout time.Duration) *GETCSRsParams {
+func (o *GetCSRsParams) WithTimeout(timeout time.Duration) *GetCSRsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get c s rs params
-func (o *GETCSRsParams) SetTimeout(timeout time.Duration) {
+func (o *GetCSRsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get c s rs params
-func (o *GETCSRsParams) WithContext(ctx context.Context) *GETCSRsParams {
+func (o *GetCSRsParams) WithContext(ctx context.Context) *GetCSRsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get c s rs params
-func (o *GETCSRsParams) SetContext(ctx context.Context) {
+func (o *GetCSRsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get c s rs params
-func (o *GETCSRsParams) WithHTTPClient(client *http.Client) *GETCSRsParams {
+func (o *GetCSRsParams) WithHTTPClient(client *http.Client) *GetCSRsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get c s rs params
-func (o *GETCSRsParams) SetHTTPClient(client *http.Client) {
+func (o *GetCSRsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainName adds the domainName to the get c s rs params
-func (o *GETCSRsParams) WithDomainName(domainName string) *GETCSRsParams {
+func (o *GetCSRsParams) WithDomainName(domainName string) *GetCSRsParams {
 	o.SetDomainName(domainName)
 	return o
 }
 
 // SetDomainName adds the domainName to the get c s rs params
-func (o *GETCSRsParams) SetDomainName(domainName string) {
+func (o *GetCSRsParams) SetDomainName(domainName string) {
 	o.DomainName = domainName
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCSRsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCSRsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

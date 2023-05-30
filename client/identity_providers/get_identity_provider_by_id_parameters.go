@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETIdentityProviderByIDParams creates a new GETIdentityProviderByIDParams object,
+// NewGetIdentityProviderByIDParams creates a new GetIdentityProviderByIDParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETIdentityProviderByIDParams() *GETIdentityProviderByIDParams {
-	return &GETIdentityProviderByIDParams{
+func NewGetIdentityProviderByIDParams() *GetIdentityProviderByIDParams {
+	return &GetIdentityProviderByIDParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETIdentityProviderByIDParamsWithTimeout creates a new GETIdentityProviderByIDParams object
+// NewGetIdentityProviderByIDParamsWithTimeout creates a new GetIdentityProviderByIDParams object
 // with the ability to set a timeout on a request.
-func NewGETIdentityProviderByIDParamsWithTimeout(timeout time.Duration) *GETIdentityProviderByIDParams {
-	return &GETIdentityProviderByIDParams{
+func NewGetIdentityProviderByIDParamsWithTimeout(timeout time.Duration) *GetIdentityProviderByIDParams {
+	return &GetIdentityProviderByIDParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETIdentityProviderByIDParamsWithContext creates a new GETIdentityProviderByIDParams object
+// NewGetIdentityProviderByIDParamsWithContext creates a new GetIdentityProviderByIDParams object
 // with the ability to set a context for a request.
-func NewGETIdentityProviderByIDParamsWithContext(ctx context.Context) *GETIdentityProviderByIDParams {
-	return &GETIdentityProviderByIDParams{
+func NewGetIdentityProviderByIDParamsWithContext(ctx context.Context) *GetIdentityProviderByIDParams {
+	return &GetIdentityProviderByIDParams{
 		Context: ctx,
 	}
 }
 
-// NewGETIdentityProviderByIDParamsWithHTTPClient creates a new GETIdentityProviderByIDParams object
+// NewGetIdentityProviderByIDParamsWithHTTPClient creates a new GetIdentityProviderByIDParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETIdentityProviderByIDParamsWithHTTPClient(client *http.Client) *GETIdentityProviderByIDParams {
-	return &GETIdentityProviderByIDParams{
+func NewGetIdentityProviderByIDParamsWithHTTPClient(client *http.Client) *GetIdentityProviderByIDParams {
+	return &GetIdentityProviderByIDParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETIdentityProviderByIDParams contains all the parameters to send to the API endpoint
+GetIdentityProviderByIDParams contains all the parameters to send to the API endpoint
 
 	for the get identity provider by Id operation.
 
 	Typically these are written to a http.Request.
 */
-type GETIdentityProviderByIDParams struct {
+type GetIdentityProviderByIDParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETIdentityProviderByIDParams struct {
 // WithDefaults hydrates default values in the get identity provider by Id params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETIdentityProviderByIDParams) WithDefaults() *GETIdentityProviderByIDParams {
+func (o *GetIdentityProviderByIDParams) WithDefaults() *GetIdentityProviderByIDParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETIdentityProviderByIDParams) WithDefaults() *GETIdentityProviderByIDP
 // SetDefaults hydrates default values in the get identity provider by Id params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETIdentityProviderByIDParams) SetDefaults() {
+func (o *GetIdentityProviderByIDParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) WithTimeout(timeout time.Duration) *GETIdentityProviderByIDParams {
+func (o *GetIdentityProviderByIDParams) WithTimeout(timeout time.Duration) *GetIdentityProviderByIDParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) SetTimeout(timeout time.Duration) {
+func (o *GetIdentityProviderByIDParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) WithContext(ctx context.Context) *GETIdentityProviderByIDParams {
+func (o *GetIdentityProviderByIDParams) WithContext(ctx context.Context) *GetIdentityProviderByIDParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) SetContext(ctx context.Context) {
+func (o *GetIdentityProviderByIDParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) WithHTTPClient(client *http.Client) *GETIdentityProviderByIDParams {
+func (o *GetIdentityProviderByIDParams) WithHTTPClient(client *http.Client) *GetIdentityProviderByIDParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) SetHTTPClient(client *http.Client) {
+func (o *GetIdentityProviderByIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) WithID(id string) *GETIdentityProviderByIDParams {
+func (o *GetIdentityProviderByIDParams) WithID(id string) *GetIdentityProviderByIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get identity provider by Id params
-func (o *GETIdentityProviderByIDParams) SetID(id string) {
+func (o *GetIdentityProviderByIDParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETIdentityProviderByIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetIdentityProviderByIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

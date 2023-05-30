@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETResourceFunctionalitiesReader is a Reader for the GETResourceFunctionalities structure.
-type GETResourceFunctionalitiesReader struct {
+// GetResourceFunctionalitiesReader is a Reader for the GetResourceFunctionalities structure.
+type GetResourceFunctionalitiesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETResourceFunctionalitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetResourceFunctionalitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETResourceFunctionalitiesOK()
+		result := NewGetResourceFunctionalitiesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETResourceFunctionalitiesBadRequest()
+		result := NewGetResourceFunctionalitiesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETResourceFunctionalitiesInternalServerError()
+		result := NewGetResourceFunctionalitiesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETResourceFunctionalitiesReader) ReadResponse(response runtime.ClientR
 	}
 }
 
-// NewGETResourceFunctionalitiesOK creates a GETResourceFunctionalitiesOK with default headers values
-func NewGETResourceFunctionalitiesOK() *GETResourceFunctionalitiesOK {
-	return &GETResourceFunctionalitiesOK{}
+// NewGetResourceFunctionalitiesOK creates a GetResourceFunctionalitiesOK with default headers values
+func NewGetResourceFunctionalitiesOK() *GetResourceFunctionalitiesOK {
+	return &GetResourceFunctionalitiesOK{}
 }
 
 /*
-GETResourceFunctionalitiesOK describes a response with status code 200, with default header values.
+GetResourceFunctionalitiesOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETResourceFunctionalitiesOK struct {
+type GetResourceFunctionalitiesOK struct {
 	Payload *models.PageOfResourceFunctionalities
 }
 
 // IsSuccess returns true when this get resource functionalities o k response has a 2xx status code
-func (o *GETResourceFunctionalitiesOK) IsSuccess() bool {
+func (o *GetResourceFunctionalitiesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get resource functionalities o k response has a 3xx status code
-func (o *GETResourceFunctionalitiesOK) IsRedirect() bool {
+func (o *GetResourceFunctionalitiesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resource functionalities o k response has a 4xx status code
-func (o *GETResourceFunctionalitiesOK) IsClientError() bool {
+func (o *GetResourceFunctionalitiesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get resource functionalities o k response has a 5xx status code
-func (o *GETResourceFunctionalitiesOK) IsServerError() bool {
+func (o *GetResourceFunctionalitiesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get resource functionalities o k response a status code equal to that given
-func (o *GETResourceFunctionalitiesOK) IsCode(code int) bool {
+func (o *GetResourceFunctionalitiesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETResourceFunctionalitiesOK) Error() string {
+func (o *GetResourceFunctionalitiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETResourceFunctionalitiesOK) String() string {
+func (o *GetResourceFunctionalitiesOK) String() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETResourceFunctionalitiesOK) GetPayload() *models.PageOfResourceFunctionalities {
+func (o *GetResourceFunctionalitiesOK) GetPayload() *models.PageOfResourceFunctionalities {
 	return o.Payload
 }
 
-func (o *GETResourceFunctionalitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourceFunctionalitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfResourceFunctionalities)
 
@@ -112,58 +112,58 @@ func (o *GETResourceFunctionalitiesOK) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGETResourceFunctionalitiesBadRequest creates a GETResourceFunctionalitiesBadRequest with default headers values
-func NewGETResourceFunctionalitiesBadRequest() *GETResourceFunctionalitiesBadRequest {
-	return &GETResourceFunctionalitiesBadRequest{}
+// NewGetResourceFunctionalitiesBadRequest creates a GetResourceFunctionalitiesBadRequest with default headers values
+func NewGetResourceFunctionalitiesBadRequest() *GetResourceFunctionalitiesBadRequest {
+	return &GetResourceFunctionalitiesBadRequest{}
 }
 
 /*
-GETResourceFunctionalitiesBadRequest describes a response with status code 400, with default header values.
+GetResourceFunctionalitiesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETResourceFunctionalitiesBadRequest struct {
+type GetResourceFunctionalitiesBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get resource functionalities bad request response has a 2xx status code
-func (o *GETResourceFunctionalitiesBadRequest) IsSuccess() bool {
+func (o *GetResourceFunctionalitiesBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get resource functionalities bad request response has a 3xx status code
-func (o *GETResourceFunctionalitiesBadRequest) IsRedirect() bool {
+func (o *GetResourceFunctionalitiesBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resource functionalities bad request response has a 4xx status code
-func (o *GETResourceFunctionalitiesBadRequest) IsClientError() bool {
+func (o *GetResourceFunctionalitiesBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get resource functionalities bad request response has a 5xx status code
-func (o *GETResourceFunctionalitiesBadRequest) IsServerError() bool {
+func (o *GetResourceFunctionalitiesBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get resource functionalities bad request response a status code equal to that given
-func (o *GETResourceFunctionalitiesBadRequest) IsCode(code int) bool {
+func (o *GetResourceFunctionalitiesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETResourceFunctionalitiesBadRequest) Error() string {
+func (o *GetResourceFunctionalitiesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETResourceFunctionalitiesBadRequest) String() string {
+func (o *GetResourceFunctionalitiesBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETResourceFunctionalitiesBadRequest) GetPayload() *models.Error {
+func (o *GetResourceFunctionalitiesBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETResourceFunctionalitiesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourceFunctionalitiesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETResourceFunctionalitiesBadRequest) readResponse(response runtime.Cli
 	return nil
 }
 
-// NewGETResourceFunctionalitiesInternalServerError creates a GETResourceFunctionalitiesInternalServerError with default headers values
-func NewGETResourceFunctionalitiesInternalServerError() *GETResourceFunctionalitiesInternalServerError {
-	return &GETResourceFunctionalitiesInternalServerError{}
+// NewGetResourceFunctionalitiesInternalServerError creates a GetResourceFunctionalitiesInternalServerError with default headers values
+func NewGetResourceFunctionalitiesInternalServerError() *GetResourceFunctionalitiesInternalServerError {
+	return &GetResourceFunctionalitiesInternalServerError{}
 }
 
 /*
-GETResourceFunctionalitiesInternalServerError describes a response with status code 500, with default header values.
+GetResourceFunctionalitiesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETResourceFunctionalitiesInternalServerError struct {
+type GetResourceFunctionalitiesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get resource functionalities internal server error response has a 2xx status code
-func (o *GETResourceFunctionalitiesInternalServerError) IsSuccess() bool {
+func (o *GetResourceFunctionalitiesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get resource functionalities internal server error response has a 3xx status code
-func (o *GETResourceFunctionalitiesInternalServerError) IsRedirect() bool {
+func (o *GetResourceFunctionalitiesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resource functionalities internal server error response has a 4xx status code
-func (o *GETResourceFunctionalitiesInternalServerError) IsClientError() bool {
+func (o *GetResourceFunctionalitiesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get resource functionalities internal server error response has a 5xx status code
-func (o *GETResourceFunctionalitiesInternalServerError) IsServerError() bool {
+func (o *GetResourceFunctionalitiesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get resource functionalities internal server error response a status code equal to that given
-func (o *GETResourceFunctionalitiesInternalServerError) IsCode(code int) bool {
+func (o *GetResourceFunctionalitiesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETResourceFunctionalitiesInternalServerError) Error() string {
+func (o *GetResourceFunctionalitiesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETResourceFunctionalitiesInternalServerError) String() string {
+func (o *GetResourceFunctionalitiesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETResourceFunctionalitiesInternalServerError) GetPayload() *models.Error {
+func (o *GetResourceFunctionalitiesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETResourceFunctionalitiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourceFunctionalitiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHealthCheckStatusParams creates a new GETHealthCheckStatusParams object,
+// NewGetHealthCheckStatusParams creates a new GetHealthCheckStatusParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHealthCheckStatusParams() *GETHealthCheckStatusParams {
-	return &GETHealthCheckStatusParams{
+func NewGetHealthCheckStatusParams() *GetHealthCheckStatusParams {
+	return &GetHealthCheckStatusParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHealthCheckStatusParamsWithTimeout creates a new GETHealthCheckStatusParams object
+// NewGetHealthCheckStatusParamsWithTimeout creates a new GetHealthCheckStatusParams object
 // with the ability to set a timeout on a request.
-func NewGETHealthCheckStatusParamsWithTimeout(timeout time.Duration) *GETHealthCheckStatusParams {
-	return &GETHealthCheckStatusParams{
+func NewGetHealthCheckStatusParamsWithTimeout(timeout time.Duration) *GetHealthCheckStatusParams {
+	return &GetHealthCheckStatusParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETHealthCheckStatusParamsWithContext creates a new GETHealthCheckStatusParams object
+// NewGetHealthCheckStatusParamsWithContext creates a new GetHealthCheckStatusParams object
 // with the ability to set a context for a request.
-func NewGETHealthCheckStatusParamsWithContext(ctx context.Context) *GETHealthCheckStatusParams {
-	return &GETHealthCheckStatusParams{
+func NewGetHealthCheckStatusParamsWithContext(ctx context.Context) *GetHealthCheckStatusParams {
+	return &GetHealthCheckStatusParams{
 		Context: ctx,
 	}
 }
 
-// NewGETHealthCheckStatusParamsWithHTTPClient creates a new GETHealthCheckStatusParams object
+// NewGetHealthCheckStatusParamsWithHTTPClient creates a new GetHealthCheckStatusParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHealthCheckStatusParamsWithHTTPClient(client *http.Client) *GETHealthCheckStatusParams {
-	return &GETHealthCheckStatusParams{
+func NewGetHealthCheckStatusParamsWithHTTPClient(client *http.Client) *GetHealthCheckStatusParams {
+	return &GetHealthCheckStatusParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHealthCheckStatusParams contains all the parameters to send to the API endpoint
+GetHealthCheckStatusParams contains all the parameters to send to the API endpoint
 
 	for the get health check status operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHealthCheckStatusParams struct {
+type GetHealthCheckStatusParams struct {
 
 	/* DomainID.
 
@@ -84,7 +84,7 @@ type GETHealthCheckStatusParams struct {
 // WithDefaults hydrates default values in the get health check status params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHealthCheckStatusParams) WithDefaults() *GETHealthCheckStatusParams {
+func (o *GetHealthCheckStatusParams) WithDefaults() *GetHealthCheckStatusParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETHealthCheckStatusParams) WithDefaults() *GETHealthCheckStatusParams 
 // SetDefaults hydrates default values in the get health check status params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHealthCheckStatusParams) SetDefaults() {
+func (o *GetHealthCheckStatusParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get health check status params
-func (o *GETHealthCheckStatusParams) WithTimeout(timeout time.Duration) *GETHealthCheckStatusParams {
+func (o *GetHealthCheckStatusParams) WithTimeout(timeout time.Duration) *GetHealthCheckStatusParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get health check status params
-func (o *GETHealthCheckStatusParams) SetTimeout(timeout time.Duration) {
+func (o *GetHealthCheckStatusParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get health check status params
-func (o *GETHealthCheckStatusParams) WithContext(ctx context.Context) *GETHealthCheckStatusParams {
+func (o *GetHealthCheckStatusParams) WithContext(ctx context.Context) *GetHealthCheckStatusParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get health check status params
-func (o *GETHealthCheckStatusParams) SetContext(ctx context.Context) {
+func (o *GetHealthCheckStatusParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get health check status params
-func (o *GETHealthCheckStatusParams) WithHTTPClient(client *http.Client) *GETHealthCheckStatusParams {
+func (o *GetHealthCheckStatusParams) WithHTTPClient(client *http.Client) *GetHealthCheckStatusParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get health check status params
-func (o *GETHealthCheckStatusParams) SetHTTPClient(client *http.Client) {
+func (o *GetHealthCheckStatusParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the get health check status params
-func (o *GETHealthCheckStatusParams) WithDomainID(domainID string) *GETHealthCheckStatusParams {
+func (o *GetHealthCheckStatusParams) WithDomainID(domainID string) *GetHealthCheckStatusParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get health check status params
-func (o *GETHealthCheckStatusParams) SetDomainID(domainID string) {
+func (o *GetHealthCheckStatusParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WithQueryID adds the queryID to the get health check status params
-func (o *GETHealthCheckStatusParams) WithQueryID(queryID string) *GETHealthCheckStatusParams {
+func (o *GetHealthCheckStatusParams) WithQueryID(queryID string) *GetHealthCheckStatusParams {
 	o.SetQueryID(queryID)
 	return o
 }
 
 // SetQueryID adds the queryId to the get health check status params
-func (o *GETHealthCheckStatusParams) SetQueryID(queryID string) {
+func (o *GetHealthCheckStatusParams) SetQueryID(queryID string) {
 	o.QueryID = queryID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHealthCheckStatusParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHealthCheckStatusParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

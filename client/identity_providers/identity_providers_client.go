@@ -41,9 +41,9 @@ type ClientService interface {
 
 	DeleteIdentitySource(params *DeleteIdentitySourceParams, opts ...ClientOption) (*DeleteIdentitySourceOK, *DeleteIdentitySourceNoContent, error)
 
-	GETAllIdps(params *GETAllIdpsParams, opts ...ClientOption) (*GETAllIdpsOK, error)
+	GetAllIdps(params *GetAllIdpsParams, opts ...ClientOption) (*GetAllIdpsOK, error)
 
-	GETIdentityProviderByID(params *GETIdentityProviderByIDParams, opts ...ClientOption) (*GETIdentityProviderByIDOK, error)
+	GetIdentityProviderByID(params *GetIdentityProviderByIDParams, opts ...ClientOption) (*GetIdentityProviderByIDOK, error)
 
 	UpdateEmbeddedIdentitySource(params *UpdateEmbeddedIdentitySourceParams, opts ...ClientOption) (*UpdateEmbeddedIdentitySourceOK, *UpdateEmbeddedIdentitySourceNoContent, error)
 
@@ -217,14 +217,14 @@ func (a *Client) DeleteIdentitySource(params *DeleteIdentitySourceParams, opts .
 }
 
 /*
-GETAllIdps Gets all identity providers
+GetAllIdps gets all identity providers
 
 Get a list of all Identity Providers
 */
-func (a *Client) GETAllIdps(params *GETAllIdpsParams, opts ...ClientOption) (*GETAllIdpsOK, error) {
+func (a *Client) GetAllIdps(params *GetAllIdpsParams, opts ...ClientOption) (*GetAllIdpsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETAllIdpsParams()
+		params = NewGetAllIdpsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getAllIdps",
@@ -234,7 +234,7 @@ func (a *Client) GETAllIdps(params *GETAllIdpsParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETAllIdpsReader{formats: a.formats},
+		Reader:             &GetAllIdpsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -246,7 +246,7 @@ func (a *Client) GETAllIdps(params *GETAllIdpsParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETAllIdpsOK)
+	success, ok := result.(*GetAllIdpsOK)
 	if ok {
 		return success, nil
 	}
@@ -257,14 +257,14 @@ func (a *Client) GETAllIdps(params *GETAllIdpsParams, opts ...ClientOption) (*GE
 }
 
 /*
-GETIdentityProviderByID Gets identity provider by Id
+GetIdentityProviderByID gets identity provider by Id
 
 Get a specific Identity Provider using it's Id
 */
-func (a *Client) GETIdentityProviderByID(params *GETIdentityProviderByIDParams, opts ...ClientOption) (*GETIdentityProviderByIDOK, error) {
+func (a *Client) GetIdentityProviderByID(params *GetIdentityProviderByIDParams, opts ...ClientOption) (*GetIdentityProviderByIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETIdentityProviderByIDParams()
+		params = NewGetIdentityProviderByIDParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getIdentityProviderById",
@@ -274,7 +274,7 @@ func (a *Client) GETIdentityProviderByID(params *GETIdentityProviderByIDParams, 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETIdentityProviderByIDReader{formats: a.formats},
+		Reader:             &GetIdentityProviderByIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -286,7 +286,7 @@ func (a *Client) GETIdentityProviderByID(params *GETIdentityProviderByIDParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETIdentityProviderByIDOK)
+	success, ok := result.(*GetIdentityProviderByIDOK)
 	if ok {
 		return success, nil
 	}

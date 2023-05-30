@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETValidationResultUsingGETParams creates a new GETValidationResultUsingGETParams object,
+// NewGetValidationResultUsingGETParams creates a new GetValidationResultUsingGETParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETValidationResultUsingGETParams() *GETValidationResultUsingGETParams {
-	return &GETValidationResultUsingGETParams{
+func NewGetValidationResultUsingGETParams() *GetValidationResultUsingGETParams {
+	return &GetValidationResultUsingGETParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETValidationResultUsingGETParamsWithTimeout creates a new GETValidationResultUsingGETParams object
+// NewGetValidationResultUsingGETParamsWithTimeout creates a new GetValidationResultUsingGETParams object
 // with the ability to set a timeout on a request.
-func NewGETValidationResultUsingGETParamsWithTimeout(timeout time.Duration) *GETValidationResultUsingGETParams {
-	return &GETValidationResultUsingGETParams{
+func NewGetValidationResultUsingGETParamsWithTimeout(timeout time.Duration) *GetValidationResultUsingGETParams {
+	return &GetValidationResultUsingGETParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETValidationResultUsingGETParamsWithContext creates a new GETValidationResultUsingGETParams object
+// NewGetValidationResultUsingGETParamsWithContext creates a new GetValidationResultUsingGETParams object
 // with the ability to set a context for a request.
-func NewGETValidationResultUsingGETParamsWithContext(ctx context.Context) *GETValidationResultUsingGETParams {
-	return &GETValidationResultUsingGETParams{
+func NewGetValidationResultUsingGETParamsWithContext(ctx context.Context) *GetValidationResultUsingGETParams {
+	return &GetValidationResultUsingGETParams{
 		Context: ctx,
 	}
 }
 
-// NewGETValidationResultUsingGETParamsWithHTTPClient creates a new GETValidationResultUsingGETParams object
+// NewGetValidationResultUsingGETParamsWithHTTPClient creates a new GetValidationResultUsingGETParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETValidationResultUsingGETParamsWithHTTPClient(client *http.Client) *GETValidationResultUsingGETParams {
-	return &GETValidationResultUsingGETParams{
+func NewGetValidationResultUsingGETParamsWithHTTPClient(client *http.Client) *GetValidationResultUsingGETParams {
+	return &GetValidationResultUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETValidationResultUsingGETParams contains all the parameters to send to the API endpoint
+GetValidationResultUsingGETParams contains all the parameters to send to the API endpoint
 
-	for the get validation result using GET operation.
+	for the get validation result using g e t operation.
 
 	Typically these are written to a http.Request.
 */
-type GETValidationResultUsingGETParams struct {
+type GetValidationResultUsingGETParams struct {
 
 	/* ID.
 
@@ -75,67 +75,67 @@ type GETValidationResultUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the get validation result using GET params (not the query body).
+// WithDefaults hydrates default values in the get validation result using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationResultUsingGETParams) WithDefaults() *GETValidationResultUsingGETParams {
+func (o *GetValidationResultUsingGETParams) WithDefaults() *GetValidationResultUsingGETParams {
 	o.SetDefaults()
 	return o
 }
 
-// SetDefaults hydrates default values in the get validation result using GET params (not the query body).
+// SetDefaults hydrates default values in the get validation result using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationResultUsingGETParams) SetDefaults() {
+func (o *GetValidationResultUsingGETParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) WithTimeout(timeout time.Duration) *GETValidationResultUsingGETParams {
+// WithTimeout adds the timeout to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) WithTimeout(timeout time.Duration) *GetValidationResultUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) WithContext(ctx context.Context) *GETValidationResultUsingGETParams {
+// WithContext adds the context to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) WithContext(ctx context.Context) *GetValidationResultUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) WithHTTPClient(client *http.Client) *GETValidationResultUsingGETParams {
+// WithHTTPClient adds the HTTPClient to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) WithHTTPClient(client *http.Client) *GetValidationResultUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) WithID(id string) *GETValidationResultUsingGETParams {
+// WithID adds the id to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) WithID(id string) *GetValidationResultUsingGETParams {
 	o.SetID(id)
 	return o
 }
 
-// SetID adds the id to the get validation result using GET params
-func (o *GETValidationResultUsingGETParams) SetID(id string) {
+// SetID adds the id to the get validation result using g e t params
+func (o *GetValidationResultUsingGETParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETValidationResultUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetValidationResultUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

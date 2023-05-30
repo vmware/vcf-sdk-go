@@ -33,7 +33,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETProxyConfiguration(params *GETProxyConfigurationParams, opts ...ClientOption) (*GETProxyConfigurationOK, error)
+	GetProxyConfiguration(params *GetProxyConfigurationParams, opts ...ClientOption) (*GetProxyConfigurationOK, error)
 
 	UpdateProxyConfiguration(params *UpdateProxyConfigurationParams, opts ...ClientOption) (*UpdateProxyConfigurationOK, *UpdateProxyConfigurationAccepted, error)
 
@@ -41,14 +41,14 @@ type ClientService interface {
 }
 
 /*
-GETProxyConfiguration Gets the current proxy configuration
+GetProxyConfiguration gets the current proxy configuration
 
 Get the current Proxy configuration
 */
-func (a *Client) GETProxyConfiguration(params *GETProxyConfigurationParams, opts ...ClientOption) (*GETProxyConfigurationOK, error) {
+func (a *Client) GetProxyConfiguration(params *GetProxyConfigurationParams, opts ...ClientOption) (*GetProxyConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETProxyConfigurationParams()
+		params = NewGetProxyConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getProxyConfiguration",
@@ -58,7 +58,7 @@ func (a *Client) GETProxyConfiguration(params *GETProxyConfigurationParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETProxyConfigurationReader{formats: a.formats},
+		Reader:             &GetProxyConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -70,7 +70,7 @@ func (a *Client) GETProxyConfiguration(params *GETProxyConfigurationParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETProxyConfigurationOK)
+	success, ok := result.(*GetProxyConfigurationOK)
 	if ok {
 		return success, nil
 	}

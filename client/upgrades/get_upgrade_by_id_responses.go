@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETUpgradeByIDReader is a Reader for the GETUpgradeByID structure.
-type GETUpgradeByIDReader struct {
+// GetUpgradeByIDReader is a Reader for the GetUpgradeByID structure.
+type GetUpgradeByIDReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETUpgradeByIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetUpgradeByIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETUpgradeByIDOK()
+		result := NewGetUpgradeByIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETUpgradeByIDNotFound()
+		result := NewGetUpgradeByIDNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETUpgradeByIDInternalServerError()
+		result := NewGetUpgradeByIDInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETUpgradeByIDReader) ReadResponse(response runtime.ClientResponse, con
 	}
 }
 
-// NewGETUpgradeByIDOK creates a GETUpgradeByIDOK with default headers values
-func NewGETUpgradeByIDOK() *GETUpgradeByIDOK {
-	return &GETUpgradeByIDOK{}
+// NewGetUpgradeByIDOK creates a GetUpgradeByIDOK with default headers values
+func NewGetUpgradeByIDOK() *GetUpgradeByIDOK {
+	return &GetUpgradeByIDOK{}
 }
 
 /*
-GETUpgradeByIDOK describes a response with status code 200, with default header values.
+GetUpgradeByIDOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETUpgradeByIDOK struct {
+type GetUpgradeByIDOK struct {
 	Payload *models.Upgrade
 }
 
 // IsSuccess returns true when this get upgrade by Id o k response has a 2xx status code
-func (o *GETUpgradeByIDOK) IsSuccess() bool {
+func (o *GetUpgradeByIDOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get upgrade by Id o k response has a 3xx status code
-func (o *GETUpgradeByIDOK) IsRedirect() bool {
+func (o *GetUpgradeByIDOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgrade by Id o k response has a 4xx status code
-func (o *GETUpgradeByIDOK) IsClientError() bool {
+func (o *GetUpgradeByIDOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get upgrade by Id o k response has a 5xx status code
-func (o *GETUpgradeByIDOK) IsServerError() bool {
+func (o *GetUpgradeByIDOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get upgrade by Id o k response a status code equal to that given
-func (o *GETUpgradeByIDOK) IsCode(code int) bool {
+func (o *GetUpgradeByIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETUpgradeByIDOK) Error() string {
+func (o *GetUpgradeByIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUpgradeByIDOK) String() string {
+func (o *GetUpgradeByIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUpgradeByIDOK) GetPayload() *models.Upgrade {
+func (o *GetUpgradeByIDOK) GetPayload() *models.Upgrade {
 	return o.Payload
 }
 
-func (o *GETUpgradeByIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradeByIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Upgrade)
 
@@ -112,58 +112,58 @@ func (o *GETUpgradeByIDOK) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-// NewGETUpgradeByIDNotFound creates a GETUpgradeByIDNotFound with default headers values
-func NewGETUpgradeByIDNotFound() *GETUpgradeByIDNotFound {
-	return &GETUpgradeByIDNotFound{}
+// NewGetUpgradeByIDNotFound creates a GetUpgradeByIDNotFound with default headers values
+func NewGetUpgradeByIDNotFound() *GetUpgradeByIDNotFound {
+	return &GetUpgradeByIDNotFound{}
 }
 
 /*
-GETUpgradeByIDNotFound describes a response with status code 404, with default header values.
+GetUpgradeByIDNotFound describes a response with status code 404, with default header values.
 
 Upgrade not found
 */
-type GETUpgradeByIDNotFound struct {
+type GetUpgradeByIDNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get upgrade by Id not found response has a 2xx status code
-func (o *GETUpgradeByIDNotFound) IsSuccess() bool {
+func (o *GetUpgradeByIDNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get upgrade by Id not found response has a 3xx status code
-func (o *GETUpgradeByIDNotFound) IsRedirect() bool {
+func (o *GetUpgradeByIDNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgrade by Id not found response has a 4xx status code
-func (o *GETUpgradeByIDNotFound) IsClientError() bool {
+func (o *GetUpgradeByIDNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get upgrade by Id not found response has a 5xx status code
-func (o *GETUpgradeByIDNotFound) IsServerError() bool {
+func (o *GetUpgradeByIDNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get upgrade by Id not found response a status code equal to that given
-func (o *GETUpgradeByIDNotFound) IsCode(code int) bool {
+func (o *GetUpgradeByIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETUpgradeByIDNotFound) Error() string {
+func (o *GetUpgradeByIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETUpgradeByIDNotFound) String() string {
+func (o *GetUpgradeByIDNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETUpgradeByIDNotFound) GetPayload() *models.Error {
+func (o *GetUpgradeByIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETUpgradeByIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradeByIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETUpgradeByIDNotFound) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETUpgradeByIDInternalServerError creates a GETUpgradeByIDInternalServerError with default headers values
-func NewGETUpgradeByIDInternalServerError() *GETUpgradeByIDInternalServerError {
-	return &GETUpgradeByIDInternalServerError{}
+// NewGetUpgradeByIDInternalServerError creates a GetUpgradeByIDInternalServerError with default headers values
+func NewGetUpgradeByIDInternalServerError() *GetUpgradeByIDInternalServerError {
+	return &GetUpgradeByIDInternalServerError{}
 }
 
 /*
-GETUpgradeByIDInternalServerError describes a response with status code 500, with default header values.
+GetUpgradeByIDInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETUpgradeByIDInternalServerError struct {
+type GetUpgradeByIDInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get upgrade by Id internal server error response has a 2xx status code
-func (o *GETUpgradeByIDInternalServerError) IsSuccess() bool {
+func (o *GetUpgradeByIDInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get upgrade by Id internal server error response has a 3xx status code
-func (o *GETUpgradeByIDInternalServerError) IsRedirect() bool {
+func (o *GetUpgradeByIDInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgrade by Id internal server error response has a 4xx status code
-func (o *GETUpgradeByIDInternalServerError) IsClientError() bool {
+func (o *GetUpgradeByIDInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get upgrade by Id internal server error response has a 5xx status code
-func (o *GETUpgradeByIDInternalServerError) IsServerError() bool {
+func (o *GetUpgradeByIDInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get upgrade by Id internal server error response a status code equal to that given
-func (o *GETUpgradeByIDInternalServerError) IsCode(code int) bool {
+func (o *GetUpgradeByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETUpgradeByIDInternalServerError) Error() string {
+func (o *GetUpgradeByIDInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUpgradeByIDInternalServerError) String() string {
+func (o *GetUpgradeByIDInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUpgradeByIDInternalServerError) GetPayload() *models.Error {
+func (o *GetUpgradeByIDInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETUpgradeByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradeByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

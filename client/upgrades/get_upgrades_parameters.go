@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUpgradesParams creates a new GETUpgradesParams object,
+// NewGetUpgradesParams creates a new GetUpgradesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUpgradesParams() *GETUpgradesParams {
-	return &GETUpgradesParams{
+func NewGetUpgradesParams() *GetUpgradesParams {
+	return &GetUpgradesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUpgradesParamsWithTimeout creates a new GETUpgradesParams object
+// NewGetUpgradesParamsWithTimeout creates a new GetUpgradesParams object
 // with the ability to set a timeout on a request.
-func NewGETUpgradesParamsWithTimeout(timeout time.Duration) *GETUpgradesParams {
-	return &GETUpgradesParams{
+func NewGetUpgradesParamsWithTimeout(timeout time.Duration) *GetUpgradesParams {
+	return &GetUpgradesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUpgradesParamsWithContext creates a new GETUpgradesParams object
+// NewGetUpgradesParamsWithContext creates a new GetUpgradesParams object
 // with the ability to set a context for a request.
-func NewGETUpgradesParamsWithContext(ctx context.Context) *GETUpgradesParams {
-	return &GETUpgradesParams{
+func NewGetUpgradesParamsWithContext(ctx context.Context) *GetUpgradesParams {
+	return &GetUpgradesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUpgradesParamsWithHTTPClient creates a new GETUpgradesParams object
+// NewGetUpgradesParamsWithHTTPClient creates a new GetUpgradesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUpgradesParamsWithHTTPClient(client *http.Client) *GETUpgradesParams {
-	return &GETUpgradesParams{
+func NewGetUpgradesParamsWithHTTPClient(client *http.Client) *GetUpgradesParams {
+	return &GetUpgradesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUpgradesParams contains all the parameters to send to the API endpoint
+GetUpgradesParams contains all the parameters to send to the API endpoint
 
 	for the get upgrades operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUpgradesParams struct {
+type GetUpgradesParams struct {
 
 	/* BundleID.
 
@@ -84,7 +84,7 @@ type GETUpgradesParams struct {
 // WithDefaults hydrates default values in the get upgrades params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradesParams) WithDefaults() *GETUpgradesParams {
+func (o *GetUpgradesParams) WithDefaults() *GetUpgradesParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETUpgradesParams) WithDefaults() *GETUpgradesParams {
 // SetDefaults hydrates default values in the get upgrades params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradesParams) SetDefaults() {
+func (o *GetUpgradesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get upgrades params
-func (o *GETUpgradesParams) WithTimeout(timeout time.Duration) *GETUpgradesParams {
+func (o *GetUpgradesParams) WithTimeout(timeout time.Duration) *GetUpgradesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get upgrades params
-func (o *GETUpgradesParams) SetTimeout(timeout time.Duration) {
+func (o *GetUpgradesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get upgrades params
-func (o *GETUpgradesParams) WithContext(ctx context.Context) *GETUpgradesParams {
+func (o *GetUpgradesParams) WithContext(ctx context.Context) *GetUpgradesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get upgrades params
-func (o *GETUpgradesParams) SetContext(ctx context.Context) {
+func (o *GetUpgradesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get upgrades params
-func (o *GETUpgradesParams) WithHTTPClient(client *http.Client) *GETUpgradesParams {
+func (o *GetUpgradesParams) WithHTTPClient(client *http.Client) *GetUpgradesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get upgrades params
-func (o *GETUpgradesParams) SetHTTPClient(client *http.Client) {
+func (o *GetUpgradesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithBundleID adds the bundleID to the get upgrades params
-func (o *GETUpgradesParams) WithBundleID(bundleID *string) *GETUpgradesParams {
+func (o *GetUpgradesParams) WithBundleID(bundleID *string) *GetUpgradesParams {
 	o.SetBundleID(bundleID)
 	return o
 }
 
 // SetBundleID adds the bundleId to the get upgrades params
-func (o *GETUpgradesParams) SetBundleID(bundleID *string) {
+func (o *GetUpgradesParams) SetBundleID(bundleID *string) {
 	o.BundleID = bundleID
 }
 
 // WithStatus adds the status to the get upgrades params
-func (o *GETUpgradesParams) WithStatus(status *string) *GETUpgradesParams {
+func (o *GetUpgradesParams) WithStatus(status *string) *GetUpgradesParams {
 	o.SetStatus(status)
 	return o
 }
 
 // SetStatus adds the status to the get upgrades params
-func (o *GETUpgradesParams) SetStatus(status *string) {
+func (o *GetUpgradesParams) SetStatus(status *string) {
 	o.Status = status
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUpgradesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUpgradesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

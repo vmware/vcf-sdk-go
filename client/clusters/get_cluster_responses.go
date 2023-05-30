@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETClusterReader is a Reader for the GETCluster structure.
-type GETClusterReader struct {
+// GetClusterReader is a Reader for the GetCluster structure.
+type GetClusterReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETClusterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetClusterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETClusterOK()
+		result := NewGetClusterOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETClusterNotFound()
+		result := NewGetClusterNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETClusterInternalServerError()
+		result := NewGetClusterInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETClusterReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewGETClusterOK creates a GETClusterOK with default headers values
-func NewGETClusterOK() *GETClusterOK {
-	return &GETClusterOK{}
+// NewGetClusterOK creates a GetClusterOK with default headers values
+func NewGetClusterOK() *GetClusterOK {
+	return &GetClusterOK{}
 }
 
 /*
-GETClusterOK describes a response with status code 200, with default header values.
+GetClusterOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETClusterOK struct {
+type GetClusterOK struct {
 	Payload *models.Cluster
 }
 
 // IsSuccess returns true when this get cluster o k response has a 2xx status code
-func (o *GETClusterOK) IsSuccess() bool {
+func (o *GetClusterOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get cluster o k response has a 3xx status code
-func (o *GETClusterOK) IsRedirect() bool {
+func (o *GetClusterOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster o k response has a 4xx status code
-func (o *GETClusterOK) IsClientError() bool {
+func (o *GetClusterOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get cluster o k response has a 5xx status code
-func (o *GETClusterOK) IsServerError() bool {
+func (o *GetClusterOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster o k response a status code equal to that given
-func (o *GETClusterOK) IsCode(code int) bool {
+func (o *GetClusterOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETClusterOK) Error() string {
+func (o *GetClusterOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterOK) String() string {
+func (o *GetClusterOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterOK) GetPayload() *models.Cluster {
+func (o *GetClusterOK) GetPayload() *models.Cluster {
 	return o.Payload
 }
 
-func (o *GETClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Cluster)
 
@@ -112,58 +112,58 @@ func (o *GETClusterOK) readResponse(response runtime.ClientResponse, consumer ru
 	return nil
 }
 
-// NewGETClusterNotFound creates a GETClusterNotFound with default headers values
-func NewGETClusterNotFound() *GETClusterNotFound {
-	return &GETClusterNotFound{}
+// NewGetClusterNotFound creates a GetClusterNotFound with default headers values
+func NewGetClusterNotFound() *GetClusterNotFound {
+	return &GetClusterNotFound{}
 }
 
 /*
-GETClusterNotFound describes a response with status code 404, with default header values.
+GetClusterNotFound describes a response with status code 404, with default header values.
 
 Cluster not found
 */
-type GETClusterNotFound struct {
+type GetClusterNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get cluster not found response has a 2xx status code
-func (o *GETClusterNotFound) IsSuccess() bool {
+func (o *GetClusterNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get cluster not found response has a 3xx status code
-func (o *GETClusterNotFound) IsRedirect() bool {
+func (o *GetClusterNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster not found response has a 4xx status code
-func (o *GETClusterNotFound) IsClientError() bool {
+func (o *GetClusterNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get cluster not found response has a 5xx status code
-func (o *GETClusterNotFound) IsServerError() bool {
+func (o *GetClusterNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster not found response a status code equal to that given
-func (o *GETClusterNotFound) IsCode(code int) bool {
+func (o *GetClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETClusterNotFound) Error() string {
+func (o *GetClusterNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETClusterNotFound) String() string {
+func (o *GetClusterNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETClusterNotFound) GetPayload() *models.Error {
+func (o *GetClusterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETClusterNotFound) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETClusterInternalServerError creates a GETClusterInternalServerError with default headers values
-func NewGETClusterInternalServerError() *GETClusterInternalServerError {
-	return &GETClusterInternalServerError{}
+// NewGetClusterInternalServerError creates a GetClusterInternalServerError with default headers values
+func NewGetClusterInternalServerError() *GetClusterInternalServerError {
+	return &GetClusterInternalServerError{}
 }
 
 /*
-GETClusterInternalServerError describes a response with status code 500, with default header values.
+GetClusterInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETClusterInternalServerError struct {
+type GetClusterInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get cluster internal server error response has a 2xx status code
-func (o *GETClusterInternalServerError) IsSuccess() bool {
+func (o *GetClusterInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get cluster internal server error response has a 3xx status code
-func (o *GETClusterInternalServerError) IsRedirect() bool {
+func (o *GetClusterInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster internal server error response has a 4xx status code
-func (o *GETClusterInternalServerError) IsClientError() bool {
+func (o *GetClusterInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get cluster internal server error response has a 5xx status code
-func (o *GETClusterInternalServerError) IsServerError() bool {
+func (o *GetClusterInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get cluster internal server error response a status code equal to that given
-func (o *GETClusterInternalServerError) IsCode(code int) bool {
+func (o *GetClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETClusterInternalServerError) Error() string {
+func (o *GetClusterInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETClusterInternalServerError) String() string {
+func (o *GetClusterInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETClusterInternalServerError) GetPayload() *models.Error {
+func (o *GetClusterInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

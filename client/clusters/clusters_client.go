@@ -43,35 +43,35 @@ type ClientService interface {
 
 	DeleteCluster(params *DeleteClusterParams, opts ...ClientOption) (*DeleteClusterOK, *DeleteClusterAccepted, error)
 
-	GETCluster(params *GETClusterParams, opts ...ClientOption) (*GETClusterOK, error)
+	GetCluster(params *GetClusterParams, opts ...ClientOption) (*GetClusterOK, error)
 
-	GETClusterDatastores(params *GETClusterDatastoresParams, opts ...ClientOption) (*GETClusterDatastoresOK, error)
+	GetClusterDatastores(params *GetClusterDatastoresParams, opts ...ClientOption) (*GetClusterDatastoresOK, error)
 
-	GETClusterTagManagerURL(params *GETClusterTagManagerURLParams, opts ...ClientOption) (*GETClusterTagManagerURLOK, error)
+	GetClusterTagManagerURL(params *GetClusterTagManagerURLParams, opts ...ClientOption) (*GetClusterTagManagerURLOK, error)
 
-	GETClusters(params *GETClustersParams, opts ...ClientOption) (*GETClustersOK, error)
+	GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error)
 
-	GETDatastoreCriterion(params *GETDatastoreCriterionParams, opts ...ClientOption) (*GETDatastoreCriterionOK, error)
+	GetDatastoreCriterion(params *GetDatastoreCriterionParams, opts ...ClientOption) (*GetDatastoreCriterionOK, error)
 
-	GETDatastoreQueryResponse(params *GETDatastoreQueryResponseParams, opts ...ClientOption) (*GETDatastoreQueryResponseOK, error)
+	GetDatastoreQueryResponse(params *GetDatastoreQueryResponseParams, opts ...ClientOption) (*GetDatastoreQueryResponseOK, error)
 
-	GETDatastoresCriteria(params *GETDatastoresCriteriaParams, opts ...ClientOption) (*GETDatastoresCriteriaOK, error)
+	GetDatastoresCriteria(params *GetDatastoresCriteriaParams, opts ...ClientOption) (*GetDatastoresCriteriaOK, error)
 
-	GETHostCriteria(params *GETHostCriteriaParams, opts ...ClientOption) (*GETHostCriteriaOK, error)
+	GetHostCriteria(params *GetHostCriteriaParams, opts ...ClientOption) (*GetHostCriteriaOK, error)
 
-	GETHostCriterion(params *GETHostCriterionParams, opts ...ClientOption) (*GETHostCriterionOK, error)
+	GetHostCriterion(params *GetHostCriterionParams, opts ...ClientOption) (*GetHostCriterionOK, error)
 
-	GETHostQueryResponse(params *GETHostQueryResponseParams, opts ...ClientOption) (*GETHostQueryResponseOK, error)
+	GetHostQueryResponse(params *GetHostQueryResponseParams, opts ...ClientOption) (*GetHostQueryResponseOK, error)
 
-	GETTagsAssignedToCluster(params *GETTagsAssignedToClusterParams, opts ...ClientOption) (*GETTagsAssignedToClusterOK, error)
+	GetTagsAssignedToCluster(params *GetTagsAssignedToClusterParams, opts ...ClientOption) (*GetTagsAssignedToClusterOK, error)
 
-	GETTagsAssignedToClusters(params *GETTagsAssignedToClustersParams, opts ...ClientOption) (*GETTagsAssignedToClustersOK, error)
+	GetTagsAssignedToClusters(params *GetTagsAssignedToClustersParams, opts ...ClientOption) (*GetTagsAssignedToClustersOK, error)
 
-	GETVdses(params *GETVdsesParams, opts ...ClientOption) (*GETVdsesOK, error)
+	GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVdsesOK, error)
 
-	POSTDatastoreQuery(params *POSTDatastoreQueryParams, opts ...ClientOption) (*POSTDatastoreQueryOK, error)
+	PostDatastoreQuery(params *PostDatastoreQueryParams, opts ...ClientOption) (*PostDatastoreQueryOK, error)
 
-	POSTHostQuery(params *POSTHostQueryParams, opts ...ClientOption) (*POSTHostQueryOK, error)
+	PostHostQuery(params *PostHostQueryParams, opts ...ClientOption) (*PostHostQueryOK, error)
 
 	RemoveDatastoreFromCluster(params *RemoveDatastoreFromClusterParams, opts ...ClientOption) (*RemoveDatastoreFromClusterOK, *RemoveDatastoreFromClusterAccepted, error)
 
@@ -282,12 +282,12 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption
 }
 
 /*
-GETCluster Gets a cluster
+GetCluster gets a cluster
 */
-func (a *Client) GETCluster(params *GETClusterParams, opts ...ClientOption) (*GETClusterOK, error) {
+func (a *Client) GetCluster(params *GetClusterParams, opts ...ClientOption) (*GetClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETClusterParams()
+		params = NewGetClusterParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCluster",
@@ -297,7 +297,7 @@ func (a *Client) GETCluster(params *GETClusterParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETClusterReader{formats: a.formats},
+		Reader:             &GetClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -309,7 +309,7 @@ func (a *Client) GETCluster(params *GETClusterParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETClusterOK)
+	success, ok := result.(*GetClusterOK)
 	if ok {
 		return success, nil
 	}
@@ -320,12 +320,12 @@ func (a *Client) GETCluster(params *GETClusterParams, opts ...ClientOption) (*GE
 }
 
 /*
-GETClusterDatastores Gets the list of all datastores associated with the cluster
+GetClusterDatastores gets the list of all datastores associated with the cluster
 */
-func (a *Client) GETClusterDatastores(params *GETClusterDatastoresParams, opts ...ClientOption) (*GETClusterDatastoresOK, error) {
+func (a *Client) GetClusterDatastores(params *GetClusterDatastoresParams, opts ...ClientOption) (*GetClusterDatastoresOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETClusterDatastoresParams()
+		params = NewGetClusterDatastoresParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getClusterDatastores",
@@ -335,7 +335,7 @@ func (a *Client) GETClusterDatastores(params *GETClusterDatastoresParams, opts .
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETClusterDatastoresReader{formats: a.formats},
+		Reader:             &GetClusterDatastoresReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -347,7 +347,7 @@ func (a *Client) GETClusterDatastores(params *GETClusterDatastoresParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETClusterDatastoresOK)
+	success, ok := result.(*GetClusterDatastoresOK)
 	if ok {
 		return success, nil
 	}
@@ -358,12 +358,12 @@ func (a *Client) GETClusterDatastores(params *GETClusterDatastoresParams, opts .
 }
 
 /*
-GETClusterTagManagerURL Gets cluster tag manager Url
+GetClusterTagManagerURL gets cluster tag manager Url
 */
-func (a *Client) GETClusterTagManagerURL(params *GETClusterTagManagerURLParams, opts ...ClientOption) (*GETClusterTagManagerURLOK, error) {
+func (a *Client) GetClusterTagManagerURL(params *GetClusterTagManagerURLParams, opts ...ClientOption) (*GetClusterTagManagerURLOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETClusterTagManagerURLParams()
+		params = NewGetClusterTagManagerURLParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getClusterTagManagerUrl",
@@ -373,7 +373,7 @@ func (a *Client) GETClusterTagManagerURL(params *GETClusterTagManagerURLParams, 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETClusterTagManagerURLReader{formats: a.formats},
+		Reader:             &GetClusterTagManagerURLReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -385,7 +385,7 @@ func (a *Client) GETClusterTagManagerURL(params *GETClusterTagManagerURLParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETClusterTagManagerURLOK)
+	success, ok := result.(*GetClusterTagManagerURLOK)
 	if ok {
 		return success, nil
 	}
@@ -396,12 +396,12 @@ func (a *Client) GETClusterTagManagerURL(params *GETClusterTagManagerURLParams, 
 }
 
 /*
-GETClusters Gets the clusters
+GetClusters gets the clusters
 */
-func (a *Client) GETClusters(params *GETClustersParams, opts ...ClientOption) (*GETClustersOK, error) {
+func (a *Client) GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETClustersParams()
+		params = NewGetClustersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getClusters",
@@ -411,7 +411,7 @@ func (a *Client) GETClusters(params *GETClustersParams, opts ...ClientOption) (*
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETClustersReader{formats: a.formats},
+		Reader:             &GetClustersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -423,7 +423,7 @@ func (a *Client) GETClusters(params *GETClustersParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETClustersOK)
+	success, ok := result.(*GetClustersOK)
 	if ok {
 		return success, nil
 	}
@@ -434,12 +434,12 @@ func (a *Client) GETClusters(params *GETClustersParams, opts ...ClientOption) (*
 }
 
 /*
-GETDatastoreCriterion Gets a criterion to query for datastore
+GetDatastoreCriterion gets a criterion to query for datastore
 */
-func (a *Client) GETDatastoreCriterion(params *GETDatastoreCriterionParams, opts ...ClientOption) (*GETDatastoreCriterionOK, error) {
+func (a *Client) GetDatastoreCriterion(params *GetDatastoreCriterionParams, opts ...ClientOption) (*GetDatastoreCriterionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETDatastoreCriterionParams()
+		params = NewGetDatastoreCriterionParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getDatastoreCriterion",
@@ -449,7 +449,7 @@ func (a *Client) GETDatastoreCriterion(params *GETDatastoreCriterionParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETDatastoreCriterionReader{formats: a.formats},
+		Reader:             &GetDatastoreCriterionReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -461,7 +461,7 @@ func (a *Client) GETDatastoreCriterion(params *GETDatastoreCriterionParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETDatastoreCriterionOK)
+	success, ok := result.(*GetDatastoreCriterionOK)
 	if ok {
 		return success, nil
 	}
@@ -472,12 +472,12 @@ func (a *Client) GETDatastoreCriterion(params *GETDatastoreCriterionParams, opts
 }
 
 /*
-GETDatastoreQueryResponse Gets datastore query response
+GetDatastoreQueryResponse gets datastore query response
 */
-func (a *Client) GETDatastoreQueryResponse(params *GETDatastoreQueryResponseParams, opts ...ClientOption) (*GETDatastoreQueryResponseOK, error) {
+func (a *Client) GetDatastoreQueryResponse(params *GetDatastoreQueryResponseParams, opts ...ClientOption) (*GetDatastoreQueryResponseOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETDatastoreQueryResponseParams()
+		params = NewGetDatastoreQueryResponseParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getDatastoreQueryResponse",
@@ -487,7 +487,7 @@ func (a *Client) GETDatastoreQueryResponse(params *GETDatastoreQueryResponsePara
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETDatastoreQueryResponseReader{formats: a.formats},
+		Reader:             &GetDatastoreQueryResponseReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -499,7 +499,7 @@ func (a *Client) GETDatastoreQueryResponse(params *GETDatastoreQueryResponsePara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETDatastoreQueryResponseOK)
+	success, ok := result.(*GetDatastoreQueryResponseOK)
 	if ok {
 		return success, nil
 	}
@@ -510,12 +510,12 @@ func (a *Client) GETDatastoreQueryResponse(params *GETDatastoreQueryResponsePara
 }
 
 /*
-GETDatastoresCriteria Gets all datastore criteria
+GetDatastoresCriteria gets all datastore criteria
 */
-func (a *Client) GETDatastoresCriteria(params *GETDatastoresCriteriaParams, opts ...ClientOption) (*GETDatastoresCriteriaOK, error) {
+func (a *Client) GetDatastoresCriteria(params *GetDatastoresCriteriaParams, opts ...ClientOption) (*GetDatastoresCriteriaOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETDatastoresCriteriaParams()
+		params = NewGetDatastoresCriteriaParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getDatastoresCriteria",
@@ -525,7 +525,7 @@ func (a *Client) GETDatastoresCriteria(params *GETDatastoresCriteriaParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETDatastoresCriteriaReader{formats: a.formats},
+		Reader:             &GetDatastoresCriteriaReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -537,7 +537,7 @@ func (a *Client) GETDatastoresCriteria(params *GETDatastoresCriteriaParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETDatastoresCriteriaOK)
+	success, ok := result.(*GetDatastoresCriteriaOK)
 	if ok {
 		return success, nil
 	}
@@ -548,12 +548,12 @@ func (a *Client) GETDatastoresCriteria(params *GETDatastoresCriteriaParams, opts
 }
 
 /*
-GETHostCriteria Gets all host criteria
+GetHostCriteria gets all host criteria
 */
-func (a *Client) GETHostCriteria(params *GETHostCriteriaParams, opts ...ClientOption) (*GETHostCriteriaOK, error) {
+func (a *Client) GetHostCriteria(params *GetHostCriteriaParams, opts ...ClientOption) (*GetHostCriteriaOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostCriteriaParams()
+		params = NewGetHostCriteriaParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHostCriteria",
@@ -563,7 +563,7 @@ func (a *Client) GETHostCriteria(params *GETHostCriteriaParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostCriteriaReader{formats: a.formats},
+		Reader:             &GetHostCriteriaReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -575,7 +575,7 @@ func (a *Client) GETHostCriteria(params *GETHostCriteriaParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostCriteriaOK)
+	success, ok := result.(*GetHostCriteriaOK)
 	if ok {
 		return success, nil
 	}
@@ -586,12 +586,12 @@ func (a *Client) GETHostCriteria(params *GETHostCriteriaParams, opts ...ClientOp
 }
 
 /*
-GETHostCriterion Gets a criterion to query for host
+GetHostCriterion gets a criterion to query for host
 */
-func (a *Client) GETHostCriterion(params *GETHostCriterionParams, opts ...ClientOption) (*GETHostCriterionOK, error) {
+func (a *Client) GetHostCriterion(params *GetHostCriterionParams, opts ...ClientOption) (*GetHostCriterionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostCriterionParams()
+		params = NewGetHostCriterionParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHostCriterion",
@@ -601,7 +601,7 @@ func (a *Client) GETHostCriterion(params *GETHostCriterionParams, opts ...Client
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostCriterionReader{formats: a.formats},
+		Reader:             &GetHostCriterionReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -613,7 +613,7 @@ func (a *Client) GETHostCriterion(params *GETHostCriterionParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostCriterionOK)
+	success, ok := result.(*GetHostCriterionOK)
 	if ok {
 		return success, nil
 	}
@@ -624,12 +624,12 @@ func (a *Client) GETHostCriterion(params *GETHostCriterionParams, opts ...Client
 }
 
 /*
-GETHostQueryResponse Gets query response
+GetHostQueryResponse gets query response
 */
-func (a *Client) GETHostQueryResponse(params *GETHostQueryResponseParams, opts ...ClientOption) (*GETHostQueryResponseOK, error) {
+func (a *Client) GetHostQueryResponse(params *GetHostQueryResponseParams, opts ...ClientOption) (*GetHostQueryResponseOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHostQueryResponseParams()
+		params = NewGetHostQueryResponseParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHostQueryResponse",
@@ -639,7 +639,7 @@ func (a *Client) GETHostQueryResponse(params *GETHostQueryResponseParams, opts .
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHostQueryResponseReader{formats: a.formats},
+		Reader:             &GetHostQueryResponseReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -651,7 +651,7 @@ func (a *Client) GETHostQueryResponse(params *GETHostQueryResponseParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHostQueryResponseOK)
+	success, ok := result.(*GetHostQueryResponseOK)
 	if ok {
 		return success, nil
 	}
@@ -662,12 +662,12 @@ func (a *Client) GETHostQueryResponse(params *GETHostQueryResponseParams, opts .
 }
 
 /*
-GETTagsAssignedToCluster Gets tags assigned to cluster
+GetTagsAssignedToCluster gets tags assigned to cluster
 */
-func (a *Client) GETTagsAssignedToCluster(params *GETTagsAssignedToClusterParams, opts ...ClientOption) (*GETTagsAssignedToClusterOK, error) {
+func (a *Client) GetTagsAssignedToCluster(params *GetTagsAssignedToClusterParams, opts ...ClientOption) (*GetTagsAssignedToClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETTagsAssignedToClusterParams()
+		params = NewGetTagsAssignedToClusterParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getTagsAssignedToCluster",
@@ -677,7 +677,7 @@ func (a *Client) GETTagsAssignedToCluster(params *GETTagsAssignedToClusterParams
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETTagsAssignedToClusterReader{formats: a.formats},
+		Reader:             &GetTagsAssignedToClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -689,7 +689,7 @@ func (a *Client) GETTagsAssignedToCluster(params *GETTagsAssignedToClusterParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETTagsAssignedToClusterOK)
+	success, ok := result.(*GetTagsAssignedToClusterOK)
 	if ok {
 		return success, nil
 	}
@@ -700,12 +700,12 @@ func (a *Client) GETTagsAssignedToCluster(params *GETTagsAssignedToClusterParams
 }
 
 /*
-GETTagsAssignedToClusters Gets tags assigned to clusters
+GetTagsAssignedToClusters gets tags assigned to clusters
 */
-func (a *Client) GETTagsAssignedToClusters(params *GETTagsAssignedToClustersParams, opts ...ClientOption) (*GETTagsAssignedToClustersOK, error) {
+func (a *Client) GetTagsAssignedToClusters(params *GetTagsAssignedToClustersParams, opts ...ClientOption) (*GetTagsAssignedToClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETTagsAssignedToClustersParams()
+		params = NewGetTagsAssignedToClustersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getTagsAssignedToClusters",
@@ -715,7 +715,7 @@ func (a *Client) GETTagsAssignedToClusters(params *GETTagsAssignedToClustersPara
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETTagsAssignedToClustersReader{formats: a.formats},
+		Reader:             &GetTagsAssignedToClustersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -727,7 +727,7 @@ func (a *Client) GETTagsAssignedToClusters(params *GETTagsAssignedToClustersPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETTagsAssignedToClustersOK)
+	success, ok := result.(*GetTagsAssignedToClustersOK)
 	if ok {
 		return success, nil
 	}
@@ -738,12 +738,12 @@ func (a *Client) GETTagsAssignedToClusters(params *GETTagsAssignedToClustersPara
 }
 
 /*
-GETVdses Gets the list of v d ses of a cluster
+GetVdses gets the list of v d ses of a cluster
 */
-func (a *Client) GETVdses(params *GETVdsesParams, opts ...ClientOption) (*GETVdsesOK, error) {
+func (a *Client) GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVdsesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVdsesParams()
+		params = NewGetVdsesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVdses",
@@ -753,7 +753,7 @@ func (a *Client) GETVdses(params *GETVdsesParams, opts ...ClientOption) (*GETVds
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVdsesReader{formats: a.formats},
+		Reader:             &GetVdsesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -765,7 +765,7 @@ func (a *Client) GETVdses(params *GETVdsesParams, opts ...ClientOption) (*GETVds
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVdsesOK)
+	success, ok := result.(*GetVdsesOK)
 	if ok {
 		return success, nil
 	}
@@ -776,12 +776,12 @@ func (a *Client) GETVdses(params *GETVdsesParams, opts ...ClientOption) (*GETVds
 }
 
 /*
-POSTDatastoreQuery Posts a datastore query
+PostDatastoreQuery posts a datastore query
 */
-func (a *Client) POSTDatastoreQuery(params *POSTDatastoreQueryParams, opts ...ClientOption) (*POSTDatastoreQueryOK, error) {
+func (a *Client) PostDatastoreQuery(params *PostDatastoreQueryParams, opts ...ClientOption) (*PostDatastoreQueryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPOSTDatastoreQueryParams()
+		params = NewPostDatastoreQueryParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "postDatastoreQuery",
@@ -791,7 +791,7 @@ func (a *Client) POSTDatastoreQuery(params *POSTDatastoreQueryParams, opts ...Cl
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &POSTDatastoreQueryReader{formats: a.formats},
+		Reader:             &PostDatastoreQueryReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -803,7 +803,7 @@ func (a *Client) POSTDatastoreQuery(params *POSTDatastoreQueryParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*POSTDatastoreQueryOK)
+	success, ok := result.(*PostDatastoreQueryOK)
 	if ok {
 		return success, nil
 	}
@@ -814,12 +814,12 @@ func (a *Client) POSTDatastoreQuery(params *POSTDatastoreQueryParams, opts ...Cl
 }
 
 /*
-POSTHostQuery Posts a host query
+PostHostQuery posts a host query
 */
-func (a *Client) POSTHostQuery(params *POSTHostQueryParams, opts ...ClientOption) (*POSTHostQueryOK, error) {
+func (a *Client) PostHostQuery(params *PostHostQueryParams, opts ...ClientOption) (*PostHostQueryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPOSTHostQueryParams()
+		params = NewPostHostQueryParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "postHostQuery",
@@ -829,7 +829,7 @@ func (a *Client) POSTHostQuery(params *POSTHostQueryParams, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &POSTHostQueryReader{formats: a.formats},
+		Reader:             &PostHostQueryReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -841,7 +841,7 @@ func (a *Client) POSTHostQuery(params *POSTHostQueryParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*POSTHostQueryOK)
+	success, ok := result.(*PostHostQueryOK)
 	if ok {
 		return success, nil
 	}

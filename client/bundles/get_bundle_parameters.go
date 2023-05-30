@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETBundleParams creates a new GETBundleParams object,
+// NewGetBundleParams creates a new GetBundleParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBundleParams() *GETBundleParams {
-	return &GETBundleParams{
+func NewGetBundleParams() *GetBundleParams {
+	return &GetBundleParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBundleParamsWithTimeout creates a new GETBundleParams object
+// NewGetBundleParamsWithTimeout creates a new GetBundleParams object
 // with the ability to set a timeout on a request.
-func NewGETBundleParamsWithTimeout(timeout time.Duration) *GETBundleParams {
-	return &GETBundleParams{
+func NewGetBundleParamsWithTimeout(timeout time.Duration) *GetBundleParams {
+	return &GetBundleParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBundleParamsWithContext creates a new GETBundleParams object
+// NewGetBundleParamsWithContext creates a new GetBundleParams object
 // with the ability to set a context for a request.
-func NewGETBundleParamsWithContext(ctx context.Context) *GETBundleParams {
-	return &GETBundleParams{
+func NewGetBundleParamsWithContext(ctx context.Context) *GetBundleParams {
+	return &GetBundleParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBundleParamsWithHTTPClient creates a new GETBundleParams object
+// NewGetBundleParamsWithHTTPClient creates a new GetBundleParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBundleParamsWithHTTPClient(client *http.Client) *GETBundleParams {
-	return &GETBundleParams{
+func NewGetBundleParamsWithHTTPClient(client *http.Client) *GetBundleParams {
+	return &GetBundleParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBundleParams contains all the parameters to send to the API endpoint
+GetBundleParams contains all the parameters to send to the API endpoint
 
 	for the get bundle operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBundleParams struct {
+type GetBundleParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETBundleParams struct {
 // WithDefaults hydrates default values in the get bundle params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBundleParams) WithDefaults() *GETBundleParams {
+func (o *GetBundleParams) WithDefaults() *GetBundleParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETBundleParams) WithDefaults() *GETBundleParams {
 // SetDefaults hydrates default values in the get bundle params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBundleParams) SetDefaults() {
+func (o *GetBundleParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get bundle params
-func (o *GETBundleParams) WithTimeout(timeout time.Duration) *GETBundleParams {
+func (o *GetBundleParams) WithTimeout(timeout time.Duration) *GetBundleParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get bundle params
-func (o *GETBundleParams) SetTimeout(timeout time.Duration) {
+func (o *GetBundleParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get bundle params
-func (o *GETBundleParams) WithContext(ctx context.Context) *GETBundleParams {
+func (o *GetBundleParams) WithContext(ctx context.Context) *GetBundleParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get bundle params
-func (o *GETBundleParams) SetContext(ctx context.Context) {
+func (o *GetBundleParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get bundle params
-func (o *GETBundleParams) WithHTTPClient(client *http.Client) *GETBundleParams {
+func (o *GetBundleParams) WithHTTPClient(client *http.Client) *GetBundleParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get bundle params
-func (o *GETBundleParams) SetHTTPClient(client *http.Client) {
+func (o *GetBundleParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get bundle params
-func (o *GETBundleParams) WithID(id string) *GETBundleParams {
+func (o *GetBundleParams) WithID(id string) *GetBundleParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get bundle params
-func (o *GETBundleParams) SetID(id string) {
+func (o *GetBundleParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBundleParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBundleParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

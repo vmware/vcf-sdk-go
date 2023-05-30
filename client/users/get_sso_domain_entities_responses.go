@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETSSODomainEntitiesReader is a Reader for the GETSSODomainEntities structure.
-type GETSSODomainEntitiesReader struct {
+// GetSSODomainEntitiesReader is a Reader for the GetSSODomainEntities structure.
+type GetSSODomainEntitiesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETSSODomainEntitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetSSODomainEntitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETSSODomainEntitiesOK()
+		result := NewGetSSODomainEntitiesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 401:
-		result := NewGETSSODomainEntitiesUnauthorized()
+		result := NewGetSSODomainEntitiesUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 403:
-		result := NewGETSSODomainEntitiesForbidden()
+		result := NewGetSSODomainEntitiesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETSSODomainEntitiesInternalServerError()
+		result := NewGetSSODomainEntitiesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETSSODomainEntitiesReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewGETSSODomainEntitiesOK creates a GETSSODomainEntitiesOK with default headers values
-func NewGETSSODomainEntitiesOK() *GETSSODomainEntitiesOK {
-	return &GETSSODomainEntitiesOK{}
+// NewGetSSODomainEntitiesOK creates a GetSSODomainEntitiesOK with default headers values
+func NewGetSSODomainEntitiesOK() *GetSSODomainEntitiesOK {
+	return &GetSSODomainEntitiesOK{}
 }
 
 /*
-GETSSODomainEntitiesOK describes a response with status code 200, with default header values.
+GetSSODomainEntitiesOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETSSODomainEntitiesOK struct {
+type GetSSODomainEntitiesOK struct {
 	Payload *models.PageOfSSODomainEntity
 }
 
 // IsSuccess returns true when this get Sso domain entities o k response has a 2xx status code
-func (o *GETSSODomainEntitiesOK) IsSuccess() bool {
+func (o *GetSSODomainEntitiesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Sso domain entities o k response has a 3xx status code
-func (o *GETSSODomainEntitiesOK) IsRedirect() bool {
+func (o *GetSSODomainEntitiesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sso domain entities o k response has a 4xx status code
-func (o *GETSSODomainEntitiesOK) IsClientError() bool {
+func (o *GetSSODomainEntitiesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Sso domain entities o k response has a 5xx status code
-func (o *GETSSODomainEntitiesOK) IsServerError() bool {
+func (o *GetSSODomainEntitiesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Sso domain entities o k response a status code equal to that given
-func (o *GETSSODomainEntitiesOK) IsCode(code int) bool {
+func (o *GetSSODomainEntitiesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETSSODomainEntitiesOK) Error() string {
+func (o *GetSSODomainEntitiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesOK) String() string {
+func (o *GetSSODomainEntitiesOK) String() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesOK) GetPayload() *models.PageOfSSODomainEntity {
+func (o *GetSSODomainEntitiesOK) GetPayload() *models.PageOfSSODomainEntity {
 	return o.Payload
 }
 
-func (o *GETSSODomainEntitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSSODomainEntitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfSSODomainEntity)
 
@@ -118,58 +118,58 @@ func (o *GETSSODomainEntitiesOK) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETSSODomainEntitiesUnauthorized creates a GETSSODomainEntitiesUnauthorized with default headers values
-func NewGETSSODomainEntitiesUnauthorized() *GETSSODomainEntitiesUnauthorized {
-	return &GETSSODomainEntitiesUnauthorized{}
+// NewGetSSODomainEntitiesUnauthorized creates a GetSSODomainEntitiesUnauthorized with default headers values
+func NewGetSSODomainEntitiesUnauthorized() *GetSSODomainEntitiesUnauthorized {
+	return &GetSSODomainEntitiesUnauthorized{}
 }
 
 /*
-GETSSODomainEntitiesUnauthorized describes a response with status code 401, with default header values.
+GetSSODomainEntitiesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
-type GETSSODomainEntitiesUnauthorized struct {
+type GetSSODomainEntitiesUnauthorized struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get Sso domain entities unauthorized response has a 2xx status code
-func (o *GETSSODomainEntitiesUnauthorized) IsSuccess() bool {
+func (o *GetSSODomainEntitiesUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Sso domain entities unauthorized response has a 3xx status code
-func (o *GETSSODomainEntitiesUnauthorized) IsRedirect() bool {
+func (o *GetSSODomainEntitiesUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sso domain entities unauthorized response has a 4xx status code
-func (o *GETSSODomainEntitiesUnauthorized) IsClientError() bool {
+func (o *GetSSODomainEntitiesUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Sso domain entities unauthorized response has a 5xx status code
-func (o *GETSSODomainEntitiesUnauthorized) IsServerError() bool {
+func (o *GetSSODomainEntitiesUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Sso domain entities unauthorized response a status code equal to that given
-func (o *GETSSODomainEntitiesUnauthorized) IsCode(code int) bool {
+func (o *GetSSODomainEntitiesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETSSODomainEntitiesUnauthorized) Error() string {
+func (o *GetSSODomainEntitiesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesUnauthorized) String() string {
+func (o *GetSSODomainEntitiesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesUnauthorized) GetPayload() *models.ErrorResponse {
+func (o *GetSSODomainEntitiesUnauthorized) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETSSODomainEntitiesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSSODomainEntitiesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -181,58 +181,58 @@ func (o *GETSSODomainEntitiesUnauthorized) readResponse(response runtime.ClientR
 	return nil
 }
 
-// NewGETSSODomainEntitiesForbidden creates a GETSSODomainEntitiesForbidden with default headers values
-func NewGETSSODomainEntitiesForbidden() *GETSSODomainEntitiesForbidden {
-	return &GETSSODomainEntitiesForbidden{}
+// NewGetSSODomainEntitiesForbidden creates a GetSSODomainEntitiesForbidden with default headers values
+func NewGetSSODomainEntitiesForbidden() *GetSSODomainEntitiesForbidden {
+	return &GetSSODomainEntitiesForbidden{}
 }
 
 /*
-GETSSODomainEntitiesForbidden describes a response with status code 403, with default header values.
+GetSSODomainEntitiesForbidden describes a response with status code 403, with default header values.
 
 Forbidden request
 */
-type GETSSODomainEntitiesForbidden struct {
+type GetSSODomainEntitiesForbidden struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get Sso domain entities forbidden response has a 2xx status code
-func (o *GETSSODomainEntitiesForbidden) IsSuccess() bool {
+func (o *GetSSODomainEntitiesForbidden) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Sso domain entities forbidden response has a 3xx status code
-func (o *GETSSODomainEntitiesForbidden) IsRedirect() bool {
+func (o *GetSSODomainEntitiesForbidden) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sso domain entities forbidden response has a 4xx status code
-func (o *GETSSODomainEntitiesForbidden) IsClientError() bool {
+func (o *GetSSODomainEntitiesForbidden) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Sso domain entities forbidden response has a 5xx status code
-func (o *GETSSODomainEntitiesForbidden) IsServerError() bool {
+func (o *GetSSODomainEntitiesForbidden) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Sso domain entities forbidden response a status code equal to that given
-func (o *GETSSODomainEntitiesForbidden) IsCode(code int) bool {
+func (o *GetSSODomainEntitiesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-func (o *GETSSODomainEntitiesForbidden) Error() string {
+func (o *GetSSODomainEntitiesForbidden) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesForbidden) String() string {
+func (o *GetSSODomainEntitiesForbidden) String() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesForbidden) GetPayload() *models.ErrorResponse {
+func (o *GetSSODomainEntitiesForbidden) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETSSODomainEntitiesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSSODomainEntitiesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -244,58 +244,58 @@ func (o *GETSSODomainEntitiesForbidden) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewGETSSODomainEntitiesInternalServerError creates a GETSSODomainEntitiesInternalServerError with default headers values
-func NewGETSSODomainEntitiesInternalServerError() *GETSSODomainEntitiesInternalServerError {
-	return &GETSSODomainEntitiesInternalServerError{}
+// NewGetSSODomainEntitiesInternalServerError creates a GetSSODomainEntitiesInternalServerError with default headers values
+func NewGetSSODomainEntitiesInternalServerError() *GetSSODomainEntitiesInternalServerError {
+	return &GetSSODomainEntitiesInternalServerError{}
 }
 
 /*
-GETSSODomainEntitiesInternalServerError describes a response with status code 500, with default header values.
+GetSSODomainEntitiesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETSSODomainEntitiesInternalServerError struct {
+type GetSSODomainEntitiesInternalServerError struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get Sso domain entities internal server error response has a 2xx status code
-func (o *GETSSODomainEntitiesInternalServerError) IsSuccess() bool {
+func (o *GetSSODomainEntitiesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Sso domain entities internal server error response has a 3xx status code
-func (o *GETSSODomainEntitiesInternalServerError) IsRedirect() bool {
+func (o *GetSSODomainEntitiesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sso domain entities internal server error response has a 4xx status code
-func (o *GETSSODomainEntitiesInternalServerError) IsClientError() bool {
+func (o *GetSSODomainEntitiesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Sso domain entities internal server error response has a 5xx status code
-func (o *GETSSODomainEntitiesInternalServerError) IsServerError() bool {
+func (o *GetSSODomainEntitiesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get Sso domain entities internal server error response a status code equal to that given
-func (o *GETSSODomainEntitiesInternalServerError) IsCode(code int) bool {
+func (o *GetSSODomainEntitiesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETSSODomainEntitiesInternalServerError) Error() string {
+func (o *GetSSODomainEntitiesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesInternalServerError) String() string {
+func (o *GetSSODomainEntitiesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETSSODomainEntitiesInternalServerError) GetPayload() *models.ErrorResponse {
+func (o *GetSSODomainEntitiesInternalServerError) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETSSODomainEntitiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSSODomainEntitiesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 

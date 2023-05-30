@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETValidationOfNtpConfigurationReader is a Reader for the GETValidationOfNtpConfiguration structure.
-type GETValidationOfNtpConfigurationReader struct {
+// GetValidationOfNtpConfigurationReader is a Reader for the GetValidationOfNtpConfiguration structure.
+type GetValidationOfNtpConfigurationReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETValidationOfNtpConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetValidationOfNtpConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETValidationOfNtpConfigurationOK()
+		result := NewGetValidationOfNtpConfigurationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETValidationOfNtpConfigurationBadRequest()
+		result := NewGetValidationOfNtpConfigurationBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETValidationOfNtpConfigurationInternalServerError()
+		result := NewGetValidationOfNtpConfigurationInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETValidationOfNtpConfigurationReader) ReadResponse(response runtime.Cl
 	}
 }
 
-// NewGETValidationOfNtpConfigurationOK creates a GETValidationOfNtpConfigurationOK with default headers values
-func NewGETValidationOfNtpConfigurationOK() *GETValidationOfNtpConfigurationOK {
-	return &GETValidationOfNtpConfigurationOK{}
+// NewGetValidationOfNtpConfigurationOK creates a GetValidationOfNtpConfigurationOK with default headers values
+func NewGetValidationOfNtpConfigurationOK() *GetValidationOfNtpConfigurationOK {
+	return &GetValidationOfNtpConfigurationOK{}
 }
 
 /*
-GETValidationOfNtpConfigurationOK describes a response with status code 200, with default header values.
+GetValidationOfNtpConfigurationOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETValidationOfNtpConfigurationOK struct {
+type GetValidationOfNtpConfigurationOK struct {
 	Payload *models.Validation
 }
 
 // IsSuccess returns true when this get validation of ntp configuration o k response has a 2xx status code
-func (o *GETValidationOfNtpConfigurationOK) IsSuccess() bool {
+func (o *GetValidationOfNtpConfigurationOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get validation of ntp configuration o k response has a 3xx status code
-func (o *GETValidationOfNtpConfigurationOK) IsRedirect() bool {
+func (o *GetValidationOfNtpConfigurationOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of ntp configuration o k response has a 4xx status code
-func (o *GETValidationOfNtpConfigurationOK) IsClientError() bool {
+func (o *GetValidationOfNtpConfigurationOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation of ntp configuration o k response has a 5xx status code
-func (o *GETValidationOfNtpConfigurationOK) IsServerError() bool {
+func (o *GetValidationOfNtpConfigurationOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation of ntp configuration o k response a status code equal to that given
-func (o *GETValidationOfNtpConfigurationOK) IsCode(code int) bool {
+func (o *GetValidationOfNtpConfigurationOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETValidationOfNtpConfigurationOK) Error() string {
+func (o *GetValidationOfNtpConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationOfNtpConfigurationOK) String() string {
+func (o *GetValidationOfNtpConfigurationOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationOfNtpConfigurationOK) GetPayload() *models.Validation {
+func (o *GetValidationOfNtpConfigurationOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETValidationOfNtpConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfNtpConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 
@@ -112,58 +112,58 @@ func (o *GETValidationOfNtpConfigurationOK) readResponse(response runtime.Client
 	return nil
 }
 
-// NewGETValidationOfNtpConfigurationBadRequest creates a GETValidationOfNtpConfigurationBadRequest with default headers values
-func NewGETValidationOfNtpConfigurationBadRequest() *GETValidationOfNtpConfigurationBadRequest {
-	return &GETValidationOfNtpConfigurationBadRequest{}
+// NewGetValidationOfNtpConfigurationBadRequest creates a GetValidationOfNtpConfigurationBadRequest with default headers values
+func NewGetValidationOfNtpConfigurationBadRequest() *GetValidationOfNtpConfigurationBadRequest {
+	return &GetValidationOfNtpConfigurationBadRequest{}
 }
 
 /*
-GETValidationOfNtpConfigurationBadRequest describes a response with status code 400, with default header values.
+GetValidationOfNtpConfigurationBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETValidationOfNtpConfigurationBadRequest struct {
+type GetValidationOfNtpConfigurationBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get validation of ntp configuration bad request response has a 2xx status code
-func (o *GETValidationOfNtpConfigurationBadRequest) IsSuccess() bool {
+func (o *GetValidationOfNtpConfigurationBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation of ntp configuration bad request response has a 3xx status code
-func (o *GETValidationOfNtpConfigurationBadRequest) IsRedirect() bool {
+func (o *GetValidationOfNtpConfigurationBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of ntp configuration bad request response has a 4xx status code
-func (o *GETValidationOfNtpConfigurationBadRequest) IsClientError() bool {
+func (o *GetValidationOfNtpConfigurationBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get validation of ntp configuration bad request response has a 5xx status code
-func (o *GETValidationOfNtpConfigurationBadRequest) IsServerError() bool {
+func (o *GetValidationOfNtpConfigurationBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation of ntp configuration bad request response a status code equal to that given
-func (o *GETValidationOfNtpConfigurationBadRequest) IsCode(code int) bool {
+func (o *GetValidationOfNtpConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETValidationOfNtpConfigurationBadRequest) Error() string {
+func (o *GetValidationOfNtpConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationOfNtpConfigurationBadRequest) String() string {
+func (o *GetValidationOfNtpConfigurationBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationOfNtpConfigurationBadRequest) GetPayload() *models.Error {
+func (o *GetValidationOfNtpConfigurationBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETValidationOfNtpConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfNtpConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,53 +175,53 @@ func (o *GETValidationOfNtpConfigurationBadRequest) readResponse(response runtim
 	return nil
 }
 
-// NewGETValidationOfNtpConfigurationInternalServerError creates a GETValidationOfNtpConfigurationInternalServerError with default headers values
-func NewGETValidationOfNtpConfigurationInternalServerError() *GETValidationOfNtpConfigurationInternalServerError {
-	return &GETValidationOfNtpConfigurationInternalServerError{}
+// NewGetValidationOfNtpConfigurationInternalServerError creates a GetValidationOfNtpConfigurationInternalServerError with default headers values
+func NewGetValidationOfNtpConfigurationInternalServerError() *GetValidationOfNtpConfigurationInternalServerError {
+	return &GetValidationOfNtpConfigurationInternalServerError{}
 }
 
 /*
-GETValidationOfNtpConfigurationInternalServerError describes a response with status code 500, with default header values.
+GetValidationOfNtpConfigurationInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETValidationOfNtpConfigurationInternalServerError struct {
+type GetValidationOfNtpConfigurationInternalServerError struct {
 }
 
 // IsSuccess returns true when this get validation of ntp configuration internal server error response has a 2xx status code
-func (o *GETValidationOfNtpConfigurationInternalServerError) IsSuccess() bool {
+func (o *GetValidationOfNtpConfigurationInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation of ntp configuration internal server error response has a 3xx status code
-func (o *GETValidationOfNtpConfigurationInternalServerError) IsRedirect() bool {
+func (o *GetValidationOfNtpConfigurationInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of ntp configuration internal server error response has a 4xx status code
-func (o *GETValidationOfNtpConfigurationInternalServerError) IsClientError() bool {
+func (o *GetValidationOfNtpConfigurationInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation of ntp configuration internal server error response has a 5xx status code
-func (o *GETValidationOfNtpConfigurationInternalServerError) IsServerError() bool {
+func (o *GetValidationOfNtpConfigurationInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get validation of ntp configuration internal server error response a status code equal to that given
-func (o *GETValidationOfNtpConfigurationInternalServerError) IsCode(code int) bool {
+func (o *GetValidationOfNtpConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETValidationOfNtpConfigurationInternalServerError) Error() string {
+func (o *GetValidationOfNtpConfigurationInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationInternalServerError ", 500)
 }
 
-func (o *GETValidationOfNtpConfigurationInternalServerError) String() string {
+func (o *GetValidationOfNtpConfigurationInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationInternalServerError ", 500)
 }
 
-func (o *GETValidationOfNtpConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfNtpConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

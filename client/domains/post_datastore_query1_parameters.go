@@ -21,50 +21,50 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// NewPOSTDatastoreQuery1Params creates a new POSTDatastoreQuery1Params object,
+// NewPostDatastoreQuery1Params creates a new PostDatastoreQuery1Params object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewPOSTDatastoreQuery1Params() *POSTDatastoreQuery1Params {
-	return &POSTDatastoreQuery1Params{
+func NewPostDatastoreQuery1Params() *PostDatastoreQuery1Params {
+	return &PostDatastoreQuery1Params{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewPOSTDatastoreQuery1ParamsWithTimeout creates a new POSTDatastoreQuery1Params object
+// NewPostDatastoreQuery1ParamsWithTimeout creates a new PostDatastoreQuery1Params object
 // with the ability to set a timeout on a request.
-func NewPOSTDatastoreQuery1ParamsWithTimeout(timeout time.Duration) *POSTDatastoreQuery1Params {
-	return &POSTDatastoreQuery1Params{
+func NewPostDatastoreQuery1ParamsWithTimeout(timeout time.Duration) *PostDatastoreQuery1Params {
+	return &PostDatastoreQuery1Params{
 		timeout: timeout,
 	}
 }
 
-// NewPOSTDatastoreQuery1ParamsWithContext creates a new POSTDatastoreQuery1Params object
+// NewPostDatastoreQuery1ParamsWithContext creates a new PostDatastoreQuery1Params object
 // with the ability to set a context for a request.
-func NewPOSTDatastoreQuery1ParamsWithContext(ctx context.Context) *POSTDatastoreQuery1Params {
-	return &POSTDatastoreQuery1Params{
+func NewPostDatastoreQuery1ParamsWithContext(ctx context.Context) *PostDatastoreQuery1Params {
+	return &PostDatastoreQuery1Params{
 		Context: ctx,
 	}
 }
 
-// NewPOSTDatastoreQuery1ParamsWithHTTPClient creates a new POSTDatastoreQuery1Params object
+// NewPostDatastoreQuery1ParamsWithHTTPClient creates a new PostDatastoreQuery1Params object
 // with the ability to set a custom HTTPClient for a request.
-func NewPOSTDatastoreQuery1ParamsWithHTTPClient(client *http.Client) *POSTDatastoreQuery1Params {
-	return &POSTDatastoreQuery1Params{
+func NewPostDatastoreQuery1ParamsWithHTTPClient(client *http.Client) *PostDatastoreQuery1Params {
+	return &PostDatastoreQuery1Params{
 		HTTPClient: client,
 	}
 }
 
 /*
-POSTDatastoreQuery1Params contains all the parameters to send to the API endpoint
+PostDatastoreQuery1Params contains all the parameters to send to the API endpoint
 
 	for the post datastore query 1 operation.
 
 	Typically these are written to a http.Request.
 */
-type POSTDatastoreQuery1Params struct {
+type PostDatastoreQuery1Params struct {
 
 	/* DomainID.
 
@@ -86,7 +86,7 @@ type POSTDatastoreQuery1Params struct {
 // WithDefaults hydrates default values in the post datastore query 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *POSTDatastoreQuery1Params) WithDefaults() *POSTDatastoreQuery1Params {
+func (o *PostDatastoreQuery1Params) WithDefaults() *PostDatastoreQuery1Params {
 	o.SetDefaults()
 	return o
 }
@@ -94,67 +94,67 @@ func (o *POSTDatastoreQuery1Params) WithDefaults() *POSTDatastoreQuery1Params {
 // SetDefaults hydrates default values in the post datastore query 1 params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *POSTDatastoreQuery1Params) SetDefaults() {
+func (o *PostDatastoreQuery1Params) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) WithTimeout(timeout time.Duration) *POSTDatastoreQuery1Params {
+func (o *PostDatastoreQuery1Params) WithTimeout(timeout time.Duration) *PostDatastoreQuery1Params {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) SetTimeout(timeout time.Duration) {
+func (o *PostDatastoreQuery1Params) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) WithContext(ctx context.Context) *POSTDatastoreQuery1Params {
+func (o *PostDatastoreQuery1Params) WithContext(ctx context.Context) *PostDatastoreQuery1Params {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) SetContext(ctx context.Context) {
+func (o *PostDatastoreQuery1Params) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) WithHTTPClient(client *http.Client) *POSTDatastoreQuery1Params {
+func (o *PostDatastoreQuery1Params) WithHTTPClient(client *http.Client) *PostDatastoreQuery1Params {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) SetHTTPClient(client *http.Client) {
+func (o *PostDatastoreQuery1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) WithDomainID(domainID string) *POSTDatastoreQuery1Params {
+func (o *PostDatastoreQuery1Params) WithDomainID(domainID string) *PostDatastoreQuery1Params {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) SetDomainID(domainID string) {
+func (o *PostDatastoreQuery1Params) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WithDsCriterion adds the dsCriterion to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) WithDsCriterion(dsCriterion *models.DatastoreCriterion) *POSTDatastoreQuery1Params {
+func (o *PostDatastoreQuery1Params) WithDsCriterion(dsCriterion *models.DatastoreCriterion) *PostDatastoreQuery1Params {
 	o.SetDsCriterion(dsCriterion)
 	return o
 }
 
 // SetDsCriterion adds the dsCriterion to the post datastore query 1 params
-func (o *POSTDatastoreQuery1Params) SetDsCriterion(dsCriterion *models.DatastoreCriterion) {
+func (o *PostDatastoreQuery1Params) SetDsCriterion(dsCriterion *models.DatastoreCriterion) {
 	o.DsCriterion = dsCriterion
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *POSTDatastoreQuery1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *PostDatastoreQuery1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

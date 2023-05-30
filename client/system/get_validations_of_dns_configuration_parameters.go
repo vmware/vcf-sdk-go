@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETValidationsOfDNSConfigurationParams creates a new GETValidationsOfDNSConfigurationParams object,
+// NewGetValidationsOfDNSConfigurationParams creates a new GetValidationsOfDNSConfigurationParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETValidationsOfDNSConfigurationParams() *GETValidationsOfDNSConfigurationParams {
-	return &GETValidationsOfDNSConfigurationParams{
+func NewGetValidationsOfDNSConfigurationParams() *GetValidationsOfDNSConfigurationParams {
+	return &GetValidationsOfDNSConfigurationParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETValidationsOfDNSConfigurationParamsWithTimeout creates a new GETValidationsOfDNSConfigurationParams object
+// NewGetValidationsOfDNSConfigurationParamsWithTimeout creates a new GetValidationsOfDNSConfigurationParams object
 // with the ability to set a timeout on a request.
-func NewGETValidationsOfDNSConfigurationParamsWithTimeout(timeout time.Duration) *GETValidationsOfDNSConfigurationParams {
-	return &GETValidationsOfDNSConfigurationParams{
+func NewGetValidationsOfDNSConfigurationParamsWithTimeout(timeout time.Duration) *GetValidationsOfDNSConfigurationParams {
+	return &GetValidationsOfDNSConfigurationParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETValidationsOfDNSConfigurationParamsWithContext creates a new GETValidationsOfDNSConfigurationParams object
+// NewGetValidationsOfDNSConfigurationParamsWithContext creates a new GetValidationsOfDNSConfigurationParams object
 // with the ability to set a context for a request.
-func NewGETValidationsOfDNSConfigurationParamsWithContext(ctx context.Context) *GETValidationsOfDNSConfigurationParams {
-	return &GETValidationsOfDNSConfigurationParams{
+func NewGetValidationsOfDNSConfigurationParamsWithContext(ctx context.Context) *GetValidationsOfDNSConfigurationParams {
+	return &GetValidationsOfDNSConfigurationParams{
 		Context: ctx,
 	}
 }
 
-// NewGETValidationsOfDNSConfigurationParamsWithHTTPClient creates a new GETValidationsOfDNSConfigurationParams object
+// NewGetValidationsOfDNSConfigurationParamsWithHTTPClient creates a new GetValidationsOfDNSConfigurationParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETValidationsOfDNSConfigurationParamsWithHTTPClient(client *http.Client) *GETValidationsOfDNSConfigurationParams {
-	return &GETValidationsOfDNSConfigurationParams{
+func NewGetValidationsOfDNSConfigurationParamsWithHTTPClient(client *http.Client) *GetValidationsOfDNSConfigurationParams {
+	return &GetValidationsOfDNSConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETValidationsOfDNSConfigurationParams contains all the parameters to send to the API endpoint
+GetValidationsOfDNSConfigurationParams contains all the parameters to send to the API endpoint
 
 	for the get validations of DNS configuration operation.
 
 	Typically these are written to a http.Request.
 */
-type GETValidationsOfDNSConfigurationParams struct {
+type GetValidationsOfDNSConfigurationParams struct {
 
 	/* ExecutionStatus.
 
@@ -78,7 +78,7 @@ type GETValidationsOfDNSConfigurationParams struct {
 // WithDefaults hydrates default values in the get validations of DNS configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationsOfDNSConfigurationParams) WithDefaults() *GETValidationsOfDNSConfigurationParams {
+func (o *GetValidationsOfDNSConfigurationParams) WithDefaults() *GetValidationsOfDNSConfigurationParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETValidationsOfDNSConfigurationParams) WithDefaults() *GETValidationsO
 // SetDefaults hydrates default values in the get validations of DNS configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationsOfDNSConfigurationParams) SetDefaults() {
+func (o *GetValidationsOfDNSConfigurationParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) WithTimeout(timeout time.Duration) *GETValidationsOfDNSConfigurationParams {
+func (o *GetValidationsOfDNSConfigurationParams) WithTimeout(timeout time.Duration) *GetValidationsOfDNSConfigurationParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) SetTimeout(timeout time.Duration) {
+func (o *GetValidationsOfDNSConfigurationParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) WithContext(ctx context.Context) *GETValidationsOfDNSConfigurationParams {
+func (o *GetValidationsOfDNSConfigurationParams) WithContext(ctx context.Context) *GetValidationsOfDNSConfigurationParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) SetContext(ctx context.Context) {
+func (o *GetValidationsOfDNSConfigurationParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) WithHTTPClient(client *http.Client) *GETValidationsOfDNSConfigurationParams {
+func (o *GetValidationsOfDNSConfigurationParams) WithHTTPClient(client *http.Client) *GetValidationsOfDNSConfigurationParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) SetHTTPClient(client *http.Client) {
+func (o *GetValidationsOfDNSConfigurationParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithExecutionStatus adds the executionStatus to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) WithExecutionStatus(executionStatus *string) *GETValidationsOfDNSConfigurationParams {
+func (o *GetValidationsOfDNSConfigurationParams) WithExecutionStatus(executionStatus *string) *GetValidationsOfDNSConfigurationParams {
 	o.SetExecutionStatus(executionStatus)
 	return o
 }
 
 // SetExecutionStatus adds the executionStatus to the get validations of DNS configuration params
-func (o *GETValidationsOfDNSConfigurationParams) SetExecutionStatus(executionStatus *string) {
+func (o *GetValidationsOfDNSConfigurationParams) SetExecutionStatus(executionStatus *string) {
 	o.ExecutionStatus = executionStatus
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETValidationsOfDNSConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetValidationsOfDNSConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
