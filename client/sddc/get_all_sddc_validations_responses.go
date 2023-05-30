@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETAllSDDCValidationsReader is a Reader for the GETAllSDDCValidations structure.
-type GETAllSDDCValidationsReader struct {
+// GetAllSDDCValidationsReader is a Reader for the GetAllSDDCValidations structure.
+type GetAllSDDCValidationsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETAllSDDCValidationsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetAllSDDCValidationsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETAllSDDCValidationsOK()
+		result := NewGetAllSDDCValidationsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETAllSDDCValidationsNotFound()
+		result := NewGetAllSDDCValidationsNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETAllSDDCValidationsInternalServerError()
+		result := NewGetAllSDDCValidationsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 501:
-		result := NewGETAllSDDCValidationsNotImplemented()
+		result := NewGetAllSDDCValidationsNotImplemented()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETAllSDDCValidationsReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewGETAllSDDCValidationsOK creates a GETAllSDDCValidationsOK with default headers values
-func NewGETAllSDDCValidationsOK() *GETAllSDDCValidationsOK {
-	return &GETAllSDDCValidationsOK{}
+// NewGetAllSDDCValidationsOK creates a GetAllSDDCValidationsOK with default headers values
+func NewGetAllSDDCValidationsOK() *GetAllSDDCValidationsOK {
+	return &GetAllSDDCValidationsOK{}
 }
 
 /*
-GETAllSDDCValidationsOK describes a response with status code 200, with default header values.
+GetAllSDDCValidationsOK describes a response with status code 200, with default header values.
 
 Accepted
 */
-type GETAllSDDCValidationsOK struct {
+type GetAllSDDCValidationsOK struct {
 	Payload []*models.Validation
 }
 
 // IsSuccess returns true when this get all Sddc validations o k response has a 2xx status code
-func (o *GETAllSDDCValidationsOK) IsSuccess() bool {
+func (o *GetAllSDDCValidationsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get all Sddc validations o k response has a 3xx status code
-func (o *GETAllSDDCValidationsOK) IsRedirect() bool {
+func (o *GetAllSDDCValidationsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all Sddc validations o k response has a 4xx status code
-func (o *GETAllSDDCValidationsOK) IsClientError() bool {
+func (o *GetAllSDDCValidationsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get all Sddc validations o k response has a 5xx status code
-func (o *GETAllSDDCValidationsOK) IsServerError() bool {
+func (o *GetAllSDDCValidationsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get all Sddc validations o k response a status code equal to that given
-func (o *GETAllSDDCValidationsOK) IsCode(code int) bool {
+func (o *GetAllSDDCValidationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETAllSDDCValidationsOK) Error() string {
+func (o *GetAllSDDCValidationsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsOK) String() string {
+func (o *GetAllSDDCValidationsOK) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsOK) GetPayload() []*models.Validation {
+func (o *GetAllSDDCValidationsOK) GetPayload() []*models.Validation {
 	return o.Payload
 }
 
-func (o *GETAllSDDCValidationsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllSDDCValidationsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -116,58 +116,58 @@ func (o *GETAllSDDCValidationsOK) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETAllSDDCValidationsNotFound creates a GETAllSDDCValidationsNotFound with default headers values
-func NewGETAllSDDCValidationsNotFound() *GETAllSDDCValidationsNotFound {
-	return &GETAllSDDCValidationsNotFound{}
+// NewGetAllSDDCValidationsNotFound creates a GetAllSDDCValidationsNotFound with default headers values
+func NewGetAllSDDCValidationsNotFound() *GetAllSDDCValidationsNotFound {
+	return &GetAllSDDCValidationsNotFound{}
 }
 
 /*
-GETAllSDDCValidationsNotFound describes a response with status code 404, with default header values.
+GetAllSDDCValidationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETAllSDDCValidationsNotFound struct {
+type GetAllSDDCValidationsNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get all Sddc validations not found response has a 2xx status code
-func (o *GETAllSDDCValidationsNotFound) IsSuccess() bool {
+func (o *GetAllSDDCValidationsNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get all Sddc validations not found response has a 3xx status code
-func (o *GETAllSDDCValidationsNotFound) IsRedirect() bool {
+func (o *GetAllSDDCValidationsNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all Sddc validations not found response has a 4xx status code
-func (o *GETAllSDDCValidationsNotFound) IsClientError() bool {
+func (o *GetAllSDDCValidationsNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get all Sddc validations not found response has a 5xx status code
-func (o *GETAllSDDCValidationsNotFound) IsServerError() bool {
+func (o *GetAllSDDCValidationsNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get all Sddc validations not found response a status code equal to that given
-func (o *GETAllSDDCValidationsNotFound) IsCode(code int) bool {
+func (o *GetAllSDDCValidationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETAllSDDCValidationsNotFound) Error() string {
+func (o *GetAllSDDCValidationsNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsNotFound) String() string {
+func (o *GetAllSDDCValidationsNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsNotFound) GetPayload() *models.Error {
+func (o *GetAllSDDCValidationsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETAllSDDCValidationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllSDDCValidationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -179,58 +179,58 @@ func (o *GETAllSDDCValidationsNotFound) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewGETAllSDDCValidationsInternalServerError creates a GETAllSDDCValidationsInternalServerError with default headers values
-func NewGETAllSDDCValidationsInternalServerError() *GETAllSDDCValidationsInternalServerError {
-	return &GETAllSDDCValidationsInternalServerError{}
+// NewGetAllSDDCValidationsInternalServerError creates a GetAllSDDCValidationsInternalServerError with default headers values
+func NewGetAllSDDCValidationsInternalServerError() *GetAllSDDCValidationsInternalServerError {
+	return &GetAllSDDCValidationsInternalServerError{}
 }
 
 /*
-GETAllSDDCValidationsInternalServerError describes a response with status code 500, with default header values.
+GetAllSDDCValidationsInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETAllSDDCValidationsInternalServerError struct {
+type GetAllSDDCValidationsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get all Sddc validations internal server error response has a 2xx status code
-func (o *GETAllSDDCValidationsInternalServerError) IsSuccess() bool {
+func (o *GetAllSDDCValidationsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get all Sddc validations internal server error response has a 3xx status code
-func (o *GETAllSDDCValidationsInternalServerError) IsRedirect() bool {
+func (o *GetAllSDDCValidationsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all Sddc validations internal server error response has a 4xx status code
-func (o *GETAllSDDCValidationsInternalServerError) IsClientError() bool {
+func (o *GetAllSDDCValidationsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get all Sddc validations internal server error response has a 5xx status code
-func (o *GETAllSDDCValidationsInternalServerError) IsServerError() bool {
+func (o *GetAllSDDCValidationsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get all Sddc validations internal server error response a status code equal to that given
-func (o *GETAllSDDCValidationsInternalServerError) IsCode(code int) bool {
+func (o *GetAllSDDCValidationsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETAllSDDCValidationsInternalServerError) Error() string {
+func (o *GetAllSDDCValidationsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsInternalServerError) String() string {
+func (o *GetAllSDDCValidationsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsInternalServerError) GetPayload() *models.Error {
+func (o *GetAllSDDCValidationsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETAllSDDCValidationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllSDDCValidationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -242,58 +242,58 @@ func (o *GETAllSDDCValidationsInternalServerError) readResponse(response runtime
 	return nil
 }
 
-// NewGETAllSDDCValidationsNotImplemented creates a GETAllSDDCValidationsNotImplemented with default headers values
-func NewGETAllSDDCValidationsNotImplemented() *GETAllSDDCValidationsNotImplemented {
-	return &GETAllSDDCValidationsNotImplemented{}
+// NewGetAllSDDCValidationsNotImplemented creates a GetAllSDDCValidationsNotImplemented with default headers values
+func NewGetAllSDDCValidationsNotImplemented() *GetAllSDDCValidationsNotImplemented {
+	return &GetAllSDDCValidationsNotImplemented{}
 }
 
 /*
-GETAllSDDCValidationsNotImplemented describes a response with status code 501, with default header values.
+GetAllSDDCValidationsNotImplemented describes a response with status code 501, with default header values.
 
 Not Implemented
 */
-type GETAllSDDCValidationsNotImplemented struct {
+type GetAllSDDCValidationsNotImplemented struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get all Sddc validations not implemented response has a 2xx status code
-func (o *GETAllSDDCValidationsNotImplemented) IsSuccess() bool {
+func (o *GetAllSDDCValidationsNotImplemented) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get all Sddc validations not implemented response has a 3xx status code
-func (o *GETAllSDDCValidationsNotImplemented) IsRedirect() bool {
+func (o *GetAllSDDCValidationsNotImplemented) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all Sddc validations not implemented response has a 4xx status code
-func (o *GETAllSDDCValidationsNotImplemented) IsClientError() bool {
+func (o *GetAllSDDCValidationsNotImplemented) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get all Sddc validations not implemented response has a 5xx status code
-func (o *GETAllSDDCValidationsNotImplemented) IsServerError() bool {
+func (o *GetAllSDDCValidationsNotImplemented) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get all Sddc validations not implemented response a status code equal to that given
-func (o *GETAllSDDCValidationsNotImplemented) IsCode(code int) bool {
+func (o *GetAllSDDCValidationsNotImplemented) IsCode(code int) bool {
 	return code == 501
 }
 
-func (o *GETAllSDDCValidationsNotImplemented) Error() string {
+func (o *GetAllSDDCValidationsNotImplemented) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsNotImplemented  %+v", 501, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsNotImplemented) String() string {
+func (o *GetAllSDDCValidationsNotImplemented) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/validations][%d] getAllSddcValidationsNotImplemented  %+v", 501, o.Payload)
 }
 
-func (o *GETAllSDDCValidationsNotImplemented) GetPayload() *models.Error {
+func (o *GetAllSDDCValidationsNotImplemented) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETAllSDDCValidationsNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllSDDCValidationsNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

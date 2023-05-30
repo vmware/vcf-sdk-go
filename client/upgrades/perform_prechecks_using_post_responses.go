@@ -75,37 +75,37 @@ type PerformPrechecksUsingPOSTOK struct {
 	Payload *models.Task
 }
 
-// IsSuccess returns true when this perform prechecks using Post o k response has a 2xx status code
+// IsSuccess returns true when this perform prechecks using p o s t o k response has a 2xx status code
 func (o *PerformPrechecksUsingPOSTOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this perform prechecks using Post o k response has a 3xx status code
+// IsRedirect returns true when this perform prechecks using p o s t o k response has a 3xx status code
 func (o *PerformPrechecksUsingPOSTOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this perform prechecks using Post o k response has a 4xx status code
+// IsClientError returns true when this perform prechecks using p o s t o k response has a 4xx status code
 func (o *PerformPrechecksUsingPOSTOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this perform prechecks using Post o k response has a 5xx status code
+// IsServerError returns true when this perform prechecks using p o s t o k response has a 5xx status code
 func (o *PerformPrechecksUsingPOSTOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this perform prechecks using Post o k response a status code equal to that given
+// IsCode returns true when this perform prechecks using p o s t o k response a status code equal to that given
 func (o *PerformPrechecksUsingPOSTOK) IsCode(code int) bool {
 	return code == 200
 }
 
 func (o *PerformPrechecksUsingPOSTOK) Error() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTOK  %+v", 200, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTOK) String() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTOK  %+v", 200, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTOK) GetPayload() *models.Task {
@@ -138,37 +138,37 @@ type PerformPrechecksUsingPOSTAccepted struct {
 	Payload *models.Task
 }
 
-// IsSuccess returns true when this perform prechecks using Post accepted response has a 2xx status code
+// IsSuccess returns true when this perform prechecks using p o s t accepted response has a 2xx status code
 func (o *PerformPrechecksUsingPOSTAccepted) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this perform prechecks using Post accepted response has a 3xx status code
+// IsRedirect returns true when this perform prechecks using p o s t accepted response has a 3xx status code
 func (o *PerformPrechecksUsingPOSTAccepted) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this perform prechecks using Post accepted response has a 4xx status code
+// IsClientError returns true when this perform prechecks using p o s t accepted response has a 4xx status code
 func (o *PerformPrechecksUsingPOSTAccepted) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this perform prechecks using Post accepted response has a 5xx status code
+// IsServerError returns true when this perform prechecks using p o s t accepted response has a 5xx status code
 func (o *PerformPrechecksUsingPOSTAccepted) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this perform prechecks using Post accepted response a status code equal to that given
+// IsCode returns true when this perform prechecks using p o s t accepted response a status code equal to that given
 func (o *PerformPrechecksUsingPOSTAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
 func (o *PerformPrechecksUsingPOSTAccepted) Error() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTAccepted) String() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTAccepted) GetPayload() *models.Task {
@@ -201,37 +201,37 @@ type PerformPrechecksUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this perform prechecks using Post bad request response has a 2xx status code
+// IsSuccess returns true when this perform prechecks using p o s t bad request response has a 2xx status code
 func (o *PerformPrechecksUsingPOSTBadRequest) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this perform prechecks using Post bad request response has a 3xx status code
+// IsRedirect returns true when this perform prechecks using p o s t bad request response has a 3xx status code
 func (o *PerformPrechecksUsingPOSTBadRequest) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this perform prechecks using Post bad request response has a 4xx status code
+// IsClientError returns true when this perform prechecks using p o s t bad request response has a 4xx status code
 func (o *PerformPrechecksUsingPOSTBadRequest) IsClientError() bool {
 	return true
 }
 
-// IsServerError returns true when this perform prechecks using Post bad request response has a 5xx status code
+// IsServerError returns true when this perform prechecks using p o s t bad request response has a 5xx status code
 func (o *PerformPrechecksUsingPOSTBadRequest) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this perform prechecks using Post bad request response a status code equal to that given
+// IsCode returns true when this perform prechecks using p o s t bad request response a status code equal to that given
 func (o *PerformPrechecksUsingPOSTBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
 func (o *PerformPrechecksUsingPOSTBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTBadRequest) GetPayload() *models.Error {
@@ -264,37 +264,37 @@ type PerformPrechecksUsingPOSTForbidden struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this perform prechecks using Post forbidden response has a 2xx status code
+// IsSuccess returns true when this perform prechecks using p o s t forbidden response has a 2xx status code
 func (o *PerformPrechecksUsingPOSTForbidden) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this perform prechecks using Post forbidden response has a 3xx status code
+// IsRedirect returns true when this perform prechecks using p o s t forbidden response has a 3xx status code
 func (o *PerformPrechecksUsingPOSTForbidden) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this perform prechecks using Post forbidden response has a 4xx status code
+// IsClientError returns true when this perform prechecks using p o s t forbidden response has a 4xx status code
 func (o *PerformPrechecksUsingPOSTForbidden) IsClientError() bool {
 	return true
 }
 
-// IsServerError returns true when this perform prechecks using Post forbidden response has a 5xx status code
+// IsServerError returns true when this perform prechecks using p o s t forbidden response has a 5xx status code
 func (o *PerformPrechecksUsingPOSTForbidden) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this perform prechecks using Post forbidden response a status code equal to that given
+// IsCode returns true when this perform prechecks using p o s t forbidden response a status code equal to that given
 func (o *PerformPrechecksUsingPOSTForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
 func (o *PerformPrechecksUsingPOSTForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTForbidden) GetPayload() *models.Error {
@@ -327,37 +327,37 @@ type PerformPrechecksUsingPOSTInternalServerError struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this perform prechecks using Post internal server error response has a 2xx status code
+// IsSuccess returns true when this perform prechecks using p o s t internal server error response has a 2xx status code
 func (o *PerformPrechecksUsingPOSTInternalServerError) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this perform prechecks using Post internal server error response has a 3xx status code
+// IsRedirect returns true when this perform prechecks using p o s t internal server error response has a 3xx status code
 func (o *PerformPrechecksUsingPOSTInternalServerError) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this perform prechecks using Post internal server error response has a 4xx status code
+// IsClientError returns true when this perform prechecks using p o s t internal server error response has a 4xx status code
 func (o *PerformPrechecksUsingPOSTInternalServerError) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this perform prechecks using Post internal server error response has a 5xx status code
+// IsServerError returns true when this perform prechecks using p o s t internal server error response has a 5xx status code
 func (o *PerformPrechecksUsingPOSTInternalServerError) IsServerError() bool {
 	return true
 }
 
-// IsCode returns true when this perform prechecks using Post internal server error response a status code equal to that given
+// IsCode returns true when this perform prechecks using p o s t internal server error response a status code equal to that given
 func (o *PerformPrechecksUsingPOSTInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
 func (o *PerformPrechecksUsingPOSTInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPostInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /v1/upgrades/{upgradeId}/prechecks][%d] performPrechecksUsingPOSTInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PerformPrechecksUsingPOSTInternalServerError) GetPayload() *models.Error {

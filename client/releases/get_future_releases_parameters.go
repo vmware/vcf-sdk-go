@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETFutureReleasesParams creates a new GETFutureReleasesParams object,
+// NewGetFutureReleasesParams creates a new GetFutureReleasesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETFutureReleasesParams() *GETFutureReleasesParams {
-	return &GETFutureReleasesParams{
+func NewGetFutureReleasesParams() *GetFutureReleasesParams {
+	return &GetFutureReleasesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETFutureReleasesParamsWithTimeout creates a new GETFutureReleasesParams object
+// NewGetFutureReleasesParamsWithTimeout creates a new GetFutureReleasesParams object
 // with the ability to set a timeout on a request.
-func NewGETFutureReleasesParamsWithTimeout(timeout time.Duration) *GETFutureReleasesParams {
-	return &GETFutureReleasesParams{
+func NewGetFutureReleasesParamsWithTimeout(timeout time.Duration) *GetFutureReleasesParams {
+	return &GetFutureReleasesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETFutureReleasesParamsWithContext creates a new GETFutureReleasesParams object
+// NewGetFutureReleasesParamsWithContext creates a new GetFutureReleasesParams object
 // with the ability to set a context for a request.
-func NewGETFutureReleasesParamsWithContext(ctx context.Context) *GETFutureReleasesParams {
-	return &GETFutureReleasesParams{
+func NewGetFutureReleasesParamsWithContext(ctx context.Context) *GetFutureReleasesParams {
+	return &GetFutureReleasesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETFutureReleasesParamsWithHTTPClient creates a new GETFutureReleasesParams object
+// NewGetFutureReleasesParamsWithHTTPClient creates a new GetFutureReleasesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETFutureReleasesParamsWithHTTPClient(client *http.Client) *GETFutureReleasesParams {
-	return &GETFutureReleasesParams{
+func NewGetFutureReleasesParamsWithHTTPClient(client *http.Client) *GetFutureReleasesParams {
+	return &GetFutureReleasesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETFutureReleasesParams contains all the parameters to send to the API endpoint
+GetFutureReleasesParams contains all the parameters to send to the API endpoint
 
 	for the get future releases operation.
 
 	Typically these are written to a http.Request.
 */
-type GETFutureReleasesParams struct {
+type GetFutureReleasesParams struct {
 
 	/* DomainID.
 
@@ -78,7 +78,7 @@ type GETFutureReleasesParams struct {
 // WithDefaults hydrates default values in the get future releases params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETFutureReleasesParams) WithDefaults() *GETFutureReleasesParams {
+func (o *GetFutureReleasesParams) WithDefaults() *GetFutureReleasesParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETFutureReleasesParams) WithDefaults() *GETFutureReleasesParams {
 // SetDefaults hydrates default values in the get future releases params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETFutureReleasesParams) SetDefaults() {
+func (o *GetFutureReleasesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get future releases params
-func (o *GETFutureReleasesParams) WithTimeout(timeout time.Duration) *GETFutureReleasesParams {
+func (o *GetFutureReleasesParams) WithTimeout(timeout time.Duration) *GetFutureReleasesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get future releases params
-func (o *GETFutureReleasesParams) SetTimeout(timeout time.Duration) {
+func (o *GetFutureReleasesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get future releases params
-func (o *GETFutureReleasesParams) WithContext(ctx context.Context) *GETFutureReleasesParams {
+func (o *GetFutureReleasesParams) WithContext(ctx context.Context) *GetFutureReleasesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get future releases params
-func (o *GETFutureReleasesParams) SetContext(ctx context.Context) {
+func (o *GetFutureReleasesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get future releases params
-func (o *GETFutureReleasesParams) WithHTTPClient(client *http.Client) *GETFutureReleasesParams {
+func (o *GetFutureReleasesParams) WithHTTPClient(client *http.Client) *GetFutureReleasesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get future releases params
-func (o *GETFutureReleasesParams) SetHTTPClient(client *http.Client) {
+func (o *GetFutureReleasesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the get future releases params
-func (o *GETFutureReleasesParams) WithDomainID(domainID string) *GETFutureReleasesParams {
+func (o *GetFutureReleasesParams) WithDomainID(domainID string) *GetFutureReleasesParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get future releases params
-func (o *GETFutureReleasesParams) SetDomainID(domainID string) {
+func (o *GetFutureReleasesParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETFutureReleasesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetFutureReleasesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

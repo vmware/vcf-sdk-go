@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETNetworksOfNetworkPoolParams creates a new GETNetworksOfNetworkPoolParams object,
+// NewGetNetworksOfNetworkPoolParams creates a new GetNetworksOfNetworkPoolParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETNetworksOfNetworkPoolParams() *GETNetworksOfNetworkPoolParams {
-	return &GETNetworksOfNetworkPoolParams{
+func NewGetNetworksOfNetworkPoolParams() *GetNetworksOfNetworkPoolParams {
+	return &GetNetworksOfNetworkPoolParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETNetworksOfNetworkPoolParamsWithTimeout creates a new GETNetworksOfNetworkPoolParams object
+// NewGetNetworksOfNetworkPoolParamsWithTimeout creates a new GetNetworksOfNetworkPoolParams object
 // with the ability to set a timeout on a request.
-func NewGETNetworksOfNetworkPoolParamsWithTimeout(timeout time.Duration) *GETNetworksOfNetworkPoolParams {
-	return &GETNetworksOfNetworkPoolParams{
+func NewGetNetworksOfNetworkPoolParamsWithTimeout(timeout time.Duration) *GetNetworksOfNetworkPoolParams {
+	return &GetNetworksOfNetworkPoolParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETNetworksOfNetworkPoolParamsWithContext creates a new GETNetworksOfNetworkPoolParams object
+// NewGetNetworksOfNetworkPoolParamsWithContext creates a new GetNetworksOfNetworkPoolParams object
 // with the ability to set a context for a request.
-func NewGETNetworksOfNetworkPoolParamsWithContext(ctx context.Context) *GETNetworksOfNetworkPoolParams {
-	return &GETNetworksOfNetworkPoolParams{
+func NewGetNetworksOfNetworkPoolParamsWithContext(ctx context.Context) *GetNetworksOfNetworkPoolParams {
+	return &GetNetworksOfNetworkPoolParams{
 		Context: ctx,
 	}
 }
 
-// NewGETNetworksOfNetworkPoolParamsWithHTTPClient creates a new GETNetworksOfNetworkPoolParams object
+// NewGetNetworksOfNetworkPoolParamsWithHTTPClient creates a new GetNetworksOfNetworkPoolParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETNetworksOfNetworkPoolParamsWithHTTPClient(client *http.Client) *GETNetworksOfNetworkPoolParams {
-	return &GETNetworksOfNetworkPoolParams{
+func NewGetNetworksOfNetworkPoolParamsWithHTTPClient(client *http.Client) *GetNetworksOfNetworkPoolParams {
+	return &GetNetworksOfNetworkPoolParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETNetworksOfNetworkPoolParams contains all the parameters to send to the API endpoint
+GetNetworksOfNetworkPoolParams contains all the parameters to send to the API endpoint
 
 	for the get networks of network pool operation.
 
 	Typically these are written to a http.Request.
 */
-type GETNetworksOfNetworkPoolParams struct {
+type GetNetworksOfNetworkPoolParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETNetworksOfNetworkPoolParams struct {
 // WithDefaults hydrates default values in the get networks of network pool params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNetworksOfNetworkPoolParams) WithDefaults() *GETNetworksOfNetworkPoolParams {
+func (o *GetNetworksOfNetworkPoolParams) WithDefaults() *GetNetworksOfNetworkPoolParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETNetworksOfNetworkPoolParams) WithDefaults() *GETNetworksOfNetworkPoo
 // SetDefaults hydrates default values in the get networks of network pool params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNetworksOfNetworkPoolParams) SetDefaults() {
+func (o *GetNetworksOfNetworkPoolParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) WithTimeout(timeout time.Duration) *GETNetworksOfNetworkPoolParams {
+func (o *GetNetworksOfNetworkPoolParams) WithTimeout(timeout time.Duration) *GetNetworksOfNetworkPoolParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) SetTimeout(timeout time.Duration) {
+func (o *GetNetworksOfNetworkPoolParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) WithContext(ctx context.Context) *GETNetworksOfNetworkPoolParams {
+func (o *GetNetworksOfNetworkPoolParams) WithContext(ctx context.Context) *GetNetworksOfNetworkPoolParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) SetContext(ctx context.Context) {
+func (o *GetNetworksOfNetworkPoolParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) WithHTTPClient(client *http.Client) *GETNetworksOfNetworkPoolParams {
+func (o *GetNetworksOfNetworkPoolParams) WithHTTPClient(client *http.Client) *GetNetworksOfNetworkPoolParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) SetHTTPClient(client *http.Client) {
+func (o *GetNetworksOfNetworkPoolParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) WithID(id string) *GETNetworksOfNetworkPoolParams {
+func (o *GetNetworksOfNetworkPoolParams) WithID(id string) *GetNetworksOfNetworkPoolParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get networks of network pool params
-func (o *GETNetworksOfNetworkPoolParams) SetID(id string) {
+func (o *GetNetworksOfNetworkPoolParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETNetworksOfNetworkPoolParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetNetworksOfNetworkPoolParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

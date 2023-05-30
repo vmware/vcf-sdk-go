@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETValidationForCreateEdgeClusterParams creates a new GETValidationForCreateEdgeClusterParams object,
+// NewGetValidationForCreateEdgeClusterParams creates a new GetValidationForCreateEdgeClusterParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETValidationForCreateEdgeClusterParams() *GETValidationForCreateEdgeClusterParams {
-	return &GETValidationForCreateEdgeClusterParams{
+func NewGetValidationForCreateEdgeClusterParams() *GetValidationForCreateEdgeClusterParams {
+	return &GetValidationForCreateEdgeClusterParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETValidationForCreateEdgeClusterParamsWithTimeout creates a new GETValidationForCreateEdgeClusterParams object
+// NewGetValidationForCreateEdgeClusterParamsWithTimeout creates a new GetValidationForCreateEdgeClusterParams object
 // with the ability to set a timeout on a request.
-func NewGETValidationForCreateEdgeClusterParamsWithTimeout(timeout time.Duration) *GETValidationForCreateEdgeClusterParams {
-	return &GETValidationForCreateEdgeClusterParams{
+func NewGetValidationForCreateEdgeClusterParamsWithTimeout(timeout time.Duration) *GetValidationForCreateEdgeClusterParams {
+	return &GetValidationForCreateEdgeClusterParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETValidationForCreateEdgeClusterParamsWithContext creates a new GETValidationForCreateEdgeClusterParams object
+// NewGetValidationForCreateEdgeClusterParamsWithContext creates a new GetValidationForCreateEdgeClusterParams object
 // with the ability to set a context for a request.
-func NewGETValidationForCreateEdgeClusterParamsWithContext(ctx context.Context) *GETValidationForCreateEdgeClusterParams {
-	return &GETValidationForCreateEdgeClusterParams{
+func NewGetValidationForCreateEdgeClusterParamsWithContext(ctx context.Context) *GetValidationForCreateEdgeClusterParams {
+	return &GetValidationForCreateEdgeClusterParams{
 		Context: ctx,
 	}
 }
 
-// NewGETValidationForCreateEdgeClusterParamsWithHTTPClient creates a new GETValidationForCreateEdgeClusterParams object
+// NewGetValidationForCreateEdgeClusterParamsWithHTTPClient creates a new GetValidationForCreateEdgeClusterParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETValidationForCreateEdgeClusterParamsWithHTTPClient(client *http.Client) *GETValidationForCreateEdgeClusterParams {
-	return &GETValidationForCreateEdgeClusterParams{
+func NewGetValidationForCreateEdgeClusterParamsWithHTTPClient(client *http.Client) *GetValidationForCreateEdgeClusterParams {
+	return &GetValidationForCreateEdgeClusterParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETValidationForCreateEdgeClusterParams contains all the parameters to send to the API endpoint
+GetValidationForCreateEdgeClusterParams contains all the parameters to send to the API endpoint
 
 	for the get validation for create edge cluster operation.
 
 	Typically these are written to a http.Request.
 */
-type GETValidationForCreateEdgeClusterParams struct {
+type GetValidationForCreateEdgeClusterParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETValidationForCreateEdgeClusterParams struct {
 // WithDefaults hydrates default values in the get validation for create edge cluster params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationForCreateEdgeClusterParams) WithDefaults() *GETValidationForCreateEdgeClusterParams {
+func (o *GetValidationForCreateEdgeClusterParams) WithDefaults() *GetValidationForCreateEdgeClusterParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETValidationForCreateEdgeClusterParams) WithDefaults() *GETValidationF
 // SetDefaults hydrates default values in the get validation for create edge cluster params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationForCreateEdgeClusterParams) SetDefaults() {
+func (o *GetValidationForCreateEdgeClusterParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) WithTimeout(timeout time.Duration) *GETValidationForCreateEdgeClusterParams {
+func (o *GetValidationForCreateEdgeClusterParams) WithTimeout(timeout time.Duration) *GetValidationForCreateEdgeClusterParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) SetTimeout(timeout time.Duration) {
+func (o *GetValidationForCreateEdgeClusterParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) WithContext(ctx context.Context) *GETValidationForCreateEdgeClusterParams {
+func (o *GetValidationForCreateEdgeClusterParams) WithContext(ctx context.Context) *GetValidationForCreateEdgeClusterParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) SetContext(ctx context.Context) {
+func (o *GetValidationForCreateEdgeClusterParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) WithHTTPClient(client *http.Client) *GETValidationForCreateEdgeClusterParams {
+func (o *GetValidationForCreateEdgeClusterParams) WithHTTPClient(client *http.Client) *GetValidationForCreateEdgeClusterParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) SetHTTPClient(client *http.Client) {
+func (o *GetValidationForCreateEdgeClusterParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) WithID(id string) *GETValidationForCreateEdgeClusterParams {
+func (o *GetValidationForCreateEdgeClusterParams) WithID(id string) *GetValidationForCreateEdgeClusterParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get validation for create edge cluster params
-func (o *GETValidationForCreateEdgeClusterParams) SetID(id string) {
+func (o *GetValidationForCreateEdgeClusterParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETValidationForCreateEdgeClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetValidationForCreateEdgeClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

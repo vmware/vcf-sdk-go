@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUpgradablesClustersParams creates a new GETUpgradablesClustersParams object,
+// NewGetUpgradablesClustersParams creates a new GetUpgradablesClustersParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUpgradablesClustersParams() *GETUpgradablesClustersParams {
-	return &GETUpgradablesClustersParams{
+func NewGetUpgradablesClustersParams() *GetUpgradablesClustersParams {
+	return &GetUpgradablesClustersParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUpgradablesClustersParamsWithTimeout creates a new GETUpgradablesClustersParams object
+// NewGetUpgradablesClustersParamsWithTimeout creates a new GetUpgradablesClustersParams object
 // with the ability to set a timeout on a request.
-func NewGETUpgradablesClustersParamsWithTimeout(timeout time.Duration) *GETUpgradablesClustersParams {
-	return &GETUpgradablesClustersParams{
+func NewGetUpgradablesClustersParamsWithTimeout(timeout time.Duration) *GetUpgradablesClustersParams {
+	return &GetUpgradablesClustersParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUpgradablesClustersParamsWithContext creates a new GETUpgradablesClustersParams object
+// NewGetUpgradablesClustersParamsWithContext creates a new GetUpgradablesClustersParams object
 // with the ability to set a context for a request.
-func NewGETUpgradablesClustersParamsWithContext(ctx context.Context) *GETUpgradablesClustersParams {
-	return &GETUpgradablesClustersParams{
+func NewGetUpgradablesClustersParamsWithContext(ctx context.Context) *GetUpgradablesClustersParams {
+	return &GetUpgradablesClustersParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUpgradablesClustersParamsWithHTTPClient creates a new GETUpgradablesClustersParams object
+// NewGetUpgradablesClustersParamsWithHTTPClient creates a new GetUpgradablesClustersParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUpgradablesClustersParamsWithHTTPClient(client *http.Client) *GETUpgradablesClustersParams {
-	return &GETUpgradablesClustersParams{
+func NewGetUpgradablesClustersParamsWithHTTPClient(client *http.Client) *GetUpgradablesClustersParams {
+	return &GetUpgradablesClustersParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUpgradablesClustersParams contains all the parameters to send to the API endpoint
+GetUpgradablesClustersParams contains all the parameters to send to the API endpoint
 
 	for the get upgradables clusters operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUpgradablesClustersParams struct {
+type GetUpgradablesClustersParams struct {
 
 	/* DomainID.
 
@@ -78,7 +78,7 @@ type GETUpgradablesClustersParams struct {
 // WithDefaults hydrates default values in the get upgradables clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradablesClustersParams) WithDefaults() *GETUpgradablesClustersParams {
+func (o *GetUpgradablesClustersParams) WithDefaults() *GetUpgradablesClustersParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETUpgradablesClustersParams) WithDefaults() *GETUpgradablesClustersPar
 // SetDefaults hydrates default values in the get upgradables clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradablesClustersParams) SetDefaults() {
+func (o *GetUpgradablesClustersParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) WithTimeout(timeout time.Duration) *GETUpgradablesClustersParams {
+func (o *GetUpgradablesClustersParams) WithTimeout(timeout time.Duration) *GetUpgradablesClustersParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) SetTimeout(timeout time.Duration) {
+func (o *GetUpgradablesClustersParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) WithContext(ctx context.Context) *GETUpgradablesClustersParams {
+func (o *GetUpgradablesClustersParams) WithContext(ctx context.Context) *GetUpgradablesClustersParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) SetContext(ctx context.Context) {
+func (o *GetUpgradablesClustersParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) WithHTTPClient(client *http.Client) *GETUpgradablesClustersParams {
+func (o *GetUpgradablesClustersParams) WithHTTPClient(client *http.Client) *GetUpgradablesClustersParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) SetHTTPClient(client *http.Client) {
+func (o *GetUpgradablesClustersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) WithDomainID(domainID string) *GETUpgradablesClustersParams {
+func (o *GetUpgradablesClustersParams) WithDomainID(domainID string) *GetUpgradablesClustersParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get upgradables clusters params
-func (o *GETUpgradablesClustersParams) SetDomainID(domainID string) {
+func (o *GetUpgradablesClustersParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUpgradablesClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUpgradablesClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

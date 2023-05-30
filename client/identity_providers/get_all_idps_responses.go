@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETAllIdpsReader is a Reader for the GETAllIdps structure.
-type GETAllIdpsReader struct {
+// GetAllIdpsReader is a Reader for the GetAllIdps structure.
+type GetAllIdpsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETAllIdpsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetAllIdpsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETAllIdpsOK()
+		result := NewGetAllIdpsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETAllIdpsBadRequest()
+		result := NewGetAllIdpsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 401:
-		result := NewGETAllIdpsUnauthorized()
+		result := NewGetAllIdpsUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETAllIdpsInternalServerError()
+		result := NewGetAllIdpsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETAllIdpsReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewGETAllIdpsOK creates a GETAllIdpsOK with default headers values
-func NewGETAllIdpsOK() *GETAllIdpsOK {
-	return &GETAllIdpsOK{}
+// NewGetAllIdpsOK creates a GetAllIdpsOK with default headers values
+func NewGetAllIdpsOK() *GetAllIdpsOK {
+	return &GetAllIdpsOK{}
 }
 
 /*
-GETAllIdpsOK describes a response with status code 200, with default header values.
+GetAllIdpsOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETAllIdpsOK struct {
+type GetAllIdpsOK struct {
 	Payload *models.PageOfIdentityProvider
 }
 
 // IsSuccess returns true when this get all idps o k response has a 2xx status code
-func (o *GETAllIdpsOK) IsSuccess() bool {
+func (o *GetAllIdpsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get all idps o k response has a 3xx status code
-func (o *GETAllIdpsOK) IsRedirect() bool {
+func (o *GetAllIdpsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all idps o k response has a 4xx status code
-func (o *GETAllIdpsOK) IsClientError() bool {
+func (o *GetAllIdpsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get all idps o k response has a 5xx status code
-func (o *GETAllIdpsOK) IsServerError() bool {
+func (o *GetAllIdpsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get all idps o k response a status code equal to that given
-func (o *GETAllIdpsOK) IsCode(code int) bool {
+func (o *GetAllIdpsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETAllIdpsOK) Error() string {
+func (o *GetAllIdpsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllIdpsOK) String() string {
+func (o *GetAllIdpsOK) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllIdpsOK) GetPayload() *models.PageOfIdentityProvider {
+func (o *GetAllIdpsOK) GetPayload() *models.PageOfIdentityProvider {
 	return o.Payload
 }
 
-func (o *GETAllIdpsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllIdpsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfIdentityProvider)
 
@@ -118,58 +118,58 @@ func (o *GETAllIdpsOK) readResponse(response runtime.ClientResponse, consumer ru
 	return nil
 }
 
-// NewGETAllIdpsBadRequest creates a GETAllIdpsBadRequest with default headers values
-func NewGETAllIdpsBadRequest() *GETAllIdpsBadRequest {
-	return &GETAllIdpsBadRequest{}
+// NewGetAllIdpsBadRequest creates a GetAllIdpsBadRequest with default headers values
+func NewGetAllIdpsBadRequest() *GetAllIdpsBadRequest {
+	return &GetAllIdpsBadRequest{}
 }
 
 /*
-GETAllIdpsBadRequest describes a response with status code 400, with default header values.
+GetAllIdpsBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
-type GETAllIdpsBadRequest struct {
+type GetAllIdpsBadRequest struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get all idps bad request response has a 2xx status code
-func (o *GETAllIdpsBadRequest) IsSuccess() bool {
+func (o *GetAllIdpsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get all idps bad request response has a 3xx status code
-func (o *GETAllIdpsBadRequest) IsRedirect() bool {
+func (o *GetAllIdpsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all idps bad request response has a 4xx status code
-func (o *GETAllIdpsBadRequest) IsClientError() bool {
+func (o *GetAllIdpsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get all idps bad request response has a 5xx status code
-func (o *GETAllIdpsBadRequest) IsServerError() bool {
+func (o *GetAllIdpsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get all idps bad request response a status code equal to that given
-func (o *GETAllIdpsBadRequest) IsCode(code int) bool {
+func (o *GetAllIdpsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETAllIdpsBadRequest) Error() string {
+func (o *GetAllIdpsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETAllIdpsBadRequest) String() string {
+func (o *GetAllIdpsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETAllIdpsBadRequest) GetPayload() *models.ErrorResponse {
+func (o *GetAllIdpsBadRequest) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETAllIdpsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllIdpsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -181,58 +181,58 @@ func (o *GETAllIdpsBadRequest) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewGETAllIdpsUnauthorized creates a GETAllIdpsUnauthorized with default headers values
-func NewGETAllIdpsUnauthorized() *GETAllIdpsUnauthorized {
-	return &GETAllIdpsUnauthorized{}
+// NewGetAllIdpsUnauthorized creates a GetAllIdpsUnauthorized with default headers values
+func NewGetAllIdpsUnauthorized() *GetAllIdpsUnauthorized {
+	return &GetAllIdpsUnauthorized{}
 }
 
 /*
-GETAllIdpsUnauthorized describes a response with status code 401, with default header values.
+GetAllIdpsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
-type GETAllIdpsUnauthorized struct {
+type GetAllIdpsUnauthorized struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get all idps unauthorized response has a 2xx status code
-func (o *GETAllIdpsUnauthorized) IsSuccess() bool {
+func (o *GetAllIdpsUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get all idps unauthorized response has a 3xx status code
-func (o *GETAllIdpsUnauthorized) IsRedirect() bool {
+func (o *GetAllIdpsUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all idps unauthorized response has a 4xx status code
-func (o *GETAllIdpsUnauthorized) IsClientError() bool {
+func (o *GetAllIdpsUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get all idps unauthorized response has a 5xx status code
-func (o *GETAllIdpsUnauthorized) IsServerError() bool {
+func (o *GetAllIdpsUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get all idps unauthorized response a status code equal to that given
-func (o *GETAllIdpsUnauthorized) IsCode(code int) bool {
+func (o *GetAllIdpsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETAllIdpsUnauthorized) Error() string {
+func (o *GetAllIdpsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETAllIdpsUnauthorized) String() string {
+func (o *GetAllIdpsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETAllIdpsUnauthorized) GetPayload() *models.ErrorResponse {
+func (o *GetAllIdpsUnauthorized) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETAllIdpsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllIdpsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -244,58 +244,58 @@ func (o *GETAllIdpsUnauthorized) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETAllIdpsInternalServerError creates a GETAllIdpsInternalServerError with default headers values
-func NewGETAllIdpsInternalServerError() *GETAllIdpsInternalServerError {
-	return &GETAllIdpsInternalServerError{}
+// NewGetAllIdpsInternalServerError creates a GetAllIdpsInternalServerError with default headers values
+func NewGetAllIdpsInternalServerError() *GetAllIdpsInternalServerError {
+	return &GetAllIdpsInternalServerError{}
 }
 
 /*
-GETAllIdpsInternalServerError describes a response with status code 500, with default header values.
+GetAllIdpsInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETAllIdpsInternalServerError struct {
+type GetAllIdpsInternalServerError struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get all idps internal server error response has a 2xx status code
-func (o *GETAllIdpsInternalServerError) IsSuccess() bool {
+func (o *GetAllIdpsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get all idps internal server error response has a 3xx status code
-func (o *GETAllIdpsInternalServerError) IsRedirect() bool {
+func (o *GetAllIdpsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get all idps internal server error response has a 4xx status code
-func (o *GETAllIdpsInternalServerError) IsClientError() bool {
+func (o *GetAllIdpsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get all idps internal server error response has a 5xx status code
-func (o *GETAllIdpsInternalServerError) IsServerError() bool {
+func (o *GetAllIdpsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get all idps internal server error response a status code equal to that given
-func (o *GETAllIdpsInternalServerError) IsCode(code int) bool {
+func (o *GetAllIdpsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETAllIdpsInternalServerError) Error() string {
+func (o *GetAllIdpsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETAllIdpsInternalServerError) String() string {
+func (o *GetAllIdpsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/identity-providers][%d] getAllIdpsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETAllIdpsInternalServerError) GetPayload() *models.ErrorResponse {
+func (o *GetAllIdpsInternalServerError) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETAllIdpsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllIdpsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 

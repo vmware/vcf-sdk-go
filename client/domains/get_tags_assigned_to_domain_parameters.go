@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETTagsAssignedToDomainParams creates a new GETTagsAssignedToDomainParams object,
+// NewGetTagsAssignedToDomainParams creates a new GetTagsAssignedToDomainParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETTagsAssignedToDomainParams() *GETTagsAssignedToDomainParams {
-	return &GETTagsAssignedToDomainParams{
+func NewGetTagsAssignedToDomainParams() *GetTagsAssignedToDomainParams {
+	return &GetTagsAssignedToDomainParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETTagsAssignedToDomainParamsWithTimeout creates a new GETTagsAssignedToDomainParams object
+// NewGetTagsAssignedToDomainParamsWithTimeout creates a new GetTagsAssignedToDomainParams object
 // with the ability to set a timeout on a request.
-func NewGETTagsAssignedToDomainParamsWithTimeout(timeout time.Duration) *GETTagsAssignedToDomainParams {
-	return &GETTagsAssignedToDomainParams{
+func NewGetTagsAssignedToDomainParamsWithTimeout(timeout time.Duration) *GetTagsAssignedToDomainParams {
+	return &GetTagsAssignedToDomainParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETTagsAssignedToDomainParamsWithContext creates a new GETTagsAssignedToDomainParams object
+// NewGetTagsAssignedToDomainParamsWithContext creates a new GetTagsAssignedToDomainParams object
 // with the ability to set a context for a request.
-func NewGETTagsAssignedToDomainParamsWithContext(ctx context.Context) *GETTagsAssignedToDomainParams {
-	return &GETTagsAssignedToDomainParams{
+func NewGetTagsAssignedToDomainParamsWithContext(ctx context.Context) *GetTagsAssignedToDomainParams {
+	return &GetTagsAssignedToDomainParams{
 		Context: ctx,
 	}
 }
 
-// NewGETTagsAssignedToDomainParamsWithHTTPClient creates a new GETTagsAssignedToDomainParams object
+// NewGetTagsAssignedToDomainParamsWithHTTPClient creates a new GetTagsAssignedToDomainParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETTagsAssignedToDomainParamsWithHTTPClient(client *http.Client) *GETTagsAssignedToDomainParams {
-	return &GETTagsAssignedToDomainParams{
+func NewGetTagsAssignedToDomainParamsWithHTTPClient(client *http.Client) *GetTagsAssignedToDomainParams {
+	return &GetTagsAssignedToDomainParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETTagsAssignedToDomainParams contains all the parameters to send to the API endpoint
+GetTagsAssignedToDomainParams contains all the parameters to send to the API endpoint
 
 	for the get tags assigned to domain operation.
 
 	Typically these are written to a http.Request.
 */
-type GETTagsAssignedToDomainParams struct {
+type GetTagsAssignedToDomainParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETTagsAssignedToDomainParams struct {
 // WithDefaults hydrates default values in the get tags assigned to domain params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToDomainParams) WithDefaults() *GETTagsAssignedToDomainParams {
+func (o *GetTagsAssignedToDomainParams) WithDefaults() *GetTagsAssignedToDomainParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETTagsAssignedToDomainParams) WithDefaults() *GETTagsAssignedToDomainP
 // SetDefaults hydrates default values in the get tags assigned to domain params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToDomainParams) SetDefaults() {
+func (o *GetTagsAssignedToDomainParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) WithTimeout(timeout time.Duration) *GETTagsAssignedToDomainParams {
+func (o *GetTagsAssignedToDomainParams) WithTimeout(timeout time.Duration) *GetTagsAssignedToDomainParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) SetTimeout(timeout time.Duration) {
+func (o *GetTagsAssignedToDomainParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) WithContext(ctx context.Context) *GETTagsAssignedToDomainParams {
+func (o *GetTagsAssignedToDomainParams) WithContext(ctx context.Context) *GetTagsAssignedToDomainParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) SetContext(ctx context.Context) {
+func (o *GetTagsAssignedToDomainParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) WithHTTPClient(client *http.Client) *GETTagsAssignedToDomainParams {
+func (o *GetTagsAssignedToDomainParams) WithHTTPClient(client *http.Client) *GetTagsAssignedToDomainParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) SetHTTPClient(client *http.Client) {
+func (o *GetTagsAssignedToDomainParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) WithID(id string) *GETTagsAssignedToDomainParams {
+func (o *GetTagsAssignedToDomainParams) WithID(id string) *GetTagsAssignedToDomainParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get tags assigned to domain params
-func (o *GETTagsAssignedToDomainParams) SetID(id string) {
+func (o *GetTagsAssignedToDomainParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETTagsAssignedToDomainParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetTagsAssignedToDomainParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

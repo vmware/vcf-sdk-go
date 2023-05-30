@@ -37,17 +37,17 @@ type ClientService interface {
 
 	CreateSDDC(params *CreateSDDCParams, opts ...ClientOption) (*CreateSDDCOK, *CreateSDDCAccepted, error)
 
-	GETAllSDDCValidations(params *GETAllSDDCValidationsParams, opts ...ClientOption) (*GETAllSDDCValidationsOK, error)
+	GetAllSDDCValidations(params *GetAllSDDCValidationsParams, opts ...ClientOption) (*GetAllSDDCValidationsOK, error)
 
-	GETBringupDetailReport(params *GETBringupDetailReportParams, opts ...ClientOption) (*GETBringupDetailReportOK, *GETBringupDetailReportNoContent, error)
+	GetBringupDetailReport(params *GetBringupDetailReportParams, opts ...ClientOption) (*GetBringupDetailReportOK, *GetBringupDetailReportNoContent, error)
 
-	GETBringupInfo(params *GETBringupInfoParams, opts ...ClientOption) (*GETBringupInfoOK, error)
+	GetBringupInfo(params *GetBringupInfoParams, opts ...ClientOption) (*GetBringupInfoOK, error)
 
-	GETBringupValidationReport(params *GETBringupValidationReportParams, opts ...ClientOption) (*GETBringupValidationReportOK, error)
+	GetBringupValidationReport(params *GetBringupValidationReportParams, opts ...ClientOption) (*GetBringupValidationReportOK, error)
 
-	GETSDDCManagerInfo(params *GETSDDCManagerInfoParams, opts ...ClientOption) (*GETSDDCManagerInfoOK, error)
+	GetSDDCManagerInfo(params *GetSDDCManagerInfoParams, opts ...ClientOption) (*GetSDDCManagerInfoOK, error)
 
-	GETSDDCValidation(params *GETSDDCValidationParams, opts ...ClientOption) (*GETSDDCValidationOK, error)
+	GetSDDCValidation(params *GetSDDCValidationParams, opts ...ClientOption) (*GetSDDCValidationOK, error)
 
 	RetrieveAllSddcs(params *RetrieveAllSddcsParams, opts ...ClientOption) (*RetrieveAllSddcsOK, error)
 
@@ -142,12 +142,12 @@ func (a *Client) CreateSDDC(params *CreateSDDCParams, opts ...ClientOption) (*Cr
 }
 
 /*
-GETAllSDDCValidations Gets all SDDC specification validations
+GetAllSDDCValidations gets all SDDC specification validations
 */
-func (a *Client) GETAllSDDCValidations(params *GETAllSDDCValidationsParams, opts ...ClientOption) (*GETAllSDDCValidationsOK, error) {
+func (a *Client) GetAllSDDCValidations(params *GetAllSDDCValidationsParams, opts ...ClientOption) (*GetAllSDDCValidationsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETAllSDDCValidationsParams()
+		params = NewGetAllSDDCValidationsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getAllSddcValidations",
@@ -157,7 +157,7 @@ func (a *Client) GETAllSDDCValidations(params *GETAllSDDCValidationsParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETAllSDDCValidationsReader{formats: a.formats},
+		Reader:             &GetAllSDDCValidationsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -169,7 +169,7 @@ func (a *Client) GETAllSDDCValidations(params *GETAllSDDCValidationsParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETAllSDDCValidationsOK)
+	success, ok := result.(*GetAllSDDCValidationsOK)
 	if ok {
 		return success, nil
 	}
@@ -180,14 +180,14 @@ func (a *Client) GETAllSDDCValidations(params *GETAllSDDCValidationsParams, opts
 }
 
 /*
-GETBringupDetailReport Gets SDDC report by ID
+GetBringupDetailReport gets SDDC report by ID
 
 Returns the bringup report. Reports are generated in PDF and CSV formats.
 */
-func (a *Client) GETBringupDetailReport(params *GETBringupDetailReportParams, opts ...ClientOption) (*GETBringupDetailReportOK, *GETBringupDetailReportNoContent, error) {
+func (a *Client) GetBringupDetailReport(params *GetBringupDetailReportParams, opts ...ClientOption) (*GetBringupDetailReportOK, *GetBringupDetailReportNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBringupDetailReportParams()
+		params = NewGetBringupDetailReportParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBringupDetailReport",
@@ -197,7 +197,7 @@ func (a *Client) GETBringupDetailReport(params *GETBringupDetailReportParams, op
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBringupDetailReportReader{formats: a.formats},
+		Reader:             &GetBringupDetailReportReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -210,9 +210,9 @@ func (a *Client) GETBringupDetailReport(params *GETBringupDetailReportParams, op
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *GETBringupDetailReportOK:
+	case *GetBringupDetailReportOK:
 		return value, nil, nil
-	case *GETBringupDetailReportNoContent:
+	case *GetBringupDetailReportNoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -221,14 +221,14 @@ func (a *Client) GETBringupDetailReport(params *GETBringupDetailReportParams, op
 }
 
 /*
-GETBringupInfo Gets bringup info
+GetBringupInfo gets bringup info
 
 GET Method to retrieve information about Bringup app
 */
-func (a *Client) GETBringupInfo(params *GETBringupInfoParams, opts ...ClientOption) (*GETBringupInfoOK, error) {
+func (a *Client) GetBringupInfo(params *GetBringupInfoParams, opts ...ClientOption) (*GetBringupInfoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBringupInfoParams()
+		params = NewGetBringupInfoParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBringupInfo",
@@ -238,7 +238,7 @@ func (a *Client) GETBringupInfo(params *GETBringupInfoParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBringupInfoReader{formats: a.formats},
+		Reader:             &GetBringupInfoReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -250,7 +250,7 @@ func (a *Client) GETBringupInfo(params *GETBringupInfoParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETBringupInfoOK)
+	success, ok := result.(*GetBringupInfoOK)
 	if ok {
 		return success, nil
 	}
@@ -261,14 +261,14 @@ func (a *Client) GETBringupInfo(params *GETBringupInfoParams, opts ...ClientOpti
 }
 
 /*
-GETBringupValidationReport Gets validation report by ID
+GetBringupValidationReport gets validation report by ID
 
 Returns the bringup report for a validation. Reports are generated in PDF format.
 */
-func (a *Client) GETBringupValidationReport(params *GETBringupValidationReportParams, opts ...ClientOption) (*GETBringupValidationReportOK, error) {
+func (a *Client) GetBringupValidationReport(params *GetBringupValidationReportParams, opts ...ClientOption) (*GetBringupValidationReportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETBringupValidationReportParams()
+		params = NewGetBringupValidationReportParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getBringupValidationReport",
@@ -278,7 +278,7 @@ func (a *Client) GETBringupValidationReport(params *GETBringupValidationReportPa
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETBringupValidationReportReader{formats: a.formats},
+		Reader:             &GetBringupValidationReportReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -290,7 +290,7 @@ func (a *Client) GETBringupValidationReport(params *GETBringupValidationReportPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETBringupValidationReportOK)
+	success, ok := result.(*GetBringupValidationReportOK)
 	if ok {
 		return success, nil
 	}
@@ -301,14 +301,14 @@ func (a *Client) GETBringupValidationReport(params *GETBringupValidationReportPa
 }
 
 /*
-GETSDDCManagerInfo retrieves SDDC manager VM details
+GetSDDCManagerInfo retrieves SDDC manager VM details
 
 Retrieves the details of SDDC Manager VM
 */
-func (a *Client) GETSDDCManagerInfo(params *GETSDDCManagerInfoParams, opts ...ClientOption) (*GETSDDCManagerInfoOK, error) {
+func (a *Client) GetSDDCManagerInfo(params *GetSDDCManagerInfoParams, opts ...ClientOption) (*GetSDDCManagerInfoOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSDDCManagerInfoParams()
+		params = NewGetSDDCManagerInfoParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSddcManagerInfo",
@@ -318,7 +318,7 @@ func (a *Client) GETSDDCManagerInfo(params *GETSDDCManagerInfoParams, opts ...Cl
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSDDCManagerInfoReader{formats: a.formats},
+		Reader:             &GetSDDCManagerInfoReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -330,7 +330,7 @@ func (a *Client) GETSDDCManagerInfo(params *GETSDDCManagerInfoParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSDDCManagerInfoOK)
+	success, ok := result.(*GetSDDCManagerInfoOK)
 	if ok {
 		return success, nil
 	}
@@ -341,12 +341,12 @@ func (a *Client) GETSDDCManagerInfo(params *GETSDDCManagerInfoParams, opts ...Cl
 }
 
 /*
-GETSDDCValidation Gets SDDC specification validation status by ID
+GetSDDCValidation gets SDDC specification validation status by ID
 */
-func (a *Client) GETSDDCValidation(params *GETSDDCValidationParams, opts ...ClientOption) (*GETSDDCValidationOK, error) {
+func (a *Client) GetSDDCValidation(params *GetSDDCValidationParams, opts ...ClientOption) (*GetSDDCValidationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSDDCValidationParams()
+		params = NewGetSDDCValidationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSddcValidation",
@@ -356,7 +356,7 @@ func (a *Client) GETSDDCValidation(params *GETSDDCValidationParams, opts ...Clie
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSDDCValidationReader{formats: a.formats},
+		Reader:             &GetSDDCValidationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -368,7 +368,7 @@ func (a *Client) GETSDDCValidation(params *GETSDDCValidationParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSDDCValidationOK)
+	success, ok := result.(*GetSDDCValidationOK)
 	if ok {
 		return success, nil
 	}

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETPersonalitiesParams creates a new GETPersonalitiesParams object,
+// NewGetPersonalitiesParams creates a new GetPersonalitiesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETPersonalitiesParams() *GETPersonalitiesParams {
-	return &GETPersonalitiesParams{
+func NewGetPersonalitiesParams() *GetPersonalitiesParams {
+	return &GetPersonalitiesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETPersonalitiesParamsWithTimeout creates a new GETPersonalitiesParams object
+// NewGetPersonalitiesParamsWithTimeout creates a new GetPersonalitiesParams object
 // with the ability to set a timeout on a request.
-func NewGETPersonalitiesParamsWithTimeout(timeout time.Duration) *GETPersonalitiesParams {
-	return &GETPersonalitiesParams{
+func NewGetPersonalitiesParamsWithTimeout(timeout time.Duration) *GetPersonalitiesParams {
+	return &GetPersonalitiesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETPersonalitiesParamsWithContext creates a new GETPersonalitiesParams object
+// NewGetPersonalitiesParamsWithContext creates a new GetPersonalitiesParams object
 // with the ability to set a context for a request.
-func NewGETPersonalitiesParamsWithContext(ctx context.Context) *GETPersonalitiesParams {
-	return &GETPersonalitiesParams{
+func NewGetPersonalitiesParamsWithContext(ctx context.Context) *GetPersonalitiesParams {
+	return &GetPersonalitiesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETPersonalitiesParamsWithHTTPClient creates a new GETPersonalitiesParams object
+// NewGetPersonalitiesParamsWithHTTPClient creates a new GetPersonalitiesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETPersonalitiesParamsWithHTTPClient(client *http.Client) *GETPersonalitiesParams {
-	return &GETPersonalitiesParams{
+func NewGetPersonalitiesParamsWithHTTPClient(client *http.Client) *GetPersonalitiesParams {
+	return &GetPersonalitiesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETPersonalitiesParams contains all the parameters to send to the API endpoint
+GetPersonalitiesParams contains all the parameters to send to the API endpoint
 
 	for the get personalities operation.
 
 	Typically these are written to a http.Request.
 */
-type GETPersonalitiesParams struct {
+type GetPersonalitiesParams struct {
 
 	/* AddOnName.
 
@@ -108,7 +108,7 @@ type GETPersonalitiesParams struct {
 // WithDefaults hydrates default values in the get personalities params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPersonalitiesParams) WithDefaults() *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithDefaults() *GetPersonalitiesParams {
 	o.SetDefaults()
 	return o
 }
@@ -116,111 +116,111 @@ func (o *GETPersonalitiesParams) WithDefaults() *GETPersonalitiesParams {
 // SetDefaults hydrates default values in the get personalities params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPersonalitiesParams) SetDefaults() {
+func (o *GetPersonalitiesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get personalities params
-func (o *GETPersonalitiesParams) WithTimeout(timeout time.Duration) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithTimeout(timeout time.Duration) *GetPersonalitiesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get personalities params
-func (o *GETPersonalitiesParams) SetTimeout(timeout time.Duration) {
+func (o *GetPersonalitiesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get personalities params
-func (o *GETPersonalitiesParams) WithContext(ctx context.Context) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithContext(ctx context.Context) *GetPersonalitiesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get personalities params
-func (o *GETPersonalitiesParams) SetContext(ctx context.Context) {
+func (o *GetPersonalitiesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get personalities params
-func (o *GETPersonalitiesParams) WithHTTPClient(client *http.Client) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithHTTPClient(client *http.Client) *GetPersonalitiesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get personalities params
-func (o *GETPersonalitiesParams) SetHTTPClient(client *http.Client) {
+func (o *GetPersonalitiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithAddOnName adds the addOnName to the get personalities params
-func (o *GETPersonalitiesParams) WithAddOnName(addOnName *string) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithAddOnName(addOnName *string) *GetPersonalitiesParams {
 	o.SetAddOnName(addOnName)
 	return o
 }
 
 // SetAddOnName adds the addOnName to the get personalities params
-func (o *GETPersonalitiesParams) SetAddOnName(addOnName *string) {
+func (o *GetPersonalitiesParams) SetAddOnName(addOnName *string) {
 	o.AddOnName = addOnName
 }
 
 // WithAddOnVendorName adds the addOnVendorName to the get personalities params
-func (o *GETPersonalitiesParams) WithAddOnVendorName(addOnVendorName *string) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithAddOnVendorName(addOnVendorName *string) *GetPersonalitiesParams {
 	o.SetAddOnVendorName(addOnVendorName)
 	return o
 }
 
 // SetAddOnVendorName adds the addOnVendorName to the get personalities params
-func (o *GETPersonalitiesParams) SetAddOnVendorName(addOnVendorName *string) {
+func (o *GetPersonalitiesParams) SetAddOnVendorName(addOnVendorName *string) {
 	o.AddOnVendorName = addOnVendorName
 }
 
 // WithBaseOSVersion adds the baseOSVersion to the get personalities params
-func (o *GETPersonalitiesParams) WithBaseOSVersion(baseOSVersion *string) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithBaseOSVersion(baseOSVersion *string) *GetPersonalitiesParams {
 	o.SetBaseOSVersion(baseOSVersion)
 	return o
 }
 
 // SetBaseOSVersion adds the baseOSVersion to the get personalities params
-func (o *GETPersonalitiesParams) SetBaseOSVersion(baseOSVersion *string) {
+func (o *GetPersonalitiesParams) SetBaseOSVersion(baseOSVersion *string) {
 	o.BaseOSVersion = baseOSVersion
 }
 
 // WithComponentName adds the componentName to the get personalities params
-func (o *GETPersonalitiesParams) WithComponentName(componentName *string) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithComponentName(componentName *string) *GetPersonalitiesParams {
 	o.SetComponentName(componentName)
 	return o
 }
 
 // SetComponentName adds the componentName to the get personalities params
-func (o *GETPersonalitiesParams) SetComponentName(componentName *string) {
+func (o *GetPersonalitiesParams) SetComponentName(componentName *string) {
 	o.ComponentName = componentName
 }
 
 // WithComponentVendorName adds the componentVendorName to the get personalities params
-func (o *GETPersonalitiesParams) WithComponentVendorName(componentVendorName *string) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithComponentVendorName(componentVendorName *string) *GetPersonalitiesParams {
 	o.SetComponentVendorName(componentVendorName)
 	return o
 }
 
 // SetComponentVendorName adds the componentVendorName to the get personalities params
-func (o *GETPersonalitiesParams) SetComponentVendorName(componentVendorName *string) {
+func (o *GetPersonalitiesParams) SetComponentVendorName(componentVendorName *string) {
 	o.ComponentVendorName = componentVendorName
 }
 
 // WithPersonalityName adds the personalityName to the get personalities params
-func (o *GETPersonalitiesParams) WithPersonalityName(personalityName *string) *GETPersonalitiesParams {
+func (o *GetPersonalitiesParams) WithPersonalityName(personalityName *string) *GetPersonalitiesParams {
 	o.SetPersonalityName(personalityName)
 	return o
 }
 
 // SetPersonalityName adds the personalityName to the get personalities params
-func (o *GETPersonalitiesParams) SetPersonalityName(personalityName *string) {
+func (o *GetPersonalitiesParams) SetPersonalityName(personalityName *string) {
 	o.PersonalityName = personalityName
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETPersonalitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetPersonalitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

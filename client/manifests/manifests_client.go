@@ -33,7 +33,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETManifest(params *GETManifestParams, opts ...ClientOption) (*GETManifestOK, error)
+	GetManifest(params *GetManifestParams, opts ...ClientOption) (*GetManifestOK, error)
 
 	SaveManifest(params *SaveManifestParams, opts ...ClientOption) (*SaveManifestAccepted, error)
 
@@ -41,14 +41,14 @@ type ClientService interface {
 }
 
 /*
-GETManifest Gets manifest
+GetManifest gets manifest
 
 Get manifest. There should be only one valid manifest in the System.
 */
-func (a *Client) GETManifest(params *GETManifestParams, opts ...ClientOption) (*GETManifestOK, error) {
+func (a *Client) GetManifest(params *GetManifestParams, opts ...ClientOption) (*GetManifestOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETManifestParams()
+		params = NewGetManifestParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getManifest",
@@ -58,7 +58,7 @@ func (a *Client) GETManifest(params *GETManifestParams, opts ...ClientOption) (*
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETManifestReader{formats: a.formats},
+		Reader:             &GetManifestReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -70,7 +70,7 @@ func (a *Client) GETManifest(params *GETManifestParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETManifestOK)
+	success, ok := result.(*GetManifestOK)
 	if ok {
 		return success, nil
 	}

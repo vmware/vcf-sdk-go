@@ -35,11 +35,11 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateEdge(params *CreateEdgeParams, opts ...ClientOption) (*CreateEdgeOK, *CreateEdgeAccepted, error)
 
-	GETEdgeCluster(params *GETEdgeClusterParams, opts ...ClientOption) (*GETEdgeClusterOK, error)
+	GetEdgeCluster(params *GetEdgeClusterParams, opts ...ClientOption) (*GetEdgeClusterOK, error)
 
-	GETEdgeClusters(params *GETEdgeClustersParams, opts ...ClientOption) (*GETEdgeClustersOK, error)
+	GetEdgeClusters(params *GetEdgeClustersParams, opts ...ClientOption) (*GetEdgeClustersOK, error)
 
-	GETValidationForCreateEdgeCluster(params *GETValidationForCreateEdgeClusterParams, opts ...ClientOption) (*GETValidationForCreateEdgeClusterOK, error)
+	GetValidationForCreateEdgeCluster(params *GetValidationForCreateEdgeClusterParams, opts ...ClientOption) (*GetValidationForCreateEdgeClusterOK, error)
 
 	UpdateEdgeCluster(params *UpdateEdgeClusterParams, opts ...ClientOption) (*UpdateEdgeClusterOK, *UpdateEdgeClusterAccepted, error)
 
@@ -90,12 +90,12 @@ func (a *Client) CreateEdge(params *CreateEdgeParams, opts ...ClientOption) (*Cr
 }
 
 /*
-GETEdgeCluster Gets an edge cluster
+GetEdgeCluster gets an edge cluster
 */
-func (a *Client) GETEdgeCluster(params *GETEdgeClusterParams, opts ...ClientOption) (*GETEdgeClusterOK, error) {
+func (a *Client) GetEdgeCluster(params *GetEdgeClusterParams, opts ...ClientOption) (*GetEdgeClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETEdgeClusterParams()
+		params = NewGetEdgeClusterParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getEdgeCluster",
@@ -105,7 +105,7 @@ func (a *Client) GETEdgeCluster(params *GETEdgeClusterParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETEdgeClusterReader{formats: a.formats},
+		Reader:             &GetEdgeClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -117,7 +117,7 @@ func (a *Client) GETEdgeCluster(params *GETEdgeClusterParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETEdgeClusterOK)
+	success, ok := result.(*GetEdgeClusterOK)
 	if ok {
 		return success, nil
 	}
@@ -128,12 +128,12 @@ func (a *Client) GETEdgeCluster(params *GETEdgeClusterParams, opts ...ClientOpti
 }
 
 /*
-GETEdgeClusters Gets the edge clusters
+GetEdgeClusters gets the edge clusters
 */
-func (a *Client) GETEdgeClusters(params *GETEdgeClustersParams, opts ...ClientOption) (*GETEdgeClustersOK, error) {
+func (a *Client) GetEdgeClusters(params *GetEdgeClustersParams, opts ...ClientOption) (*GetEdgeClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETEdgeClustersParams()
+		params = NewGetEdgeClustersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getEdgeClusters",
@@ -143,7 +143,7 @@ func (a *Client) GETEdgeClusters(params *GETEdgeClustersParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETEdgeClustersReader{formats: a.formats},
+		Reader:             &GetEdgeClustersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -155,7 +155,7 @@ func (a *Client) GETEdgeClusters(params *GETEdgeClustersParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETEdgeClustersOK)
+	success, ok := result.(*GetEdgeClustersOK)
 	if ok {
 		return success, nil
 	}
@@ -166,12 +166,12 @@ func (a *Client) GETEdgeClusters(params *GETEdgeClustersParams, opts ...ClientOp
 }
 
 /*
-GETValidationForCreateEdgeCluster Gets the edge cluster spec validation
+GetValidationForCreateEdgeCluster gets the edge cluster spec validation
 */
-func (a *Client) GETValidationForCreateEdgeCluster(params *GETValidationForCreateEdgeClusterParams, opts ...ClientOption) (*GETValidationForCreateEdgeClusterOK, error) {
+func (a *Client) GetValidationForCreateEdgeCluster(params *GetValidationForCreateEdgeClusterParams, opts ...ClientOption) (*GetValidationForCreateEdgeClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationForCreateEdgeClusterParams()
+		params = NewGetValidationForCreateEdgeClusterParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationForCreateEdgeCluster",
@@ -181,7 +181,7 @@ func (a *Client) GETValidationForCreateEdgeCluster(params *GETValidationForCreat
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationForCreateEdgeClusterReader{formats: a.formats},
+		Reader:             &GetValidationForCreateEdgeClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -193,7 +193,7 @@ func (a *Client) GETValidationForCreateEdgeCluster(params *GETValidationForCreat
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationForCreateEdgeClusterOK)
+	success, ok := result.(*GetValidationForCreateEdgeClusterOK)
 	if ok {
 		return success, nil
 	}

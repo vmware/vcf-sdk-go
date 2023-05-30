@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETEdgeClusterReader is a Reader for the GETEdgeCluster structure.
-type GETEdgeClusterReader struct {
+// GetEdgeClusterReader is a Reader for the GetEdgeCluster structure.
+type GetEdgeClusterReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETEdgeClusterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetEdgeClusterReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETEdgeClusterOK()
+		result := NewGetEdgeClusterOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETEdgeClusterNotFound()
+		result := NewGetEdgeClusterNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETEdgeClusterInternalServerError()
+		result := NewGetEdgeClusterInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETEdgeClusterReader) ReadResponse(response runtime.ClientResponse, con
 	}
 }
 
-// NewGETEdgeClusterOK creates a GETEdgeClusterOK with default headers values
-func NewGETEdgeClusterOK() *GETEdgeClusterOK {
-	return &GETEdgeClusterOK{}
+// NewGetEdgeClusterOK creates a GetEdgeClusterOK with default headers values
+func NewGetEdgeClusterOK() *GetEdgeClusterOK {
+	return &GetEdgeClusterOK{}
 }
 
 /*
-GETEdgeClusterOK describes a response with status code 200, with default header values.
+GetEdgeClusterOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETEdgeClusterOK struct {
+type GetEdgeClusterOK struct {
 	Payload *models.EdgeCluster
 }
 
 // IsSuccess returns true when this get edge cluster o k response has a 2xx status code
-func (o *GETEdgeClusterOK) IsSuccess() bool {
+func (o *GetEdgeClusterOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get edge cluster o k response has a 3xx status code
-func (o *GETEdgeClusterOK) IsRedirect() bool {
+func (o *GetEdgeClusterOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get edge cluster o k response has a 4xx status code
-func (o *GETEdgeClusterOK) IsClientError() bool {
+func (o *GetEdgeClusterOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get edge cluster o k response has a 5xx status code
-func (o *GETEdgeClusterOK) IsServerError() bool {
+func (o *GetEdgeClusterOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get edge cluster o k response a status code equal to that given
-func (o *GETEdgeClusterOK) IsCode(code int) bool {
+func (o *GetEdgeClusterOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETEdgeClusterOK) Error() string {
+func (o *GetEdgeClusterOK) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETEdgeClusterOK) String() string {
+func (o *GetEdgeClusterOK) String() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterOK  %+v", 200, o.Payload)
 }
 
-func (o *GETEdgeClusterOK) GetPayload() *models.EdgeCluster {
+func (o *GetEdgeClusterOK) GetPayload() *models.EdgeCluster {
 	return o.Payload
 }
 
-func (o *GETEdgeClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetEdgeClusterOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.EdgeCluster)
 
@@ -112,58 +112,58 @@ func (o *GETEdgeClusterOK) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-// NewGETEdgeClusterNotFound creates a GETEdgeClusterNotFound with default headers values
-func NewGETEdgeClusterNotFound() *GETEdgeClusterNotFound {
-	return &GETEdgeClusterNotFound{}
+// NewGetEdgeClusterNotFound creates a GetEdgeClusterNotFound with default headers values
+func NewGetEdgeClusterNotFound() *GetEdgeClusterNotFound {
+	return &GetEdgeClusterNotFound{}
 }
 
 /*
-GETEdgeClusterNotFound describes a response with status code 404, with default header values.
+GetEdgeClusterNotFound describes a response with status code 404, with default header values.
 
 Edge Cluster not found
 */
-type GETEdgeClusterNotFound struct {
+type GetEdgeClusterNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get edge cluster not found response has a 2xx status code
-func (o *GETEdgeClusterNotFound) IsSuccess() bool {
+func (o *GetEdgeClusterNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get edge cluster not found response has a 3xx status code
-func (o *GETEdgeClusterNotFound) IsRedirect() bool {
+func (o *GetEdgeClusterNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get edge cluster not found response has a 4xx status code
-func (o *GETEdgeClusterNotFound) IsClientError() bool {
+func (o *GetEdgeClusterNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get edge cluster not found response has a 5xx status code
-func (o *GETEdgeClusterNotFound) IsServerError() bool {
+func (o *GetEdgeClusterNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get edge cluster not found response a status code equal to that given
-func (o *GETEdgeClusterNotFound) IsCode(code int) bool {
+func (o *GetEdgeClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETEdgeClusterNotFound) Error() string {
+func (o *GetEdgeClusterNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETEdgeClusterNotFound) String() string {
+func (o *GetEdgeClusterNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETEdgeClusterNotFound) GetPayload() *models.Error {
+func (o *GetEdgeClusterNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETEdgeClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetEdgeClusterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETEdgeClusterNotFound) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETEdgeClusterInternalServerError creates a GETEdgeClusterInternalServerError with default headers values
-func NewGETEdgeClusterInternalServerError() *GETEdgeClusterInternalServerError {
-	return &GETEdgeClusterInternalServerError{}
+// NewGetEdgeClusterInternalServerError creates a GetEdgeClusterInternalServerError with default headers values
+func NewGetEdgeClusterInternalServerError() *GetEdgeClusterInternalServerError {
+	return &GetEdgeClusterInternalServerError{}
 }
 
 /*
-GETEdgeClusterInternalServerError describes a response with status code 500, with default header values.
+GetEdgeClusterInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETEdgeClusterInternalServerError struct {
+type GetEdgeClusterInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get edge cluster internal server error response has a 2xx status code
-func (o *GETEdgeClusterInternalServerError) IsSuccess() bool {
+func (o *GetEdgeClusterInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get edge cluster internal server error response has a 3xx status code
-func (o *GETEdgeClusterInternalServerError) IsRedirect() bool {
+func (o *GetEdgeClusterInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get edge cluster internal server error response has a 4xx status code
-func (o *GETEdgeClusterInternalServerError) IsClientError() bool {
+func (o *GetEdgeClusterInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get edge cluster internal server error response has a 5xx status code
-func (o *GETEdgeClusterInternalServerError) IsServerError() bool {
+func (o *GetEdgeClusterInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get edge cluster internal server error response a status code equal to that given
-func (o *GETEdgeClusterInternalServerError) IsCode(code int) bool {
+func (o *GetEdgeClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETEdgeClusterInternalServerError) Error() string {
+func (o *GetEdgeClusterInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETEdgeClusterInternalServerError) String() string {
+func (o *GetEdgeClusterInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETEdgeClusterInternalServerError) GetPayload() *models.Error {
+func (o *GetEdgeClusterInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETEdgeClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetEdgeClusterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETBringupValidationReportParams creates a new GETBringupValidationReportParams object,
+// NewGetBringupValidationReportParams creates a new GetBringupValidationReportParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBringupValidationReportParams() *GETBringupValidationReportParams {
-	return &GETBringupValidationReportParams{
+func NewGetBringupValidationReportParams() *GetBringupValidationReportParams {
+	return &GetBringupValidationReportParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBringupValidationReportParamsWithTimeout creates a new GETBringupValidationReportParams object
+// NewGetBringupValidationReportParamsWithTimeout creates a new GetBringupValidationReportParams object
 // with the ability to set a timeout on a request.
-func NewGETBringupValidationReportParamsWithTimeout(timeout time.Duration) *GETBringupValidationReportParams {
-	return &GETBringupValidationReportParams{
+func NewGetBringupValidationReportParamsWithTimeout(timeout time.Duration) *GetBringupValidationReportParams {
+	return &GetBringupValidationReportParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBringupValidationReportParamsWithContext creates a new GETBringupValidationReportParams object
+// NewGetBringupValidationReportParamsWithContext creates a new GetBringupValidationReportParams object
 // with the ability to set a context for a request.
-func NewGETBringupValidationReportParamsWithContext(ctx context.Context) *GETBringupValidationReportParams {
-	return &GETBringupValidationReportParams{
+func NewGetBringupValidationReportParamsWithContext(ctx context.Context) *GetBringupValidationReportParams {
+	return &GetBringupValidationReportParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBringupValidationReportParamsWithHTTPClient creates a new GETBringupValidationReportParams object
+// NewGetBringupValidationReportParamsWithHTTPClient creates a new GetBringupValidationReportParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBringupValidationReportParamsWithHTTPClient(client *http.Client) *GETBringupValidationReportParams {
-	return &GETBringupValidationReportParams{
+func NewGetBringupValidationReportParamsWithHTTPClient(client *http.Client) *GetBringupValidationReportParams {
+	return &GetBringupValidationReportParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBringupValidationReportParams contains all the parameters to send to the API endpoint
+GetBringupValidationReportParams contains all the parameters to send to the API endpoint
 
 	for the get bringup validation report operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBringupValidationReportParams struct {
+type GetBringupValidationReportParams struct {
 
 	/* CurClientTime.
 
@@ -90,7 +90,7 @@ type GETBringupValidationReportParams struct {
 // WithDefaults hydrates default values in the get bringup validation report params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBringupValidationReportParams) WithDefaults() *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithDefaults() *GetBringupValidationReportParams {
 	o.SetDefaults()
 	return o
 }
@@ -98,78 +98,78 @@ func (o *GETBringupValidationReportParams) WithDefaults() *GETBringupValidationR
 // SetDefaults hydrates default values in the get bringup validation report params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBringupValidationReportParams) SetDefaults() {
+func (o *GetBringupValidationReportParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get bringup validation report params
-func (o *GETBringupValidationReportParams) WithTimeout(timeout time.Duration) *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithTimeout(timeout time.Duration) *GetBringupValidationReportParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get bringup validation report params
-func (o *GETBringupValidationReportParams) SetTimeout(timeout time.Duration) {
+func (o *GetBringupValidationReportParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get bringup validation report params
-func (o *GETBringupValidationReportParams) WithContext(ctx context.Context) *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithContext(ctx context.Context) *GetBringupValidationReportParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get bringup validation report params
-func (o *GETBringupValidationReportParams) SetContext(ctx context.Context) {
+func (o *GetBringupValidationReportParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get bringup validation report params
-func (o *GETBringupValidationReportParams) WithHTTPClient(client *http.Client) *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithHTTPClient(client *http.Client) *GetBringupValidationReportParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get bringup validation report params
-func (o *GETBringupValidationReportParams) SetHTTPClient(client *http.Client) {
+func (o *GetBringupValidationReportParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithCurClientTime adds the curClientTime to the get bringup validation report params
-func (o *GETBringupValidationReportParams) WithCurClientTime(curClientTime *string) *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithCurClientTime(curClientTime *string) *GetBringupValidationReportParams {
 	o.SetCurClientTime(curClientTime)
 	return o
 }
 
 // SetCurClientTime adds the curClientTime to the get bringup validation report params
-func (o *GETBringupValidationReportParams) SetCurClientTime(curClientTime *string) {
+func (o *GetBringupValidationReportParams) SetCurClientTime(curClientTime *string) {
 	o.CurClientTime = curClientTime
 }
 
 // WithStartTime adds the startTime to the get bringup validation report params
-func (o *GETBringupValidationReportParams) WithStartTime(startTime *string) *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithStartTime(startTime *string) *GetBringupValidationReportParams {
 	o.SetStartTime(startTime)
 	return o
 }
 
 // SetStartTime adds the startTime to the get bringup validation report params
-func (o *GETBringupValidationReportParams) SetStartTime(startTime *string) {
+func (o *GetBringupValidationReportParams) SetStartTime(startTime *string) {
 	o.StartTime = startTime
 }
 
 // WithValidationID adds the validationID to the get bringup validation report params
-func (o *GETBringupValidationReportParams) WithValidationID(validationID string) *GETBringupValidationReportParams {
+func (o *GetBringupValidationReportParams) WithValidationID(validationID string) *GetBringupValidationReportParams {
 	o.SetValidationID(validationID)
 	return o
 }
 
 // SetValidationID adds the validationId to the get bringup validation report params
-func (o *GETBringupValidationReportParams) SetValidationID(validationID string) {
+func (o *GetBringupValidationReportParams) SetValidationID(validationID string) {
 	o.ValidationID = validationID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBringupValidationReportParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBringupValidationReportParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

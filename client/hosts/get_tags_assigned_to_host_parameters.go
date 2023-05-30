@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETTagsAssignedToHostParams creates a new GETTagsAssignedToHostParams object,
+// NewGetTagsAssignedToHostParams creates a new GetTagsAssignedToHostParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETTagsAssignedToHostParams() *GETTagsAssignedToHostParams {
-	return &GETTagsAssignedToHostParams{
+func NewGetTagsAssignedToHostParams() *GetTagsAssignedToHostParams {
+	return &GetTagsAssignedToHostParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETTagsAssignedToHostParamsWithTimeout creates a new GETTagsAssignedToHostParams object
+// NewGetTagsAssignedToHostParamsWithTimeout creates a new GetTagsAssignedToHostParams object
 // with the ability to set a timeout on a request.
-func NewGETTagsAssignedToHostParamsWithTimeout(timeout time.Duration) *GETTagsAssignedToHostParams {
-	return &GETTagsAssignedToHostParams{
+func NewGetTagsAssignedToHostParamsWithTimeout(timeout time.Duration) *GetTagsAssignedToHostParams {
+	return &GetTagsAssignedToHostParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETTagsAssignedToHostParamsWithContext creates a new GETTagsAssignedToHostParams object
+// NewGetTagsAssignedToHostParamsWithContext creates a new GetTagsAssignedToHostParams object
 // with the ability to set a context for a request.
-func NewGETTagsAssignedToHostParamsWithContext(ctx context.Context) *GETTagsAssignedToHostParams {
-	return &GETTagsAssignedToHostParams{
+func NewGetTagsAssignedToHostParamsWithContext(ctx context.Context) *GetTagsAssignedToHostParams {
+	return &GetTagsAssignedToHostParams{
 		Context: ctx,
 	}
 }
 
-// NewGETTagsAssignedToHostParamsWithHTTPClient creates a new GETTagsAssignedToHostParams object
+// NewGetTagsAssignedToHostParamsWithHTTPClient creates a new GetTagsAssignedToHostParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETTagsAssignedToHostParamsWithHTTPClient(client *http.Client) *GETTagsAssignedToHostParams {
-	return &GETTagsAssignedToHostParams{
+func NewGetTagsAssignedToHostParamsWithHTTPClient(client *http.Client) *GetTagsAssignedToHostParams {
+	return &GetTagsAssignedToHostParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETTagsAssignedToHostParams contains all the parameters to send to the API endpoint
+GetTagsAssignedToHostParams contains all the parameters to send to the API endpoint
 
 	for the get tags assigned to host operation.
 
 	Typically these are written to a http.Request.
 */
-type GETTagsAssignedToHostParams struct {
+type GetTagsAssignedToHostParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETTagsAssignedToHostParams struct {
 // WithDefaults hydrates default values in the get tags assigned to host params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToHostParams) WithDefaults() *GETTagsAssignedToHostParams {
+func (o *GetTagsAssignedToHostParams) WithDefaults() *GetTagsAssignedToHostParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETTagsAssignedToHostParams) WithDefaults() *GETTagsAssignedToHostParam
 // SetDefaults hydrates default values in the get tags assigned to host params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETTagsAssignedToHostParams) SetDefaults() {
+func (o *GetTagsAssignedToHostParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) WithTimeout(timeout time.Duration) *GETTagsAssignedToHostParams {
+func (o *GetTagsAssignedToHostParams) WithTimeout(timeout time.Duration) *GetTagsAssignedToHostParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) SetTimeout(timeout time.Duration) {
+func (o *GetTagsAssignedToHostParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) WithContext(ctx context.Context) *GETTagsAssignedToHostParams {
+func (o *GetTagsAssignedToHostParams) WithContext(ctx context.Context) *GetTagsAssignedToHostParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) SetContext(ctx context.Context) {
+func (o *GetTagsAssignedToHostParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) WithHTTPClient(client *http.Client) *GETTagsAssignedToHostParams {
+func (o *GetTagsAssignedToHostParams) WithHTTPClient(client *http.Client) *GetTagsAssignedToHostParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) SetHTTPClient(client *http.Client) {
+func (o *GetTagsAssignedToHostParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) WithID(id string) *GETTagsAssignedToHostParams {
+func (o *GetTagsAssignedToHostParams) WithID(id string) *GetTagsAssignedToHostParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get tags assigned to host params
-func (o *GETTagsAssignedToHostParams) SetID(id string) {
+func (o *GetTagsAssignedToHostParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETTagsAssignedToHostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetTagsAssignedToHostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

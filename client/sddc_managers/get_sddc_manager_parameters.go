@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETSDDCManagerParams creates a new GETSDDCManagerParams object,
+// NewGetSDDCManagerParams creates a new GetSDDCManagerParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETSDDCManagerParams() *GETSDDCManagerParams {
-	return &GETSDDCManagerParams{
+func NewGetSDDCManagerParams() *GetSDDCManagerParams {
+	return &GetSDDCManagerParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETSDDCManagerParamsWithTimeout creates a new GETSDDCManagerParams object
+// NewGetSDDCManagerParamsWithTimeout creates a new GetSDDCManagerParams object
 // with the ability to set a timeout on a request.
-func NewGETSDDCManagerParamsWithTimeout(timeout time.Duration) *GETSDDCManagerParams {
-	return &GETSDDCManagerParams{
+func NewGetSDDCManagerParamsWithTimeout(timeout time.Duration) *GetSDDCManagerParams {
+	return &GetSDDCManagerParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETSDDCManagerParamsWithContext creates a new GETSDDCManagerParams object
+// NewGetSDDCManagerParamsWithContext creates a new GetSDDCManagerParams object
 // with the ability to set a context for a request.
-func NewGETSDDCManagerParamsWithContext(ctx context.Context) *GETSDDCManagerParams {
-	return &GETSDDCManagerParams{
+func NewGetSDDCManagerParamsWithContext(ctx context.Context) *GetSDDCManagerParams {
+	return &GetSDDCManagerParams{
 		Context: ctx,
 	}
 }
 
-// NewGETSDDCManagerParamsWithHTTPClient creates a new GETSDDCManagerParams object
+// NewGetSDDCManagerParamsWithHTTPClient creates a new GetSDDCManagerParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETSDDCManagerParamsWithHTTPClient(client *http.Client) *GETSDDCManagerParams {
-	return &GETSDDCManagerParams{
+func NewGetSDDCManagerParamsWithHTTPClient(client *http.Client) *GetSDDCManagerParams {
+	return &GetSDDCManagerParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETSDDCManagerParams contains all the parameters to send to the API endpoint
+GetSDDCManagerParams contains all the parameters to send to the API endpoint
 
 	for the get Sddc manager operation.
 
 	Typically these are written to a http.Request.
 */
-type GETSDDCManagerParams struct {
+type GetSDDCManagerParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETSDDCManagerParams struct {
 // WithDefaults hydrates default values in the get Sddc manager params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSDDCManagerParams) WithDefaults() *GETSDDCManagerParams {
+func (o *GetSDDCManagerParams) WithDefaults() *GetSDDCManagerParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETSDDCManagerParams) WithDefaults() *GETSDDCManagerParams {
 // SetDefaults hydrates default values in the get Sddc manager params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSDDCManagerParams) SetDefaults() {
+func (o *GetSDDCManagerParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Sddc manager params
-func (o *GETSDDCManagerParams) WithTimeout(timeout time.Duration) *GETSDDCManagerParams {
+func (o *GetSDDCManagerParams) WithTimeout(timeout time.Duration) *GetSDDCManagerParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Sddc manager params
-func (o *GETSDDCManagerParams) SetTimeout(timeout time.Duration) {
+func (o *GetSDDCManagerParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Sddc manager params
-func (o *GETSDDCManagerParams) WithContext(ctx context.Context) *GETSDDCManagerParams {
+func (o *GetSDDCManagerParams) WithContext(ctx context.Context) *GetSDDCManagerParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Sddc manager params
-func (o *GETSDDCManagerParams) SetContext(ctx context.Context) {
+func (o *GetSDDCManagerParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Sddc manager params
-func (o *GETSDDCManagerParams) WithHTTPClient(client *http.Client) *GETSDDCManagerParams {
+func (o *GetSDDCManagerParams) WithHTTPClient(client *http.Client) *GetSDDCManagerParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Sddc manager params
-func (o *GETSDDCManagerParams) SetHTTPClient(client *http.Client) {
+func (o *GetSDDCManagerParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get Sddc manager params
-func (o *GETSDDCManagerParams) WithID(id string) *GETSDDCManagerParams {
+func (o *GetSDDCManagerParams) WithID(id string) *GetSDDCManagerParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get Sddc manager params
-func (o *GETSDDCManagerParams) SetID(id string) {
+func (o *GetSDDCManagerParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETSDDCManagerParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetSDDCManagerParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

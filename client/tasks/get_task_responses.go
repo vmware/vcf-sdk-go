@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETTaskReader is a Reader for the GETTask structure.
-type GETTaskReader struct {
+// GetTaskReader is a Reader for the GetTask structure.
+type GetTaskReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETTaskOK()
+		result := NewGetTaskOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETTaskNotFound()
+		result := NewGetTaskNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETTaskInternalServerError()
+		result := NewGetTaskInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETTaskReader) ReadResponse(response runtime.ClientResponse, consumer r
 	}
 }
 
-// NewGETTaskOK creates a GETTaskOK with default headers values
-func NewGETTaskOK() *GETTaskOK {
-	return &GETTaskOK{}
+// NewGetTaskOK creates a GetTaskOK with default headers values
+func NewGetTaskOK() *GetTaskOK {
+	return &GetTaskOK{}
 }
 
 /*
-GETTaskOK describes a response with status code 200, with default header values.
+GetTaskOK describes a response with status code 200, with default header values.
 
 A task object.
 */
-type GETTaskOK struct {
+type GetTaskOK struct {
 	Payload *models.Task
 }
 
 // IsSuccess returns true when this get task o k response has a 2xx status code
-func (o *GETTaskOK) IsSuccess() bool {
+func (o *GetTaskOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get task o k response has a 3xx status code
-func (o *GETTaskOK) IsRedirect() bool {
+func (o *GetTaskOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get task o k response has a 4xx status code
-func (o *GETTaskOK) IsClientError() bool {
+func (o *GetTaskOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get task o k response has a 5xx status code
-func (o *GETTaskOK) IsServerError() bool {
+func (o *GetTaskOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get task o k response a status code equal to that given
-func (o *GETTaskOK) IsCode(code int) bool {
+func (o *GetTaskOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETTaskOK) Error() string {
+func (o *GetTaskOK) Error() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETTaskOK) String() string {
+func (o *GetTaskOK) String() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETTaskOK) GetPayload() *models.Task {
+func (o *GetTaskOK) GetPayload() *models.Task {
 	return o.Payload
 }
 
-func (o *GETTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Task)
 
@@ -112,58 +112,58 @@ func (o *GETTaskOK) readResponse(response runtime.ClientResponse, consumer runti
 	return nil
 }
 
-// NewGETTaskNotFound creates a GETTaskNotFound with default headers values
-func NewGETTaskNotFound() *GETTaskNotFound {
-	return &GETTaskNotFound{}
+// NewGetTaskNotFound creates a GetTaskNotFound with default headers values
+func NewGetTaskNotFound() *GetTaskNotFound {
+	return &GetTaskNotFound{}
 }
 
 /*
-GETTaskNotFound describes a response with status code 404, with default header values.
+GetTaskNotFound describes a response with status code 404, with default header values.
 
 Task not found
 */
-type GETTaskNotFound struct {
+type GetTaskNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get task not found response has a 2xx status code
-func (o *GETTaskNotFound) IsSuccess() bool {
+func (o *GetTaskNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get task not found response has a 3xx status code
-func (o *GETTaskNotFound) IsRedirect() bool {
+func (o *GetTaskNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get task not found response has a 4xx status code
-func (o *GETTaskNotFound) IsClientError() bool {
+func (o *GetTaskNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get task not found response has a 5xx status code
-func (o *GETTaskNotFound) IsServerError() bool {
+func (o *GetTaskNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get task not found response a status code equal to that given
-func (o *GETTaskNotFound) IsCode(code int) bool {
+func (o *GetTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETTaskNotFound) Error() string {
+func (o *GetTaskNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETTaskNotFound) String() string {
+func (o *GetTaskNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETTaskNotFound) GetPayload() *models.Error {
+func (o *GetTaskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETTaskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTaskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETTaskNotFound) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETTaskInternalServerError creates a GETTaskInternalServerError with default headers values
-func NewGETTaskInternalServerError() *GETTaskInternalServerError {
-	return &GETTaskInternalServerError{}
+// NewGetTaskInternalServerError creates a GetTaskInternalServerError with default headers values
+func NewGetTaskInternalServerError() *GetTaskInternalServerError {
+	return &GetTaskInternalServerError{}
 }
 
 /*
-GETTaskInternalServerError describes a response with status code 500, with default header values.
+GetTaskInternalServerError describes a response with status code 500, with default header values.
 
 Unexpected error
 */
-type GETTaskInternalServerError struct {
+type GetTaskInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get task internal server error response has a 2xx status code
-func (o *GETTaskInternalServerError) IsSuccess() bool {
+func (o *GetTaskInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get task internal server error response has a 3xx status code
-func (o *GETTaskInternalServerError) IsRedirect() bool {
+func (o *GetTaskInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get task internal server error response has a 4xx status code
-func (o *GETTaskInternalServerError) IsClientError() bool {
+func (o *GetTaskInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get task internal server error response has a 5xx status code
-func (o *GETTaskInternalServerError) IsServerError() bool {
+func (o *GetTaskInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get task internal server error response a status code equal to that given
-func (o *GETTaskInternalServerError) IsCode(code int) bool {
+func (o *GetTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETTaskInternalServerError) Error() string {
+func (o *GetTaskInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETTaskInternalServerError) String() string {
+func (o *GetTaskInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETTaskInternalServerError) GetPayload() *models.Error {
+func (o *GetTaskInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

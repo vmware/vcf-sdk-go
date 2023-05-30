@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETPrecheckUsingGETParams creates a new GETPrecheckUsingGETParams object,
+// NewGetPrecheckUsingGETParams creates a new GetPrecheckUsingGETParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETPrecheckUsingGETParams() *GETPrecheckUsingGETParams {
-	return &GETPrecheckUsingGETParams{
+func NewGetPrecheckUsingGETParams() *GetPrecheckUsingGETParams {
+	return &GetPrecheckUsingGETParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETPrecheckUsingGETParamsWithTimeout creates a new GETPrecheckUsingGETParams object
+// NewGetPrecheckUsingGETParamsWithTimeout creates a new GetPrecheckUsingGETParams object
 // with the ability to set a timeout on a request.
-func NewGETPrecheckUsingGETParamsWithTimeout(timeout time.Duration) *GETPrecheckUsingGETParams {
-	return &GETPrecheckUsingGETParams{
+func NewGetPrecheckUsingGETParamsWithTimeout(timeout time.Duration) *GetPrecheckUsingGETParams {
+	return &GetPrecheckUsingGETParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETPrecheckUsingGETParamsWithContext creates a new GETPrecheckUsingGETParams object
+// NewGetPrecheckUsingGETParamsWithContext creates a new GetPrecheckUsingGETParams object
 // with the ability to set a context for a request.
-func NewGETPrecheckUsingGETParamsWithContext(ctx context.Context) *GETPrecheckUsingGETParams {
-	return &GETPrecheckUsingGETParams{
+func NewGetPrecheckUsingGETParamsWithContext(ctx context.Context) *GetPrecheckUsingGETParams {
+	return &GetPrecheckUsingGETParams{
 		Context: ctx,
 	}
 }
 
-// NewGETPrecheckUsingGETParamsWithHTTPClient creates a new GETPrecheckUsingGETParams object
+// NewGetPrecheckUsingGETParamsWithHTTPClient creates a new GetPrecheckUsingGETParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETPrecheckUsingGETParamsWithHTTPClient(client *http.Client) *GETPrecheckUsingGETParams {
-	return &GETPrecheckUsingGETParams{
+func NewGetPrecheckUsingGETParamsWithHTTPClient(client *http.Client) *GetPrecheckUsingGETParams {
+	return &GetPrecheckUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETPrecheckUsingGETParams contains all the parameters to send to the API endpoint
+GetPrecheckUsingGETParams contains all the parameters to send to the API endpoint
 
-	for the get precheck using GET operation.
+	for the get precheck using g e t operation.
 
 	Typically these are written to a http.Request.
 */
-type GETPrecheckUsingGETParams struct {
+type GetPrecheckUsingGETParams struct {
 
 	/* PrecheckID.
 
@@ -81,78 +81,78 @@ type GETPrecheckUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the get precheck using GET params (not the query body).
+// WithDefaults hydrates default values in the get precheck using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPrecheckUsingGETParams) WithDefaults() *GETPrecheckUsingGETParams {
+func (o *GetPrecheckUsingGETParams) WithDefaults() *GetPrecheckUsingGETParams {
 	o.SetDefaults()
 	return o
 }
 
-// SetDefaults hydrates default values in the get precheck using GET params (not the query body).
+// SetDefaults hydrates default values in the get precheck using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPrecheckUsingGETParams) SetDefaults() {
+func (o *GetPrecheckUsingGETParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) WithTimeout(timeout time.Duration) *GETPrecheckUsingGETParams {
+// WithTimeout adds the timeout to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) WithTimeout(timeout time.Duration) *GetPrecheckUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) WithContext(ctx context.Context) *GETPrecheckUsingGETParams {
+// WithContext adds the context to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) WithContext(ctx context.Context) *GetPrecheckUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) WithHTTPClient(client *http.Client) *GETPrecheckUsingGETParams {
+// WithHTTPClient adds the HTTPClient to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) WithHTTPClient(client *http.Client) *GetPrecheckUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithPrecheckID adds the precheckID to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) WithPrecheckID(precheckID string) *GETPrecheckUsingGETParams {
+// WithPrecheckID adds the precheckID to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) WithPrecheckID(precheckID string) *GetPrecheckUsingGETParams {
 	o.SetPrecheckID(precheckID)
 	return o
 }
 
-// SetPrecheckID adds the precheckId to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) SetPrecheckID(precheckID string) {
+// SetPrecheckID adds the precheckId to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) SetPrecheckID(precheckID string) {
 	o.PrecheckID = precheckID
 }
 
-// WithUpgradeID adds the upgradeID to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) WithUpgradeID(upgradeID string) *GETPrecheckUsingGETParams {
+// WithUpgradeID adds the upgradeID to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) WithUpgradeID(upgradeID string) *GetPrecheckUsingGETParams {
 	o.SetUpgradeID(upgradeID)
 	return o
 }
 
-// SetUpgradeID adds the upgradeId to the get precheck using GET params
-func (o *GETPrecheckUsingGETParams) SetUpgradeID(upgradeID string) {
+// SetUpgradeID adds the upgradeId to the get precheck using g e t params
+func (o *GetPrecheckUsingGETParams) SetUpgradeID(upgradeID string) {
 	o.UpgradeID = upgradeID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETPrecheckUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetPrecheckUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETAllUIUsersUsingGETReader is a Reader for the GETAllUIUsersUsingGET structure.
-type GETAllUIUsersUsingGETReader struct {
+// GetAllUIUsersUsingGETReader is a Reader for the GetAllUIUsersUsingGET structure.
+type GetAllUIUsersUsingGETReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETAllUIUsersUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetAllUIUsersUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETAllUIUsersUsingGETOK()
+		result := NewGetAllUIUsersUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETAllUIUsersUsingGETReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewGETAllUIUsersUsingGETOK creates a GETAllUIUsersUsingGETOK with default headers values
-func NewGETAllUIUsersUsingGETOK() *GETAllUIUsersUsingGETOK {
-	return &GETAllUIUsersUsingGETOK{}
+// NewGetAllUIUsersUsingGETOK creates a GetAllUIUsersUsingGETOK with default headers values
+func NewGetAllUIUsersUsingGETOK() *GetAllUIUsersUsingGETOK {
+	return &GetAllUIUsersUsingGETOK{}
 }
 
 /*
-GETAllUIUsersUsingGETOK describes a response with status code 200, with default header values.
+GetAllUIUsersUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETAllUIUsersUsingGETOK struct {
+type GetAllUIUsersUsingGETOK struct {
 	Payload *models.PageOfUser
 }
 
-// IsSuccess returns true when this get all Ui users using Get o k response has a 2xx status code
-func (o *GETAllUIUsersUsingGETOK) IsSuccess() bool {
+// IsSuccess returns true when this get all Ui users using g e t o k response has a 2xx status code
+func (o *GetAllUIUsersUsingGETOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this get all Ui users using Get o k response has a 3xx status code
-func (o *GETAllUIUsersUsingGETOK) IsRedirect() bool {
+// IsRedirect returns true when this get all Ui users using g e t o k response has a 3xx status code
+func (o *GetAllUIUsersUsingGETOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get all Ui users using Get o k response has a 4xx status code
-func (o *GETAllUIUsersUsingGETOK) IsClientError() bool {
+// IsClientError returns true when this get all Ui users using g e t o k response has a 4xx status code
+func (o *GetAllUIUsersUsingGETOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this get all Ui users using Get o k response has a 5xx status code
-func (o *GETAllUIUsersUsingGETOK) IsServerError() bool {
+// IsServerError returns true when this get all Ui users using g e t o k response has a 5xx status code
+func (o *GetAllUIUsersUsingGETOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this get all Ui users using Get o k response a status code equal to that given
-func (o *GETAllUIUsersUsingGETOK) IsCode(code int) bool {
+// IsCode returns true when this get all Ui users using g e t o k response a status code equal to that given
+func (o *GetAllUIUsersUsingGETOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETAllUIUsersUsingGETOK) Error() string {
-	return fmt.Sprintf("[GET /v1/users/ui][%d] getAllUiUsersUsingGetOK  %+v", 200, o.Payload)
+func (o *GetAllUIUsersUsingGETOK) Error() string {
+	return fmt.Sprintf("[GET /v1/users/ui][%d] getAllUiUsersUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllUIUsersUsingGETOK) String() string {
-	return fmt.Sprintf("[GET /v1/users/ui][%d] getAllUiUsersUsingGetOK  %+v", 200, o.Payload)
+func (o *GetAllUIUsersUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /v1/users/ui][%d] getAllUiUsersUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GETAllUIUsersUsingGETOK) GetPayload() *models.PageOfUser {
+func (o *GetAllUIUsersUsingGETOK) GetPayload() *models.PageOfUser {
 	return o.Payload
 }
 
-func (o *GETAllUIUsersUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetAllUIUsersUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfUser)
 

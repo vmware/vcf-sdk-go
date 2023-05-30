@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETClustersParams creates a new GETClustersParams object,
+// NewGetClustersParams creates a new GetClustersParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETClustersParams() *GETClustersParams {
-	return &GETClustersParams{
+func NewGetClustersParams() *GetClustersParams {
+	return &GetClustersParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETClustersParamsWithTimeout creates a new GETClustersParams object
+// NewGetClustersParamsWithTimeout creates a new GetClustersParams object
 // with the ability to set a timeout on a request.
-func NewGETClustersParamsWithTimeout(timeout time.Duration) *GETClustersParams {
-	return &GETClustersParams{
+func NewGetClustersParamsWithTimeout(timeout time.Duration) *GetClustersParams {
+	return &GetClustersParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETClustersParamsWithContext creates a new GETClustersParams object
+// NewGetClustersParamsWithContext creates a new GetClustersParams object
 // with the ability to set a context for a request.
-func NewGETClustersParamsWithContext(ctx context.Context) *GETClustersParams {
-	return &GETClustersParams{
+func NewGetClustersParamsWithContext(ctx context.Context) *GetClustersParams {
+	return &GetClustersParams{
 		Context: ctx,
 	}
 }
 
-// NewGETClustersParamsWithHTTPClient creates a new GETClustersParams object
+// NewGetClustersParamsWithHTTPClient creates a new GetClustersParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETClustersParamsWithHTTPClient(client *http.Client) *GETClustersParams {
-	return &GETClustersParams{
+func NewGetClustersParamsWithHTTPClient(client *http.Client) *GetClustersParams {
+	return &GetClustersParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETClustersParams contains all the parameters to send to the API endpoint
+GetClustersParams contains all the parameters to send to the API endpoint
 
 	for the get clusters operation.
 
 	Typically these are written to a http.Request.
 */
-type GETClustersParams struct {
+type GetClustersParams struct {
 
 	/* IsStretched.
 
@@ -79,7 +79,7 @@ type GETClustersParams struct {
 // WithDefaults hydrates default values in the get clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClustersParams) WithDefaults() *GETClustersParams {
+func (o *GetClustersParams) WithDefaults() *GetClustersParams {
 	o.SetDefaults()
 	return o
 }
@@ -87,56 +87,56 @@ func (o *GETClustersParams) WithDefaults() *GETClustersParams {
 // SetDefaults hydrates default values in the get clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClustersParams) SetDefaults() {
+func (o *GetClustersParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get clusters params
-func (o *GETClustersParams) WithTimeout(timeout time.Duration) *GETClustersParams {
+func (o *GetClustersParams) WithTimeout(timeout time.Duration) *GetClustersParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get clusters params
-func (o *GETClustersParams) SetTimeout(timeout time.Duration) {
+func (o *GetClustersParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get clusters params
-func (o *GETClustersParams) WithContext(ctx context.Context) *GETClustersParams {
+func (o *GetClustersParams) WithContext(ctx context.Context) *GetClustersParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get clusters params
-func (o *GETClustersParams) SetContext(ctx context.Context) {
+func (o *GetClustersParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get clusters params
-func (o *GETClustersParams) WithHTTPClient(client *http.Client) *GETClustersParams {
+func (o *GetClustersParams) WithHTTPClient(client *http.Client) *GetClustersParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get clusters params
-func (o *GETClustersParams) SetHTTPClient(client *http.Client) {
+func (o *GetClustersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithIsStretched adds the isStretched to the get clusters params
-func (o *GETClustersParams) WithIsStretched(isStretched *bool) *GETClustersParams {
+func (o *GetClustersParams) WithIsStretched(isStretched *bool) *GetClustersParams {
 	o.SetIsStretched(isStretched)
 	return o
 }
 
 // SetIsStretched adds the isStretched to the get clusters params
-func (o *GETClustersParams) SetIsStretched(isStretched *bool) {
+func (o *GetClustersParams) SetIsStretched(isStretched *bool) {
 	o.IsStretched = isStretched
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

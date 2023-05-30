@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETValidationOfVasaProviderParams creates a new GETValidationOfVasaProviderParams object,
+// NewGetValidationOfVasaProviderParams creates a new GetValidationOfVasaProviderParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETValidationOfVasaProviderParams() *GETValidationOfVasaProviderParams {
-	return &GETValidationOfVasaProviderParams{
+func NewGetValidationOfVasaProviderParams() *GetValidationOfVasaProviderParams {
+	return &GetValidationOfVasaProviderParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETValidationOfVasaProviderParamsWithTimeout creates a new GETValidationOfVasaProviderParams object
+// NewGetValidationOfVasaProviderParamsWithTimeout creates a new GetValidationOfVasaProviderParams object
 // with the ability to set a timeout on a request.
-func NewGETValidationOfVasaProviderParamsWithTimeout(timeout time.Duration) *GETValidationOfVasaProviderParams {
-	return &GETValidationOfVasaProviderParams{
+func NewGetValidationOfVasaProviderParamsWithTimeout(timeout time.Duration) *GetValidationOfVasaProviderParams {
+	return &GetValidationOfVasaProviderParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETValidationOfVasaProviderParamsWithContext creates a new GETValidationOfVasaProviderParams object
+// NewGetValidationOfVasaProviderParamsWithContext creates a new GetValidationOfVasaProviderParams object
 // with the ability to set a context for a request.
-func NewGETValidationOfVasaProviderParamsWithContext(ctx context.Context) *GETValidationOfVasaProviderParams {
-	return &GETValidationOfVasaProviderParams{
+func NewGetValidationOfVasaProviderParamsWithContext(ctx context.Context) *GetValidationOfVasaProviderParams {
+	return &GetValidationOfVasaProviderParams{
 		Context: ctx,
 	}
 }
 
-// NewGETValidationOfVasaProviderParamsWithHTTPClient creates a new GETValidationOfVasaProviderParams object
+// NewGetValidationOfVasaProviderParamsWithHTTPClient creates a new GetValidationOfVasaProviderParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETValidationOfVasaProviderParamsWithHTTPClient(client *http.Client) *GETValidationOfVasaProviderParams {
-	return &GETValidationOfVasaProviderParams{
+func NewGetValidationOfVasaProviderParamsWithHTTPClient(client *http.Client) *GetValidationOfVasaProviderParams {
+	return &GetValidationOfVasaProviderParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETValidationOfVasaProviderParams contains all the parameters to send to the API endpoint
+GetValidationOfVasaProviderParams contains all the parameters to send to the API endpoint
 
 	for the get validation of vasa provider operation.
 
 	Typically these are written to a http.Request.
 */
-type GETValidationOfVasaProviderParams struct {
+type GetValidationOfVasaProviderParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETValidationOfVasaProviderParams struct {
 // WithDefaults hydrates default values in the get validation of vasa provider params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationOfVasaProviderParams) WithDefaults() *GETValidationOfVasaProviderParams {
+func (o *GetValidationOfVasaProviderParams) WithDefaults() *GetValidationOfVasaProviderParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETValidationOfVasaProviderParams) WithDefaults() *GETValidationOfVasaP
 // SetDefaults hydrates default values in the get validation of vasa provider params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETValidationOfVasaProviderParams) SetDefaults() {
+func (o *GetValidationOfVasaProviderParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) WithTimeout(timeout time.Duration) *GETValidationOfVasaProviderParams {
+func (o *GetValidationOfVasaProviderParams) WithTimeout(timeout time.Duration) *GetValidationOfVasaProviderParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) SetTimeout(timeout time.Duration) {
+func (o *GetValidationOfVasaProviderParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) WithContext(ctx context.Context) *GETValidationOfVasaProviderParams {
+func (o *GetValidationOfVasaProviderParams) WithContext(ctx context.Context) *GetValidationOfVasaProviderParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) SetContext(ctx context.Context) {
+func (o *GetValidationOfVasaProviderParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) WithHTTPClient(client *http.Client) *GETValidationOfVasaProviderParams {
+func (o *GetValidationOfVasaProviderParams) WithHTTPClient(client *http.Client) *GetValidationOfVasaProviderParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) SetHTTPClient(client *http.Client) {
+func (o *GetValidationOfVasaProviderParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) WithID(id string) *GETValidationOfVasaProviderParams {
+func (o *GetValidationOfVasaProviderParams) WithID(id string) *GetValidationOfVasaProviderParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get validation of vasa provider params
-func (o *GETValidationOfVasaProviderParams) SetID(id string) {
+func (o *GetValidationOfVasaProviderParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETValidationOfVasaProviderParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetValidationOfVasaProviderParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

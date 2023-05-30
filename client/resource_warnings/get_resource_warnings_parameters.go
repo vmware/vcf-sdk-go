@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETResourceWarningsParams creates a new GETResourceWarningsParams object,
+// NewGetResourceWarningsParams creates a new GetResourceWarningsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETResourceWarningsParams() *GETResourceWarningsParams {
-	return &GETResourceWarningsParams{
+func NewGetResourceWarningsParams() *GetResourceWarningsParams {
+	return &GetResourceWarningsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETResourceWarningsParamsWithTimeout creates a new GETResourceWarningsParams object
+// NewGetResourceWarningsParamsWithTimeout creates a new GetResourceWarningsParams object
 // with the ability to set a timeout on a request.
-func NewGETResourceWarningsParamsWithTimeout(timeout time.Duration) *GETResourceWarningsParams {
-	return &GETResourceWarningsParams{
+func NewGetResourceWarningsParamsWithTimeout(timeout time.Duration) *GetResourceWarningsParams {
+	return &GetResourceWarningsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETResourceWarningsParamsWithContext creates a new GETResourceWarningsParams object
+// NewGetResourceWarningsParamsWithContext creates a new GetResourceWarningsParams object
 // with the ability to set a context for a request.
-func NewGETResourceWarningsParamsWithContext(ctx context.Context) *GETResourceWarningsParams {
-	return &GETResourceWarningsParams{
+func NewGetResourceWarningsParamsWithContext(ctx context.Context) *GetResourceWarningsParams {
+	return &GetResourceWarningsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETResourceWarningsParamsWithHTTPClient creates a new GETResourceWarningsParams object
+// NewGetResourceWarningsParamsWithHTTPClient creates a new GetResourceWarningsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETResourceWarningsParamsWithHTTPClient(client *http.Client) *GETResourceWarningsParams {
-	return &GETResourceWarningsParams{
+func NewGetResourceWarningsParamsWithHTTPClient(client *http.Client) *GetResourceWarningsParams {
+	return &GetResourceWarningsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETResourceWarningsParams contains all the parameters to send to the API endpoint
+GetResourceWarningsParams contains all the parameters to send to the API endpoint
 
 	for the get resource warnings operation.
 
 	Typically these are written to a http.Request.
 */
-type GETResourceWarningsParams struct {
+type GetResourceWarningsParams struct {
 
 	/* ResourceIds.
 
@@ -91,7 +91,7 @@ type GETResourceWarningsParams struct {
 // WithDefaults hydrates default values in the get resource warnings params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourceWarningsParams) WithDefaults() *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithDefaults() *GetResourceWarningsParams {
 	o.SetDefaults()
 	return o
 }
@@ -99,78 +99,78 @@ func (o *GETResourceWarningsParams) WithDefaults() *GETResourceWarningsParams {
 // SetDefaults hydrates default values in the get resource warnings params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourceWarningsParams) SetDefaults() {
+func (o *GetResourceWarningsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get resource warnings params
-func (o *GETResourceWarningsParams) WithTimeout(timeout time.Duration) *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithTimeout(timeout time.Duration) *GetResourceWarningsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get resource warnings params
-func (o *GETResourceWarningsParams) SetTimeout(timeout time.Duration) {
+func (o *GetResourceWarningsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get resource warnings params
-func (o *GETResourceWarningsParams) WithContext(ctx context.Context) *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithContext(ctx context.Context) *GetResourceWarningsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get resource warnings params
-func (o *GETResourceWarningsParams) SetContext(ctx context.Context) {
+func (o *GetResourceWarningsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get resource warnings params
-func (o *GETResourceWarningsParams) WithHTTPClient(client *http.Client) *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithHTTPClient(client *http.Client) *GetResourceWarningsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get resource warnings params
-func (o *GETResourceWarningsParams) SetHTTPClient(client *http.Client) {
+func (o *GetResourceWarningsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithResourceIds adds the resourceIds to the get resource warnings params
-func (o *GETResourceWarningsParams) WithResourceIds(resourceIds []string) *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithResourceIds(resourceIds []string) *GetResourceWarningsParams {
 	o.SetResourceIds(resourceIds)
 	return o
 }
 
 // SetResourceIds adds the resourceIds to the get resource warnings params
-func (o *GETResourceWarningsParams) SetResourceIds(resourceIds []string) {
+func (o *GetResourceWarningsParams) SetResourceIds(resourceIds []string) {
 	o.ResourceIds = resourceIds
 }
 
 // WithResourceNames adds the resourceNames to the get resource warnings params
-func (o *GETResourceWarningsParams) WithResourceNames(resourceNames []string) *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithResourceNames(resourceNames []string) *GetResourceWarningsParams {
 	o.SetResourceNames(resourceNames)
 	return o
 }
 
 // SetResourceNames adds the resourceNames to the get resource warnings params
-func (o *GETResourceWarningsParams) SetResourceNames(resourceNames []string) {
+func (o *GetResourceWarningsParams) SetResourceNames(resourceNames []string) {
 	o.ResourceNames = resourceNames
 }
 
 // WithResourceType adds the resourceType to the get resource warnings params
-func (o *GETResourceWarningsParams) WithResourceType(resourceType *string) *GETResourceWarningsParams {
+func (o *GetResourceWarningsParams) WithResourceType(resourceType *string) *GetResourceWarningsParams {
 	o.SetResourceType(resourceType)
 	return o
 }
 
 // SetResourceType adds the resourceType to the get resource warnings params
-func (o *GETResourceWarningsParams) SetResourceType(resourceType *string) {
+func (o *GetResourceWarningsParams) SetResourceType(resourceType *string) {
 	o.ResourceType = resourceType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETResourceWarningsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetResourceWarningsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
@@ -222,8 +222,8 @@ func (o *GETResourceWarningsParams) WriteToRequest(r runtime.ClientRequest, reg 
 	return nil
 }
 
-// bindParamGETResourceWarnings binds the parameter resourceIds
-func (o *GETResourceWarningsParams) bindParamResourceIds(formats strfmt.Registry) []string {
+// bindParamGetResourceWarnings binds the parameter resourceIds
+func (o *GetResourceWarningsParams) bindParamResourceIds(formats strfmt.Registry) []string {
 	resourceIdsIR := o.ResourceIds
 
 	var resourceIdsIC []string
@@ -239,8 +239,8 @@ func (o *GETResourceWarningsParams) bindParamResourceIds(formats strfmt.Registry
 	return resourceIdsIS
 }
 
-// bindParamGETResourceWarnings binds the parameter resourceNames
-func (o *GETResourceWarningsParams) bindParamResourceNames(formats strfmt.Registry) []string {
+// bindParamGetResourceWarnings binds the parameter resourceNames
+func (o *GetResourceWarningsParams) bindParamResourceNames(formats strfmt.Registry) []string {
 	resourceNamesIR := o.ResourceNames
 
 	var resourceNamesIC []string

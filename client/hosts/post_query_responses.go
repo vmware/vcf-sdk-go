@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// POSTQueryReader is a Reader for the POSTQuery structure.
-type POSTQueryReader struct {
+// PostQueryReader is a Reader for the PostQuery structure.
+type PostQueryReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *POSTQueryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PostQueryReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewPOSTQueryOK()
+		result := NewPostQueryOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewPOSTQueryBadRequest()
+		result := NewPostQueryBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewPOSTQueryInternalServerError()
+		result := NewPostQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *POSTQueryReader) ReadResponse(response runtime.ClientResponse, consumer
 	}
 }
 
-// NewPOSTQueryOK creates a POSTQueryOK with default headers values
-func NewPOSTQueryOK() *POSTQueryOK {
-	return &POSTQueryOK{}
+// NewPostQueryOK creates a PostQueryOK with default headers values
+func NewPostQueryOK() *PostQueryOK {
+	return &PostQueryOK{}
 }
 
 /*
-POSTQueryOK describes a response with status code 200, with default header values.
+PostQueryOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type POSTQueryOK struct {
+type PostQueryOK struct {
 	Payload *models.HostQueryResponse
 }
 
 // IsSuccess returns true when this post query o k response has a 2xx status code
-func (o *POSTQueryOK) IsSuccess() bool {
+func (o *PostQueryOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this post query o k response has a 3xx status code
-func (o *POSTQueryOK) IsRedirect() bool {
+func (o *PostQueryOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post query o k response has a 4xx status code
-func (o *POSTQueryOK) IsClientError() bool {
+func (o *PostQueryOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this post query o k response has a 5xx status code
-func (o *POSTQueryOK) IsServerError() bool {
+func (o *PostQueryOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this post query o k response a status code equal to that given
-func (o *POSTQueryOK) IsCode(code int) bool {
+func (o *PostQueryOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *POSTQueryOK) Error() string {
+func (o *PostQueryOK) Error() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *POSTQueryOK) String() string {
+func (o *PostQueryOK) String() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *POSTQueryOK) GetPayload() *models.HostQueryResponse {
+func (o *PostQueryOK) GetPayload() *models.HostQueryResponse {
 	return o.Payload
 }
 
-func (o *POSTQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HostQueryResponse)
 
@@ -112,58 +112,58 @@ func (o *POSTQueryOK) readResponse(response runtime.ClientResponse, consumer run
 	return nil
 }
 
-// NewPOSTQueryBadRequest creates a POSTQueryBadRequest with default headers values
-func NewPOSTQueryBadRequest() *POSTQueryBadRequest {
-	return &POSTQueryBadRequest{}
+// NewPostQueryBadRequest creates a PostQueryBadRequest with default headers values
+func NewPostQueryBadRequest() *PostQueryBadRequest {
+	return &PostQueryBadRequest{}
 }
 
 /*
-POSTQueryBadRequest describes a response with status code 400, with default header values.
+PostQueryBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type POSTQueryBadRequest struct {
+type PostQueryBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this post query bad request response has a 2xx status code
-func (o *POSTQueryBadRequest) IsSuccess() bool {
+func (o *PostQueryBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this post query bad request response has a 3xx status code
-func (o *POSTQueryBadRequest) IsRedirect() bool {
+func (o *PostQueryBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post query bad request response has a 4xx status code
-func (o *POSTQueryBadRequest) IsClientError() bool {
+func (o *PostQueryBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this post query bad request response has a 5xx status code
-func (o *POSTQueryBadRequest) IsServerError() bool {
+func (o *PostQueryBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this post query bad request response a status code equal to that given
-func (o *POSTQueryBadRequest) IsCode(code int) bool {
+func (o *PostQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *POSTQueryBadRequest) Error() string {
+func (o *PostQueryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *POSTQueryBadRequest) String() string {
+func (o *PostQueryBadRequest) String() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *POSTQueryBadRequest) GetPayload() *models.Error {
+func (o *PostQueryBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *POSTQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *POSTQueryBadRequest) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-// NewPOSTQueryInternalServerError creates a POSTQueryInternalServerError with default headers values
-func NewPOSTQueryInternalServerError() *POSTQueryInternalServerError {
-	return &POSTQueryInternalServerError{}
+// NewPostQueryInternalServerError creates a PostQueryInternalServerError with default headers values
+func NewPostQueryInternalServerError() *PostQueryInternalServerError {
+	return &PostQueryInternalServerError{}
 }
 
 /*
-POSTQueryInternalServerError describes a response with status code 500, with default header values.
+PostQueryInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type POSTQueryInternalServerError struct {
+type PostQueryInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this post query internal server error response has a 2xx status code
-func (o *POSTQueryInternalServerError) IsSuccess() bool {
+func (o *PostQueryInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this post query internal server error response has a 3xx status code
-func (o *POSTQueryInternalServerError) IsRedirect() bool {
+func (o *PostQueryInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this post query internal server error response has a 4xx status code
-func (o *POSTQueryInternalServerError) IsClientError() bool {
+func (o *PostQueryInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this post query internal server error response has a 5xx status code
-func (o *POSTQueryInternalServerError) IsServerError() bool {
+func (o *PostQueryInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this post query internal server error response a status code equal to that given
-func (o *POSTQueryInternalServerError) IsCode(code int) bool {
+func (o *PostQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *POSTQueryInternalServerError) Error() string {
+func (o *PostQueryInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *POSTQueryInternalServerError) String() string {
+func (o *PostQueryInternalServerError) String() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *POSTQueryInternalServerError) GetPayload() *models.Error {
+func (o *PostQueryInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *POSTQueryInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PostQueryInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

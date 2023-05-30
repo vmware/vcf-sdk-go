@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETValidationForCommissionHostsReader is a Reader for the GETValidationForCommissionHosts structure.
-type GETValidationForCommissionHostsReader struct {
+// GetValidationForCommissionHostsReader is a Reader for the GetValidationForCommissionHosts structure.
+type GetValidationForCommissionHostsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETValidationForCommissionHostsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetValidationForCommissionHostsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETValidationForCommissionHostsOK()
+		result := NewGetValidationForCommissionHostsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETValidationForCommissionHostsBadRequest()
+		result := NewGetValidationForCommissionHostsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETValidationForCommissionHostsInternalServerError()
+		result := NewGetValidationForCommissionHostsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETValidationForCommissionHostsReader) ReadResponse(response runtime.Cl
 	}
 }
 
-// NewGETValidationForCommissionHostsOK creates a GETValidationForCommissionHostsOK with default headers values
-func NewGETValidationForCommissionHostsOK() *GETValidationForCommissionHostsOK {
-	return &GETValidationForCommissionHostsOK{}
+// NewGetValidationForCommissionHostsOK creates a GetValidationForCommissionHostsOK with default headers values
+func NewGetValidationForCommissionHostsOK() *GetValidationForCommissionHostsOK {
+	return &GetValidationForCommissionHostsOK{}
 }
 
 /*
-GETValidationForCommissionHostsOK describes a response with status code 200, with default header values.
+GetValidationForCommissionHostsOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETValidationForCommissionHostsOK struct {
+type GetValidationForCommissionHostsOK struct {
 	Payload *models.Validation
 }
 
 // IsSuccess returns true when this get validation for commission hosts o k response has a 2xx status code
-func (o *GETValidationForCommissionHostsOK) IsSuccess() bool {
+func (o *GetValidationForCommissionHostsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get validation for commission hosts o k response has a 3xx status code
-func (o *GETValidationForCommissionHostsOK) IsRedirect() bool {
+func (o *GetValidationForCommissionHostsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation for commission hosts o k response has a 4xx status code
-func (o *GETValidationForCommissionHostsOK) IsClientError() bool {
+func (o *GetValidationForCommissionHostsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation for commission hosts o k response has a 5xx status code
-func (o *GETValidationForCommissionHostsOK) IsServerError() bool {
+func (o *GetValidationForCommissionHostsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation for commission hosts o k response a status code equal to that given
-func (o *GETValidationForCommissionHostsOK) IsCode(code int) bool {
+func (o *GetValidationForCommissionHostsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETValidationForCommissionHostsOK) Error() string {
+func (o *GetValidationForCommissionHostsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/validations/{id}][%d] getValidationForCommissionHostsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationForCommissionHostsOK) String() string {
+func (o *GetValidationForCommissionHostsOK) String() string {
 	return fmt.Sprintf("[GET /v1/hosts/validations/{id}][%d] getValidationForCommissionHostsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationForCommissionHostsOK) GetPayload() *models.Validation {
+func (o *GetValidationForCommissionHostsOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETValidationForCommissionHostsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationForCommissionHostsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 
@@ -112,58 +112,58 @@ func (o *GETValidationForCommissionHostsOK) readResponse(response runtime.Client
 	return nil
 }
 
-// NewGETValidationForCommissionHostsBadRequest creates a GETValidationForCommissionHostsBadRequest with default headers values
-func NewGETValidationForCommissionHostsBadRequest() *GETValidationForCommissionHostsBadRequest {
-	return &GETValidationForCommissionHostsBadRequest{}
+// NewGetValidationForCommissionHostsBadRequest creates a GetValidationForCommissionHostsBadRequest with default headers values
+func NewGetValidationForCommissionHostsBadRequest() *GetValidationForCommissionHostsBadRequest {
+	return &GetValidationForCommissionHostsBadRequest{}
 }
 
 /*
-GETValidationForCommissionHostsBadRequest describes a response with status code 400, with default header values.
+GetValidationForCommissionHostsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETValidationForCommissionHostsBadRequest struct {
+type GetValidationForCommissionHostsBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get validation for commission hosts bad request response has a 2xx status code
-func (o *GETValidationForCommissionHostsBadRequest) IsSuccess() bool {
+func (o *GetValidationForCommissionHostsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation for commission hosts bad request response has a 3xx status code
-func (o *GETValidationForCommissionHostsBadRequest) IsRedirect() bool {
+func (o *GetValidationForCommissionHostsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation for commission hosts bad request response has a 4xx status code
-func (o *GETValidationForCommissionHostsBadRequest) IsClientError() bool {
+func (o *GetValidationForCommissionHostsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get validation for commission hosts bad request response has a 5xx status code
-func (o *GETValidationForCommissionHostsBadRequest) IsServerError() bool {
+func (o *GetValidationForCommissionHostsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation for commission hosts bad request response a status code equal to that given
-func (o *GETValidationForCommissionHostsBadRequest) IsCode(code int) bool {
+func (o *GetValidationForCommissionHostsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETValidationForCommissionHostsBadRequest) Error() string {
+func (o *GetValidationForCommissionHostsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/validations/{id}][%d] getValidationForCommissionHostsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationForCommissionHostsBadRequest) String() string {
+func (o *GetValidationForCommissionHostsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/hosts/validations/{id}][%d] getValidationForCommissionHostsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationForCommissionHostsBadRequest) GetPayload() *models.Error {
+func (o *GetValidationForCommissionHostsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETValidationForCommissionHostsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationForCommissionHostsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,53 +175,53 @@ func (o *GETValidationForCommissionHostsBadRequest) readResponse(response runtim
 	return nil
 }
 
-// NewGETValidationForCommissionHostsInternalServerError creates a GETValidationForCommissionHostsInternalServerError with default headers values
-func NewGETValidationForCommissionHostsInternalServerError() *GETValidationForCommissionHostsInternalServerError {
-	return &GETValidationForCommissionHostsInternalServerError{}
+// NewGetValidationForCommissionHostsInternalServerError creates a GetValidationForCommissionHostsInternalServerError with default headers values
+func NewGetValidationForCommissionHostsInternalServerError() *GetValidationForCommissionHostsInternalServerError {
+	return &GetValidationForCommissionHostsInternalServerError{}
 }
 
 /*
-GETValidationForCommissionHostsInternalServerError describes a response with status code 500, with default header values.
+GetValidationForCommissionHostsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETValidationForCommissionHostsInternalServerError struct {
+type GetValidationForCommissionHostsInternalServerError struct {
 }
 
 // IsSuccess returns true when this get validation for commission hosts internal server error response has a 2xx status code
-func (o *GETValidationForCommissionHostsInternalServerError) IsSuccess() bool {
+func (o *GetValidationForCommissionHostsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation for commission hosts internal server error response has a 3xx status code
-func (o *GETValidationForCommissionHostsInternalServerError) IsRedirect() bool {
+func (o *GetValidationForCommissionHostsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation for commission hosts internal server error response has a 4xx status code
-func (o *GETValidationForCommissionHostsInternalServerError) IsClientError() bool {
+func (o *GetValidationForCommissionHostsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation for commission hosts internal server error response has a 5xx status code
-func (o *GETValidationForCommissionHostsInternalServerError) IsServerError() bool {
+func (o *GetValidationForCommissionHostsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get validation for commission hosts internal server error response a status code equal to that given
-func (o *GETValidationForCommissionHostsInternalServerError) IsCode(code int) bool {
+func (o *GetValidationForCommissionHostsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETValidationForCommissionHostsInternalServerError) Error() string {
+func (o *GetValidationForCommissionHostsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/validations/{id}][%d] getValidationForCommissionHostsInternalServerError ", 500)
 }
 
-func (o *GETValidationForCommissionHostsInternalServerError) String() string {
+func (o *GetValidationForCommissionHostsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/hosts/validations/{id}][%d] getValidationForCommissionHostsInternalServerError ", 500)
 }
 
-func (o *GETValidationForCommissionHostsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationForCommissionHostsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

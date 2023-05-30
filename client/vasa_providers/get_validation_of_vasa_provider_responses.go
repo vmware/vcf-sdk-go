@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETValidationOfVasaProviderReader is a Reader for the GETValidationOfVasaProvider structure.
-type GETValidationOfVasaProviderReader struct {
+// GetValidationOfVasaProviderReader is a Reader for the GetValidationOfVasaProvider structure.
+type GetValidationOfVasaProviderReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETValidationOfVasaProviderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetValidationOfVasaProviderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETValidationOfVasaProviderOK()
+		result := NewGetValidationOfVasaProviderOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETValidationOfVasaProviderBadRequest()
+		result := NewGetValidationOfVasaProviderBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETValidationOfVasaProviderNotFound()
+		result := NewGetValidationOfVasaProviderNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETValidationOfVasaProviderInternalServerError()
+		result := NewGetValidationOfVasaProviderInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETValidationOfVasaProviderReader) ReadResponse(response runtime.Client
 	}
 }
 
-// NewGETValidationOfVasaProviderOK creates a GETValidationOfVasaProviderOK with default headers values
-func NewGETValidationOfVasaProviderOK() *GETValidationOfVasaProviderOK {
-	return &GETValidationOfVasaProviderOK{}
+// NewGetValidationOfVasaProviderOK creates a GetValidationOfVasaProviderOK with default headers values
+func NewGetValidationOfVasaProviderOK() *GetValidationOfVasaProviderOK {
+	return &GetValidationOfVasaProviderOK{}
 }
 
 /*
-GETValidationOfVasaProviderOK describes a response with status code 200, with default header values.
+GetValidationOfVasaProviderOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETValidationOfVasaProviderOK struct {
+type GetValidationOfVasaProviderOK struct {
 	Payload *models.Validation
 }
 
 // IsSuccess returns true when this get validation of vasa provider o k response has a 2xx status code
-func (o *GETValidationOfVasaProviderOK) IsSuccess() bool {
+func (o *GetValidationOfVasaProviderOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get validation of vasa provider o k response has a 3xx status code
-func (o *GETValidationOfVasaProviderOK) IsRedirect() bool {
+func (o *GetValidationOfVasaProviderOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of vasa provider o k response has a 4xx status code
-func (o *GETValidationOfVasaProviderOK) IsClientError() bool {
+func (o *GetValidationOfVasaProviderOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation of vasa provider o k response has a 5xx status code
-func (o *GETValidationOfVasaProviderOK) IsServerError() bool {
+func (o *GetValidationOfVasaProviderOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation of vasa provider o k response a status code equal to that given
-func (o *GETValidationOfVasaProviderOK) IsCode(code int) bool {
+func (o *GetValidationOfVasaProviderOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETValidationOfVasaProviderOK) Error() string {
+func (o *GetValidationOfVasaProviderOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationOfVasaProviderOK) String() string {
+func (o *GetValidationOfVasaProviderOK) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationOfVasaProviderOK) GetPayload() *models.Validation {
+func (o *GetValidationOfVasaProviderOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETValidationOfVasaProviderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfVasaProviderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 
@@ -118,58 +118,58 @@ func (o *GETValidationOfVasaProviderOK) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewGETValidationOfVasaProviderBadRequest creates a GETValidationOfVasaProviderBadRequest with default headers values
-func NewGETValidationOfVasaProviderBadRequest() *GETValidationOfVasaProviderBadRequest {
-	return &GETValidationOfVasaProviderBadRequest{}
+// NewGetValidationOfVasaProviderBadRequest creates a GetValidationOfVasaProviderBadRequest with default headers values
+func NewGetValidationOfVasaProviderBadRequest() *GetValidationOfVasaProviderBadRequest {
+	return &GetValidationOfVasaProviderBadRequest{}
 }
 
 /*
-GETValidationOfVasaProviderBadRequest describes a response with status code 400, with default header values.
+GetValidationOfVasaProviderBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETValidationOfVasaProviderBadRequest struct {
+type GetValidationOfVasaProviderBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get validation of vasa provider bad request response has a 2xx status code
-func (o *GETValidationOfVasaProviderBadRequest) IsSuccess() bool {
+func (o *GetValidationOfVasaProviderBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation of vasa provider bad request response has a 3xx status code
-func (o *GETValidationOfVasaProviderBadRequest) IsRedirect() bool {
+func (o *GetValidationOfVasaProviderBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of vasa provider bad request response has a 4xx status code
-func (o *GETValidationOfVasaProviderBadRequest) IsClientError() bool {
+func (o *GetValidationOfVasaProviderBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get validation of vasa provider bad request response has a 5xx status code
-func (o *GETValidationOfVasaProviderBadRequest) IsServerError() bool {
+func (o *GetValidationOfVasaProviderBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation of vasa provider bad request response a status code equal to that given
-func (o *GETValidationOfVasaProviderBadRequest) IsCode(code int) bool {
+func (o *GetValidationOfVasaProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETValidationOfVasaProviderBadRequest) Error() string {
+func (o *GetValidationOfVasaProviderBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationOfVasaProviderBadRequest) String() string {
+func (o *GetValidationOfVasaProviderBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETValidationOfVasaProviderBadRequest) GetPayload() *models.Error {
+func (o *GetValidationOfVasaProviderBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETValidationOfVasaProviderBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfVasaProviderBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -181,58 +181,58 @@ func (o *GETValidationOfVasaProviderBadRequest) readResponse(response runtime.Cl
 	return nil
 }
 
-// NewGETValidationOfVasaProviderNotFound creates a GETValidationOfVasaProviderNotFound with default headers values
-func NewGETValidationOfVasaProviderNotFound() *GETValidationOfVasaProviderNotFound {
-	return &GETValidationOfVasaProviderNotFound{}
+// NewGetValidationOfVasaProviderNotFound creates a GetValidationOfVasaProviderNotFound with default headers values
+func NewGetValidationOfVasaProviderNotFound() *GetValidationOfVasaProviderNotFound {
+	return &GetValidationOfVasaProviderNotFound{}
 }
 
 /*
-GETValidationOfVasaProviderNotFound describes a response with status code 404, with default header values.
+GetValidationOfVasaProviderNotFound describes a response with status code 404, with default header values.
 
 Validation ID not found
 */
-type GETValidationOfVasaProviderNotFound struct {
+type GetValidationOfVasaProviderNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get validation of vasa provider not found response has a 2xx status code
-func (o *GETValidationOfVasaProviderNotFound) IsSuccess() bool {
+func (o *GetValidationOfVasaProviderNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation of vasa provider not found response has a 3xx status code
-func (o *GETValidationOfVasaProviderNotFound) IsRedirect() bool {
+func (o *GetValidationOfVasaProviderNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of vasa provider not found response has a 4xx status code
-func (o *GETValidationOfVasaProviderNotFound) IsClientError() bool {
+func (o *GetValidationOfVasaProviderNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get validation of vasa provider not found response has a 5xx status code
-func (o *GETValidationOfVasaProviderNotFound) IsServerError() bool {
+func (o *GetValidationOfVasaProviderNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get validation of vasa provider not found response a status code equal to that given
-func (o *GETValidationOfVasaProviderNotFound) IsCode(code int) bool {
+func (o *GetValidationOfVasaProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETValidationOfVasaProviderNotFound) Error() string {
+func (o *GetValidationOfVasaProviderNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETValidationOfVasaProviderNotFound) String() string {
+func (o *GetValidationOfVasaProviderNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETValidationOfVasaProviderNotFound) GetPayload() *models.Error {
+func (o *GetValidationOfVasaProviderNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETValidationOfVasaProviderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfVasaProviderNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -244,53 +244,53 @@ func (o *GETValidationOfVasaProviderNotFound) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETValidationOfVasaProviderInternalServerError creates a GETValidationOfVasaProviderInternalServerError with default headers values
-func NewGETValidationOfVasaProviderInternalServerError() *GETValidationOfVasaProviderInternalServerError {
-	return &GETValidationOfVasaProviderInternalServerError{}
+// NewGetValidationOfVasaProviderInternalServerError creates a GetValidationOfVasaProviderInternalServerError with default headers values
+func NewGetValidationOfVasaProviderInternalServerError() *GetValidationOfVasaProviderInternalServerError {
+	return &GetValidationOfVasaProviderInternalServerError{}
 }
 
 /*
-GETValidationOfVasaProviderInternalServerError describes a response with status code 500, with default header values.
+GetValidationOfVasaProviderInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETValidationOfVasaProviderInternalServerError struct {
+type GetValidationOfVasaProviderInternalServerError struct {
 }
 
 // IsSuccess returns true when this get validation of vasa provider internal server error response has a 2xx status code
-func (o *GETValidationOfVasaProviderInternalServerError) IsSuccess() bool {
+func (o *GetValidationOfVasaProviderInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get validation of vasa provider internal server error response has a 3xx status code
-func (o *GETValidationOfVasaProviderInternalServerError) IsRedirect() bool {
+func (o *GetValidationOfVasaProviderInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get validation of vasa provider internal server error response has a 4xx status code
-func (o *GETValidationOfVasaProviderInternalServerError) IsClientError() bool {
+func (o *GetValidationOfVasaProviderInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get validation of vasa provider internal server error response has a 5xx status code
-func (o *GETValidationOfVasaProviderInternalServerError) IsServerError() bool {
+func (o *GetValidationOfVasaProviderInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get validation of vasa provider internal server error response a status code equal to that given
-func (o *GETValidationOfVasaProviderInternalServerError) IsCode(code int) bool {
+func (o *GetValidationOfVasaProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETValidationOfVasaProviderInternalServerError) Error() string {
+func (o *GetValidationOfVasaProviderInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderInternalServerError ", 500)
 }
 
-func (o *GETValidationOfVasaProviderInternalServerError) String() string {
+func (o *GetValidationOfVasaProviderInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/vasa-providers/validations/{id}][%d] getValidationOfVasaProviderInternalServerError ", 500)
 }
 
-func (o *GETValidationOfVasaProviderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationOfVasaProviderInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETProxyConfigurationReader is a Reader for the GETProxyConfiguration structure.
-type GETProxyConfigurationReader struct {
+// GetProxyConfigurationReader is a Reader for the GetProxyConfiguration structure.
+type GetProxyConfigurationReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETProxyConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetProxyConfigurationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETProxyConfigurationOK()
+		result := NewGetProxyConfigurationOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETProxyConfigurationBadRequest()
+		result := NewGetProxyConfigurationBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETProxyConfigurationInternalServerError()
+		result := NewGetProxyConfigurationInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETProxyConfigurationReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewGETProxyConfigurationOK creates a GETProxyConfigurationOK with default headers values
-func NewGETProxyConfigurationOK() *GETProxyConfigurationOK {
-	return &GETProxyConfigurationOK{}
+// NewGetProxyConfigurationOK creates a GetProxyConfigurationOK with default headers values
+func NewGetProxyConfigurationOK() *GetProxyConfigurationOK {
+	return &GetProxyConfigurationOK{}
 }
 
 /*
-GETProxyConfigurationOK describes a response with status code 200, with default header values.
+GetProxyConfigurationOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETProxyConfigurationOK struct {
+type GetProxyConfigurationOK struct {
 	Payload *models.ProxyConfiguration
 }
 
 // IsSuccess returns true when this get proxy configuration o k response has a 2xx status code
-func (o *GETProxyConfigurationOK) IsSuccess() bool {
+func (o *GetProxyConfigurationOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get proxy configuration o k response has a 3xx status code
-func (o *GETProxyConfigurationOK) IsRedirect() bool {
+func (o *GetProxyConfigurationOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get proxy configuration o k response has a 4xx status code
-func (o *GETProxyConfigurationOK) IsClientError() bool {
+func (o *GetProxyConfigurationOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get proxy configuration o k response has a 5xx status code
-func (o *GETProxyConfigurationOK) IsServerError() bool {
+func (o *GetProxyConfigurationOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get proxy configuration o k response a status code equal to that given
-func (o *GETProxyConfigurationOK) IsCode(code int) bool {
+func (o *GetProxyConfigurationOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETProxyConfigurationOK) Error() string {
+func (o *GetProxyConfigurationOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/proxy-configuration][%d] getProxyConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETProxyConfigurationOK) String() string {
+func (o *GetProxyConfigurationOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/proxy-configuration][%d] getProxyConfigurationOK  %+v", 200, o.Payload)
 }
 
-func (o *GETProxyConfigurationOK) GetPayload() *models.ProxyConfiguration {
+func (o *GetProxyConfigurationOK) GetPayload() *models.ProxyConfiguration {
 	return o.Payload
 }
 
-func (o *GETProxyConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetProxyConfigurationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProxyConfiguration)
 
@@ -112,58 +112,58 @@ func (o *GETProxyConfigurationOK) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETProxyConfigurationBadRequest creates a GETProxyConfigurationBadRequest with default headers values
-func NewGETProxyConfigurationBadRequest() *GETProxyConfigurationBadRequest {
-	return &GETProxyConfigurationBadRequest{}
+// NewGetProxyConfigurationBadRequest creates a GetProxyConfigurationBadRequest with default headers values
+func NewGetProxyConfigurationBadRequest() *GetProxyConfigurationBadRequest {
+	return &GetProxyConfigurationBadRequest{}
 }
 
 /*
-GETProxyConfigurationBadRequest describes a response with status code 400, with default header values.
+GetProxyConfigurationBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
-type GETProxyConfigurationBadRequest struct {
+type GetProxyConfigurationBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get proxy configuration bad request response has a 2xx status code
-func (o *GETProxyConfigurationBadRequest) IsSuccess() bool {
+func (o *GetProxyConfigurationBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get proxy configuration bad request response has a 3xx status code
-func (o *GETProxyConfigurationBadRequest) IsRedirect() bool {
+func (o *GetProxyConfigurationBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get proxy configuration bad request response has a 4xx status code
-func (o *GETProxyConfigurationBadRequest) IsClientError() bool {
+func (o *GetProxyConfigurationBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get proxy configuration bad request response has a 5xx status code
-func (o *GETProxyConfigurationBadRequest) IsServerError() bool {
+func (o *GetProxyConfigurationBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get proxy configuration bad request response a status code equal to that given
-func (o *GETProxyConfigurationBadRequest) IsCode(code int) bool {
+func (o *GetProxyConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETProxyConfigurationBadRequest) Error() string {
+func (o *GetProxyConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/proxy-configuration][%d] getProxyConfigurationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETProxyConfigurationBadRequest) String() string {
+func (o *GetProxyConfigurationBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/system/proxy-configuration][%d] getProxyConfigurationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETProxyConfigurationBadRequest) GetPayload() *models.Error {
+func (o *GetProxyConfigurationBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETProxyConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetProxyConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,53 +175,53 @@ func (o *GETProxyConfigurationBadRequest) readResponse(response runtime.ClientRe
 	return nil
 }
 
-// NewGETProxyConfigurationInternalServerError creates a GETProxyConfigurationInternalServerError with default headers values
-func NewGETProxyConfigurationInternalServerError() *GETProxyConfigurationInternalServerError {
-	return &GETProxyConfigurationInternalServerError{}
+// NewGetProxyConfigurationInternalServerError creates a GetProxyConfigurationInternalServerError with default headers values
+func NewGetProxyConfigurationInternalServerError() *GetProxyConfigurationInternalServerError {
+	return &GetProxyConfigurationInternalServerError{}
 }
 
 /*
-GETProxyConfigurationInternalServerError describes a response with status code 500, with default header values.
+GetProxyConfigurationInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETProxyConfigurationInternalServerError struct {
+type GetProxyConfigurationInternalServerError struct {
 }
 
 // IsSuccess returns true when this get proxy configuration internal server error response has a 2xx status code
-func (o *GETProxyConfigurationInternalServerError) IsSuccess() bool {
+func (o *GetProxyConfigurationInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get proxy configuration internal server error response has a 3xx status code
-func (o *GETProxyConfigurationInternalServerError) IsRedirect() bool {
+func (o *GetProxyConfigurationInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get proxy configuration internal server error response has a 4xx status code
-func (o *GETProxyConfigurationInternalServerError) IsClientError() bool {
+func (o *GetProxyConfigurationInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get proxy configuration internal server error response has a 5xx status code
-func (o *GETProxyConfigurationInternalServerError) IsServerError() bool {
+func (o *GetProxyConfigurationInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get proxy configuration internal server error response a status code equal to that given
-func (o *GETProxyConfigurationInternalServerError) IsCode(code int) bool {
+func (o *GetProxyConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETProxyConfigurationInternalServerError) Error() string {
+func (o *GetProxyConfigurationInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/proxy-configuration][%d] getProxyConfigurationInternalServerError ", 500)
 }
 
-func (o *GETProxyConfigurationInternalServerError) String() string {
+func (o *GetProxyConfigurationInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/proxy-configuration][%d] getProxyConfigurationInternalServerError ", 500)
 }
 
-func (o *GETProxyConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetProxyConfigurationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -33,23 +33,23 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETCriteria1(params *GETCriteria1Params, opts ...ClientOption) (*GETCriteria1OK, error)
+	GetCriteria1(params *GetCriteria1Params, opts ...ClientOption) (*GetCriteria1OK, error)
 
-	GETCriterion1(params *GETCriterion1Params, opts ...ClientOption) (*GETCriterion1OK, error)
+	GetCriterion1(params *GetCriterion1Params, opts ...ClientOption) (*GetCriterion1OK, error)
 
-	GETNSXTCluster(params *GETNSXTClusterParams, opts ...ClientOption) (*GETNSXTClusterOK, error)
+	GetNSXTCluster(params *GetNSXTClusterParams, opts ...ClientOption) (*GetNSXTClusterOK, error)
 
-	GETNSXTClusterQueryResponse(params *GETNSXTClusterQueryResponseParams, opts ...ClientOption) (*GETNSXTClusterQueryResponseOK, *GETNSXTClusterQueryResponseAccepted, error)
+	GetNSXTClusterQueryResponse(params *GetNSXTClusterQueryResponseParams, opts ...ClientOption) (*GetNSXTClusterQueryResponseOK, *GetNSXTClusterQueryResponseAccepted, error)
 
-	GETNSXTClusters(params *GETNSXTClustersParams, opts ...ClientOption) (*GETNSXTClustersOK, error)
+	GetNSXTClusters(params *GetNSXTClustersParams, opts ...ClientOption) (*GetNSXTClustersOK, error)
 
-	GETNSXTIPAddressPool(params *GETNSXTIPAddressPoolParams, opts ...ClientOption) (*GETNSXTIPAddressPoolOK, error)
+	GetNSXTIPAddressPool(params *GetNSXTIPAddressPoolParams, opts ...ClientOption) (*GetNSXTIPAddressPoolOK, error)
 
-	GETNSXTIPAddressPools(params *GETNSXTIPAddressPoolsParams, opts ...ClientOption) (*GETNSXTIPAddressPoolsOK, error)
+	GetNSXTIPAddressPools(params *GetNSXTIPAddressPoolsParams, opts ...ClientOption) (*GetNSXTIPAddressPoolsOK, error)
 
-	GETValidationResultUsingGET(params *GETValidationResultUsingGETParams, opts ...ClientOption) (*GETValidationResultUsingGETOK, error)
+	GetValidationResultUsingGET(params *GetValidationResultUsingGETParams, opts ...ClientOption) (*GetValidationResultUsingGETOK, error)
 
-	POSTQuery1(params *POSTQuery1Params, opts ...ClientOption) (*POSTQuery1OK, *POSTQuery1Accepted, error)
+	PostQuery1(params *PostQuery1Params, opts ...ClientOption) (*PostQuery1OK, *PostQuery1Accepted, error)
 
 	ValidateIPPoolUsingPOST(params *ValidateIPPoolUsingPOSTParams, opts ...ClientOption) (*ValidateIPPoolUsingPOSTOK, error)
 
@@ -57,12 +57,12 @@ type ClientService interface {
 }
 
 /*
-GETCriteria1 Gets all n s x t criteria
+GetCriteria1 gets all n s x t criteria
 */
-func (a *Client) GETCriteria1(params *GETCriteria1Params, opts ...ClientOption) (*GETCriteria1OK, error) {
+func (a *Client) GetCriteria1(params *GetCriteria1Params, opts ...ClientOption) (*GetCriteria1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCriteria1Params()
+		params = NewGetCriteria1Params()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCriteria_1",
@@ -72,7 +72,7 @@ func (a *Client) GETCriteria1(params *GETCriteria1Params, opts ...ClientOption) 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCriteria1Reader{formats: a.formats},
+		Reader:             &GetCriteria1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -84,7 +84,7 @@ func (a *Client) GETCriteria1(params *GETCriteria1Params, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCriteria1OK)
+	success, ok := result.(*GetCriteria1OK)
 	if ok {
 		return success, nil
 	}
@@ -95,12 +95,12 @@ func (a *Client) GETCriteria1(params *GETCriteria1Params, opts ...ClientOption) 
 }
 
 /*
-GETCriterion1 Gets a n s x t criterion
+GetCriterion1 gets a n s x t criterion
 */
-func (a *Client) GETCriterion1(params *GETCriterion1Params, opts ...ClientOption) (*GETCriterion1OK, error) {
+func (a *Client) GetCriterion1(params *GetCriterion1Params, opts ...ClientOption) (*GetCriterion1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCriterion1Params()
+		params = NewGetCriterion1Params()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCriterion_1",
@@ -110,7 +110,7 @@ func (a *Client) GETCriterion1(params *GETCriterion1Params, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCriterion1Reader{formats: a.formats},
+		Reader:             &GetCriterion1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +122,7 @@ func (a *Client) GETCriterion1(params *GETCriterion1Params, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCriterion1OK)
+	success, ok := result.(*GetCriterion1OK)
 	if ok {
 		return success, nil
 	}
@@ -133,12 +133,12 @@ func (a *Client) GETCriterion1(params *GETCriterion1Params, opts ...ClientOption
 }
 
 /*
-GETNSXTCluster Gets a n s x t cluster
+GetNSXTCluster gets a n s x t cluster
 */
-func (a *Client) GETNSXTCluster(params *GETNSXTClusterParams, opts ...ClientOption) (*GETNSXTClusterOK, error) {
+func (a *Client) GetNSXTCluster(params *GetNSXTClusterParams, opts ...ClientOption) (*GetNSXTClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNSXTClusterParams()
+		params = NewGetNSXTClusterParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNsxtCluster",
@@ -148,7 +148,7 @@ func (a *Client) GETNSXTCluster(params *GETNSXTClusterParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNSXTClusterReader{formats: a.formats},
+		Reader:             &GetNSXTClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -160,7 +160,7 @@ func (a *Client) GETNSXTCluster(params *GETNSXTClusterParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNSXTClusterOK)
+	success, ok := result.(*GetNSXTClusterOK)
 	if ok {
 		return success, nil
 	}
@@ -171,12 +171,12 @@ func (a *Client) GETNSXTCluster(params *GETNSXTClusterParams, opts ...ClientOpti
 }
 
 /*
-GETNSXTClusterQueryResponse Gets n s x t cluster query response
+GetNSXTClusterQueryResponse gets n s x t cluster query response
 */
-func (a *Client) GETNSXTClusterQueryResponse(params *GETNSXTClusterQueryResponseParams, opts ...ClientOption) (*GETNSXTClusterQueryResponseOK, *GETNSXTClusterQueryResponseAccepted, error) {
+func (a *Client) GetNSXTClusterQueryResponse(params *GetNSXTClusterQueryResponseParams, opts ...ClientOption) (*GetNSXTClusterQueryResponseOK, *GetNSXTClusterQueryResponseAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNSXTClusterQueryResponseParams()
+		params = NewGetNSXTClusterQueryResponseParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNsxtClusterQueryResponse",
@@ -186,7 +186,7 @@ func (a *Client) GETNSXTClusterQueryResponse(params *GETNSXTClusterQueryResponse
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNSXTClusterQueryResponseReader{formats: a.formats},
+		Reader:             &GetNSXTClusterQueryResponseReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -199,9 +199,9 @@ func (a *Client) GETNSXTClusterQueryResponse(params *GETNSXTClusterQueryResponse
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *GETNSXTClusterQueryResponseOK:
+	case *GetNSXTClusterQueryResponseOK:
 		return value, nil, nil
-	case *GETNSXTClusterQueryResponseAccepted:
+	case *GetNSXTClusterQueryResponseAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -210,12 +210,12 @@ func (a *Client) GETNSXTClusterQueryResponse(params *GETNSXTClusterQueryResponse
 }
 
 /*
-GETNSXTClusters Gets the n s x t clusters
+GetNSXTClusters gets the n s x t clusters
 */
-func (a *Client) GETNSXTClusters(params *GETNSXTClustersParams, opts ...ClientOption) (*GETNSXTClustersOK, error) {
+func (a *Client) GetNSXTClusters(params *GetNSXTClustersParams, opts ...ClientOption) (*GetNSXTClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNSXTClustersParams()
+		params = NewGetNSXTClustersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNsxtClusters",
@@ -225,7 +225,7 @@ func (a *Client) GETNSXTClusters(params *GETNSXTClustersParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNSXTClustersReader{formats: a.formats},
+		Reader:             &GetNSXTClustersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -237,7 +237,7 @@ func (a *Client) GETNSXTClusters(params *GETNSXTClustersParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNSXTClustersOK)
+	success, ok := result.(*GetNSXTClustersOK)
 	if ok {
 		return success, nil
 	}
@@ -248,12 +248,12 @@ func (a *Client) GETNSXTClusters(params *GETNSXTClustersParams, opts ...ClientOp
 }
 
 /*
-GETNSXTIPAddressPool Gets a n s x t IP address pool
+GetNSXTIPAddressPool gets a n s x t IP address pool
 */
-func (a *Client) GETNSXTIPAddressPool(params *GETNSXTIPAddressPoolParams, opts ...ClientOption) (*GETNSXTIPAddressPoolOK, error) {
+func (a *Client) GetNSXTIPAddressPool(params *GetNSXTIPAddressPoolParams, opts ...ClientOption) (*GetNSXTIPAddressPoolOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNSXTIPAddressPoolParams()
+		params = NewGetNSXTIPAddressPoolParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNsxtIpAddressPool",
@@ -263,7 +263,7 @@ func (a *Client) GETNSXTIPAddressPool(params *GETNSXTIPAddressPoolParams, opts .
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNSXTIPAddressPoolReader{formats: a.formats},
+		Reader:             &GetNSXTIPAddressPoolReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -275,7 +275,7 @@ func (a *Client) GETNSXTIPAddressPool(params *GETNSXTIPAddressPoolParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNSXTIPAddressPoolOK)
+	success, ok := result.(*GetNSXTIPAddressPoolOK)
 	if ok {
 		return success, nil
 	}
@@ -286,12 +286,12 @@ func (a *Client) GETNSXTIPAddressPool(params *GETNSXTIPAddressPoolParams, opts .
 }
 
 /*
-GETNSXTIPAddressPools Gets the n s x t IP address pools
+GetNSXTIPAddressPools gets the n s x t IP address pools
 */
-func (a *Client) GETNSXTIPAddressPools(params *GETNSXTIPAddressPoolsParams, opts ...ClientOption) (*GETNSXTIPAddressPoolsOK, error) {
+func (a *Client) GetNSXTIPAddressPools(params *GetNSXTIPAddressPoolsParams, opts ...ClientOption) (*GetNSXTIPAddressPoolsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNSXTIPAddressPoolsParams()
+		params = NewGetNSXTIPAddressPoolsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNsxtIpAddressPools",
@@ -301,7 +301,7 @@ func (a *Client) GETNSXTIPAddressPools(params *GETNSXTIPAddressPoolsParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNSXTIPAddressPoolsReader{formats: a.formats},
+		Reader:             &GetNSXTIPAddressPoolsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -313,7 +313,7 @@ func (a *Client) GETNSXTIPAddressPools(params *GETNSXTIPAddressPoolsParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNSXTIPAddressPoolsOK)
+	success, ok := result.(*GetNSXTIPAddressPoolsOK)
 	if ok {
 		return success, nil
 	}
@@ -324,12 +324,12 @@ func (a *Client) GETNSXTIPAddressPools(params *GETNSXTIPAddressPoolsParams, opts
 }
 
 /*
-GETValidationResultUsingGET gets validation result
+GetValidationResultUsingGET gets validation result
 */
-func (a *Client) GETValidationResultUsingGET(params *GETValidationResultUsingGETParams, opts ...ClientOption) (*GETValidationResultUsingGETOK, error) {
+func (a *Client) GetValidationResultUsingGET(params *GetValidationResultUsingGETParams, opts ...ClientOption) (*GetValidationResultUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETValidationResultUsingGETParams()
+		params = NewGetValidationResultUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getValidationResultUsingGET",
@@ -339,7 +339,7 @@ func (a *Client) GETValidationResultUsingGET(params *GETValidationResultUsingGET
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETValidationResultUsingGETReader{formats: a.formats},
+		Reader:             &GetValidationResultUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -351,7 +351,7 @@ func (a *Client) GETValidationResultUsingGET(params *GETValidationResultUsingGET
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETValidationResultUsingGETOK)
+	success, ok := result.(*GetValidationResultUsingGETOK)
 	if ok {
 		return success, nil
 	}
@@ -362,12 +362,12 @@ func (a *Client) GETValidationResultUsingGET(params *GETValidationResultUsingGET
 }
 
 /*
-POSTQuery1 Posts a query
+PostQuery1 posts a query
 */
-func (a *Client) POSTQuery1(params *POSTQuery1Params, opts ...ClientOption) (*POSTQuery1OK, *POSTQuery1Accepted, error) {
+func (a *Client) PostQuery1(params *PostQuery1Params, opts ...ClientOption) (*PostQuery1OK, *PostQuery1Accepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPOSTQuery1Params()
+		params = NewPostQuery1Params()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "postQuery_1",
@@ -377,7 +377,7 @@ func (a *Client) POSTQuery1(params *POSTQuery1Params, opts ...ClientOption) (*PO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &POSTQuery1Reader{formats: a.formats},
+		Reader:             &PostQuery1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -390,9 +390,9 @@ func (a *Client) POSTQuery1(params *POSTQuery1Params, opts ...ClientOption) (*PO
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *POSTQuery1OK:
+	case *PostQuery1OK:
 		return value, nil, nil
-	case *POSTQuery1Accepted:
+	case *PostQuery1Accepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

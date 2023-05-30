@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCertificatesParams creates a new GETCertificatesParams object,
+// NewGetCertificatesParams creates a new GetCertificatesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCertificatesParams() *GETCertificatesParams {
-	return &GETCertificatesParams{
+func NewGetCertificatesParams() *GetCertificatesParams {
+	return &GetCertificatesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCertificatesParamsWithTimeout creates a new GETCertificatesParams object
+// NewGetCertificatesParamsWithTimeout creates a new GetCertificatesParams object
 // with the ability to set a timeout on a request.
-func NewGETCertificatesParamsWithTimeout(timeout time.Duration) *GETCertificatesParams {
-	return &GETCertificatesParams{
+func NewGetCertificatesParamsWithTimeout(timeout time.Duration) *GetCertificatesParams {
+	return &GetCertificatesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCertificatesParamsWithContext creates a new GETCertificatesParams object
+// NewGetCertificatesParamsWithContext creates a new GetCertificatesParams object
 // with the ability to set a context for a request.
-func NewGETCertificatesParamsWithContext(ctx context.Context) *GETCertificatesParams {
-	return &GETCertificatesParams{
+func NewGetCertificatesParamsWithContext(ctx context.Context) *GetCertificatesParams {
+	return &GetCertificatesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCertificatesParamsWithHTTPClient creates a new GETCertificatesParams object
+// NewGetCertificatesParamsWithHTTPClient creates a new GetCertificatesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCertificatesParamsWithHTTPClient(client *http.Client) *GETCertificatesParams {
-	return &GETCertificatesParams{
+func NewGetCertificatesParamsWithHTTPClient(client *http.Client) *GetCertificatesParams {
+	return &GetCertificatesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCertificatesParams contains all the parameters to send to the API endpoint
+GetCertificatesParams contains all the parameters to send to the API endpoint
 
 	for the get certificates operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCertificatesParams struct {
+type GetCertificatesParams struct {
 
 	/* DomainName.
 
@@ -78,7 +78,7 @@ type GETCertificatesParams struct {
 // WithDefaults hydrates default values in the get certificates params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCertificatesParams) WithDefaults() *GETCertificatesParams {
+func (o *GetCertificatesParams) WithDefaults() *GetCertificatesParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETCertificatesParams) WithDefaults() *GETCertificatesParams {
 // SetDefaults hydrates default values in the get certificates params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCertificatesParams) SetDefaults() {
+func (o *GetCertificatesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get certificates params
-func (o *GETCertificatesParams) WithTimeout(timeout time.Duration) *GETCertificatesParams {
+func (o *GetCertificatesParams) WithTimeout(timeout time.Duration) *GetCertificatesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get certificates params
-func (o *GETCertificatesParams) SetTimeout(timeout time.Duration) {
+func (o *GetCertificatesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get certificates params
-func (o *GETCertificatesParams) WithContext(ctx context.Context) *GETCertificatesParams {
+func (o *GetCertificatesParams) WithContext(ctx context.Context) *GetCertificatesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get certificates params
-func (o *GETCertificatesParams) SetContext(ctx context.Context) {
+func (o *GetCertificatesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get certificates params
-func (o *GETCertificatesParams) WithHTTPClient(client *http.Client) *GETCertificatesParams {
+func (o *GetCertificatesParams) WithHTTPClient(client *http.Client) *GetCertificatesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get certificates params
-func (o *GETCertificatesParams) SetHTTPClient(client *http.Client) {
+func (o *GetCertificatesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainName adds the domainName to the get certificates params
-func (o *GETCertificatesParams) WithDomainName(domainName string) *GETCertificatesParams {
+func (o *GetCertificatesParams) WithDomainName(domainName string) *GetCertificatesParams {
 	o.SetDomainName(domainName)
 	return o
 }
 
 // SetDomainName adds the domainName to the get certificates params
-func (o *GETCertificatesParams) SetDomainName(domainName string) {
+func (o *GetCertificatesParams) SetDomainName(domainName string) {
 	o.DomainName = domainName
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCertificatesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCertificatesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETClusterParams creates a new GETClusterParams object,
+// NewGetClusterParams creates a new GetClusterParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETClusterParams() *GETClusterParams {
-	return &GETClusterParams{
+func NewGetClusterParams() *GetClusterParams {
+	return &GetClusterParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETClusterParamsWithTimeout creates a new GETClusterParams object
+// NewGetClusterParamsWithTimeout creates a new GetClusterParams object
 // with the ability to set a timeout on a request.
-func NewGETClusterParamsWithTimeout(timeout time.Duration) *GETClusterParams {
-	return &GETClusterParams{
+func NewGetClusterParamsWithTimeout(timeout time.Duration) *GetClusterParams {
+	return &GetClusterParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETClusterParamsWithContext creates a new GETClusterParams object
+// NewGetClusterParamsWithContext creates a new GetClusterParams object
 // with the ability to set a context for a request.
-func NewGETClusterParamsWithContext(ctx context.Context) *GETClusterParams {
-	return &GETClusterParams{
+func NewGetClusterParamsWithContext(ctx context.Context) *GetClusterParams {
+	return &GetClusterParams{
 		Context: ctx,
 	}
 }
 
-// NewGETClusterParamsWithHTTPClient creates a new GETClusterParams object
+// NewGetClusterParamsWithHTTPClient creates a new GetClusterParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETClusterParamsWithHTTPClient(client *http.Client) *GETClusterParams {
-	return &GETClusterParams{
+func NewGetClusterParamsWithHTTPClient(client *http.Client) *GetClusterParams {
+	return &GetClusterParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETClusterParams contains all the parameters to send to the API endpoint
+GetClusterParams contains all the parameters to send to the API endpoint
 
 	for the get cluster operation.
 
 	Typically these are written to a http.Request.
 */
-type GETClusterParams struct {
+type GetClusterParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETClusterParams struct {
 // WithDefaults hydrates default values in the get cluster params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterParams) WithDefaults() *GETClusterParams {
+func (o *GetClusterParams) WithDefaults() *GetClusterParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETClusterParams) WithDefaults() *GETClusterParams {
 // SetDefaults hydrates default values in the get cluster params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterParams) SetDefaults() {
+func (o *GetClusterParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get cluster params
-func (o *GETClusterParams) WithTimeout(timeout time.Duration) *GETClusterParams {
+func (o *GetClusterParams) WithTimeout(timeout time.Duration) *GetClusterParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get cluster params
-func (o *GETClusterParams) SetTimeout(timeout time.Duration) {
+func (o *GetClusterParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get cluster params
-func (o *GETClusterParams) WithContext(ctx context.Context) *GETClusterParams {
+func (o *GetClusterParams) WithContext(ctx context.Context) *GetClusterParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get cluster params
-func (o *GETClusterParams) SetContext(ctx context.Context) {
+func (o *GetClusterParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get cluster params
-func (o *GETClusterParams) WithHTTPClient(client *http.Client) *GETClusterParams {
+func (o *GetClusterParams) WithHTTPClient(client *http.Client) *GetClusterParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get cluster params
-func (o *GETClusterParams) SetHTTPClient(client *http.Client) {
+func (o *GetClusterParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get cluster params
-func (o *GETClusterParams) WithID(id string) *GETClusterParams {
+func (o *GetClusterParams) WithID(id string) *GetClusterParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get cluster params
-func (o *GETClusterParams) SetID(id string) {
+func (o *GetClusterParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetClusterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

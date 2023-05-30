@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETSystemReleaseReader is a Reader for the GETSystemRelease structure.
-type GETSystemReleaseReader struct {
+// GetSystemReleaseReader is a Reader for the GetSystemRelease structure.
+type GetSystemReleaseReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETSystemReleaseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetSystemReleaseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETSystemReleaseOK()
+		result := NewGetSystemReleaseOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETSystemReleaseNotFound()
+		result := NewGetSystemReleaseNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETSystemReleaseInternalServerError()
+		result := NewGetSystemReleaseInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETSystemReleaseReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewGETSystemReleaseOK creates a GETSystemReleaseOK with default headers values
-func NewGETSystemReleaseOK() *GETSystemReleaseOK {
-	return &GETSystemReleaseOK{}
+// NewGetSystemReleaseOK creates a GetSystemReleaseOK with default headers values
+func NewGetSystemReleaseOK() *GetSystemReleaseOK {
+	return &GetSystemReleaseOK{}
 }
 
 /*
-GETSystemReleaseOK describes a response with status code 200, with default header values.
+GetSystemReleaseOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETSystemReleaseOK struct {
+type GetSystemReleaseOK struct {
 	Payload *models.Release
 }
 
 // IsSuccess returns true when this get system release o k response has a 2xx status code
-func (o *GETSystemReleaseOK) IsSuccess() bool {
+func (o *GetSystemReleaseOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get system release o k response has a 3xx status code
-func (o *GETSystemReleaseOK) IsRedirect() bool {
+func (o *GetSystemReleaseOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get system release o k response has a 4xx status code
-func (o *GETSystemReleaseOK) IsClientError() bool {
+func (o *GetSystemReleaseOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get system release o k response has a 5xx status code
-func (o *GETSystemReleaseOK) IsServerError() bool {
+func (o *GetSystemReleaseOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get system release o k response a status code equal to that given
-func (o *GETSystemReleaseOK) IsCode(code int) bool {
+func (o *GetSystemReleaseOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETSystemReleaseOK) Error() string {
+func (o *GetSystemReleaseOK) Error() string {
 	return fmt.Sprintf("[GET /v1/releases/system][%d] getSystemReleaseOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSystemReleaseOK) String() string {
+func (o *GetSystemReleaseOK) String() string {
 	return fmt.Sprintf("[GET /v1/releases/system][%d] getSystemReleaseOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSystemReleaseOK) GetPayload() *models.Release {
+func (o *GetSystemReleaseOK) GetPayload() *models.Release {
 	return o.Payload
 }
 
-func (o *GETSystemReleaseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSystemReleaseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Release)
 
@@ -112,58 +112,58 @@ func (o *GETSystemReleaseOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETSystemReleaseNotFound creates a GETSystemReleaseNotFound with default headers values
-func NewGETSystemReleaseNotFound() *GETSystemReleaseNotFound {
-	return &GETSystemReleaseNotFound{}
+// NewGetSystemReleaseNotFound creates a GetSystemReleaseNotFound with default headers values
+func NewGetSystemReleaseNotFound() *GetSystemReleaseNotFound {
+	return &GetSystemReleaseNotFound{}
 }
 
 /*
-GETSystemReleaseNotFound describes a response with status code 404, with default header values.
+GetSystemReleaseNotFound describes a response with status code 404, with default header values.
 
 Release not found
 */
-type GETSystemReleaseNotFound struct {
+type GetSystemReleaseNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get system release not found response has a 2xx status code
-func (o *GETSystemReleaseNotFound) IsSuccess() bool {
+func (o *GetSystemReleaseNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get system release not found response has a 3xx status code
-func (o *GETSystemReleaseNotFound) IsRedirect() bool {
+func (o *GetSystemReleaseNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get system release not found response has a 4xx status code
-func (o *GETSystemReleaseNotFound) IsClientError() bool {
+func (o *GetSystemReleaseNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get system release not found response has a 5xx status code
-func (o *GETSystemReleaseNotFound) IsServerError() bool {
+func (o *GetSystemReleaseNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get system release not found response a status code equal to that given
-func (o *GETSystemReleaseNotFound) IsCode(code int) bool {
+func (o *GetSystemReleaseNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETSystemReleaseNotFound) Error() string {
+func (o *GetSystemReleaseNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/releases/system][%d] getSystemReleaseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETSystemReleaseNotFound) String() string {
+func (o *GetSystemReleaseNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/releases/system][%d] getSystemReleaseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETSystemReleaseNotFound) GetPayload() *models.Error {
+func (o *GetSystemReleaseNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETSystemReleaseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSystemReleaseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETSystemReleaseNotFound) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-// NewGETSystemReleaseInternalServerError creates a GETSystemReleaseInternalServerError with default headers values
-func NewGETSystemReleaseInternalServerError() *GETSystemReleaseInternalServerError {
-	return &GETSystemReleaseInternalServerError{}
+// NewGetSystemReleaseInternalServerError creates a GetSystemReleaseInternalServerError with default headers values
+func NewGetSystemReleaseInternalServerError() *GetSystemReleaseInternalServerError {
+	return &GetSystemReleaseInternalServerError{}
 }
 
 /*
-GETSystemReleaseInternalServerError describes a response with status code 500, with default header values.
+GetSystemReleaseInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETSystemReleaseInternalServerError struct {
+type GetSystemReleaseInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get system release internal server error response has a 2xx status code
-func (o *GETSystemReleaseInternalServerError) IsSuccess() bool {
+func (o *GetSystemReleaseInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get system release internal server error response has a 3xx status code
-func (o *GETSystemReleaseInternalServerError) IsRedirect() bool {
+func (o *GetSystemReleaseInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get system release internal server error response has a 4xx status code
-func (o *GETSystemReleaseInternalServerError) IsClientError() bool {
+func (o *GetSystemReleaseInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get system release internal server error response has a 5xx status code
-func (o *GETSystemReleaseInternalServerError) IsServerError() bool {
+func (o *GetSystemReleaseInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get system release internal server error response a status code equal to that given
-func (o *GETSystemReleaseInternalServerError) IsCode(code int) bool {
+func (o *GetSystemReleaseInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETSystemReleaseInternalServerError) Error() string {
+func (o *GetSystemReleaseInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/releases/system][%d] getSystemReleaseInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETSystemReleaseInternalServerError) String() string {
+func (o *GetSystemReleaseInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/releases/system][%d] getSystemReleaseInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETSystemReleaseInternalServerError) GetPayload() *models.Error {
+func (o *GetSystemReleaseInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETSystemReleaseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSystemReleaseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -41,13 +41,13 @@ type ClientService interface {
 
 	DeleteNetworkPool(params *DeleteNetworkPoolParams, opts ...ClientOption) (*DeleteNetworkPoolNoContent, error)
 
-	GETNetworkOfNetworkPool(params *GETNetworkOfNetworkPoolParams, opts ...ClientOption) (*GETNetworkOfNetworkPoolOK, error)
+	GetNetworkOfNetworkPool(params *GetNetworkOfNetworkPoolParams, opts ...ClientOption) (*GetNetworkOfNetworkPoolOK, error)
 
-	GETNetworkPool(params *GETNetworkPoolParams, opts ...ClientOption) (*GETNetworkPoolOK, error)
+	GetNetworkPool(params *GetNetworkPoolParams, opts ...ClientOption) (*GetNetworkPoolOK, error)
 
-	GETNetworkPools(params *GETNetworkPoolsParams, opts ...ClientOption) (*GETNetworkPoolsOK, error)
+	GetNetworkPools(params *GetNetworkPoolsParams, opts ...ClientOption) (*GetNetworkPoolsOK, error)
 
-	GETNetworksOfNetworkPool(params *GETNetworksOfNetworkPoolParams, opts ...ClientOption) (*GETNetworksOfNetworkPoolOK, error)
+	GetNetworksOfNetworkPool(params *GetNetworksOfNetworkPoolParams, opts ...ClientOption) (*GetNetworksOfNetworkPoolOK, error)
 
 	UpdateNetworkPool(params *UpdateNetworkPoolParams, opts ...ClientOption) (*UpdateNetworkPoolOK, error)
 
@@ -216,14 +216,14 @@ func (a *Client) DeleteNetworkPool(params *DeleteNetworkPoolParams, opts ...Clie
 }
 
 /*
-GETNetworkOfNetworkPool Gets a network of a network pool
+GetNetworkOfNetworkPool gets a network of a network pool
 
 Get a Network that is part of a Network Pool
 */
-func (a *Client) GETNetworkOfNetworkPool(params *GETNetworkOfNetworkPoolParams, opts ...ClientOption) (*GETNetworkOfNetworkPoolOK, error) {
+func (a *Client) GetNetworkOfNetworkPool(params *GetNetworkOfNetworkPoolParams, opts ...ClientOption) (*GetNetworkOfNetworkPoolOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNetworkOfNetworkPoolParams()
+		params = NewGetNetworkOfNetworkPoolParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNetworkOfNetworkPool",
@@ -233,7 +233,7 @@ func (a *Client) GETNetworkOfNetworkPool(params *GETNetworkOfNetworkPoolParams, 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNetworkOfNetworkPoolReader{formats: a.formats},
+		Reader:             &GetNetworkOfNetworkPoolReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -245,7 +245,7 @@ func (a *Client) GETNetworkOfNetworkPool(params *GETNetworkOfNetworkPoolParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNetworkOfNetworkPoolOK)
+	success, ok := result.(*GetNetworkOfNetworkPoolOK)
 	if ok {
 		return success, nil
 	}
@@ -256,14 +256,14 @@ func (a *Client) GETNetworkOfNetworkPool(params *GETNetworkOfNetworkPoolParams, 
 }
 
 /*
-GETNetworkPool Gets a network pool
+GetNetworkPool gets a network pool
 
 Get a Network Pool by ID, if it exists
 */
-func (a *Client) GETNetworkPool(params *GETNetworkPoolParams, opts ...ClientOption) (*GETNetworkPoolOK, error) {
+func (a *Client) GetNetworkPool(params *GetNetworkPoolParams, opts ...ClientOption) (*GetNetworkPoolOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNetworkPoolParams()
+		params = NewGetNetworkPoolParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNetworkPool",
@@ -273,7 +273,7 @@ func (a *Client) GETNetworkPool(params *GETNetworkPoolParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNetworkPoolReader{formats: a.formats},
+		Reader:             &GetNetworkPoolReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -285,7 +285,7 @@ func (a *Client) GETNetworkPool(params *GETNetworkPoolParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNetworkPoolOK)
+	success, ok := result.(*GetNetworkPoolOK)
 	if ok {
 		return success, nil
 	}
@@ -296,14 +296,14 @@ func (a *Client) GETNetworkPool(params *GETNetworkPoolParams, opts ...ClientOpti
 }
 
 /*
-GETNetworkPools Gets the network pools
+GetNetworkPools gets the network pools
 
 Get the Network Pools
 */
-func (a *Client) GETNetworkPools(params *GETNetworkPoolsParams, opts ...ClientOption) (*GETNetworkPoolsOK, error) {
+func (a *Client) GetNetworkPools(params *GetNetworkPoolsParams, opts ...ClientOption) (*GetNetworkPoolsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNetworkPoolsParams()
+		params = NewGetNetworkPoolsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNetworkPools",
@@ -313,7 +313,7 @@ func (a *Client) GETNetworkPools(params *GETNetworkPoolsParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNetworkPoolsReader{formats: a.formats},
+		Reader:             &GetNetworkPoolsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -325,7 +325,7 @@ func (a *Client) GETNetworkPools(params *GETNetworkPoolsParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNetworkPoolsOK)
+	success, ok := result.(*GetNetworkPoolsOK)
 	if ok {
 		return success, nil
 	}
@@ -336,14 +336,14 @@ func (a *Client) GETNetworkPools(params *GETNetworkPoolsParams, opts ...ClientOp
 }
 
 /*
-GETNetworksOfNetworkPool Gets the networks of a network pool
+GetNetworksOfNetworkPool gets the networks of a network pool
 
 Get the Networks that are part of a Network Pool
 */
-func (a *Client) GETNetworksOfNetworkPool(params *GETNetworksOfNetworkPoolParams, opts ...ClientOption) (*GETNetworksOfNetworkPoolOK, error) {
+func (a *Client) GetNetworksOfNetworkPool(params *GetNetworksOfNetworkPoolParams, opts ...ClientOption) (*GetNetworksOfNetworkPoolOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNetworksOfNetworkPoolParams()
+		params = NewGetNetworksOfNetworkPoolParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNetworksOfNetworkPool",
@@ -353,7 +353,7 @@ func (a *Client) GETNetworksOfNetworkPool(params *GETNetworksOfNetworkPoolParams
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNetworksOfNetworkPoolReader{formats: a.formats},
+		Reader:             &GetNetworksOfNetworkPoolReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -365,7 +365,7 @@ func (a *Client) GETNetworksOfNetworkPool(params *GETNetworksOfNetworkPoolParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNetworksOfNetworkPoolOK)
+	success, ok := result.(*GetNetworksOfNetworkPoolOK)
 	if ok {
 		return success, nil
 	}

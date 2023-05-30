@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETHostCriteriaReader is a Reader for the GETHostCriteria structure.
-type GETHostCriteriaReader struct {
+// GetHostCriteriaReader is a Reader for the GetHostCriteria structure.
+type GetHostCriteriaReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETHostCriteriaReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetHostCriteriaReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETHostCriteriaOK()
+		result := NewGetHostCriteriaOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETHostCriteriaReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETHostCriteriaOK creates a GETHostCriteriaOK with default headers values
-func NewGETHostCriteriaOK() *GETHostCriteriaOK {
-	return &GETHostCriteriaOK{}
+// NewGetHostCriteriaOK creates a GetHostCriteriaOK with default headers values
+func NewGetHostCriteriaOK() *GetHostCriteriaOK {
+	return &GetHostCriteriaOK{}
 }
 
 /*
-GETHostCriteriaOK describes a response with status code 200, with default header values.
+GetHostCriteriaOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETHostCriteriaOK struct {
+type GetHostCriteriaOK struct {
 	Payload *models.PageOfHostCriterion
 }
 
 // IsSuccess returns true when this get host criteria o k response has a 2xx status code
-func (o *GETHostCriteriaOK) IsSuccess() bool {
+func (o *GetHostCriteriaOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get host criteria o k response has a 3xx status code
-func (o *GETHostCriteriaOK) IsRedirect() bool {
+func (o *GetHostCriteriaOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get host criteria o k response has a 4xx status code
-func (o *GETHostCriteriaOK) IsClientError() bool {
+func (o *GetHostCriteriaOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get host criteria o k response has a 5xx status code
-func (o *GETHostCriteriaOK) IsServerError() bool {
+func (o *GetHostCriteriaOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get host criteria o k response a status code equal to that given
-func (o *GETHostCriteriaOK) IsCode(code int) bool {
+func (o *GetHostCriteriaOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETHostCriteriaOK) Error() string {
+func (o *GetHostCriteriaOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostCriteriaOK) String() string {
+func (o *GetHostCriteriaOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaOK  %+v", 200, o.Payload)
 }
 
-func (o *GETHostCriteriaOK) GetPayload() *models.PageOfHostCriterion {
+func (o *GetHostCriteriaOK) GetPayload() *models.PageOfHostCriterion {
 	return o.Payload
 }
 
-func (o *GETHostCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetHostCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfHostCriterion)
 

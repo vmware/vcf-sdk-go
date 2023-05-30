@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETResourceWarningReader is a Reader for the GETResourceWarning structure.
-type GETResourceWarningReader struct {
+// GetResourceWarningReader is a Reader for the GetResourceWarning structure.
+type GetResourceWarningReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETResourceWarningReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetResourceWarningReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETResourceWarningOK()
+		result := NewGetResourceWarningOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETResourceWarningNotFound()
+		result := NewGetResourceWarningNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETResourceWarningInternalServerError()
+		result := NewGetResourceWarningInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETResourceWarningReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewGETResourceWarningOK creates a GETResourceWarningOK with default headers values
-func NewGETResourceWarningOK() *GETResourceWarningOK {
-	return &GETResourceWarningOK{}
+// NewGetResourceWarningOK creates a GetResourceWarningOK with default headers values
+func NewGetResourceWarningOK() *GetResourceWarningOK {
+	return &GetResourceWarningOK{}
 }
 
 /*
-GETResourceWarningOK describes a response with status code 200, with default header values.
+GetResourceWarningOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETResourceWarningOK struct {
+type GetResourceWarningOK struct {
 	Payload *models.ResourceWarning
 }
 
 // IsSuccess returns true when this get resource warning o k response has a 2xx status code
-func (o *GETResourceWarningOK) IsSuccess() bool {
+func (o *GetResourceWarningOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get resource warning o k response has a 3xx status code
-func (o *GETResourceWarningOK) IsRedirect() bool {
+func (o *GetResourceWarningOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resource warning o k response has a 4xx status code
-func (o *GETResourceWarningOK) IsClientError() bool {
+func (o *GetResourceWarningOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get resource warning o k response has a 5xx status code
-func (o *GETResourceWarningOK) IsServerError() bool {
+func (o *GetResourceWarningOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get resource warning o k response a status code equal to that given
-func (o *GETResourceWarningOK) IsCode(code int) bool {
+func (o *GetResourceWarningOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETResourceWarningOK) Error() string {
+func (o *GetResourceWarningOK) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-warnings/{id}][%d] getResourceWarningOK  %+v", 200, o.Payload)
 }
 
-func (o *GETResourceWarningOK) String() string {
+func (o *GetResourceWarningOK) String() string {
 	return fmt.Sprintf("[GET /v1/resource-warnings/{id}][%d] getResourceWarningOK  %+v", 200, o.Payload)
 }
 
-func (o *GETResourceWarningOK) GetPayload() *models.ResourceWarning {
+func (o *GetResourceWarningOK) GetPayload() *models.ResourceWarning {
 	return o.Payload
 }
 
-func (o *GETResourceWarningOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourceWarningOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ResourceWarning)
 
@@ -112,58 +112,58 @@ func (o *GETResourceWarningOK) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewGETResourceWarningNotFound creates a GETResourceWarningNotFound with default headers values
-func NewGETResourceWarningNotFound() *GETResourceWarningNotFound {
-	return &GETResourceWarningNotFound{}
+// NewGetResourceWarningNotFound creates a GetResourceWarningNotFound with default headers values
+func NewGetResourceWarningNotFound() *GetResourceWarningNotFound {
+	return &GetResourceWarningNotFound{}
 }
 
 /*
-GETResourceWarningNotFound describes a response with status code 404, with default header values.
+GetResourceWarningNotFound describes a response with status code 404, with default header values.
 
 Resource Warning not found
 */
-type GETResourceWarningNotFound struct {
+type GetResourceWarningNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get resource warning not found response has a 2xx status code
-func (o *GETResourceWarningNotFound) IsSuccess() bool {
+func (o *GetResourceWarningNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get resource warning not found response has a 3xx status code
-func (o *GETResourceWarningNotFound) IsRedirect() bool {
+func (o *GetResourceWarningNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resource warning not found response has a 4xx status code
-func (o *GETResourceWarningNotFound) IsClientError() bool {
+func (o *GetResourceWarningNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get resource warning not found response has a 5xx status code
-func (o *GETResourceWarningNotFound) IsServerError() bool {
+func (o *GetResourceWarningNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get resource warning not found response a status code equal to that given
-func (o *GETResourceWarningNotFound) IsCode(code int) bool {
+func (o *GetResourceWarningNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETResourceWarningNotFound) Error() string {
+func (o *GetResourceWarningNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-warnings/{id}][%d] getResourceWarningNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETResourceWarningNotFound) String() string {
+func (o *GetResourceWarningNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/resource-warnings/{id}][%d] getResourceWarningNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETResourceWarningNotFound) GetPayload() *models.Error {
+func (o *GetResourceWarningNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETResourceWarningNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourceWarningNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETResourceWarningNotFound) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-// NewGETResourceWarningInternalServerError creates a GETResourceWarningInternalServerError with default headers values
-func NewGETResourceWarningInternalServerError() *GETResourceWarningInternalServerError {
-	return &GETResourceWarningInternalServerError{}
+// NewGetResourceWarningInternalServerError creates a GetResourceWarningInternalServerError with default headers values
+func NewGetResourceWarningInternalServerError() *GetResourceWarningInternalServerError {
+	return &GetResourceWarningInternalServerError{}
 }
 
 /*
-GETResourceWarningInternalServerError describes a response with status code 500, with default header values.
+GetResourceWarningInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETResourceWarningInternalServerError struct {
+type GetResourceWarningInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get resource warning internal server error response has a 2xx status code
-func (o *GETResourceWarningInternalServerError) IsSuccess() bool {
+func (o *GetResourceWarningInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get resource warning internal server error response has a 3xx status code
-func (o *GETResourceWarningInternalServerError) IsRedirect() bool {
+func (o *GetResourceWarningInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resource warning internal server error response has a 4xx status code
-func (o *GETResourceWarningInternalServerError) IsClientError() bool {
+func (o *GetResourceWarningInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get resource warning internal server error response has a 5xx status code
-func (o *GETResourceWarningInternalServerError) IsServerError() bool {
+func (o *GetResourceWarningInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get resource warning internal server error response a status code equal to that given
-func (o *GETResourceWarningInternalServerError) IsCode(code int) bool {
+func (o *GetResourceWarningInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETResourceWarningInternalServerError) Error() string {
+func (o *GetResourceWarningInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-warnings/{id}][%d] getResourceWarningInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETResourceWarningInternalServerError) String() string {
+func (o *GetResourceWarningInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/resource-warnings/{id}][%d] getResourceWarningInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETResourceWarningInternalServerError) GetPayload() *models.Error {
+func (o *GetResourceWarningInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETResourceWarningInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourceWarningInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

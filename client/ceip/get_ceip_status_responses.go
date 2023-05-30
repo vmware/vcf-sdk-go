@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCEIPStatusReader is a Reader for the GETCEIPStatus structure.
-type GETCEIPStatusReader struct {
+// GetCEIPStatusReader is a Reader for the GetCEIPStatus structure.
+type GetCEIPStatusReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCEIPStatusReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCEIPStatusReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCEIPStatusOK()
+		result := NewGetCEIPStatusOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETCEIPStatusInternalServerError()
+		result := NewGetCEIPStatusInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETCEIPStatusReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewGETCEIPStatusOK creates a GETCEIPStatusOK with default headers values
-func NewGETCEIPStatusOK() *GETCEIPStatusOK {
-	return &GETCEIPStatusOK{}
+// NewGetCEIPStatusOK creates a GetCEIPStatusOK with default headers values
+func NewGetCEIPStatusOK() *GetCEIPStatusOK {
+	return &GetCEIPStatusOK{}
 }
 
 /*
-GETCEIPStatusOK describes a response with status code 200, with default header values.
+GetCEIPStatusOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETCEIPStatusOK struct {
+type GetCEIPStatusOK struct {
 	Payload *models.CEIP
 }
 
 // IsSuccess returns true when this get Ceip status o k response has a 2xx status code
-func (o *GETCEIPStatusOK) IsSuccess() bool {
+func (o *GetCEIPStatusOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Ceip status o k response has a 3xx status code
-func (o *GETCEIPStatusOK) IsRedirect() bool {
+func (o *GetCEIPStatusOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Ceip status o k response has a 4xx status code
-func (o *GETCEIPStatusOK) IsClientError() bool {
+func (o *GetCEIPStatusOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Ceip status o k response has a 5xx status code
-func (o *GETCEIPStatusOK) IsServerError() bool {
+func (o *GetCEIPStatusOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Ceip status o k response a status code equal to that given
-func (o *GETCEIPStatusOK) IsCode(code int) bool {
+func (o *GetCEIPStatusOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCEIPStatusOK) Error() string {
+func (o *GetCEIPStatusOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/ceip][%d] getCeipStatusOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCEIPStatusOK) String() string {
+func (o *GetCEIPStatusOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/ceip][%d] getCeipStatusOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCEIPStatusOK) GetPayload() *models.CEIP {
+func (o *GetCEIPStatusOK) GetPayload() *models.CEIP {
 	return o.Payload
 }
 
-func (o *GETCEIPStatusOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCEIPStatusOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CEIP)
 
@@ -106,58 +106,58 @@ func (o *GETCEIPStatusOK) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETCEIPStatusInternalServerError creates a GETCEIPStatusInternalServerError with default headers values
-func NewGETCEIPStatusInternalServerError() *GETCEIPStatusInternalServerError {
-	return &GETCEIPStatusInternalServerError{}
+// NewGetCEIPStatusInternalServerError creates a GetCEIPStatusInternalServerError with default headers values
+func NewGetCEIPStatusInternalServerError() *GetCEIPStatusInternalServerError {
+	return &GetCEIPStatusInternalServerError{}
 }
 
 /*
-GETCEIPStatusInternalServerError describes a response with status code 500, with default header values.
+GetCEIPStatusInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETCEIPStatusInternalServerError struct {
+type GetCEIPStatusInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Ceip status internal server error response has a 2xx status code
-func (o *GETCEIPStatusInternalServerError) IsSuccess() bool {
+func (o *GetCEIPStatusInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Ceip status internal server error response has a 3xx status code
-func (o *GETCEIPStatusInternalServerError) IsRedirect() bool {
+func (o *GetCEIPStatusInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Ceip status internal server error response has a 4xx status code
-func (o *GETCEIPStatusInternalServerError) IsClientError() bool {
+func (o *GetCEIPStatusInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Ceip status internal server error response has a 5xx status code
-func (o *GETCEIPStatusInternalServerError) IsServerError() bool {
+func (o *GetCEIPStatusInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get Ceip status internal server error response a status code equal to that given
-func (o *GETCEIPStatusInternalServerError) IsCode(code int) bool {
+func (o *GetCEIPStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCEIPStatusInternalServerError) Error() string {
+func (o *GetCEIPStatusInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/ceip][%d] getCeipStatusInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCEIPStatusInternalServerError) String() string {
+func (o *GetCEIPStatusInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/ceip][%d] getCeipStatusInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCEIPStatusInternalServerError) GetPayload() *models.Error {
+func (o *GetCEIPStatusInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCEIPStatusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCEIPStatusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

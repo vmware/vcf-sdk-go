@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETAllSDDCValidationsParams creates a new GETAllSDDCValidationsParams object,
+// NewGetAllSDDCValidationsParams creates a new GetAllSDDCValidationsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETAllSDDCValidationsParams() *GETAllSDDCValidationsParams {
-	return &GETAllSDDCValidationsParams{
+func NewGetAllSDDCValidationsParams() *GetAllSDDCValidationsParams {
+	return &GetAllSDDCValidationsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETAllSDDCValidationsParamsWithTimeout creates a new GETAllSDDCValidationsParams object
+// NewGetAllSDDCValidationsParamsWithTimeout creates a new GetAllSDDCValidationsParams object
 // with the ability to set a timeout on a request.
-func NewGETAllSDDCValidationsParamsWithTimeout(timeout time.Duration) *GETAllSDDCValidationsParams {
-	return &GETAllSDDCValidationsParams{
+func NewGetAllSDDCValidationsParamsWithTimeout(timeout time.Duration) *GetAllSDDCValidationsParams {
+	return &GetAllSDDCValidationsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETAllSDDCValidationsParamsWithContext creates a new GETAllSDDCValidationsParams object
+// NewGetAllSDDCValidationsParamsWithContext creates a new GetAllSDDCValidationsParams object
 // with the ability to set a context for a request.
-func NewGETAllSDDCValidationsParamsWithContext(ctx context.Context) *GETAllSDDCValidationsParams {
-	return &GETAllSDDCValidationsParams{
+func NewGetAllSDDCValidationsParamsWithContext(ctx context.Context) *GetAllSDDCValidationsParams {
+	return &GetAllSDDCValidationsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETAllSDDCValidationsParamsWithHTTPClient creates a new GETAllSDDCValidationsParams object
+// NewGetAllSDDCValidationsParamsWithHTTPClient creates a new GetAllSDDCValidationsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETAllSDDCValidationsParamsWithHTTPClient(client *http.Client) *GETAllSDDCValidationsParams {
-	return &GETAllSDDCValidationsParams{
+func NewGetAllSDDCValidationsParamsWithHTTPClient(client *http.Client) *GetAllSDDCValidationsParams {
+	return &GetAllSDDCValidationsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETAllSDDCValidationsParams contains all the parameters to send to the API endpoint
+GetAllSDDCValidationsParams contains all the parameters to send to the API endpoint
 
 	for the get all Sddc validations operation.
 
 	Typically these are written to a http.Request.
 */
-type GETAllSDDCValidationsParams struct {
+type GetAllSDDCValidationsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETAllSDDCValidationsParams struct {
 // WithDefaults hydrates default values in the get all Sddc validations params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllSDDCValidationsParams) WithDefaults() *GETAllSDDCValidationsParams {
+func (o *GetAllSDDCValidationsParams) WithDefaults() *GetAllSDDCValidationsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETAllSDDCValidationsParams) WithDefaults() *GETAllSDDCValidationsParam
 // SetDefaults hydrates default values in the get all Sddc validations params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllSDDCValidationsParams) SetDefaults() {
+func (o *GetAllSDDCValidationsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get all Sddc validations params
-func (o *GETAllSDDCValidationsParams) WithTimeout(timeout time.Duration) *GETAllSDDCValidationsParams {
+func (o *GetAllSDDCValidationsParams) WithTimeout(timeout time.Duration) *GetAllSDDCValidationsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get all Sddc validations params
-func (o *GETAllSDDCValidationsParams) SetTimeout(timeout time.Duration) {
+func (o *GetAllSDDCValidationsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get all Sddc validations params
-func (o *GETAllSDDCValidationsParams) WithContext(ctx context.Context) *GETAllSDDCValidationsParams {
+func (o *GetAllSDDCValidationsParams) WithContext(ctx context.Context) *GetAllSDDCValidationsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get all Sddc validations params
-func (o *GETAllSDDCValidationsParams) SetContext(ctx context.Context) {
+func (o *GetAllSDDCValidationsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get all Sddc validations params
-func (o *GETAllSDDCValidationsParams) WithHTTPClient(client *http.Client) *GETAllSDDCValidationsParams {
+func (o *GetAllSDDCValidationsParams) WithHTTPClient(client *http.Client) *GetAllSDDCValidationsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get all Sddc validations params
-func (o *GETAllSDDCValidationsParams) SetHTTPClient(client *http.Client) {
+func (o *GetAllSDDCValidationsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETAllSDDCValidationsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetAllSDDCValidationsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

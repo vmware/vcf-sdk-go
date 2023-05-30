@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETDatastoreQueryResponseReader is a Reader for the GETDatastoreQueryResponse structure.
-type GETDatastoreQueryResponseReader struct {
+// GetDatastoreQueryResponseReader is a Reader for the GetDatastoreQueryResponse structure.
+type GetDatastoreQueryResponseReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETDatastoreQueryResponseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetDatastoreQueryResponseReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETDatastoreQueryResponseOK()
+		result := NewGetDatastoreQueryResponseOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETDatastoreQueryResponseBadRequest()
+		result := NewGetDatastoreQueryResponseBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETDatastoreQueryResponseNotFound()
+		result := NewGetDatastoreQueryResponseNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETDatastoreQueryResponseInternalServerError()
+		result := NewGetDatastoreQueryResponseInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETDatastoreQueryResponseReader) ReadResponse(response runtime.ClientRe
 	}
 }
 
-// NewGETDatastoreQueryResponseOK creates a GETDatastoreQueryResponseOK with default headers values
-func NewGETDatastoreQueryResponseOK() *GETDatastoreQueryResponseOK {
-	return &GETDatastoreQueryResponseOK{}
+// NewGetDatastoreQueryResponseOK creates a GetDatastoreQueryResponseOK with default headers values
+func NewGetDatastoreQueryResponseOK() *GetDatastoreQueryResponseOK {
+	return &GetDatastoreQueryResponseOK{}
 }
 
 /*
-GETDatastoreQueryResponseOK describes a response with status code 200, with default header values.
+GetDatastoreQueryResponseOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETDatastoreQueryResponseOK struct {
+type GetDatastoreQueryResponseOK struct {
 	Payload *models.DatastoreQueryResponse
 }
 
 // IsSuccess returns true when this get datastore query response o k response has a 2xx status code
-func (o *GETDatastoreQueryResponseOK) IsSuccess() bool {
+func (o *GetDatastoreQueryResponseOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get datastore query response o k response has a 3xx status code
-func (o *GETDatastoreQueryResponseOK) IsRedirect() bool {
+func (o *GetDatastoreQueryResponseOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastore query response o k response has a 4xx status code
-func (o *GETDatastoreQueryResponseOK) IsClientError() bool {
+func (o *GetDatastoreQueryResponseOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get datastore query response o k response has a 5xx status code
-func (o *GETDatastoreQueryResponseOK) IsServerError() bool {
+func (o *GetDatastoreQueryResponseOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get datastore query response o k response a status code equal to that given
-func (o *GETDatastoreQueryResponseOK) IsCode(code int) bool {
+func (o *GetDatastoreQueryResponseOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETDatastoreQueryResponseOK) Error() string {
+func (o *GetDatastoreQueryResponseOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseOK) String() string {
+func (o *GetDatastoreQueryResponseOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseOK) GetPayload() *models.DatastoreQueryResponse {
+func (o *GetDatastoreQueryResponseOK) GetPayload() *models.DatastoreQueryResponse {
 	return o.Payload
 }
 
-func (o *GETDatastoreQueryResponseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoreQueryResponseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.DatastoreQueryResponse)
 
@@ -118,58 +118,58 @@ func (o *GETDatastoreQueryResponseOK) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewGETDatastoreQueryResponseBadRequest creates a GETDatastoreQueryResponseBadRequest with default headers values
-func NewGETDatastoreQueryResponseBadRequest() *GETDatastoreQueryResponseBadRequest {
-	return &GETDatastoreQueryResponseBadRequest{}
+// NewGetDatastoreQueryResponseBadRequest creates a GetDatastoreQueryResponseBadRequest with default headers values
+func NewGetDatastoreQueryResponseBadRequest() *GetDatastoreQueryResponseBadRequest {
+	return &GetDatastoreQueryResponseBadRequest{}
 }
 
 /*
-GETDatastoreQueryResponseBadRequest describes a response with status code 400, with default header values.
+GetDatastoreQueryResponseBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETDatastoreQueryResponseBadRequest struct {
+type GetDatastoreQueryResponseBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get datastore query response bad request response has a 2xx status code
-func (o *GETDatastoreQueryResponseBadRequest) IsSuccess() bool {
+func (o *GetDatastoreQueryResponseBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get datastore query response bad request response has a 3xx status code
-func (o *GETDatastoreQueryResponseBadRequest) IsRedirect() bool {
+func (o *GetDatastoreQueryResponseBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastore query response bad request response has a 4xx status code
-func (o *GETDatastoreQueryResponseBadRequest) IsClientError() bool {
+func (o *GetDatastoreQueryResponseBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get datastore query response bad request response has a 5xx status code
-func (o *GETDatastoreQueryResponseBadRequest) IsServerError() bool {
+func (o *GetDatastoreQueryResponseBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get datastore query response bad request response a status code equal to that given
-func (o *GETDatastoreQueryResponseBadRequest) IsCode(code int) bool {
+func (o *GetDatastoreQueryResponseBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETDatastoreQueryResponseBadRequest) Error() string {
+func (o *GetDatastoreQueryResponseBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseBadRequest) String() string {
+func (o *GetDatastoreQueryResponseBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseBadRequest) GetPayload() *models.Error {
+func (o *GetDatastoreQueryResponseBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDatastoreQueryResponseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoreQueryResponseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -181,58 +181,58 @@ func (o *GETDatastoreQueryResponseBadRequest) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETDatastoreQueryResponseNotFound creates a GETDatastoreQueryResponseNotFound with default headers values
-func NewGETDatastoreQueryResponseNotFound() *GETDatastoreQueryResponseNotFound {
-	return &GETDatastoreQueryResponseNotFound{}
+// NewGetDatastoreQueryResponseNotFound creates a GetDatastoreQueryResponseNotFound with default headers values
+func NewGetDatastoreQueryResponseNotFound() *GetDatastoreQueryResponseNotFound {
+	return &GetDatastoreQueryResponseNotFound{}
 }
 
 /*
-GETDatastoreQueryResponseNotFound describes a response with status code 404, with default header values.
+GetDatastoreQueryResponseNotFound describes a response with status code 404, with default header values.
 
 Query Not Found
 */
-type GETDatastoreQueryResponseNotFound struct {
+type GetDatastoreQueryResponseNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get datastore query response not found response has a 2xx status code
-func (o *GETDatastoreQueryResponseNotFound) IsSuccess() bool {
+func (o *GetDatastoreQueryResponseNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get datastore query response not found response has a 3xx status code
-func (o *GETDatastoreQueryResponseNotFound) IsRedirect() bool {
+func (o *GetDatastoreQueryResponseNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastore query response not found response has a 4xx status code
-func (o *GETDatastoreQueryResponseNotFound) IsClientError() bool {
+func (o *GetDatastoreQueryResponseNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get datastore query response not found response has a 5xx status code
-func (o *GETDatastoreQueryResponseNotFound) IsServerError() bool {
+func (o *GetDatastoreQueryResponseNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get datastore query response not found response a status code equal to that given
-func (o *GETDatastoreQueryResponseNotFound) IsCode(code int) bool {
+func (o *GetDatastoreQueryResponseNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETDatastoreQueryResponseNotFound) Error() string {
+func (o *GetDatastoreQueryResponseNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseNotFound) String() string {
+func (o *GetDatastoreQueryResponseNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseNotFound) GetPayload() *models.Error {
+func (o *GetDatastoreQueryResponseNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDatastoreQueryResponseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoreQueryResponseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -244,58 +244,58 @@ func (o *GETDatastoreQueryResponseNotFound) readResponse(response runtime.Client
 	return nil
 }
 
-// NewGETDatastoreQueryResponseInternalServerError creates a GETDatastoreQueryResponseInternalServerError with default headers values
-func NewGETDatastoreQueryResponseInternalServerError() *GETDatastoreQueryResponseInternalServerError {
-	return &GETDatastoreQueryResponseInternalServerError{}
+// NewGetDatastoreQueryResponseInternalServerError creates a GetDatastoreQueryResponseInternalServerError with default headers values
+func NewGetDatastoreQueryResponseInternalServerError() *GetDatastoreQueryResponseInternalServerError {
+	return &GetDatastoreQueryResponseInternalServerError{}
 }
 
 /*
-GETDatastoreQueryResponseInternalServerError describes a response with status code 500, with default header values.
+GetDatastoreQueryResponseInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETDatastoreQueryResponseInternalServerError struct {
+type GetDatastoreQueryResponseInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get datastore query response internal server error response has a 2xx status code
-func (o *GETDatastoreQueryResponseInternalServerError) IsSuccess() bool {
+func (o *GetDatastoreQueryResponseInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get datastore query response internal server error response has a 3xx status code
-func (o *GETDatastoreQueryResponseInternalServerError) IsRedirect() bool {
+func (o *GetDatastoreQueryResponseInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastore query response internal server error response has a 4xx status code
-func (o *GETDatastoreQueryResponseInternalServerError) IsClientError() bool {
+func (o *GetDatastoreQueryResponseInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get datastore query response internal server error response has a 5xx status code
-func (o *GETDatastoreQueryResponseInternalServerError) IsServerError() bool {
+func (o *GetDatastoreQueryResponseInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get datastore query response internal server error response a status code equal to that given
-func (o *GETDatastoreQueryResponseInternalServerError) IsCode(code int) bool {
+func (o *GetDatastoreQueryResponseInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETDatastoreQueryResponseInternalServerError) Error() string {
+func (o *GetDatastoreQueryResponseInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseInternalServerError) String() string {
+func (o *GetDatastoreQueryResponseInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDatastoreQueryResponseInternalServerError) GetPayload() *models.Error {
+func (o *GetDatastoreQueryResponseInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDatastoreQueryResponseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoreQueryResponseInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

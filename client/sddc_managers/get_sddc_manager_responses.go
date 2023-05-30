@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETSDDCManagerReader is a Reader for the GETSDDCManager structure.
-type GETSDDCManagerReader struct {
+// GetSDDCManagerReader is a Reader for the GetSDDCManager structure.
+type GetSDDCManagerReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETSDDCManagerReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetSDDCManagerReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETSDDCManagerOK()
+		result := NewGetSDDCManagerOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETSDDCManagerNotFound()
+		result := NewGetSDDCManagerNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETSDDCManagerInternalServerError()
+		result := NewGetSDDCManagerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETSDDCManagerReader) ReadResponse(response runtime.ClientResponse, con
 	}
 }
 
-// NewGETSDDCManagerOK creates a GETSDDCManagerOK with default headers values
-func NewGETSDDCManagerOK() *GETSDDCManagerOK {
-	return &GETSDDCManagerOK{}
+// NewGetSDDCManagerOK creates a GetSDDCManagerOK with default headers values
+func NewGetSDDCManagerOK() *GetSDDCManagerOK {
+	return &GetSDDCManagerOK{}
 }
 
 /*
-GETSDDCManagerOK describes a response with status code 200, with default header values.
+GetSDDCManagerOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETSDDCManagerOK struct {
+type GetSDDCManagerOK struct {
 	Payload *models.SDDCManager
 }
 
 // IsSuccess returns true when this get Sddc manager o k response has a 2xx status code
-func (o *GETSDDCManagerOK) IsSuccess() bool {
+func (o *GetSDDCManagerOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Sddc manager o k response has a 3xx status code
-func (o *GETSDDCManagerOK) IsRedirect() bool {
+func (o *GetSDDCManagerOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sddc manager o k response has a 4xx status code
-func (o *GETSDDCManagerOK) IsClientError() bool {
+func (o *GetSDDCManagerOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Sddc manager o k response has a 5xx status code
-func (o *GETSDDCManagerOK) IsServerError() bool {
+func (o *GetSDDCManagerOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Sddc manager o k response a status code equal to that given
-func (o *GETSDDCManagerOK) IsCode(code int) bool {
+func (o *GetSDDCManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETSDDCManagerOK) Error() string {
+func (o *GetSDDCManagerOK) Error() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSDDCManagerOK) String() string {
+func (o *GetSDDCManagerOK) String() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSDDCManagerOK) GetPayload() *models.SDDCManager {
+func (o *GetSDDCManagerOK) GetPayload() *models.SDDCManager {
 	return o.Payload
 }
 
-func (o *GETSDDCManagerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSDDCManagerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.SDDCManager)
 
@@ -112,58 +112,58 @@ func (o *GETSDDCManagerOK) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-// NewGETSDDCManagerNotFound creates a GETSDDCManagerNotFound with default headers values
-func NewGETSDDCManagerNotFound() *GETSDDCManagerNotFound {
-	return &GETSDDCManagerNotFound{}
+// NewGetSDDCManagerNotFound creates a GetSDDCManagerNotFound with default headers values
+func NewGetSDDCManagerNotFound() *GetSDDCManagerNotFound {
+	return &GetSDDCManagerNotFound{}
 }
 
 /*
-GETSDDCManagerNotFound describes a response with status code 404, with default header values.
+GetSDDCManagerNotFound describes a response with status code 404, with default header values.
 
 Sddc Manager not found
 */
-type GETSDDCManagerNotFound struct {
+type GetSDDCManagerNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Sddc manager not found response has a 2xx status code
-func (o *GETSDDCManagerNotFound) IsSuccess() bool {
+func (o *GetSDDCManagerNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Sddc manager not found response has a 3xx status code
-func (o *GETSDDCManagerNotFound) IsRedirect() bool {
+func (o *GetSDDCManagerNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sddc manager not found response has a 4xx status code
-func (o *GETSDDCManagerNotFound) IsClientError() bool {
+func (o *GetSDDCManagerNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Sddc manager not found response has a 5xx status code
-func (o *GETSDDCManagerNotFound) IsServerError() bool {
+func (o *GetSDDCManagerNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Sddc manager not found response a status code equal to that given
-func (o *GETSDDCManagerNotFound) IsCode(code int) bool {
+func (o *GetSDDCManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETSDDCManagerNotFound) Error() string {
+func (o *GetSDDCManagerNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETSDDCManagerNotFound) String() string {
+func (o *GetSDDCManagerNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETSDDCManagerNotFound) GetPayload() *models.Error {
+func (o *GetSDDCManagerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETSDDCManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSDDCManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETSDDCManagerNotFound) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETSDDCManagerInternalServerError creates a GETSDDCManagerInternalServerError with default headers values
-func NewGETSDDCManagerInternalServerError() *GETSDDCManagerInternalServerError {
-	return &GETSDDCManagerInternalServerError{}
+// NewGetSDDCManagerInternalServerError creates a GetSDDCManagerInternalServerError with default headers values
+func NewGetSDDCManagerInternalServerError() *GetSDDCManagerInternalServerError {
+	return &GetSDDCManagerInternalServerError{}
 }
 
 /*
-GETSDDCManagerInternalServerError describes a response with status code 500, with default header values.
+GetSDDCManagerInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETSDDCManagerInternalServerError struct {
+type GetSDDCManagerInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Sddc manager internal server error response has a 2xx status code
-func (o *GETSDDCManagerInternalServerError) IsSuccess() bool {
+func (o *GetSDDCManagerInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Sddc manager internal server error response has a 3xx status code
-func (o *GETSDDCManagerInternalServerError) IsRedirect() bool {
+func (o *GetSDDCManagerInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Sddc manager internal server error response has a 4xx status code
-func (o *GETSDDCManagerInternalServerError) IsClientError() bool {
+func (o *GetSDDCManagerInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Sddc manager internal server error response has a 5xx status code
-func (o *GETSDDCManagerInternalServerError) IsServerError() bool {
+func (o *GetSDDCManagerInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get Sddc manager internal server error response a status code equal to that given
-func (o *GETSDDCManagerInternalServerError) IsCode(code int) bool {
+func (o *GetSDDCManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETSDDCManagerInternalServerError) Error() string {
+func (o *GetSDDCManagerInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETSDDCManagerInternalServerError) String() string {
+func (o *GetSDDCManagerInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETSDDCManagerInternalServerError) GetPayload() *models.Error {
+func (o *GetSDDCManagerInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETSDDCManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSDDCManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -38,7 +38,7 @@ type Certificate struct {
 
 	// Error if certificate cannot be fetched
 	// Required: true
-	GETCertificateError *string `json:"getCertificateError"`
+	GetCertificateError *string `json:"getCertificateError"`
 
 	// Whether the certificate is installed or not
 	// Required: true
@@ -127,7 +127,7 @@ func (m *Certificate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateGETCertificateError(formats); err != nil {
+	if err := m.validateGetCertificateError(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -250,9 +250,9 @@ func (m *Certificate) validateExpirationStatus(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Certificate) validateGETCertificateError(formats strfmt.Registry) error {
+func (m *Certificate) validateGetCertificateError(formats strfmt.Registry) error {
 
-	if err := validate.Required("getCertificateError", "body", m.GETCertificateError); err != nil {
+	if err := validate.Required("getCertificateError", "body", m.GetCertificateError); err != nil {
 		return err
 	}
 

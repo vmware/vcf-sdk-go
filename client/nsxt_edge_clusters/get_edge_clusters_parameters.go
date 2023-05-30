@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETEdgeClustersParams creates a new GETEdgeClustersParams object,
+// NewGetEdgeClustersParams creates a new GetEdgeClustersParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETEdgeClustersParams() *GETEdgeClustersParams {
-	return &GETEdgeClustersParams{
+func NewGetEdgeClustersParams() *GetEdgeClustersParams {
+	return &GetEdgeClustersParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETEdgeClustersParamsWithTimeout creates a new GETEdgeClustersParams object
+// NewGetEdgeClustersParamsWithTimeout creates a new GetEdgeClustersParams object
 // with the ability to set a timeout on a request.
-func NewGETEdgeClustersParamsWithTimeout(timeout time.Duration) *GETEdgeClustersParams {
-	return &GETEdgeClustersParams{
+func NewGetEdgeClustersParamsWithTimeout(timeout time.Duration) *GetEdgeClustersParams {
+	return &GetEdgeClustersParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETEdgeClustersParamsWithContext creates a new GETEdgeClustersParams object
+// NewGetEdgeClustersParamsWithContext creates a new GetEdgeClustersParams object
 // with the ability to set a context for a request.
-func NewGETEdgeClustersParamsWithContext(ctx context.Context) *GETEdgeClustersParams {
-	return &GETEdgeClustersParams{
+func NewGetEdgeClustersParamsWithContext(ctx context.Context) *GetEdgeClustersParams {
+	return &GetEdgeClustersParams{
 		Context: ctx,
 	}
 }
 
-// NewGETEdgeClustersParamsWithHTTPClient creates a new GETEdgeClustersParams object
+// NewGetEdgeClustersParamsWithHTTPClient creates a new GetEdgeClustersParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETEdgeClustersParamsWithHTTPClient(client *http.Client) *GETEdgeClustersParams {
-	return &GETEdgeClustersParams{
+func NewGetEdgeClustersParamsWithHTTPClient(client *http.Client) *GetEdgeClustersParams {
+	return &GetEdgeClustersParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETEdgeClustersParams contains all the parameters to send to the API endpoint
+GetEdgeClustersParams contains all the parameters to send to the API endpoint
 
 	for the get edge clusters operation.
 
 	Typically these are written to a http.Request.
 */
-type GETEdgeClustersParams struct {
+type GetEdgeClustersParams struct {
 
 	/* ClusterID.
 
@@ -78,7 +78,7 @@ type GETEdgeClustersParams struct {
 // WithDefaults hydrates default values in the get edge clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETEdgeClustersParams) WithDefaults() *GETEdgeClustersParams {
+func (o *GetEdgeClustersParams) WithDefaults() *GetEdgeClustersParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETEdgeClustersParams) WithDefaults() *GETEdgeClustersParams {
 // SetDefaults hydrates default values in the get edge clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETEdgeClustersParams) SetDefaults() {
+func (o *GetEdgeClustersParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get edge clusters params
-func (o *GETEdgeClustersParams) WithTimeout(timeout time.Duration) *GETEdgeClustersParams {
+func (o *GetEdgeClustersParams) WithTimeout(timeout time.Duration) *GetEdgeClustersParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get edge clusters params
-func (o *GETEdgeClustersParams) SetTimeout(timeout time.Duration) {
+func (o *GetEdgeClustersParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get edge clusters params
-func (o *GETEdgeClustersParams) WithContext(ctx context.Context) *GETEdgeClustersParams {
+func (o *GetEdgeClustersParams) WithContext(ctx context.Context) *GetEdgeClustersParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get edge clusters params
-func (o *GETEdgeClustersParams) SetContext(ctx context.Context) {
+func (o *GetEdgeClustersParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get edge clusters params
-func (o *GETEdgeClustersParams) WithHTTPClient(client *http.Client) *GETEdgeClustersParams {
+func (o *GetEdgeClustersParams) WithHTTPClient(client *http.Client) *GetEdgeClustersParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get edge clusters params
-func (o *GETEdgeClustersParams) SetHTTPClient(client *http.Client) {
+func (o *GetEdgeClustersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterID adds the clusterID to the get edge clusters params
-func (o *GETEdgeClustersParams) WithClusterID(clusterID *string) *GETEdgeClustersParams {
+func (o *GetEdgeClustersParams) WithClusterID(clusterID *string) *GetEdgeClustersParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the get edge clusters params
-func (o *GETEdgeClustersParams) SetClusterID(clusterID *string) {
+func (o *GetEdgeClustersParams) SetClusterID(clusterID *string) {
 	o.ClusterID = clusterID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETEdgeClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetEdgeClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

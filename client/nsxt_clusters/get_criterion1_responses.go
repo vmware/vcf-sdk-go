@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCriterion1Reader is a Reader for the GETCriterion1 structure.
-type GETCriterion1Reader struct {
+// GetCriterion1Reader is a Reader for the GetCriterion1 structure.
+type GetCriterion1Reader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCriterion1Reader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCriterion1Reader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCriterion1OK()
+		result := NewGetCriterion1OK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETCriterion1NotFound()
+		result := NewGetCriterion1NotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETCriterion1Reader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewGETCriterion1OK creates a GETCriterion1OK with default headers values
-func NewGETCriterion1OK() *GETCriterion1OK {
-	return &GETCriterion1OK{}
+// NewGetCriterion1OK creates a GetCriterion1OK with default headers values
+func NewGetCriterion1OK() *GetCriterion1OK {
+	return &GetCriterion1OK{}
 }
 
 /*
-GETCriterion1OK describes a response with status code 200, with default header values.
+GetCriterion1OK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETCriterion1OK struct {
+type GetCriterion1OK struct {
 	Payload *models.NsxTCriterion
 }
 
 // IsSuccess returns true when this get criterion1 o k response has a 2xx status code
-func (o *GETCriterion1OK) IsSuccess() bool {
+func (o *GetCriterion1OK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get criterion1 o k response has a 3xx status code
-func (o *GETCriterion1OK) IsRedirect() bool {
+func (o *GetCriterion1OK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get criterion1 o k response has a 4xx status code
-func (o *GETCriterion1OK) IsClientError() bool {
+func (o *GetCriterion1OK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get criterion1 o k response has a 5xx status code
-func (o *GETCriterion1OK) IsServerError() bool {
+func (o *GetCriterion1OK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get criterion1 o k response a status code equal to that given
-func (o *GETCriterion1OK) IsCode(code int) bool {
+func (o *GetCriterion1OK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCriterion1OK) Error() string {
+func (o *GetCriterion1OK) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/criteria/{name}][%d] getCriterion1OK  %+v", 200, o.Payload)
 }
 
-func (o *GETCriterion1OK) String() string {
+func (o *GetCriterion1OK) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/criteria/{name}][%d] getCriterion1OK  %+v", 200, o.Payload)
 }
 
-func (o *GETCriterion1OK) GetPayload() *models.NsxTCriterion {
+func (o *GetCriterion1OK) GetPayload() *models.NsxTCriterion {
 	return o.Payload
 }
 
-func (o *GETCriterion1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCriterion1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.NsxTCriterion)
 
@@ -106,58 +106,58 @@ func (o *GETCriterion1OK) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETCriterion1NotFound creates a GETCriterion1NotFound with default headers values
-func NewGETCriterion1NotFound() *GETCriterion1NotFound {
-	return &GETCriterion1NotFound{}
+// NewGetCriterion1NotFound creates a GetCriterion1NotFound with default headers values
+func NewGetCriterion1NotFound() *GetCriterion1NotFound {
+	return &GetCriterion1NotFound{}
 }
 
 /*
-GETCriterion1NotFound describes a response with status code 404, with default header values.
+GetCriterion1NotFound describes a response with status code 404, with default header values.
 
 Criterion Not Found
 */
-type GETCriterion1NotFound struct {
+type GetCriterion1NotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get criterion1 not found response has a 2xx status code
-func (o *GETCriterion1NotFound) IsSuccess() bool {
+func (o *GetCriterion1NotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get criterion1 not found response has a 3xx status code
-func (o *GETCriterion1NotFound) IsRedirect() bool {
+func (o *GetCriterion1NotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get criterion1 not found response has a 4xx status code
-func (o *GETCriterion1NotFound) IsClientError() bool {
+func (o *GetCriterion1NotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get criterion1 not found response has a 5xx status code
-func (o *GETCriterion1NotFound) IsServerError() bool {
+func (o *GetCriterion1NotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get criterion1 not found response a status code equal to that given
-func (o *GETCriterion1NotFound) IsCode(code int) bool {
+func (o *GetCriterion1NotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETCriterion1NotFound) Error() string {
+func (o *GetCriterion1NotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/criteria/{name}][%d] getCriterion1NotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCriterion1NotFound) String() string {
+func (o *GetCriterion1NotFound) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/criteria/{name}][%d] getCriterion1NotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCriterion1NotFound) GetPayload() *models.Error {
+func (o *GetCriterion1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCriterion1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCriterion1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

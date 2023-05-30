@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETWsasReader is a Reader for the GETWsas structure.
-type GETWsasReader struct {
+// GetWsasReader is a Reader for the GetWsas structure.
+type GetWsasReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETWsasReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetWsasReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETWsasOK()
+		result := NewGetWsasOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETWsasReader) ReadResponse(response runtime.ClientResponse, consumer r
 	}
 }
 
-// NewGETWsasOK creates a GETWsasOK with default headers values
-func NewGETWsasOK() *GETWsasOK {
-	return &GETWsasOK{}
+// NewGetWsasOK creates a GetWsasOK with default headers values
+func NewGetWsasOK() *GetWsasOK {
+	return &GetWsasOK{}
 }
 
 /*
-GETWsasOK describes a response with status code 200, with default header values.
+GetWsasOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETWsasOK struct {
+type GetWsasOK struct {
 	Payload *models.PageOfWSA
 }
 
 // IsSuccess returns true when this get wsas o k response has a 2xx status code
-func (o *GETWsasOK) IsSuccess() bool {
+func (o *GetWsasOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get wsas o k response has a 3xx status code
-func (o *GETWsasOK) IsRedirect() bool {
+func (o *GetWsasOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get wsas o k response has a 4xx status code
-func (o *GETWsasOK) IsClientError() bool {
+func (o *GetWsasOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get wsas o k response has a 5xx status code
-func (o *GETWsasOK) IsServerError() bool {
+func (o *GetWsasOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get wsas o k response a status code equal to that given
-func (o *GETWsasOK) IsCode(code int) bool {
+func (o *GetWsasOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETWsasOK) Error() string {
+func (o *GetWsasOK) Error() string {
 	return fmt.Sprintf("[GET /v1/wsas][%d] getWsasOK  %+v", 200, o.Payload)
 }
 
-func (o *GETWsasOK) String() string {
+func (o *GetWsasOK) String() string {
 	return fmt.Sprintf("[GET /v1/wsas][%d] getWsasOK  %+v", 200, o.Payload)
 }
 
-func (o *GETWsasOK) GetPayload() *models.PageOfWSA {
+func (o *GetWsasOK) GetPayload() *models.PageOfWSA {
 	return o.Payload
 }
 
-func (o *GETWsasOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetWsasOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfWSA)
 

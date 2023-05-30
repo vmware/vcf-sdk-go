@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETSSODomainsParams creates a new GETSSODomainsParams object,
+// NewGetSSODomainsParams creates a new GetSSODomainsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETSSODomainsParams() *GETSSODomainsParams {
-	return &GETSSODomainsParams{
+func NewGetSSODomainsParams() *GetSSODomainsParams {
+	return &GetSSODomainsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETSSODomainsParamsWithTimeout creates a new GETSSODomainsParams object
+// NewGetSSODomainsParamsWithTimeout creates a new GetSSODomainsParams object
 // with the ability to set a timeout on a request.
-func NewGETSSODomainsParamsWithTimeout(timeout time.Duration) *GETSSODomainsParams {
-	return &GETSSODomainsParams{
+func NewGetSSODomainsParamsWithTimeout(timeout time.Duration) *GetSSODomainsParams {
+	return &GetSSODomainsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETSSODomainsParamsWithContext creates a new GETSSODomainsParams object
+// NewGetSSODomainsParamsWithContext creates a new GetSSODomainsParams object
 // with the ability to set a context for a request.
-func NewGETSSODomainsParamsWithContext(ctx context.Context) *GETSSODomainsParams {
-	return &GETSSODomainsParams{
+func NewGetSSODomainsParamsWithContext(ctx context.Context) *GetSSODomainsParams {
+	return &GetSSODomainsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETSSODomainsParamsWithHTTPClient creates a new GETSSODomainsParams object
+// NewGetSSODomainsParamsWithHTTPClient creates a new GetSSODomainsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETSSODomainsParamsWithHTTPClient(client *http.Client) *GETSSODomainsParams {
-	return &GETSSODomainsParams{
+func NewGetSSODomainsParamsWithHTTPClient(client *http.Client) *GetSSODomainsParams {
+	return &GetSSODomainsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETSSODomainsParams contains all the parameters to send to the API endpoint
+GetSSODomainsParams contains all the parameters to send to the API endpoint
 
 	for the get SSO domains operation.
 
 	Typically these are written to a http.Request.
 */
-type GETSSODomainsParams struct {
+type GetSSODomainsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETSSODomainsParams struct {
 // WithDefaults hydrates default values in the get SSO domains params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSSODomainsParams) WithDefaults() *GETSSODomainsParams {
+func (o *GetSSODomainsParams) WithDefaults() *GetSSODomainsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETSSODomainsParams) WithDefaults() *GETSSODomainsParams {
 // SetDefaults hydrates default values in the get SSO domains params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSSODomainsParams) SetDefaults() {
+func (o *GetSSODomainsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get SSO domains params
-func (o *GETSSODomainsParams) WithTimeout(timeout time.Duration) *GETSSODomainsParams {
+func (o *GetSSODomainsParams) WithTimeout(timeout time.Duration) *GetSSODomainsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get SSO domains params
-func (o *GETSSODomainsParams) SetTimeout(timeout time.Duration) {
+func (o *GetSSODomainsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get SSO domains params
-func (o *GETSSODomainsParams) WithContext(ctx context.Context) *GETSSODomainsParams {
+func (o *GetSSODomainsParams) WithContext(ctx context.Context) *GetSSODomainsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get SSO domains params
-func (o *GETSSODomainsParams) SetContext(ctx context.Context) {
+func (o *GetSSODomainsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get SSO domains params
-func (o *GETSSODomainsParams) WithHTTPClient(client *http.Client) *GETSSODomainsParams {
+func (o *GetSSODomainsParams) WithHTTPClient(client *http.Client) *GetSSODomainsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get SSO domains params
-func (o *GETSSODomainsParams) SetHTTPClient(client *http.Client) {
+func (o *GetSSODomainsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETSSODomainsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetSSODomainsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

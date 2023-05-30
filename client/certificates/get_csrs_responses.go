@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCSRsReader is a Reader for the GETCSRs structure.
-type GETCSRsReader struct {
+// GetCSRsReader is a Reader for the GetCSRs structure.
+type GetCSRsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCSRsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCSRsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCSRsOK()
+		result := NewGetCSRsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETCSRsNotFound()
+		result := NewGetCSRsNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETCSRsInternalServerError()
+		result := NewGetCSRsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETCSRsReader) ReadResponse(response runtime.ClientResponse, consumer r
 	}
 }
 
-// NewGETCSRsOK creates a GETCSRsOK with default headers values
-func NewGETCSRsOK() *GETCSRsOK {
-	return &GETCSRsOK{}
+// NewGetCSRsOK creates a GetCSRsOK with default headers values
+func NewGetCSRsOK() *GetCSRsOK {
+	return &GetCSRsOK{}
 }
 
 /*
-GETCSRsOK describes a response with status code 200, with default header values.
+GetCSRsOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETCSRsOK struct {
+type GetCSRsOK struct {
 	Payload *models.PageOfCSR
 }
 
 // IsSuccess returns true when this get c s rs o k response has a 2xx status code
-func (o *GETCSRsOK) IsSuccess() bool {
+func (o *GetCSRsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get c s rs o k response has a 3xx status code
-func (o *GETCSRsOK) IsRedirect() bool {
+func (o *GetCSRsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get c s rs o k response has a 4xx status code
-func (o *GETCSRsOK) IsClientError() bool {
+func (o *GetCSRsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get c s rs o k response has a 5xx status code
-func (o *GETCSRsOK) IsServerError() bool {
+func (o *GetCSRsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get c s rs o k response a status code equal to that given
-func (o *GETCSRsOK) IsCode(code int) bool {
+func (o *GetCSRsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCSRsOK) Error() string {
+func (o *GetCSRsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCSRsOK) String() string {
+func (o *GetCSRsOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCSRsOK) GetPayload() *models.PageOfCSR {
+func (o *GetCSRsOK) GetPayload() *models.PageOfCSR {
 	return o.Payload
 }
 
-func (o *GETCSRsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCSRsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfCSR)
 
@@ -112,58 +112,58 @@ func (o *GETCSRsOK) readResponse(response runtime.ClientResponse, consumer runti
 	return nil
 }
 
-// NewGETCSRsNotFound creates a GETCSRsNotFound with default headers values
-func NewGETCSRsNotFound() *GETCSRsNotFound {
-	return &GETCSRsNotFound{}
+// NewGetCSRsNotFound creates a GetCSRsNotFound with default headers values
+func NewGetCSRsNotFound() *GetCSRsNotFound {
+	return &GetCSRsNotFound{}
 }
 
 /*
-GETCSRsNotFound describes a response with status code 404, with default header values.
+GetCSRsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETCSRsNotFound struct {
+type GetCSRsNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get c s rs not found response has a 2xx status code
-func (o *GETCSRsNotFound) IsSuccess() bool {
+func (o *GetCSRsNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get c s rs not found response has a 3xx status code
-func (o *GETCSRsNotFound) IsRedirect() bool {
+func (o *GetCSRsNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get c s rs not found response has a 4xx status code
-func (o *GETCSRsNotFound) IsClientError() bool {
+func (o *GetCSRsNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get c s rs not found response has a 5xx status code
-func (o *GETCSRsNotFound) IsServerError() bool {
+func (o *GetCSRsNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get c s rs not found response a status code equal to that given
-func (o *GETCSRsNotFound) IsCode(code int) bool {
+func (o *GetCSRsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETCSRsNotFound) Error() string {
+func (o *GetCSRsNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCSRsNotFound) String() string {
+func (o *GetCSRsNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCSRsNotFound) GetPayload() *models.Error {
+func (o *GetCSRsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCSRsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCSRsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETCSRsNotFound) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETCSRsInternalServerError creates a GETCSRsInternalServerError with default headers values
-func NewGETCSRsInternalServerError() *GETCSRsInternalServerError {
-	return &GETCSRsInternalServerError{}
+// NewGetCSRsInternalServerError creates a GetCSRsInternalServerError with default headers values
+func NewGetCSRsInternalServerError() *GetCSRsInternalServerError {
+	return &GetCSRsInternalServerError{}
 }
 
 /*
-GETCSRsInternalServerError describes a response with status code 500, with default header values.
+GetCSRsInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETCSRsInternalServerError struct {
+type GetCSRsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get c s rs internal server error response has a 2xx status code
-func (o *GETCSRsInternalServerError) IsSuccess() bool {
+func (o *GetCSRsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get c s rs internal server error response has a 3xx status code
-func (o *GETCSRsInternalServerError) IsRedirect() bool {
+func (o *GetCSRsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get c s rs internal server error response has a 4xx status code
-func (o *GETCSRsInternalServerError) IsClientError() bool {
+func (o *GetCSRsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get c s rs internal server error response has a 5xx status code
-func (o *GETCSRsInternalServerError) IsServerError() bool {
+func (o *GetCSRsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get c s rs internal server error response a status code equal to that given
-func (o *GETCSRsInternalServerError) IsCode(code int) bool {
+func (o *GetCSRsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCSRsInternalServerError) Error() string {
+func (o *GetCSRsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCSRsInternalServerError) String() string {
+func (o *GetCSRsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCSRsInternalServerError) GetPayload() *models.Error {
+func (o *GetCSRsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCSRsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCSRsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

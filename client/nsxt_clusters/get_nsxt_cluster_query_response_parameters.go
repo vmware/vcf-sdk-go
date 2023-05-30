@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETNSXTClusterQueryResponseParams creates a new GETNSXTClusterQueryResponseParams object,
+// NewGetNSXTClusterQueryResponseParams creates a new GetNSXTClusterQueryResponseParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETNSXTClusterQueryResponseParams() *GETNSXTClusterQueryResponseParams {
-	return &GETNSXTClusterQueryResponseParams{
+func NewGetNSXTClusterQueryResponseParams() *GetNSXTClusterQueryResponseParams {
+	return &GetNSXTClusterQueryResponseParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETNSXTClusterQueryResponseParamsWithTimeout creates a new GETNSXTClusterQueryResponseParams object
+// NewGetNSXTClusterQueryResponseParamsWithTimeout creates a new GetNSXTClusterQueryResponseParams object
 // with the ability to set a timeout on a request.
-func NewGETNSXTClusterQueryResponseParamsWithTimeout(timeout time.Duration) *GETNSXTClusterQueryResponseParams {
-	return &GETNSXTClusterQueryResponseParams{
+func NewGetNSXTClusterQueryResponseParamsWithTimeout(timeout time.Duration) *GetNSXTClusterQueryResponseParams {
+	return &GetNSXTClusterQueryResponseParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETNSXTClusterQueryResponseParamsWithContext creates a new GETNSXTClusterQueryResponseParams object
+// NewGetNSXTClusterQueryResponseParamsWithContext creates a new GetNSXTClusterQueryResponseParams object
 // with the ability to set a context for a request.
-func NewGETNSXTClusterQueryResponseParamsWithContext(ctx context.Context) *GETNSXTClusterQueryResponseParams {
-	return &GETNSXTClusterQueryResponseParams{
+func NewGetNSXTClusterQueryResponseParamsWithContext(ctx context.Context) *GetNSXTClusterQueryResponseParams {
+	return &GetNSXTClusterQueryResponseParams{
 		Context: ctx,
 	}
 }
 
-// NewGETNSXTClusterQueryResponseParamsWithHTTPClient creates a new GETNSXTClusterQueryResponseParams object
+// NewGetNSXTClusterQueryResponseParamsWithHTTPClient creates a new GetNSXTClusterQueryResponseParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETNSXTClusterQueryResponseParamsWithHTTPClient(client *http.Client) *GETNSXTClusterQueryResponseParams {
-	return &GETNSXTClusterQueryResponseParams{
+func NewGetNSXTClusterQueryResponseParamsWithHTTPClient(client *http.Client) *GetNSXTClusterQueryResponseParams {
+	return &GetNSXTClusterQueryResponseParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETNSXTClusterQueryResponseParams contains all the parameters to send to the API endpoint
+GetNSXTClusterQueryResponseParams contains all the parameters to send to the API endpoint
 
 	for the get Nsxt cluster query response operation.
 
 	Typically these are written to a http.Request.
 */
-type GETNSXTClusterQueryResponseParams struct {
+type GetNSXTClusterQueryResponseParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETNSXTClusterQueryResponseParams struct {
 // WithDefaults hydrates default values in the get Nsxt cluster query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTClusterQueryResponseParams) WithDefaults() *GETNSXTClusterQueryResponseParams {
+func (o *GetNSXTClusterQueryResponseParams) WithDefaults() *GetNSXTClusterQueryResponseParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETNSXTClusterQueryResponseParams) WithDefaults() *GETNSXTClusterQueryR
 // SetDefaults hydrates default values in the get Nsxt cluster query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTClusterQueryResponseParams) SetDefaults() {
+func (o *GetNSXTClusterQueryResponseParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) WithTimeout(timeout time.Duration) *GETNSXTClusterQueryResponseParams {
+func (o *GetNSXTClusterQueryResponseParams) WithTimeout(timeout time.Duration) *GetNSXTClusterQueryResponseParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) SetTimeout(timeout time.Duration) {
+func (o *GetNSXTClusterQueryResponseParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) WithContext(ctx context.Context) *GETNSXTClusterQueryResponseParams {
+func (o *GetNSXTClusterQueryResponseParams) WithContext(ctx context.Context) *GetNSXTClusterQueryResponseParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) SetContext(ctx context.Context) {
+func (o *GetNSXTClusterQueryResponseParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) WithHTTPClient(client *http.Client) *GETNSXTClusterQueryResponseParams {
+func (o *GetNSXTClusterQueryResponseParams) WithHTTPClient(client *http.Client) *GetNSXTClusterQueryResponseParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) SetHTTPClient(client *http.Client) {
+func (o *GetNSXTClusterQueryResponseParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) WithID(id string) *GETNSXTClusterQueryResponseParams {
+func (o *GetNSXTClusterQueryResponseParams) WithID(id string) *GetNSXTClusterQueryResponseParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get Nsxt cluster query response params
-func (o *GETNSXTClusterQueryResponseParams) SetID(id string) {
+func (o *GetNSXTClusterQueryResponseParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETNSXTClusterQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetNSXTClusterQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

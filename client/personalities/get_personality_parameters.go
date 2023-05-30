@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETPersonalityParams creates a new GETPersonalityParams object,
+// NewGetPersonalityParams creates a new GetPersonalityParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETPersonalityParams() *GETPersonalityParams {
-	return &GETPersonalityParams{
+func NewGetPersonalityParams() *GetPersonalityParams {
+	return &GetPersonalityParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETPersonalityParamsWithTimeout creates a new GETPersonalityParams object
+// NewGetPersonalityParamsWithTimeout creates a new GetPersonalityParams object
 // with the ability to set a timeout on a request.
-func NewGETPersonalityParamsWithTimeout(timeout time.Duration) *GETPersonalityParams {
-	return &GETPersonalityParams{
+func NewGetPersonalityParamsWithTimeout(timeout time.Duration) *GetPersonalityParams {
+	return &GetPersonalityParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETPersonalityParamsWithContext creates a new GETPersonalityParams object
+// NewGetPersonalityParamsWithContext creates a new GetPersonalityParams object
 // with the ability to set a context for a request.
-func NewGETPersonalityParamsWithContext(ctx context.Context) *GETPersonalityParams {
-	return &GETPersonalityParams{
+func NewGetPersonalityParamsWithContext(ctx context.Context) *GetPersonalityParams {
+	return &GetPersonalityParams{
 		Context: ctx,
 	}
 }
 
-// NewGETPersonalityParamsWithHTTPClient creates a new GETPersonalityParams object
+// NewGetPersonalityParamsWithHTTPClient creates a new GetPersonalityParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETPersonalityParamsWithHTTPClient(client *http.Client) *GETPersonalityParams {
-	return &GETPersonalityParams{
+func NewGetPersonalityParamsWithHTTPClient(client *http.Client) *GetPersonalityParams {
+	return &GetPersonalityParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETPersonalityParams contains all the parameters to send to the API endpoint
+GetPersonalityParams contains all the parameters to send to the API endpoint
 
 	for the get personality operation.
 
 	Typically these are written to a http.Request.
 */
-type GETPersonalityParams struct {
+type GetPersonalityParams struct {
 
 	/* PersonalityID.
 
@@ -78,7 +78,7 @@ type GETPersonalityParams struct {
 // WithDefaults hydrates default values in the get personality params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPersonalityParams) WithDefaults() *GETPersonalityParams {
+func (o *GetPersonalityParams) WithDefaults() *GetPersonalityParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETPersonalityParams) WithDefaults() *GETPersonalityParams {
 // SetDefaults hydrates default values in the get personality params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPersonalityParams) SetDefaults() {
+func (o *GetPersonalityParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get personality params
-func (o *GETPersonalityParams) WithTimeout(timeout time.Duration) *GETPersonalityParams {
+func (o *GetPersonalityParams) WithTimeout(timeout time.Duration) *GetPersonalityParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get personality params
-func (o *GETPersonalityParams) SetTimeout(timeout time.Duration) {
+func (o *GetPersonalityParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get personality params
-func (o *GETPersonalityParams) WithContext(ctx context.Context) *GETPersonalityParams {
+func (o *GetPersonalityParams) WithContext(ctx context.Context) *GetPersonalityParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get personality params
-func (o *GETPersonalityParams) SetContext(ctx context.Context) {
+func (o *GetPersonalityParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get personality params
-func (o *GETPersonalityParams) WithHTTPClient(client *http.Client) *GETPersonalityParams {
+func (o *GetPersonalityParams) WithHTTPClient(client *http.Client) *GetPersonalityParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get personality params
-func (o *GETPersonalityParams) SetHTTPClient(client *http.Client) {
+func (o *GetPersonalityParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithPersonalityID adds the personalityID to the get personality params
-func (o *GETPersonalityParams) WithPersonalityID(personalityID string) *GETPersonalityParams {
+func (o *GetPersonalityParams) WithPersonalityID(personalityID string) *GetPersonalityParams {
 	o.SetPersonalityID(personalityID)
 	return o
 }
 
 // SetPersonalityID adds the personalityId to the get personality params
-func (o *GETPersonalityParams) SetPersonalityID(personalityID string) {
+func (o *GetPersonalityParams) SetPersonalityID(personalityID string) {
 	o.PersonalityID = personalityID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETPersonalityParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetPersonalityParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -33,7 +33,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETDepotSettings(params *GETDepotSettingsParams, opts ...ClientOption) (*GETDepotSettingsOK, error)
+	GetDepotSettings(params *GetDepotSettingsParams, opts ...ClientOption) (*GetDepotSettingsOK, error)
 
 	UpdateDepotSettings(params *UpdateDepotSettingsParams, opts ...ClientOption) (*UpdateDepotSettingsOK, *UpdateDepotSettingsAccepted, error)
 
@@ -41,14 +41,14 @@ type ClientService interface {
 }
 
 /*
-GETDepotSettings Gets depot settings
+GetDepotSettings gets depot settings
 
 Get the Depot Settings, In a fresh setup, this would be empty
 */
-func (a *Client) GETDepotSettings(params *GETDepotSettingsParams, opts ...ClientOption) (*GETDepotSettingsOK, error) {
+func (a *Client) GetDepotSettings(params *GetDepotSettingsParams, opts ...ClientOption) (*GetDepotSettingsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETDepotSettingsParams()
+		params = NewGetDepotSettingsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getDepotSettings",
@@ -58,7 +58,7 @@ func (a *Client) GETDepotSettings(params *GETDepotSettingsParams, opts ...Client
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETDepotSettingsReader{formats: a.formats},
+		Reader:             &GetDepotSettingsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -70,7 +70,7 @@ func (a *Client) GETDepotSettings(params *GETDepotSettingsParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETDepotSettingsOK)
+	success, ok := result.(*GetDepotSettingsOK)
 	if ok {
 		return success, nil
 	}

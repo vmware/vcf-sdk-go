@@ -19,8 +19,6 @@ swagger: check-swagger
 		--additional-initialism=SOS \
 		--additional-initialism=SAN \
 		--additional-initialism=VRSLCM \
-		--additional-initialism=GET \
-		--additional-initialism=POST \
 		--additional-initialism=CSR \
 		--additional-initialism=CSRS \
 		--additional-initialism=SSO \

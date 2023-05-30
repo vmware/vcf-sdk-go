@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETLicensingInfoReader is a Reader for the GETLicensingInfo structure.
-type GETLicensingInfoReader struct {
+// GetLicensingInfoReader is a Reader for the GetLicensingInfo structure.
+type GetLicensingInfoReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETLicensingInfoReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetLicensingInfoReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETLicensingInfoOK()
+		result := NewGetLicensingInfoOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETLicensingInfoBadRequest()
+		result := NewGetLicensingInfoBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETLicensingInfoInternalServerError()
+		result := NewGetLicensingInfoInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETLicensingInfoReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
-// NewGETLicensingInfoOK creates a GETLicensingInfoOK with default headers values
-func NewGETLicensingInfoOK() *GETLicensingInfoOK {
-	return &GETLicensingInfoOK{}
+// NewGetLicensingInfoOK creates a GetLicensingInfoOK with default headers values
+func NewGetLicensingInfoOK() *GetLicensingInfoOK {
+	return &GetLicensingInfoOK{}
 }
 
 /*
-GETLicensingInfoOK describes a response with status code 200, with default header values.
+GetLicensingInfoOK describes a response with status code 200, with default header values.
 
 Successful
 */
-type GETLicensingInfoOK struct {
+type GetLicensingInfoOK struct {
 	Payload []*models.LicensingInfo
 }
 
 // IsSuccess returns true when this get licensing info o k response has a 2xx status code
-func (o *GETLicensingInfoOK) IsSuccess() bool {
+func (o *GetLicensingInfoOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get licensing info o k response has a 3xx status code
-func (o *GETLicensingInfoOK) IsRedirect() bool {
+func (o *GetLicensingInfoOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get licensing info o k response has a 4xx status code
-func (o *GETLicensingInfoOK) IsClientError() bool {
+func (o *GetLicensingInfoOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get licensing info o k response has a 5xx status code
-func (o *GETLicensingInfoOK) IsServerError() bool {
+func (o *GetLicensingInfoOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get licensing info o k response a status code equal to that given
-func (o *GETLicensingInfoOK) IsCode(code int) bool {
+func (o *GetLicensingInfoOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETLicensingInfoOK) Error() string {
+func (o *GetLicensingInfoOK) Error() string {
 	return fmt.Sprintf("[GET /v1/licensing-info][%d] getLicensingInfoOK  %+v", 200, o.Payload)
 }
 
-func (o *GETLicensingInfoOK) String() string {
+func (o *GetLicensingInfoOK) String() string {
 	return fmt.Sprintf("[GET /v1/licensing-info][%d] getLicensingInfoOK  %+v", 200, o.Payload)
 }
 
-func (o *GETLicensingInfoOK) GetPayload() []*models.LicensingInfo {
+func (o *GetLicensingInfoOK) GetPayload() []*models.LicensingInfo {
 	return o.Payload
 }
 
-func (o *GETLicensingInfoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLicensingInfoOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -110,58 +110,58 @@ func (o *GETLicensingInfoOK) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETLicensingInfoBadRequest creates a GETLicensingInfoBadRequest with default headers values
-func NewGETLicensingInfoBadRequest() *GETLicensingInfoBadRequest {
-	return &GETLicensingInfoBadRequest{}
+// NewGetLicensingInfoBadRequest creates a GetLicensingInfoBadRequest with default headers values
+func NewGetLicensingInfoBadRequest() *GetLicensingInfoBadRequest {
+	return &GetLicensingInfoBadRequest{}
 }
 
 /*
-GETLicensingInfoBadRequest describes a response with status code 400, with default header values.
+GetLicensingInfoBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETLicensingInfoBadRequest struct {
+type GetLicensingInfoBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get licensing info bad request response has a 2xx status code
-func (o *GETLicensingInfoBadRequest) IsSuccess() bool {
+func (o *GetLicensingInfoBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get licensing info bad request response has a 3xx status code
-func (o *GETLicensingInfoBadRequest) IsRedirect() bool {
+func (o *GetLicensingInfoBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get licensing info bad request response has a 4xx status code
-func (o *GETLicensingInfoBadRequest) IsClientError() bool {
+func (o *GetLicensingInfoBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get licensing info bad request response has a 5xx status code
-func (o *GETLicensingInfoBadRequest) IsServerError() bool {
+func (o *GetLicensingInfoBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get licensing info bad request response a status code equal to that given
-func (o *GETLicensingInfoBadRequest) IsCode(code int) bool {
+func (o *GetLicensingInfoBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETLicensingInfoBadRequest) Error() string {
+func (o *GetLicensingInfoBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/licensing-info][%d] getLicensingInfoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETLicensingInfoBadRequest) String() string {
+func (o *GetLicensingInfoBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/licensing-info][%d] getLicensingInfoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETLicensingInfoBadRequest) GetPayload() *models.Error {
+func (o *GetLicensingInfoBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETLicensingInfoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLicensingInfoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -173,58 +173,58 @@ func (o *GETLicensingInfoBadRequest) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-// NewGETLicensingInfoInternalServerError creates a GETLicensingInfoInternalServerError with default headers values
-func NewGETLicensingInfoInternalServerError() *GETLicensingInfoInternalServerError {
-	return &GETLicensingInfoInternalServerError{}
+// NewGetLicensingInfoInternalServerError creates a GetLicensingInfoInternalServerError with default headers values
+func NewGetLicensingInfoInternalServerError() *GetLicensingInfoInternalServerError {
+	return &GetLicensingInfoInternalServerError{}
 }
 
 /*
-GETLicensingInfoInternalServerError describes a response with status code 500, with default header values.
+GetLicensingInfoInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETLicensingInfoInternalServerError struct {
+type GetLicensingInfoInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get licensing info internal server error response has a 2xx status code
-func (o *GETLicensingInfoInternalServerError) IsSuccess() bool {
+func (o *GetLicensingInfoInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get licensing info internal server error response has a 3xx status code
-func (o *GETLicensingInfoInternalServerError) IsRedirect() bool {
+func (o *GetLicensingInfoInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get licensing info internal server error response has a 4xx status code
-func (o *GETLicensingInfoInternalServerError) IsClientError() bool {
+func (o *GetLicensingInfoInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get licensing info internal server error response has a 5xx status code
-func (o *GETLicensingInfoInternalServerError) IsServerError() bool {
+func (o *GetLicensingInfoInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get licensing info internal server error response a status code equal to that given
-func (o *GETLicensingInfoInternalServerError) IsCode(code int) bool {
+func (o *GetLicensingInfoInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETLicensingInfoInternalServerError) Error() string {
+func (o *GetLicensingInfoInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/licensing-info][%d] getLicensingInfoInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETLicensingInfoInternalServerError) String() string {
+func (o *GetLicensingInfoInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/licensing-info][%d] getLicensingInfoInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETLicensingInfoInternalServerError) GetPayload() *models.Error {
+func (o *GetLicensingInfoInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETLicensingInfoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLicensingInfoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -35,7 +35,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*CreateAvnsOK, *CreateAvnsAccepted, error)
 
-	GETAllAvns(params *GETAllAvnsParams, opts ...ClientOption) (*GETAllAvnsOK, error)
+	GetAllAvns(params *GetAllAvnsParams, opts ...ClientOption) (*GetAllAvnsOK, error)
 
 	ValidateAvns(params *ValidateAvnsParams, opts ...ClientOption) (*ValidateAvnsOK, error)
 
@@ -82,14 +82,14 @@ func (a *Client) CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*Cr
 }
 
 /*
-GETAllAvns fetches all a v ns
+GetAllAvns fetches all a v ns
 
 Returns all matching AVNs
 */
-func (a *Client) GETAllAvns(params *GETAllAvnsParams, opts ...ClientOption) (*GETAllAvnsOK, error) {
+func (a *Client) GetAllAvns(params *GetAllAvnsParams, opts ...ClientOption) (*GetAllAvnsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETAllAvnsParams()
+		params = NewGetAllAvnsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getAllAvns",
@@ -99,7 +99,7 @@ func (a *Client) GETAllAvns(params *GETAllAvnsParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETAllAvnsReader{formats: a.formats},
+		Reader:             &GetAllAvnsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,7 +111,7 @@ func (a *Client) GETAllAvns(params *GETAllAvnsParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETAllAvnsOK)
+	success, ok := result.(*GetAllAvnsOK)
 	if ok {
 		return success, nil
 	}

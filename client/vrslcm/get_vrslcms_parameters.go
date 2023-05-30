@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVrslcmsParams creates a new GETVrslcmsParams object,
+// NewGetVrslcmsParams creates a new GetVrslcmsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVrslcmsParams() *GETVrslcmsParams {
-	return &GETVrslcmsParams{
+func NewGetVrslcmsParams() *GetVrslcmsParams {
+	return &GetVrslcmsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVrslcmsParamsWithTimeout creates a new GETVrslcmsParams object
+// NewGetVrslcmsParamsWithTimeout creates a new GetVrslcmsParams object
 // with the ability to set a timeout on a request.
-func NewGETVrslcmsParamsWithTimeout(timeout time.Duration) *GETVrslcmsParams {
-	return &GETVrslcmsParams{
+func NewGetVrslcmsParamsWithTimeout(timeout time.Duration) *GetVrslcmsParams {
+	return &GetVrslcmsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVrslcmsParamsWithContext creates a new GETVrslcmsParams object
+// NewGetVrslcmsParamsWithContext creates a new GetVrslcmsParams object
 // with the ability to set a context for a request.
-func NewGETVrslcmsParamsWithContext(ctx context.Context) *GETVrslcmsParams {
-	return &GETVrslcmsParams{
+func NewGetVrslcmsParamsWithContext(ctx context.Context) *GetVrslcmsParams {
+	return &GetVrslcmsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVrslcmsParamsWithHTTPClient creates a new GETVrslcmsParams object
+// NewGetVrslcmsParamsWithHTTPClient creates a new GetVrslcmsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVrslcmsParamsWithHTTPClient(client *http.Client) *GETVrslcmsParams {
-	return &GETVrslcmsParams{
+func NewGetVrslcmsParamsWithHTTPClient(client *http.Client) *GetVrslcmsParams {
+	return &GetVrslcmsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVrslcmsParams contains all the parameters to send to the API endpoint
+GetVrslcmsParams contains all the parameters to send to the API endpoint
 
 	for the get vrslcms operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVrslcmsParams struct {
+type GetVrslcmsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETVrslcmsParams struct {
 // WithDefaults hydrates default values in the get vrslcms params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVrslcmsParams) WithDefaults() *GETVrslcmsParams {
+func (o *GetVrslcmsParams) WithDefaults() *GetVrslcmsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETVrslcmsParams) WithDefaults() *GETVrslcmsParams {
 // SetDefaults hydrates default values in the get vrslcms params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVrslcmsParams) SetDefaults() {
+func (o *GetVrslcmsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vrslcms params
-func (o *GETVrslcmsParams) WithTimeout(timeout time.Duration) *GETVrslcmsParams {
+func (o *GetVrslcmsParams) WithTimeout(timeout time.Duration) *GetVrslcmsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vrslcms params
-func (o *GETVrslcmsParams) SetTimeout(timeout time.Duration) {
+func (o *GetVrslcmsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vrslcms params
-func (o *GETVrslcmsParams) WithContext(ctx context.Context) *GETVrslcmsParams {
+func (o *GetVrslcmsParams) WithContext(ctx context.Context) *GetVrslcmsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vrslcms params
-func (o *GETVrslcmsParams) SetContext(ctx context.Context) {
+func (o *GetVrslcmsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vrslcms params
-func (o *GETVrslcmsParams) WithHTTPClient(client *http.Client) *GETVrslcmsParams {
+func (o *GetVrslcmsParams) WithHTTPClient(client *http.Client) *GetVrslcmsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vrslcms params
-func (o *GETVrslcmsParams) SetHTTPClient(client *http.Client) {
+func (o *GetVrslcmsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVrslcmsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVrslcmsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

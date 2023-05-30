@@ -33,11 +33,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETHealthCheckQuery(params *GETHealthCheckQueryParams, opts ...ClientOption) (*GETHealthCheckQueryOK, *GETHealthCheckQueryAccepted, error)
+	GetHealthCheckQuery(params *GetHealthCheckQueryParams, opts ...ClientOption) (*GetHealthCheckQueryOK, *GetHealthCheckQueryAccepted, error)
 
-	GETHealthCheckStatus(params *GETHealthCheckStatusParams, opts ...ClientOption) (*GETHealthCheckStatusOK, error)
+	GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts ...ClientOption) (*GetHealthCheckStatusOK, error)
 
-	GETHealthCheckStatusTask(params *GETHealthCheckStatusTaskParams, opts ...ClientOption) (*GETHealthCheckStatusTaskOK, error)
+	GetHealthCheckStatusTask(params *GetHealthCheckStatusTaskParams, opts ...ClientOption) (*GetHealthCheckStatusTaskOK, error)
 
 	SetHealthCheckStatus(params *SetHealthCheckStatusParams, opts ...ClientOption) (*SetHealthCheckStatusOK, *SetHealthCheckStatusAccepted, error)
 
@@ -45,14 +45,14 @@ type ClientService interface {
 }
 
 /*
-GETHealthCheckQuery Gets v SAN health check status
+GetHealthCheckQuery gets v SAN health check status
 
 Get vSAN health check status for all cluster on the domain
 */
-func (a *Client) GETHealthCheckQuery(params *GETHealthCheckQueryParams, opts ...ClientOption) (*GETHealthCheckQueryOK, *GETHealthCheckQueryAccepted, error) {
+func (a *Client) GetHealthCheckQuery(params *GetHealthCheckQueryParams, opts ...ClientOption) (*GetHealthCheckQueryOK, *GetHealthCheckQueryAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHealthCheckQueryParams()
+		params = NewGetHealthCheckQueryParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHealthCheckQuery",
@@ -62,7 +62,7 @@ func (a *Client) GETHealthCheckQuery(params *GETHealthCheckQueryParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHealthCheckQueryReader{formats: a.formats},
+		Reader:             &GetHealthCheckQueryReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -75,9 +75,9 @@ func (a *Client) GETHealthCheckQuery(params *GETHealthCheckQueryParams, opts ...
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *GETHealthCheckQueryOK:
+	case *GetHealthCheckQueryOK:
 		return value, nil, nil
-	case *GETHealthCheckQueryAccepted:
+	case *GetHealthCheckQueryAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -86,14 +86,14 @@ func (a *Client) GETHealthCheckQuery(params *GETHealthCheckQueryParams, opts ...
 }
 
 /*
-GETHealthCheckStatus Gets v SAN health check status by query Id
+GetHealthCheckStatus gets v SAN health check status by query Id
 
 Get vSAN health check status for a given Query Id
 */
-func (a *Client) GETHealthCheckStatus(params *GETHealthCheckStatusParams, opts ...ClientOption) (*GETHealthCheckStatusOK, error) {
+func (a *Client) GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts ...ClientOption) (*GetHealthCheckStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHealthCheckStatusParams()
+		params = NewGetHealthCheckStatusParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHealthCheckStatus",
@@ -103,7 +103,7 @@ func (a *Client) GETHealthCheckStatus(params *GETHealthCheckStatusParams, opts .
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHealthCheckStatusReader{formats: a.formats},
+		Reader:             &GetHealthCheckStatusReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -115,7 +115,7 @@ func (a *Client) GETHealthCheckStatus(params *GETHealthCheckStatusParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHealthCheckStatusOK)
+	success, ok := result.(*GetHealthCheckStatusOK)
 	if ok {
 		return success, nil
 	}
@@ -126,14 +126,14 @@ func (a *Client) GETHealthCheckStatus(params *GETHealthCheckStatusParams, opts .
 }
 
 /*
-GETHealthCheckStatusTask Gets v SAN health check update task status
+GetHealthCheckStatusTask gets v SAN health check update task status
 
 Get vSAN health check update task status for a given task Id
 */
-func (a *Client) GETHealthCheckStatusTask(params *GETHealthCheckStatusTaskParams, opts ...ClientOption) (*GETHealthCheckStatusTaskOK, error) {
+func (a *Client) GetHealthCheckStatusTask(params *GetHealthCheckStatusTaskParams, opts ...ClientOption) (*GetHealthCheckStatusTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETHealthCheckStatusTaskParams()
+		params = NewGetHealthCheckStatusTaskParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getHealthCheckStatusTask",
@@ -143,7 +143,7 @@ func (a *Client) GETHealthCheckStatusTask(params *GETHealthCheckStatusTaskParams
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETHealthCheckStatusTaskReader{formats: a.formats},
+		Reader:             &GetHealthCheckStatusTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -155,7 +155,7 @@ func (a *Client) GETHealthCheckStatusTask(params *GETHealthCheckStatusTaskParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETHealthCheckStatusTaskOK)
+	success, ok := result.(*GetHealthCheckStatusTaskOK)
 	if ok {
 		return success, nil
 	}

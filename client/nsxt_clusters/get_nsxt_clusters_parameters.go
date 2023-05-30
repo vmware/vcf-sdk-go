@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETNSXTClustersParams creates a new GETNSXTClustersParams object,
+// NewGetNSXTClustersParams creates a new GetNSXTClustersParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETNSXTClustersParams() *GETNSXTClustersParams {
-	return &GETNSXTClustersParams{
+func NewGetNSXTClustersParams() *GetNSXTClustersParams {
+	return &GetNSXTClustersParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETNSXTClustersParamsWithTimeout creates a new GETNSXTClustersParams object
+// NewGetNSXTClustersParamsWithTimeout creates a new GetNSXTClustersParams object
 // with the ability to set a timeout on a request.
-func NewGETNSXTClustersParamsWithTimeout(timeout time.Duration) *GETNSXTClustersParams {
-	return &GETNSXTClustersParams{
+func NewGetNSXTClustersParamsWithTimeout(timeout time.Duration) *GetNSXTClustersParams {
+	return &GetNSXTClustersParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETNSXTClustersParamsWithContext creates a new GETNSXTClustersParams object
+// NewGetNSXTClustersParamsWithContext creates a new GetNSXTClustersParams object
 // with the ability to set a context for a request.
-func NewGETNSXTClustersParamsWithContext(ctx context.Context) *GETNSXTClustersParams {
-	return &GETNSXTClustersParams{
+func NewGetNSXTClustersParamsWithContext(ctx context.Context) *GetNSXTClustersParams {
+	return &GetNSXTClustersParams{
 		Context: ctx,
 	}
 }
 
-// NewGETNSXTClustersParamsWithHTTPClient creates a new GETNSXTClustersParams object
+// NewGetNSXTClustersParamsWithHTTPClient creates a new GetNSXTClustersParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETNSXTClustersParamsWithHTTPClient(client *http.Client) *GETNSXTClustersParams {
-	return &GETNSXTClustersParams{
+func NewGetNSXTClustersParamsWithHTTPClient(client *http.Client) *GetNSXTClustersParams {
+	return &GetNSXTClustersParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETNSXTClustersParams contains all the parameters to send to the API endpoint
+GetNSXTClustersParams contains all the parameters to send to the API endpoint
 
 	for the get Nsxt clusters operation.
 
 	Typically these are written to a http.Request.
 */
-type GETNSXTClustersParams struct {
+type GetNSXTClustersParams struct {
 
 	/* IsShareable.
 
@@ -79,7 +79,7 @@ type GETNSXTClustersParams struct {
 // WithDefaults hydrates default values in the get Nsxt clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTClustersParams) WithDefaults() *GETNSXTClustersParams {
+func (o *GetNSXTClustersParams) WithDefaults() *GetNSXTClustersParams {
 	o.SetDefaults()
 	return o
 }
@@ -87,56 +87,56 @@ func (o *GETNSXTClustersParams) WithDefaults() *GETNSXTClustersParams {
 // SetDefaults hydrates default values in the get Nsxt clusters params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTClustersParams) SetDefaults() {
+func (o *GetNSXTClustersParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) WithTimeout(timeout time.Duration) *GETNSXTClustersParams {
+func (o *GetNSXTClustersParams) WithTimeout(timeout time.Duration) *GetNSXTClustersParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) SetTimeout(timeout time.Duration) {
+func (o *GetNSXTClustersParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) WithContext(ctx context.Context) *GETNSXTClustersParams {
+func (o *GetNSXTClustersParams) WithContext(ctx context.Context) *GetNSXTClustersParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) SetContext(ctx context.Context) {
+func (o *GetNSXTClustersParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) WithHTTPClient(client *http.Client) *GETNSXTClustersParams {
+func (o *GetNSXTClustersParams) WithHTTPClient(client *http.Client) *GetNSXTClustersParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) SetHTTPClient(client *http.Client) {
+func (o *GetNSXTClustersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithIsShareable adds the isShareable to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) WithIsShareable(isShareable *bool) *GETNSXTClustersParams {
+func (o *GetNSXTClustersParams) WithIsShareable(isShareable *bool) *GetNSXTClustersParams {
 	o.SetIsShareable(isShareable)
 	return o
 }
 
 // SetIsShareable adds the isShareable to the get Nsxt clusters params
-func (o *GETNSXTClustersParams) SetIsShareable(isShareable *bool) {
+func (o *GetNSXTClustersParams) SetIsShareable(isShareable *bool) {
 	o.IsShareable = isShareable
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETNSXTClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetNSXTClustersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

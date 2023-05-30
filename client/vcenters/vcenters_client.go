@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETVcenter(params *GETVcenterParams, opts ...ClientOption) (*GETVcenterOK, error)
+	GetVcenter(params *GetVcenterParams, opts ...ClientOption) (*GetVcenterOK, error)
 
-	GETVCENTERS(params *GETVCENTERSParams, opts ...ClientOption) (*GETVCENTERSOK, error)
+	GetVCENTERS(params *GetVCENTERSParams, opts ...ClientOption) (*GetVCENTERSOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETVcenter Gets a v center
+GetVcenter gets a v center
 */
-func (a *Client) GETVcenter(params *GETVcenterParams, opts ...ClientOption) (*GETVcenterOK, error) {
+func (a *Client) GetVcenter(params *GetVcenterParams, opts ...ClientOption) (*GetVcenterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVcenterParams()
+		params = NewGetVcenterParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVcenter",
@@ -56,7 +56,7 @@ func (a *Client) GETVcenter(params *GETVcenterParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVcenterReader{formats: a.formats},
+		Reader:             &GetVcenterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETVcenter(params *GETVcenterParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVcenterOK)
+	success, ok := result.(*GetVcenterOK)
 	if ok {
 		return success, nil
 	}
@@ -79,12 +79,12 @@ func (a *Client) GETVcenter(params *GETVcenterParams, opts ...ClientOption) (*GE
 }
 
 /*
-GETVCENTERS Gets v centers
+GetVCENTERS gets v centers
 */
-func (a *Client) GETVCENTERS(params *GETVCENTERSParams, opts ...ClientOption) (*GETVCENTERSOK, error) {
+func (a *Client) GetVCENTERS(params *GetVCENTERSParams, opts ...ClientOption) (*GetVCENTERSOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVCENTERSParams()
+		params = NewGetVCENTERSParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVcenters",
@@ -94,7 +94,7 @@ func (a *Client) GETVCENTERS(params *GETVCENTERSParams, opts ...ClientOption) (*
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVCENTERSReader{formats: a.formats},
+		Reader:             &GetVCENTERSReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -106,7 +106,7 @@ func (a *Client) GETVCENTERS(params *GETVCENTERSParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVCENTERSOK)
+	success, ok := result.(*GetVCENTERSOK)
 	if ok {
 		return success, nil
 	}

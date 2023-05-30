@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETBundlesForSkipUpgradeUsingGETReader is a Reader for the GETBundlesForSkipUpgradeUsingGET structure.
-type GETBundlesForSkipUpgradeUsingGETReader struct {
+// GetBundlesForSkipUpgradeUsingGETReader is a Reader for the GetBundlesForSkipUpgradeUsingGET structure.
+type GetBundlesForSkipUpgradeUsingGETReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETBundlesForSkipUpgradeUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetBundlesForSkipUpgradeUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETBundlesForSkipUpgradeUsingGETOK()
+		result := NewGetBundlesForSkipUpgradeUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETBundlesForSkipUpgradeUsingGETNotFound()
+		result := NewGetBundlesForSkipUpgradeUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETBundlesForSkipUpgradeUsingGETInternalServerError()
+		result := NewGetBundlesForSkipUpgradeUsingGETInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETBundlesForSkipUpgradeUsingGETReader) ReadResponse(response runtime.C
 	}
 }
 
-// NewGETBundlesForSkipUpgradeUsingGETOK creates a GETBundlesForSkipUpgradeUsingGETOK with default headers values
-func NewGETBundlesForSkipUpgradeUsingGETOK() *GETBundlesForSkipUpgradeUsingGETOK {
-	return &GETBundlesForSkipUpgradeUsingGETOK{}
+// NewGetBundlesForSkipUpgradeUsingGETOK creates a GetBundlesForSkipUpgradeUsingGETOK with default headers values
+func NewGetBundlesForSkipUpgradeUsingGETOK() *GetBundlesForSkipUpgradeUsingGETOK {
+	return &GetBundlesForSkipUpgradeUsingGETOK{}
 }
 
 /*
-GETBundlesForSkipUpgradeUsingGETOK describes a response with status code 200, with default header values.
+GetBundlesForSkipUpgradeUsingGETOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETBundlesForSkipUpgradeUsingGETOK struct {
+type GetBundlesForSkipUpgradeUsingGETOK struct {
 	Payload *models.PageOfBundle
 }
 
-// IsSuccess returns true when this get bundles for skip upgrade using Get o k response has a 2xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETOK) IsSuccess() bool {
+// IsSuccess returns true when this get bundles for skip upgrade using g e t o k response has a 2xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this get bundles for skip upgrade using Get o k response has a 3xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETOK) IsRedirect() bool {
+// IsRedirect returns true when this get bundles for skip upgrade using g e t o k response has a 3xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get bundles for skip upgrade using Get o k response has a 4xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETOK) IsClientError() bool {
+// IsClientError returns true when this get bundles for skip upgrade using g e t o k response has a 4xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this get bundles for skip upgrade using Get o k response has a 5xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETOK) IsServerError() bool {
+// IsServerError returns true when this get bundles for skip upgrade using g e t o k response has a 5xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this get bundles for skip upgrade using Get o k response a status code equal to that given
-func (o *GETBundlesForSkipUpgradeUsingGETOK) IsCode(code int) bool {
+// IsCode returns true when this get bundles for skip upgrade using g e t o k response a status code equal to that given
+func (o *GetBundlesForSkipUpgradeUsingGETOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETOK) Error() string {
-	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGetOK  %+v", 200, o.Payload)
+func (o *GetBundlesForSkipUpgradeUsingGETOK) Error() string {
+	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETOK) String() string {
-	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGetOK  %+v", 200, o.Payload)
+func (o *GetBundlesForSkipUpgradeUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETOK) GetPayload() *models.PageOfBundle {
+func (o *GetBundlesForSkipUpgradeUsingGETOK) GetPayload() *models.PageOfBundle {
 	return o.Payload
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBundlesForSkipUpgradeUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfBundle)
 
@@ -112,58 +112,58 @@ func (o *GETBundlesForSkipUpgradeUsingGETOK) readResponse(response runtime.Clien
 	return nil
 }
 
-// NewGETBundlesForSkipUpgradeUsingGETNotFound creates a GETBundlesForSkipUpgradeUsingGETNotFound with default headers values
-func NewGETBundlesForSkipUpgradeUsingGETNotFound() *GETBundlesForSkipUpgradeUsingGETNotFound {
-	return &GETBundlesForSkipUpgradeUsingGETNotFound{}
+// NewGetBundlesForSkipUpgradeUsingGETNotFound creates a GetBundlesForSkipUpgradeUsingGETNotFound with default headers values
+func NewGetBundlesForSkipUpgradeUsingGETNotFound() *GetBundlesForSkipUpgradeUsingGETNotFound {
+	return &GetBundlesForSkipUpgradeUsingGETNotFound{}
 }
 
 /*
-GETBundlesForSkipUpgradeUsingGETNotFound describes a response with status code 404, with default header values.
+GetBundlesForSkipUpgradeUsingGETNotFound describes a response with status code 404, with default header values.
 
 Domain not found with given ID.
 */
-type GETBundlesForSkipUpgradeUsingGETNotFound struct {
+type GetBundlesForSkipUpgradeUsingGETNotFound struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this get bundles for skip upgrade using Get not found response has a 2xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) IsSuccess() bool {
+// IsSuccess returns true when this get bundles for skip upgrade using g e t not found response has a 2xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this get bundles for skip upgrade using Get not found response has a 3xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) IsRedirect() bool {
+// IsRedirect returns true when this get bundles for skip upgrade using g e t not found response has a 3xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get bundles for skip upgrade using Get not found response has a 4xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) IsClientError() bool {
+// IsClientError returns true when this get bundles for skip upgrade using g e t not found response has a 4xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) IsClientError() bool {
 	return true
 }
 
-// IsServerError returns true when this get bundles for skip upgrade using Get not found response has a 5xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) IsServerError() bool {
+// IsServerError returns true when this get bundles for skip upgrade using g e t not found response has a 5xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this get bundles for skip upgrade using Get not found response a status code equal to that given
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) IsCode(code int) bool {
+// IsCode returns true when this get bundles for skip upgrade using g e t not found response a status code equal to that given
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGetNotFound  %+v", 404, o.Payload)
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) Error() string {
+	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGETNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGetNotFound  %+v", 404, o.Payload)
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGETNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) GetPayload() *models.Error {
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBundlesForSkipUpgradeUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETBundlesForSkipUpgradeUsingGETNotFound) readResponse(response runtime
 	return nil
 }
 
-// NewGETBundlesForSkipUpgradeUsingGETInternalServerError creates a GETBundlesForSkipUpgradeUsingGETInternalServerError with default headers values
-func NewGETBundlesForSkipUpgradeUsingGETInternalServerError() *GETBundlesForSkipUpgradeUsingGETInternalServerError {
-	return &GETBundlesForSkipUpgradeUsingGETInternalServerError{}
+// NewGetBundlesForSkipUpgradeUsingGETInternalServerError creates a GetBundlesForSkipUpgradeUsingGETInternalServerError with default headers values
+func NewGetBundlesForSkipUpgradeUsingGETInternalServerError() *GetBundlesForSkipUpgradeUsingGETInternalServerError {
+	return &GetBundlesForSkipUpgradeUsingGETInternalServerError{}
 }
 
 /*
-GETBundlesForSkipUpgradeUsingGETInternalServerError describes a response with status code 500, with default header values.
+GetBundlesForSkipUpgradeUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETBundlesForSkipUpgradeUsingGETInternalServerError struct {
+type GetBundlesForSkipUpgradeUsingGETInternalServerError struct {
 	Payload *models.Error
 }
 
-// IsSuccess returns true when this get bundles for skip upgrade using Get internal server error response has a 2xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) IsSuccess() bool {
+// IsSuccess returns true when this get bundles for skip upgrade using g e t internal server error response has a 2xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) IsSuccess() bool {
 	return false
 }
 
-// IsRedirect returns true when this get bundles for skip upgrade using Get internal server error response has a 3xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) IsRedirect() bool {
+// IsRedirect returns true when this get bundles for skip upgrade using g e t internal server error response has a 3xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get bundles for skip upgrade using Get internal server error response has a 4xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) IsClientError() bool {
+// IsClientError returns true when this get bundles for skip upgrade using g e t internal server error response has a 4xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this get bundles for skip upgrade using Get internal server error response has a 5xx status code
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) IsServerError() bool {
+// IsServerError returns true when this get bundles for skip upgrade using g e t internal server error response has a 5xx status code
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) IsServerError() bool {
 	return true
 }
 
-// IsCode returns true when this get bundles for skip upgrade using Get internal server error response a status code equal to that given
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) IsCode(code int) bool {
+// IsCode returns true when this get bundles for skip upgrade using g e t internal server error response a status code equal to that given
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGetInternalServerError  %+v", 500, o.Payload)
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGETInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGetInternalServerError  %+v", 500, o.Payload)
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) String() string {
+	return fmt.Sprintf("[GET /v1/bundles/domains/{id}][%d] getBundlesForSkipUpgradeUsingGETInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) GetPayload() *models.Error {
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETBundlesForSkipUpgradeUsingGETInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBundlesForSkipUpgradeUsingGETInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

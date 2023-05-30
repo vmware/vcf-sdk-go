@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETDatastoresCriteriaReader is a Reader for the GETDatastoresCriteria structure.
-type GETDatastoresCriteriaReader struct {
+// GetDatastoresCriteriaReader is a Reader for the GetDatastoresCriteria structure.
+type GetDatastoresCriteriaReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETDatastoresCriteriaReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetDatastoresCriteriaReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETDatastoresCriteriaOK()
+		result := NewGetDatastoresCriteriaOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETDatastoresCriteriaReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewGETDatastoresCriteriaOK creates a GETDatastoresCriteriaOK with default headers values
-func NewGETDatastoresCriteriaOK() *GETDatastoresCriteriaOK {
-	return &GETDatastoresCriteriaOK{}
+// NewGetDatastoresCriteriaOK creates a GetDatastoresCriteriaOK with default headers values
+func NewGetDatastoresCriteriaOK() *GetDatastoresCriteriaOK {
+	return &GetDatastoresCriteriaOK{}
 }
 
 /*
-GETDatastoresCriteriaOK describes a response with status code 200, with default header values.
+GetDatastoresCriteriaOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETDatastoresCriteriaOK struct {
+type GetDatastoresCriteriaOK struct {
 	Payload *models.PageOfDatastoreCriterion
 }
 
 // IsSuccess returns true when this get datastores criteria o k response has a 2xx status code
-func (o *GETDatastoresCriteriaOK) IsSuccess() bool {
+func (o *GetDatastoresCriteriaOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get datastores criteria o k response has a 3xx status code
-func (o *GETDatastoresCriteriaOK) IsRedirect() bool {
+func (o *GetDatastoresCriteriaOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get datastores criteria o k response has a 4xx status code
-func (o *GETDatastoresCriteriaOK) IsClientError() bool {
+func (o *GetDatastoresCriteriaOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get datastores criteria o k response has a 5xx status code
-func (o *GETDatastoresCriteriaOK) IsServerError() bool {
+func (o *GetDatastoresCriteriaOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get datastores criteria o k response a status code equal to that given
-func (o *GETDatastoresCriteriaOK) IsCode(code int) bool {
+func (o *GetDatastoresCriteriaOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETDatastoresCriteriaOK) Error() string {
+func (o *GetDatastoresCriteriaOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria][%d] getDatastoresCriteriaOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDatastoresCriteriaOK) String() string {
+func (o *GetDatastoresCriteriaOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria][%d] getDatastoresCriteriaOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDatastoresCriteriaOK) GetPayload() *models.PageOfDatastoreCriterion {
+func (o *GetDatastoresCriteriaOK) GetPayload() *models.PageOfDatastoreCriterion {
 	return o.Payload
 }
 
-func (o *GETDatastoresCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDatastoresCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfDatastoreCriterion)
 

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETNSXTUpgradeResourcesParams creates a new GETNSXTUpgradeResourcesParams object,
+// NewGetNSXTUpgradeResourcesParams creates a new GetNSXTUpgradeResourcesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETNSXTUpgradeResourcesParams() *GETNSXTUpgradeResourcesParams {
-	return &GETNSXTUpgradeResourcesParams{
+func NewGetNSXTUpgradeResourcesParams() *GetNSXTUpgradeResourcesParams {
+	return &GetNSXTUpgradeResourcesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETNSXTUpgradeResourcesParamsWithTimeout creates a new GETNSXTUpgradeResourcesParams object
+// NewGetNSXTUpgradeResourcesParamsWithTimeout creates a new GetNSXTUpgradeResourcesParams object
 // with the ability to set a timeout on a request.
-func NewGETNSXTUpgradeResourcesParamsWithTimeout(timeout time.Duration) *GETNSXTUpgradeResourcesParams {
-	return &GETNSXTUpgradeResourcesParams{
+func NewGetNSXTUpgradeResourcesParamsWithTimeout(timeout time.Duration) *GetNSXTUpgradeResourcesParams {
+	return &GetNSXTUpgradeResourcesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETNSXTUpgradeResourcesParamsWithContext creates a new GETNSXTUpgradeResourcesParams object
+// NewGetNSXTUpgradeResourcesParamsWithContext creates a new GetNSXTUpgradeResourcesParams object
 // with the ability to set a context for a request.
-func NewGETNSXTUpgradeResourcesParamsWithContext(ctx context.Context) *GETNSXTUpgradeResourcesParams {
-	return &GETNSXTUpgradeResourcesParams{
+func NewGetNSXTUpgradeResourcesParamsWithContext(ctx context.Context) *GetNSXTUpgradeResourcesParams {
+	return &GetNSXTUpgradeResourcesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETNSXTUpgradeResourcesParamsWithHTTPClient creates a new GETNSXTUpgradeResourcesParams object
+// NewGetNSXTUpgradeResourcesParamsWithHTTPClient creates a new GetNSXTUpgradeResourcesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETNSXTUpgradeResourcesParamsWithHTTPClient(client *http.Client) *GETNSXTUpgradeResourcesParams {
-	return &GETNSXTUpgradeResourcesParams{
+func NewGetNSXTUpgradeResourcesParamsWithHTTPClient(client *http.Client) *GetNSXTUpgradeResourcesParams {
+	return &GetNSXTUpgradeResourcesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETNSXTUpgradeResourcesParams contains all the parameters to send to the API endpoint
+GetNSXTUpgradeResourcesParams contains all the parameters to send to the API endpoint
 
 	for the get Nsxt upgrade resources operation.
 
 	Typically these are written to a http.Request.
 */
-type GETNSXTUpgradeResourcesParams struct {
+type GetNSXTUpgradeResourcesParams struct {
 
 	/* BundleID.
 
@@ -84,7 +84,7 @@ type GETNSXTUpgradeResourcesParams struct {
 // WithDefaults hydrates default values in the get Nsxt upgrade resources params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTUpgradeResourcesParams) WithDefaults() *GETNSXTUpgradeResourcesParams {
+func (o *GetNSXTUpgradeResourcesParams) WithDefaults() *GetNSXTUpgradeResourcesParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETNSXTUpgradeResourcesParams) WithDefaults() *GETNSXTUpgradeResourcesP
 // SetDefaults hydrates default values in the get Nsxt upgrade resources params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTUpgradeResourcesParams) SetDefaults() {
+func (o *GetNSXTUpgradeResourcesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) WithTimeout(timeout time.Duration) *GETNSXTUpgradeResourcesParams {
+func (o *GetNSXTUpgradeResourcesParams) WithTimeout(timeout time.Duration) *GetNSXTUpgradeResourcesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) SetTimeout(timeout time.Duration) {
+func (o *GetNSXTUpgradeResourcesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) WithContext(ctx context.Context) *GETNSXTUpgradeResourcesParams {
+func (o *GetNSXTUpgradeResourcesParams) WithContext(ctx context.Context) *GetNSXTUpgradeResourcesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) SetContext(ctx context.Context) {
+func (o *GetNSXTUpgradeResourcesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) WithHTTPClient(client *http.Client) *GETNSXTUpgradeResourcesParams {
+func (o *GetNSXTUpgradeResourcesParams) WithHTTPClient(client *http.Client) *GetNSXTUpgradeResourcesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) SetHTTPClient(client *http.Client) {
+func (o *GetNSXTUpgradeResourcesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithBundleID adds the bundleID to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) WithBundleID(bundleID *string) *GETNSXTUpgradeResourcesParams {
+func (o *GetNSXTUpgradeResourcesParams) WithBundleID(bundleID *string) *GetNSXTUpgradeResourcesParams {
 	o.SetBundleID(bundleID)
 	return o
 }
 
 // SetBundleID adds the bundleId to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) SetBundleID(bundleID *string) {
+func (o *GetNSXTUpgradeResourcesParams) SetBundleID(bundleID *string) {
 	o.BundleID = bundleID
 }
 
 // WithDomainID adds the domainID to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) WithDomainID(domainID string) *GETNSXTUpgradeResourcesParams {
+func (o *GetNSXTUpgradeResourcesParams) WithDomainID(domainID string) *GetNSXTUpgradeResourcesParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get Nsxt upgrade resources params
-func (o *GETNSXTUpgradeResourcesParams) SetDomainID(domainID string) {
+func (o *GetNSXTUpgradeResourcesParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETNSXTUpgradeResourcesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetNSXTUpgradeResourcesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

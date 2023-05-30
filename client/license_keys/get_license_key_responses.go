@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETLicenseKeyReader is a Reader for the GETLicenseKey structure.
-type GETLicenseKeyReader struct {
+// GetLicenseKeyReader is a Reader for the GetLicenseKey structure.
+type GetLicenseKeyReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETLicenseKeyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetLicenseKeyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETLicenseKeyOK()
+		result := NewGetLicenseKeyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETLicenseKeyNotFound()
+		result := NewGetLicenseKeyNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETLicenseKeyInternalServerError()
+		result := NewGetLicenseKeyInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETLicenseKeyReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewGETLicenseKeyOK creates a GETLicenseKeyOK with default headers values
-func NewGETLicenseKeyOK() *GETLicenseKeyOK {
-	return &GETLicenseKeyOK{}
+// NewGetLicenseKeyOK creates a GetLicenseKeyOK with default headers values
+func NewGetLicenseKeyOK() *GetLicenseKeyOK {
+	return &GetLicenseKeyOK{}
 }
 
 /*
-GETLicenseKeyOK describes a response with status code 200, with default header values.
+GetLicenseKeyOK describes a response with status code 200, with default header values.
 
 Successful
 */
-type GETLicenseKeyOK struct {
+type GetLicenseKeyOK struct {
 	Payload *models.LicenseKey
 }
 
 // IsSuccess returns true when this get license key o k response has a 2xx status code
-func (o *GETLicenseKeyOK) IsSuccess() bool {
+func (o *GetLicenseKeyOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get license key o k response has a 3xx status code
-func (o *GETLicenseKeyOK) IsRedirect() bool {
+func (o *GetLicenseKeyOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get license key o k response has a 4xx status code
-func (o *GETLicenseKeyOK) IsClientError() bool {
+func (o *GetLicenseKeyOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get license key o k response has a 5xx status code
-func (o *GETLicenseKeyOK) IsServerError() bool {
+func (o *GetLicenseKeyOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get license key o k response a status code equal to that given
-func (o *GETLicenseKeyOK) IsCode(code int) bool {
+func (o *GetLicenseKeyOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETLicenseKeyOK) Error() string {
+func (o *GetLicenseKeyOK) Error() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyOK  %+v", 200, o.Payload)
 }
 
-func (o *GETLicenseKeyOK) String() string {
+func (o *GetLicenseKeyOK) String() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyOK  %+v", 200, o.Payload)
 }
 
-func (o *GETLicenseKeyOK) GetPayload() *models.LicenseKey {
+func (o *GetLicenseKeyOK) GetPayload() *models.LicenseKey {
 	return o.Payload
 }
 
-func (o *GETLicenseKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLicenseKeyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.LicenseKey)
 
@@ -112,58 +112,58 @@ func (o *GETLicenseKeyOK) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETLicenseKeyNotFound creates a GETLicenseKeyNotFound with default headers values
-func NewGETLicenseKeyNotFound() *GETLicenseKeyNotFound {
-	return &GETLicenseKeyNotFound{}
+// NewGetLicenseKeyNotFound creates a GetLicenseKeyNotFound with default headers values
+func NewGetLicenseKeyNotFound() *GetLicenseKeyNotFound {
+	return &GetLicenseKeyNotFound{}
 }
 
 /*
-GETLicenseKeyNotFound describes a response with status code 404, with default header values.
+GetLicenseKeyNotFound describes a response with status code 404, with default header values.
 
 License key not found
 */
-type GETLicenseKeyNotFound struct {
+type GetLicenseKeyNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get license key not found response has a 2xx status code
-func (o *GETLicenseKeyNotFound) IsSuccess() bool {
+func (o *GetLicenseKeyNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get license key not found response has a 3xx status code
-func (o *GETLicenseKeyNotFound) IsRedirect() bool {
+func (o *GetLicenseKeyNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get license key not found response has a 4xx status code
-func (o *GETLicenseKeyNotFound) IsClientError() bool {
+func (o *GetLicenseKeyNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get license key not found response has a 5xx status code
-func (o *GETLicenseKeyNotFound) IsServerError() bool {
+func (o *GetLicenseKeyNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get license key not found response a status code equal to that given
-func (o *GETLicenseKeyNotFound) IsCode(code int) bool {
+func (o *GetLicenseKeyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETLicenseKeyNotFound) Error() string {
+func (o *GetLicenseKeyNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETLicenseKeyNotFound) String() string {
+func (o *GetLicenseKeyNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETLicenseKeyNotFound) GetPayload() *models.Error {
+func (o *GetLicenseKeyNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETLicenseKeyNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLicenseKeyNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETLicenseKeyNotFound) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewGETLicenseKeyInternalServerError creates a GETLicenseKeyInternalServerError with default headers values
-func NewGETLicenseKeyInternalServerError() *GETLicenseKeyInternalServerError {
-	return &GETLicenseKeyInternalServerError{}
+// NewGetLicenseKeyInternalServerError creates a GetLicenseKeyInternalServerError with default headers values
+func NewGetLicenseKeyInternalServerError() *GetLicenseKeyInternalServerError {
+	return &GetLicenseKeyInternalServerError{}
 }
 
 /*
-GETLicenseKeyInternalServerError describes a response with status code 500, with default header values.
+GetLicenseKeyInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETLicenseKeyInternalServerError struct {
+type GetLicenseKeyInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get license key internal server error response has a 2xx status code
-func (o *GETLicenseKeyInternalServerError) IsSuccess() bool {
+func (o *GetLicenseKeyInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get license key internal server error response has a 3xx status code
-func (o *GETLicenseKeyInternalServerError) IsRedirect() bool {
+func (o *GetLicenseKeyInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get license key internal server error response has a 4xx status code
-func (o *GETLicenseKeyInternalServerError) IsClientError() bool {
+func (o *GetLicenseKeyInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get license key internal server error response has a 5xx status code
-func (o *GETLicenseKeyInternalServerError) IsServerError() bool {
+func (o *GetLicenseKeyInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get license key internal server error response a status code equal to that given
-func (o *GETLicenseKeyInternalServerError) IsCode(code int) bool {
+func (o *GetLicenseKeyInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETLicenseKeyInternalServerError) Error() string {
+func (o *GetLicenseKeyInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETLicenseKeyInternalServerError) String() string {
+func (o *GetLicenseKeyInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETLicenseKeyInternalServerError) GetPayload() *models.Error {
+func (o *GetLicenseKeyInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETLicenseKeyInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetLicenseKeyInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

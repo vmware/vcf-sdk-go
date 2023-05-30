@@ -33,26 +33,26 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETNSXTUpgradeResources(params *GETNSXTUpgradeResourcesParams, opts ...ClientOption) (*GETNSXTUpgradeResourcesOK, error)
+	GetNSXTUpgradeResources(params *GetNSXTUpgradeResourcesParams, opts ...ClientOption) (*GetNSXTUpgradeResourcesOK, error)
 
-	GETUpgradables(params *GETUpgradablesParams, opts ...ClientOption) (*GETUpgradablesOK, error)
+	GetUpgradables(params *GetUpgradablesParams, opts ...ClientOption) (*GetUpgradablesOK, error)
 
-	GETUpgradablesByDomain(params *GETUpgradablesByDomainParams, opts ...ClientOption) (*GETUpgradablesByDomainOK, error)
+	GetUpgradablesByDomain(params *GetUpgradablesByDomainParams, opts ...ClientOption) (*GetUpgradablesByDomainOK, error)
 
-	GETUpgradablesClusters(params *GETUpgradablesClustersParams, opts ...ClientOption) (*GETUpgradablesClustersOK, error)
+	GetUpgradablesClusters(params *GetUpgradablesClustersParams, opts ...ClientOption) (*GetUpgradablesClustersOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETNSXTUpgradeResources Gets NSXT upgradable resources
+GetNSXTUpgradeResources gets NSXT upgradable resources
 
 Get the list NSXT upgradable reosurce with resource metadata info
 */
-func (a *Client) GETNSXTUpgradeResources(params *GETNSXTUpgradeResourcesParams, opts ...ClientOption) (*GETNSXTUpgradeResourcesOK, error) {
+func (a *Client) GetNSXTUpgradeResources(params *GetNSXTUpgradeResourcesParams, opts ...ClientOption) (*GetNSXTUpgradeResourcesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETNSXTUpgradeResourcesParams()
+		params = NewGetNSXTUpgradeResourcesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getNsxtUpgradeResources",
@@ -62,7 +62,7 @@ func (a *Client) GETNSXTUpgradeResources(params *GETNSXTUpgradeResourcesParams, 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETNSXTUpgradeResourcesReader{formats: a.formats},
+		Reader:             &GetNSXTUpgradeResourcesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -74,7 +74,7 @@ func (a *Client) GETNSXTUpgradeResources(params *GETNSXTUpgradeResourcesParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETNSXTUpgradeResourcesOK)
+	success, ok := result.(*GetNSXTUpgradeResourcesOK)
 	if ok {
 		return success, nil
 	}
@@ -85,14 +85,14 @@ func (a *Client) GETNSXTUpgradeResources(params *GETNSXTUpgradeResourcesParams, 
 }
 
 /*
-GETUpgradables Gets the upgradables
+GetUpgradables gets the upgradables
 
 Fetches the list of Upgradables in the System. Only one Upgradable becomes AVAILABLE for Upgrade. The Upgradables provides information that can be use for Precheck API and also in the actual Upgrade API call.
 */
-func (a *Client) GETUpgradables(params *GETUpgradablesParams, opts ...ClientOption) (*GETUpgradablesOK, error) {
+func (a *Client) GetUpgradables(params *GetUpgradablesParams, opts ...ClientOption) (*GetUpgradablesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUpgradablesParams()
+		params = NewGetUpgradablesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUpgradables",
@@ -102,7 +102,7 @@ func (a *Client) GETUpgradables(params *GETUpgradablesParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUpgradablesReader{formats: a.formats},
+		Reader:             &GetUpgradablesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -114,7 +114,7 @@ func (a *Client) GETUpgradables(params *GETUpgradablesParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUpgradablesOK)
+	success, ok := result.(*GetUpgradablesOK)
 	if ok {
 		return success, nil
 	}
@@ -125,14 +125,14 @@ func (a *Client) GETUpgradables(params *GETUpgradablesParams, opts ...ClientOpti
 }
 
 /*
-GETUpgradablesByDomain Gets the upgradables
+GetUpgradablesByDomain gets the upgradables
 
 Fetches the list of Upgradables for a given domain. If a target version is provided, Upgradables that are required for given target version become Available. The Upgradables providesinformation that can be use for Precheck API and also in the actual Upgrade API call.This API is used only for management domain, for all cases please use v1/system/upgradables.
 */
-func (a *Client) GETUpgradablesByDomain(params *GETUpgradablesByDomainParams, opts ...ClientOption) (*GETUpgradablesByDomainOK, error) {
+func (a *Client) GetUpgradablesByDomain(params *GetUpgradablesByDomainParams, opts ...ClientOption) (*GetUpgradablesByDomainOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUpgradablesByDomainParams()
+		params = NewGetUpgradablesByDomainParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUpgradablesByDomain",
@@ -142,7 +142,7 @@ func (a *Client) GETUpgradablesByDomain(params *GETUpgradablesByDomainParams, op
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUpgradablesByDomainReader{formats: a.formats},
+		Reader:             &GetUpgradablesByDomainReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -154,7 +154,7 @@ func (a *Client) GETUpgradablesByDomain(params *GETUpgradablesByDomainParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUpgradablesByDomainOK)
+	success, ok := result.(*GetUpgradablesByDomainOK)
 	if ok {
 		return success, nil
 	}
@@ -165,14 +165,14 @@ func (a *Client) GETUpgradablesByDomain(params *GETUpgradablesByDomainParams, op
 }
 
 /*
-GETUpgradablesClusters Gets registered and available h s m details along with software details
+GetUpgradablesClusters gets registered and available h s m details along with software details
 
 Fetches the list of available hardware support managers and configured hardware support managers for the give resource along with the hardware support packages and Software details.
 */
-func (a *Client) GETUpgradablesClusters(params *GETUpgradablesClustersParams, opts ...ClientOption) (*GETUpgradablesClustersOK, error) {
+func (a *Client) GetUpgradablesClusters(params *GetUpgradablesClustersParams, opts ...ClientOption) (*GetUpgradablesClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETUpgradablesClustersParams()
+		params = NewGetUpgradablesClustersParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getUpgradablesClusters",
@@ -182,7 +182,7 @@ func (a *Client) GETUpgradablesClusters(params *GETUpgradablesClustersParams, op
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETUpgradablesClustersReader{formats: a.formats},
+		Reader:             &GetUpgradablesClustersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -194,7 +194,7 @@ func (a *Client) GETUpgradablesClusters(params *GETUpgradablesClustersParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETUpgradablesClustersOK)
+	success, ok := result.(*GetUpgradablesClustersOK)
 	if ok {
 		return success, nil
 	}

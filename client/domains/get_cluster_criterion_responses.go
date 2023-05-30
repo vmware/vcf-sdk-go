@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETClusterCriterionReader is a Reader for the GETClusterCriterion structure.
-type GETClusterCriterionReader struct {
+// GetClusterCriterionReader is a Reader for the GetClusterCriterion structure.
+type GetClusterCriterionReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETClusterCriterionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetClusterCriterionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETClusterCriterionOK()
+		result := NewGetClusterCriterionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETClusterCriterionNotFound()
+		result := NewGetClusterCriterionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETClusterCriterionReader) ReadResponse(response runtime.ClientResponse
 	}
 }
 
-// NewGETClusterCriterionOK creates a GETClusterCriterionOK with default headers values
-func NewGETClusterCriterionOK() *GETClusterCriterionOK {
-	return &GETClusterCriterionOK{}
+// NewGetClusterCriterionOK creates a GetClusterCriterionOK with default headers values
+func NewGetClusterCriterionOK() *GetClusterCriterionOK {
+	return &GetClusterCriterionOK{}
 }
 
 /*
-GETClusterCriterionOK describes a response with status code 200, with default header values.
+GetClusterCriterionOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETClusterCriterionOK struct {
+type GetClusterCriterionOK struct {
 	Payload *models.ClusterCriterion
 }
 
 // IsSuccess returns true when this get cluster criterion o k response has a 2xx status code
-func (o *GETClusterCriterionOK) IsSuccess() bool {
+func (o *GetClusterCriterionOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get cluster criterion o k response has a 3xx status code
-func (o *GETClusterCriterionOK) IsRedirect() bool {
+func (o *GetClusterCriterionOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster criterion o k response has a 4xx status code
-func (o *GETClusterCriterionOK) IsClientError() bool {
+func (o *GetClusterCriterionOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get cluster criterion o k response has a 5xx status code
-func (o *GETClusterCriterionOK) IsServerError() bool {
+func (o *GetClusterCriterionOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster criterion o k response a status code equal to that given
-func (o *GETClusterCriterionOK) IsCode(code int) bool {
+func (o *GetClusterCriterionOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETClusterCriterionOK) Error() string {
+func (o *GetClusterCriterionOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterCriterionOK) String() string {
+func (o *GetClusterCriterionOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionOK  %+v", 200, o.Payload)
 }
 
-func (o *GETClusterCriterionOK) GetPayload() *models.ClusterCriterion {
+func (o *GetClusterCriterionOK) GetPayload() *models.ClusterCriterion {
 	return o.Payload
 }
 
-func (o *GETClusterCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ClusterCriterion)
 
@@ -106,58 +106,58 @@ func (o *GETClusterCriterionOK) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewGETClusterCriterionNotFound creates a GETClusterCriterionNotFound with default headers values
-func NewGETClusterCriterionNotFound() *GETClusterCriterionNotFound {
-	return &GETClusterCriterionNotFound{}
+// NewGetClusterCriterionNotFound creates a GetClusterCriterionNotFound with default headers values
+func NewGetClusterCriterionNotFound() *GetClusterCriterionNotFound {
+	return &GetClusterCriterionNotFound{}
 }
 
 /*
-GETClusterCriterionNotFound describes a response with status code 404, with default header values.
+GetClusterCriterionNotFound describes a response with status code 404, with default header values.
 
 Criterion Not Found
 */
-type GETClusterCriterionNotFound struct {
+type GetClusterCriterionNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get cluster criterion not found response has a 2xx status code
-func (o *GETClusterCriterionNotFound) IsSuccess() bool {
+func (o *GetClusterCriterionNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get cluster criterion not found response has a 3xx status code
-func (o *GETClusterCriterionNotFound) IsRedirect() bool {
+func (o *GetClusterCriterionNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get cluster criterion not found response has a 4xx status code
-func (o *GETClusterCriterionNotFound) IsClientError() bool {
+func (o *GetClusterCriterionNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get cluster criterion not found response has a 5xx status code
-func (o *GETClusterCriterionNotFound) IsServerError() bool {
+func (o *GetClusterCriterionNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get cluster criterion not found response a status code equal to that given
-func (o *GETClusterCriterionNotFound) IsCode(code int) bool {
+func (o *GetClusterCriterionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETClusterCriterionNotFound) Error() string {
+func (o *GetClusterCriterionNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETClusterCriterionNotFound) String() string {
+func (o *GetClusterCriterionNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETClusterCriterionNotFound) GetPayload() *models.Error {
+func (o *GetClusterCriterionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETClusterCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetClusterCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

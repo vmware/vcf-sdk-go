@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVdsesReader is a Reader for the GETVdses structure.
-type GETVdsesReader struct {
+// GetVdsesReader is a Reader for the GetVdses structure.
+type GetVdsesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVdsesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVdsesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVdsesOK()
+		result := NewGetVdsesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETVdsesBadRequest()
+		result := NewGetVdsesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETVdsesNotFound()
+		result := NewGetVdsesNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETVdsesInternalServerError()
+		result := NewGetVdsesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETVdsesReader) ReadResponse(response runtime.ClientResponse, consumer 
 	}
 }
 
-// NewGETVdsesOK creates a GETVdsesOK with default headers values
-func NewGETVdsesOK() *GETVdsesOK {
-	return &GETVdsesOK{}
+// NewGetVdsesOK creates a GetVdsesOK with default headers values
+func NewGetVdsesOK() *GetVdsesOK {
+	return &GetVdsesOK{}
 }
 
 /*
-GETVdsesOK describes a response with status code 200, with default header values.
+GetVdsesOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETVdsesOK struct {
+type GetVdsesOK struct {
 	Payload []*models.Vds
 }
 
 // IsSuccess returns true when this get vdses o k response has a 2xx status code
-func (o *GETVdsesOK) IsSuccess() bool {
+func (o *GetVdsesOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vdses o k response has a 3xx status code
-func (o *GETVdsesOK) IsRedirect() bool {
+func (o *GetVdsesOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vdses o k response has a 4xx status code
-func (o *GETVdsesOK) IsClientError() bool {
+func (o *GetVdsesOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vdses o k response has a 5xx status code
-func (o *GETVdsesOK) IsServerError() bool {
+func (o *GetVdsesOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vdses o k response a status code equal to that given
-func (o *GETVdsesOK) IsCode(code int) bool {
+func (o *GetVdsesOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVdsesOK) Error() string {
+func (o *GetVdsesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVdsesOK) String() string {
+func (o *GetVdsesOK) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVdsesOK) GetPayload() []*models.Vds {
+func (o *GetVdsesOK) GetPayload() []*models.Vds {
 	return o.Payload
 }
 
-func (o *GETVdsesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVdsesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -116,58 +116,58 @@ func (o *GETVdsesOK) readResponse(response runtime.ClientResponse, consumer runt
 	return nil
 }
 
-// NewGETVdsesBadRequest creates a GETVdsesBadRequest with default headers values
-func NewGETVdsesBadRequest() *GETVdsesBadRequest {
-	return &GETVdsesBadRequest{}
+// NewGetVdsesBadRequest creates a GetVdsesBadRequest with default headers values
+func NewGetVdsesBadRequest() *GetVdsesBadRequest {
+	return &GetVdsesBadRequest{}
 }
 
 /*
-GETVdsesBadRequest describes a response with status code 400, with default header values.
+GetVdsesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETVdsesBadRequest struct {
+type GetVdsesBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vdses bad request response has a 2xx status code
-func (o *GETVdsesBadRequest) IsSuccess() bool {
+func (o *GetVdsesBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vdses bad request response has a 3xx status code
-func (o *GETVdsesBadRequest) IsRedirect() bool {
+func (o *GetVdsesBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vdses bad request response has a 4xx status code
-func (o *GETVdsesBadRequest) IsClientError() bool {
+func (o *GetVdsesBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get vdses bad request response has a 5xx status code
-func (o *GETVdsesBadRequest) IsServerError() bool {
+func (o *GetVdsesBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vdses bad request response a status code equal to that given
-func (o *GETVdsesBadRequest) IsCode(code int) bool {
+func (o *GetVdsesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETVdsesBadRequest) Error() string {
+func (o *GetVdsesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETVdsesBadRequest) String() string {
+func (o *GetVdsesBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETVdsesBadRequest) GetPayload() *models.Error {
+func (o *GetVdsesBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVdsesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVdsesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -179,58 +179,58 @@ func (o *GETVdsesBadRequest) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETVdsesNotFound creates a GETVdsesNotFound with default headers values
-func NewGETVdsesNotFound() *GETVdsesNotFound {
-	return &GETVdsesNotFound{}
+// NewGetVdsesNotFound creates a GetVdsesNotFound with default headers values
+func NewGetVdsesNotFound() *GetVdsesNotFound {
+	return &GetVdsesNotFound{}
 }
 
 /*
-GETVdsesNotFound describes a response with status code 404, with default header values.
+GetVdsesNotFound describes a response with status code 404, with default header values.
 
 Cluster Not Found
 */
-type GETVdsesNotFound struct {
+type GetVdsesNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vdses not found response has a 2xx status code
-func (o *GETVdsesNotFound) IsSuccess() bool {
+func (o *GetVdsesNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vdses not found response has a 3xx status code
-func (o *GETVdsesNotFound) IsRedirect() bool {
+func (o *GetVdsesNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vdses not found response has a 4xx status code
-func (o *GETVdsesNotFound) IsClientError() bool {
+func (o *GetVdsesNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get vdses not found response has a 5xx status code
-func (o *GETVdsesNotFound) IsServerError() bool {
+func (o *GetVdsesNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vdses not found response a status code equal to that given
-func (o *GETVdsesNotFound) IsCode(code int) bool {
+func (o *GetVdsesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETVdsesNotFound) Error() string {
+func (o *GetVdsesNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVdsesNotFound) String() string {
+func (o *GetVdsesNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVdsesNotFound) GetPayload() *models.Error {
+func (o *GetVdsesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVdsesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVdsesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -242,58 +242,58 @@ func (o *GETVdsesNotFound) readResponse(response runtime.ClientResponse, consume
 	return nil
 }
 
-// NewGETVdsesInternalServerError creates a GETVdsesInternalServerError with default headers values
-func NewGETVdsesInternalServerError() *GETVdsesInternalServerError {
-	return &GETVdsesInternalServerError{}
+// NewGetVdsesInternalServerError creates a GetVdsesInternalServerError with default headers values
+func NewGetVdsesInternalServerError() *GetVdsesInternalServerError {
+	return &GetVdsesInternalServerError{}
 }
 
 /*
-GETVdsesInternalServerError describes a response with status code 500, with default header values.
+GetVdsesInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETVdsesInternalServerError struct {
+type GetVdsesInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vdses internal server error response has a 2xx status code
-func (o *GETVdsesInternalServerError) IsSuccess() bool {
+func (o *GetVdsesInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vdses internal server error response has a 3xx status code
-func (o *GETVdsesInternalServerError) IsRedirect() bool {
+func (o *GetVdsesInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vdses internal server error response has a 4xx status code
-func (o *GETVdsesInternalServerError) IsClientError() bool {
+func (o *GetVdsesInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vdses internal server error response has a 5xx status code
-func (o *GETVdsesInternalServerError) IsServerError() bool {
+func (o *GetVdsesInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get vdses internal server error response a status code equal to that given
-func (o *GETVdsesInternalServerError) IsCode(code int) bool {
+func (o *GetVdsesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETVdsesInternalServerError) Error() string {
+func (o *GetVdsesInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVdsesInternalServerError) String() string {
+func (o *GetVdsesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVdsesInternalServerError) GetPayload() *models.Error {
+func (o *GetVdsesInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVdsesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVdsesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

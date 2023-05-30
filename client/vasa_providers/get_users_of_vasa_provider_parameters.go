@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUsersOfVasaProviderParams creates a new GETUsersOfVasaProviderParams object,
+// NewGetUsersOfVasaProviderParams creates a new GetUsersOfVasaProviderParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUsersOfVasaProviderParams() *GETUsersOfVasaProviderParams {
-	return &GETUsersOfVasaProviderParams{
+func NewGetUsersOfVasaProviderParams() *GetUsersOfVasaProviderParams {
+	return &GetUsersOfVasaProviderParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUsersOfVasaProviderParamsWithTimeout creates a new GETUsersOfVasaProviderParams object
+// NewGetUsersOfVasaProviderParamsWithTimeout creates a new GetUsersOfVasaProviderParams object
 // with the ability to set a timeout on a request.
-func NewGETUsersOfVasaProviderParamsWithTimeout(timeout time.Duration) *GETUsersOfVasaProviderParams {
-	return &GETUsersOfVasaProviderParams{
+func NewGetUsersOfVasaProviderParamsWithTimeout(timeout time.Duration) *GetUsersOfVasaProviderParams {
+	return &GetUsersOfVasaProviderParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUsersOfVasaProviderParamsWithContext creates a new GETUsersOfVasaProviderParams object
+// NewGetUsersOfVasaProviderParamsWithContext creates a new GetUsersOfVasaProviderParams object
 // with the ability to set a context for a request.
-func NewGETUsersOfVasaProviderParamsWithContext(ctx context.Context) *GETUsersOfVasaProviderParams {
-	return &GETUsersOfVasaProviderParams{
+func NewGetUsersOfVasaProviderParamsWithContext(ctx context.Context) *GetUsersOfVasaProviderParams {
+	return &GetUsersOfVasaProviderParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUsersOfVasaProviderParamsWithHTTPClient creates a new GETUsersOfVasaProviderParams object
+// NewGetUsersOfVasaProviderParamsWithHTTPClient creates a new GetUsersOfVasaProviderParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUsersOfVasaProviderParamsWithHTTPClient(client *http.Client) *GETUsersOfVasaProviderParams {
-	return &GETUsersOfVasaProviderParams{
+func NewGetUsersOfVasaProviderParamsWithHTTPClient(client *http.Client) *GetUsersOfVasaProviderParams {
+	return &GetUsersOfVasaProviderParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUsersOfVasaProviderParams contains all the parameters to send to the API endpoint
+GetUsersOfVasaProviderParams contains all the parameters to send to the API endpoint
 
 	for the get users of vasa provider operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUsersOfVasaProviderParams struct {
+type GetUsersOfVasaProviderParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETUsersOfVasaProviderParams struct {
 // WithDefaults hydrates default values in the get users of vasa provider params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUsersOfVasaProviderParams) WithDefaults() *GETUsersOfVasaProviderParams {
+func (o *GetUsersOfVasaProviderParams) WithDefaults() *GetUsersOfVasaProviderParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETUsersOfVasaProviderParams) WithDefaults() *GETUsersOfVasaProviderPar
 // SetDefaults hydrates default values in the get users of vasa provider params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUsersOfVasaProviderParams) SetDefaults() {
+func (o *GetUsersOfVasaProviderParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) WithTimeout(timeout time.Duration) *GETUsersOfVasaProviderParams {
+func (o *GetUsersOfVasaProviderParams) WithTimeout(timeout time.Duration) *GetUsersOfVasaProviderParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) SetTimeout(timeout time.Duration) {
+func (o *GetUsersOfVasaProviderParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) WithContext(ctx context.Context) *GETUsersOfVasaProviderParams {
+func (o *GetUsersOfVasaProviderParams) WithContext(ctx context.Context) *GetUsersOfVasaProviderParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) SetContext(ctx context.Context) {
+func (o *GetUsersOfVasaProviderParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) WithHTTPClient(client *http.Client) *GETUsersOfVasaProviderParams {
+func (o *GetUsersOfVasaProviderParams) WithHTTPClient(client *http.Client) *GetUsersOfVasaProviderParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) SetHTTPClient(client *http.Client) {
+func (o *GetUsersOfVasaProviderParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) WithID(id string) *GETUsersOfVasaProviderParams {
+func (o *GetUsersOfVasaProviderParams) WithID(id string) *GetUsersOfVasaProviderParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get users of vasa provider params
-func (o *GETUsersOfVasaProviderParams) SetID(id string) {
+func (o *GetUsersOfVasaProviderParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUsersOfVasaProviderParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUsersOfVasaProviderParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETBundlesParams creates a new GETBundlesParams object,
+// NewGetBundlesParams creates a new GetBundlesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETBundlesParams() *GETBundlesParams {
-	return &GETBundlesParams{
+func NewGetBundlesParams() *GetBundlesParams {
+	return &GetBundlesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETBundlesParamsWithTimeout creates a new GETBundlesParams object
+// NewGetBundlesParamsWithTimeout creates a new GetBundlesParams object
 // with the ability to set a timeout on a request.
-func NewGETBundlesParamsWithTimeout(timeout time.Duration) *GETBundlesParams {
-	return &GETBundlesParams{
+func NewGetBundlesParamsWithTimeout(timeout time.Duration) *GetBundlesParams {
+	return &GetBundlesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETBundlesParamsWithContext creates a new GETBundlesParams object
+// NewGetBundlesParamsWithContext creates a new GetBundlesParams object
 // with the ability to set a context for a request.
-func NewGETBundlesParamsWithContext(ctx context.Context) *GETBundlesParams {
-	return &GETBundlesParams{
+func NewGetBundlesParamsWithContext(ctx context.Context) *GetBundlesParams {
+	return &GetBundlesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETBundlesParamsWithHTTPClient creates a new GETBundlesParams object
+// NewGetBundlesParamsWithHTTPClient creates a new GetBundlesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETBundlesParamsWithHTTPClient(client *http.Client) *GETBundlesParams {
-	return &GETBundlesParams{
+func NewGetBundlesParamsWithHTTPClient(client *http.Client) *GetBundlesParams {
+	return &GetBundlesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETBundlesParams contains all the parameters to send to the API endpoint
+GetBundlesParams contains all the parameters to send to the API endpoint
 
 	for the get bundles operation.
 
 	Typically these are written to a http.Request.
 */
-type GETBundlesParams struct {
+type GetBundlesParams struct {
 
 	/* BundleType.
 
@@ -91,7 +91,7 @@ type GETBundlesParams struct {
 // WithDefaults hydrates default values in the get bundles params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBundlesParams) WithDefaults() *GETBundlesParams {
+func (o *GetBundlesParams) WithDefaults() *GetBundlesParams {
 	o.SetDefaults()
 	return o
 }
@@ -99,78 +99,78 @@ func (o *GETBundlesParams) WithDefaults() *GETBundlesParams {
 // SetDefaults hydrates default values in the get bundles params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETBundlesParams) SetDefaults() {
+func (o *GetBundlesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get bundles params
-func (o *GETBundlesParams) WithTimeout(timeout time.Duration) *GETBundlesParams {
+func (o *GetBundlesParams) WithTimeout(timeout time.Duration) *GetBundlesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get bundles params
-func (o *GETBundlesParams) SetTimeout(timeout time.Duration) {
+func (o *GetBundlesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get bundles params
-func (o *GETBundlesParams) WithContext(ctx context.Context) *GETBundlesParams {
+func (o *GetBundlesParams) WithContext(ctx context.Context) *GetBundlesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get bundles params
-func (o *GETBundlesParams) SetContext(ctx context.Context) {
+func (o *GetBundlesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get bundles params
-func (o *GETBundlesParams) WithHTTPClient(client *http.Client) *GETBundlesParams {
+func (o *GetBundlesParams) WithHTTPClient(client *http.Client) *GetBundlesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get bundles params
-func (o *GETBundlesParams) SetHTTPClient(client *http.Client) {
+func (o *GetBundlesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithBundleType adds the bundleType to the get bundles params
-func (o *GETBundlesParams) WithBundleType(bundleType *string) *GETBundlesParams {
+func (o *GetBundlesParams) WithBundleType(bundleType *string) *GetBundlesParams {
 	o.SetBundleType(bundleType)
 	return o
 }
 
 // SetBundleType adds the bundleType to the get bundles params
-func (o *GETBundlesParams) SetBundleType(bundleType *string) {
+func (o *GetBundlesParams) SetBundleType(bundleType *string) {
 	o.BundleType = bundleType
 }
 
 // WithIsCompliant adds the isCompliant to the get bundles params
-func (o *GETBundlesParams) WithIsCompliant(isCompliant *bool) *GETBundlesParams {
+func (o *GetBundlesParams) WithIsCompliant(isCompliant *bool) *GetBundlesParams {
 	o.SetIsCompliant(isCompliant)
 	return o
 }
 
 // SetIsCompliant adds the isCompliant to the get bundles params
-func (o *GETBundlesParams) SetIsCompliant(isCompliant *bool) {
+func (o *GetBundlesParams) SetIsCompliant(isCompliant *bool) {
 	o.IsCompliant = isCompliant
 }
 
 // WithProductType adds the productType to the get bundles params
-func (o *GETBundlesParams) WithProductType(productType *string) *GETBundlesParams {
+func (o *GetBundlesParams) WithProductType(productType *string) *GetBundlesParams {
 	o.SetProductType(productType)
 	return o
 }
 
 // SetProductType adds the productType to the get bundles params
-func (o *GETBundlesParams) SetProductType(productType *string) {
+func (o *GetBundlesParams) SetProductType(productType *string) {
 	o.ProductType = productType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETBundlesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetBundlesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

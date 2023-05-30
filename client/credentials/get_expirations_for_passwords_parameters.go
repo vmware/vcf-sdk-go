@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETExpirationsForPasswordsParams creates a new GETExpirationsForPasswordsParams object,
+// NewGetExpirationsForPasswordsParams creates a new GetExpirationsForPasswordsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETExpirationsForPasswordsParams() *GETExpirationsForPasswordsParams {
-	return &GETExpirationsForPasswordsParams{
+func NewGetExpirationsForPasswordsParams() *GetExpirationsForPasswordsParams {
+	return &GetExpirationsForPasswordsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETExpirationsForPasswordsParamsWithTimeout creates a new GETExpirationsForPasswordsParams object
+// NewGetExpirationsForPasswordsParamsWithTimeout creates a new GetExpirationsForPasswordsParams object
 // with the ability to set a timeout on a request.
-func NewGETExpirationsForPasswordsParamsWithTimeout(timeout time.Duration) *GETExpirationsForPasswordsParams {
-	return &GETExpirationsForPasswordsParams{
+func NewGetExpirationsForPasswordsParamsWithTimeout(timeout time.Duration) *GetExpirationsForPasswordsParams {
+	return &GetExpirationsForPasswordsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETExpirationsForPasswordsParamsWithContext creates a new GETExpirationsForPasswordsParams object
+// NewGetExpirationsForPasswordsParamsWithContext creates a new GetExpirationsForPasswordsParams object
 // with the ability to set a context for a request.
-func NewGETExpirationsForPasswordsParamsWithContext(ctx context.Context) *GETExpirationsForPasswordsParams {
-	return &GETExpirationsForPasswordsParams{
+func NewGetExpirationsForPasswordsParamsWithContext(ctx context.Context) *GetExpirationsForPasswordsParams {
+	return &GetExpirationsForPasswordsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETExpirationsForPasswordsParamsWithHTTPClient creates a new GETExpirationsForPasswordsParams object
+// NewGetExpirationsForPasswordsParamsWithHTTPClient creates a new GetExpirationsForPasswordsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETExpirationsForPasswordsParamsWithHTTPClient(client *http.Client) *GETExpirationsForPasswordsParams {
-	return &GETExpirationsForPasswordsParams{
+func NewGetExpirationsForPasswordsParamsWithHTTPClient(client *http.Client) *GetExpirationsForPasswordsParams {
+	return &GetExpirationsForPasswordsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETExpirationsForPasswordsParams contains all the parameters to send to the API endpoint
+GetExpirationsForPasswordsParams contains all the parameters to send to the API endpoint
 
 	for the get expirations for passwords operation.
 
 	Typically these are written to a http.Request.
 */
-type GETExpirationsForPasswordsParams struct {
+type GetExpirationsForPasswordsParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETExpirationsForPasswordsParams struct {
 // WithDefaults hydrates default values in the get expirations for passwords params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETExpirationsForPasswordsParams) WithDefaults() *GETExpirationsForPasswordsParams {
+func (o *GetExpirationsForPasswordsParams) WithDefaults() *GetExpirationsForPasswordsParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETExpirationsForPasswordsParams) WithDefaults() *GETExpirationsForPass
 // SetDefaults hydrates default values in the get expirations for passwords params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETExpirationsForPasswordsParams) SetDefaults() {
+func (o *GetExpirationsForPasswordsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) WithTimeout(timeout time.Duration) *GETExpirationsForPasswordsParams {
+func (o *GetExpirationsForPasswordsParams) WithTimeout(timeout time.Duration) *GetExpirationsForPasswordsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) SetTimeout(timeout time.Duration) {
+func (o *GetExpirationsForPasswordsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) WithContext(ctx context.Context) *GETExpirationsForPasswordsParams {
+func (o *GetExpirationsForPasswordsParams) WithContext(ctx context.Context) *GetExpirationsForPasswordsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) SetContext(ctx context.Context) {
+func (o *GetExpirationsForPasswordsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) WithHTTPClient(client *http.Client) *GETExpirationsForPasswordsParams {
+func (o *GetExpirationsForPasswordsParams) WithHTTPClient(client *http.Client) *GetExpirationsForPasswordsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) SetHTTPClient(client *http.Client) {
+func (o *GetExpirationsForPasswordsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) WithID(id string) *GETExpirationsForPasswordsParams {
+func (o *GetExpirationsForPasswordsParams) WithID(id string) *GetExpirationsForPasswordsParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get expirations for passwords params
-func (o *GETExpirationsForPasswordsParams) SetID(id string) {
+func (o *GetExpirationsForPasswordsParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETExpirationsForPasswordsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetExpirationsForPasswordsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -35,9 +35,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ConnectVrliWithDomain(params *ConnectVrliWithDomainParams, opts ...ClientOption) (*ConnectVrliWithDomainOK, *ConnectVrliWithDomainAccepted, error)
 
-	GETIntegratedDomains1(params *GETIntegratedDomains1Params, opts ...ClientOption) (*GETIntegratedDomains1OK, error)
+	GetIntegratedDomains1(params *GetIntegratedDomains1Params, opts ...ClientOption) (*GetIntegratedDomains1OK, error)
 
-	GETVrlis(params *GETVrlisParams, opts ...ClientOption) (*GETVrlisOK, error)
+	GetVrlis(params *GetVrlisParams, opts ...ClientOption) (*GetVrlisOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -82,12 +82,12 @@ func (a *Client) ConnectVrliWithDomain(params *ConnectVrliWithDomainParams, opts
 }
 
 /*
-GETIntegratedDomains1 gets v realize log insight integration status for workload domains
+GetIntegratedDomains1 gets v realize log insight integration status for workload domains
 */
-func (a *Client) GETIntegratedDomains1(params *GETIntegratedDomains1Params, opts ...ClientOption) (*GETIntegratedDomains1OK, error) {
+func (a *Client) GetIntegratedDomains1(params *GetIntegratedDomains1Params, opts ...ClientOption) (*GetIntegratedDomains1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETIntegratedDomains1Params()
+		params = NewGetIntegratedDomains1Params()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getIntegratedDomains_1",
@@ -97,7 +97,7 @@ func (a *Client) GETIntegratedDomains1(params *GETIntegratedDomains1Params, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETIntegratedDomains1Reader{formats: a.formats},
+		Reader:             &GetIntegratedDomains1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -109,7 +109,7 @@ func (a *Client) GETIntegratedDomains1(params *GETIntegratedDomains1Params, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETIntegratedDomains1OK)
+	success, ok := result.(*GetIntegratedDomains1OK)
 	if ok {
 		return success, nil
 	}
@@ -120,12 +120,12 @@ func (a *Client) GETIntegratedDomains1(params *GETIntegratedDomains1Params, opts
 }
 
 /*
-GETVrlis Gets all existing v realize log insight instances
+GetVrlis gets all existing v realize log insight instances
 */
-func (a *Client) GETVrlis(params *GETVrlisParams, opts ...ClientOption) (*GETVrlisOK, error) {
+func (a *Client) GetVrlis(params *GetVrlisParams, opts ...ClientOption) (*GetVrlisOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVrlisParams()
+		params = NewGetVrlisParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVrlis",
@@ -135,7 +135,7 @@ func (a *Client) GETVrlis(params *GETVrlisParams, opts ...ClientOption) (*GETVrl
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVrlisReader{formats: a.formats},
+		Reader:             &GetVrlisReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -147,7 +147,7 @@ func (a *Client) GETVrlis(params *GETVrlisParams, opts ...ClientOption) (*GETVrl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVrlisOK)
+	success, ok := result.(*GetVrlisOK)
 	if ok {
 		return success, nil
 	}

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETResourcesFunctionalitiesAllowedGlobalParams creates a new GETResourcesFunctionalitiesAllowedGlobalParams object,
+// NewGetResourcesFunctionalitiesAllowedGlobalParams creates a new GetResourcesFunctionalitiesAllowedGlobalParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETResourcesFunctionalitiesAllowedGlobalParams() *GETResourcesFunctionalitiesAllowedGlobalParams {
-	return &GETResourcesFunctionalitiesAllowedGlobalParams{
+func NewGetResourcesFunctionalitiesAllowedGlobalParams() *GetResourcesFunctionalitiesAllowedGlobalParams {
+	return &GetResourcesFunctionalitiesAllowedGlobalParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETResourcesFunctionalitiesAllowedGlobalParamsWithTimeout creates a new GETResourcesFunctionalitiesAllowedGlobalParams object
+// NewGetResourcesFunctionalitiesAllowedGlobalParamsWithTimeout creates a new GetResourcesFunctionalitiesAllowedGlobalParams object
 // with the ability to set a timeout on a request.
-func NewGETResourcesFunctionalitiesAllowedGlobalParamsWithTimeout(timeout time.Duration) *GETResourcesFunctionalitiesAllowedGlobalParams {
-	return &GETResourcesFunctionalitiesAllowedGlobalParams{
+func NewGetResourcesFunctionalitiesAllowedGlobalParamsWithTimeout(timeout time.Duration) *GetResourcesFunctionalitiesAllowedGlobalParams {
+	return &GetResourcesFunctionalitiesAllowedGlobalParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETResourcesFunctionalitiesAllowedGlobalParamsWithContext creates a new GETResourcesFunctionalitiesAllowedGlobalParams object
+// NewGetResourcesFunctionalitiesAllowedGlobalParamsWithContext creates a new GetResourcesFunctionalitiesAllowedGlobalParams object
 // with the ability to set a context for a request.
-func NewGETResourcesFunctionalitiesAllowedGlobalParamsWithContext(ctx context.Context) *GETResourcesFunctionalitiesAllowedGlobalParams {
-	return &GETResourcesFunctionalitiesAllowedGlobalParams{
+func NewGetResourcesFunctionalitiesAllowedGlobalParamsWithContext(ctx context.Context) *GetResourcesFunctionalitiesAllowedGlobalParams {
+	return &GetResourcesFunctionalitiesAllowedGlobalParams{
 		Context: ctx,
 	}
 }
 
-// NewGETResourcesFunctionalitiesAllowedGlobalParamsWithHTTPClient creates a new GETResourcesFunctionalitiesAllowedGlobalParams object
+// NewGetResourcesFunctionalitiesAllowedGlobalParamsWithHTTPClient creates a new GetResourcesFunctionalitiesAllowedGlobalParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETResourcesFunctionalitiesAllowedGlobalParamsWithHTTPClient(client *http.Client) *GETResourcesFunctionalitiesAllowedGlobalParams {
-	return &GETResourcesFunctionalitiesAllowedGlobalParams{
+func NewGetResourcesFunctionalitiesAllowedGlobalParamsWithHTTPClient(client *http.Client) *GetResourcesFunctionalitiesAllowedGlobalParams {
+	return &GetResourcesFunctionalitiesAllowedGlobalParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETResourcesFunctionalitiesAllowedGlobalParams contains all the parameters to send to the API endpoint
+GetResourcesFunctionalitiesAllowedGlobalParams contains all the parameters to send to the API endpoint
 
 	for the get resources functionalities allowed global operation.
 
 	Typically these are written to a http.Request.
 */
-type GETResourcesFunctionalitiesAllowedGlobalParams struct {
+type GetResourcesFunctionalitiesAllowedGlobalParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETResourcesFunctionalitiesAllowedGlobalParams struct {
 // WithDefaults hydrates default values in the get resources functionalities allowed global params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) WithDefaults() *GETResourcesFunctionalitiesAllowedGlobalParams {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) WithDefaults() *GetResourcesFunctionalitiesAllowedGlobalParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETResourcesFunctionalitiesAllowedGlobalParams) WithDefaults() *GETReso
 // SetDefaults hydrates default values in the get resources functionalities allowed global params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) SetDefaults() {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get resources functionalities allowed global params
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) WithTimeout(timeout time.Duration) *GETResourcesFunctionalitiesAllowedGlobalParams {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) WithTimeout(timeout time.Duration) *GetResourcesFunctionalitiesAllowedGlobalParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get resources functionalities allowed global params
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) SetTimeout(timeout time.Duration) {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get resources functionalities allowed global params
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) WithContext(ctx context.Context) *GETResourcesFunctionalitiesAllowedGlobalParams {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) WithContext(ctx context.Context) *GetResourcesFunctionalitiesAllowedGlobalParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get resources functionalities allowed global params
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) SetContext(ctx context.Context) {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get resources functionalities allowed global params
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) WithHTTPClient(client *http.Client) *GETResourcesFunctionalitiesAllowedGlobalParams {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) WithHTTPClient(client *http.Client) *GetResourcesFunctionalitiesAllowedGlobalParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get resources functionalities allowed global params
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) SetHTTPClient(client *http.Client) {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETResourcesFunctionalitiesAllowedGlobalParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetResourcesFunctionalitiesAllowedGlobalParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

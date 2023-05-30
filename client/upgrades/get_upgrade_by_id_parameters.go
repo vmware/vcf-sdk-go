@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUpgradeByIDParams creates a new GETUpgradeByIDParams object,
+// NewGetUpgradeByIDParams creates a new GetUpgradeByIDParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUpgradeByIDParams() *GETUpgradeByIDParams {
-	return &GETUpgradeByIDParams{
+func NewGetUpgradeByIDParams() *GetUpgradeByIDParams {
+	return &GetUpgradeByIDParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUpgradeByIDParamsWithTimeout creates a new GETUpgradeByIDParams object
+// NewGetUpgradeByIDParamsWithTimeout creates a new GetUpgradeByIDParams object
 // with the ability to set a timeout on a request.
-func NewGETUpgradeByIDParamsWithTimeout(timeout time.Duration) *GETUpgradeByIDParams {
-	return &GETUpgradeByIDParams{
+func NewGetUpgradeByIDParamsWithTimeout(timeout time.Duration) *GetUpgradeByIDParams {
+	return &GetUpgradeByIDParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUpgradeByIDParamsWithContext creates a new GETUpgradeByIDParams object
+// NewGetUpgradeByIDParamsWithContext creates a new GetUpgradeByIDParams object
 // with the ability to set a context for a request.
-func NewGETUpgradeByIDParamsWithContext(ctx context.Context) *GETUpgradeByIDParams {
-	return &GETUpgradeByIDParams{
+func NewGetUpgradeByIDParamsWithContext(ctx context.Context) *GetUpgradeByIDParams {
+	return &GetUpgradeByIDParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUpgradeByIDParamsWithHTTPClient creates a new GETUpgradeByIDParams object
+// NewGetUpgradeByIDParamsWithHTTPClient creates a new GetUpgradeByIDParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUpgradeByIDParamsWithHTTPClient(client *http.Client) *GETUpgradeByIDParams {
-	return &GETUpgradeByIDParams{
+func NewGetUpgradeByIDParamsWithHTTPClient(client *http.Client) *GetUpgradeByIDParams {
+	return &GetUpgradeByIDParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUpgradeByIDParams contains all the parameters to send to the API endpoint
+GetUpgradeByIDParams contains all the parameters to send to the API endpoint
 
 	for the get upgrade by Id operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUpgradeByIDParams struct {
+type GetUpgradeByIDParams struct {
 
 	/* UpgradeID.
 
@@ -78,7 +78,7 @@ type GETUpgradeByIDParams struct {
 // WithDefaults hydrates default values in the get upgrade by Id params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradeByIDParams) WithDefaults() *GETUpgradeByIDParams {
+func (o *GetUpgradeByIDParams) WithDefaults() *GetUpgradeByIDParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETUpgradeByIDParams) WithDefaults() *GETUpgradeByIDParams {
 // SetDefaults hydrates default values in the get upgrade by Id params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradeByIDParams) SetDefaults() {
+func (o *GetUpgradeByIDParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) WithTimeout(timeout time.Duration) *GETUpgradeByIDParams {
+func (o *GetUpgradeByIDParams) WithTimeout(timeout time.Duration) *GetUpgradeByIDParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) SetTimeout(timeout time.Duration) {
+func (o *GetUpgradeByIDParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) WithContext(ctx context.Context) *GETUpgradeByIDParams {
+func (o *GetUpgradeByIDParams) WithContext(ctx context.Context) *GetUpgradeByIDParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) SetContext(ctx context.Context) {
+func (o *GetUpgradeByIDParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) WithHTTPClient(client *http.Client) *GETUpgradeByIDParams {
+func (o *GetUpgradeByIDParams) WithHTTPClient(client *http.Client) *GetUpgradeByIDParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) SetHTTPClient(client *http.Client) {
+func (o *GetUpgradeByIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithUpgradeID adds the upgradeID to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) WithUpgradeID(upgradeID string) *GETUpgradeByIDParams {
+func (o *GetUpgradeByIDParams) WithUpgradeID(upgradeID string) *GetUpgradeByIDParams {
 	o.SetUpgradeID(upgradeID)
 	return o
 }
 
 // SetUpgradeID adds the upgradeId to the get upgrade by Id params
-func (o *GETUpgradeByIDParams) SetUpgradeID(upgradeID string) {
+func (o *GetUpgradeByIDParams) SetUpgradeID(upgradeID string) {
 	o.UpgradeID = upgradeID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUpgradeByIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUpgradeByIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

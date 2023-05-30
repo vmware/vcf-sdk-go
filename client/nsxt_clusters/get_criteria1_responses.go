@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCriteria1Reader is a Reader for the GETCriteria1 structure.
-type GETCriteria1Reader struct {
+// GetCriteria1Reader is a Reader for the GetCriteria1 structure.
+type GetCriteria1Reader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCriteria1Reader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCriteria1Reader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCriteria1OK()
+		result := NewGetCriteria1OK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETCriteria1Reader) ReadResponse(response runtime.ClientResponse, consu
 	}
 }
 
-// NewGETCriteria1OK creates a GETCriteria1OK with default headers values
-func NewGETCriteria1OK() *GETCriteria1OK {
-	return &GETCriteria1OK{}
+// NewGetCriteria1OK creates a GetCriteria1OK with default headers values
+func NewGetCriteria1OK() *GetCriteria1OK {
+	return &GetCriteria1OK{}
 }
 
 /*
-GETCriteria1OK describes a response with status code 200, with default header values.
+GetCriteria1OK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETCriteria1OK struct {
+type GetCriteria1OK struct {
 	Payload *models.PageOfNsxTCriterion
 }
 
 // IsSuccess returns true when this get criteria1 o k response has a 2xx status code
-func (o *GETCriteria1OK) IsSuccess() bool {
+func (o *GetCriteria1OK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get criteria1 o k response has a 3xx status code
-func (o *GETCriteria1OK) IsRedirect() bool {
+func (o *GetCriteria1OK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get criteria1 o k response has a 4xx status code
-func (o *GETCriteria1OK) IsClientError() bool {
+func (o *GetCriteria1OK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get criteria1 o k response has a 5xx status code
-func (o *GETCriteria1OK) IsServerError() bool {
+func (o *GetCriteria1OK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get criteria1 o k response a status code equal to that given
-func (o *GETCriteria1OK) IsCode(code int) bool {
+func (o *GetCriteria1OK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCriteria1OK) Error() string {
+func (o *GetCriteria1OK) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/criteria][%d] getCriteria1OK  %+v", 200, o.Payload)
 }
 
-func (o *GETCriteria1OK) String() string {
+func (o *GetCriteria1OK) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/criteria][%d] getCriteria1OK  %+v", 200, o.Payload)
 }
 
-func (o *GETCriteria1OK) GetPayload() *models.PageOfNsxTCriterion {
+func (o *GetCriteria1OK) GetPayload() *models.PageOfNsxTCriterion {
 	return o.Payload
 }
 
-func (o *GETCriteria1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCriteria1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfNsxTCriterion)
 

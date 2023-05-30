@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETUpgradablesByDomainReader is a Reader for the GETUpgradablesByDomain structure.
-type GETUpgradablesByDomainReader struct {
+// GetUpgradablesByDomainReader is a Reader for the GetUpgradablesByDomain structure.
+type GetUpgradablesByDomainReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETUpgradablesByDomainReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetUpgradablesByDomainReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETUpgradablesByDomainOK()
+		result := NewGetUpgradablesByDomainOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETUpgradablesByDomainNotFound()
+		result := NewGetUpgradablesByDomainNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETUpgradablesByDomainInternalServerError()
+		result := NewGetUpgradablesByDomainInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETUpgradablesByDomainReader) ReadResponse(response runtime.ClientRespo
 	}
 }
 
-// NewGETUpgradablesByDomainOK creates a GETUpgradablesByDomainOK with default headers values
-func NewGETUpgradablesByDomainOK() *GETUpgradablesByDomainOK {
-	return &GETUpgradablesByDomainOK{}
+// NewGetUpgradablesByDomainOK creates a GetUpgradablesByDomainOK with default headers values
+func NewGetUpgradablesByDomainOK() *GetUpgradablesByDomainOK {
+	return &GetUpgradablesByDomainOK{}
 }
 
 /*
-GETUpgradablesByDomainOK describes a response with status code 200, with default header values.
+GetUpgradablesByDomainOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETUpgradablesByDomainOK struct {
+type GetUpgradablesByDomainOK struct {
 	Payload *models.PageOfUpgradable
 }
 
 // IsSuccess returns true when this get upgradables by domain o k response has a 2xx status code
-func (o *GETUpgradablesByDomainOK) IsSuccess() bool {
+func (o *GetUpgradablesByDomainOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get upgradables by domain o k response has a 3xx status code
-func (o *GETUpgradablesByDomainOK) IsRedirect() bool {
+func (o *GetUpgradablesByDomainOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgradables by domain o k response has a 4xx status code
-func (o *GETUpgradablesByDomainOK) IsClientError() bool {
+func (o *GetUpgradablesByDomainOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get upgradables by domain o k response has a 5xx status code
-func (o *GETUpgradablesByDomainOK) IsServerError() bool {
+func (o *GetUpgradablesByDomainOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get upgradables by domain o k response a status code equal to that given
-func (o *GETUpgradablesByDomainOK) IsCode(code int) bool {
+func (o *GetUpgradablesByDomainOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETUpgradablesByDomainOK) Error() string {
+func (o *GetUpgradablesByDomainOK) Error() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUpgradablesByDomainOK) String() string {
+func (o *GetUpgradablesByDomainOK) String() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUpgradablesByDomainOK) GetPayload() *models.PageOfUpgradable {
+func (o *GetUpgradablesByDomainOK) GetPayload() *models.PageOfUpgradable {
 	return o.Payload
 }
 
-func (o *GETUpgradablesByDomainOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradablesByDomainOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfUpgradable)
 
@@ -112,58 +112,58 @@ func (o *GETUpgradablesByDomainOK) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-// NewGETUpgradablesByDomainNotFound creates a GETUpgradablesByDomainNotFound with default headers values
-func NewGETUpgradablesByDomainNotFound() *GETUpgradablesByDomainNotFound {
-	return &GETUpgradablesByDomainNotFound{}
+// NewGetUpgradablesByDomainNotFound creates a GetUpgradablesByDomainNotFound with default headers values
+func NewGetUpgradablesByDomainNotFound() *GetUpgradablesByDomainNotFound {
+	return &GetUpgradablesByDomainNotFound{}
 }
 
 /*
-GETUpgradablesByDomainNotFound describes a response with status code 404, with default header values.
+GetUpgradablesByDomainNotFound describes a response with status code 404, with default header values.
 
 Domain not found
 */
-type GETUpgradablesByDomainNotFound struct {
+type GetUpgradablesByDomainNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get upgradables by domain not found response has a 2xx status code
-func (o *GETUpgradablesByDomainNotFound) IsSuccess() bool {
+func (o *GetUpgradablesByDomainNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get upgradables by domain not found response has a 3xx status code
-func (o *GETUpgradablesByDomainNotFound) IsRedirect() bool {
+func (o *GetUpgradablesByDomainNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgradables by domain not found response has a 4xx status code
-func (o *GETUpgradablesByDomainNotFound) IsClientError() bool {
+func (o *GetUpgradablesByDomainNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get upgradables by domain not found response has a 5xx status code
-func (o *GETUpgradablesByDomainNotFound) IsServerError() bool {
+func (o *GetUpgradablesByDomainNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get upgradables by domain not found response a status code equal to that given
-func (o *GETUpgradablesByDomainNotFound) IsCode(code int) bool {
+func (o *GetUpgradablesByDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETUpgradablesByDomainNotFound) Error() string {
+func (o *GetUpgradablesByDomainNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETUpgradablesByDomainNotFound) String() string {
+func (o *GetUpgradablesByDomainNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETUpgradablesByDomainNotFound) GetPayload() *models.Error {
+func (o *GetUpgradablesByDomainNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETUpgradablesByDomainNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradablesByDomainNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETUpgradablesByDomainNotFound) readResponse(response runtime.ClientRes
 	return nil
 }
 
-// NewGETUpgradablesByDomainInternalServerError creates a GETUpgradablesByDomainInternalServerError with default headers values
-func NewGETUpgradablesByDomainInternalServerError() *GETUpgradablesByDomainInternalServerError {
-	return &GETUpgradablesByDomainInternalServerError{}
+// NewGetUpgradablesByDomainInternalServerError creates a GetUpgradablesByDomainInternalServerError with default headers values
+func NewGetUpgradablesByDomainInternalServerError() *GetUpgradablesByDomainInternalServerError {
+	return &GetUpgradablesByDomainInternalServerError{}
 }
 
 /*
-GETUpgradablesByDomainInternalServerError describes a response with status code 500, with default header values.
+GetUpgradablesByDomainInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETUpgradablesByDomainInternalServerError struct {
+type GetUpgradablesByDomainInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get upgradables by domain internal server error response has a 2xx status code
-func (o *GETUpgradablesByDomainInternalServerError) IsSuccess() bool {
+func (o *GetUpgradablesByDomainInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get upgradables by domain internal server error response has a 3xx status code
-func (o *GETUpgradablesByDomainInternalServerError) IsRedirect() bool {
+func (o *GetUpgradablesByDomainInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get upgradables by domain internal server error response has a 4xx status code
-func (o *GETUpgradablesByDomainInternalServerError) IsClientError() bool {
+func (o *GetUpgradablesByDomainInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get upgradables by domain internal server error response has a 5xx status code
-func (o *GETUpgradablesByDomainInternalServerError) IsServerError() bool {
+func (o *GetUpgradablesByDomainInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get upgradables by domain internal server error response a status code equal to that given
-func (o *GETUpgradablesByDomainInternalServerError) IsCode(code int) bool {
+func (o *GetUpgradablesByDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETUpgradablesByDomainInternalServerError) Error() string {
+func (o *GetUpgradablesByDomainInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUpgradablesByDomainInternalServerError) String() string {
+func (o *GetUpgradablesByDomainInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUpgradablesByDomainInternalServerError) GetPayload() *models.Error {
+func (o *GetUpgradablesByDomainInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETUpgradablesByDomainInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUpgradablesByDomainInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

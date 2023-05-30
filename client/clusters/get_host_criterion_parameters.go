@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHostCriterionParams creates a new GETHostCriterionParams object,
+// NewGetHostCriterionParams creates a new GetHostCriterionParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHostCriterionParams() *GETHostCriterionParams {
-	return &GETHostCriterionParams{
+func NewGetHostCriterionParams() *GetHostCriterionParams {
+	return &GetHostCriterionParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHostCriterionParamsWithTimeout creates a new GETHostCriterionParams object
+// NewGetHostCriterionParamsWithTimeout creates a new GetHostCriterionParams object
 // with the ability to set a timeout on a request.
-func NewGETHostCriterionParamsWithTimeout(timeout time.Duration) *GETHostCriterionParams {
-	return &GETHostCriterionParams{
+func NewGetHostCriterionParamsWithTimeout(timeout time.Duration) *GetHostCriterionParams {
+	return &GetHostCriterionParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETHostCriterionParamsWithContext creates a new GETHostCriterionParams object
+// NewGetHostCriterionParamsWithContext creates a new GetHostCriterionParams object
 // with the ability to set a context for a request.
-func NewGETHostCriterionParamsWithContext(ctx context.Context) *GETHostCriterionParams {
-	return &GETHostCriterionParams{
+func NewGetHostCriterionParamsWithContext(ctx context.Context) *GetHostCriterionParams {
+	return &GetHostCriterionParams{
 		Context: ctx,
 	}
 }
 
-// NewGETHostCriterionParamsWithHTTPClient creates a new GETHostCriterionParams object
+// NewGetHostCriterionParamsWithHTTPClient creates a new GetHostCriterionParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHostCriterionParamsWithHTTPClient(client *http.Client) *GETHostCriterionParams {
-	return &GETHostCriterionParams{
+func NewGetHostCriterionParamsWithHTTPClient(client *http.Client) *GetHostCriterionParams {
+	return &GetHostCriterionParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHostCriterionParams contains all the parameters to send to the API endpoint
+GetHostCriterionParams contains all the parameters to send to the API endpoint
 
 	for the get host criterion operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHostCriterionParams struct {
+type GetHostCriterionParams struct {
 
 	/* ID.
 
@@ -84,7 +84,7 @@ type GETHostCriterionParams struct {
 // WithDefaults hydrates default values in the get host criterion params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostCriterionParams) WithDefaults() *GETHostCriterionParams {
+func (o *GetHostCriterionParams) WithDefaults() *GetHostCriterionParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETHostCriterionParams) WithDefaults() *GETHostCriterionParams {
 // SetDefaults hydrates default values in the get host criterion params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostCriterionParams) SetDefaults() {
+func (o *GetHostCriterionParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get host criterion params
-func (o *GETHostCriterionParams) WithTimeout(timeout time.Duration) *GETHostCriterionParams {
+func (o *GetHostCriterionParams) WithTimeout(timeout time.Duration) *GetHostCriterionParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get host criterion params
-func (o *GETHostCriterionParams) SetTimeout(timeout time.Duration) {
+func (o *GetHostCriterionParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get host criterion params
-func (o *GETHostCriterionParams) WithContext(ctx context.Context) *GETHostCriterionParams {
+func (o *GetHostCriterionParams) WithContext(ctx context.Context) *GetHostCriterionParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get host criterion params
-func (o *GETHostCriterionParams) SetContext(ctx context.Context) {
+func (o *GetHostCriterionParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get host criterion params
-func (o *GETHostCriterionParams) WithHTTPClient(client *http.Client) *GETHostCriterionParams {
+func (o *GetHostCriterionParams) WithHTTPClient(client *http.Client) *GetHostCriterionParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get host criterion params
-func (o *GETHostCriterionParams) SetHTTPClient(client *http.Client) {
+func (o *GetHostCriterionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get host criterion params
-func (o *GETHostCriterionParams) WithID(id string) *GETHostCriterionParams {
+func (o *GetHostCriterionParams) WithID(id string) *GetHostCriterionParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get host criterion params
-func (o *GETHostCriterionParams) SetID(id string) {
+func (o *GetHostCriterionParams) SetID(id string) {
 	o.ID = id
 }
 
 // WithName adds the name to the get host criterion params
-func (o *GETHostCriterionParams) WithName(name string) *GETHostCriterionParams {
+func (o *GetHostCriterionParams) WithName(name string) *GetHostCriterionParams {
 	o.SetName(name)
 	return o
 }
 
 // SetName adds the name to the get host criterion params
-func (o *GETHostCriterionParams) SetName(name string) {
+func (o *GetHostCriterionParams) SetName(name string) {
 	o.Name = name
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHostCriterionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHostCriterionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

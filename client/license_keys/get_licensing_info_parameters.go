@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETLicensingInfoParams creates a new GETLicensingInfoParams object,
+// NewGetLicensingInfoParams creates a new GetLicensingInfoParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETLicensingInfoParams() *GETLicensingInfoParams {
-	return &GETLicensingInfoParams{
+func NewGetLicensingInfoParams() *GetLicensingInfoParams {
+	return &GetLicensingInfoParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETLicensingInfoParamsWithTimeout creates a new GETLicensingInfoParams object
+// NewGetLicensingInfoParamsWithTimeout creates a new GetLicensingInfoParams object
 // with the ability to set a timeout on a request.
-func NewGETLicensingInfoParamsWithTimeout(timeout time.Duration) *GETLicensingInfoParams {
-	return &GETLicensingInfoParams{
+func NewGetLicensingInfoParamsWithTimeout(timeout time.Duration) *GetLicensingInfoParams {
+	return &GetLicensingInfoParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETLicensingInfoParamsWithContext creates a new GETLicensingInfoParams object
+// NewGetLicensingInfoParamsWithContext creates a new GetLicensingInfoParams object
 // with the ability to set a context for a request.
-func NewGETLicensingInfoParamsWithContext(ctx context.Context) *GETLicensingInfoParams {
-	return &GETLicensingInfoParams{
+func NewGetLicensingInfoParamsWithContext(ctx context.Context) *GetLicensingInfoParams {
+	return &GetLicensingInfoParams{
 		Context: ctx,
 	}
 }
 
-// NewGETLicensingInfoParamsWithHTTPClient creates a new GETLicensingInfoParams object
+// NewGetLicensingInfoParamsWithHTTPClient creates a new GetLicensingInfoParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETLicensingInfoParamsWithHTTPClient(client *http.Client) *GETLicensingInfoParams {
-	return &GETLicensingInfoParams{
+func NewGetLicensingInfoParamsWithHTTPClient(client *http.Client) *GetLicensingInfoParams {
+	return &GetLicensingInfoParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETLicensingInfoParams contains all the parameters to send to the API endpoint
+GetLicensingInfoParams contains all the parameters to send to the API endpoint
 
 	for the get licensing info operation.
 
 	Typically these are written to a http.Request.
 */
-type GETLicensingInfoParams struct {
+type GetLicensingInfoParams struct {
 
 	/* ResourceIds.
 
@@ -85,7 +85,7 @@ type GETLicensingInfoParams struct {
 // WithDefaults hydrates default values in the get licensing info params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETLicensingInfoParams) WithDefaults() *GETLicensingInfoParams {
+func (o *GetLicensingInfoParams) WithDefaults() *GetLicensingInfoParams {
 	o.SetDefaults()
 	return o
 }
@@ -93,67 +93,67 @@ func (o *GETLicensingInfoParams) WithDefaults() *GETLicensingInfoParams {
 // SetDefaults hydrates default values in the get licensing info params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETLicensingInfoParams) SetDefaults() {
+func (o *GetLicensingInfoParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get licensing info params
-func (o *GETLicensingInfoParams) WithTimeout(timeout time.Duration) *GETLicensingInfoParams {
+func (o *GetLicensingInfoParams) WithTimeout(timeout time.Duration) *GetLicensingInfoParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get licensing info params
-func (o *GETLicensingInfoParams) SetTimeout(timeout time.Duration) {
+func (o *GetLicensingInfoParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get licensing info params
-func (o *GETLicensingInfoParams) WithContext(ctx context.Context) *GETLicensingInfoParams {
+func (o *GetLicensingInfoParams) WithContext(ctx context.Context) *GetLicensingInfoParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get licensing info params
-func (o *GETLicensingInfoParams) SetContext(ctx context.Context) {
+func (o *GetLicensingInfoParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get licensing info params
-func (o *GETLicensingInfoParams) WithHTTPClient(client *http.Client) *GETLicensingInfoParams {
+func (o *GetLicensingInfoParams) WithHTTPClient(client *http.Client) *GetLicensingInfoParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get licensing info params
-func (o *GETLicensingInfoParams) SetHTTPClient(client *http.Client) {
+func (o *GetLicensingInfoParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithResourceIds adds the resourceIds to the get licensing info params
-func (o *GETLicensingInfoParams) WithResourceIds(resourceIds []string) *GETLicensingInfoParams {
+func (o *GetLicensingInfoParams) WithResourceIds(resourceIds []string) *GetLicensingInfoParams {
 	o.SetResourceIds(resourceIds)
 	return o
 }
 
 // SetResourceIds adds the resourceIds to the get licensing info params
-func (o *GETLicensingInfoParams) SetResourceIds(resourceIds []string) {
+func (o *GetLicensingInfoParams) SetResourceIds(resourceIds []string) {
 	o.ResourceIds = resourceIds
 }
 
 // WithResourceType adds the resourceType to the get licensing info params
-func (o *GETLicensingInfoParams) WithResourceType(resourceType *string) *GETLicensingInfoParams {
+func (o *GetLicensingInfoParams) WithResourceType(resourceType *string) *GetLicensingInfoParams {
 	o.SetResourceType(resourceType)
 	return o
 }
 
 // SetResourceType adds the resourceType to the get licensing info params
-func (o *GETLicensingInfoParams) SetResourceType(resourceType *string) {
+func (o *GetLicensingInfoParams) SetResourceType(resourceType *string) {
 	o.ResourceType = resourceType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETLicensingInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetLicensingInfoParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
@@ -194,8 +194,8 @@ func (o *GETLicensingInfoParams) WriteToRequest(r runtime.ClientRequest, reg str
 	return nil
 }
 
-// bindParamGETLicensingInfo binds the parameter resourceIds
-func (o *GETLicensingInfoParams) bindParamResourceIds(formats strfmt.Registry) []string {
+// bindParamGetLicensingInfo binds the parameter resourceIds
+func (o *GetLicensingInfoParams) bindParamResourceIds(formats strfmt.Registry) []string {
 	resourceIdsIR := o.ResourceIds
 
 	var resourceIdsIC []string

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVrasParams creates a new GETVrasParams object,
+// NewGetVrasParams creates a new GetVrasParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVrasParams() *GETVrasParams {
-	return &GETVrasParams{
+func NewGetVrasParams() *GetVrasParams {
+	return &GetVrasParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVrasParamsWithTimeout creates a new GETVrasParams object
+// NewGetVrasParamsWithTimeout creates a new GetVrasParams object
 // with the ability to set a timeout on a request.
-func NewGETVrasParamsWithTimeout(timeout time.Duration) *GETVrasParams {
-	return &GETVrasParams{
+func NewGetVrasParamsWithTimeout(timeout time.Duration) *GetVrasParams {
+	return &GetVrasParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVrasParamsWithContext creates a new GETVrasParams object
+// NewGetVrasParamsWithContext creates a new GetVrasParams object
 // with the ability to set a context for a request.
-func NewGETVrasParamsWithContext(ctx context.Context) *GETVrasParams {
-	return &GETVrasParams{
+func NewGetVrasParamsWithContext(ctx context.Context) *GetVrasParams {
+	return &GetVrasParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVrasParamsWithHTTPClient creates a new GETVrasParams object
+// NewGetVrasParamsWithHTTPClient creates a new GetVrasParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVrasParamsWithHTTPClient(client *http.Client) *GETVrasParams {
-	return &GETVrasParams{
+func NewGetVrasParamsWithHTTPClient(client *http.Client) *GetVrasParams {
+	return &GetVrasParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVrasParams contains all the parameters to send to the API endpoint
+GetVrasParams contains all the parameters to send to the API endpoint
 
 	for the get vras operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVrasParams struct {
+type GetVrasParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETVrasParams struct {
 // WithDefaults hydrates default values in the get vras params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVrasParams) WithDefaults() *GETVrasParams {
+func (o *GetVrasParams) WithDefaults() *GetVrasParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETVrasParams) WithDefaults() *GETVrasParams {
 // SetDefaults hydrates default values in the get vras params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVrasParams) SetDefaults() {
+func (o *GetVrasParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vras params
-func (o *GETVrasParams) WithTimeout(timeout time.Duration) *GETVrasParams {
+func (o *GetVrasParams) WithTimeout(timeout time.Duration) *GetVrasParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vras params
-func (o *GETVrasParams) SetTimeout(timeout time.Duration) {
+func (o *GetVrasParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vras params
-func (o *GETVrasParams) WithContext(ctx context.Context) *GETVrasParams {
+func (o *GetVrasParams) WithContext(ctx context.Context) *GetVrasParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vras params
-func (o *GETVrasParams) SetContext(ctx context.Context) {
+func (o *GetVrasParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vras params
-func (o *GETVrasParams) WithHTTPClient(client *http.Client) *GETVrasParams {
+func (o *GetVrasParams) WithHTTPClient(client *http.Client) *GetVrasParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vras params
-func (o *GETVrasParams) SetHTTPClient(client *http.Client) {
+func (o *GetVrasParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVrasParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVrasParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

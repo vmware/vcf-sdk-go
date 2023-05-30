@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETClusterCriterionParams creates a new GETClusterCriterionParams object,
+// NewGetClusterCriterionParams creates a new GetClusterCriterionParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETClusterCriterionParams() *GETClusterCriterionParams {
-	return &GETClusterCriterionParams{
+func NewGetClusterCriterionParams() *GetClusterCriterionParams {
+	return &GetClusterCriterionParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETClusterCriterionParamsWithTimeout creates a new GETClusterCriterionParams object
+// NewGetClusterCriterionParamsWithTimeout creates a new GetClusterCriterionParams object
 // with the ability to set a timeout on a request.
-func NewGETClusterCriterionParamsWithTimeout(timeout time.Duration) *GETClusterCriterionParams {
-	return &GETClusterCriterionParams{
+func NewGetClusterCriterionParamsWithTimeout(timeout time.Duration) *GetClusterCriterionParams {
+	return &GetClusterCriterionParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETClusterCriterionParamsWithContext creates a new GETClusterCriterionParams object
+// NewGetClusterCriterionParamsWithContext creates a new GetClusterCriterionParams object
 // with the ability to set a context for a request.
-func NewGETClusterCriterionParamsWithContext(ctx context.Context) *GETClusterCriterionParams {
-	return &GETClusterCriterionParams{
+func NewGetClusterCriterionParamsWithContext(ctx context.Context) *GetClusterCriterionParams {
+	return &GetClusterCriterionParams{
 		Context: ctx,
 	}
 }
 
-// NewGETClusterCriterionParamsWithHTTPClient creates a new GETClusterCriterionParams object
+// NewGetClusterCriterionParamsWithHTTPClient creates a new GetClusterCriterionParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETClusterCriterionParamsWithHTTPClient(client *http.Client) *GETClusterCriterionParams {
-	return &GETClusterCriterionParams{
+func NewGetClusterCriterionParamsWithHTTPClient(client *http.Client) *GetClusterCriterionParams {
+	return &GetClusterCriterionParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETClusterCriterionParams contains all the parameters to send to the API endpoint
+GetClusterCriterionParams contains all the parameters to send to the API endpoint
 
 	for the get cluster criterion operation.
 
 	Typically these are written to a http.Request.
 */
-type GETClusterCriterionParams struct {
+type GetClusterCriterionParams struct {
 
 	/* DomainID.
 
@@ -84,7 +84,7 @@ type GETClusterCriterionParams struct {
 // WithDefaults hydrates default values in the get cluster criterion params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterCriterionParams) WithDefaults() *GETClusterCriterionParams {
+func (o *GetClusterCriterionParams) WithDefaults() *GetClusterCriterionParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETClusterCriterionParams) WithDefaults() *GETClusterCriterionParams {
 // SetDefaults hydrates default values in the get cluster criterion params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETClusterCriterionParams) SetDefaults() {
+func (o *GetClusterCriterionParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get cluster criterion params
-func (o *GETClusterCriterionParams) WithTimeout(timeout time.Duration) *GETClusterCriterionParams {
+func (o *GetClusterCriterionParams) WithTimeout(timeout time.Duration) *GetClusterCriterionParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get cluster criterion params
-func (o *GETClusterCriterionParams) SetTimeout(timeout time.Duration) {
+func (o *GetClusterCriterionParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get cluster criterion params
-func (o *GETClusterCriterionParams) WithContext(ctx context.Context) *GETClusterCriterionParams {
+func (o *GetClusterCriterionParams) WithContext(ctx context.Context) *GetClusterCriterionParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get cluster criterion params
-func (o *GETClusterCriterionParams) SetContext(ctx context.Context) {
+func (o *GetClusterCriterionParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get cluster criterion params
-func (o *GETClusterCriterionParams) WithHTTPClient(client *http.Client) *GETClusterCriterionParams {
+func (o *GetClusterCriterionParams) WithHTTPClient(client *http.Client) *GetClusterCriterionParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get cluster criterion params
-func (o *GETClusterCriterionParams) SetHTTPClient(client *http.Client) {
+func (o *GetClusterCriterionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the get cluster criterion params
-func (o *GETClusterCriterionParams) WithDomainID(domainID string) *GETClusterCriterionParams {
+func (o *GetClusterCriterionParams) WithDomainID(domainID string) *GetClusterCriterionParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get cluster criterion params
-func (o *GETClusterCriterionParams) SetDomainID(domainID string) {
+func (o *GetClusterCriterionParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WithName adds the name to the get cluster criterion params
-func (o *GETClusterCriterionParams) WithName(name string) *GETClusterCriterionParams {
+func (o *GetClusterCriterionParams) WithName(name string) *GetClusterCriterionParams {
 	o.SetName(name)
 	return o
 }
 
 // SetName adds the name to the get cluster criterion params
-func (o *GETClusterCriterionParams) SetName(name string) {
+func (o *GetClusterCriterionParams) SetName(name string) {
 	o.Name = name
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETClusterCriterionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetClusterCriterionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

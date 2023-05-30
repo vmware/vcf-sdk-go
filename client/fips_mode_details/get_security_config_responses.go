@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETSecurityConfigReader is a Reader for the GETSecurityConfig structure.
-type GETSecurityConfigReader struct {
+// GetSecurityConfigReader is a Reader for the GetSecurityConfig structure.
+type GetSecurityConfigReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETSecurityConfigReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetSecurityConfigReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETSecurityConfigOK()
+		result := NewGetSecurityConfigOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETSecurityConfigInternalServerError()
+		result := NewGetSecurityConfigInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETSecurityConfigReader) ReadResponse(response runtime.ClientResponse, 
 	}
 }
 
-// NewGETSecurityConfigOK creates a GETSecurityConfigOK with default headers values
-func NewGETSecurityConfigOK() *GETSecurityConfigOK {
-	return &GETSecurityConfigOK{}
+// NewGetSecurityConfigOK creates a GetSecurityConfigOK with default headers values
+func NewGetSecurityConfigOK() *GetSecurityConfigOK {
+	return &GetSecurityConfigOK{}
 }
 
 /*
-GETSecurityConfigOK describes a response with status code 200, with default header values.
+GetSecurityConfigOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETSecurityConfigOK struct {
+type GetSecurityConfigOK struct {
 	Payload *models.FIPS
 }
 
 // IsSuccess returns true when this get security config o k response has a 2xx status code
-func (o *GETSecurityConfigOK) IsSuccess() bool {
+func (o *GetSecurityConfigOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get security config o k response has a 3xx status code
-func (o *GETSecurityConfigOK) IsRedirect() bool {
+func (o *GetSecurityConfigOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get security config o k response has a 4xx status code
-func (o *GETSecurityConfigOK) IsClientError() bool {
+func (o *GetSecurityConfigOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get security config o k response has a 5xx status code
-func (o *GETSecurityConfigOK) IsServerError() bool {
+func (o *GetSecurityConfigOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get security config o k response a status code equal to that given
-func (o *GETSecurityConfigOK) IsCode(code int) bool {
+func (o *GetSecurityConfigOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETSecurityConfigOK) Error() string {
+func (o *GetSecurityConfigOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/security/fips][%d] getSecurityConfigOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSecurityConfigOK) String() string {
+func (o *GetSecurityConfigOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/security/fips][%d] getSecurityConfigOK  %+v", 200, o.Payload)
 }
 
-func (o *GETSecurityConfigOK) GetPayload() *models.FIPS {
+func (o *GetSecurityConfigOK) GetPayload() *models.FIPS {
 	return o.Payload
 }
 
-func (o *GETSecurityConfigOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSecurityConfigOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.FIPS)
 
@@ -106,53 +106,53 @@ func (o *GETSecurityConfigOK) readResponse(response runtime.ClientResponse, cons
 	return nil
 }
 
-// NewGETSecurityConfigInternalServerError creates a GETSecurityConfigInternalServerError with default headers values
-func NewGETSecurityConfigInternalServerError() *GETSecurityConfigInternalServerError {
-	return &GETSecurityConfigInternalServerError{}
+// NewGetSecurityConfigInternalServerError creates a GetSecurityConfigInternalServerError with default headers values
+func NewGetSecurityConfigInternalServerError() *GetSecurityConfigInternalServerError {
+	return &GetSecurityConfigInternalServerError{}
 }
 
 /*
-GETSecurityConfigInternalServerError describes a response with status code 500, with default header values.
+GetSecurityConfigInternalServerError describes a response with status code 500, with default header values.
 
 Internal server error
 */
-type GETSecurityConfigInternalServerError struct {
+type GetSecurityConfigInternalServerError struct {
 }
 
 // IsSuccess returns true when this get security config internal server error response has a 2xx status code
-func (o *GETSecurityConfigInternalServerError) IsSuccess() bool {
+func (o *GetSecurityConfigInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get security config internal server error response has a 3xx status code
-func (o *GETSecurityConfigInternalServerError) IsRedirect() bool {
+func (o *GetSecurityConfigInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get security config internal server error response has a 4xx status code
-func (o *GETSecurityConfigInternalServerError) IsClientError() bool {
+func (o *GetSecurityConfigInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get security config internal server error response has a 5xx status code
-func (o *GETSecurityConfigInternalServerError) IsServerError() bool {
+func (o *GetSecurityConfigInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get security config internal server error response a status code equal to that given
-func (o *GETSecurityConfigInternalServerError) IsCode(code int) bool {
+func (o *GetSecurityConfigInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETSecurityConfigInternalServerError) Error() string {
+func (o *GetSecurityConfigInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/security/fips][%d] getSecurityConfigInternalServerError ", 500)
 }
 
-func (o *GETSecurityConfigInternalServerError) String() string {
+func (o *GetSecurityConfigInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/security/fips][%d] getSecurityConfigInternalServerError ", 500)
 }
 
-func (o *GETSecurityConfigInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetSecurityConfigInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

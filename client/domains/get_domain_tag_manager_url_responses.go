@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETDomainTagManagerURLReader is a Reader for the GETDomainTagManagerURL structure.
-type GETDomainTagManagerURLReader struct {
+// GetDomainTagManagerURLReader is a Reader for the GetDomainTagManagerURL structure.
+type GetDomainTagManagerURLReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETDomainTagManagerURLReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetDomainTagManagerURLReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETDomainTagManagerURLOK()
+		result := NewGetDomainTagManagerURLOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETDomainTagManagerURLBadRequest()
+		result := NewGetDomainTagManagerURLBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETDomainTagManagerURLInternalServerError()
+		result := NewGetDomainTagManagerURLInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETDomainTagManagerURLReader) ReadResponse(response runtime.ClientRespo
 	}
 }
 
-// NewGETDomainTagManagerURLOK creates a GETDomainTagManagerURLOK with default headers values
-func NewGETDomainTagManagerURLOK() *GETDomainTagManagerURLOK {
-	return &GETDomainTagManagerURLOK{}
+// NewGetDomainTagManagerURLOK creates a GetDomainTagManagerURLOK with default headers values
+func NewGetDomainTagManagerURLOK() *GetDomainTagManagerURLOK {
+	return &GetDomainTagManagerURLOK{}
 }
 
 /*
-GETDomainTagManagerURLOK describes a response with status code 200, with default header values.
+GetDomainTagManagerURLOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETDomainTagManagerURLOK struct {
+type GetDomainTagManagerURLOK struct {
 	Payload *models.TagManagerModel
 }
 
 // IsSuccess returns true when this get domain tag manager Url o k response has a 2xx status code
-func (o *GETDomainTagManagerURLOK) IsSuccess() bool {
+func (o *GetDomainTagManagerURLOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get domain tag manager Url o k response has a 3xx status code
-func (o *GETDomainTagManagerURLOK) IsRedirect() bool {
+func (o *GetDomainTagManagerURLOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get domain tag manager Url o k response has a 4xx status code
-func (o *GETDomainTagManagerURLOK) IsClientError() bool {
+func (o *GetDomainTagManagerURLOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get domain tag manager Url o k response has a 5xx status code
-func (o *GETDomainTagManagerURLOK) IsServerError() bool {
+func (o *GetDomainTagManagerURLOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get domain tag manager Url o k response a status code equal to that given
-func (o *GETDomainTagManagerURLOK) IsCode(code int) bool {
+func (o *GetDomainTagManagerURLOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETDomainTagManagerURLOK) Error() string {
+func (o *GetDomainTagManagerURLOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDomainTagManagerURLOK) String() string {
+func (o *GetDomainTagManagerURLOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlOK  %+v", 200, o.Payload)
 }
 
-func (o *GETDomainTagManagerURLOK) GetPayload() *models.TagManagerModel {
+func (o *GetDomainTagManagerURLOK) GetPayload() *models.TagManagerModel {
 	return o.Payload
 }
 
-func (o *GETDomainTagManagerURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDomainTagManagerURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.TagManagerModel)
 
@@ -112,58 +112,58 @@ func (o *GETDomainTagManagerURLOK) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-// NewGETDomainTagManagerURLBadRequest creates a GETDomainTagManagerURLBadRequest with default headers values
-func NewGETDomainTagManagerURLBadRequest() *GETDomainTagManagerURLBadRequest {
-	return &GETDomainTagManagerURLBadRequest{}
+// NewGetDomainTagManagerURLBadRequest creates a GetDomainTagManagerURLBadRequest with default headers values
+func NewGetDomainTagManagerURLBadRequest() *GetDomainTagManagerURLBadRequest {
+	return &GetDomainTagManagerURLBadRequest{}
 }
 
 /*
-GETDomainTagManagerURLBadRequest describes a response with status code 400, with default header values.
+GetDomainTagManagerURLBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETDomainTagManagerURLBadRequest struct {
+type GetDomainTagManagerURLBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get domain tag manager Url bad request response has a 2xx status code
-func (o *GETDomainTagManagerURLBadRequest) IsSuccess() bool {
+func (o *GetDomainTagManagerURLBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get domain tag manager Url bad request response has a 3xx status code
-func (o *GETDomainTagManagerURLBadRequest) IsRedirect() bool {
+func (o *GetDomainTagManagerURLBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get domain tag manager Url bad request response has a 4xx status code
-func (o *GETDomainTagManagerURLBadRequest) IsClientError() bool {
+func (o *GetDomainTagManagerURLBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get domain tag manager Url bad request response has a 5xx status code
-func (o *GETDomainTagManagerURLBadRequest) IsServerError() bool {
+func (o *GetDomainTagManagerURLBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get domain tag manager Url bad request response a status code equal to that given
-func (o *GETDomainTagManagerURLBadRequest) IsCode(code int) bool {
+func (o *GetDomainTagManagerURLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETDomainTagManagerURLBadRequest) Error() string {
+func (o *GetDomainTagManagerURLBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETDomainTagManagerURLBadRequest) String() string {
+func (o *GetDomainTagManagerURLBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETDomainTagManagerURLBadRequest) GetPayload() *models.Error {
+func (o *GetDomainTagManagerURLBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDomainTagManagerURLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDomainTagManagerURLBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETDomainTagManagerURLBadRequest) readResponse(response runtime.ClientR
 	return nil
 }
 
-// NewGETDomainTagManagerURLInternalServerError creates a GETDomainTagManagerURLInternalServerError with default headers values
-func NewGETDomainTagManagerURLInternalServerError() *GETDomainTagManagerURLInternalServerError {
-	return &GETDomainTagManagerURLInternalServerError{}
+// NewGetDomainTagManagerURLInternalServerError creates a GetDomainTagManagerURLInternalServerError with default headers values
+func NewGetDomainTagManagerURLInternalServerError() *GetDomainTagManagerURLInternalServerError {
+	return &GetDomainTagManagerURLInternalServerError{}
 }
 
 /*
-GETDomainTagManagerURLInternalServerError describes a response with status code 500, with default header values.
+GetDomainTagManagerURLInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETDomainTagManagerURLInternalServerError struct {
+type GetDomainTagManagerURLInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get domain tag manager Url internal server error response has a 2xx status code
-func (o *GETDomainTagManagerURLInternalServerError) IsSuccess() bool {
+func (o *GetDomainTagManagerURLInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get domain tag manager Url internal server error response has a 3xx status code
-func (o *GETDomainTagManagerURLInternalServerError) IsRedirect() bool {
+func (o *GetDomainTagManagerURLInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get domain tag manager Url internal server error response has a 4xx status code
-func (o *GETDomainTagManagerURLInternalServerError) IsClientError() bool {
+func (o *GetDomainTagManagerURLInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get domain tag manager Url internal server error response has a 5xx status code
-func (o *GETDomainTagManagerURLInternalServerError) IsServerError() bool {
+func (o *GetDomainTagManagerURLInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get domain tag manager Url internal server error response a status code equal to that given
-func (o *GETDomainTagManagerURLInternalServerError) IsCode(code int) bool {
+func (o *GetDomainTagManagerURLInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETDomainTagManagerURLInternalServerError) Error() string {
+func (o *GetDomainTagManagerURLInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDomainTagManagerURLInternalServerError) String() string {
+func (o *GetDomainTagManagerURLInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETDomainTagManagerURLInternalServerError) GetPayload() *models.Error {
+func (o *GetDomainTagManagerURLInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETDomainTagManagerURLInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetDomainTagManagerURLInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCredentialsParams creates a new GETCredentialsParams object,
+// NewGetCredentialsParams creates a new GetCredentialsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCredentialsParams() *GETCredentialsParams {
-	return &GETCredentialsParams{
+func NewGetCredentialsParams() *GetCredentialsParams {
+	return &GetCredentialsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCredentialsParamsWithTimeout creates a new GETCredentialsParams object
+// NewGetCredentialsParamsWithTimeout creates a new GetCredentialsParams object
 // with the ability to set a timeout on a request.
-func NewGETCredentialsParamsWithTimeout(timeout time.Duration) *GETCredentialsParams {
-	return &GETCredentialsParams{
+func NewGetCredentialsParamsWithTimeout(timeout time.Duration) *GetCredentialsParams {
+	return &GetCredentialsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCredentialsParamsWithContext creates a new GETCredentialsParams object
+// NewGetCredentialsParamsWithContext creates a new GetCredentialsParams object
 // with the ability to set a context for a request.
-func NewGETCredentialsParamsWithContext(ctx context.Context) *GETCredentialsParams {
-	return &GETCredentialsParams{
+func NewGetCredentialsParamsWithContext(ctx context.Context) *GetCredentialsParams {
+	return &GetCredentialsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCredentialsParamsWithHTTPClient creates a new GETCredentialsParams object
+// NewGetCredentialsParamsWithHTTPClient creates a new GetCredentialsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCredentialsParamsWithHTTPClient(client *http.Client) *GETCredentialsParams {
-	return &GETCredentialsParams{
+func NewGetCredentialsParamsWithHTTPClient(client *http.Client) *GetCredentialsParams {
+	return &GetCredentialsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCredentialsParams contains all the parameters to send to the API endpoint
+GetCredentialsParams contains all the parameters to send to the API endpoint
 
 	for the get credentials operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCredentialsParams struct {
+type GetCredentialsParams struct {
 
 	/* AccountType.
 
@@ -114,7 +114,7 @@ type GETCredentialsParams struct {
 // WithDefaults hydrates default values in the get credentials params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialsParams) WithDefaults() *GETCredentialsParams {
+func (o *GetCredentialsParams) WithDefaults() *GetCredentialsParams {
 	o.SetDefaults()
 	return o
 }
@@ -122,122 +122,122 @@ func (o *GETCredentialsParams) WithDefaults() *GETCredentialsParams {
 // SetDefaults hydrates default values in the get credentials params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialsParams) SetDefaults() {
+func (o *GetCredentialsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get credentials params
-func (o *GETCredentialsParams) WithTimeout(timeout time.Duration) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithTimeout(timeout time.Duration) *GetCredentialsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get credentials params
-func (o *GETCredentialsParams) SetTimeout(timeout time.Duration) {
+func (o *GetCredentialsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get credentials params
-func (o *GETCredentialsParams) WithContext(ctx context.Context) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithContext(ctx context.Context) *GetCredentialsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get credentials params
-func (o *GETCredentialsParams) SetContext(ctx context.Context) {
+func (o *GetCredentialsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get credentials params
-func (o *GETCredentialsParams) WithHTTPClient(client *http.Client) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithHTTPClient(client *http.Client) *GetCredentialsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get credentials params
-func (o *GETCredentialsParams) SetHTTPClient(client *http.Client) {
+func (o *GetCredentialsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithAccountType adds the accountType to the get credentials params
-func (o *GETCredentialsParams) WithAccountType(accountType *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithAccountType(accountType *string) *GetCredentialsParams {
 	o.SetAccountType(accountType)
 	return o
 }
 
 // SetAccountType adds the accountType to the get credentials params
-func (o *GETCredentialsParams) SetAccountType(accountType *string) {
+func (o *GetCredentialsParams) SetAccountType(accountType *string) {
 	o.AccountType = accountType
 }
 
 // WithDomainName adds the domainName to the get credentials params
-func (o *GETCredentialsParams) WithDomainName(domainName *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithDomainName(domainName *string) *GetCredentialsParams {
 	o.SetDomainName(domainName)
 	return o
 }
 
 // SetDomainName adds the domainName to the get credentials params
-func (o *GETCredentialsParams) SetDomainName(domainName *string) {
+func (o *GetCredentialsParams) SetDomainName(domainName *string) {
 	o.DomainName = domainName
 }
 
 // WithPageNumber adds the pageNumber to the get credentials params
-func (o *GETCredentialsParams) WithPageNumber(pageNumber *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithPageNumber(pageNumber *string) *GetCredentialsParams {
 	o.SetPageNumber(pageNumber)
 	return o
 }
 
 // SetPageNumber adds the pageNumber to the get credentials params
-func (o *GETCredentialsParams) SetPageNumber(pageNumber *string) {
+func (o *GetCredentialsParams) SetPageNumber(pageNumber *string) {
 	o.PageNumber = pageNumber
 }
 
 // WithPageSize adds the pageSize to the get credentials params
-func (o *GETCredentialsParams) WithPageSize(pageSize *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithPageSize(pageSize *string) *GetCredentialsParams {
 	o.SetPageSize(pageSize)
 	return o
 }
 
 // SetPageSize adds the pageSize to the get credentials params
-func (o *GETCredentialsParams) SetPageSize(pageSize *string) {
+func (o *GetCredentialsParams) SetPageSize(pageSize *string) {
 	o.PageSize = pageSize
 }
 
 // WithResourceIP adds the resourceIP to the get credentials params
-func (o *GETCredentialsParams) WithResourceIP(resourceIP *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithResourceIP(resourceIP *string) *GetCredentialsParams {
 	o.SetResourceIP(resourceIP)
 	return o
 }
 
 // SetResourceIP adds the resourceIp to the get credentials params
-func (o *GETCredentialsParams) SetResourceIP(resourceIP *string) {
+func (o *GetCredentialsParams) SetResourceIP(resourceIP *string) {
 	o.ResourceIP = resourceIP
 }
 
 // WithResourceName adds the resourceName to the get credentials params
-func (o *GETCredentialsParams) WithResourceName(resourceName *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithResourceName(resourceName *string) *GetCredentialsParams {
 	o.SetResourceName(resourceName)
 	return o
 }
 
 // SetResourceName adds the resourceName to the get credentials params
-func (o *GETCredentialsParams) SetResourceName(resourceName *string) {
+func (o *GetCredentialsParams) SetResourceName(resourceName *string) {
 	o.ResourceName = resourceName
 }
 
 // WithResourceType adds the resourceType to the get credentials params
-func (o *GETCredentialsParams) WithResourceType(resourceType *string) *GETCredentialsParams {
+func (o *GetCredentialsParams) WithResourceType(resourceType *string) *GetCredentialsParams {
 	o.SetResourceType(resourceType)
 	return o
 }
 
 // SetResourceType adds the resourceType to the get credentials params
-func (o *GETCredentialsParams) SetResourceType(resourceType *string) {
+func (o *GetCredentialsParams) SetResourceType(resourceType *string) {
 	o.ResourceType = resourceType
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCredentialsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCredentialsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

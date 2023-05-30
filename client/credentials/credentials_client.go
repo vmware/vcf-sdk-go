@@ -37,19 +37,19 @@ type ClientService interface {
 
 	FetchPasswordExpiration(params *FetchPasswordExpirationParams, opts ...ClientOption) (*FetchPasswordExpirationOK, *FetchPasswordExpirationAccepted, error)
 
-	GETCredential(params *GETCredentialParams, opts ...ClientOption) (*GETCredentialOK, error)
+	GetCredential(params *GetCredentialParams, opts ...ClientOption) (*GetCredentialOK, error)
 
-	GETCredentials(params *GETCredentialsParams, opts ...ClientOption) (*GETCredentialsOK, error)
+	GetCredentials(params *GetCredentialsParams, opts ...ClientOption) (*GetCredentialsOK, error)
 
-	GETCredentialsSubTask(params *GETCredentialsSubTaskParams, opts ...ClientOption) (*GETCredentialsSubTaskOK, error)
+	GetCredentialsSubTask(params *GetCredentialsSubTaskParams, opts ...ClientOption) (*GetCredentialsSubTaskOK, error)
 
-	GETCredentialsTask(params *GETCredentialsTaskParams, opts ...ClientOption) (*GETCredentialsTaskOK, error)
+	GetCredentialsTask(params *GetCredentialsTaskParams, opts ...ClientOption) (*GetCredentialsTaskOK, error)
 
-	GETCredentialsTaskResourcesCredentials(params *GETCredentialsTaskResourcesCredentialsParams, opts ...ClientOption) (*GETCredentialsTaskResourcesCredentialsOK, error)
+	GetCredentialsTaskResourcesCredentials(params *GetCredentialsTaskResourcesCredentialsParams, opts ...ClientOption) (*GetCredentialsTaskResourcesCredentialsOK, error)
 
-	GETCredentialsTasks(params *GETCredentialsTasksParams, opts ...ClientOption) (*GETCredentialsTasksOK, error)
+	GetCredentialsTasks(params *GetCredentialsTasksParams, opts ...ClientOption) (*GetCredentialsTasksOK, error)
 
-	GETExpirationsForPasswords(params *GETExpirationsForPasswordsParams, opts ...ClientOption) (*GETExpirationsForPasswordsOK, error)
+	GetExpirationsForPasswords(params *GetExpirationsForPasswordsParams, opts ...ClientOption) (*GetExpirationsForPasswordsOK, error)
 
 	RetryCredentialsTask(params *RetryCredentialsTaskParams, opts ...ClientOption) (*RetryCredentialsTaskOK, *RetryCredentialsTaskAccepted, error)
 
@@ -141,14 +141,14 @@ func (a *Client) FetchPasswordExpiration(params *FetchPasswordExpirationParams, 
 }
 
 /*
-GETCredential Gets credential for the given ID
+GetCredential gets credential for the given ID
 
 Get Credential for the given ID
 */
-func (a *Client) GETCredential(params *GETCredentialParams, opts ...ClientOption) (*GETCredentialOK, error) {
+func (a *Client) GetCredential(params *GetCredentialParams, opts ...ClientOption) (*GetCredentialOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCredentialParams()
+		params = NewGetCredentialParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCredential",
@@ -158,7 +158,7 @@ func (a *Client) GETCredential(params *GETCredentialParams, opts ...ClientOption
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCredentialReader{formats: a.formats},
+		Reader:             &GetCredentialReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -170,7 +170,7 @@ func (a *Client) GETCredential(params *GETCredentialParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCredentialOK)
+	success, ok := result.(*GetCredentialOK)
 	if ok {
 		return success, nil
 	}
@@ -181,14 +181,14 @@ func (a *Client) GETCredential(params *GETCredentialParams, opts ...ClientOption
 }
 
 /*
-GETCredentials Gets the credentials
+GetCredentials gets the credentials
 
 Get the Credentials
 */
-func (a *Client) GETCredentials(params *GETCredentialsParams, opts ...ClientOption) (*GETCredentialsOK, error) {
+func (a *Client) GetCredentials(params *GetCredentialsParams, opts ...ClientOption) (*GetCredentialsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCredentialsParams()
+		params = NewGetCredentialsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCredentials",
@@ -198,7 +198,7 @@ func (a *Client) GETCredentials(params *GETCredentialsParams, opts ...ClientOpti
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCredentialsReader{formats: a.formats},
+		Reader:             &GetCredentialsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -210,7 +210,7 @@ func (a *Client) GETCredentials(params *GETCredentialsParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCredentialsOK)
+	success, ok := result.(*GetCredentialsOK)
 	if ok {
 		return success, nil
 	}
@@ -221,14 +221,14 @@ func (a *Client) GETCredentials(params *GETCredentialsParams, opts ...ClientOpti
 }
 
 /*
-GETCredentialsSubTask fetches details of a subtask for a given credentials task ID and sub task ID
+GetCredentialsSubTask fetches details of a subtask for a given credentials task ID and sub task ID
 
 Fetch details of a subtask for a given credentials task ID and sub-task ID.
 */
-func (a *Client) GETCredentialsSubTask(params *GETCredentialsSubTaskParams, opts ...ClientOption) (*GETCredentialsSubTaskOK, error) {
+func (a *Client) GetCredentialsSubTask(params *GetCredentialsSubTaskParams, opts ...ClientOption) (*GetCredentialsSubTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCredentialsSubTaskParams()
+		params = NewGetCredentialsSubTaskParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCredentialsSubTask",
@@ -238,7 +238,7 @@ func (a *Client) GETCredentialsSubTask(params *GETCredentialsSubTaskParams, opts
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCredentialsSubTaskReader{formats: a.formats},
+		Reader:             &GetCredentialsSubTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -250,7 +250,7 @@ func (a *Client) GETCredentialsSubTask(params *GETCredentialsSubTaskParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCredentialsSubTaskOK)
+	success, ok := result.(*GetCredentialsSubTaskOK)
 	if ok {
 		return success, nil
 	}
@@ -261,14 +261,14 @@ func (a *Client) GETCredentialsSubTask(params *GETCredentialsSubTaskParams, opts
 }
 
 /*
-GETCredentialsTask fetches a credentials task
+GetCredentialsTask fetches a credentials task
 
 Fetch credentials task for a given ID
 */
-func (a *Client) GETCredentialsTask(params *GETCredentialsTaskParams, opts ...ClientOption) (*GETCredentialsTaskOK, error) {
+func (a *Client) GetCredentialsTask(params *GetCredentialsTaskParams, opts ...ClientOption) (*GetCredentialsTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCredentialsTaskParams()
+		params = NewGetCredentialsTaskParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCredentialsTask",
@@ -278,7 +278,7 @@ func (a *Client) GETCredentialsTask(params *GETCredentialsTaskParams, opts ...Cl
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCredentialsTaskReader{formats: a.formats},
+		Reader:             &GetCredentialsTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -290,7 +290,7 @@ func (a *Client) GETCredentialsTask(params *GETCredentialsTaskParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCredentialsTaskOK)
+	success, ok := result.(*GetCredentialsTaskOK)
 	if ok {
 		return success, nil
 	}
@@ -301,14 +301,14 @@ func (a *Client) GETCredentialsTask(params *GETCredentialsTaskParams, opts ...Cl
 }
 
 /*
-GETCredentialsTaskResourcesCredentials fetches resource credentials for a given credentials task ID
+GetCredentialsTaskResourcesCredentials fetches resource credentials for a given credentials task ID
 
 Fetch resource credentials for a given credentials task ID
 */
-func (a *Client) GETCredentialsTaskResourcesCredentials(params *GETCredentialsTaskResourcesCredentialsParams, opts ...ClientOption) (*GETCredentialsTaskResourcesCredentialsOK, error) {
+func (a *Client) GetCredentialsTaskResourcesCredentials(params *GetCredentialsTaskResourcesCredentialsParams, opts ...ClientOption) (*GetCredentialsTaskResourcesCredentialsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCredentialsTaskResourcesCredentialsParams()
+		params = NewGetCredentialsTaskResourcesCredentialsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCredentialsTaskResourcesCredentials",
@@ -318,7 +318,7 @@ func (a *Client) GETCredentialsTaskResourcesCredentials(params *GETCredentialsTa
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCredentialsTaskResourcesCredentialsReader{formats: a.formats},
+		Reader:             &GetCredentialsTaskResourcesCredentialsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -330,7 +330,7 @@ func (a *Client) GETCredentialsTaskResourcesCredentials(params *GETCredentialsTa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCredentialsTaskResourcesCredentialsOK)
+	success, ok := result.(*GetCredentialsTaskResourcesCredentialsOK)
 	if ok {
 		return success, nil
 	}
@@ -341,14 +341,14 @@ func (a *Client) GETCredentialsTaskResourcesCredentials(params *GETCredentialsTa
 }
 
 /*
-GETCredentialsTasks fetches the credentials tasks
+GetCredentialsTasks fetches the credentials tasks
 
 Fetch all credentials tasks in reverse chronological order
 */
-func (a *Client) GETCredentialsTasks(params *GETCredentialsTasksParams, opts ...ClientOption) (*GETCredentialsTasksOK, error) {
+func (a *Client) GetCredentialsTasks(params *GetCredentialsTasksParams, opts ...ClientOption) (*GetCredentialsTasksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCredentialsTasksParams()
+		params = NewGetCredentialsTasksParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCredentialsTasks",
@@ -358,7 +358,7 @@ func (a *Client) GETCredentialsTasks(params *GETCredentialsTasksParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCredentialsTasksReader{formats: a.formats},
+		Reader:             &GetCredentialsTasksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -370,7 +370,7 @@ func (a *Client) GETCredentialsTasks(params *GETCredentialsTasksParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCredentialsTasksOK)
+	success, ok := result.(*GetCredentialsTasksOK)
 	if ok {
 		return success, nil
 	}
@@ -381,14 +381,14 @@ func (a *Client) GETCredentialsTasks(params *GETCredentialsTasksParams, opts ...
 }
 
 /*
-GETExpirationsForPasswords Gets the status of the password expiration fetch
+GetExpirationsForPasswords gets the status of the password expiration fetch
 
 Get the status of the password expiration fetch
 */
-func (a *Client) GETExpirationsForPasswords(params *GETExpirationsForPasswordsParams, opts ...ClientOption) (*GETExpirationsForPasswordsOK, error) {
+func (a *Client) GetExpirationsForPasswords(params *GetExpirationsForPasswordsParams, opts ...ClientOption) (*GetExpirationsForPasswordsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETExpirationsForPasswordsParams()
+		params = NewGetExpirationsForPasswordsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getExpirationsForPasswords",
@@ -398,7 +398,7 @@ func (a *Client) GETExpirationsForPasswords(params *GETExpirationsForPasswordsPa
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETExpirationsForPasswordsReader{formats: a.formats},
+		Reader:             &GetExpirationsForPasswordsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -410,7 +410,7 @@ func (a *Client) GETExpirationsForPasswords(params *GETExpirationsForPasswordsPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETExpirationsForPasswordsOK)
+	success, ok := result.(*GetExpirationsForPasswordsOK)
 	if ok {
 		return success, nil
 	}

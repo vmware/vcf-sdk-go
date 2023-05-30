@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUpgradablesByDomainParams creates a new GETUpgradablesByDomainParams object,
+// NewGetUpgradablesByDomainParams creates a new GetUpgradablesByDomainParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUpgradablesByDomainParams() *GETUpgradablesByDomainParams {
-	return &GETUpgradablesByDomainParams{
+func NewGetUpgradablesByDomainParams() *GetUpgradablesByDomainParams {
+	return &GetUpgradablesByDomainParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUpgradablesByDomainParamsWithTimeout creates a new GETUpgradablesByDomainParams object
+// NewGetUpgradablesByDomainParamsWithTimeout creates a new GetUpgradablesByDomainParams object
 // with the ability to set a timeout on a request.
-func NewGETUpgradablesByDomainParamsWithTimeout(timeout time.Duration) *GETUpgradablesByDomainParams {
-	return &GETUpgradablesByDomainParams{
+func NewGetUpgradablesByDomainParamsWithTimeout(timeout time.Duration) *GetUpgradablesByDomainParams {
+	return &GetUpgradablesByDomainParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUpgradablesByDomainParamsWithContext creates a new GETUpgradablesByDomainParams object
+// NewGetUpgradablesByDomainParamsWithContext creates a new GetUpgradablesByDomainParams object
 // with the ability to set a context for a request.
-func NewGETUpgradablesByDomainParamsWithContext(ctx context.Context) *GETUpgradablesByDomainParams {
-	return &GETUpgradablesByDomainParams{
+func NewGetUpgradablesByDomainParamsWithContext(ctx context.Context) *GetUpgradablesByDomainParams {
+	return &GetUpgradablesByDomainParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUpgradablesByDomainParamsWithHTTPClient creates a new GETUpgradablesByDomainParams object
+// NewGetUpgradablesByDomainParamsWithHTTPClient creates a new GetUpgradablesByDomainParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUpgradablesByDomainParamsWithHTTPClient(client *http.Client) *GETUpgradablesByDomainParams {
-	return &GETUpgradablesByDomainParams{
+func NewGetUpgradablesByDomainParamsWithHTTPClient(client *http.Client) *GetUpgradablesByDomainParams {
+	return &GetUpgradablesByDomainParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUpgradablesByDomainParams contains all the parameters to send to the API endpoint
+GetUpgradablesByDomainParams contains all the parameters to send to the API endpoint
 
 	for the get upgradables by domain operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUpgradablesByDomainParams struct {
+type GetUpgradablesByDomainParams struct {
 
 	/* DomainID.
 
@@ -84,7 +84,7 @@ type GETUpgradablesByDomainParams struct {
 // WithDefaults hydrates default values in the get upgradables by domain params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradablesByDomainParams) WithDefaults() *GETUpgradablesByDomainParams {
+func (o *GetUpgradablesByDomainParams) WithDefaults() *GetUpgradablesByDomainParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETUpgradablesByDomainParams) WithDefaults() *GETUpgradablesByDomainPar
 // SetDefaults hydrates default values in the get upgradables by domain params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradablesByDomainParams) SetDefaults() {
+func (o *GetUpgradablesByDomainParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) WithTimeout(timeout time.Duration) *GETUpgradablesByDomainParams {
+func (o *GetUpgradablesByDomainParams) WithTimeout(timeout time.Duration) *GetUpgradablesByDomainParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) SetTimeout(timeout time.Duration) {
+func (o *GetUpgradablesByDomainParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) WithContext(ctx context.Context) *GETUpgradablesByDomainParams {
+func (o *GetUpgradablesByDomainParams) WithContext(ctx context.Context) *GetUpgradablesByDomainParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) SetContext(ctx context.Context) {
+func (o *GetUpgradablesByDomainParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) WithHTTPClient(client *http.Client) *GETUpgradablesByDomainParams {
+func (o *GetUpgradablesByDomainParams) WithHTTPClient(client *http.Client) *GetUpgradablesByDomainParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) SetHTTPClient(client *http.Client) {
+func (o *GetUpgradablesByDomainParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithDomainID adds the domainID to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) WithDomainID(domainID string) *GETUpgradablesByDomainParams {
+func (o *GetUpgradablesByDomainParams) WithDomainID(domainID string) *GetUpgradablesByDomainParams {
 	o.SetDomainID(domainID)
 	return o
 }
 
 // SetDomainID adds the domainId to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) SetDomainID(domainID string) {
+func (o *GetUpgradablesByDomainParams) SetDomainID(domainID string) {
 	o.DomainID = domainID
 }
 
 // WithTargetVersion adds the targetVersion to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) WithTargetVersion(targetVersion *string) *GETUpgradablesByDomainParams {
+func (o *GetUpgradablesByDomainParams) WithTargetVersion(targetVersion *string) *GetUpgradablesByDomainParams {
 	o.SetTargetVersion(targetVersion)
 	return o
 }
 
 // SetTargetVersion adds the targetVersion to the get upgradables by domain params
-func (o *GETUpgradablesByDomainParams) SetTargetVersion(targetVersion *string) {
+func (o *GetUpgradablesByDomainParams) SetTargetVersion(targetVersion *string) {
 	o.TargetVersion = targetVersion
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUpgradablesByDomainParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUpgradablesByDomainParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

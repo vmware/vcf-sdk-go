@@ -18,34 +18,34 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETUsersReader is a Reader for the GETUsers structure.
-type GETUsersReader struct {
+// GetUsersReader is a Reader for the GetUsers structure.
+type GetUsersReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETUsersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetUsersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETUsersOK()
+		result := NewGetUsersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETUsersBadRequest()
+		result := NewGetUsersBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 401:
-		result := NewGETUsersUnauthorized()
+		result := NewGetUsersUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETUsersInternalServerError()
+		result := NewGetUsersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -55,58 +55,58 @@ func (o *GETUsersReader) ReadResponse(response runtime.ClientResponse, consumer 
 	}
 }
 
-// NewGETUsersOK creates a GETUsersOK with default headers values
-func NewGETUsersOK() *GETUsersOK {
-	return &GETUsersOK{}
+// NewGetUsersOK creates a GetUsersOK with default headers values
+func NewGetUsersOK() *GetUsersOK {
+	return &GetUsersOK{}
 }
 
 /*
-GETUsersOK describes a response with status code 200, with default header values.
+GetUsersOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETUsersOK struct {
+type GetUsersOK struct {
 	Payload *models.PageOfUser
 }
 
 // IsSuccess returns true when this get users o k response has a 2xx status code
-func (o *GETUsersOK) IsSuccess() bool {
+func (o *GetUsersOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get users o k response has a 3xx status code
-func (o *GETUsersOK) IsRedirect() bool {
+func (o *GetUsersOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get users o k response has a 4xx status code
-func (o *GETUsersOK) IsClientError() bool {
+func (o *GetUsersOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get users o k response has a 5xx status code
-func (o *GETUsersOK) IsServerError() bool {
+func (o *GetUsersOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get users o k response a status code equal to that given
-func (o *GETUsersOK) IsCode(code int) bool {
+func (o *GetUsersOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETUsersOK) Error() string {
+func (o *GetUsersOK) Error() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUsersOK) String() string {
+func (o *GetUsersOK) String() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersOK  %+v", 200, o.Payload)
 }
 
-func (o *GETUsersOK) GetPayload() *models.PageOfUser {
+func (o *GetUsersOK) GetPayload() *models.PageOfUser {
 	return o.Payload
 }
 
-func (o *GETUsersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUsersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfUser)
 
@@ -118,58 +118,58 @@ func (o *GETUsersOK) readResponse(response runtime.ClientResponse, consumer runt
 	return nil
 }
 
-// NewGETUsersBadRequest creates a GETUsersBadRequest with default headers values
-func NewGETUsersBadRequest() *GETUsersBadRequest {
-	return &GETUsersBadRequest{}
+// NewGetUsersBadRequest creates a GetUsersBadRequest with default headers values
+func NewGetUsersBadRequest() *GetUsersBadRequest {
+	return &GetUsersBadRequest{}
 }
 
 /*
-GETUsersBadRequest describes a response with status code 400, with default header values.
+GetUsersBadRequest describes a response with status code 400, with default header values.
 
 Bad request
 */
-type GETUsersBadRequest struct {
+type GetUsersBadRequest struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get users bad request response has a 2xx status code
-func (o *GETUsersBadRequest) IsSuccess() bool {
+func (o *GetUsersBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get users bad request response has a 3xx status code
-func (o *GETUsersBadRequest) IsRedirect() bool {
+func (o *GetUsersBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get users bad request response has a 4xx status code
-func (o *GETUsersBadRequest) IsClientError() bool {
+func (o *GetUsersBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get users bad request response has a 5xx status code
-func (o *GETUsersBadRequest) IsServerError() bool {
+func (o *GetUsersBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get users bad request response a status code equal to that given
-func (o *GETUsersBadRequest) IsCode(code int) bool {
+func (o *GetUsersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETUsersBadRequest) Error() string {
+func (o *GetUsersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETUsersBadRequest) String() string {
+func (o *GetUsersBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETUsersBadRequest) GetPayload() *models.ErrorResponse {
+func (o *GetUsersBadRequest) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETUsersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUsersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -181,58 +181,58 @@ func (o *GETUsersBadRequest) readResponse(response runtime.ClientResponse, consu
 	return nil
 }
 
-// NewGETUsersUnauthorized creates a GETUsersUnauthorized with default headers values
-func NewGETUsersUnauthorized() *GETUsersUnauthorized {
-	return &GETUsersUnauthorized{}
+// NewGetUsersUnauthorized creates a GetUsersUnauthorized with default headers values
+func NewGetUsersUnauthorized() *GetUsersUnauthorized {
+	return &GetUsersUnauthorized{}
 }
 
 /*
-GETUsersUnauthorized describes a response with status code 401, with default header values.
+GetUsersUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
-type GETUsersUnauthorized struct {
+type GetUsersUnauthorized struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get users unauthorized response has a 2xx status code
-func (o *GETUsersUnauthorized) IsSuccess() bool {
+func (o *GetUsersUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get users unauthorized response has a 3xx status code
-func (o *GETUsersUnauthorized) IsRedirect() bool {
+func (o *GetUsersUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get users unauthorized response has a 4xx status code
-func (o *GETUsersUnauthorized) IsClientError() bool {
+func (o *GetUsersUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get users unauthorized response has a 5xx status code
-func (o *GETUsersUnauthorized) IsServerError() bool {
+func (o *GetUsersUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get users unauthorized response a status code equal to that given
-func (o *GETUsersUnauthorized) IsCode(code int) bool {
+func (o *GetUsersUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETUsersUnauthorized) Error() string {
+func (o *GetUsersUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETUsersUnauthorized) String() string {
+func (o *GetUsersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETUsersUnauthorized) GetPayload() *models.ErrorResponse {
+func (o *GetUsersUnauthorized) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETUsersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUsersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 
@@ -244,58 +244,58 @@ func (o *GETUsersUnauthorized) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewGETUsersInternalServerError creates a GETUsersInternalServerError with default headers values
-func NewGETUsersInternalServerError() *GETUsersInternalServerError {
-	return &GETUsersInternalServerError{}
+// NewGetUsersInternalServerError creates a GetUsersInternalServerError with default headers values
+func NewGetUsersInternalServerError() *GetUsersInternalServerError {
+	return &GetUsersInternalServerError{}
 }
 
 /*
-GETUsersInternalServerError describes a response with status code 500, with default header values.
+GetUsersInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETUsersInternalServerError struct {
+type GetUsersInternalServerError struct {
 	Payload *models.ErrorResponse
 }
 
 // IsSuccess returns true when this get users internal server error response has a 2xx status code
-func (o *GETUsersInternalServerError) IsSuccess() bool {
+func (o *GetUsersInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get users internal server error response has a 3xx status code
-func (o *GETUsersInternalServerError) IsRedirect() bool {
+func (o *GetUsersInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get users internal server error response has a 4xx status code
-func (o *GETUsersInternalServerError) IsClientError() bool {
+func (o *GetUsersInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get users internal server error response has a 5xx status code
-func (o *GETUsersInternalServerError) IsServerError() bool {
+func (o *GetUsersInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get users internal server error response a status code equal to that given
-func (o *GETUsersInternalServerError) IsCode(code int) bool {
+func (o *GetUsersInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETUsersInternalServerError) Error() string {
+func (o *GetUsersInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUsersInternalServerError) String() string {
+func (o *GetUsersInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETUsersInternalServerError) GetPayload() *models.ErrorResponse {
+func (o *GetUsersInternalServerError) GetPayload() *models.ErrorResponse {
 	return o.Payload
 }
 
-func (o *GETUsersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetUsersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ErrorResponse)
 

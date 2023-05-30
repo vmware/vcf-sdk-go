@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETTagsAssignedToDomainsReader is a Reader for the GETTagsAssignedToDomains structure.
-type GETTagsAssignedToDomainsReader struct {
+// GetTagsAssignedToDomainsReader is a Reader for the GetTagsAssignedToDomains structure.
+type GetTagsAssignedToDomainsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETTagsAssignedToDomainsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetTagsAssignedToDomainsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETTagsAssignedToDomainsOK()
+		result := NewGetTagsAssignedToDomainsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETTagsAssignedToDomainsBadRequest()
+		result := NewGetTagsAssignedToDomainsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETTagsAssignedToDomainsInternalServerError()
+		result := NewGetTagsAssignedToDomainsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETTagsAssignedToDomainsReader) ReadResponse(response runtime.ClientRes
 	}
 }
 
-// NewGETTagsAssignedToDomainsOK creates a GETTagsAssignedToDomainsOK with default headers values
-func NewGETTagsAssignedToDomainsOK() *GETTagsAssignedToDomainsOK {
-	return &GETTagsAssignedToDomainsOK{}
+// NewGetTagsAssignedToDomainsOK creates a GetTagsAssignedToDomainsOK with default headers values
+func NewGetTagsAssignedToDomainsOK() *GetTagsAssignedToDomainsOK {
+	return &GetTagsAssignedToDomainsOK{}
 }
 
 /*
-GETTagsAssignedToDomainsOK describes a response with status code 200, with default header values.
+GetTagsAssignedToDomainsOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETTagsAssignedToDomainsOK struct {
+type GetTagsAssignedToDomainsOK struct {
 	Payload *models.PageOfTagsForResource
 }
 
 // IsSuccess returns true when this get tags assigned to domains o k response has a 2xx status code
-func (o *GETTagsAssignedToDomainsOK) IsSuccess() bool {
+func (o *GetTagsAssignedToDomainsOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get tags assigned to domains o k response has a 3xx status code
-func (o *GETTagsAssignedToDomainsOK) IsRedirect() bool {
+func (o *GetTagsAssignedToDomainsOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get tags assigned to domains o k response has a 4xx status code
-func (o *GETTagsAssignedToDomainsOK) IsClientError() bool {
+func (o *GetTagsAssignedToDomainsOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get tags assigned to domains o k response has a 5xx status code
-func (o *GETTagsAssignedToDomainsOK) IsServerError() bool {
+func (o *GetTagsAssignedToDomainsOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get tags assigned to domains o k response a status code equal to that given
-func (o *GETTagsAssignedToDomainsOK) IsCode(code int) bool {
+func (o *GetTagsAssignedToDomainsOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETTagsAssignedToDomainsOK) Error() string {
+func (o *GetTagsAssignedToDomainsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/tags][%d] getTagsAssignedToDomainsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETTagsAssignedToDomainsOK) String() string {
+func (o *GetTagsAssignedToDomainsOK) String() string {
 	return fmt.Sprintf("[GET /v1/domains/tags][%d] getTagsAssignedToDomainsOK  %+v", 200, o.Payload)
 }
 
-func (o *GETTagsAssignedToDomainsOK) GetPayload() *models.PageOfTagsForResource {
+func (o *GetTagsAssignedToDomainsOK) GetPayload() *models.PageOfTagsForResource {
 	return o.Payload
 }
 
-func (o *GETTagsAssignedToDomainsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTagsAssignedToDomainsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfTagsForResource)
 
@@ -112,58 +112,58 @@ func (o *GETTagsAssignedToDomainsOK) readResponse(response runtime.ClientRespons
 	return nil
 }
 
-// NewGETTagsAssignedToDomainsBadRequest creates a GETTagsAssignedToDomainsBadRequest with default headers values
-func NewGETTagsAssignedToDomainsBadRequest() *GETTagsAssignedToDomainsBadRequest {
-	return &GETTagsAssignedToDomainsBadRequest{}
+// NewGetTagsAssignedToDomainsBadRequest creates a GetTagsAssignedToDomainsBadRequest with default headers values
+func NewGetTagsAssignedToDomainsBadRequest() *GetTagsAssignedToDomainsBadRequest {
+	return &GetTagsAssignedToDomainsBadRequest{}
 }
 
 /*
-GETTagsAssignedToDomainsBadRequest describes a response with status code 400, with default header values.
+GetTagsAssignedToDomainsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETTagsAssignedToDomainsBadRequest struct {
+type GetTagsAssignedToDomainsBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get tags assigned to domains bad request response has a 2xx status code
-func (o *GETTagsAssignedToDomainsBadRequest) IsSuccess() bool {
+func (o *GetTagsAssignedToDomainsBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get tags assigned to domains bad request response has a 3xx status code
-func (o *GETTagsAssignedToDomainsBadRequest) IsRedirect() bool {
+func (o *GetTagsAssignedToDomainsBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get tags assigned to domains bad request response has a 4xx status code
-func (o *GETTagsAssignedToDomainsBadRequest) IsClientError() bool {
+func (o *GetTagsAssignedToDomainsBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get tags assigned to domains bad request response has a 5xx status code
-func (o *GETTagsAssignedToDomainsBadRequest) IsServerError() bool {
+func (o *GetTagsAssignedToDomainsBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get tags assigned to domains bad request response a status code equal to that given
-func (o *GETTagsAssignedToDomainsBadRequest) IsCode(code int) bool {
+func (o *GetTagsAssignedToDomainsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETTagsAssignedToDomainsBadRequest) Error() string {
+func (o *GetTagsAssignedToDomainsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/tags][%d] getTagsAssignedToDomainsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETTagsAssignedToDomainsBadRequest) String() string {
+func (o *GetTagsAssignedToDomainsBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/domains/tags][%d] getTagsAssignedToDomainsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETTagsAssignedToDomainsBadRequest) GetPayload() *models.Error {
+func (o *GetTagsAssignedToDomainsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETTagsAssignedToDomainsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTagsAssignedToDomainsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETTagsAssignedToDomainsBadRequest) readResponse(response runtime.Clien
 	return nil
 }
 
-// NewGETTagsAssignedToDomainsInternalServerError creates a GETTagsAssignedToDomainsInternalServerError with default headers values
-func NewGETTagsAssignedToDomainsInternalServerError() *GETTagsAssignedToDomainsInternalServerError {
-	return &GETTagsAssignedToDomainsInternalServerError{}
+// NewGetTagsAssignedToDomainsInternalServerError creates a GetTagsAssignedToDomainsInternalServerError with default headers values
+func NewGetTagsAssignedToDomainsInternalServerError() *GetTagsAssignedToDomainsInternalServerError {
+	return &GetTagsAssignedToDomainsInternalServerError{}
 }
 
 /*
-GETTagsAssignedToDomainsInternalServerError describes a response with status code 500, with default header values.
+GetTagsAssignedToDomainsInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETTagsAssignedToDomainsInternalServerError struct {
+type GetTagsAssignedToDomainsInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get tags assigned to domains internal server error response has a 2xx status code
-func (o *GETTagsAssignedToDomainsInternalServerError) IsSuccess() bool {
+func (o *GetTagsAssignedToDomainsInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get tags assigned to domains internal server error response has a 3xx status code
-func (o *GETTagsAssignedToDomainsInternalServerError) IsRedirect() bool {
+func (o *GetTagsAssignedToDomainsInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get tags assigned to domains internal server error response has a 4xx status code
-func (o *GETTagsAssignedToDomainsInternalServerError) IsClientError() bool {
+func (o *GetTagsAssignedToDomainsInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get tags assigned to domains internal server error response has a 5xx status code
-func (o *GETTagsAssignedToDomainsInternalServerError) IsServerError() bool {
+func (o *GetTagsAssignedToDomainsInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get tags assigned to domains internal server error response a status code equal to that given
-func (o *GETTagsAssignedToDomainsInternalServerError) IsCode(code int) bool {
+func (o *GetTagsAssignedToDomainsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETTagsAssignedToDomainsInternalServerError) Error() string {
+func (o *GetTagsAssignedToDomainsInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/tags][%d] getTagsAssignedToDomainsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETTagsAssignedToDomainsInternalServerError) String() string {
+func (o *GetTagsAssignedToDomainsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/domains/tags][%d] getTagsAssignedToDomainsInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETTagsAssignedToDomainsInternalServerError) GetPayload() *models.Error {
+func (o *GetTagsAssignedToDomainsInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETTagsAssignedToDomainsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetTagsAssignedToDomainsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

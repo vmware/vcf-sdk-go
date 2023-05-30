@@ -18,16 +18,16 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETValidationResultUsingGETReader is a Reader for the GETValidationResultUsingGET structure.
-type GETValidationResultUsingGETReader struct {
+// GetValidationResultUsingGETReader is a Reader for the GetValidationResultUsingGET structure.
+type GetValidationResultUsingGETReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETValidationResultUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetValidationResultUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETValidationResultUsingGETOK()
+		result := NewGetValidationResultUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -37,58 +37,58 @@ func (o *GETValidationResultUsingGETReader) ReadResponse(response runtime.Client
 	}
 }
 
-// NewGETValidationResultUsingGETOK creates a GETValidationResultUsingGETOK with default headers values
-func NewGETValidationResultUsingGETOK() *GETValidationResultUsingGETOK {
-	return &GETValidationResultUsingGETOK{}
+// NewGetValidationResultUsingGETOK creates a GetValidationResultUsingGETOK with default headers values
+func NewGetValidationResultUsingGETOK() *GetValidationResultUsingGETOK {
+	return &GetValidationResultUsingGETOK{}
 }
 
 /*
-GETValidationResultUsingGETOK describes a response with status code 200, with default header values.
+GetValidationResultUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETValidationResultUsingGETOK struct {
+type GetValidationResultUsingGETOK struct {
 	Payload *models.Validation
 }
 
-// IsSuccess returns true when this get validation result using Get o k response has a 2xx status code
-func (o *GETValidationResultUsingGETOK) IsSuccess() bool {
+// IsSuccess returns true when this get validation result using g e t o k response has a 2xx status code
+func (o *GetValidationResultUsingGETOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this get validation result using Get o k response has a 3xx status code
-func (o *GETValidationResultUsingGETOK) IsRedirect() bool {
+// IsRedirect returns true when this get validation result using g e t o k response has a 3xx status code
+func (o *GetValidationResultUsingGETOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this get validation result using Get o k response has a 4xx status code
-func (o *GETValidationResultUsingGETOK) IsClientError() bool {
+// IsClientError returns true when this get validation result using g e t o k response has a 4xx status code
+func (o *GetValidationResultUsingGETOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this get validation result using Get o k response has a 5xx status code
-func (o *GETValidationResultUsingGETOK) IsServerError() bool {
+// IsServerError returns true when this get validation result using g e t o k response has a 5xx status code
+func (o *GetValidationResultUsingGETOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this get validation result using Get o k response a status code equal to that given
-func (o *GETValidationResultUsingGETOK) IsCode(code int) bool {
+// IsCode returns true when this get validation result using g e t o k response a status code equal to that given
+func (o *GetValidationResultUsingGETOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETValidationResultUsingGETOK) Error() string {
-	return fmt.Sprintf("[GET /v1/nsxt-clusters/ip-address-pools/validations/{id}][%d] getValidationResultUsingGetOK  %+v", 200, o.Payload)
+func (o *GetValidationResultUsingGETOK) Error() string {
+	return fmt.Sprintf("[GET /v1/nsxt-clusters/ip-address-pools/validations/{id}][%d] getValidationResultUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationResultUsingGETOK) String() string {
-	return fmt.Sprintf("[GET /v1/nsxt-clusters/ip-address-pools/validations/{id}][%d] getValidationResultUsingGetOK  %+v", 200, o.Payload)
+func (o *GetValidationResultUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /v1/nsxt-clusters/ip-address-pools/validations/{id}][%d] getValidationResultUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GETValidationResultUsingGETOK) GetPayload() *models.Validation {
+func (o *GetValidationResultUsingGETOK) GetPayload() *models.Validation {
 	return o.Payload
 }
 
-func (o *GETValidationResultUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetValidationResultUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
 

@@ -33,18 +33,18 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETWsas(params *GETWsasParams, opts ...ClientOption) (*GETWsasOK, error)
+	GetWsas(params *GetWsasParams, opts ...ClientOption) (*GetWsasOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETWsas Gets all existing workspace o n e access instances
+GetWsas gets all existing workspace o n e access instances
 */
-func (a *Client) GETWsas(params *GETWsasParams, opts ...ClientOption) (*GETWsasOK, error) {
+func (a *Client) GetWsas(params *GetWsasParams, opts ...ClientOption) (*GetWsasOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETWsasParams()
+		params = NewGetWsasParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getWsas",
@@ -54,7 +54,7 @@ func (a *Client) GETWsas(params *GETWsasParams, opts ...ClientOption) (*GETWsasO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETWsasReader{formats: a.formats},
+		Reader:             &GetWsasReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -66,7 +66,7 @@ func (a *Client) GETWsas(params *GETWsasParams, opts ...ClientOption) (*GETWsasO
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETWsasOK)
+	success, ok := result.(*GetWsasOK)
 	if ok {
 		return success, nil
 	}

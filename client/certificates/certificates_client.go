@@ -45,13 +45,13 @@ type ClientService interface {
 
 	GeneratesCSRs(params *GeneratesCSRsParams, opts ...ClientOption) (*GeneratesCSRsOK, *GeneratesCSRsAccepted, error)
 
-	GETCSRs(params *GETCSRsParams, opts ...ClientOption) (*GETCSRsOK, error)
+	GetCSRs(params *GetCSRsParams, opts ...ClientOption) (*GetCSRsOK, error)
 
-	GETCertificateAuthorities(params *GETCertificateAuthoritiesParams, opts ...ClientOption) (*GETCertificateAuthoritiesOK, error)
+	GetCertificateAuthorities(params *GetCertificateAuthoritiesParams, opts ...ClientOption) (*GetCertificateAuthoritiesOK, error)
 
-	GETCertificateAuthorityByID(params *GETCertificateAuthorityByIDParams, opts ...ClientOption) (*GETCertificateAuthorityByIDOK, error)
+	GetCertificateAuthorityByID(params *GetCertificateAuthorityByIDParams, opts ...ClientOption) (*GetCertificateAuthorityByIDOK, error)
 
-	GETCertificates(params *GETCertificatesParams, opts ...ClientOption) (*GETCertificatesOK, error)
+	GetCertificates(params *GetCertificatesParams, opts ...ClientOption) (*GetCertificatesOK, error)
 
 	ReplaceCertificates(params *ReplaceCertificatesParams, opts ...ClientOption) (*ReplaceCertificatesOK, *ReplaceCertificatesAccepted, error)
 
@@ -309,14 +309,14 @@ func (a *Client) GeneratesCSRs(params *GeneratesCSRsParams, opts ...ClientOption
 }
 
 /*
-GETCSRs Gets available CSR s in json format
+GetCSRs gets available CSR s in json format
 
 Get available CSR(s) in json format
 */
-func (a *Client) GETCSRs(params *GETCSRsParams, opts ...ClientOption) (*GETCSRsOK, error) {
+func (a *Client) GetCSRs(params *GetCSRsParams, opts ...ClientOption) (*GetCSRsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCSRsParams()
+		params = NewGetCSRsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCSRs",
@@ -326,7 +326,7 @@ func (a *Client) GETCSRs(params *GETCSRsParams, opts ...ClientOption) (*GETCSRsO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCSRsReader{formats: a.formats},
+		Reader:             &GetCSRsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -338,7 +338,7 @@ func (a *Client) GETCSRs(params *GETCSRsParams, opts ...ClientOption) (*GETCSRsO
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCSRsOK)
+	success, ok := result.(*GetCSRsOK)
 	if ok {
 		return success, nil
 	}
@@ -349,14 +349,14 @@ func (a *Client) GETCSRs(params *GETCSRsParams, opts ...ClientOption) (*GETCSRsO
 }
 
 /*
-GETCertificateAuthorities Gets certificate authorities information
+GetCertificateAuthorities gets certificate authorities information
 
 Get certificate authorities information
 */
-func (a *Client) GETCertificateAuthorities(params *GETCertificateAuthoritiesParams, opts ...ClientOption) (*GETCertificateAuthoritiesOK, error) {
+func (a *Client) GetCertificateAuthorities(params *GetCertificateAuthoritiesParams, opts ...ClientOption) (*GetCertificateAuthoritiesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCertificateAuthoritiesParams()
+		params = NewGetCertificateAuthoritiesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCertificateAuthorities",
@@ -366,7 +366,7 @@ func (a *Client) GETCertificateAuthorities(params *GETCertificateAuthoritiesPara
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCertificateAuthoritiesReader{formats: a.formats},
+		Reader:             &GetCertificateAuthoritiesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -378,7 +378,7 @@ func (a *Client) GETCertificateAuthorities(params *GETCertificateAuthoritiesPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCertificateAuthoritiesOK)
+	success, ok := result.(*GetCertificateAuthoritiesOK)
 	if ok {
 		return success, nil
 	}
@@ -389,14 +389,14 @@ func (a *Client) GETCertificateAuthorities(params *GETCertificateAuthoritiesPara
 }
 
 /*
-GETCertificateAuthorityByID Gets certificate authority information
+GetCertificateAuthorityByID gets certificate authority information
 
 Get certificate authority information
 */
-func (a *Client) GETCertificateAuthorityByID(params *GETCertificateAuthorityByIDParams, opts ...ClientOption) (*GETCertificateAuthorityByIDOK, error) {
+func (a *Client) GetCertificateAuthorityByID(params *GetCertificateAuthorityByIDParams, opts ...ClientOption) (*GetCertificateAuthorityByIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCertificateAuthorityByIDParams()
+		params = NewGetCertificateAuthorityByIDParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCertificateAuthorityById",
@@ -406,7 +406,7 @@ func (a *Client) GETCertificateAuthorityByID(params *GETCertificateAuthorityByID
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCertificateAuthorityByIDReader{formats: a.formats},
+		Reader:             &GetCertificateAuthorityByIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -418,7 +418,7 @@ func (a *Client) GETCertificateAuthorityByID(params *GETCertificateAuthorityByID
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCertificateAuthorityByIDOK)
+	success, ok := result.(*GetCertificateAuthorityByIDOK)
 	if ok {
 		return success, nil
 	}
@@ -429,14 +429,14 @@ func (a *Client) GETCertificateAuthorityByID(params *GETCertificateAuthorityByID
 }
 
 /*
-GETCertificates Gets latest generated certificate s in a domain
+GetCertificates gets latest generated certificate s in a domain
 
 Get latest generated certificate(s) in a domain.
 */
-func (a *Client) GETCertificates(params *GETCertificatesParams, opts ...ClientOption) (*GETCertificatesOK, error) {
+func (a *Client) GetCertificates(params *GetCertificatesParams, opts ...ClientOption) (*GetCertificatesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETCertificatesParams()
+		params = NewGetCertificatesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getCertificates",
@@ -446,7 +446,7 @@ func (a *Client) GETCertificates(params *GETCertificatesParams, opts ...ClientOp
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETCertificatesReader{formats: a.formats},
+		Reader:             &GetCertificatesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -458,7 +458,7 @@ func (a *Client) GETCertificates(params *GETCertificatesParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETCertificatesOK)
+	success, ok := result.(*GetCertificatesOK)
 	if ok {
 		return success, nil
 	}

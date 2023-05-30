@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCredentialsTaskReader is a Reader for the GETCredentialsTask structure.
-type GETCredentialsTaskReader struct {
+// GetCredentialsTaskReader is a Reader for the GetCredentialsTask structure.
+type GetCredentialsTaskReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCredentialsTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCredentialsTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCredentialsTaskOK()
+		result := NewGetCredentialsTaskOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETCredentialsTaskBadRequest()
+		result := NewGetCredentialsTaskBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETCredentialsTaskInternalServerError()
+		result := NewGetCredentialsTaskInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETCredentialsTaskReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewGETCredentialsTaskOK creates a GETCredentialsTaskOK with default headers values
-func NewGETCredentialsTaskOK() *GETCredentialsTaskOK {
-	return &GETCredentialsTaskOK{}
+// NewGetCredentialsTaskOK creates a GetCredentialsTaskOK with default headers values
+func NewGetCredentialsTaskOK() *GetCredentialsTaskOK {
+	return &GetCredentialsTaskOK{}
 }
 
 /*
-GETCredentialsTaskOK describes a response with status code 200, with default header values.
+GetCredentialsTaskOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETCredentialsTaskOK struct {
+type GetCredentialsTaskOK struct {
 	Payload *models.CredentialsTask
 }
 
 // IsSuccess returns true when this get credentials task o k response has a 2xx status code
-func (o *GETCredentialsTaskOK) IsSuccess() bool {
+func (o *GetCredentialsTaskOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get credentials task o k response has a 3xx status code
-func (o *GETCredentialsTaskOK) IsRedirect() bool {
+func (o *GetCredentialsTaskOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credentials task o k response has a 4xx status code
-func (o *GETCredentialsTaskOK) IsClientError() bool {
+func (o *GetCredentialsTaskOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get credentials task o k response has a 5xx status code
-func (o *GETCredentialsTaskOK) IsServerError() bool {
+func (o *GetCredentialsTaskOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credentials task o k response a status code equal to that given
-func (o *GETCredentialsTaskOK) IsCode(code int) bool {
+func (o *GetCredentialsTaskOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCredentialsTaskOK) Error() string {
+func (o *GetCredentialsTaskOK) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}][%d] getCredentialsTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCredentialsTaskOK) String() string {
+func (o *GetCredentialsTaskOK) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}][%d] getCredentialsTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCredentialsTaskOK) GetPayload() *models.CredentialsTask {
+func (o *GetCredentialsTaskOK) GetPayload() *models.CredentialsTask {
 	return o.Payload
 }
 
-func (o *GETCredentialsTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialsTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CredentialsTask)
 
@@ -112,58 +112,58 @@ func (o *GETCredentialsTaskOK) readResponse(response runtime.ClientResponse, con
 	return nil
 }
 
-// NewGETCredentialsTaskBadRequest creates a GETCredentialsTaskBadRequest with default headers values
-func NewGETCredentialsTaskBadRequest() *GETCredentialsTaskBadRequest {
-	return &GETCredentialsTaskBadRequest{}
+// NewGetCredentialsTaskBadRequest creates a GetCredentialsTaskBadRequest with default headers values
+func NewGetCredentialsTaskBadRequest() *GetCredentialsTaskBadRequest {
+	return &GetCredentialsTaskBadRequest{}
 }
 
 /*
-GETCredentialsTaskBadRequest describes a response with status code 400, with default header values.
+GetCredentialsTaskBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETCredentialsTaskBadRequest struct {
+type GetCredentialsTaskBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credentials task bad request response has a 2xx status code
-func (o *GETCredentialsTaskBadRequest) IsSuccess() bool {
+func (o *GetCredentialsTaskBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credentials task bad request response has a 3xx status code
-func (o *GETCredentialsTaskBadRequest) IsRedirect() bool {
+func (o *GetCredentialsTaskBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credentials task bad request response has a 4xx status code
-func (o *GETCredentialsTaskBadRequest) IsClientError() bool {
+func (o *GetCredentialsTaskBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get credentials task bad request response has a 5xx status code
-func (o *GETCredentialsTaskBadRequest) IsServerError() bool {
+func (o *GetCredentialsTaskBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credentials task bad request response a status code equal to that given
-func (o *GETCredentialsTaskBadRequest) IsCode(code int) bool {
+func (o *GetCredentialsTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETCredentialsTaskBadRequest) Error() string {
+func (o *GetCredentialsTaskBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}][%d] getCredentialsTaskBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETCredentialsTaskBadRequest) String() string {
+func (o *GetCredentialsTaskBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}][%d] getCredentialsTaskBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETCredentialsTaskBadRequest) GetPayload() *models.Error {
+func (o *GetCredentialsTaskBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialsTaskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialsTaskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETCredentialsTaskBadRequest) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGETCredentialsTaskInternalServerError creates a GETCredentialsTaskInternalServerError with default headers values
-func NewGETCredentialsTaskInternalServerError() *GETCredentialsTaskInternalServerError {
-	return &GETCredentialsTaskInternalServerError{}
+// NewGetCredentialsTaskInternalServerError creates a GetCredentialsTaskInternalServerError with default headers values
+func NewGetCredentialsTaskInternalServerError() *GetCredentialsTaskInternalServerError {
+	return &GetCredentialsTaskInternalServerError{}
 }
 
 /*
-GETCredentialsTaskInternalServerError describes a response with status code 500, with default header values.
+GetCredentialsTaskInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETCredentialsTaskInternalServerError struct {
+type GetCredentialsTaskInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credentials task internal server error response has a 2xx status code
-func (o *GETCredentialsTaskInternalServerError) IsSuccess() bool {
+func (o *GetCredentialsTaskInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credentials task internal server error response has a 3xx status code
-func (o *GETCredentialsTaskInternalServerError) IsRedirect() bool {
+func (o *GetCredentialsTaskInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credentials task internal server error response has a 4xx status code
-func (o *GETCredentialsTaskInternalServerError) IsClientError() bool {
+func (o *GetCredentialsTaskInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get credentials task internal server error response has a 5xx status code
-func (o *GETCredentialsTaskInternalServerError) IsServerError() bool {
+func (o *GetCredentialsTaskInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get credentials task internal server error response a status code equal to that given
-func (o *GETCredentialsTaskInternalServerError) IsCode(code int) bool {
+func (o *GetCredentialsTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCredentialsTaskInternalServerError) Error() string {
+func (o *GetCredentialsTaskInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}][%d] getCredentialsTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCredentialsTaskInternalServerError) String() string {
+func (o *GetCredentialsTaskInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}][%d] getCredentialsTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCredentialsTaskInternalServerError) GetPayload() *models.Error {
+func (o *GetCredentialsTaskInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialsTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialsTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

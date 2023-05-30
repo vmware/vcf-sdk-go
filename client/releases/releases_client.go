@@ -33,24 +33,24 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETFutureReleases(params *GETFutureReleasesParams, opts ...ClientOption) (*GETFutureReleasesOK, error)
+	GetFutureReleases(params *GetFutureReleasesParams, opts ...ClientOption) (*GetFutureReleasesOK, error)
 
-	GETReleases(params *GETReleasesParams, opts ...ClientOption) (*GETReleasesOK, error)
+	GetReleases(params *GetReleasesParams, opts ...ClientOption) (*GetReleasesOK, error)
 
-	GETSystemRelease(params *GETSystemReleaseParams, opts ...ClientOption) (*GETSystemReleaseOK, error)
+	GetSystemRelease(params *GetSystemReleaseParams, opts ...ClientOption) (*GetSystemReleaseOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETFutureReleases returns all known to the system future target versions for a domain
+GetFutureReleases returns all known to the system future target versions for a domain
 
 Returns all known to the system future target versions for a domain. If some of them are not allowed (e.g. stepping stone) includes message why.
 */
-func (a *Client) GETFutureReleases(params *GETFutureReleasesParams, opts ...ClientOption) (*GETFutureReleasesOK, error) {
+func (a *Client) GetFutureReleases(params *GetFutureReleasesParams, opts ...ClientOption) (*GetFutureReleasesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETFutureReleasesParams()
+		params = NewGetFutureReleasesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getFutureReleases",
@@ -60,7 +60,7 @@ func (a *Client) GETFutureReleases(params *GETFutureReleasesParams, opts ...Clie
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETFutureReleasesReader{formats: a.formats},
+		Reader:             &GetFutureReleasesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -72,7 +72,7 @@ func (a *Client) GETFutureReleases(params *GETFutureReleasesParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETFutureReleasesOK)
+	success, ok := result.(*GetFutureReleasesOK)
 	if ok {
 		return success, nil
 	}
@@ -83,14 +83,14 @@ func (a *Client) GETFutureReleases(params *GETFutureReleasesParams, opts ...Clie
 }
 
 /*
-GETReleases Gets releases
+GetReleases gets releases
 
 Get all Releases, with option to get current release for a domain, get release by version or get future releases for a versionor get all the applicable target release.
 */
-func (a *Client) GETReleases(params *GETReleasesParams, opts ...ClientOption) (*GETReleasesOK, error) {
+func (a *Client) GetReleases(params *GetReleasesParams, opts ...ClientOption) (*GetReleasesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETReleasesParams()
+		params = NewGetReleasesParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getReleases",
@@ -100,7 +100,7 @@ func (a *Client) GETReleases(params *GETReleasesParams, opts ...ClientOption) (*
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETReleasesReader{formats: a.formats},
+		Reader:             &GetReleasesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -112,7 +112,7 @@ func (a *Client) GETReleases(params *GETReleasesParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETReleasesOK)
+	success, ok := result.(*GetReleasesOK)
 	if ok {
 		return success, nil
 	}
@@ -123,14 +123,14 @@ func (a *Client) GETReleases(params *GETReleasesParams, opts ...ClientOption) (*
 }
 
 /*
-GETSystemRelease Gets system release
+GetSystemRelease gets system release
 
 Returns release for the lowest deployed VCF version for a domain on the environment.If Management domain is ahead of WLD domain, VCF BOM version for the WLDdomain will be returned.
 */
-func (a *Client) GETSystemRelease(params *GETSystemReleaseParams, opts ...ClientOption) (*GETSystemReleaseOK, error) {
+func (a *Client) GetSystemRelease(params *GetSystemReleaseParams, opts ...ClientOption) (*GetSystemReleaseOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETSystemReleaseParams()
+		params = NewGetSystemReleaseParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getSystemRelease",
@@ -140,7 +140,7 @@ func (a *Client) GETSystemRelease(params *GETSystemReleaseParams, opts ...Client
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETSystemReleaseReader{formats: a.formats},
+		Reader:             &GetSystemReleaseReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -152,7 +152,7 @@ func (a *Client) GETSystemRelease(params *GETSystemReleaseParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETSystemReleaseOK)
+	success, ok := result.(*GetSystemReleaseOK)
 	if ok {
 		return success, nil
 	}

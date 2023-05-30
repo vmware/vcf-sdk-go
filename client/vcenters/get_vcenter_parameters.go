@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVcenterParams creates a new GETVcenterParams object,
+// NewGetVcenterParams creates a new GetVcenterParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVcenterParams() *GETVcenterParams {
-	return &GETVcenterParams{
+func NewGetVcenterParams() *GetVcenterParams {
+	return &GetVcenterParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVcenterParamsWithTimeout creates a new GETVcenterParams object
+// NewGetVcenterParamsWithTimeout creates a new GetVcenterParams object
 // with the ability to set a timeout on a request.
-func NewGETVcenterParamsWithTimeout(timeout time.Duration) *GETVcenterParams {
-	return &GETVcenterParams{
+func NewGetVcenterParamsWithTimeout(timeout time.Duration) *GetVcenterParams {
+	return &GetVcenterParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVcenterParamsWithContext creates a new GETVcenterParams object
+// NewGetVcenterParamsWithContext creates a new GetVcenterParams object
 // with the ability to set a context for a request.
-func NewGETVcenterParamsWithContext(ctx context.Context) *GETVcenterParams {
-	return &GETVcenterParams{
+func NewGetVcenterParamsWithContext(ctx context.Context) *GetVcenterParams {
+	return &GetVcenterParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVcenterParamsWithHTTPClient creates a new GETVcenterParams object
+// NewGetVcenterParamsWithHTTPClient creates a new GetVcenterParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVcenterParamsWithHTTPClient(client *http.Client) *GETVcenterParams {
-	return &GETVcenterParams{
+func NewGetVcenterParamsWithHTTPClient(client *http.Client) *GetVcenterParams {
+	return &GetVcenterParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVcenterParams contains all the parameters to send to the API endpoint
+GetVcenterParams contains all the parameters to send to the API endpoint
 
 	for the get vcenter operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVcenterParams struct {
+type GetVcenterParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETVcenterParams struct {
 // WithDefaults hydrates default values in the get vcenter params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVcenterParams) WithDefaults() *GETVcenterParams {
+func (o *GetVcenterParams) WithDefaults() *GetVcenterParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETVcenterParams) WithDefaults() *GETVcenterParams {
 // SetDefaults hydrates default values in the get vcenter params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVcenterParams) SetDefaults() {
+func (o *GetVcenterParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vcenter params
-func (o *GETVcenterParams) WithTimeout(timeout time.Duration) *GETVcenterParams {
+func (o *GetVcenterParams) WithTimeout(timeout time.Duration) *GetVcenterParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vcenter params
-func (o *GETVcenterParams) SetTimeout(timeout time.Duration) {
+func (o *GetVcenterParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vcenter params
-func (o *GETVcenterParams) WithContext(ctx context.Context) *GETVcenterParams {
+func (o *GetVcenterParams) WithContext(ctx context.Context) *GetVcenterParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vcenter params
-func (o *GETVcenterParams) SetContext(ctx context.Context) {
+func (o *GetVcenterParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vcenter params
-func (o *GETVcenterParams) WithHTTPClient(client *http.Client) *GETVcenterParams {
+func (o *GetVcenterParams) WithHTTPClient(client *http.Client) *GetVcenterParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vcenter params
-func (o *GETVcenterParams) SetHTTPClient(client *http.Client) {
+func (o *GetVcenterParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get vcenter params
-func (o *GETVcenterParams) WithID(id string) *GETVcenterParams {
+func (o *GetVcenterParams) WithID(id string) *GetVcenterParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get vcenter params
-func (o *GETVcenterParams) SetID(id string) {
+func (o *GetVcenterParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVcenterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVcenterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

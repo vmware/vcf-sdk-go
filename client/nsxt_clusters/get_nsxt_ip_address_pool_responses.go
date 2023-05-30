@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETNSXTIPAddressPoolReader is a Reader for the GETNSXTIPAddressPool structure.
-type GETNSXTIPAddressPoolReader struct {
+// GetNSXTIPAddressPoolReader is a Reader for the GetNSXTIPAddressPool structure.
+type GetNSXTIPAddressPoolReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETNSXTIPAddressPoolReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetNSXTIPAddressPoolReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETNSXTIPAddressPoolOK()
+		result := NewGetNSXTIPAddressPoolOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETNSXTIPAddressPoolNotFound()
+		result := NewGetNSXTIPAddressPoolNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETNSXTIPAddressPoolInternalServerError()
+		result := NewGetNSXTIPAddressPoolInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETNSXTIPAddressPoolReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewGETNSXTIPAddressPoolOK creates a GETNSXTIPAddressPoolOK with default headers values
-func NewGETNSXTIPAddressPoolOK() *GETNSXTIPAddressPoolOK {
-	return &GETNSXTIPAddressPoolOK{}
+// NewGetNSXTIPAddressPoolOK creates a GetNSXTIPAddressPoolOK with default headers values
+func NewGetNSXTIPAddressPoolOK() *GetNSXTIPAddressPoolOK {
+	return &GetNSXTIPAddressPoolOK{}
 }
 
 /*
-GETNSXTIPAddressPoolOK describes a response with status code 200, with default header values.
+GetNSXTIPAddressPoolOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETNSXTIPAddressPoolOK struct {
+type GetNSXTIPAddressPoolOK struct {
 	Payload *models.NSXTIPAddressPool
 }
 
 // IsSuccess returns true when this get Nsxt Ip address pool o k response has a 2xx status code
-func (o *GETNSXTIPAddressPoolOK) IsSuccess() bool {
+func (o *GetNSXTIPAddressPoolOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Nsxt Ip address pool o k response has a 3xx status code
-func (o *GETNSXTIPAddressPoolOK) IsRedirect() bool {
+func (o *GetNSXTIPAddressPoolOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Nsxt Ip address pool o k response has a 4xx status code
-func (o *GETNSXTIPAddressPoolOK) IsClientError() bool {
+func (o *GetNSXTIPAddressPoolOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Nsxt Ip address pool o k response has a 5xx status code
-func (o *GETNSXTIPAddressPoolOK) IsServerError() bool {
+func (o *GetNSXTIPAddressPoolOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Nsxt Ip address pool o k response a status code equal to that given
-func (o *GETNSXTIPAddressPoolOK) IsCode(code int) bool {
+func (o *GetNSXTIPAddressPoolOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETNSXTIPAddressPoolOK) Error() string {
+func (o *GetNSXTIPAddressPoolOK) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}][%d] getNsxtIpAddressPoolOK  %+v", 200, o.Payload)
 }
 
-func (o *GETNSXTIPAddressPoolOK) String() string {
+func (o *GetNSXTIPAddressPoolOK) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}][%d] getNsxtIpAddressPoolOK  %+v", 200, o.Payload)
 }
 
-func (o *GETNSXTIPAddressPoolOK) GetPayload() *models.NSXTIPAddressPool {
+func (o *GetNSXTIPAddressPoolOK) GetPayload() *models.NSXTIPAddressPool {
 	return o.Payload
 }
 
-func (o *GETNSXTIPAddressPoolOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNSXTIPAddressPoolOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.NSXTIPAddressPool)
 
@@ -112,58 +112,58 @@ func (o *GETNSXTIPAddressPoolOK) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETNSXTIPAddressPoolNotFound creates a GETNSXTIPAddressPoolNotFound with default headers values
-func NewGETNSXTIPAddressPoolNotFound() *GETNSXTIPAddressPoolNotFound {
-	return &GETNSXTIPAddressPoolNotFound{}
+// NewGetNSXTIPAddressPoolNotFound creates a GetNSXTIPAddressPoolNotFound with default headers values
+func NewGetNSXTIPAddressPoolNotFound() *GetNSXTIPAddressPoolNotFound {
+	return &GetNSXTIPAddressPoolNotFound{}
 }
 
 /*
-GETNSXTIPAddressPoolNotFound describes a response with status code 404, with default header values.
+GetNSXTIPAddressPoolNotFound describes a response with status code 404, with default header values.
 
 IP address pool not found
 */
-type GETNSXTIPAddressPoolNotFound struct {
+type GetNSXTIPAddressPoolNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Nsxt Ip address pool not found response has a 2xx status code
-func (o *GETNSXTIPAddressPoolNotFound) IsSuccess() bool {
+func (o *GetNSXTIPAddressPoolNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Nsxt Ip address pool not found response has a 3xx status code
-func (o *GETNSXTIPAddressPoolNotFound) IsRedirect() bool {
+func (o *GetNSXTIPAddressPoolNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Nsxt Ip address pool not found response has a 4xx status code
-func (o *GETNSXTIPAddressPoolNotFound) IsClientError() bool {
+func (o *GetNSXTIPAddressPoolNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Nsxt Ip address pool not found response has a 5xx status code
-func (o *GETNSXTIPAddressPoolNotFound) IsServerError() bool {
+func (o *GetNSXTIPAddressPoolNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Nsxt Ip address pool not found response a status code equal to that given
-func (o *GETNSXTIPAddressPoolNotFound) IsCode(code int) bool {
+func (o *GetNSXTIPAddressPoolNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETNSXTIPAddressPoolNotFound) Error() string {
+func (o *GetNSXTIPAddressPoolNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}][%d] getNsxtIpAddressPoolNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETNSXTIPAddressPoolNotFound) String() string {
+func (o *GetNSXTIPAddressPoolNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}][%d] getNsxtIpAddressPoolNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETNSXTIPAddressPoolNotFound) GetPayload() *models.Error {
+func (o *GetNSXTIPAddressPoolNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETNSXTIPAddressPoolNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNSXTIPAddressPoolNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETNSXTIPAddressPoolNotFound) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGETNSXTIPAddressPoolInternalServerError creates a GETNSXTIPAddressPoolInternalServerError with default headers values
-func NewGETNSXTIPAddressPoolInternalServerError() *GETNSXTIPAddressPoolInternalServerError {
-	return &GETNSXTIPAddressPoolInternalServerError{}
+// NewGetNSXTIPAddressPoolInternalServerError creates a GetNSXTIPAddressPoolInternalServerError with default headers values
+func NewGetNSXTIPAddressPoolInternalServerError() *GetNSXTIPAddressPoolInternalServerError {
+	return &GetNSXTIPAddressPoolInternalServerError{}
 }
 
 /*
-GETNSXTIPAddressPoolInternalServerError describes a response with status code 500, with default header values.
+GetNSXTIPAddressPoolInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETNSXTIPAddressPoolInternalServerError struct {
+type GetNSXTIPAddressPoolInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get Nsxt Ip address pool internal server error response has a 2xx status code
-func (o *GETNSXTIPAddressPoolInternalServerError) IsSuccess() bool {
+func (o *GetNSXTIPAddressPoolInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Nsxt Ip address pool internal server error response has a 3xx status code
-func (o *GETNSXTIPAddressPoolInternalServerError) IsRedirect() bool {
+func (o *GetNSXTIPAddressPoolInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Nsxt Ip address pool internal server error response has a 4xx status code
-func (o *GETNSXTIPAddressPoolInternalServerError) IsClientError() bool {
+func (o *GetNSXTIPAddressPoolInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Nsxt Ip address pool internal server error response has a 5xx status code
-func (o *GETNSXTIPAddressPoolInternalServerError) IsServerError() bool {
+func (o *GetNSXTIPAddressPoolInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get Nsxt Ip address pool internal server error response a status code equal to that given
-func (o *GETNSXTIPAddressPoolInternalServerError) IsCode(code int) bool {
+func (o *GetNSXTIPAddressPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETNSXTIPAddressPoolInternalServerError) Error() string {
+func (o *GetNSXTIPAddressPoolInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}][%d] getNsxtIpAddressPoolInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETNSXTIPAddressPoolInternalServerError) String() string {
+func (o *GetNSXTIPAddressPoolInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}][%d] getNsxtIpAddressPoolInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETNSXTIPAddressPoolInternalServerError) GetPayload() *models.Error {
+func (o *GetNSXTIPAddressPoolInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETNSXTIPAddressPoolInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetNSXTIPAddressPoolInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

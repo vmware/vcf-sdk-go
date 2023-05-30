@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETResourceWarningParams creates a new GETResourceWarningParams object,
+// NewGetResourceWarningParams creates a new GetResourceWarningParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETResourceWarningParams() *GETResourceWarningParams {
-	return &GETResourceWarningParams{
+func NewGetResourceWarningParams() *GetResourceWarningParams {
+	return &GetResourceWarningParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETResourceWarningParamsWithTimeout creates a new GETResourceWarningParams object
+// NewGetResourceWarningParamsWithTimeout creates a new GetResourceWarningParams object
 // with the ability to set a timeout on a request.
-func NewGETResourceWarningParamsWithTimeout(timeout time.Duration) *GETResourceWarningParams {
-	return &GETResourceWarningParams{
+func NewGetResourceWarningParamsWithTimeout(timeout time.Duration) *GetResourceWarningParams {
+	return &GetResourceWarningParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETResourceWarningParamsWithContext creates a new GETResourceWarningParams object
+// NewGetResourceWarningParamsWithContext creates a new GetResourceWarningParams object
 // with the ability to set a context for a request.
-func NewGETResourceWarningParamsWithContext(ctx context.Context) *GETResourceWarningParams {
-	return &GETResourceWarningParams{
+func NewGetResourceWarningParamsWithContext(ctx context.Context) *GetResourceWarningParams {
+	return &GetResourceWarningParams{
 		Context: ctx,
 	}
 }
 
-// NewGETResourceWarningParamsWithHTTPClient creates a new GETResourceWarningParams object
+// NewGetResourceWarningParamsWithHTTPClient creates a new GetResourceWarningParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETResourceWarningParamsWithHTTPClient(client *http.Client) *GETResourceWarningParams {
-	return &GETResourceWarningParams{
+func NewGetResourceWarningParamsWithHTTPClient(client *http.Client) *GetResourceWarningParams {
+	return &GetResourceWarningParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETResourceWarningParams contains all the parameters to send to the API endpoint
+GetResourceWarningParams contains all the parameters to send to the API endpoint
 
 	for the get resource warning operation.
 
 	Typically these are written to a http.Request.
 */
-type GETResourceWarningParams struct {
+type GetResourceWarningParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETResourceWarningParams struct {
 // WithDefaults hydrates default values in the get resource warning params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourceWarningParams) WithDefaults() *GETResourceWarningParams {
+func (o *GetResourceWarningParams) WithDefaults() *GetResourceWarningParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETResourceWarningParams) WithDefaults() *GETResourceWarningParams {
 // SetDefaults hydrates default values in the get resource warning params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETResourceWarningParams) SetDefaults() {
+func (o *GetResourceWarningParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get resource warning params
-func (o *GETResourceWarningParams) WithTimeout(timeout time.Duration) *GETResourceWarningParams {
+func (o *GetResourceWarningParams) WithTimeout(timeout time.Duration) *GetResourceWarningParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get resource warning params
-func (o *GETResourceWarningParams) SetTimeout(timeout time.Duration) {
+func (o *GetResourceWarningParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get resource warning params
-func (o *GETResourceWarningParams) WithContext(ctx context.Context) *GETResourceWarningParams {
+func (o *GetResourceWarningParams) WithContext(ctx context.Context) *GetResourceWarningParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get resource warning params
-func (o *GETResourceWarningParams) SetContext(ctx context.Context) {
+func (o *GetResourceWarningParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get resource warning params
-func (o *GETResourceWarningParams) WithHTTPClient(client *http.Client) *GETResourceWarningParams {
+func (o *GetResourceWarningParams) WithHTTPClient(client *http.Client) *GetResourceWarningParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get resource warning params
-func (o *GETResourceWarningParams) SetHTTPClient(client *http.Client) {
+func (o *GetResourceWarningParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get resource warning params
-func (o *GETResourceWarningParams) WithID(id string) *GETResourceWarningParams {
+func (o *GetResourceWarningParams) WithID(id string) *GetResourceWarningParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get resource warning params
-func (o *GETResourceWarningParams) SetID(id string) {
+func (o *GetResourceWarningParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETResourceWarningParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetResourceWarningParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

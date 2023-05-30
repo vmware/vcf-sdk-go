@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETPrecheckTaskParams creates a new GETPrecheckTaskParams object,
+// NewGetPrecheckTaskParams creates a new GetPrecheckTaskParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETPrecheckTaskParams() *GETPrecheckTaskParams {
-	return &GETPrecheckTaskParams{
+func NewGetPrecheckTaskParams() *GetPrecheckTaskParams {
+	return &GetPrecheckTaskParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETPrecheckTaskParamsWithTimeout creates a new GETPrecheckTaskParams object
+// NewGetPrecheckTaskParamsWithTimeout creates a new GetPrecheckTaskParams object
 // with the ability to set a timeout on a request.
-func NewGETPrecheckTaskParamsWithTimeout(timeout time.Duration) *GETPrecheckTaskParams {
-	return &GETPrecheckTaskParams{
+func NewGetPrecheckTaskParamsWithTimeout(timeout time.Duration) *GetPrecheckTaskParams {
+	return &GetPrecheckTaskParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETPrecheckTaskParamsWithContext creates a new GETPrecheckTaskParams object
+// NewGetPrecheckTaskParamsWithContext creates a new GetPrecheckTaskParams object
 // with the ability to set a context for a request.
-func NewGETPrecheckTaskParamsWithContext(ctx context.Context) *GETPrecheckTaskParams {
-	return &GETPrecheckTaskParams{
+func NewGetPrecheckTaskParamsWithContext(ctx context.Context) *GetPrecheckTaskParams {
+	return &GetPrecheckTaskParams{
 		Context: ctx,
 	}
 }
 
-// NewGETPrecheckTaskParamsWithHTTPClient creates a new GETPrecheckTaskParams object
+// NewGetPrecheckTaskParamsWithHTTPClient creates a new GetPrecheckTaskParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETPrecheckTaskParamsWithHTTPClient(client *http.Client) *GETPrecheckTaskParams {
-	return &GETPrecheckTaskParams{
+func NewGetPrecheckTaskParamsWithHTTPClient(client *http.Client) *GetPrecheckTaskParams {
+	return &GetPrecheckTaskParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETPrecheckTaskParams contains all the parameters to send to the API endpoint
+GetPrecheckTaskParams contains all the parameters to send to the API endpoint
 
 	for the get precheck task operation.
 
 	Typically these are written to a http.Request.
 */
-type GETPrecheckTaskParams struct {
+type GetPrecheckTaskParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETPrecheckTaskParams struct {
 // WithDefaults hydrates default values in the get precheck task params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPrecheckTaskParams) WithDefaults() *GETPrecheckTaskParams {
+func (o *GetPrecheckTaskParams) WithDefaults() *GetPrecheckTaskParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETPrecheckTaskParams) WithDefaults() *GETPrecheckTaskParams {
 // SetDefaults hydrates default values in the get precheck task params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETPrecheckTaskParams) SetDefaults() {
+func (o *GetPrecheckTaskParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get precheck task params
-func (o *GETPrecheckTaskParams) WithTimeout(timeout time.Duration) *GETPrecheckTaskParams {
+func (o *GetPrecheckTaskParams) WithTimeout(timeout time.Duration) *GetPrecheckTaskParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get precheck task params
-func (o *GETPrecheckTaskParams) SetTimeout(timeout time.Duration) {
+func (o *GetPrecheckTaskParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get precheck task params
-func (o *GETPrecheckTaskParams) WithContext(ctx context.Context) *GETPrecheckTaskParams {
+func (o *GetPrecheckTaskParams) WithContext(ctx context.Context) *GetPrecheckTaskParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get precheck task params
-func (o *GETPrecheckTaskParams) SetContext(ctx context.Context) {
+func (o *GetPrecheckTaskParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get precheck task params
-func (o *GETPrecheckTaskParams) WithHTTPClient(client *http.Client) *GETPrecheckTaskParams {
+func (o *GetPrecheckTaskParams) WithHTTPClient(client *http.Client) *GetPrecheckTaskParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get precheck task params
-func (o *GETPrecheckTaskParams) SetHTTPClient(client *http.Client) {
+func (o *GetPrecheckTaskParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get precheck task params
-func (o *GETPrecheckTaskParams) WithID(id string) *GETPrecheckTaskParams {
+func (o *GetPrecheckTaskParams) WithID(id string) *GetPrecheckTaskParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get precheck task params
-func (o *GETPrecheckTaskParams) SetID(id string) {
+func (o *GetPrecheckTaskParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETPrecheckTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetPrecheckTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETBundleReader is a Reader for the GETBundle structure.
-type GETBundleReader struct {
+// GetBundleReader is a Reader for the GetBundle structure.
+type GetBundleReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETBundleReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetBundleReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETBundleOK()
+		result := NewGetBundleOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETBundleNotFound()
+		result := NewGetBundleNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETBundleInternalServerError()
+		result := NewGetBundleInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETBundleReader) ReadResponse(response runtime.ClientResponse, consumer
 	}
 }
 
-// NewGETBundleOK creates a GETBundleOK with default headers values
-func NewGETBundleOK() *GETBundleOK {
-	return &GETBundleOK{}
+// NewGetBundleOK creates a GetBundleOK with default headers values
+func NewGetBundleOK() *GetBundleOK {
+	return &GetBundleOK{}
 }
 
 /*
-GETBundleOK describes a response with status code 200, with default header values.
+GetBundleOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETBundleOK struct {
+type GetBundleOK struct {
 	Payload *models.Bundle
 }
 
 // IsSuccess returns true when this get bundle o k response has a 2xx status code
-func (o *GETBundleOK) IsSuccess() bool {
+func (o *GetBundleOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get bundle o k response has a 3xx status code
-func (o *GETBundleOK) IsRedirect() bool {
+func (o *GetBundleOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bundle o k response has a 4xx status code
-func (o *GETBundleOK) IsClientError() bool {
+func (o *GetBundleOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bundle o k response has a 5xx status code
-func (o *GETBundleOK) IsServerError() bool {
+func (o *GetBundleOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bundle o k response a status code equal to that given
-func (o *GETBundleOK) IsCode(code int) bool {
+func (o *GetBundleOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETBundleOK) Error() string {
+func (o *GetBundleOK) Error() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBundleOK) String() string {
+func (o *GetBundleOK) String() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBundleOK) GetPayload() *models.Bundle {
+func (o *GetBundleOK) GetPayload() *models.Bundle {
 	return o.Payload
 }
 
-func (o *GETBundleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBundleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Bundle)
 
@@ -112,58 +112,58 @@ func (o *GETBundleOK) readResponse(response runtime.ClientResponse, consumer run
 	return nil
 }
 
-// NewGETBundleNotFound creates a GETBundleNotFound with default headers values
-func NewGETBundleNotFound() *GETBundleNotFound {
-	return &GETBundleNotFound{}
+// NewGetBundleNotFound creates a GetBundleNotFound with default headers values
+func NewGetBundleNotFound() *GetBundleNotFound {
+	return &GetBundleNotFound{}
 }
 
 /*
-GETBundleNotFound describes a response with status code 404, with default header values.
+GetBundleNotFound describes a response with status code 404, with default header values.
 
 Bundle Not Found
 */
-type GETBundleNotFound struct {
+type GetBundleNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get bundle not found response has a 2xx status code
-func (o *GETBundleNotFound) IsSuccess() bool {
+func (o *GetBundleNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bundle not found response has a 3xx status code
-func (o *GETBundleNotFound) IsRedirect() bool {
+func (o *GetBundleNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bundle not found response has a 4xx status code
-func (o *GETBundleNotFound) IsClientError() bool {
+func (o *GetBundleNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get bundle not found response has a 5xx status code
-func (o *GETBundleNotFound) IsServerError() bool {
+func (o *GetBundleNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bundle not found response a status code equal to that given
-func (o *GETBundleNotFound) IsCode(code int) bool {
+func (o *GetBundleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETBundleNotFound) Error() string {
+func (o *GetBundleNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETBundleNotFound) String() string {
+func (o *GetBundleNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETBundleNotFound) GetPayload() *models.Error {
+func (o *GetBundleNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETBundleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBundleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETBundleNotFound) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETBundleInternalServerError creates a GETBundleInternalServerError with default headers values
-func NewGETBundleInternalServerError() *GETBundleInternalServerError {
-	return &GETBundleInternalServerError{}
+// NewGetBundleInternalServerError creates a GetBundleInternalServerError with default headers values
+func NewGetBundleInternalServerError() *GetBundleInternalServerError {
+	return &GetBundleInternalServerError{}
 }
 
 /*
-GETBundleInternalServerError describes a response with status code 500, with default header values.
+GetBundleInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETBundleInternalServerError struct {
+type GetBundleInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get bundle internal server error response has a 2xx status code
-func (o *GETBundleInternalServerError) IsSuccess() bool {
+func (o *GetBundleInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bundle internal server error response has a 3xx status code
-func (o *GETBundleInternalServerError) IsRedirect() bool {
+func (o *GetBundleInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bundle internal server error response has a 4xx status code
-func (o *GETBundleInternalServerError) IsClientError() bool {
+func (o *GetBundleInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bundle internal server error response has a 5xx status code
-func (o *GETBundleInternalServerError) IsServerError() bool {
+func (o *GetBundleInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bundle internal server error response a status code equal to that given
-func (o *GETBundleInternalServerError) IsCode(code int) bool {
+func (o *GetBundleInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETBundleInternalServerError) Error() string {
+func (o *GetBundleInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETBundleInternalServerError) String() string {
+func (o *GetBundleInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETBundleInternalServerError) GetPayload() *models.Error {
+func (o *GetBundleInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETBundleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBundleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

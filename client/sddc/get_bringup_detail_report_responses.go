@@ -16,34 +16,34 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// GETBringupDetailReportReader is a Reader for the GETBringupDetailReport structure.
-type GETBringupDetailReportReader struct {
+// GetBringupDetailReportReader is a Reader for the GetBringupDetailReport structure.
+type GetBringupDetailReportReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETBringupDetailReportReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetBringupDetailReportReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETBringupDetailReportOK()
+		result := NewGetBringupDetailReportOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 204:
-		result := NewGETBringupDetailReportNoContent()
+		result := NewGetBringupDetailReportNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 500:
-		result := NewGETBringupDetailReportInternalServerError()
+		result := NewGetBringupDetailReportInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 501:
-		result := NewGETBringupDetailReportNotImplemented()
+		result := NewGetBringupDetailReportNotImplemented()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -53,58 +53,58 @@ func (o *GETBringupDetailReportReader) ReadResponse(response runtime.ClientRespo
 	}
 }
 
-// NewGETBringupDetailReportOK creates a GETBringupDetailReportOK with default headers values
-func NewGETBringupDetailReportOK() *GETBringupDetailReportOK {
-	return &GETBringupDetailReportOK{}
+// NewGetBringupDetailReportOK creates a GetBringupDetailReportOK with default headers values
+func NewGetBringupDetailReportOK() *GetBringupDetailReportOK {
+	return &GetBringupDetailReportOK{}
 }
 
 /*
-GETBringupDetailReportOK describes a response with status code 200, with default header values.
+GetBringupDetailReportOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETBringupDetailReportOK struct {
+type GetBringupDetailReportOK struct {
 	Payload string
 }
 
 // IsSuccess returns true when this get bringup detail report o k response has a 2xx status code
-func (o *GETBringupDetailReportOK) IsSuccess() bool {
+func (o *GetBringupDetailReportOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get bringup detail report o k response has a 3xx status code
-func (o *GETBringupDetailReportOK) IsRedirect() bool {
+func (o *GetBringupDetailReportOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup detail report o k response has a 4xx status code
-func (o *GETBringupDetailReportOK) IsClientError() bool {
+func (o *GetBringupDetailReportOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup detail report o k response has a 5xx status code
-func (o *GETBringupDetailReportOK) IsServerError() bool {
+func (o *GetBringupDetailReportOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bringup detail report o k response a status code equal to that given
-func (o *GETBringupDetailReportOK) IsCode(code int) bool {
+func (o *GetBringupDetailReportOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETBringupDetailReportOK) Error() string {
+func (o *GetBringupDetailReportOK) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBringupDetailReportOK) String() string {
+func (o *GetBringupDetailReportOK) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportOK  %+v", 200, o.Payload)
 }
 
-func (o *GETBringupDetailReportOK) GetPayload() string {
+func (o *GetBringupDetailReportOK) GetPayload() string {
 	return o.Payload
 }
 
-func (o *GETBringupDetailReportOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupDetailReportOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -114,58 +114,58 @@ func (o *GETBringupDetailReportOK) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-// NewGETBringupDetailReportNoContent creates a GETBringupDetailReportNoContent with default headers values
-func NewGETBringupDetailReportNoContent() *GETBringupDetailReportNoContent {
-	return &GETBringupDetailReportNoContent{}
+// NewGetBringupDetailReportNoContent creates a GetBringupDetailReportNoContent with default headers values
+func NewGetBringupDetailReportNoContent() *GetBringupDetailReportNoContent {
+	return &GetBringupDetailReportNoContent{}
 }
 
 /*
-GETBringupDetailReportNoContent describes a response with status code 204, with default header values.
+GetBringupDetailReportNoContent describes a response with status code 204, with default header values.
 
 No content
 */
-type GETBringupDetailReportNoContent struct {
+type GetBringupDetailReportNoContent struct {
 	Payload string
 }
 
 // IsSuccess returns true when this get bringup detail report no content response has a 2xx status code
-func (o *GETBringupDetailReportNoContent) IsSuccess() bool {
+func (o *GetBringupDetailReportNoContent) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get bringup detail report no content response has a 3xx status code
-func (o *GETBringupDetailReportNoContent) IsRedirect() bool {
+func (o *GetBringupDetailReportNoContent) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup detail report no content response has a 4xx status code
-func (o *GETBringupDetailReportNoContent) IsClientError() bool {
+func (o *GetBringupDetailReportNoContent) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup detail report no content response has a 5xx status code
-func (o *GETBringupDetailReportNoContent) IsServerError() bool {
+func (o *GetBringupDetailReportNoContent) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get bringup detail report no content response a status code equal to that given
-func (o *GETBringupDetailReportNoContent) IsCode(code int) bool {
+func (o *GetBringupDetailReportNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
-func (o *GETBringupDetailReportNoContent) Error() string {
+func (o *GetBringupDetailReportNoContent) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportNoContent  %+v", 204, o.Payload)
 }
 
-func (o *GETBringupDetailReportNoContent) String() string {
+func (o *GetBringupDetailReportNoContent) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportNoContent  %+v", 204, o.Payload)
 }
 
-func (o *GETBringupDetailReportNoContent) GetPayload() string {
+func (o *GetBringupDetailReportNoContent) GetPayload() string {
 	return o.Payload
 }
 
-func (o *GETBringupDetailReportNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupDetailReportNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
@@ -175,104 +175,104 @@ func (o *GETBringupDetailReportNoContent) readResponse(response runtime.ClientRe
 	return nil
 }
 
-// NewGETBringupDetailReportInternalServerError creates a GETBringupDetailReportInternalServerError with default headers values
-func NewGETBringupDetailReportInternalServerError() *GETBringupDetailReportInternalServerError {
-	return &GETBringupDetailReportInternalServerError{}
+// NewGetBringupDetailReportInternalServerError creates a GetBringupDetailReportInternalServerError with default headers values
+func NewGetBringupDetailReportInternalServerError() *GetBringupDetailReportInternalServerError {
+	return &GetBringupDetailReportInternalServerError{}
 }
 
 /*
-GETBringupDetailReportInternalServerError describes a response with status code 500, with default header values.
+GetBringupDetailReportInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETBringupDetailReportInternalServerError struct {
+type GetBringupDetailReportInternalServerError struct {
 }
 
 // IsSuccess returns true when this get bringup detail report internal server error response has a 2xx status code
-func (o *GETBringupDetailReportInternalServerError) IsSuccess() bool {
+func (o *GetBringupDetailReportInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup detail report internal server error response has a 3xx status code
-func (o *GETBringupDetailReportInternalServerError) IsRedirect() bool {
+func (o *GetBringupDetailReportInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup detail report internal server error response has a 4xx status code
-func (o *GETBringupDetailReportInternalServerError) IsClientError() bool {
+func (o *GetBringupDetailReportInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup detail report internal server error response has a 5xx status code
-func (o *GETBringupDetailReportInternalServerError) IsServerError() bool {
+func (o *GetBringupDetailReportInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bringup detail report internal server error response a status code equal to that given
-func (o *GETBringupDetailReportInternalServerError) IsCode(code int) bool {
+func (o *GetBringupDetailReportInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETBringupDetailReportInternalServerError) Error() string {
+func (o *GetBringupDetailReportInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportInternalServerError ", 500)
 }
 
-func (o *GETBringupDetailReportInternalServerError) String() string {
+func (o *GetBringupDetailReportInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportInternalServerError ", 500)
 }
 
-func (o *GETBringupDetailReportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupDetailReportInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
 
-// NewGETBringupDetailReportNotImplemented creates a GETBringupDetailReportNotImplemented with default headers values
-func NewGETBringupDetailReportNotImplemented() *GETBringupDetailReportNotImplemented {
-	return &GETBringupDetailReportNotImplemented{}
+// NewGetBringupDetailReportNotImplemented creates a GetBringupDetailReportNotImplemented with default headers values
+func NewGetBringupDetailReportNotImplemented() *GetBringupDetailReportNotImplemented {
+	return &GetBringupDetailReportNotImplemented{}
 }
 
 /*
-GETBringupDetailReportNotImplemented describes a response with status code 501, with default header values.
+GetBringupDetailReportNotImplemented describes a response with status code 501, with default header values.
 
 Not Implemented
 */
-type GETBringupDetailReportNotImplemented struct {
+type GetBringupDetailReportNotImplemented struct {
 }
 
 // IsSuccess returns true when this get bringup detail report not implemented response has a 2xx status code
-func (o *GETBringupDetailReportNotImplemented) IsSuccess() bool {
+func (o *GetBringupDetailReportNotImplemented) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get bringup detail report not implemented response has a 3xx status code
-func (o *GETBringupDetailReportNotImplemented) IsRedirect() bool {
+func (o *GetBringupDetailReportNotImplemented) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get bringup detail report not implemented response has a 4xx status code
-func (o *GETBringupDetailReportNotImplemented) IsClientError() bool {
+func (o *GetBringupDetailReportNotImplemented) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get bringup detail report not implemented response has a 5xx status code
-func (o *GETBringupDetailReportNotImplemented) IsServerError() bool {
+func (o *GetBringupDetailReportNotImplemented) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get bringup detail report not implemented response a status code equal to that given
-func (o *GETBringupDetailReportNotImplemented) IsCode(code int) bool {
+func (o *GetBringupDetailReportNotImplemented) IsCode(code int) bool {
 	return code == 501
 }
 
-func (o *GETBringupDetailReportNotImplemented) Error() string {
+func (o *GetBringupDetailReportNotImplemented) Error() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportNotImplemented ", 501)
 }
 
-func (o *GETBringupDetailReportNotImplemented) String() string {
+func (o *GetBringupDetailReportNotImplemented) String() string {
 	return fmt.Sprintf("[GET /v1/sddcs/{id}/detail-report][%d] getBringupDetailReportNotImplemented ", 501)
 }
 
-func (o *GETBringupDetailReportNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetBringupDetailReportNotImplemented) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

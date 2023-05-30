@@ -19,105 +19,105 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETAllUIUsersUsingGETParams creates a new GETAllUIUsersUsingGETParams object,
+// NewGetAllUIUsersUsingGETParams creates a new GetAllUIUsersUsingGETParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETAllUIUsersUsingGETParams() *GETAllUIUsersUsingGETParams {
-	return &GETAllUIUsersUsingGETParams{
+func NewGetAllUIUsersUsingGETParams() *GetAllUIUsersUsingGETParams {
+	return &GetAllUIUsersUsingGETParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETAllUIUsersUsingGETParamsWithTimeout creates a new GETAllUIUsersUsingGETParams object
+// NewGetAllUIUsersUsingGETParamsWithTimeout creates a new GetAllUIUsersUsingGETParams object
 // with the ability to set a timeout on a request.
-func NewGETAllUIUsersUsingGETParamsWithTimeout(timeout time.Duration) *GETAllUIUsersUsingGETParams {
-	return &GETAllUIUsersUsingGETParams{
+func NewGetAllUIUsersUsingGETParamsWithTimeout(timeout time.Duration) *GetAllUIUsersUsingGETParams {
+	return &GetAllUIUsersUsingGETParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETAllUIUsersUsingGETParamsWithContext creates a new GETAllUIUsersUsingGETParams object
+// NewGetAllUIUsersUsingGETParamsWithContext creates a new GetAllUIUsersUsingGETParams object
 // with the ability to set a context for a request.
-func NewGETAllUIUsersUsingGETParamsWithContext(ctx context.Context) *GETAllUIUsersUsingGETParams {
-	return &GETAllUIUsersUsingGETParams{
+func NewGetAllUIUsersUsingGETParamsWithContext(ctx context.Context) *GetAllUIUsersUsingGETParams {
+	return &GetAllUIUsersUsingGETParams{
 		Context: ctx,
 	}
 }
 
-// NewGETAllUIUsersUsingGETParamsWithHTTPClient creates a new GETAllUIUsersUsingGETParams object
+// NewGetAllUIUsersUsingGETParamsWithHTTPClient creates a new GetAllUIUsersUsingGETParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETAllUIUsersUsingGETParamsWithHTTPClient(client *http.Client) *GETAllUIUsersUsingGETParams {
-	return &GETAllUIUsersUsingGETParams{
+func NewGetAllUIUsersUsingGETParamsWithHTTPClient(client *http.Client) *GetAllUIUsersUsingGETParams {
+	return &GetAllUIUsersUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETAllUIUsersUsingGETParams contains all the parameters to send to the API endpoint
+GetAllUIUsersUsingGETParams contains all the parameters to send to the API endpoint
 
-	for the get all Ui users using GET operation.
+	for the get all Ui users using g e t operation.
 
 	Typically these are written to a http.Request.
 */
-type GETAllUIUsersUsingGETParams struct {
+type GetAllUIUsersUsingGETParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
 }
 
-// WithDefaults hydrates default values in the get all Ui users using GET params (not the query body).
+// WithDefaults hydrates default values in the get all Ui users using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllUIUsersUsingGETParams) WithDefaults() *GETAllUIUsersUsingGETParams {
+func (o *GetAllUIUsersUsingGETParams) WithDefaults() *GetAllUIUsersUsingGETParams {
 	o.SetDefaults()
 	return o
 }
 
-// SetDefaults hydrates default values in the get all Ui users using GET params (not the query body).
+// SetDefaults hydrates default values in the get all Ui users using g e t params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETAllUIUsersUsingGETParams) SetDefaults() {
+func (o *GetAllUIUsersUsingGETParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the get all Ui users using GET params
-func (o *GETAllUIUsersUsingGETParams) WithTimeout(timeout time.Duration) *GETAllUIUsersUsingGETParams {
+// WithTimeout adds the timeout to the get all Ui users using g e t params
+func (o *GetAllUIUsersUsingGETParams) WithTimeout(timeout time.Duration) *GetAllUIUsersUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get all Ui users using GET params
-func (o *GETAllUIUsersUsingGETParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the get all Ui users using g e t params
+func (o *GetAllUIUsersUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get all Ui users using GET params
-func (o *GETAllUIUsersUsingGETParams) WithContext(ctx context.Context) *GETAllUIUsersUsingGETParams {
+// WithContext adds the context to the get all Ui users using g e t params
+func (o *GetAllUIUsersUsingGETParams) WithContext(ctx context.Context) *GetAllUIUsersUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get all Ui users using GET params
-func (o *GETAllUIUsersUsingGETParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the get all Ui users using g e t params
+func (o *GetAllUIUsersUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get all Ui users using GET params
-func (o *GETAllUIUsersUsingGETParams) WithHTTPClient(client *http.Client) *GETAllUIUsersUsingGETParams {
+// WithHTTPClient adds the HTTPClient to the get all Ui users using g e t params
+func (o *GetAllUIUsersUsingGETParams) WithHTTPClient(client *http.Client) *GetAllUIUsersUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get all Ui users using GET params
-func (o *GETAllUIUsersUsingGETParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the get all Ui users using g e t params
+func (o *GetAllUIUsersUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETAllUIUsersUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetAllUIUsersUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

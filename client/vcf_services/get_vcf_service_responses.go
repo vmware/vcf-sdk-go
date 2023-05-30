@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVcfServiceReader is a Reader for the GETVcfService structure.
-type GETVcfServiceReader struct {
+// GetVcfServiceReader is a Reader for the GetVcfService structure.
+type GetVcfServiceReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVcfServiceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVcfServiceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVcfServiceOK()
+		result := NewGetVcfServiceOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETVcfServiceNotFound()
+		result := NewGetVcfServiceNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETVcfServiceInternalServerError()
+		result := NewGetVcfServiceInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETVcfServiceReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewGETVcfServiceOK creates a GETVcfServiceOK with default headers values
-func NewGETVcfServiceOK() *GETVcfServiceOK {
-	return &GETVcfServiceOK{}
+// NewGetVcfServiceOK creates a GetVcfServiceOK with default headers values
+func NewGetVcfServiceOK() *GetVcfServiceOK {
+	return &GetVcfServiceOK{}
 }
 
 /*
-GETVcfServiceOK describes a response with status code 200, with default header values.
+GetVcfServiceOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETVcfServiceOK struct {
+type GetVcfServiceOK struct {
 	Payload *models.VcfService
 }
 
 // IsSuccess returns true when this get vcf service o k response has a 2xx status code
-func (o *GETVcfServiceOK) IsSuccess() bool {
+func (o *GetVcfServiceOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get vcf service o k response has a 3xx status code
-func (o *GETVcfServiceOK) IsRedirect() bool {
+func (o *GetVcfServiceOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vcf service o k response has a 4xx status code
-func (o *GETVcfServiceOK) IsClientError() bool {
+func (o *GetVcfServiceOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vcf service o k response has a 5xx status code
-func (o *GETVcfServiceOK) IsServerError() bool {
+func (o *GetVcfServiceOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vcf service o k response a status code equal to that given
-func (o *GETVcfServiceOK) IsCode(code int) bool {
+func (o *GetVcfServiceOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVcfServiceOK) Error() string {
+func (o *GetVcfServiceOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vcf-services/{id}][%d] getVcfServiceOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVcfServiceOK) String() string {
+func (o *GetVcfServiceOK) String() string {
 	return fmt.Sprintf("[GET /v1/vcf-services/{id}][%d] getVcfServiceOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVcfServiceOK) GetPayload() *models.VcfService {
+func (o *GetVcfServiceOK) GetPayload() *models.VcfService {
 	return o.Payload
 }
 
-func (o *GETVcfServiceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVcfServiceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.VcfService)
 
@@ -112,58 +112,58 @@ func (o *GETVcfServiceOK) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETVcfServiceNotFound creates a GETVcfServiceNotFound with default headers values
-func NewGETVcfServiceNotFound() *GETVcfServiceNotFound {
-	return &GETVcfServiceNotFound{}
+// NewGetVcfServiceNotFound creates a GetVcfServiceNotFound with default headers values
+func NewGetVcfServiceNotFound() *GetVcfServiceNotFound {
+	return &GetVcfServiceNotFound{}
 }
 
 /*
-GETVcfServiceNotFound describes a response with status code 404, with default header values.
+GetVcfServiceNotFound describes a response with status code 404, with default header values.
 
 VcfService not found
 */
-type GETVcfServiceNotFound struct {
+type GetVcfServiceNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vcf service not found response has a 2xx status code
-func (o *GETVcfServiceNotFound) IsSuccess() bool {
+func (o *GetVcfServiceNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vcf service not found response has a 3xx status code
-func (o *GETVcfServiceNotFound) IsRedirect() bool {
+func (o *GetVcfServiceNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vcf service not found response has a 4xx status code
-func (o *GETVcfServiceNotFound) IsClientError() bool {
+func (o *GetVcfServiceNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get vcf service not found response has a 5xx status code
-func (o *GETVcfServiceNotFound) IsServerError() bool {
+func (o *GetVcfServiceNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get vcf service not found response a status code equal to that given
-func (o *GETVcfServiceNotFound) IsCode(code int) bool {
+func (o *GetVcfServiceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETVcfServiceNotFound) Error() string {
+func (o *GetVcfServiceNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vcf-services/{id}][%d] getVcfServiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVcfServiceNotFound) String() string {
+func (o *GetVcfServiceNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vcf-services/{id}][%d] getVcfServiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETVcfServiceNotFound) GetPayload() *models.Error {
+func (o *GetVcfServiceNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVcfServiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVcfServiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETVcfServiceNotFound) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewGETVcfServiceInternalServerError creates a GETVcfServiceInternalServerError with default headers values
-func NewGETVcfServiceInternalServerError() *GETVcfServiceInternalServerError {
-	return &GETVcfServiceInternalServerError{}
+// NewGetVcfServiceInternalServerError creates a GetVcfServiceInternalServerError with default headers values
+func NewGetVcfServiceInternalServerError() *GetVcfServiceInternalServerError {
+	return &GetVcfServiceInternalServerError{}
 }
 
 /*
-GETVcfServiceInternalServerError describes a response with status code 500, with default header values.
+GetVcfServiceInternalServerError describes a response with status code 500, with default header values.
 
 InternalServerError
 */
-type GETVcfServiceInternalServerError struct {
+type GetVcfServiceInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get vcf service internal server error response has a 2xx status code
-func (o *GETVcfServiceInternalServerError) IsSuccess() bool {
+func (o *GetVcfServiceInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get vcf service internal server error response has a 3xx status code
-func (o *GETVcfServiceInternalServerError) IsRedirect() bool {
+func (o *GetVcfServiceInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get vcf service internal server error response has a 4xx status code
-func (o *GETVcfServiceInternalServerError) IsClientError() bool {
+func (o *GetVcfServiceInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get vcf service internal server error response has a 5xx status code
-func (o *GETVcfServiceInternalServerError) IsServerError() bool {
+func (o *GetVcfServiceInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get vcf service internal server error response a status code equal to that given
-func (o *GETVcfServiceInternalServerError) IsCode(code int) bool {
+func (o *GetVcfServiceInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETVcfServiceInternalServerError) Error() string {
+func (o *GetVcfServiceInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/vcf-services/{id}][%d] getVcfServiceInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVcfServiceInternalServerError) String() string {
+func (o *GetVcfServiceInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/vcf-services/{id}][%d] getVcfServiceInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETVcfServiceInternalServerError) GetPayload() *models.Error {
+func (o *GetVcfServiceInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETVcfServiceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVcfServiceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETResourcesFunctionalitiesAllowedGlobalReader is a Reader for the GETResourcesFunctionalitiesAllowedGlobal structure.
-type GETResourcesFunctionalitiesAllowedGlobalReader struct {
+// GetResourcesFunctionalitiesAllowedGlobalReader is a Reader for the GetResourcesFunctionalitiesAllowedGlobal structure.
+type GetResourcesFunctionalitiesAllowedGlobalReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETResourcesFunctionalitiesAllowedGlobalReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetResourcesFunctionalitiesAllowedGlobalReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETResourcesFunctionalitiesAllowedGlobalOK()
+		result := NewGetResourcesFunctionalitiesAllowedGlobalOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETResourcesFunctionalitiesAllowedGlobalBadRequest()
+		result := NewGetResourcesFunctionalitiesAllowedGlobalBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETResourcesFunctionalitiesAllowedGlobalInternalServerError()
+		result := NewGetResourcesFunctionalitiesAllowedGlobalInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETResourcesFunctionalitiesAllowedGlobalReader) ReadResponse(response r
 	}
 }
 
-// NewGETResourcesFunctionalitiesAllowedGlobalOK creates a GETResourcesFunctionalitiesAllowedGlobalOK with default headers values
-func NewGETResourcesFunctionalitiesAllowedGlobalOK() *GETResourcesFunctionalitiesAllowedGlobalOK {
-	return &GETResourcesFunctionalitiesAllowedGlobalOK{}
+// NewGetResourcesFunctionalitiesAllowedGlobalOK creates a GetResourcesFunctionalitiesAllowedGlobalOK with default headers values
+func NewGetResourcesFunctionalitiesAllowedGlobalOK() *GetResourcesFunctionalitiesAllowedGlobalOK {
+	return &GetResourcesFunctionalitiesAllowedGlobalOK{}
 }
 
 /*
-GETResourcesFunctionalitiesAllowedGlobalOK describes a response with status code 200, with default header values.
+GetResourcesFunctionalitiesAllowedGlobalOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETResourcesFunctionalitiesAllowedGlobalOK struct {
+type GetResourcesFunctionalitiesAllowedGlobalOK struct {
 	Payload *models.ResourceFunctionalitiesGlobalConfiguration
 }
 
 // IsSuccess returns true when this get resources functionalities allowed global o k response has a 2xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) IsSuccess() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get resources functionalities allowed global o k response has a 3xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) IsRedirect() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resources functionalities allowed global o k response has a 4xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) IsClientError() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get resources functionalities allowed global o k response has a 5xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) IsServerError() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get resources functionalities allowed global o k response a status code equal to that given
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) IsCode(code int) bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) Error() string {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities/global][%d] getResourcesFunctionalitiesAllowedGlobalOK  %+v", 200, o.Payload)
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) String() string {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) String() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities/global][%d] getResourcesFunctionalitiesAllowedGlobalOK  %+v", 200, o.Payload)
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) GetPayload() *models.ResourceFunctionalitiesGlobalConfiguration {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) GetPayload() *models.ResourceFunctionalitiesGlobalConfiguration {
 	return o.Payload
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourcesFunctionalitiesAllowedGlobalOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ResourceFunctionalitiesGlobalConfiguration)
 
@@ -112,58 +112,58 @@ func (o *GETResourcesFunctionalitiesAllowedGlobalOK) readResponse(response runti
 	return nil
 }
 
-// NewGETResourcesFunctionalitiesAllowedGlobalBadRequest creates a GETResourcesFunctionalitiesAllowedGlobalBadRequest with default headers values
-func NewGETResourcesFunctionalitiesAllowedGlobalBadRequest() *GETResourcesFunctionalitiesAllowedGlobalBadRequest {
-	return &GETResourcesFunctionalitiesAllowedGlobalBadRequest{}
+// NewGetResourcesFunctionalitiesAllowedGlobalBadRequest creates a GetResourcesFunctionalitiesAllowedGlobalBadRequest with default headers values
+func NewGetResourcesFunctionalitiesAllowedGlobalBadRequest() *GetResourcesFunctionalitiesAllowedGlobalBadRequest {
+	return &GetResourcesFunctionalitiesAllowedGlobalBadRequest{}
 }
 
 /*
-GETResourcesFunctionalitiesAllowedGlobalBadRequest describes a response with status code 400, with default header values.
+GetResourcesFunctionalitiesAllowedGlobalBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETResourcesFunctionalitiesAllowedGlobalBadRequest struct {
+type GetResourcesFunctionalitiesAllowedGlobalBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get resources functionalities allowed global bad request response has a 2xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) IsSuccess() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get resources functionalities allowed global bad request response has a 3xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) IsRedirect() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resources functionalities allowed global bad request response has a 4xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) IsClientError() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get resources functionalities allowed global bad request response has a 5xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) IsServerError() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get resources functionalities allowed global bad request response a status code equal to that given
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) IsCode(code int) bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) Error() string {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities/global][%d] getResourcesFunctionalitiesAllowedGlobalBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) String() string {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities/global][%d] getResourcesFunctionalitiesAllowedGlobalBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) GetPayload() *models.Error {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourcesFunctionalitiesAllowedGlobalBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETResourcesFunctionalitiesAllowedGlobalBadRequest) readResponse(respon
 	return nil
 }
 
-// NewGETResourcesFunctionalitiesAllowedGlobalInternalServerError creates a GETResourcesFunctionalitiesAllowedGlobalInternalServerError with default headers values
-func NewGETResourcesFunctionalitiesAllowedGlobalInternalServerError() *GETResourcesFunctionalitiesAllowedGlobalInternalServerError {
-	return &GETResourcesFunctionalitiesAllowedGlobalInternalServerError{}
+// NewGetResourcesFunctionalitiesAllowedGlobalInternalServerError creates a GetResourcesFunctionalitiesAllowedGlobalInternalServerError with default headers values
+func NewGetResourcesFunctionalitiesAllowedGlobalInternalServerError() *GetResourcesFunctionalitiesAllowedGlobalInternalServerError {
+	return &GetResourcesFunctionalitiesAllowedGlobalInternalServerError{}
 }
 
 /*
-GETResourcesFunctionalitiesAllowedGlobalInternalServerError describes a response with status code 500, with default header values.
+GetResourcesFunctionalitiesAllowedGlobalInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETResourcesFunctionalitiesAllowedGlobalInternalServerError struct {
+type GetResourcesFunctionalitiesAllowedGlobalInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get resources functionalities allowed global internal server error response has a 2xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) IsSuccess() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get resources functionalities allowed global internal server error response has a 3xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) IsRedirect() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get resources functionalities allowed global internal server error response has a 4xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) IsClientError() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get resources functionalities allowed global internal server error response has a 5xx status code
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) IsServerError() bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get resources functionalities allowed global internal server error response a status code equal to that given
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) IsCode(code int) bool {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) Error() string {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities/global][%d] getResourcesFunctionalitiesAllowedGlobalInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) String() string {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities/global][%d] getResourcesFunctionalitiesAllowedGlobalInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) GetPayload() *models.Error {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETResourcesFunctionalitiesAllowedGlobalInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetResourcesFunctionalitiesAllowedGlobalInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

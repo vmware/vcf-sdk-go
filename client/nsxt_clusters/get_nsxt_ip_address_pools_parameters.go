@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETNSXTIPAddressPoolsParams creates a new GETNSXTIPAddressPoolsParams object,
+// NewGetNSXTIPAddressPoolsParams creates a new GetNSXTIPAddressPoolsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETNSXTIPAddressPoolsParams() *GETNSXTIPAddressPoolsParams {
-	return &GETNSXTIPAddressPoolsParams{
+func NewGetNSXTIPAddressPoolsParams() *GetNSXTIPAddressPoolsParams {
+	return &GetNSXTIPAddressPoolsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETNSXTIPAddressPoolsParamsWithTimeout creates a new GETNSXTIPAddressPoolsParams object
+// NewGetNSXTIPAddressPoolsParamsWithTimeout creates a new GetNSXTIPAddressPoolsParams object
 // with the ability to set a timeout on a request.
-func NewGETNSXTIPAddressPoolsParamsWithTimeout(timeout time.Duration) *GETNSXTIPAddressPoolsParams {
-	return &GETNSXTIPAddressPoolsParams{
+func NewGetNSXTIPAddressPoolsParamsWithTimeout(timeout time.Duration) *GetNSXTIPAddressPoolsParams {
+	return &GetNSXTIPAddressPoolsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETNSXTIPAddressPoolsParamsWithContext creates a new GETNSXTIPAddressPoolsParams object
+// NewGetNSXTIPAddressPoolsParamsWithContext creates a new GetNSXTIPAddressPoolsParams object
 // with the ability to set a context for a request.
-func NewGETNSXTIPAddressPoolsParamsWithContext(ctx context.Context) *GETNSXTIPAddressPoolsParams {
-	return &GETNSXTIPAddressPoolsParams{
+func NewGetNSXTIPAddressPoolsParamsWithContext(ctx context.Context) *GetNSXTIPAddressPoolsParams {
+	return &GetNSXTIPAddressPoolsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETNSXTIPAddressPoolsParamsWithHTTPClient creates a new GETNSXTIPAddressPoolsParams object
+// NewGetNSXTIPAddressPoolsParamsWithHTTPClient creates a new GetNSXTIPAddressPoolsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETNSXTIPAddressPoolsParamsWithHTTPClient(client *http.Client) *GETNSXTIPAddressPoolsParams {
-	return &GETNSXTIPAddressPoolsParams{
+func NewGetNSXTIPAddressPoolsParamsWithHTTPClient(client *http.Client) *GetNSXTIPAddressPoolsParams {
+	return &GetNSXTIPAddressPoolsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETNSXTIPAddressPoolsParams contains all the parameters to send to the API endpoint
+GetNSXTIPAddressPoolsParams contains all the parameters to send to the API endpoint
 
 	for the get Nsxt Ip address pools operation.
 
 	Typically these are written to a http.Request.
 */
-type GETNSXTIPAddressPoolsParams struct {
+type GetNSXTIPAddressPoolsParams struct {
 
 	/* NSXTClusterID.
 
@@ -78,7 +78,7 @@ type GETNSXTIPAddressPoolsParams struct {
 // WithDefaults hydrates default values in the get Nsxt Ip address pools params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTIPAddressPoolsParams) WithDefaults() *GETNSXTIPAddressPoolsParams {
+func (o *GetNSXTIPAddressPoolsParams) WithDefaults() *GetNSXTIPAddressPoolsParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETNSXTIPAddressPoolsParams) WithDefaults() *GETNSXTIPAddressPoolsParam
 // SetDefaults hydrates default values in the get Nsxt Ip address pools params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETNSXTIPAddressPoolsParams) SetDefaults() {
+func (o *GetNSXTIPAddressPoolsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) WithTimeout(timeout time.Duration) *GETNSXTIPAddressPoolsParams {
+func (o *GetNSXTIPAddressPoolsParams) WithTimeout(timeout time.Duration) *GetNSXTIPAddressPoolsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) SetTimeout(timeout time.Duration) {
+func (o *GetNSXTIPAddressPoolsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) WithContext(ctx context.Context) *GETNSXTIPAddressPoolsParams {
+func (o *GetNSXTIPAddressPoolsParams) WithContext(ctx context.Context) *GetNSXTIPAddressPoolsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) SetContext(ctx context.Context) {
+func (o *GetNSXTIPAddressPoolsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) WithHTTPClient(client *http.Client) *GETNSXTIPAddressPoolsParams {
+func (o *GetNSXTIPAddressPoolsParams) WithHTTPClient(client *http.Client) *GetNSXTIPAddressPoolsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) SetHTTPClient(client *http.Client) {
+func (o *GetNSXTIPAddressPoolsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithNSXTClusterID adds the nSXTClusterID to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) WithNSXTClusterID(nSXTClusterID string) *GETNSXTIPAddressPoolsParams {
+func (o *GetNSXTIPAddressPoolsParams) WithNSXTClusterID(nSXTClusterID string) *GetNSXTIPAddressPoolsParams {
 	o.SetNSXTClusterID(nSXTClusterID)
 	return o
 }
 
 // SetNSXTClusterID adds the nsxtClusterId to the get Nsxt Ip address pools params
-func (o *GETNSXTIPAddressPoolsParams) SetNSXTClusterID(nSXTClusterID string) {
+func (o *GetNSXTIPAddressPoolsParams) SetNSXTClusterID(nSXTClusterID string) {
 	o.NSXTClusterID = nSXTClusterID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETNSXTIPAddressPoolsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetNSXTIPAddressPoolsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDepotSettingsParams creates a new GETDepotSettingsParams object,
+// NewGetDepotSettingsParams creates a new GetDepotSettingsParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDepotSettingsParams() *GETDepotSettingsParams {
-	return &GETDepotSettingsParams{
+func NewGetDepotSettingsParams() *GetDepotSettingsParams {
+	return &GetDepotSettingsParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDepotSettingsParamsWithTimeout creates a new GETDepotSettingsParams object
+// NewGetDepotSettingsParamsWithTimeout creates a new GetDepotSettingsParams object
 // with the ability to set a timeout on a request.
-func NewGETDepotSettingsParamsWithTimeout(timeout time.Duration) *GETDepotSettingsParams {
-	return &GETDepotSettingsParams{
+func NewGetDepotSettingsParamsWithTimeout(timeout time.Duration) *GetDepotSettingsParams {
+	return &GetDepotSettingsParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDepotSettingsParamsWithContext creates a new GETDepotSettingsParams object
+// NewGetDepotSettingsParamsWithContext creates a new GetDepotSettingsParams object
 // with the ability to set a context for a request.
-func NewGETDepotSettingsParamsWithContext(ctx context.Context) *GETDepotSettingsParams {
-	return &GETDepotSettingsParams{
+func NewGetDepotSettingsParamsWithContext(ctx context.Context) *GetDepotSettingsParams {
+	return &GetDepotSettingsParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDepotSettingsParamsWithHTTPClient creates a new GETDepotSettingsParams object
+// NewGetDepotSettingsParamsWithHTTPClient creates a new GetDepotSettingsParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDepotSettingsParamsWithHTTPClient(client *http.Client) *GETDepotSettingsParams {
-	return &GETDepotSettingsParams{
+func NewGetDepotSettingsParamsWithHTTPClient(client *http.Client) *GetDepotSettingsParams {
+	return &GetDepotSettingsParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDepotSettingsParams contains all the parameters to send to the API endpoint
+GetDepotSettingsParams contains all the parameters to send to the API endpoint
 
 	for the get depot settings operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDepotSettingsParams struct {
+type GetDepotSettingsParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETDepotSettingsParams struct {
 // WithDefaults hydrates default values in the get depot settings params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDepotSettingsParams) WithDefaults() *GETDepotSettingsParams {
+func (o *GetDepotSettingsParams) WithDefaults() *GetDepotSettingsParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETDepotSettingsParams) WithDefaults() *GETDepotSettingsParams {
 // SetDefaults hydrates default values in the get depot settings params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDepotSettingsParams) SetDefaults() {
+func (o *GetDepotSettingsParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get depot settings params
-func (o *GETDepotSettingsParams) WithTimeout(timeout time.Duration) *GETDepotSettingsParams {
+func (o *GetDepotSettingsParams) WithTimeout(timeout time.Duration) *GetDepotSettingsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get depot settings params
-func (o *GETDepotSettingsParams) SetTimeout(timeout time.Duration) {
+func (o *GetDepotSettingsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get depot settings params
-func (o *GETDepotSettingsParams) WithContext(ctx context.Context) *GETDepotSettingsParams {
+func (o *GetDepotSettingsParams) WithContext(ctx context.Context) *GetDepotSettingsParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get depot settings params
-func (o *GETDepotSettingsParams) SetContext(ctx context.Context) {
+func (o *GetDepotSettingsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get depot settings params
-func (o *GETDepotSettingsParams) WithHTTPClient(client *http.Client) *GETDepotSettingsParams {
+func (o *GetDepotSettingsParams) WithHTTPClient(client *http.Client) *GetDepotSettingsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get depot settings params
-func (o *GETDepotSettingsParams) SetHTTPClient(client *http.Client) {
+func (o *GetDepotSettingsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDepotSettingsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDepotSettingsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

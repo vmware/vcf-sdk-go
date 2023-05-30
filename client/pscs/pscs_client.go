@@ -33,20 +33,20 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GETPsc(params *GETPscParams, opts ...ClientOption) (*GETPscOK, error)
+	GetPsc(params *GetPscParams, opts ...ClientOption) (*GetPscOK, error)
 
-	GETPscs(params *GETPscsParams, opts ...ClientOption) (*GETPscsOK, error)
+	GetPscs(params *GetPscsParams, opts ...ClientOption) (*GetPscsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GETPsc Gets a p s c
+GetPsc gets a p s c
 */
-func (a *Client) GETPsc(params *GETPscParams, opts ...ClientOption) (*GETPscOK, error) {
+func (a *Client) GetPsc(params *GetPscParams, opts ...ClientOption) (*GetPscOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETPscParams()
+		params = NewGetPscParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getPsc",
@@ -56,7 +56,7 @@ func (a *Client) GETPsc(params *GETPscParams, opts ...ClientOption) (*GETPscOK, 
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETPscReader{formats: a.formats},
+		Reader:             &GetPscReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -68,7 +68,7 @@ func (a *Client) GETPsc(params *GETPscParams, opts ...ClientOption) (*GETPscOK, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETPscOK)
+	success, ok := result.(*GetPscOK)
 	if ok {
 		return success, nil
 	}
@@ -79,12 +79,12 @@ func (a *Client) GETPsc(params *GETPscParams, opts ...ClientOption) (*GETPscOK, 
 }
 
 /*
-GETPscs Gets the p s cs
+GetPscs gets the p s cs
 */
-func (a *Client) GETPscs(params *GETPscsParams, opts ...ClientOption) (*GETPscsOK, error) {
+func (a *Client) GetPscs(params *GetPscsParams, opts ...ClientOption) (*GetPscsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETPscsParams()
+		params = NewGetPscsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getPscs",
@@ -94,7 +94,7 @@ func (a *Client) GETPscs(params *GETPscsParams, opts ...ClientOption) (*GETPscsO
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETPscsReader{formats: a.formats},
+		Reader:             &GetPscsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -106,7 +106,7 @@ func (a *Client) GETPscs(params *GETPscsParams, opts ...ClientOption) (*GETPscsO
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETPscsOK)
+	success, ok := result.(*GetPscsOK)
 	if ok {
 		return success, nil
 	}

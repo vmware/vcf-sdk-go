@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETSSODomainEntitiesParams creates a new GETSSODomainEntitiesParams object,
+// NewGetSSODomainEntitiesParams creates a new GetSSODomainEntitiesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETSSODomainEntitiesParams() *GETSSODomainEntitiesParams {
-	return &GETSSODomainEntitiesParams{
+func NewGetSSODomainEntitiesParams() *GetSSODomainEntitiesParams {
+	return &GetSSODomainEntitiesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETSSODomainEntitiesParamsWithTimeout creates a new GETSSODomainEntitiesParams object
+// NewGetSSODomainEntitiesParamsWithTimeout creates a new GetSSODomainEntitiesParams object
 // with the ability to set a timeout on a request.
-func NewGETSSODomainEntitiesParamsWithTimeout(timeout time.Duration) *GETSSODomainEntitiesParams {
-	return &GETSSODomainEntitiesParams{
+func NewGetSSODomainEntitiesParamsWithTimeout(timeout time.Duration) *GetSSODomainEntitiesParams {
+	return &GetSSODomainEntitiesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETSSODomainEntitiesParamsWithContext creates a new GETSSODomainEntitiesParams object
+// NewGetSSODomainEntitiesParamsWithContext creates a new GetSSODomainEntitiesParams object
 // with the ability to set a context for a request.
-func NewGETSSODomainEntitiesParamsWithContext(ctx context.Context) *GETSSODomainEntitiesParams {
-	return &GETSSODomainEntitiesParams{
+func NewGetSSODomainEntitiesParamsWithContext(ctx context.Context) *GetSSODomainEntitiesParams {
+	return &GetSSODomainEntitiesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETSSODomainEntitiesParamsWithHTTPClient creates a new GETSSODomainEntitiesParams object
+// NewGetSSODomainEntitiesParamsWithHTTPClient creates a new GetSSODomainEntitiesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETSSODomainEntitiesParamsWithHTTPClient(client *http.Client) *GETSSODomainEntitiesParams {
-	return &GETSSODomainEntitiesParams{
+func NewGetSSODomainEntitiesParamsWithHTTPClient(client *http.Client) *GetSSODomainEntitiesParams {
+	return &GetSSODomainEntitiesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETSSODomainEntitiesParams contains all the parameters to send to the API endpoint
+GetSSODomainEntitiesParams contains all the parameters to send to the API endpoint
 
 	for the get SSO domain entities operation.
 
 	Typically these are written to a http.Request.
 */
-type GETSSODomainEntitiesParams struct {
+type GetSSODomainEntitiesParams struct {
 
 	/* SSODomain.
 
@@ -78,7 +78,7 @@ type GETSSODomainEntitiesParams struct {
 // WithDefaults hydrates default values in the get SSO domain entities params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSSODomainEntitiesParams) WithDefaults() *GETSSODomainEntitiesParams {
+func (o *GetSSODomainEntitiesParams) WithDefaults() *GetSSODomainEntitiesParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETSSODomainEntitiesParams) WithDefaults() *GETSSODomainEntitiesParams 
 // SetDefaults hydrates default values in the get SSO domain entities params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETSSODomainEntitiesParams) SetDefaults() {
+func (o *GetSSODomainEntitiesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) WithTimeout(timeout time.Duration) *GETSSODomainEntitiesParams {
+func (o *GetSSODomainEntitiesParams) WithTimeout(timeout time.Duration) *GetSSODomainEntitiesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) SetTimeout(timeout time.Duration) {
+func (o *GetSSODomainEntitiesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) WithContext(ctx context.Context) *GETSSODomainEntitiesParams {
+func (o *GetSSODomainEntitiesParams) WithContext(ctx context.Context) *GetSSODomainEntitiesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) SetContext(ctx context.Context) {
+func (o *GetSSODomainEntitiesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) WithHTTPClient(client *http.Client) *GETSSODomainEntitiesParams {
+func (o *GetSSODomainEntitiesParams) WithHTTPClient(client *http.Client) *GetSSODomainEntitiesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) SetHTTPClient(client *http.Client) {
+func (o *GetSSODomainEntitiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithSSODomain adds the sSODomain to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) WithSSODomain(sSODomain string) *GETSSODomainEntitiesParams {
+func (o *GetSSODomainEntitiesParams) WithSSODomain(sSODomain string) *GetSSODomainEntitiesParams {
 	o.SetSSODomain(sSODomain)
 	return o
 }
 
 // SetSSODomain adds the ssoDomain to the get SSO domain entities params
-func (o *GETSSODomainEntitiesParams) SetSSODomain(sSODomain string) {
+func (o *GetSSODomainEntitiesParams) SetSSODomain(sSODomain string) {
 	o.SSODomain = sSODomain
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETSSODomainEntitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetSSODomainEntitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

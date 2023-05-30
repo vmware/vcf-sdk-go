@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCriteriaParams creates a new GETCriteriaParams object,
+// NewGetCriteriaParams creates a new GetCriteriaParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCriteriaParams() *GETCriteriaParams {
-	return &GETCriteriaParams{
+func NewGetCriteriaParams() *GetCriteriaParams {
+	return &GetCriteriaParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCriteriaParamsWithTimeout creates a new GETCriteriaParams object
+// NewGetCriteriaParamsWithTimeout creates a new GetCriteriaParams object
 // with the ability to set a timeout on a request.
-func NewGETCriteriaParamsWithTimeout(timeout time.Duration) *GETCriteriaParams {
-	return &GETCriteriaParams{
+func NewGetCriteriaParamsWithTimeout(timeout time.Duration) *GetCriteriaParams {
+	return &GetCriteriaParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCriteriaParamsWithContext creates a new GETCriteriaParams object
+// NewGetCriteriaParamsWithContext creates a new GetCriteriaParams object
 // with the ability to set a context for a request.
-func NewGETCriteriaParamsWithContext(ctx context.Context) *GETCriteriaParams {
-	return &GETCriteriaParams{
+func NewGetCriteriaParamsWithContext(ctx context.Context) *GetCriteriaParams {
+	return &GetCriteriaParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCriteriaParamsWithHTTPClient creates a new GETCriteriaParams object
+// NewGetCriteriaParamsWithHTTPClient creates a new GetCriteriaParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCriteriaParamsWithHTTPClient(client *http.Client) *GETCriteriaParams {
-	return &GETCriteriaParams{
+func NewGetCriteriaParamsWithHTTPClient(client *http.Client) *GetCriteriaParams {
+	return &GetCriteriaParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCriteriaParams contains all the parameters to send to the API endpoint
+GetCriteriaParams contains all the parameters to send to the API endpoint
 
 	for the get criteria operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCriteriaParams struct {
+type GetCriteriaParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETCriteriaParams struct {
 // WithDefaults hydrates default values in the get criteria params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCriteriaParams) WithDefaults() *GETCriteriaParams {
+func (o *GetCriteriaParams) WithDefaults() *GetCriteriaParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETCriteriaParams) WithDefaults() *GETCriteriaParams {
 // SetDefaults hydrates default values in the get criteria params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCriteriaParams) SetDefaults() {
+func (o *GetCriteriaParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get criteria params
-func (o *GETCriteriaParams) WithTimeout(timeout time.Duration) *GETCriteriaParams {
+func (o *GetCriteriaParams) WithTimeout(timeout time.Duration) *GetCriteriaParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get criteria params
-func (o *GETCriteriaParams) SetTimeout(timeout time.Duration) {
+func (o *GetCriteriaParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get criteria params
-func (o *GETCriteriaParams) WithContext(ctx context.Context) *GETCriteriaParams {
+func (o *GetCriteriaParams) WithContext(ctx context.Context) *GetCriteriaParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get criteria params
-func (o *GETCriteriaParams) SetContext(ctx context.Context) {
+func (o *GetCriteriaParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get criteria params
-func (o *GETCriteriaParams) WithHTTPClient(client *http.Client) *GETCriteriaParams {
+func (o *GetCriteriaParams) WithHTTPClient(client *http.Client) *GetCriteriaParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get criteria params
-func (o *GETCriteriaParams) SetHTTPClient(client *http.Client) {
+func (o *GetCriteriaParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCriteriaParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCriteriaParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

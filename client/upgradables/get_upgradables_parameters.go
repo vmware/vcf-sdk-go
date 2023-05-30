@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETUpgradablesParams creates a new GETUpgradablesParams object,
+// NewGetUpgradablesParams creates a new GetUpgradablesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETUpgradablesParams() *GETUpgradablesParams {
-	return &GETUpgradablesParams{
+func NewGetUpgradablesParams() *GetUpgradablesParams {
+	return &GetUpgradablesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETUpgradablesParamsWithTimeout creates a new GETUpgradablesParams object
+// NewGetUpgradablesParamsWithTimeout creates a new GetUpgradablesParams object
 // with the ability to set a timeout on a request.
-func NewGETUpgradablesParamsWithTimeout(timeout time.Duration) *GETUpgradablesParams {
-	return &GETUpgradablesParams{
+func NewGetUpgradablesParamsWithTimeout(timeout time.Duration) *GetUpgradablesParams {
+	return &GetUpgradablesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETUpgradablesParamsWithContext creates a new GETUpgradablesParams object
+// NewGetUpgradablesParamsWithContext creates a new GetUpgradablesParams object
 // with the ability to set a context for a request.
-func NewGETUpgradablesParamsWithContext(ctx context.Context) *GETUpgradablesParams {
-	return &GETUpgradablesParams{
+func NewGetUpgradablesParamsWithContext(ctx context.Context) *GetUpgradablesParams {
+	return &GetUpgradablesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETUpgradablesParamsWithHTTPClient creates a new GETUpgradablesParams object
+// NewGetUpgradablesParamsWithHTTPClient creates a new GetUpgradablesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETUpgradablesParamsWithHTTPClient(client *http.Client) *GETUpgradablesParams {
-	return &GETUpgradablesParams{
+func NewGetUpgradablesParamsWithHTTPClient(client *http.Client) *GetUpgradablesParams {
+	return &GetUpgradablesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETUpgradablesParams contains all the parameters to send to the API endpoint
+GetUpgradablesParams contains all the parameters to send to the API endpoint
 
 	for the get upgradables operation.
 
 	Typically these are written to a http.Request.
 */
-type GETUpgradablesParams struct {
+type GetUpgradablesParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETUpgradablesParams struct {
 // WithDefaults hydrates default values in the get upgradables params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradablesParams) WithDefaults() *GETUpgradablesParams {
+func (o *GetUpgradablesParams) WithDefaults() *GetUpgradablesParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETUpgradablesParams) WithDefaults() *GETUpgradablesParams {
 // SetDefaults hydrates default values in the get upgradables params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETUpgradablesParams) SetDefaults() {
+func (o *GetUpgradablesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get upgradables params
-func (o *GETUpgradablesParams) WithTimeout(timeout time.Duration) *GETUpgradablesParams {
+func (o *GetUpgradablesParams) WithTimeout(timeout time.Duration) *GetUpgradablesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get upgradables params
-func (o *GETUpgradablesParams) SetTimeout(timeout time.Duration) {
+func (o *GetUpgradablesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get upgradables params
-func (o *GETUpgradablesParams) WithContext(ctx context.Context) *GETUpgradablesParams {
+func (o *GetUpgradablesParams) WithContext(ctx context.Context) *GetUpgradablesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get upgradables params
-func (o *GETUpgradablesParams) SetContext(ctx context.Context) {
+func (o *GetUpgradablesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get upgradables params
-func (o *GETUpgradablesParams) WithHTTPClient(client *http.Client) *GETUpgradablesParams {
+func (o *GetUpgradablesParams) WithHTTPClient(client *http.Client) *GetUpgradablesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get upgradables params
-func (o *GETUpgradablesParams) SetHTTPClient(client *http.Client) {
+func (o *GetUpgradablesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETUpgradablesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetUpgradablesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

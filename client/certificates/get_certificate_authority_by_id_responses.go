@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCertificateAuthorityByIDReader is a Reader for the GETCertificateAuthorityByID structure.
-type GETCertificateAuthorityByIDReader struct {
+// GetCertificateAuthorityByIDReader is a Reader for the GetCertificateAuthorityByID structure.
+type GetCertificateAuthorityByIDReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCertificateAuthorityByIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCertificateAuthorityByIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCertificateAuthorityByIDOK()
+		result := NewGetCertificateAuthorityByIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETCertificateAuthorityByIDNotFound()
+		result := NewGetCertificateAuthorityByIDNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETCertificateAuthorityByIDInternalServerError()
+		result := NewGetCertificateAuthorityByIDInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETCertificateAuthorityByIDReader) ReadResponse(response runtime.Client
 	}
 }
 
-// NewGETCertificateAuthorityByIDOK creates a GETCertificateAuthorityByIDOK with default headers values
-func NewGETCertificateAuthorityByIDOK() *GETCertificateAuthorityByIDOK {
-	return &GETCertificateAuthorityByIDOK{}
+// NewGetCertificateAuthorityByIDOK creates a GetCertificateAuthorityByIDOK with default headers values
+func NewGetCertificateAuthorityByIDOK() *GetCertificateAuthorityByIDOK {
+	return &GetCertificateAuthorityByIDOK{}
 }
 
 /*
-GETCertificateAuthorityByIDOK describes a response with status code 200, with default header values.
+GetCertificateAuthorityByIDOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETCertificateAuthorityByIDOK struct {
+type GetCertificateAuthorityByIDOK struct {
 	Payload *models.CertificateAuthority
 }
 
 // IsSuccess returns true when this get certificate authority by Id o k response has a 2xx status code
-func (o *GETCertificateAuthorityByIDOK) IsSuccess() bool {
+func (o *GetCertificateAuthorityByIDOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get certificate authority by Id o k response has a 3xx status code
-func (o *GETCertificateAuthorityByIDOK) IsRedirect() bool {
+func (o *GetCertificateAuthorityByIDOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificate authority by Id o k response has a 4xx status code
-func (o *GETCertificateAuthorityByIDOK) IsClientError() bool {
+func (o *GetCertificateAuthorityByIDOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get certificate authority by Id o k response has a 5xx status code
-func (o *GETCertificateAuthorityByIDOK) IsServerError() bool {
+func (o *GetCertificateAuthorityByIDOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get certificate authority by Id o k response a status code equal to that given
-func (o *GETCertificateAuthorityByIDOK) IsCode(code int) bool {
+func (o *GetCertificateAuthorityByIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCertificateAuthorityByIDOK) Error() string {
+func (o *GetCertificateAuthorityByIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCertificateAuthorityByIDOK) String() string {
+func (o *GetCertificateAuthorityByIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCertificateAuthorityByIDOK) GetPayload() *models.CertificateAuthority {
+func (o *GetCertificateAuthorityByIDOK) GetPayload() *models.CertificateAuthority {
 	return o.Payload
 }
 
-func (o *GETCertificateAuthorityByIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificateAuthorityByIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CertificateAuthority)
 
@@ -112,58 +112,58 @@ func (o *GETCertificateAuthorityByIDOK) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewGETCertificateAuthorityByIDNotFound creates a GETCertificateAuthorityByIDNotFound with default headers values
-func NewGETCertificateAuthorityByIDNotFound() *GETCertificateAuthorityByIDNotFound {
-	return &GETCertificateAuthorityByIDNotFound{}
+// NewGetCertificateAuthorityByIDNotFound creates a GetCertificateAuthorityByIDNotFound with default headers values
+func NewGetCertificateAuthorityByIDNotFound() *GetCertificateAuthorityByIDNotFound {
+	return &GetCertificateAuthorityByIDNotFound{}
 }
 
 /*
-GETCertificateAuthorityByIDNotFound describes a response with status code 404, with default header values.
+GetCertificateAuthorityByIDNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETCertificateAuthorityByIDNotFound struct {
+type GetCertificateAuthorityByIDNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get certificate authority by Id not found response has a 2xx status code
-func (o *GETCertificateAuthorityByIDNotFound) IsSuccess() bool {
+func (o *GetCertificateAuthorityByIDNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get certificate authority by Id not found response has a 3xx status code
-func (o *GETCertificateAuthorityByIDNotFound) IsRedirect() bool {
+func (o *GetCertificateAuthorityByIDNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificate authority by Id not found response has a 4xx status code
-func (o *GETCertificateAuthorityByIDNotFound) IsClientError() bool {
+func (o *GetCertificateAuthorityByIDNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get certificate authority by Id not found response has a 5xx status code
-func (o *GETCertificateAuthorityByIDNotFound) IsServerError() bool {
+func (o *GetCertificateAuthorityByIDNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get certificate authority by Id not found response a status code equal to that given
-func (o *GETCertificateAuthorityByIDNotFound) IsCode(code int) bool {
+func (o *GetCertificateAuthorityByIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETCertificateAuthorityByIDNotFound) Error() string {
+func (o *GetCertificateAuthorityByIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCertificateAuthorityByIDNotFound) String() string {
+func (o *GetCertificateAuthorityByIDNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCertificateAuthorityByIDNotFound) GetPayload() *models.Error {
+func (o *GetCertificateAuthorityByIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCertificateAuthorityByIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificateAuthorityByIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETCertificateAuthorityByIDNotFound) readResponse(response runtime.Clie
 	return nil
 }
 
-// NewGETCertificateAuthorityByIDInternalServerError creates a GETCertificateAuthorityByIDInternalServerError with default headers values
-func NewGETCertificateAuthorityByIDInternalServerError() *GETCertificateAuthorityByIDInternalServerError {
-	return &GETCertificateAuthorityByIDInternalServerError{}
+// NewGetCertificateAuthorityByIDInternalServerError creates a GetCertificateAuthorityByIDInternalServerError with default headers values
+func NewGetCertificateAuthorityByIDInternalServerError() *GetCertificateAuthorityByIDInternalServerError {
+	return &GetCertificateAuthorityByIDInternalServerError{}
 }
 
 /*
-GETCertificateAuthorityByIDInternalServerError describes a response with status code 500, with default header values.
+GetCertificateAuthorityByIDInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETCertificateAuthorityByIDInternalServerError struct {
+type GetCertificateAuthorityByIDInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get certificate authority by Id internal server error response has a 2xx status code
-func (o *GETCertificateAuthorityByIDInternalServerError) IsSuccess() bool {
+func (o *GetCertificateAuthorityByIDInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get certificate authority by Id internal server error response has a 3xx status code
-func (o *GETCertificateAuthorityByIDInternalServerError) IsRedirect() bool {
+func (o *GetCertificateAuthorityByIDInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get certificate authority by Id internal server error response has a 4xx status code
-func (o *GETCertificateAuthorityByIDInternalServerError) IsClientError() bool {
+func (o *GetCertificateAuthorityByIDInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get certificate authority by Id internal server error response has a 5xx status code
-func (o *GETCertificateAuthorityByIDInternalServerError) IsServerError() bool {
+func (o *GetCertificateAuthorityByIDInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get certificate authority by Id internal server error response a status code equal to that given
-func (o *GETCertificateAuthorityByIDInternalServerError) IsCode(code int) bool {
+func (o *GetCertificateAuthorityByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCertificateAuthorityByIDInternalServerError) Error() string {
+func (o *GetCertificateAuthorityByIDInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCertificateAuthorityByIDInternalServerError) String() string {
+func (o *GetCertificateAuthorityByIDInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCertificateAuthorityByIDInternalServerError) GetPayload() *models.Error {
+func (o *GetCertificateAuthorityByIDInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCertificateAuthorityByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCertificateAuthorityByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

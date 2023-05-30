@@ -35,11 +35,11 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeployVRSLCM(params *DeployVRSLCMParams, opts ...ClientOption) (*DeployVRSLCMAccepted, error)
 
-	GETVRSLCM(params *GETVRSLCMParams, opts ...ClientOption) (*GETVRSLCMOK, error)
+	GetVRSLCM(params *GetVRSLCMParams, opts ...ClientOption) (*GetVRSLCMOK, error)
 
-	GETVRSLCMValidation(params *GETVRSLCMValidationParams, opts ...ClientOption) (*GETVRSLCMValidationOK, error)
+	GetVRSLCMValidation(params *GetVRSLCMValidationParams, opts ...ClientOption) (*GetVRSLCMValidationOK, error)
 
-	GETVrslcms(params *GETVrslcmsParams, opts ...ClientOption) (*GETVrslcmsOK, error)
+	GetVrslcms(params *GetVrslcmsParams, opts ...ClientOption) (*GetVrslcmsOK, error)
 
 	RollbackVRSLCM(params *RollbackVRSLCMParams, opts ...ClientOption) (*RollbackVRSLCMAccepted, error)
 
@@ -93,14 +93,14 @@ func (a *Client) DeployVRSLCM(params *DeployVRSLCMParams, opts ...ClientOption) 
 }
 
 /*
-GETVRSLCM Gets the existing v realize suite lifecycle manager
+GetVRSLCM gets the existing v realize suite lifecycle manager
 
 Gets the complete information about the existing vRealize Suite Lifecycle Manager instance.
 */
-func (a *Client) GETVRSLCM(params *GETVRSLCMParams, opts ...ClientOption) (*GETVRSLCMOK, error) {
+func (a *Client) GetVRSLCM(params *GetVRSLCMParams, opts ...ClientOption) (*GetVRSLCMOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVRSLCMParams()
+		params = NewGetVRSLCMParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVrslcm",
@@ -110,7 +110,7 @@ func (a *Client) GETVRSLCM(params *GETVRSLCMParams, opts ...ClientOption) (*GETV
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVRSLCMReader{formats: a.formats},
+		Reader:             &GetVRSLCMReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -122,7 +122,7 @@ func (a *Client) GETVRSLCM(params *GETVRSLCMParams, opts ...ClientOption) (*GETV
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVRSLCMOK)
+	success, ok := result.(*GetVRSLCMOK)
 	if ok {
 		return success, nil
 	}
@@ -133,14 +133,14 @@ func (a *Client) GETVRSLCM(params *GETVRSLCMParams, opts ...ClientOption) (*GETV
 }
 
 /*
-GETVRSLCMValidation Gets the status of the validations for v realize lifecycle manager deployment
+GetVRSLCMValidation gets the status of the validations for v realize lifecycle manager deployment
 
 Gets the status of given vRealize Suite Lifecycle Manager validation workflow by given validation id
 */
-func (a *Client) GETVRSLCMValidation(params *GETVRSLCMValidationParams, opts ...ClientOption) (*GETVRSLCMValidationOK, error) {
+func (a *Client) GetVRSLCMValidation(params *GetVRSLCMValidationParams, opts ...ClientOption) (*GetVRSLCMValidationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVRSLCMValidationParams()
+		params = NewGetVRSLCMValidationParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVrslcmValidation",
@@ -150,7 +150,7 @@ func (a *Client) GETVRSLCMValidation(params *GETVRSLCMValidationParams, opts ...
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVRSLCMValidationReader{formats: a.formats},
+		Reader:             &GetVRSLCMValidationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -162,7 +162,7 @@ func (a *Client) GETVRSLCMValidation(params *GETVRSLCMValidationParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVRSLCMValidationOK)
+	success, ok := result.(*GetVRSLCMValidationOK)
 	if ok {
 		return success, nil
 	}
@@ -173,12 +173,12 @@ func (a *Client) GETVRSLCMValidation(params *GETVRSLCMValidationParams, opts ...
 }
 
 /*
-GETVrslcms Gets all existing v realize suite lifecycle manager instances
+GetVrslcms gets all existing v realize suite lifecycle manager instances
 */
-func (a *Client) GETVrslcms(params *GETVrslcmsParams, opts ...ClientOption) (*GETVrslcmsOK, error) {
+func (a *Client) GetVrslcms(params *GetVrslcmsParams, opts ...ClientOption) (*GetVrslcmsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGETVrslcmsParams()
+		params = NewGetVrslcmsParams()
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "getVrslcms",
@@ -188,7 +188,7 @@ func (a *Client) GETVrslcms(params *GETVrslcmsParams, opts ...ClientOption) (*GE
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GETVrslcmsReader{formats: a.formats},
+		Reader:             &GetVrslcmsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -200,7 +200,7 @@ func (a *Client) GETVrslcms(params *GETVrslcmsParams, opts ...ClientOption) (*GE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GETVrslcmsOK)
+	success, ok := result.(*GetVrslcmsOK)
 	if ok {
 		return success, nil
 	}

@@ -18,46 +18,46 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETCredentialReader is a Reader for the GETCredential structure.
-type GETCredentialReader struct {
+// GetCredentialReader is a Reader for the GetCredential structure.
+type GetCredentialReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETCredentialReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetCredentialReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETCredentialOK()
+		result := NewGetCredentialOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
-		result := NewGETCredentialBadRequest()
+		result := NewGetCredentialBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 401:
-		result := NewGETCredentialUnauthorized()
+		result := NewGetCredentialUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 403:
-		result := NewGETCredentialForbidden()
+		result := NewGetCredentialForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 404:
-		result := NewGETCredentialNotFound()
+		result := NewGetCredentialNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETCredentialInternalServerError()
+		result := NewGetCredentialInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -67,58 +67,58 @@ func (o *GETCredentialReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewGETCredentialOK creates a GETCredentialOK with default headers values
-func NewGETCredentialOK() *GETCredentialOK {
-	return &GETCredentialOK{}
+// NewGetCredentialOK creates a GetCredentialOK with default headers values
+func NewGetCredentialOK() *GetCredentialOK {
+	return &GetCredentialOK{}
 }
 
 /*
-GETCredentialOK describes a response with status code 200, with default header values.
+GetCredentialOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETCredentialOK struct {
+type GetCredentialOK struct {
 	Payload *models.Credential
 }
 
 // IsSuccess returns true when this get credential o k response has a 2xx status code
-func (o *GETCredentialOK) IsSuccess() bool {
+func (o *GetCredentialOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get credential o k response has a 3xx status code
-func (o *GETCredentialOK) IsRedirect() bool {
+func (o *GetCredentialOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credential o k response has a 4xx status code
-func (o *GETCredentialOK) IsClientError() bool {
+func (o *GetCredentialOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get credential o k response has a 5xx status code
-func (o *GETCredentialOK) IsServerError() bool {
+func (o *GetCredentialOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credential o k response a status code equal to that given
-func (o *GETCredentialOK) IsCode(code int) bool {
+func (o *GetCredentialOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETCredentialOK) Error() string {
+func (o *GetCredentialOK) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCredentialOK) String() string {
+func (o *GetCredentialOK) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialOK  %+v", 200, o.Payload)
 }
 
-func (o *GETCredentialOK) GetPayload() *models.Credential {
+func (o *GetCredentialOK) GetPayload() *models.Credential {
 	return o.Payload
 }
 
-func (o *GETCredentialOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Credential)
 
@@ -130,58 +130,58 @@ func (o *GETCredentialOK) readResponse(response runtime.ClientResponse, consumer
 	return nil
 }
 
-// NewGETCredentialBadRequest creates a GETCredentialBadRequest with default headers values
-func NewGETCredentialBadRequest() *GETCredentialBadRequest {
-	return &GETCredentialBadRequest{}
+// NewGetCredentialBadRequest creates a GetCredentialBadRequest with default headers values
+func NewGetCredentialBadRequest() *GetCredentialBadRequest {
+	return &GetCredentialBadRequest{}
 }
 
 /*
-GETCredentialBadRequest describes a response with status code 400, with default header values.
+GetCredentialBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
-type GETCredentialBadRequest struct {
+type GetCredentialBadRequest struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credential bad request response has a 2xx status code
-func (o *GETCredentialBadRequest) IsSuccess() bool {
+func (o *GetCredentialBadRequest) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credential bad request response has a 3xx status code
-func (o *GETCredentialBadRequest) IsRedirect() bool {
+func (o *GetCredentialBadRequest) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credential bad request response has a 4xx status code
-func (o *GETCredentialBadRequest) IsClientError() bool {
+func (o *GetCredentialBadRequest) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get credential bad request response has a 5xx status code
-func (o *GETCredentialBadRequest) IsServerError() bool {
+func (o *GetCredentialBadRequest) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credential bad request response a status code equal to that given
-func (o *GETCredentialBadRequest) IsCode(code int) bool {
+func (o *GetCredentialBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-func (o *GETCredentialBadRequest) Error() string {
+func (o *GetCredentialBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETCredentialBadRequest) String() string {
+func (o *GetCredentialBadRequest) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GETCredentialBadRequest) GetPayload() *models.Error {
+func (o *GetCredentialBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -193,58 +193,58 @@ func (o *GETCredentialBadRequest) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETCredentialUnauthorized creates a GETCredentialUnauthorized with default headers values
-func NewGETCredentialUnauthorized() *GETCredentialUnauthorized {
-	return &GETCredentialUnauthorized{}
+// NewGetCredentialUnauthorized creates a GetCredentialUnauthorized with default headers values
+func NewGetCredentialUnauthorized() *GetCredentialUnauthorized {
+	return &GetCredentialUnauthorized{}
 }
 
 /*
-GETCredentialUnauthorized describes a response with status code 401, with default header values.
+GetCredentialUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
-type GETCredentialUnauthorized struct {
+type GetCredentialUnauthorized struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credential unauthorized response has a 2xx status code
-func (o *GETCredentialUnauthorized) IsSuccess() bool {
+func (o *GetCredentialUnauthorized) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credential unauthorized response has a 3xx status code
-func (o *GETCredentialUnauthorized) IsRedirect() bool {
+func (o *GetCredentialUnauthorized) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credential unauthorized response has a 4xx status code
-func (o *GETCredentialUnauthorized) IsClientError() bool {
+func (o *GetCredentialUnauthorized) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get credential unauthorized response has a 5xx status code
-func (o *GETCredentialUnauthorized) IsServerError() bool {
+func (o *GetCredentialUnauthorized) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credential unauthorized response a status code equal to that given
-func (o *GETCredentialUnauthorized) IsCode(code int) bool {
+func (o *GetCredentialUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-func (o *GETCredentialUnauthorized) Error() string {
+func (o *GetCredentialUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETCredentialUnauthorized) String() string {
+func (o *GetCredentialUnauthorized) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GETCredentialUnauthorized) GetPayload() *models.Error {
+func (o *GetCredentialUnauthorized) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -256,58 +256,58 @@ func (o *GETCredentialUnauthorized) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGETCredentialForbidden creates a GETCredentialForbidden with default headers values
-func NewGETCredentialForbidden() *GETCredentialForbidden {
-	return &GETCredentialForbidden{}
+// NewGetCredentialForbidden creates a GetCredentialForbidden with default headers values
+func NewGetCredentialForbidden() *GetCredentialForbidden {
+	return &GetCredentialForbidden{}
 }
 
 /*
-GETCredentialForbidden describes a response with status code 403, with default header values.
+GetCredentialForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
-type GETCredentialForbidden struct {
+type GetCredentialForbidden struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credential forbidden response has a 2xx status code
-func (o *GETCredentialForbidden) IsSuccess() bool {
+func (o *GetCredentialForbidden) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credential forbidden response has a 3xx status code
-func (o *GETCredentialForbidden) IsRedirect() bool {
+func (o *GetCredentialForbidden) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credential forbidden response has a 4xx status code
-func (o *GETCredentialForbidden) IsClientError() bool {
+func (o *GetCredentialForbidden) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get credential forbidden response has a 5xx status code
-func (o *GETCredentialForbidden) IsServerError() bool {
+func (o *GetCredentialForbidden) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credential forbidden response a status code equal to that given
-func (o *GETCredentialForbidden) IsCode(code int) bool {
+func (o *GetCredentialForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-func (o *GETCredentialForbidden) Error() string {
+func (o *GetCredentialForbidden) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GETCredentialForbidden) String() string {
+func (o *GetCredentialForbidden) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GETCredentialForbidden) GetPayload() *models.Error {
+func (o *GetCredentialForbidden) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -319,58 +319,58 @@ func (o *GETCredentialForbidden) readResponse(response runtime.ClientResponse, c
 	return nil
 }
 
-// NewGETCredentialNotFound creates a GETCredentialNotFound with default headers values
-func NewGETCredentialNotFound() *GETCredentialNotFound {
-	return &GETCredentialNotFound{}
+// NewGetCredentialNotFound creates a GetCredentialNotFound with default headers values
+func NewGetCredentialNotFound() *GetCredentialNotFound {
+	return &GetCredentialNotFound{}
 }
 
 /*
-GETCredentialNotFound describes a response with status code 404, with default header values.
+GetCredentialNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETCredentialNotFound struct {
+type GetCredentialNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credential not found response has a 2xx status code
-func (o *GETCredentialNotFound) IsSuccess() bool {
+func (o *GetCredentialNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credential not found response has a 3xx status code
-func (o *GETCredentialNotFound) IsRedirect() bool {
+func (o *GetCredentialNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credential not found response has a 4xx status code
-func (o *GETCredentialNotFound) IsClientError() bool {
+func (o *GetCredentialNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get credential not found response has a 5xx status code
-func (o *GETCredentialNotFound) IsServerError() bool {
+func (o *GetCredentialNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get credential not found response a status code equal to that given
-func (o *GETCredentialNotFound) IsCode(code int) bool {
+func (o *GetCredentialNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETCredentialNotFound) Error() string {
+func (o *GetCredentialNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCredentialNotFound) String() string {
+func (o *GetCredentialNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETCredentialNotFound) GetPayload() *models.Error {
+func (o *GetCredentialNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -382,58 +382,58 @@ func (o *GETCredentialNotFound) readResponse(response runtime.ClientResponse, co
 	return nil
 }
 
-// NewGETCredentialInternalServerError creates a GETCredentialInternalServerError with default headers values
-func NewGETCredentialInternalServerError() *GETCredentialInternalServerError {
-	return &GETCredentialInternalServerError{}
+// NewGetCredentialInternalServerError creates a GetCredentialInternalServerError with default headers values
+func NewGetCredentialInternalServerError() *GetCredentialInternalServerError {
+	return &GetCredentialInternalServerError{}
 }
 
 /*
-GETCredentialInternalServerError describes a response with status code 500, with default header values.
+GetCredentialInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETCredentialInternalServerError struct {
+type GetCredentialInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get credential internal server error response has a 2xx status code
-func (o *GETCredentialInternalServerError) IsSuccess() bool {
+func (o *GetCredentialInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get credential internal server error response has a 3xx status code
-func (o *GETCredentialInternalServerError) IsRedirect() bool {
+func (o *GetCredentialInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get credential internal server error response has a 4xx status code
-func (o *GETCredentialInternalServerError) IsClientError() bool {
+func (o *GetCredentialInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get credential internal server error response has a 5xx status code
-func (o *GETCredentialInternalServerError) IsServerError() bool {
+func (o *GetCredentialInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get credential internal server error response a status code equal to that given
-func (o *GETCredentialInternalServerError) IsCode(code int) bool {
+func (o *GetCredentialInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETCredentialInternalServerError) Error() string {
+func (o *GetCredentialInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCredentialInternalServerError) String() string {
+func (o *GetCredentialInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETCredentialInternalServerError) GetPayload() *models.Error {
+func (o *GetCredentialInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETCredentialInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetCredentialInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

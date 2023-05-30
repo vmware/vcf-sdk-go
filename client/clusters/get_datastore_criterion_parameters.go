@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDatastoreCriterionParams creates a new GETDatastoreCriterionParams object,
+// NewGetDatastoreCriterionParams creates a new GetDatastoreCriterionParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDatastoreCriterionParams() *GETDatastoreCriterionParams {
-	return &GETDatastoreCriterionParams{
+func NewGetDatastoreCriterionParams() *GetDatastoreCriterionParams {
+	return &GetDatastoreCriterionParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDatastoreCriterionParamsWithTimeout creates a new GETDatastoreCriterionParams object
+// NewGetDatastoreCriterionParamsWithTimeout creates a new GetDatastoreCriterionParams object
 // with the ability to set a timeout on a request.
-func NewGETDatastoreCriterionParamsWithTimeout(timeout time.Duration) *GETDatastoreCriterionParams {
-	return &GETDatastoreCriterionParams{
+func NewGetDatastoreCriterionParamsWithTimeout(timeout time.Duration) *GetDatastoreCriterionParams {
+	return &GetDatastoreCriterionParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDatastoreCriterionParamsWithContext creates a new GETDatastoreCriterionParams object
+// NewGetDatastoreCriterionParamsWithContext creates a new GetDatastoreCriterionParams object
 // with the ability to set a context for a request.
-func NewGETDatastoreCriterionParamsWithContext(ctx context.Context) *GETDatastoreCriterionParams {
-	return &GETDatastoreCriterionParams{
+func NewGetDatastoreCriterionParamsWithContext(ctx context.Context) *GetDatastoreCriterionParams {
+	return &GetDatastoreCriterionParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDatastoreCriterionParamsWithHTTPClient creates a new GETDatastoreCriterionParams object
+// NewGetDatastoreCriterionParamsWithHTTPClient creates a new GetDatastoreCriterionParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDatastoreCriterionParamsWithHTTPClient(client *http.Client) *GETDatastoreCriterionParams {
-	return &GETDatastoreCriterionParams{
+func NewGetDatastoreCriterionParamsWithHTTPClient(client *http.Client) *GetDatastoreCriterionParams {
+	return &GetDatastoreCriterionParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDatastoreCriterionParams contains all the parameters to send to the API endpoint
+GetDatastoreCriterionParams contains all the parameters to send to the API endpoint
 
 	for the get datastore criterion operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDatastoreCriterionParams struct {
+type GetDatastoreCriterionParams struct {
 
 	/* ID.
 
@@ -84,7 +84,7 @@ type GETDatastoreCriterionParams struct {
 // WithDefaults hydrates default values in the get datastore criterion params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoreCriterionParams) WithDefaults() *GETDatastoreCriterionParams {
+func (o *GetDatastoreCriterionParams) WithDefaults() *GetDatastoreCriterionParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETDatastoreCriterionParams) WithDefaults() *GETDatastoreCriterionParam
 // SetDefaults hydrates default values in the get datastore criterion params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDatastoreCriterionParams) SetDefaults() {
+func (o *GetDatastoreCriterionParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) WithTimeout(timeout time.Duration) *GETDatastoreCriterionParams {
+func (o *GetDatastoreCriterionParams) WithTimeout(timeout time.Duration) *GetDatastoreCriterionParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) SetTimeout(timeout time.Duration) {
+func (o *GetDatastoreCriterionParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) WithContext(ctx context.Context) *GETDatastoreCriterionParams {
+func (o *GetDatastoreCriterionParams) WithContext(ctx context.Context) *GetDatastoreCriterionParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) SetContext(ctx context.Context) {
+func (o *GetDatastoreCriterionParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) WithHTTPClient(client *http.Client) *GETDatastoreCriterionParams {
+func (o *GetDatastoreCriterionParams) WithHTTPClient(client *http.Client) *GetDatastoreCriterionParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) SetHTTPClient(client *http.Client) {
+func (o *GetDatastoreCriterionParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) WithID(id string) *GETDatastoreCriterionParams {
+func (o *GetDatastoreCriterionParams) WithID(id string) *GetDatastoreCriterionParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) SetID(id string) {
+func (o *GetDatastoreCriterionParams) SetID(id string) {
 	o.ID = id
 }
 
 // WithName adds the name to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) WithName(name string) *GETDatastoreCriterionParams {
+func (o *GetDatastoreCriterionParams) WithName(name string) *GetDatastoreCriterionParams {
 	o.SetName(name)
 	return o
 }
 
 // SetName adds the name to the get datastore criterion params
-func (o *GETDatastoreCriterionParams) SetName(name string) {
+func (o *GetDatastoreCriterionParams) SetName(name string) {
 	o.Name = name
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDatastoreCriterionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDatastoreCriterionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

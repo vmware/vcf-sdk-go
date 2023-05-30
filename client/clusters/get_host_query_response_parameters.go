@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETHostQueryResponseParams creates a new GETHostQueryResponseParams object,
+// NewGetHostQueryResponseParams creates a new GetHostQueryResponseParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETHostQueryResponseParams() *GETHostQueryResponseParams {
-	return &GETHostQueryResponseParams{
+func NewGetHostQueryResponseParams() *GetHostQueryResponseParams {
+	return &GetHostQueryResponseParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETHostQueryResponseParamsWithTimeout creates a new GETHostQueryResponseParams object
+// NewGetHostQueryResponseParamsWithTimeout creates a new GetHostQueryResponseParams object
 // with the ability to set a timeout on a request.
-func NewGETHostQueryResponseParamsWithTimeout(timeout time.Duration) *GETHostQueryResponseParams {
-	return &GETHostQueryResponseParams{
+func NewGetHostQueryResponseParamsWithTimeout(timeout time.Duration) *GetHostQueryResponseParams {
+	return &GetHostQueryResponseParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETHostQueryResponseParamsWithContext creates a new GETHostQueryResponseParams object
+// NewGetHostQueryResponseParamsWithContext creates a new GetHostQueryResponseParams object
 // with the ability to set a context for a request.
-func NewGETHostQueryResponseParamsWithContext(ctx context.Context) *GETHostQueryResponseParams {
-	return &GETHostQueryResponseParams{
+func NewGetHostQueryResponseParamsWithContext(ctx context.Context) *GetHostQueryResponseParams {
+	return &GetHostQueryResponseParams{
 		Context: ctx,
 	}
 }
 
-// NewGETHostQueryResponseParamsWithHTTPClient creates a new GETHostQueryResponseParams object
+// NewGetHostQueryResponseParamsWithHTTPClient creates a new GetHostQueryResponseParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETHostQueryResponseParamsWithHTTPClient(client *http.Client) *GETHostQueryResponseParams {
-	return &GETHostQueryResponseParams{
+func NewGetHostQueryResponseParamsWithHTTPClient(client *http.Client) *GetHostQueryResponseParams {
+	return &GetHostQueryResponseParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETHostQueryResponseParams contains all the parameters to send to the API endpoint
+GetHostQueryResponseParams contains all the parameters to send to the API endpoint
 
 	for the get host query response operation.
 
 	Typically these are written to a http.Request.
 */
-type GETHostQueryResponseParams struct {
+type GetHostQueryResponseParams struct {
 
 	/* ClusterID.
 
@@ -84,7 +84,7 @@ type GETHostQueryResponseParams struct {
 // WithDefaults hydrates default values in the get host query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostQueryResponseParams) WithDefaults() *GETHostQueryResponseParams {
+func (o *GetHostQueryResponseParams) WithDefaults() *GetHostQueryResponseParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETHostQueryResponseParams) WithDefaults() *GETHostQueryResponseParams 
 // SetDefaults hydrates default values in the get host query response params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETHostQueryResponseParams) SetDefaults() {
+func (o *GetHostQueryResponseParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get host query response params
-func (o *GETHostQueryResponseParams) WithTimeout(timeout time.Duration) *GETHostQueryResponseParams {
+func (o *GetHostQueryResponseParams) WithTimeout(timeout time.Duration) *GetHostQueryResponseParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get host query response params
-func (o *GETHostQueryResponseParams) SetTimeout(timeout time.Duration) {
+func (o *GetHostQueryResponseParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get host query response params
-func (o *GETHostQueryResponseParams) WithContext(ctx context.Context) *GETHostQueryResponseParams {
+func (o *GetHostQueryResponseParams) WithContext(ctx context.Context) *GetHostQueryResponseParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get host query response params
-func (o *GETHostQueryResponseParams) SetContext(ctx context.Context) {
+func (o *GetHostQueryResponseParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get host query response params
-func (o *GETHostQueryResponseParams) WithHTTPClient(client *http.Client) *GETHostQueryResponseParams {
+func (o *GetHostQueryResponseParams) WithHTTPClient(client *http.Client) *GetHostQueryResponseParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get host query response params
-func (o *GETHostQueryResponseParams) SetHTTPClient(client *http.Client) {
+func (o *GetHostQueryResponseParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithClusterID adds the clusterID to the get host query response params
-func (o *GETHostQueryResponseParams) WithClusterID(clusterID string) *GETHostQueryResponseParams {
+func (o *GetHostQueryResponseParams) WithClusterID(clusterID string) *GetHostQueryResponseParams {
 	o.SetClusterID(clusterID)
 	return o
 }
 
 // SetClusterID adds the clusterId to the get host query response params
-func (o *GETHostQueryResponseParams) SetClusterID(clusterID string) {
+func (o *GetHostQueryResponseParams) SetClusterID(clusterID string) {
 	o.ClusterID = clusterID
 }
 
 // WithQueryID adds the queryID to the get host query response params
-func (o *GETHostQueryResponseParams) WithQueryID(queryID string) *GETHostQueryResponseParams {
+func (o *GetHostQueryResponseParams) WithQueryID(queryID string) *GetHostQueryResponseParams {
 	o.SetQueryID(queryID)
 	return o
 }
 
 // SetQueryID adds the queryId to the get host query response params
-func (o *GETHostQueryResponseParams) SetQueryID(queryID string) {
+func (o *GetHostQueryResponseParams) SetQueryID(queryID string) {
 	o.QueryID = queryID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETHostQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetHostQueryResponseParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDomainParams creates a new GETDomainParams object,
+// NewGetDomainParams creates a new GetDomainParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDomainParams() *GETDomainParams {
-	return &GETDomainParams{
+func NewGetDomainParams() *GetDomainParams {
+	return &GetDomainParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDomainParamsWithTimeout creates a new GETDomainParams object
+// NewGetDomainParamsWithTimeout creates a new GetDomainParams object
 // with the ability to set a timeout on a request.
-func NewGETDomainParamsWithTimeout(timeout time.Duration) *GETDomainParams {
-	return &GETDomainParams{
+func NewGetDomainParamsWithTimeout(timeout time.Duration) *GetDomainParams {
+	return &GetDomainParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDomainParamsWithContext creates a new GETDomainParams object
+// NewGetDomainParamsWithContext creates a new GetDomainParams object
 // with the ability to set a context for a request.
-func NewGETDomainParamsWithContext(ctx context.Context) *GETDomainParams {
-	return &GETDomainParams{
+func NewGetDomainParamsWithContext(ctx context.Context) *GetDomainParams {
+	return &GetDomainParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDomainParamsWithHTTPClient creates a new GETDomainParams object
+// NewGetDomainParamsWithHTTPClient creates a new GetDomainParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDomainParamsWithHTTPClient(client *http.Client) *GETDomainParams {
-	return &GETDomainParams{
+func NewGetDomainParamsWithHTTPClient(client *http.Client) *GetDomainParams {
+	return &GetDomainParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDomainParams contains all the parameters to send to the API endpoint
+GetDomainParams contains all the parameters to send to the API endpoint
 
 	for the get domain operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDomainParams struct {
+type GetDomainParams struct {
 
 	/* ID.
 
@@ -78,7 +78,7 @@ type GETDomainParams struct {
 // WithDefaults hydrates default values in the get domain params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDomainParams) WithDefaults() *GETDomainParams {
+func (o *GetDomainParams) WithDefaults() *GetDomainParams {
 	o.SetDefaults()
 	return o
 }
@@ -86,56 +86,56 @@ func (o *GETDomainParams) WithDefaults() *GETDomainParams {
 // SetDefaults hydrates default values in the get domain params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDomainParams) SetDefaults() {
+func (o *GetDomainParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get domain params
-func (o *GETDomainParams) WithTimeout(timeout time.Duration) *GETDomainParams {
+func (o *GetDomainParams) WithTimeout(timeout time.Duration) *GetDomainParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get domain params
-func (o *GETDomainParams) SetTimeout(timeout time.Duration) {
+func (o *GetDomainParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get domain params
-func (o *GETDomainParams) WithContext(ctx context.Context) *GETDomainParams {
+func (o *GetDomainParams) WithContext(ctx context.Context) *GetDomainParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get domain params
-func (o *GETDomainParams) SetContext(ctx context.Context) {
+func (o *GetDomainParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get domain params
-func (o *GETDomainParams) WithHTTPClient(client *http.Client) *GETDomainParams {
+func (o *GetDomainParams) WithHTTPClient(client *http.Client) *GetDomainParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get domain params
-func (o *GETDomainParams) SetHTTPClient(client *http.Client) {
+func (o *GetDomainParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get domain params
-func (o *GETDomainParams) WithID(id string) *GETDomainParams {
+func (o *GetDomainParams) WithID(id string) *GetDomainParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get domain params
-func (o *GETDomainParams) SetID(id string) {
+func (o *GetDomainParams) SetID(id string) {
 	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDomainParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDomainParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

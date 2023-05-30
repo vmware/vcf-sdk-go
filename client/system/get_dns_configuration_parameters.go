@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETDNSConfigurationParams creates a new GETDNSConfigurationParams object,
+// NewGetDNSConfigurationParams creates a new GetDNSConfigurationParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETDNSConfigurationParams() *GETDNSConfigurationParams {
-	return &GETDNSConfigurationParams{
+func NewGetDNSConfigurationParams() *GetDNSConfigurationParams {
+	return &GetDNSConfigurationParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETDNSConfigurationParamsWithTimeout creates a new GETDNSConfigurationParams object
+// NewGetDNSConfigurationParamsWithTimeout creates a new GetDNSConfigurationParams object
 // with the ability to set a timeout on a request.
-func NewGETDNSConfigurationParamsWithTimeout(timeout time.Duration) *GETDNSConfigurationParams {
-	return &GETDNSConfigurationParams{
+func NewGetDNSConfigurationParamsWithTimeout(timeout time.Duration) *GetDNSConfigurationParams {
+	return &GetDNSConfigurationParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETDNSConfigurationParamsWithContext creates a new GETDNSConfigurationParams object
+// NewGetDNSConfigurationParamsWithContext creates a new GetDNSConfigurationParams object
 // with the ability to set a context for a request.
-func NewGETDNSConfigurationParamsWithContext(ctx context.Context) *GETDNSConfigurationParams {
-	return &GETDNSConfigurationParams{
+func NewGetDNSConfigurationParamsWithContext(ctx context.Context) *GetDNSConfigurationParams {
+	return &GetDNSConfigurationParams{
 		Context: ctx,
 	}
 }
 
-// NewGETDNSConfigurationParamsWithHTTPClient creates a new GETDNSConfigurationParams object
+// NewGetDNSConfigurationParamsWithHTTPClient creates a new GetDNSConfigurationParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETDNSConfigurationParamsWithHTTPClient(client *http.Client) *GETDNSConfigurationParams {
-	return &GETDNSConfigurationParams{
+func NewGetDNSConfigurationParamsWithHTTPClient(client *http.Client) *GetDNSConfigurationParams {
+	return &GetDNSConfigurationParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETDNSConfigurationParams contains all the parameters to send to the API endpoint
+GetDNSConfigurationParams contains all the parameters to send to the API endpoint
 
 	for the get Dns configuration operation.
 
 	Typically these are written to a http.Request.
 */
-type GETDNSConfigurationParams struct {
+type GetDNSConfigurationParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETDNSConfigurationParams struct {
 // WithDefaults hydrates default values in the get Dns configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDNSConfigurationParams) WithDefaults() *GETDNSConfigurationParams {
+func (o *GetDNSConfigurationParams) WithDefaults() *GetDNSConfigurationParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETDNSConfigurationParams) WithDefaults() *GETDNSConfigurationParams {
 // SetDefaults hydrates default values in the get Dns configuration params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETDNSConfigurationParams) SetDefaults() {
+func (o *GetDNSConfigurationParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Dns configuration params
-func (o *GETDNSConfigurationParams) WithTimeout(timeout time.Duration) *GETDNSConfigurationParams {
+func (o *GetDNSConfigurationParams) WithTimeout(timeout time.Duration) *GetDNSConfigurationParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Dns configuration params
-func (o *GETDNSConfigurationParams) SetTimeout(timeout time.Duration) {
+func (o *GetDNSConfigurationParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Dns configuration params
-func (o *GETDNSConfigurationParams) WithContext(ctx context.Context) *GETDNSConfigurationParams {
+func (o *GetDNSConfigurationParams) WithContext(ctx context.Context) *GetDNSConfigurationParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Dns configuration params
-func (o *GETDNSConfigurationParams) SetContext(ctx context.Context) {
+func (o *GetDNSConfigurationParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Dns configuration params
-func (o *GETDNSConfigurationParams) WithHTTPClient(client *http.Client) *GETDNSConfigurationParams {
+func (o *GetDNSConfigurationParams) WithHTTPClient(client *http.Client) *GetDNSConfigurationParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Dns configuration params
-func (o *GETDNSConfigurationParams) SetHTTPClient(client *http.Client) {
+func (o *GetDNSConfigurationParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETDNSConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetDNSConfigurationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

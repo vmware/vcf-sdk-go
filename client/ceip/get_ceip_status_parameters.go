@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCEIPStatusParams creates a new GETCEIPStatusParams object,
+// NewGetCEIPStatusParams creates a new GetCEIPStatusParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCEIPStatusParams() *GETCEIPStatusParams {
-	return &GETCEIPStatusParams{
+func NewGetCEIPStatusParams() *GetCEIPStatusParams {
+	return &GetCEIPStatusParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCEIPStatusParamsWithTimeout creates a new GETCEIPStatusParams object
+// NewGetCEIPStatusParamsWithTimeout creates a new GetCEIPStatusParams object
 // with the ability to set a timeout on a request.
-func NewGETCEIPStatusParamsWithTimeout(timeout time.Duration) *GETCEIPStatusParams {
-	return &GETCEIPStatusParams{
+func NewGetCEIPStatusParamsWithTimeout(timeout time.Duration) *GetCEIPStatusParams {
+	return &GetCEIPStatusParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCEIPStatusParamsWithContext creates a new GETCEIPStatusParams object
+// NewGetCEIPStatusParamsWithContext creates a new GetCEIPStatusParams object
 // with the ability to set a context for a request.
-func NewGETCEIPStatusParamsWithContext(ctx context.Context) *GETCEIPStatusParams {
-	return &GETCEIPStatusParams{
+func NewGetCEIPStatusParamsWithContext(ctx context.Context) *GetCEIPStatusParams {
+	return &GetCEIPStatusParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCEIPStatusParamsWithHTTPClient creates a new GETCEIPStatusParams object
+// NewGetCEIPStatusParamsWithHTTPClient creates a new GetCEIPStatusParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCEIPStatusParamsWithHTTPClient(client *http.Client) *GETCEIPStatusParams {
-	return &GETCEIPStatusParams{
+func NewGetCEIPStatusParamsWithHTTPClient(client *http.Client) *GetCEIPStatusParams {
+	return &GetCEIPStatusParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCEIPStatusParams contains all the parameters to send to the API endpoint
+GetCEIPStatusParams contains all the parameters to send to the API endpoint
 
 	for the get Ceip status operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCEIPStatusParams struct {
+type GetCEIPStatusParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETCEIPStatusParams struct {
 // WithDefaults hydrates default values in the get Ceip status params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCEIPStatusParams) WithDefaults() *GETCEIPStatusParams {
+func (o *GetCEIPStatusParams) WithDefaults() *GetCEIPStatusParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETCEIPStatusParams) WithDefaults() *GETCEIPStatusParams {
 // SetDefaults hydrates default values in the get Ceip status params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCEIPStatusParams) SetDefaults() {
+func (o *GetCEIPStatusParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get Ceip status params
-func (o *GETCEIPStatusParams) WithTimeout(timeout time.Duration) *GETCEIPStatusParams {
+func (o *GetCEIPStatusParams) WithTimeout(timeout time.Duration) *GetCEIPStatusParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get Ceip status params
-func (o *GETCEIPStatusParams) SetTimeout(timeout time.Duration) {
+func (o *GetCEIPStatusParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get Ceip status params
-func (o *GETCEIPStatusParams) WithContext(ctx context.Context) *GETCEIPStatusParams {
+func (o *GetCEIPStatusParams) WithContext(ctx context.Context) *GetCEIPStatusParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get Ceip status params
-func (o *GETCEIPStatusParams) SetContext(ctx context.Context) {
+func (o *GetCEIPStatusParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get Ceip status params
-func (o *GETCEIPStatusParams) WithHTTPClient(client *http.Client) *GETCEIPStatusParams {
+func (o *GetCEIPStatusParams) WithHTTPClient(client *http.Client) *GetCEIPStatusParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get Ceip status params
-func (o *GETCEIPStatusParams) SetHTTPClient(client *http.Client) {
+func (o *GetCEIPStatusParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCEIPStatusParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCEIPStatusParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

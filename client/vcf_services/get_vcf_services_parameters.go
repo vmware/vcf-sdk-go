@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETVcfServicesParams creates a new GETVcfServicesParams object,
+// NewGetVcfServicesParams creates a new GetVcfServicesParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETVcfServicesParams() *GETVcfServicesParams {
-	return &GETVcfServicesParams{
+func NewGetVcfServicesParams() *GetVcfServicesParams {
+	return &GetVcfServicesParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETVcfServicesParamsWithTimeout creates a new GETVcfServicesParams object
+// NewGetVcfServicesParamsWithTimeout creates a new GetVcfServicesParams object
 // with the ability to set a timeout on a request.
-func NewGETVcfServicesParamsWithTimeout(timeout time.Duration) *GETVcfServicesParams {
-	return &GETVcfServicesParams{
+func NewGetVcfServicesParamsWithTimeout(timeout time.Duration) *GetVcfServicesParams {
+	return &GetVcfServicesParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETVcfServicesParamsWithContext creates a new GETVcfServicesParams object
+// NewGetVcfServicesParamsWithContext creates a new GetVcfServicesParams object
 // with the ability to set a context for a request.
-func NewGETVcfServicesParamsWithContext(ctx context.Context) *GETVcfServicesParams {
-	return &GETVcfServicesParams{
+func NewGetVcfServicesParamsWithContext(ctx context.Context) *GetVcfServicesParams {
+	return &GetVcfServicesParams{
 		Context: ctx,
 	}
 }
 
-// NewGETVcfServicesParamsWithHTTPClient creates a new GETVcfServicesParams object
+// NewGetVcfServicesParamsWithHTTPClient creates a new GetVcfServicesParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETVcfServicesParamsWithHTTPClient(client *http.Client) *GETVcfServicesParams {
-	return &GETVcfServicesParams{
+func NewGetVcfServicesParamsWithHTTPClient(client *http.Client) *GetVcfServicesParams {
+	return &GetVcfServicesParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETVcfServicesParams contains all the parameters to send to the API endpoint
+GetVcfServicesParams contains all the parameters to send to the API endpoint
 
 	for the get vcf services operation.
 
 	Typically these are written to a http.Request.
 */
-type GETVcfServicesParams struct {
+type GetVcfServicesParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -71,7 +71,7 @@ type GETVcfServicesParams struct {
 // WithDefaults hydrates default values in the get vcf services params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVcfServicesParams) WithDefaults() *GETVcfServicesParams {
+func (o *GetVcfServicesParams) WithDefaults() *GetVcfServicesParams {
 	o.SetDefaults()
 	return o
 }
@@ -79,45 +79,45 @@ func (o *GETVcfServicesParams) WithDefaults() *GETVcfServicesParams {
 // SetDefaults hydrates default values in the get vcf services params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETVcfServicesParams) SetDefaults() {
+func (o *GetVcfServicesParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vcf services params
-func (o *GETVcfServicesParams) WithTimeout(timeout time.Duration) *GETVcfServicesParams {
+func (o *GetVcfServicesParams) WithTimeout(timeout time.Duration) *GetVcfServicesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get vcf services params
-func (o *GETVcfServicesParams) SetTimeout(timeout time.Duration) {
+func (o *GetVcfServicesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get vcf services params
-func (o *GETVcfServicesParams) WithContext(ctx context.Context) *GETVcfServicesParams {
+func (o *GetVcfServicesParams) WithContext(ctx context.Context) *GetVcfServicesParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get vcf services params
-func (o *GETVcfServicesParams) SetContext(ctx context.Context) {
+func (o *GetVcfServicesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get vcf services params
-func (o *GETVcfServicesParams) WithHTTPClient(client *http.Client) *GETVcfServicesParams {
+func (o *GetVcfServicesParams) WithHTTPClient(client *http.Client) *GetVcfServicesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get vcf services params
-func (o *GETVcfServicesParams) SetHTTPClient(client *http.Client) {
+func (o *GetVcfServicesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETVcfServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVcfServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

@@ -18,22 +18,22 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETVRSLCMReader is a Reader for the GETVRSLCM structure.
-type GETVRSLCMReader struct {
+// GetVRSLCMReader is a Reader for the GetVRSLCM structure.
+type GetVRSLCMReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETVRSLCMReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVRSLCMReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETVRSLCMOK()
+		result := NewGetVRSLCMOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETVRSLCMNotFound()
+		result := NewGetVRSLCMNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -43,58 +43,58 @@ func (o *GETVRSLCMReader) ReadResponse(response runtime.ClientResponse, consumer
 	}
 }
 
-// NewGETVRSLCMOK creates a GETVRSLCMOK with default headers values
-func NewGETVRSLCMOK() *GETVRSLCMOK {
-	return &GETVRSLCMOK{}
+// NewGetVRSLCMOK creates a GetVRSLCMOK with default headers values
+func NewGetVRSLCMOK() *GetVRSLCMOK {
+	return &GetVRSLCMOK{}
 }
 
 /*
-GETVRSLCMOK describes a response with status code 200, with default header values.
+GetVRSLCMOK describes a response with status code 200, with default header values.
 
 OK
 */
-type GETVRSLCMOK struct {
+type GetVRSLCMOK struct {
 	Payload *models.VRSLCM
 }
 
 // IsSuccess returns true when this get Vrslcm o k response has a 2xx status code
-func (o *GETVRSLCMOK) IsSuccess() bool {
+func (o *GetVRSLCMOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get Vrslcm o k response has a 3xx status code
-func (o *GETVRSLCMOK) IsRedirect() bool {
+func (o *GetVRSLCMOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Vrslcm o k response has a 4xx status code
-func (o *GETVRSLCMOK) IsClientError() bool {
+func (o *GetVRSLCMOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get Vrslcm o k response has a 5xx status code
-func (o *GETVRSLCMOK) IsServerError() bool {
+func (o *GetVRSLCMOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Vrslcm o k response a status code equal to that given
-func (o *GETVRSLCMOK) IsCode(code int) bool {
+func (o *GetVRSLCMOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETVRSLCMOK) Error() string {
+func (o *GetVRSLCMOK) Error() string {
 	return fmt.Sprintf("[GET /v1/vrslcm][%d] getVrslcmOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVRSLCMOK) String() string {
+func (o *GetVRSLCMOK) String() string {
 	return fmt.Sprintf("[GET /v1/vrslcm][%d] getVrslcmOK  %+v", 200, o.Payload)
 }
 
-func (o *GETVRSLCMOK) GetPayload() *models.VRSLCM {
+func (o *GetVRSLCMOK) GetPayload() *models.VRSLCM {
 	return o.Payload
 }
 
-func (o *GETVRSLCMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVRSLCMOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.VRSLCM)
 
@@ -106,53 +106,53 @@ func (o *GETVRSLCMOK) readResponse(response runtime.ClientResponse, consumer run
 	return nil
 }
 
-// NewGETVRSLCMNotFound creates a GETVRSLCMNotFound with default headers values
-func NewGETVRSLCMNotFound() *GETVRSLCMNotFound {
-	return &GETVRSLCMNotFound{}
+// NewGetVRSLCMNotFound creates a GetVRSLCMNotFound with default headers values
+func NewGetVRSLCMNotFound() *GetVRSLCMNotFound {
+	return &GetVRSLCMNotFound{}
 }
 
 /*
-GETVRSLCMNotFound describes a response with status code 404, with default header values.
+GetVRSLCMNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
-type GETVRSLCMNotFound struct {
+type GetVRSLCMNotFound struct {
 }
 
 // IsSuccess returns true when this get Vrslcm not found response has a 2xx status code
-func (o *GETVRSLCMNotFound) IsSuccess() bool {
+func (o *GetVRSLCMNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get Vrslcm not found response has a 3xx status code
-func (o *GETVRSLCMNotFound) IsRedirect() bool {
+func (o *GetVRSLCMNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get Vrslcm not found response has a 4xx status code
-func (o *GETVRSLCMNotFound) IsClientError() bool {
+func (o *GetVRSLCMNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get Vrslcm not found response has a 5xx status code
-func (o *GETVRSLCMNotFound) IsServerError() bool {
+func (o *GetVRSLCMNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get Vrslcm not found response a status code equal to that given
-func (o *GETVRSLCMNotFound) IsCode(code int) bool {
+func (o *GetVRSLCMNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETVRSLCMNotFound) Error() string {
+func (o *GetVRSLCMNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/vrslcm][%d] getVrslcmNotFound ", 404)
 }
 
-func (o *GETVRSLCMNotFound) String() string {
+func (o *GetVRSLCMNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/vrslcm][%d] getVrslcmNotFound ", 404)
 }
 
-func (o *GETVRSLCMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVRSLCMNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

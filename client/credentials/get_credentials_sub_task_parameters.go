@@ -19,50 +19,50 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGETCredentialsSubTaskParams creates a new GETCredentialsSubTaskParams object,
+// NewGetCredentialsSubTaskParams creates a new GetCredentialsSubTaskParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCredentialsSubTaskParams() *GETCredentialsSubTaskParams {
-	return &GETCredentialsSubTaskParams{
+func NewGetCredentialsSubTaskParams() *GetCredentialsSubTaskParams {
+	return &GetCredentialsSubTaskParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCredentialsSubTaskParamsWithTimeout creates a new GETCredentialsSubTaskParams object
+// NewGetCredentialsSubTaskParamsWithTimeout creates a new GetCredentialsSubTaskParams object
 // with the ability to set a timeout on a request.
-func NewGETCredentialsSubTaskParamsWithTimeout(timeout time.Duration) *GETCredentialsSubTaskParams {
-	return &GETCredentialsSubTaskParams{
+func NewGetCredentialsSubTaskParamsWithTimeout(timeout time.Duration) *GetCredentialsSubTaskParams {
+	return &GetCredentialsSubTaskParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCredentialsSubTaskParamsWithContext creates a new GETCredentialsSubTaskParams object
+// NewGetCredentialsSubTaskParamsWithContext creates a new GetCredentialsSubTaskParams object
 // with the ability to set a context for a request.
-func NewGETCredentialsSubTaskParamsWithContext(ctx context.Context) *GETCredentialsSubTaskParams {
-	return &GETCredentialsSubTaskParams{
+func NewGetCredentialsSubTaskParamsWithContext(ctx context.Context) *GetCredentialsSubTaskParams {
+	return &GetCredentialsSubTaskParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCredentialsSubTaskParamsWithHTTPClient creates a new GETCredentialsSubTaskParams object
+// NewGetCredentialsSubTaskParamsWithHTTPClient creates a new GetCredentialsSubTaskParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCredentialsSubTaskParamsWithHTTPClient(client *http.Client) *GETCredentialsSubTaskParams {
-	return &GETCredentialsSubTaskParams{
+func NewGetCredentialsSubTaskParamsWithHTTPClient(client *http.Client) *GetCredentialsSubTaskParams {
+	return &GetCredentialsSubTaskParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCredentialsSubTaskParams contains all the parameters to send to the API endpoint
+GetCredentialsSubTaskParams contains all the parameters to send to the API endpoint
 
 	for the get credentials sub task operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCredentialsSubTaskParams struct {
+type GetCredentialsSubTaskParams struct {
 
 	/* ID.
 
@@ -84,7 +84,7 @@ type GETCredentialsSubTaskParams struct {
 // WithDefaults hydrates default values in the get credentials sub task params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialsSubTaskParams) WithDefaults() *GETCredentialsSubTaskParams {
+func (o *GetCredentialsSubTaskParams) WithDefaults() *GetCredentialsSubTaskParams {
 	o.SetDefaults()
 	return o
 }
@@ -92,67 +92,67 @@ func (o *GETCredentialsSubTaskParams) WithDefaults() *GETCredentialsSubTaskParam
 // SetDefaults hydrates default values in the get credentials sub task params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialsSubTaskParams) SetDefaults() {
+func (o *GetCredentialsSubTaskParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) WithTimeout(timeout time.Duration) *GETCredentialsSubTaskParams {
+func (o *GetCredentialsSubTaskParams) WithTimeout(timeout time.Duration) *GetCredentialsSubTaskParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) SetTimeout(timeout time.Duration) {
+func (o *GetCredentialsSubTaskParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) WithContext(ctx context.Context) *GETCredentialsSubTaskParams {
+func (o *GetCredentialsSubTaskParams) WithContext(ctx context.Context) *GetCredentialsSubTaskParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) SetContext(ctx context.Context) {
+func (o *GetCredentialsSubTaskParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) WithHTTPClient(client *http.Client) *GETCredentialsSubTaskParams {
+func (o *GetCredentialsSubTaskParams) WithHTTPClient(client *http.Client) *GetCredentialsSubTaskParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) SetHTTPClient(client *http.Client) {
+func (o *GetCredentialsSubTaskParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithID adds the id to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) WithID(id string) *GETCredentialsSubTaskParams {
+func (o *GetCredentialsSubTaskParams) WithID(id string) *GetCredentialsSubTaskParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) SetID(id string) {
+func (o *GetCredentialsSubTaskParams) SetID(id string) {
 	o.ID = id
 }
 
 // WithSubtaskID adds the subtaskID to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) WithSubtaskID(subtaskID string) *GETCredentialsSubTaskParams {
+func (o *GetCredentialsSubTaskParams) WithSubtaskID(subtaskID string) *GetCredentialsSubTaskParams {
 	o.SetSubtaskID(subtaskID)
 	return o
 }
 
 // SetSubtaskID adds the subtaskId to the get credentials sub task params
-func (o *GETCredentialsSubTaskParams) SetSubtaskID(subtaskID string) {
+func (o *GetCredentialsSubTaskParams) SetSubtaskID(subtaskID string) {
 	o.SubtaskID = subtaskID
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCredentialsSubTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCredentialsSubTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

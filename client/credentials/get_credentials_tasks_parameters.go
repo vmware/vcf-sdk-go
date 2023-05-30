@@ -20,50 +20,50 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGETCredentialsTasksParams creates a new GETCredentialsTasksParams object,
+// NewGetCredentialsTasksParams creates a new GetCredentialsTasksParams object,
 // with the default timeout for this client.
 //
 // Default values are not hydrated, since defaults are normally applied by the API server side.
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
-func NewGETCredentialsTasksParams() *GETCredentialsTasksParams {
-	return &GETCredentialsTasksParams{
+func NewGetCredentialsTasksParams() *GetCredentialsTasksParams {
+	return &GetCredentialsTasksParams{
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGETCredentialsTasksParamsWithTimeout creates a new GETCredentialsTasksParams object
+// NewGetCredentialsTasksParamsWithTimeout creates a new GetCredentialsTasksParams object
 // with the ability to set a timeout on a request.
-func NewGETCredentialsTasksParamsWithTimeout(timeout time.Duration) *GETCredentialsTasksParams {
-	return &GETCredentialsTasksParams{
+func NewGetCredentialsTasksParamsWithTimeout(timeout time.Duration) *GetCredentialsTasksParams {
+	return &GetCredentialsTasksParams{
 		timeout: timeout,
 	}
 }
 
-// NewGETCredentialsTasksParamsWithContext creates a new GETCredentialsTasksParams object
+// NewGetCredentialsTasksParamsWithContext creates a new GetCredentialsTasksParams object
 // with the ability to set a context for a request.
-func NewGETCredentialsTasksParamsWithContext(ctx context.Context) *GETCredentialsTasksParams {
-	return &GETCredentialsTasksParams{
+func NewGetCredentialsTasksParamsWithContext(ctx context.Context) *GetCredentialsTasksParams {
+	return &GetCredentialsTasksParams{
 		Context: ctx,
 	}
 }
 
-// NewGETCredentialsTasksParamsWithHTTPClient creates a new GETCredentialsTasksParams object
+// NewGetCredentialsTasksParamsWithHTTPClient creates a new GetCredentialsTasksParams object
 // with the ability to set a custom HTTPClient for a request.
-func NewGETCredentialsTasksParamsWithHTTPClient(client *http.Client) *GETCredentialsTasksParams {
-	return &GETCredentialsTasksParams{
+func NewGetCredentialsTasksParamsWithHTTPClient(client *http.Client) *GetCredentialsTasksParams {
+	return &GetCredentialsTasksParams{
 		HTTPClient: client,
 	}
 }
 
 /*
-GETCredentialsTasksParams contains all the parameters to send to the API endpoint
+GetCredentialsTasksParams contains all the parameters to send to the API endpoint
 
 	for the get credentials tasks operation.
 
 	Typically these are written to a http.Request.
 */
-type GETCredentialsTasksParams struct {
+type GetCredentialsTasksParams struct {
 
 	/* Limit.
 
@@ -81,7 +81,7 @@ type GETCredentialsTasksParams struct {
 // WithDefaults hydrates default values in the get credentials tasks params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialsTasksParams) WithDefaults() *GETCredentialsTasksParams {
+func (o *GetCredentialsTasksParams) WithDefaults() *GetCredentialsTasksParams {
 	o.SetDefaults()
 	return o
 }
@@ -89,56 +89,56 @@ func (o *GETCredentialsTasksParams) WithDefaults() *GETCredentialsTasksParams {
 // SetDefaults hydrates default values in the get credentials tasks params (not the query body).
 //
 // All values with no default are reset to their zero value.
-func (o *GETCredentialsTasksParams) SetDefaults() {
+func (o *GetCredentialsTasksParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get credentials tasks params
-func (o *GETCredentialsTasksParams) WithTimeout(timeout time.Duration) *GETCredentialsTasksParams {
+func (o *GetCredentialsTasksParams) WithTimeout(timeout time.Duration) *GetCredentialsTasksParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
 // SetTimeout adds the timeout to the get credentials tasks params
-func (o *GETCredentialsTasksParams) SetTimeout(timeout time.Duration) {
+func (o *GetCredentialsTasksParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
 // WithContext adds the context to the get credentials tasks params
-func (o *GETCredentialsTasksParams) WithContext(ctx context.Context) *GETCredentialsTasksParams {
+func (o *GetCredentialsTasksParams) WithContext(ctx context.Context) *GetCredentialsTasksParams {
 	o.SetContext(ctx)
 	return o
 }
 
 // SetContext adds the context to the get credentials tasks params
-func (o *GETCredentialsTasksParams) SetContext(ctx context.Context) {
+func (o *GetCredentialsTasksParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
 // WithHTTPClient adds the HTTPClient to the get credentials tasks params
-func (o *GETCredentialsTasksParams) WithHTTPClient(client *http.Client) *GETCredentialsTasksParams {
+func (o *GetCredentialsTasksParams) WithHTTPClient(client *http.Client) *GetCredentialsTasksParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
 // SetHTTPClient adds the HTTPClient to the get credentials tasks params
-func (o *GETCredentialsTasksParams) SetHTTPClient(client *http.Client) {
+func (o *GetCredentialsTasksParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
 // WithLimit adds the limit to the get credentials tasks params
-func (o *GETCredentialsTasksParams) WithLimit(limit *int32) *GETCredentialsTasksParams {
+func (o *GetCredentialsTasksParams) WithLimit(limit *int32) *GetCredentialsTasksParams {
 	o.SetLimit(limit)
 	return o
 }
 
 // SetLimit adds the limit to the get credentials tasks params
-func (o *GETCredentialsTasksParams) SetLimit(limit *int32) {
+func (o *GetCredentialsTasksParams) SetLimit(limit *int32) {
 	o.Limit = limit
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GETCredentialsTasksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetCredentialsTasksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

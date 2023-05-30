@@ -18,28 +18,28 @@ import (
 	"github.com/vmware/vcf-sdk-go/models"
 )
 
-// GETPrecheckTaskReader is a Reader for the GETPrecheckTask structure.
-type GETPrecheckTaskReader struct {
+// GetPrecheckTaskReader is a Reader for the GetPrecheckTask structure.
+type GetPrecheckTaskReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GETPrecheckTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetPrecheckTaskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 	case 200:
-		result := NewGETPrecheckTaskOK()
+		result := NewGetPrecheckTaskOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 404:
-		result := NewGETPrecheckTaskNotFound()
+		result := NewGetPrecheckTaskNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
 	case 500:
-		result := NewGETPrecheckTaskInternalServerError()
+		result := NewGetPrecheckTaskInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -49,58 +49,58 @@ func (o *GETPrecheckTaskReader) ReadResponse(response runtime.ClientResponse, co
 	}
 }
 
-// NewGETPrecheckTaskOK creates a GETPrecheckTaskOK with default headers values
-func NewGETPrecheckTaskOK() *GETPrecheckTaskOK {
-	return &GETPrecheckTaskOK{}
+// NewGetPrecheckTaskOK creates a GetPrecheckTaskOK with default headers values
+func NewGetPrecheckTaskOK() *GetPrecheckTaskOK {
+	return &GetPrecheckTaskOK{}
 }
 
 /*
-GETPrecheckTaskOK describes a response with status code 200, with default header values.
+GetPrecheckTaskOK describes a response with status code 200, with default header values.
 
 Ok
 */
-type GETPrecheckTaskOK struct {
+type GetPrecheckTaskOK struct {
 	Payload *models.Task
 }
 
 // IsSuccess returns true when this get precheck task o k response has a 2xx status code
-func (o *GETPrecheckTaskOK) IsSuccess() bool {
+func (o *GetPrecheckTaskOK) IsSuccess() bool {
 	return true
 }
 
 // IsRedirect returns true when this get precheck task o k response has a 3xx status code
-func (o *GETPrecheckTaskOK) IsRedirect() bool {
+func (o *GetPrecheckTaskOK) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get precheck task o k response has a 4xx status code
-func (o *GETPrecheckTaskOK) IsClientError() bool {
+func (o *GetPrecheckTaskOK) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get precheck task o k response has a 5xx status code
-func (o *GETPrecheckTaskOK) IsServerError() bool {
+func (o *GetPrecheckTaskOK) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get precheck task o k response a status code equal to that given
-func (o *GETPrecheckTaskOK) IsCode(code int) bool {
+func (o *GetPrecheckTaskOK) IsCode(code int) bool {
 	return code == 200
 }
 
-func (o *GETPrecheckTaskOK) Error() string {
+func (o *GetPrecheckTaskOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETPrecheckTaskOK) String() string {
+func (o *GetPrecheckTaskOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskOK  %+v", 200, o.Payload)
 }
 
-func (o *GETPrecheckTaskOK) GetPayload() *models.Task {
+func (o *GetPrecheckTaskOK) GetPayload() *models.Task {
 	return o.Payload
 }
 
-func (o *GETPrecheckTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPrecheckTaskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Task)
 
@@ -112,58 +112,58 @@ func (o *GETPrecheckTaskOK) readResponse(response runtime.ClientResponse, consum
 	return nil
 }
 
-// NewGETPrecheckTaskNotFound creates a GETPrecheckTaskNotFound with default headers values
-func NewGETPrecheckTaskNotFound() *GETPrecheckTaskNotFound {
-	return &GETPrecheckTaskNotFound{}
+// NewGetPrecheckTaskNotFound creates a GetPrecheckTaskNotFound with default headers values
+func NewGetPrecheckTaskNotFound() *GetPrecheckTaskNotFound {
+	return &GetPrecheckTaskNotFound{}
 }
 
 /*
-GETPrecheckTaskNotFound describes a response with status code 404, with default header values.
+GetPrecheckTaskNotFound describes a response with status code 404, with default header values.
 
 Precheck Task Not Found
 */
-type GETPrecheckTaskNotFound struct {
+type GetPrecheckTaskNotFound struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get precheck task not found response has a 2xx status code
-func (o *GETPrecheckTaskNotFound) IsSuccess() bool {
+func (o *GetPrecheckTaskNotFound) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get precheck task not found response has a 3xx status code
-func (o *GETPrecheckTaskNotFound) IsRedirect() bool {
+func (o *GetPrecheckTaskNotFound) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get precheck task not found response has a 4xx status code
-func (o *GETPrecheckTaskNotFound) IsClientError() bool {
+func (o *GetPrecheckTaskNotFound) IsClientError() bool {
 	return true
 }
 
 // IsServerError returns true when this get precheck task not found response has a 5xx status code
-func (o *GETPrecheckTaskNotFound) IsServerError() bool {
+func (o *GetPrecheckTaskNotFound) IsServerError() bool {
 	return false
 }
 
 // IsCode returns true when this get precheck task not found response a status code equal to that given
-func (o *GETPrecheckTaskNotFound) IsCode(code int) bool {
+func (o *GetPrecheckTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-func (o *GETPrecheckTaskNotFound) Error() string {
+func (o *GetPrecheckTaskNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETPrecheckTaskNotFound) String() string {
+func (o *GetPrecheckTaskNotFound) String() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GETPrecheckTaskNotFound) GetPayload() *models.Error {
+func (o *GetPrecheckTaskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETPrecheckTaskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPrecheckTaskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -175,58 +175,58 @@ func (o *GETPrecheckTaskNotFound) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewGETPrecheckTaskInternalServerError creates a GETPrecheckTaskInternalServerError with default headers values
-func NewGETPrecheckTaskInternalServerError() *GETPrecheckTaskInternalServerError {
-	return &GETPrecheckTaskInternalServerError{}
+// NewGetPrecheckTaskInternalServerError creates a GetPrecheckTaskInternalServerError with default headers values
+func NewGetPrecheckTaskInternalServerError() *GetPrecheckTaskInternalServerError {
+	return &GetPrecheckTaskInternalServerError{}
 }
 
 /*
-GETPrecheckTaskInternalServerError describes a response with status code 500, with default header values.
+GetPrecheckTaskInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
-type GETPrecheckTaskInternalServerError struct {
+type GetPrecheckTaskInternalServerError struct {
 	Payload *models.Error
 }
 
 // IsSuccess returns true when this get precheck task internal server error response has a 2xx status code
-func (o *GETPrecheckTaskInternalServerError) IsSuccess() bool {
+func (o *GetPrecheckTaskInternalServerError) IsSuccess() bool {
 	return false
 }
 
 // IsRedirect returns true when this get precheck task internal server error response has a 3xx status code
-func (o *GETPrecheckTaskInternalServerError) IsRedirect() bool {
+func (o *GetPrecheckTaskInternalServerError) IsRedirect() bool {
 	return false
 }
 
 // IsClientError returns true when this get precheck task internal server error response has a 4xx status code
-func (o *GETPrecheckTaskInternalServerError) IsClientError() bool {
+func (o *GetPrecheckTaskInternalServerError) IsClientError() bool {
 	return false
 }
 
 // IsServerError returns true when this get precheck task internal server error response has a 5xx status code
-func (o *GETPrecheckTaskInternalServerError) IsServerError() bool {
+func (o *GetPrecheckTaskInternalServerError) IsServerError() bool {
 	return true
 }
 
 // IsCode returns true when this get precheck task internal server error response a status code equal to that given
-func (o *GETPrecheckTaskInternalServerError) IsCode(code int) bool {
+func (o *GetPrecheckTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-func (o *GETPrecheckTaskInternalServerError) Error() string {
+func (o *GetPrecheckTaskInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETPrecheckTaskInternalServerError) String() string {
+func (o *GetPrecheckTaskInternalServerError) String() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *GETPrecheckTaskInternalServerError) GetPayload() *models.Error {
+func (o *GetPrecheckTaskInternalServerError) GetPayload() *models.Error {
 	return o.Payload
 }
 
-func (o *GETPrecheckTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetPrecheckTaskInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
