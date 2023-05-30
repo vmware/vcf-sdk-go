@@ -8,6 +8,6 @@ Removed the GET and POST abbreviations from the additional initialism list, for 
 
 ## [v0.1.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.1.0)
 
-> Release Date: 21 Apr 2023
+> Release Date: Apr 21 2023
 
-Initial release.
+Initial release, bringing support for VCF 4.5.0
