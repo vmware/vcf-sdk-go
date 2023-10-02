@@ -58,7 +58,8 @@ type SDDCNSXTSpec struct {
 	SSHEnabledForNSXTManager bool `json:"sshEnabledForNsxtManager,omitempty"`
 
 	// Transport VLAN ID
-	TransportVlanID int32 `json:"transportVlanId,omitempty"`
+	// Required: true
+	TransportVlanID int32 `json:"transportVlanId"`
 
 	// Virtual IP address which would act as proxy/alias for NSX-T Managers
 	// Required: true
