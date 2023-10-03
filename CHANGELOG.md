@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.1.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.1.3)
+
+> Release Date: 02 Oct 2023
+
+Made MemorySharesValue in SDDC's ResourcePoolSpec а required field.
+
 ## [v0.1.2](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.1.2)
 
 > Release Date: 02 Oct 2023
