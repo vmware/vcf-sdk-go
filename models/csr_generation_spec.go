@@ -23,10 +23,12 @@ import (
 type CSRGenerationSpec struct {
 
 	// ISO 3166 country code where company is legally registered
+	// Example: IN
 	// Required: true
 	Country *string `json:"country"`
 
 	// Contact email address
+	// Example: admin@vmware.com
 	Email string `json:"email,omitempty"`
 
 	// The public key algorithm of the certificate
@@ -40,18 +42,22 @@ type CSRGenerationSpec struct {
 	KeySize *string `json:"keySize"`
 
 	// The city or locality where company is legally registered
+	// Example: Bengaluru
 	// Required: true
 	Locality *string `json:"locality"`
 
 	// The name under which company is legally registered
+	// Example: VMware Inc.
 	// Required: true
 	Organization *string `json:"organization"`
 
 	// Organization with which the certificate is associated
+	// Example: VCF
 	// Required: true
 	OrganizationUnit *string `json:"organizationUnit"`
 
 	// The full name of the state where company is legally registered
+	// Example: Karnataka
 	// Required: true
 	State *string `json:"state"`
 }

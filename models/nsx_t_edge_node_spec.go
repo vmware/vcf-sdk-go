@@ -63,18 +63,12 @@ type NsxTEdgeNodeSpec struct {
 	// Required: true
 	ManagementIP *string `json:"managementIP"`
 
-	// Management Vlan Id
-	ManagementVlanID int32 `json:"managementVlanId,omitempty"`
-
 	// Second NSX enabled VDS uplink for the Edge node
 	// Example: One among: uplink1, uplink2, uplink3, uplink4
 	SecondNsxVdsUplink string `json:"secondNsxVdsUplink,omitempty"`
 
 	// Specifications of Tier0 uplinks for the Edge Node
 	UplinkNetwork []*NsxTEdgeUplinkNetwork `json:"uplinkNetwork"`
-
-	// VM Management Network Name
-	VMManagementNetworkName string `json:"vmManagementNetworkName,omitempty"`
 }
 
 // Validate validates this nsx t edge node spec

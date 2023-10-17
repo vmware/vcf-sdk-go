@@ -27,12 +27,12 @@ import (
 	"github.com/vmware/vcf-sdk-go/client/identity_providers"
 	"github.com/vmware/vcf-sdk-go/client/license_keys"
 	"github.com/vmware/vcf-sdk-go/client/manifests"
-	"github.com/vmware/vcf-sdk-go/client/nsxt_clusters"
 	"github.com/vmware/vcf-sdk-go/client/network_pools"
+	"github.com/vmware/vcf-sdk-go/client/nsxt_clusters"
 	"github.com/vmware/vcf-sdk-go/client/nsxt_edge_clusters"
-	"github.com/vmware/vcf-sdk-go/client/pscs"
 	"github.com/vmware/vcf-sdk-go/client/personalities"
 	"github.com/vmware/vcf-sdk-go/client/proxy_configuration"
+	"github.com/vmware/vcf-sdk-go/client/pscs"
 	"github.com/vmware/vcf-sdk-go/client/releases"
 	"github.com/vmware/vcf-sdk-go/client/resource_functionalities"
 	"github.com/vmware/vcf-sdk-go/client/resource_warnings"
@@ -47,14 +47,14 @@ import (
 	"github.com/vmware/vcf-sdk-go/client/upgradables"
 	"github.com/vmware/vcf-sdk-go/client/upgrades"
 	"github.com/vmware/vcf-sdk-go/client/users"
-	"github.com/vmware/vcf-sdk-go/client/vcenters"
-	"github.com/vmware/vcf-sdk-go/client/vrli"
-	"github.com/vmware/vcf-sdk-go/client/vrops"
-	"github.com/vmware/vcf-sdk-go/client/vrslcm"
 	"github.com/vmware/vcf-sdk-go/client/vasa_providers"
+	"github.com/vmware/vcf-sdk-go/client/vcenters"
 	"github.com/vmware/vcf-sdk-go/client/vcf_services"
 	"github.com/vmware/vcf-sdk-go/client/version_aliases_for_bundle_component_type"
 	"github.com/vmware/vcf-sdk-go/client/vra"
+	"github.com/vmware/vcf-sdk-go/client/vrli"
+	"github.com/vmware/vcf-sdk-go/client/vrops"
+	"github.com/vmware/vcf-sdk-go/client/vrslcm"
 	"github.com/vmware/vcf-sdk-go/client/vsan_health_check"
 	"github.com/vmware/vcf-sdk-go/client/wsa"
 )
@@ -136,14 +136,14 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli.Upgrades = upgrades.New(transport, formats)
 	cli.Users = users.New(transport, formats)
 	cli.VCenters = vcenters.New(transport, formats)
+	cli.VRA = vra.New(transport, formats)
 	cli.Vrli = vrli.New(transport, formats)
 	cli.VroPs = vrops.New(transport, formats)
 	cli.VRSLCM = vrslcm.New(transport, formats)
+	cli.VSANHealthCheck = vsan_health_check.New(transport, formats)
 	cli.VasaProviders = vasa_providers.New(transport, formats)
 	cli.VcfServices = vcf_services.New(transport, formats)
 	cli.VersionAliasesForBundleComponentType = version_aliases_for_bundle_component_type.New(transport, formats)
-	cli.VRA = vra.New(transport, formats)
-	cli.VSANHealthCheck = vsan_health_check.New(transport, formats)
 	cli.WSA = wsa.New(transport, formats)
 	return cli
 }
@@ -259,21 +259,21 @@ type VcfClient struct {
 
 	VCenters vcenters.ClientService
 
+	VRA vra.ClientService
+
 	Vrli vrli.ClientService
 
 	VroPs vrops.ClientService
 
 	VRSLCM vrslcm.ClientService
 
+	VSANHealthCheck vsan_health_check.ClientService
+
 	VasaProviders vasa_providers.ClientService
 
 	VcfServices vcf_services.ClientService
 
 	VersionAliasesForBundleComponentType version_aliases_for_bundle_component_type.ClientService
-
-	VRA vra.ClientService
-
-	VSANHealthCheck vsan_health_check.ClientService
 
 	WSA wsa.ClientService
 
@@ -318,13 +318,13 @@ func (c *VcfClient) SetTransport(transport runtime.ClientTransport) {
 	c.Upgrades.SetTransport(transport)
 	c.Users.SetTransport(transport)
 	c.VCenters.SetTransport(transport)
+	c.VRA.SetTransport(transport)
 	c.Vrli.SetTransport(transport)
 	c.VroPs.SetTransport(transport)
 	c.VRSLCM.SetTransport(transport)
+	c.VSANHealthCheck.SetTransport(transport)
 	c.VasaProviders.SetTransport(transport)
 	c.VcfServices.SetTransport(transport)
 	c.VersionAliasesForBundleComponentType.SetTransport(transport)
-	c.VRA.SetTransport(transport)
-	c.VSANHealthCheck.SetTransport(transport)
 	c.WSA.SetTransport(transport)
 }

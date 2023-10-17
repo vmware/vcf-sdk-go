@@ -23,19 +23,23 @@ import (
 type Resource struct {
 
 	// Resource FQDN
+	// Example: sfo-vc01.rainpole.io
 	Fqdn string `json:"fqdn,omitempty"`
 
 	// Name of the resource
 	Name string `json:"name,omitempty"`
 
 	// Resource ID
+	// Example: BE8A5E04-92A0-43F6-A166-AA041F4327CC
 	// Required: true
 	ResourceID *string `json:"resourceId"`
 
 	// Subject alternative name(s)
+	// Example: sfo-vc01.rainpole.io
 	Sans []string `json:"sans"`
 
 	// Resource type
+	// Example: One among: SDDC_MANAGER, PSC, VCENTER, NSX_MANAGER, NSXT_MANAGER, VRA, VRLI, VROPS, VRSLCM, VXRAIL_MANAGER
 	// Required: true
 	Type *string `json:"type"`
 }

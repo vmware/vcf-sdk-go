@@ -124,7 +124,7 @@ func NewDeleteCaConfigurationNoContent() *DeleteCaConfigurationNoContent {
 /*
 DeleteCaConfigurationNoContent describes a response with status code 204, with default header values.
 
-No contet
+No content
 */
 type DeleteCaConfigurationNoContent struct {
 	Payload interface{}

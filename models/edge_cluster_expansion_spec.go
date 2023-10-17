@@ -42,6 +42,9 @@ type EdgeClusterExpansionSpec struct {
 	// Required: true
 	EdgeNodeSpecs []*NsxTEdgeNodeSpec `json:"edgeNodeSpecs"`
 
+	// Set to true to bypass normal ICMP-based check of Edge TEP / host TEP routability (default is false, meaning do check)
+	SkipTepRoutabilityCheck bool `json:"skipTepRoutabilityCheck,omitempty"`
+
 	// Select whether all Tier-1(s) being created per this spec are hosted on the Edge cluster or not (default is false, meaning hosted)
 	Tier1Unhosted bool `json:"tier1Unhosted,omitempty"`
 }

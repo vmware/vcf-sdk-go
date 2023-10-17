@@ -15,13 +15,13 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// New creates a new vsan health check API client.
+// New creates a new v san health check API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 /*
-Client for vsan health check API
+Client for v san health check API
 */
 type Client struct {
 	transport runtime.ClientTransport

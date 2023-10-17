@@ -44,7 +44,7 @@ type LicenseKey struct {
 	LicenseKeyValidity *LicenseKeyValidity `json:"licenseKeyValidity,omitempty"`
 
 	// The type of the product to which the license key is applicable
-	// Example: One among: VCENTER, VSAN, SDDC_MANAGER, ESXI, NSXT, NSXIO, WCP, HORIZON_VIEW
+	// Example: One among: VCENTER, VSAN, ESXI, NSXT, NSXIO, WCP, HORIZON_VIEW
 	// Required: true
 	ProductType *string `json:"productType"`
 }

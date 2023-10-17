@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CertificateAuthorityCreationSpec This specification contains Certificate Authority (CA) creation details
+// CertificateAuthorityCreationSpec This specification contains Certificate Authority (CA) creation details. Either openSSLCertificateAuthoritySpec or microsoftCertificateAuthoritySpec should be specified.
 //
 // swagger:model CertificateAuthorityCreationSpec
 type CertificateAuthorityCreationSpec struct {

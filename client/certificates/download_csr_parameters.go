@@ -66,7 +66,7 @@ type DownloadCSRParams struct {
 
 	/* DomainName.
 
-	   The domain name
+	   Domain ID or Name
 	*/
 	DomainName string
 

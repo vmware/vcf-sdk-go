@@ -24,10 +24,10 @@ import (
 type Certificate struct {
 
 	// Certificate chain ordered from intermediate to root certificates
-	// Required: true
 	CaChain []*Certificate `json:"caChain"`
 
 	// Domain of the resource certificate
+	// Example: 3E86FBAD-8984-4D4B-992D-F0C49857572A
 	// Required: true
 	Domain *string `json:"domain"`
 
@@ -37,43 +37,52 @@ type Certificate struct {
 	ExpirationStatus *string `json:"expirationStatus"`
 
 	// Error if certificate cannot be fetched
+	// Example: Status : NOT_TRUSTED, Message : Certificate Expired
 	// Required: true
 	GetCertificateError *string `json:"getCertificateError"`
 
 	// Whether the certificate is installed or not
+	// Example: One among: true, false
 	// Required: true
 	IsInstalled *bool `json:"isInstalled"`
 
 	// The certificate authority that issued the certificate
+	// Example: CN=OpenSSL CA, OU=VCF, O=VMware, L=Bengaluru, ST=Karnataka, C=IN
 	// Required: true
 	IssuedBy *string `json:"issuedBy"`
 
 	// To whom the certificate is issued
+	// Example: sfo-vc01.rainpole.io
 	// Required: true
 	IssuedTo *string `json:"issuedTo"`
 
-	// The keysize of the certificate
+	// The key size of the certificate
 	// Example: One among: 2048, 3072, 4096
 	// Required: true
 	KeySize *string `json:"keySize"`
 
 	// The timestamp after which certificate is not valid
+	// Example: 2021-02-02T00:00:00.000Z
 	// Required: true
 	NotAfter *string `json:"notAfter"`
 
 	// The timestamp before which certificate is not valid
+	// Example: 2020-01-01T00:00:00.000Z
 	// Required: true
 	NotBefore *string `json:"notBefore"`
 
 	// Number of days left for the certificate to expire
+	// Example: 398
 	// Required: true
 	NumberOfDaysToExpire *int32 `json:"numberOfDaysToExpire"`
 
 	// The PEM encoded certificate content
+	// Example: -----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----
 	// Required: true
 	PemEncoded *string `json:"pemEncoded"`
 
 	// The public key of the certificate
+	// Example: D6:FD:DF:33:F1:...
 	// Required: true
 	PublicKey *string `json:"publicKey"`
 
@@ -83,30 +92,37 @@ type Certificate struct {
 	PublicKeyAlgorithm *string `json:"publicKeyAlgorithm"`
 
 	// The serial number of the certificate
+	// Example: 46:85:19:77:36:12:67:26
 	// Required: true
 	SerialNumber *string `json:"serialNumber"`
 
 	// Algorithm used to sign the certificate
+	// Example: SHA256withRSA
 	// Required: true
 	SignatureAlgorithm *string `json:"signatureAlgorithm"`
 
 	// Complete distinguished name to which the certificate is issued
+	// Example: CN=sfo-vc01.rainpole.io, OU=VCF, O=VMware, L=Bengaluru, ST=Karnataka, C=IN
 	// Required: true
 	Subject *string `json:"subject"`
 
 	// The alternative names to which the certificate is issued
+	// Example: sfo-vc01.rainpole.io
 	// Required: true
 	SubjectAlternativeName []string `json:"subjectAlternativeName"`
 
 	// Thumbprint generated using certificate content
+	// Example: 59:24:D5:18:04:A0:26:B0:A4:05:EA:82:60:95:82:A2:4B:F6:31:FB:81:93:01:F3:29:7D:34:9C:D3:05:39:90
 	// Required: true
 	Thumbprint *string `json:"thumbprint"`
 
 	// Algorithm used to generate thumbprint
+	// Example: SHA-256
 	// Required: true
 	ThumbprintAlgorithm *string `json:"thumbprintAlgorithm"`
 
 	// The X.509 version of the certificate
+	// Example: V3
 	// Required: true
 	Version *string `json:"version"`
 }
@@ -206,9 +222,8 @@ func (m *Certificate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Certificate) validateCaChain(formats strfmt.Registry) error {
-
-	if err := validate.Required("caChain", "body", m.CaChain); err != nil {
-		return err
+	if swag.IsZero(m.CaChain) { // not required
+		return nil
 	}
 
 	for i := 0; i < len(m.CaChain); i++ {

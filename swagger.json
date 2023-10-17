@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "VMware Cloud Foundation is an integrated software stack that bundles the VMware virtualization and management components like compute virtualization (vSphere), storage virtualization (vSAN), network virtualization (NSX), and cloud management (vRealize Suite). VCF consists of Cloud Builder - that automates the bringup of the management infrastructure and SDDC Manager - that automates the workload domain management, lifecycle and operations. This API reference guide covers APIs of both Cloud Builder and SDDC Manager",
-    "version" : "4.5.0",
+    "version" : "4.5.2-vcf4520RELEASE",
     "title" : "VMware Cloud Foundation API Reference Guide",
     "termsOfService" : "http://www.vmware.com/",
     "contact" : {
@@ -138,7 +138,7 @@
     "name" : "SystemPrechecks",
     "description" : "APIs for managing System Prechecks"
   }, {
-    "name" : "VSANHealthCheck",
+    "name" : "vSANHealthCheck",
     "description" : "APIs for managing vSAN health checks"
   }, {
     "name" : "SDDC",
@@ -147,7 +147,7 @@
     "name" : "Identity Providers",
     "description" : "APIs for managing Identity Providers"
   }, {
-    "name" : "VRA",
+    "name" : "vRA",
     "description" : "APIs for managing vRealize Automation"
   } ],
   "schemes" : [ "https" ],
@@ -709,7 +709,7 @@
             }
           },
           "204" : {
-            "description" : "No contet",
+            "description" : "No content",
             "schema" : {
               "type" : "object"
             }
@@ -2944,7 +2944,7 @@
     },
     "/v1/domains/{domainId}/health-checks" : {
       "get" : {
-        "tags" : [ "VSANHealthCheck" ],
+        "tags" : [ "vSANHealthCheck" ],
         "summary" : "Get vSAN health check status",
         "description" : "Get vSAN health check status for all cluster on the domain",
         "operationId" : "getHealthCheckQuery",
@@ -2991,7 +2991,7 @@
         }
       },
       "patch" : {
-        "tags" : [ "VSANHealthCheck" ],
+        "tags" : [ "vSANHealthCheck" ],
         "summary" : "Update vSAN health check status",
         "description" : "Update vSAN health check status for domain",
         "operationId" : "setHealthCheckStatus",
@@ -3045,7 +3045,7 @@
     },
     "/v1/domains/{domainId}/health-checks/queries/{queryId}" : {
       "get" : {
-        "tags" : [ "VSANHealthCheck" ],
+        "tags" : [ "vSANHealthCheck" ],
         "summary" : "Get vSAN health check status by Query Id",
         "description" : "Get vSAN health check status for a given Query Id",
         "operationId" : "getHealthCheckStatus",
@@ -3088,7 +3088,7 @@
     },
     "/v1/domains/{domainId}/health-checks/tasks/{taskId}" : {
       "get" : {
-        "tags" : [ "VSANHealthCheck" ],
+        "tags" : [ "vSANHealthCheck" ],
         "summary" : "Get vSAN health check update task status",
         "description" : "Get vSAN health check update task status for a given task Id",
         "operationId" : "getHealthCheckStatusTask",
@@ -3140,7 +3140,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         } ],
@@ -3175,7 +3175,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         }, {
@@ -3236,7 +3236,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         }, {
@@ -3291,7 +3291,8 @@
               "$ref" : "#/definitions/Error"
             }
           }
-        }
+        },
+        "deprecated" : true
       }
     },
     "/v1/domains/{domainName}/certificates/uploads" : {
@@ -3305,7 +3306,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         }, {
@@ -3340,7 +3341,8 @@
               "$ref" : "#/definitions/Error"
             }
           }
-        }
+        },
+        "deprecated" : true
       }
     },
     "/v1/domains/{domainName}/csrs" : {
@@ -3354,7 +3356,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         } ],
@@ -3382,14 +3384,14 @@
       "put" : {
         "tags" : [ "Certificates" ],
         "summary" : "Generate CSR(s)",
-        "description" : "Generate CSR(s) for the selected resource(s) in the domain.\n\n*Warning:*\n_Avoid using wildcard certificates. Instead, use subdomain-specific certificates that are rotated often. A compromised wildcard certificate can lead to security repercussions._",
+        "description" : "Generate CSR(s) for the selected resource(s) in the domain.\n\n*Warning:*\n_Avoid using wildcard certificates. Instead, use subdomain-specific certificates that are rotated often. A compromised wildcard certificate can lead to security repercussions_",
         "operationId" : "generatesCSRs",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         }, {
@@ -3452,7 +3454,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         } ],
@@ -3476,7 +3478,8 @@
               "$ref" : "#/definitions/Error"
             }
           }
-        }
+        },
+        "deprecated" : true
       }
     },
     "/v1/domains/{domainName}/resource-certificates" : {
@@ -3490,7 +3493,7 @@
         "parameters" : [ {
           "name" : "domainName",
           "in" : "path",
-          "description" : "The domain name",
+          "description" : "Domain ID or Name",
           "required" : true,
           "type" : "string"
         } ],
@@ -3649,8 +3652,7 @@
               "$ref" : "#/definitions/Error"
             }
           }
-        },
-        "deprecated" : true
+        }
       }
     },
     "/v1/domains/{id}/endpoints" : {
@@ -3682,6 +3684,151 @@
           },
           "404" : {
             "description" : "Domain not found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/domains/{id}/resource-certificates" : {
+      "put" : {
+        "tags" : [ "Certificates" ],
+        "summary" : "Replace resource certificates",
+        "description" : "Replace resource certificates",
+        "operationId" : "replaceResourceCertificates",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Domain ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "resourceCertificateSpecs",
+          "description" : "resourceCertificateSpecs",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/ResourceCertificateSpec"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Task"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/domains/{id}/resource-certificates/validations" : {
+      "put" : {
+        "tags" : [ "Certificates" ],
+        "summary" : "Validate resource certificates",
+        "description" : "Validate resource certificates",
+        "operationId" : "validateResourceCertificates",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Domain ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "resourceCertificateSpecs",
+          "description" : "resourceCertificateSpecs",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/ResourceCertificateSpec"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/CertificateValidationTask"
+            }
+          },
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/CertificateValidationTask"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/domains/{id}/resource-certificates/validations/{validationId}" : {
+      "get" : {
+        "tags" : [ "Certificates" ],
+        "summary" : "Get the resource certificate validation result",
+        "description" : "Get the resource certificate validation result",
+        "operationId" : "getResourceCertificatesValidationResult",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Domain ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "validationId",
+          "in" : "path",
+          "description" : "Validation ID",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/CertificateValidationTask"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
             "schema" : {
               "$ref" : "#/definitions/Error"
             }
@@ -5377,6 +5524,149 @@
         }
       }
     },
+    "/v1/licensing-info/domains/{id}" : {
+      "get" : {
+        "tags" : [ "License Keys" ],
+        "summary" : "Get the Licensing information of a domain",
+        "operationId" : "getDomainLicensingInfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The domain ID",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "schema" : {
+              "$ref" : "#/definitions/LicensingInfo"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "License Keys" ],
+        "summary" : "Update the Licensing information of a domain",
+        "operationId" : "updateDomainLicensingInfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "licensingInfoSpec",
+          "description" : "License information spec",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/LicensingInfoSpec"
+          }
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The domain ID",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "202" : {
+            "description" : "Accepted"
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/licensing-info/system" : {
+      "get" : {
+        "tags" : [ "License Keys" ],
+        "summary" : "Get the Licensing information of system",
+        "operationId" : "getSystemLicensingInfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "schema" : {
+              "$ref" : "#/definitions/LicensingInfo"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "License Keys" ],
+        "summary" : "Update the Licensing information of system",
+        "operationId" : "updateSystemLicensingInfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "*/*" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "licensingInfoSpec",
+          "description" : "License information spec",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/LicensingInfoSpec"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "202" : {
+            "description" : "Accepted"
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/manifests" : {
       "get" : {
         "tags" : [ "Manifests" ],
@@ -6855,10 +7145,32 @@
       }
     },
     "/v1/sddc-manager/trusted-certificates" : {
+      "get" : {
+        "tags" : [ "Trusted Certificates" ],
+        "summary" : "Get the trusted certificates from the SDDC Manager",
+        "description" : "Get the trusted certificates from the SDDC Manager",
+        "operationId" : "getTrustedCertificates",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/PageOfTrustedCertificate"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
       "post" : {
         "tags" : [ "Trusted Certificates" ],
-        "summary" : "Add trusted certificate to the SDDC manager",
-        "description" : "Add trusted certificate to the SDDC manager",
+        "summary" : "Add a trusted certificate to the SDDC Manager",
+        "description" : "Add a trusted certificate to the SDDC Manager",
         "operationId" : "addTrustedCertificate",
         "consumes" : [ "application/json" ],
         "produces" : [ "*/*" ],
@@ -6892,6 +7204,40 @@
             "schema" : {
               "$ref" : "#/definitions/Error"
             }
+          }
+        }
+      }
+    },
+    "/v1/sddc-manager/trusted-certificates/{alias}" : {
+      "delete" : {
+        "tags" : [ "Trusted Certificates" ],
+        "summary" : "Delete a trusted certificate from the SDDC Manager",
+        "description" : "Delete a trusted certificate from the SDDC Manager. Restart the services to reflect the changes.",
+        "operationId" : "deleteTrustedCertificate",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "alias",
+          "in" : "path",
+          "description" : "Certificate Alias",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "404" : {
+            "description" : "Not Found"
           }
         }
       }
@@ -7547,6 +7893,40 @@
             "schema" : {
               "$ref" : "#/definitions/System"
             }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "System" ],
+        "summary" : "Update system level configuration",
+        "description" : "Update system level configuration",
+        "operationId" : "patchSystem",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "updateSpec",
+          "description" : "updateSpec",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SystemUpdateSpec"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
           },
           "400" : {
             "description" : "Bad Request",
@@ -10637,7 +11017,7 @@
     },
     "/v1/vras" : {
       "get" : {
-        "tags" : [ "VRA" ],
+        "tags" : [ "vRA" ],
         "summary" : "Get all existing vRealize Automation instances",
         "operationId" : "getVras",
         "consumes" : [ "application/json" ],
@@ -11158,26 +11538,32 @@
       "properties" : {
         "commonName" : {
           "type" : "string",
+          "example" : "OpenSSL CA",
           "description" : "OpenSSL CA domain name"
         },
         "country" : {
           "type" : "string",
+          "example" : "IN",
           "description" : "ISO 3166 country code where company is legally registered"
         },
         "locality" : {
           "type" : "string",
+          "example" : "Bengaluru",
           "description" : "The city or locality where company is legally registered"
         },
         "organization" : {
           "type" : "string",
+          "example" : "VMware Inc.",
           "description" : "The name under which company is legally registered"
         },
         "organizationUnit" : {
           "type" : "string",
+          "example" : "VCF",
           "description" : "Organization with which the certificate is associated"
         },
         "state" : {
           "type" : "string",
+          "example" : "Karnataka",
           "description" : "The full name of the state where company is legally registered"
         }
       },
@@ -11305,6 +11691,10 @@
           "items" : {
             "$ref" : "#/definitions/NsxTEdgeNodeSpec"
           }
+        },
+        "skipTepRoutabilityCheck" : {
+          "type" : "boolean",
+          "description" : "Set to true to bypass normal ICMP-based check of Edge TEP / host TEP routability (default is false, meaning do check)"
         },
         "tier1Unhosted" : {
           "type" : "boolean",
@@ -11531,7 +11921,7 @@
           "$ref" : "#/definitions/OpenSSLCertificateAuthoritySpec"
         }
       },
-      "description" : "This specification contains Certificate Authority (CA) creation details"
+      "description" : "This specification contains Certificate Authority (CA) creation details. Either openSSLCertificateAuthoritySpec or microsoftCertificateAuthoritySpec should be specified."
     },
     "SsoDomainEntity" : {
       "required" : [ "type" ],
@@ -11781,6 +12171,17 @@
       },
       "description" : "Represents a page of elements of a single type"
     },
+    "LicensingInfoSpec" : {
+      "required" : [ "licensingMode" ],
+      "properties" : {
+        "licensingMode" : {
+          "type" : "string",
+          "example" : "One among: SUBSCRIPTION",
+          "description" : "Licensing mode"
+        }
+      },
+      "description" : "Represents the licensing info spec"
+    },
     "NiocBandwidthAllocationSpec" : {
       "required" : [ "type" ],
       "properties" : {
@@ -11839,6 +12240,38 @@
       },
       "description" : "This specification contains cluster storage configuration for vSAN"
     },
+    "VxRailArrayAssociationContext" : {
+      "properties" : {
+        "arrayAttributeIdsKeyValue" : {
+          "type" : "object",
+          "description" : "Key, Value map that holds the simple attributes on the array item that are currently supported.",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "parent" : {
+          "description" : "Details that holds the association with the parent for nested objects",
+          "$ref" : "#/definitions/VxRailArrayAssociationContext"
+        }
+      },
+      "description" : "Contains the mapping between custom attributes and the supported attributes on the array item object."
+    },
+    "TrustedCertificate" : {
+      "required" : [ "alias", "certificate" ],
+      "properties" : {
+        "alias" : {
+          "type" : "string",
+          "example" : "vcf_59:24:D5:18:04:A0:26:B0:A4:05:EA:82:60:95:82:A2:4B:F6:31:FB:81:93:01:F3:29:7D:34:9C:D3:05:39:90",
+          "description" : "Certificate alias"
+        },
+        "certificate" : {
+          "type" : "string",
+          "example" : "-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----",
+          "description" : "Certificate in PEM format"
+        }
+      },
+      "description" : "The Trusted Certificate details."
+    },
     "BaseAlias" : {
       "required" : [ "aliases", "version" ],
       "properties" : {
@@ -11883,7 +12316,8 @@
       "properties" : {
         "certificate" : {
           "type" : "string",
-          "description" : "Certificate in one-line PEM format"
+          "example" : "-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----",
+          "description" : "Certificate in PEM format"
         },
         "certificateUsageType" : {
           "type" : "string",
@@ -12455,18 +12889,22 @@
       "properties" : {
         "secret" : {
           "type" : "string",
+          "example" : "********",
           "description" : "CA server password"
         },
         "serverUrl" : {
           "type" : "string",
+          "example" : "https://sfo-ad.rainpole.io/certsrv",
           "description" : "CA server url"
         },
         "templateName" : {
           "type" : "string",
+          "example" : "WebServer",
           "description" : "CA server template name"
         },
         "username" : {
           "type" : "string",
+          "example" : "Administrator",
           "description" : "CA server username"
         }
       },
@@ -13107,6 +13545,10 @@
           "format" : "int32",
           "description" : "Maximum transmission unit"
         },
+        "skipTepRoutabilityCheck" : {
+          "type" : "boolean",
+          "description" : "Set to true to bypass normal ICMP-based check of Edge TEP / host TEP routability (default is false, meaning do check)"
+        },
         "tier0Name" : {
           "type" : "string",
           "description" : "Name for the Tier-0"
@@ -13218,6 +13660,39 @@
         }
       },
       "description" : "Represents an IP Pool of a network in a network pool"
+    },
+    "CertificateValidationTask" : {
+      "required" : [ "completed", "validationId", "validations" ],
+      "properties" : {
+        "completed" : {
+          "type" : "boolean",
+          "example" : "One among: true, false",
+          "description" : "Validation Task Completed"
+        },
+        "endTimestamp" : {
+          "type" : "string",
+          "example" : "2021-02-02T00:00:00.000Z",
+          "description" : "Validation Task End Time"
+        },
+        "startTimestamp" : {
+          "type" : "string",
+          "example" : "2021-02-02T00:00:00.000Z",
+          "description" : "Validation Task Start Time"
+        },
+        "validationId" : {
+          "type" : "string",
+          "example" : "B1930850-7D1A-4BAA-89D7-52FD5DAD196A",
+          "description" : "Validation ID"
+        },
+        "validations" : {
+          "type" : "array",
+          "description" : "Resource Certificate Validations",
+          "items" : {
+            "$ref" : "#/definitions/CertificateValidation"
+          }
+        }
+      },
+      "description" : "The Certificate Validation Task."
     },
     "Wsa" : {
       "properties" : {
@@ -14032,10 +14507,12 @@
       "properties" : {
         "commonName" : {
           "type" : "string",
+          "example" : "OpenSSL CA",
           "description" : "OpenSSL CA domain name"
         },
         "country" : {
           "type" : "string",
+          "example" : "IN",
           "description" : "ISO 3166 country code where company is legally registered"
         },
         "id" : {
@@ -14045,30 +14522,37 @@
         },
         "locality" : {
           "type" : "string",
+          "example" : "Bengaluru",
           "description" : "The city or locality where company is legally registered"
         },
         "organization" : {
           "type" : "string",
+          "example" : "VMware Inc.",
           "description" : "The name under which company is legally registered"
         },
         "organizationUnit" : {
           "type" : "string",
+          "example" : "VCF",
           "description" : "Organization with which the certificate is associated"
         },
         "serverUrl" : {
           "type" : "string",
+          "example" : "https://sfo-ad.rainpole.io/certsrv",
           "description" : "Microsoft CA server url"
         },
         "state" : {
           "type" : "string",
+          "example" : "Karnataka",
           "description" : "The full name of the state where company is legally registered"
         },
         "templateName" : {
           "type" : "string",
+          "example" : "WebServer",
           "description" : "Microsoft CA server template name"
         },
         "username" : {
           "type" : "string",
+          "example" : "Administrator",
           "description" : "Microsoft CA server username"
         }
       },
@@ -14543,10 +15027,12 @@
       "properties" : {
         "country" : {
           "type" : "string",
+          "example" : "IN",
           "description" : "ISO 3166 country code where company is legally registered"
         },
         "email" : {
           "type" : "string",
+          "example" : "admin@vmware.com",
           "description" : "Contact email address"
         },
         "keyAlgorithm" : {
@@ -14561,18 +15047,22 @@
         },
         "locality" : {
           "type" : "string",
+          "example" : "Bengaluru",
           "description" : "The city or locality where company is legally registered"
         },
         "organization" : {
           "type" : "string",
+          "example" : "VMware Inc.",
           "description" : "The name under which company is legally registered"
         },
         "organizationUnit" : {
           "type" : "string",
+          "example" : "VCF",
           "description" : "Organization with which the certificate is associated"
         },
         "state" : {
           "type" : "string",
+          "example" : "Karnataka",
           "description" : "The full name of the state where company is legally registered"
         }
       },
@@ -14683,11 +15173,6 @@
           "type" : "string",
           "description" : "Management Interface IP"
         },
-        "managementVlanId" : {
-          "type" : "integer",
-          "format" : "int32",
-          "description" : "Management Vlan Id"
-        },
         "secondNsxVdsUplink" : {
           "type" : "string",
           "example" : "One among: uplink1, uplink2, uplink3, uplink4",
@@ -14699,10 +15184,6 @@
           "items" : {
             "$ref" : "#/definitions/NsxTEdgeUplinkNetwork"
           }
-        },
-        "vmManagementNetworkName" : {
-          "type" : "string",
-          "description" : "VM Management Network Name"
         }
       },
       "description" : "This specification contains configuration inputs required to deploy and configure an edge node"
@@ -15130,7 +15611,7 @@
         },
         "productType" : {
           "type" : "string",
-          "example" : "One among: VCENTER, VSAN, SDDC_MANAGER, ESXI, NSXT, NSXIO, WCP, HORIZON_VIEW",
+          "example" : "One among: VCENTER, VSAN, ESXI, NSXT, NSXIO, WCP, HORIZON_VIEW",
           "description" : "The type of the product to which the license key is applicable"
         }
       },
@@ -15262,6 +15743,13 @@
         "adminCredentials" : {
           "description" : "VxRail Manager admin credentials",
           "$ref" : "#/definitions/UnmanagedResourceCredential"
+        },
+        "arrayContextWithKeyValuePair" : {
+          "type" : "object",
+          "description" : "Map of Context class with list of key and value pairs for array objects",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/List"
+          }
         },
         "contextWithKeyValuePair" : {
           "type" : "object",
@@ -15637,6 +16125,34 @@
       },
       "description" : "Defines a functionality model"
     },
+    "LicensingInfoReference" : {
+      "properties" : {
+        "daysRemainingToSubscribe" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Number of days remaining to subscribe"
+        },
+        "isRegistered" : {
+          "type" : "boolean",
+          "description" : "Flag indicating the resource is registered for subscription or not"
+        },
+        "isSubscribed" : {
+          "type" : "boolean",
+          "description" : "Flag indicating the resource is subscribed or not"
+        },
+        "licensingMode" : {
+          "type" : "string",
+          "example" : "One among: SUBSCRIPTION, PERPETUAL, MIXED",
+          "description" : "Licensing mode"
+        },
+        "subscriptionStatus" : {
+          "type" : "string",
+          "example" : "One among: UNSUBSCRIBED, ACTIVE, EXPIRED",
+          "description" : "Status of the subscription mode"
+        }
+      },
+      "description" : "Licensing information of the resource"
+    },
     "StorageInfo" : {
       "properties" : {
         "total" : {
@@ -15815,7 +16331,7 @@
         },
         "licensingMode" : {
           "type" : "string",
-          "example" : "One among: SUBSCRIPTION, PERPETUAL",
+          "example" : "One among: SUBSCRIPTION, PERPETUAL, MIXED",
           "description" : "Licensing mode"
         },
         "resourceId" : {
@@ -16025,11 +16541,23 @@
       },
       "description" : "Represents Identity provider configuration"
     },
+    "MapOfstringAndListOfVxRailCustomArrayContext" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "$ref" : "#/definitions/List"
+      }
+    },
     "Csr" : {
-      "required" : [ "csrEncodedContent", "resource" ],
+      "required" : [ "csrDecodedContent", "csrEncodedContent", "resource" ],
       "properties" : {
+        "csrDecodedContent" : {
+          "type" : "string",
+          "example" : "DECODED CSR AS STRING",
+          "description" : "The CSR decoded content"
+        },
         "csrEncodedContent" : {
           "type" : "string",
+          "example" : "-----BEGIN CERTIFICATE REQUEST-----\nMIIEH...\n-----END CERTIFICATE REQUEST-----",
           "description" : "The CSR encoded content"
         },
         "resource" : {
@@ -16424,6 +16952,22 @@
         }
       },
       "description" : "Nsxt Upgrade Resources for an NSXT instance"
+    },
+    "PageOfTrustedCertificate" : {
+      "properties" : {
+        "elements" : {
+          "type" : "array",
+          "description" : "The list of elements included in this page",
+          "items" : {
+            "$ref" : "#/definitions/TrustedCertificate"
+          }
+        },
+        "pageMetadata" : {
+          "description" : "Pageable elements pagination metadata information",
+          "$ref" : "#/definitions/PageMetadata"
+        }
+      },
+      "description" : "Represents a page of elements of a single type"
     },
     "MapOfstringAndHardwareSupportPackageInfo" : {
       "type" : "object",
@@ -16934,6 +17478,42 @@
         }
       },
       "description" : "Represents a cluster query response."
+    },
+    "CertificateValidation" : {
+      "required" : [ "resourceFqdn", "resourceId", "startTimestamp", "validationStatus" ],
+      "properties" : {
+        "endTimestamp" : {
+          "type" : "string",
+          "example" : "2021-02-02T00:00:00.000Z",
+          "description" : "End Timestamp"
+        },
+        "resourceFqdn" : {
+          "type" : "string",
+          "example" : "sfo-vc01.rainpole.io",
+          "description" : "Resource FQDN"
+        },
+        "resourceId" : {
+          "type" : "string",
+          "example" : "BE8A5E04-92A0-43F6-A166-AA041F4327CC",
+          "description" : "Resource ID"
+        },
+        "startTimestamp" : {
+          "type" : "string",
+          "example" : "2020-01-01T00:00:00.000Z",
+          "description" : "Start Timestamp"
+        },
+        "validationMessage" : {
+          "type" : "string",
+          "example" : "Certificate Expired",
+          "description" : "Validation Message"
+        },
+        "validationStatus" : {
+          "type" : "string",
+          "example" : "One among: INPROGRESS, SUCCESSFUL, FAILED",
+          "description" : "Validation Status"
+        }
+      },
+      "description" : "The Certificate Validation details."
     },
     "VvsVersionAliases" : {
       "required" : [ "version" ],
@@ -18119,6 +18699,10 @@
           "type" : "boolean",
           "description" : "Shows whether the workload domain is joined to the Management domain SSO"
         },
+        "licensingInfo" : {
+          "description" : "Licensing information of the workload domain",
+          "$ref" : "#/definitions/LicensingInfoReference"
+        },
         "name" : {
           "type" : "string",
           "description" : "Name of the workload domain"
@@ -18161,7 +18745,7 @@
       "description" : "Represents a domain"
     },
     "Certificate" : {
-      "required" : [ "caChain", "domain", "expirationStatus", "getCertificateError", "isInstalled", "issuedBy", "issuedTo", "keySize", "notAfter", "notBefore", "numberOfDaysToExpire", "pemEncoded", "publicKey", "publicKeyAlgorithm", "serialNumber", "signatureAlgorithm", "subject", "subjectAlternativeName", "thumbprint", "thumbprintAlgorithm", "version" ],
+      "required" : [ "domain", "expirationStatus", "getCertificateError", "isInstalled", "issuedBy", "issuedTo", "keySize", "notAfter", "notBefore", "numberOfDaysToExpire", "pemEncoded", "publicKey", "publicKeyAlgorithm", "serialNumber", "signatureAlgorithm", "subject", "subjectAlternativeName", "thumbprint", "thumbprintAlgorithm", "version" ],
       "properties" : {
         "caChain" : {
           "type" : "array",
@@ -18172,6 +18756,7 @@
         },
         "domain" : {
           "type" : "string",
+          "example" : "3E86FBAD-8984-4D4B-992D-F0C49857572A",
           "description" : "Domain of the resource certificate"
         },
         "expirationStatus" : {
@@ -18181,44 +18766,53 @@
         },
         "getCertificateError" : {
           "type" : "string",
+          "example" : "Status : NOT_TRUSTED, Message : Certificate Expired",
           "description" : "Error if certificate cannot be fetched"
         },
         "isInstalled" : {
           "type" : "boolean",
+          "example" : "One among: true, false",
           "description" : "Whether the certificate is installed or not"
         },
         "issuedBy" : {
           "type" : "string",
+          "example" : "CN=OpenSSL CA, OU=VCF, O=VMware, L=Bengaluru, ST=Karnataka, C=IN",
           "description" : "The certificate authority that issued the certificate"
         },
         "issuedTo" : {
           "type" : "string",
+          "example" : "sfo-vc01.rainpole.io",
           "description" : "To whom the certificate is issued"
         },
         "keySize" : {
           "type" : "string",
           "example" : "One among: 2048, 3072, 4096",
-          "description" : "The keysize of the certificate"
+          "description" : "The key size of the certificate"
         },
         "notAfter" : {
           "type" : "string",
+          "example" : "2021-02-02T00:00:00.000Z",
           "description" : "The timestamp after which certificate is not valid"
         },
         "notBefore" : {
           "type" : "string",
+          "example" : "2020-01-01T00:00:00.000Z",
           "description" : "The timestamp before which certificate is not valid"
         },
         "numberOfDaysToExpire" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : "398",
           "description" : "Number of days left for the certificate to expire"
         },
         "pemEncoded" : {
           "type" : "string",
+          "example" : "-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----",
           "description" : "The PEM encoded certificate content"
         },
         "publicKey" : {
           "type" : "string",
+          "example" : "D6:FD:DF:33:F1:...",
           "description" : "The public key of the certificate"
         },
         "publicKeyAlgorithm" : {
@@ -18228,18 +18822,22 @@
         },
         "serialNumber" : {
           "type" : "string",
+          "example" : "46:85:19:77:36:12:67:26",
           "description" : "The serial number of the certificate"
         },
         "signatureAlgorithm" : {
           "type" : "string",
+          "example" : "SHA256withRSA",
           "description" : "Algorithm used to sign the certificate"
         },
         "subject" : {
           "type" : "string",
+          "example" : "CN=sfo-vc01.rainpole.io, OU=VCF, O=VMware, L=Bengaluru, ST=Karnataka, C=IN",
           "description" : "Complete distinguished name to which the certificate is issued"
         },
         "subjectAlternativeName" : {
           "type" : "array",
+          "example" : "sfo-vc01.rainpole.io",
           "description" : "The alternative names to which the certificate is issued",
           "items" : {
             "type" : "string"
@@ -18247,14 +18845,17 @@
         },
         "thumbprint" : {
           "type" : "string",
+          "example" : "59:24:D5:18:04:A0:26:B0:A4:05:EA:82:60:95:82:A2:4B:F6:31:FB:81:93:01:F3:29:7D:34:9C:D3:05:39:90",
           "description" : "Thumbprint generated using certificate content"
         },
         "thumbprintAlgorithm" : {
           "type" : "string",
+          "example" : "SHA-256",
           "description" : "Algorithm used to generate thumbprint"
         },
         "version" : {
           "type" : "string",
+          "example" : "V3",
           "description" : "The X.509 version of the certificate"
         }
       },
@@ -19722,6 +20323,18 @@
           "type" : "boolean",
           "description" : "[Deprecated] Whether bundle is applicable or not."
         },
+        "knownIssuesDescription" : {
+          "type" : "string",
+          "description" : "know issues of the release, used to display KB link for known issues of the release"
+        },
+        "knownIssuesUrl" : {
+          "type" : "string",
+          "description" : "know issues of the release, used to display description for known issues of the release"
+        },
+        "maxCompatibleVcfVersion" : {
+          "type" : "string",
+          "description" : "Maximum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components"
+        },
         "minCompatibleVcfVersion" : {
           "type" : "string",
           "description" : "Minimum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components"
@@ -19848,6 +20461,16 @@
       "additionalProperties" : {
         "$ref" : "#/definitions/List"
       }
+    },
+    "SystemUpdateSpec" : {
+      "properties" : {
+        "maxAllowedDomainsInSubscription" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "new limit of amount of domains in subscription mode"
+        }
+      },
+      "description" : "Contains the parameters required to perform update operation on system"
     },
     "Tag" : {
       "properties" : {
@@ -20132,6 +20755,36 @@
       },
       "description" : "Details of the Identity Source"
     },
+    "ResourceCertificateSpec" : {
+      "properties" : {
+        "caCertificate" : {
+          "type" : "string",
+          "example" : "-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----",
+          "description" : "CA Certificate"
+        },
+        "certificateChain" : {
+          "type" : "string",
+          "example" : "-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----",
+          "description" : "Certificate Chain"
+        },
+        "resourceCertificate" : {
+          "type" : "string",
+          "example" : "-----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----",
+          "description" : "Resource Certificate"
+        },
+        "resourceFqdn" : {
+          "type" : "string",
+          "example" : "sfo-vc01.rainpole.io",
+          "description" : "Resource FQDN"
+        },
+        "resourceId" : {
+          "type" : "string",
+          "example" : "BE8A5E04-92A0-43F6-A166-AA041F4327CC",
+          "description" : "Resource ID"
+        }
+      },
+      "description" : "This specification contains resource certificate details. Either resourceId or resourceFqdn should be provided. Either certificateChain or both resourceCertificate and caCertificate should be provided."
+    },
     "HardwareSupportInfo" : {
       "required" : [ "packages" ],
       "properties" : {
@@ -20171,6 +20824,22 @@
       },
       "description" : "Represents a cpu metric with used and total for a resource"
     },
+    "VxRailCustomArrayContext" : {
+      "properties" : {
+        "arrayAssociationContext" : {
+          "description" : "Details that holds the mapping between the custom attributes to the array item",
+          "$ref" : "#/definitions/VxRailArrayAssociationContext"
+        },
+        "simpleAttributes" : {
+          "type" : "array",
+          "description" : "Collection of simple attributes that contains name, value and type for each attribute.",
+          "items" : {
+            "$ref" : "#/definitions/VxRailContext"
+          }
+        }
+      },
+      "description" : "Contains the details of simple/complex custom attribute on an array item object."
+    },
     "BaseImageDetails" : {
       "required" : [ "displayName", "displayVersion" ],
       "properties" : {
@@ -20195,6 +20864,7 @@
       "properties" : {
         "fqdn" : {
           "type" : "string",
+          "example" : "sfo-vc01.rainpole.io",
           "description" : "Resource FQDN"
         },
         "name" : {
@@ -20203,10 +20873,12 @@
         },
         "resourceId" : {
           "type" : "string",
+          "example" : "BE8A5E04-92A0-43F6-A166-AA041F4327CC",
           "description" : "Resource ID"
         },
         "sans" : {
           "type" : "array",
+          "example" : "sfo-vc01.rainpole.io",
           "description" : "Subject alternative name(s)",
           "items" : {
             "type" : "string"
@@ -20214,6 +20886,7 @@
         },
         "type" : {
           "type" : "string",
+          "example" : "One among: SDDC_MANAGER, PSC, VCENTER, NSX_MANAGER, NSXT_MANAGER, VRA, VRLI, VROPS, VRSLCM, VXRAIL_MANAGER",
           "description" : "Resource type"
         }
       },
@@ -20571,6 +21244,18 @@
         "isApplicable" : {
           "type" : "boolean",
           "description" : "[Deprecated] Whether bundle is applicable or not."
+        },
+        "knownIssuesDescription" : {
+          "type" : "string",
+          "description" : "know issues of the release, used to display KB link for known issues of the release"
+        },
+        "knownIssuesUrl" : {
+          "type" : "string",
+          "description" : "know issues of the release, used to display description for known issues of the release"
+        },
+        "maxCompatibleVcfVersion" : {
+          "type" : "string",
+          "description" : "Maximum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components"
         },
         "minCompatibleVcfVersion" : {
           "type" : "string",

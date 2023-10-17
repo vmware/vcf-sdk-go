@@ -22,7 +22,8 @@ import (
 // swagger:model TrustedCertificateSpec
 type TrustedCertificateSpec struct {
 
-	// Certificate in one-line PEM format
+	// Certificate in PEM format
+	// Example: -----BEGIN CERTIFICATE-----\nMIIFq...\n-----END CERTIFICATE-----
 	// Required: true
 	Certificate *string `json:"certificate"`
 

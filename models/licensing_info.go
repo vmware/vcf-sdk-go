@@ -32,7 +32,7 @@ type LicensingInfo struct {
 	IsSubscribed bool `json:"isSubscribed,omitempty"`
 
 	// Licensing mode
-	// Example: One among: SUBSCRIPTION, PERPETUAL
+	// Example: One among: SUBSCRIPTION, PERPETUAL, MIXED
 	LicensingMode string `json:"licensingMode,omitempty"`
 
 	// ID of the resource, need not be set for the resource of the type : SYSTEM

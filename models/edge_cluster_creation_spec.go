@@ -72,6 +72,9 @@ type EdgeClusterCreationSpec struct {
 	// Required: true
 	Mtu *int32 `json:"mtu"`
 
+	// Set to true to bypass normal ICMP-based check of Edge TEP / host TEP routability (default is false, meaning do check)
+	SkipTepRoutabilityCheck bool `json:"skipTepRoutabilityCheck,omitempty"`
+
 	// Name for the Tier-0
 	// Required: true
 	Tier0Name *string `json:"tier0Name"`

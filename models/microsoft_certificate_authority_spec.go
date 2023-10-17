@@ -23,18 +23,22 @@ import (
 type MicrosoftCertificateAuthoritySpec struct {
 
 	// CA server password
+	// Example: ********
 	// Required: true
 	Secret *string `json:"secret"`
 
 	// CA server url
+	// Example: https://sfo-ad.rainpole.io/certsrv
 	// Required: true
 	ServerURL *string `json:"serverUrl"`
 
 	// CA server template name
+	// Example: WebServer
 	// Required: true
 	TemplateName *string `json:"templateName"`
 
 	// CA server username
+	// Example: Administrator
 	// Required: true
 	Username *string `json:"username"`
 }

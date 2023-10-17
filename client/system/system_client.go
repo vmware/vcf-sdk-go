@@ -51,6 +51,8 @@ type ClientService interface {
 
 	GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationsOfNtpConfigurationOK, error)
 
+	PatchSystem(params *PatchSystemParams, opts ...ClientOption) (*PatchSystemOK, error)
+
 	ValidateDNSConfiguration(params *ValidateDNSConfigurationParams, opts ...ClientOption) (*ValidateDNSConfigurationOK, *ValidateDNSConfigurationAccepted, error)
 
 	ValidateNtpConfiguration(params *ValidateNtpConfigurationParams, opts ...ClientOption) (*ValidateNtpConfigurationOK, *ValidateNtpConfigurationAccepted, error)
@@ -401,6 +403,46 @@ func (a *Client) GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpCon
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getValidationsOfNtpConfiguration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchSystem updates system level configuration
+
+Update system level configuration
+*/
+func (a *Client) PatchSystem(params *PatchSystemParams, opts ...ClientOption) (*PatchSystemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchSystemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchSystem",
+		Method:             "PATCH",
+		PathPattern:        "/v1/system",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchSystemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchSystemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchSystem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
