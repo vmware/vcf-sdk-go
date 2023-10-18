@@ -37,6 +37,15 @@ type Release struct {
 	// [Deprecated] Whether bundle is applicable or not.
 	IsApplicable bool `json:"isApplicable,omitempty"`
 
+	// know issues of the release, used to display KB link for known issues of the release
+	KnownIssuesDescription string `json:"knownIssuesDescription,omitempty"`
+
+	// know issues of the release, used to display description for known issues of the release
+	KnownIssuesURL string `json:"knownIssuesUrl,omitempty"`
+
+	// Maximum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components
+	MaxCompatibleVcfVersion string `json:"maxCompatibleVcfVersion,omitempty"`
+
 	// Minimum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components
 	// Required: true
 	MinCompatibleVcfVersion *string `json:"minCompatibleVcfVersion"`

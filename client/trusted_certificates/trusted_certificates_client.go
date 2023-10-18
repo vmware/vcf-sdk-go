@@ -35,13 +35,17 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	AddTrustedCertificate(params *AddTrustedCertificateParams, opts ...ClientOption) (*AddTrustedCertificateOK, error)
 
+	DeleteTrustedCertificate(params *DeleteTrustedCertificateParams, opts ...ClientOption) (*DeleteTrustedCertificateOK, *DeleteTrustedCertificateNoContent, error)
+
+	GetTrustedCertificates(params *GetTrustedCertificatesParams, opts ...ClientOption) (*GetTrustedCertificatesOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-AddTrustedCertificate adds trusted certificate to the SDDC manager
+AddTrustedCertificate adds a trusted certificate to the SDDC manager
 
-Add trusted certificate to the SDDC manager
+Add a trusted certificate to the SDDC Manager
 */
 func (a *Client) AddTrustedCertificate(params *AddTrustedCertificateParams, opts ...ClientOption) (*AddTrustedCertificateOK, error) {
 	// TODO: Validate the params before sending
@@ -75,6 +79,87 @@ func (a *Client) AddTrustedCertificate(params *AddTrustedCertificateParams, opts
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for addTrustedCertificate: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteTrustedCertificate deletes a trusted certificate from the SDDC manager
+
+Delete a trusted certificate from the SDDC Manager. Restart the services to reflect the changes.
+*/
+func (a *Client) DeleteTrustedCertificate(params *DeleteTrustedCertificateParams, opts ...ClientOption) (*DeleteTrustedCertificateOK, *DeleteTrustedCertificateNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteTrustedCertificateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteTrustedCertificate",
+		Method:             "DELETE",
+		PathPattern:        "/v1/sddc-manager/trusted-certificates/{alias}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteTrustedCertificateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *DeleteTrustedCertificateOK:
+		return value, nil, nil
+	case *DeleteTrustedCertificateNoContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for trusted_certificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetTrustedCertificates gets the trusted certificates from the SDDC manager
+
+Get the trusted certificates from the SDDC Manager
+*/
+func (a *Client) GetTrustedCertificates(params *GetTrustedCertificatesParams, opts ...ClientOption) (*GetTrustedCertificatesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetTrustedCertificatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getTrustedCertificates",
+		Method:             "GET",
+		PathPattern:        "/v1/sddc-manager/trusted-certificates",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetTrustedCertificatesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetTrustedCertificatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getTrustedCertificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

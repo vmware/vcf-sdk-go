@@ -15,13 +15,13 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// New creates a new vra API client.
+// New creates a new v r a API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 /*
-Client for vra API
+Client for v r a API
 */
 type Client struct {
 	transport runtime.ClientTransport

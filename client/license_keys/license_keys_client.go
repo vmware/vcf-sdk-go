@@ -37,11 +37,19 @@ type ClientService interface {
 
 	DeleteLicenseKey(params *DeleteLicenseKeyParams, opts ...ClientOption) (*DeleteLicenseKeyOK, *DeleteLicenseKeyNoContent, error)
 
+	GetDomainLicensingInfo(params *GetDomainLicensingInfoParams, opts ...ClientOption) (*GetDomainLicensingInfoOK, error)
+
 	GetLicenseKey(params *GetLicenseKeyParams, opts ...ClientOption) (*GetLicenseKeyOK, error)
 
 	GetLicenseKeys(params *GetLicenseKeysParams, opts ...ClientOption) (*GetLicenseKeysOK, error)
 
 	GetLicensingInfo(params *GetLicensingInfoParams, opts ...ClientOption) (*GetLicensingInfoOK, error)
+
+	GetSystemLicensingInfo(params *GetSystemLicensingInfoParams, opts ...ClientOption) (*GetSystemLicensingInfoOK, error)
+
+	UpdateDomainLicensingInfo(params *UpdateDomainLicensingInfoParams, opts ...ClientOption) (*UpdateDomainLicensingInfoOK, *UpdateDomainLicensingInfoAccepted, error)
+
+	UpdateSystemLicensingInfo(params *UpdateSystemLicensingInfoParams, opts ...ClientOption) (*UpdateSystemLicensingInfoOK, *UpdateSystemLicensingInfoAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -121,6 +129,44 @@ func (a *Client) DeleteLicenseKey(params *DeleteLicenseKeyParams, opts ...Client
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for license_keys: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetDomainLicensingInfo gets the licensing information of a domain
+*/
+func (a *Client) GetDomainLicensingInfo(params *GetDomainLicensingInfoParams, opts ...ClientOption) (*GetDomainLicensingInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetDomainLicensingInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getDomainLicensingInfo",
+		Method:             "GET",
+		PathPattern:        "/v1/licensing-info/domains/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetDomainLicensingInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetDomainLicensingInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDomainLicensingInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -235,6 +281,122 @@ func (a *Client) GetLicensingInfo(params *GetLicensingInfoParams, opts ...Client
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getLicensingInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSystemLicensingInfo gets the licensing information of system
+*/
+func (a *Client) GetSystemLicensingInfo(params *GetSystemLicensingInfoParams, opts ...ClientOption) (*GetSystemLicensingInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSystemLicensingInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getSystemLicensingInfo",
+		Method:             "GET",
+		PathPattern:        "/v1/licensing-info/system",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSystemLicensingInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSystemLicensingInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getSystemLicensingInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateDomainLicensingInfo updates the licensing information of a domain
+*/
+func (a *Client) UpdateDomainLicensingInfo(params *UpdateDomainLicensingInfoParams, opts ...ClientOption) (*UpdateDomainLicensingInfoOK, *UpdateDomainLicensingInfoAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateDomainLicensingInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateDomainLicensingInfo",
+		Method:             "PUT",
+		PathPattern:        "/v1/licensing-info/domains/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateDomainLicensingInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *UpdateDomainLicensingInfoOK:
+		return value, nil, nil
+	case *UpdateDomainLicensingInfoAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for license_keys: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSystemLicensingInfo updates the licensing information of system
+*/
+func (a *Client) UpdateSystemLicensingInfo(params *UpdateSystemLicensingInfoParams, opts ...ClientOption) (*UpdateSystemLicensingInfoOK, *UpdateSystemLicensingInfoAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSystemLicensingInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateSystemLicensingInfo",
+		Method:             "PUT",
+		PathPattern:        "/v1/licensing-info/system",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSystemLicensingInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *UpdateSystemLicensingInfoOK:
+		return value, nil, nil
+	case *UpdateSystemLicensingInfoAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for license_keys: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v0.2.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.0)
+
+> Release Date: 18 Oct 2023
+ 
+Support APIs from VCF 4.5.2
+Note: PUT “/v1/personalities/files” API omitted as it made the swagger file invalid.
+
 ## [v0.1.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.1.3)
 
 > Release Date: 02 Oct 2023

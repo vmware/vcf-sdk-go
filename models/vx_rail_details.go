@@ -25,6 +25,9 @@ type VxRailDetails struct {
 	// VxRail Manager admin credentials
 	AdminCredentials *UnmanagedResourceCredential `json:"adminCredentials,omitempty"`
 
+	// Map of Context class with list of key and value pairs for array objects
+	ArrayContextWithKeyValuePair map[string]List `json:"arrayContextWithKeyValuePair,omitempty"`
+
 	// Map of Context class with list of key and value pairs
 	ContextWithKeyValuePair map[string]List `json:"contextWithKeyValuePair,omitempty"`
 
@@ -55,6 +58,10 @@ func (m *VxRailDetails) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAdminCredentials(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateArrayContextWithKeyValuePair(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -90,6 +97,27 @@ func (m *VxRailDetails) validateAdminCredentials(formats strfmt.Registry) error 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VxRailDetails) validateArrayContextWithKeyValuePair(formats strfmt.Registry) error {
+	if swag.IsZero(m.ArrayContextWithKeyValuePair) { // not required
+		return nil
+	}
+
+	for k := range m.ArrayContextWithKeyValuePair {
+
+		if err := m.ArrayContextWithKeyValuePair[k].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("arrayContextWithKeyValuePair" + "." + k)
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("arrayContextWithKeyValuePair" + "." + k)
+			}
+			return err
+		}
+
 	}
 
 	return nil
@@ -169,6 +197,10 @@ func (m *VxRailDetails) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateArrayContextWithKeyValuePair(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateContextWithKeyValuePair(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -198,6 +230,24 @@ func (m *VxRailDetails) contextValidateAdminCredentials(ctx context.Context, for
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *VxRailDetails) contextValidateArrayContextWithKeyValuePair(ctx context.Context, formats strfmt.Registry) error {
+
+	for k := range m.ArrayContextWithKeyValuePair {
+
+		if err := m.ArrayContextWithKeyValuePair[k].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("arrayContextWithKeyValuePair" + "." + k)
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("arrayContextWithKeyValuePair" + "." + k)
+			}
+			return err
+		}
+
 	}
 
 	return nil

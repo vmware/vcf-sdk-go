@@ -18,6 +18,8 @@ rename v_centers vcenters
 rename v_r_l_i vrli
 rename v_r_o_ps vrops
 rename v_r_s_l_c_m vrslcm
+rename v_r_a vra
+rename v_san_health_check vsan_health_check
 
 echo "Replace package names and occurrences of incorrect abbreviations with correct ones"
 find client -type f -name '*.go' -exec sed -i "" 's/a_v_ns/avns/g' {} +
@@ -28,6 +30,8 @@ find client -type f -name '*.go' -exec sed -i "" 's/v_r_l_i/vrli/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/v_centers/vcenters/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/v_r_o_ps/vrops/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/v_r_s_l_c_m/vrslcm/g' {} +
+find client -type f -name '*.go' -exec sed -i "" 's/v_r_a/vra/g' {} +
+find client -type f -name '*.go' -exec sed -i "" 's/v_san_health_check/vsan_health_check/g' {} +
 
 echo "Changing main client filename"
 mv client/vcf_client_client.go client/vcf_client.go

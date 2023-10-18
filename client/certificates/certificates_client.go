@@ -53,9 +53,15 @@ type ClientService interface {
 
 	GetCertificates(params *GetCertificatesParams, opts ...ClientOption) (*GetCertificatesOK, error)
 
+	GetResourceCertificatesValidationResult(params *GetResourceCertificatesValidationResultParams, opts ...ClientOption) (*GetResourceCertificatesValidationResultOK, error)
+
 	ReplaceCertificates(params *ReplaceCertificatesParams, opts ...ClientOption) (*ReplaceCertificatesOK, *ReplaceCertificatesAccepted, error)
 
+	ReplaceResourceCertificates(params *ReplaceResourceCertificatesParams, opts ...ClientOption) (*ReplaceResourceCertificatesOK, error)
+
 	UploadCertificates(params *UploadCertificatesParams, opts ...ClientOption) (*UploadCertificatesOK, error)
+
+	ValidateResourceCertificates(params *ValidateResourceCertificatesParams, opts ...ClientOption) (*ValidateResourceCertificatesOK, *ValidateResourceCertificatesCreated, error)
 
 	ViewCertificate(params *ViewCertificateParams, opts ...ClientOption) (*ViewCertificateOK, error)
 
@@ -270,7 +276,7 @@ func (a *Client) GenerateCertificates(params *GenerateCertificatesParams, opts .
 	Generate CSR(s) for the selected resource(s) in the domain.
 
 *Warning:*
-_Avoid using wildcard certificates. Instead, use subdomain-specific certificates that are rotated often. A compromised wildcard certificate can lead to security repercussions._
+_Avoid using wildcard certificates. Instead, use subdomain-specific certificates that are rotated often. A compromised wildcard certificate can lead to security repercussions_
 */
 func (a *Client) GeneratesCSRs(params *GeneratesCSRsParams, opts ...ClientOption) (*GeneratesCSRsOK, *GeneratesCSRsAccepted, error) {
 	// TODO: Validate the params before sending
@@ -469,6 +475,46 @@ func (a *Client) GetCertificates(params *GetCertificatesParams, opts ...ClientOp
 }
 
 /*
+GetResourceCertificatesValidationResult gets the resource certificate validation result
+
+Get the resource certificate validation result
+*/
+func (a *Client) GetResourceCertificatesValidationResult(params *GetResourceCertificatesValidationResultParams, opts ...ClientOption) (*GetResourceCertificatesValidationResultOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetResourceCertificatesValidationResultParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getResourceCertificatesValidationResult",
+		Method:             "GET",
+		PathPattern:        "/v1/domains/{id}/resource-certificates/validations/{validationId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetResourceCertificatesValidationResultReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetResourceCertificatesValidationResultOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getResourceCertificatesValidationResult: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 ReplaceCertificates replaces certificate s for the selected resource s in a domain
 
 Replace certificate(s) for the selected resource(s) in a domain
@@ -510,6 +556,46 @@ func (a *Client) ReplaceCertificates(params *ReplaceCertificatesParams, opts ...
 }
 
 /*
+ReplaceResourceCertificates replaces resource certificates
+
+Replace resource certificates
+*/
+func (a *Client) ReplaceResourceCertificates(params *ReplaceResourceCertificatesParams, opts ...ClientOption) (*ReplaceResourceCertificatesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReplaceResourceCertificatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "replaceResourceCertificates",
+		Method:             "PUT",
+		PathPattern:        "/v1/domains/{id}/resource-certificates",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ReplaceResourceCertificatesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ReplaceResourceCertificatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for replaceResourceCertificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 UploadCertificates uploads certificates to the certificate store
 
 Upload certificates to the certificate store
@@ -546,6 +632,47 @@ func (a *Client) UploadCertificates(params *UploadCertificatesParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for uploadCertificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ValidateResourceCertificates validates resource certificates
+
+Validate resource certificates
+*/
+func (a *Client) ValidateResourceCertificates(params *ValidateResourceCertificatesParams, opts ...ClientOption) (*ValidateResourceCertificatesOK, *ValidateResourceCertificatesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewValidateResourceCertificatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "validateResourceCertificates",
+		Method:             "PUT",
+		PathPattern:        "/v1/domains/{id}/resource-certificates/validations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ValidateResourceCertificatesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *ValidateResourceCertificatesOK:
+		return value, nil, nil
+	case *ValidateResourceCertificatesCreated:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for certificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

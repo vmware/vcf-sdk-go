@@ -34,6 +34,9 @@ type Domain struct {
 	// Shows whether the workload domain is joined to the Management domain SSO
 	IsManagementSSODomain bool `json:"isManagementSsoDomain,omitempty"`
 
+	// Licensing information of the workload domain
+	LicensingInfo *LicensingInfoReference `json:"licensingInfo,omitempty"`
+
 	// Name of the workload domain
 	Name string `json:"name,omitempty"`
 
@@ -68,6 +71,10 @@ func (m *Domain) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateClusters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLicensingInfo(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -129,6 +136,25 @@ func (m *Domain) validateClusters(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Domain) validateLicensingInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.LicensingInfo) { // not required
+		return nil
+	}
+
+	if m.LicensingInfo != nil {
+		if err := m.LicensingInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("licensingInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("licensingInfo")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -217,6 +243,10 @@ func (m *Domain) ContextValidate(ctx context.Context, formats strfmt.Registry) e
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLicensingInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNSXTCluster(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -266,6 +296,22 @@ func (m *Domain) contextValidateClusters(ctx context.Context, formats strfmt.Reg
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Domain) contextValidateLicensingInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LicensingInfo != nil {
+		if err := m.LicensingInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("licensingInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("licensingInfo")
+			}
+			return err
+		}
 	}
 
 	return nil

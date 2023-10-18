@@ -22,7 +22,13 @@ import (
 // swagger:model Csr
 type CSR struct {
 
+	// The CSR decoded content
+	// Example: DECODED CSR AS STRING
+	// Required: true
+	CSRDecodedContent *string `json:"csrDecodedContent"`
+
 	// The CSR encoded content
+	// Example: -----BEGIN CERTIFICATE REQUEST-----\nMIIEH...\n-----END CERTIFICATE REQUEST-----
 	// Required: true
 	CSREncodedContent *string `json:"csrEncodedContent"`
 
@@ -35,6 +41,10 @@ type CSR struct {
 func (m *CSR) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCSRDecodedContent(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCSREncodedContent(formats); err != nil {
 		res = append(res, err)
 	}
@@ -46,6 +56,15 @@ func (m *CSR) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CSR) validateCSRDecodedContent(formats strfmt.Registry) error {
+
+	if err := validate.Required("csrDecodedContent", "body", m.CSRDecodedContent); err != nil {
+		return err
+	}
+
 	return nil
 }
 

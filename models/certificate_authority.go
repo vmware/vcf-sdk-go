@@ -23,9 +23,11 @@ import (
 type CertificateAuthority struct {
 
 	// OpenSSL CA domain name
+	// Example: OpenSSL CA
 	CommonName string `json:"commonName,omitempty"`
 
 	// ISO 3166 country code where company is legally registered
+	// Example: IN
 	Country string `json:"country,omitempty"`
 
 	// CA type. Only supports Microsoft and OpenSSL CAs
@@ -34,24 +36,31 @@ type CertificateAuthority struct {
 	ID *string `json:"id"`
 
 	// The city or locality where company is legally registered
+	// Example: Bengaluru
 	Locality string `json:"locality,omitempty"`
 
 	// The name under which company is legally registered
+	// Example: VMware Inc.
 	Organization string `json:"organization,omitempty"`
 
 	// Organization with which the certificate is associated
+	// Example: VCF
 	OrganizationUnit string `json:"organizationUnit,omitempty"`
 
 	// Microsoft CA server url
+	// Example: https://sfo-ad.rainpole.io/certsrv
 	ServerURL string `json:"serverUrl,omitempty"`
 
 	// The full name of the state where company is legally registered
+	// Example: Karnataka
 	State string `json:"state,omitempty"`
 
 	// Microsoft CA server template name
+	// Example: WebServer
 	TemplateName string `json:"templateName,omitempty"`
 
 	// Microsoft CA server username
+	// Example: Administrator
 	Username string `json:"username,omitempty"`
 }
 
