@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "VMware Cloud Foundation is an integrated software stack that bundles the VMware virtualization and management components like compute virtualization (vSphere), storage virtualization (vSAN), network virtualization (NSX), and cloud management (vRealize Suite). VCF consists of Cloud Builder - that automates the bringup of the management infrastructure and SDDC Manager - that automates the workload domain management, lifecycle and operations. This API reference guide covers APIs of both Cloud Builder and SDDC Manager",
-    "version" : "4.5.2-vcf4520RELEASE",
+    "version" : "4.5.2",
     "title" : "VMware Cloud Foundation API Reference Guide",
     "termsOfService" : "http://www.vmware.com/",
     "contact" : {
