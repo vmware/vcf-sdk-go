@@ -57,7 +57,7 @@ type ClientService interface {
 
 	ReplaceCertificates(params *ReplaceCertificatesParams, opts ...ClientOption) (*ReplaceCertificatesOK, *ReplaceCertificatesAccepted, error)
 
-	ReplaceResourceCertificates(params *ReplaceResourceCertificatesParams, opts ...ClientOption) (*ReplaceResourceCertificatesOK, error)
+	ReplaceResourceCertificates(params *ReplaceResourceCertificatesParams, opts ...ClientOption) (*ReplaceResourceCertificatesOK, *ReplaceResourceCertificatesAccepted, error)
 
 	UploadCertificates(params *UploadCertificatesParams, opts ...ClientOption) (*UploadCertificatesOK, error)
 
@@ -560,7 +560,7 @@ ReplaceResourceCertificates replaces resource certificates
 
 Replace resource certificates
 */
-func (a *Client) ReplaceResourceCertificates(params *ReplaceResourceCertificatesParams, opts ...ClientOption) (*ReplaceResourceCertificatesOK, error) {
+func (a *Client) ReplaceResourceCertificates(params *ReplaceResourceCertificatesParams, opts ...ClientOption) (*ReplaceResourceCertificatesOK, *ReplaceResourceCertificatesAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceResourceCertificatesParams()
@@ -583,15 +583,16 @@ func (a *Client) ReplaceResourceCertificates(params *ReplaceResourceCertificates
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*ReplaceResourceCertificatesOK)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *ReplaceResourceCertificatesOK:
+		return value, nil, nil
+	case *ReplaceResourceCertificatesAccepted:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for replaceResourceCertificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for certificates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

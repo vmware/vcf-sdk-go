@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.2.1](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.1)
+
+> Release Date: 22 Nov 2023
+
+Include 202 as response code to "/v1/domains/{id}/resource-certificates" API endpoint
+
 ## [v0.2.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.0)
 
 > Release Date: 18 Oct 2023
