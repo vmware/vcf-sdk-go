@@ -3724,6 +3724,12 @@
               "$ref" : "#/definitions/Task"
             }
           },
+          "202" : {
+            "description" : "Accepted",
+            "schema" : {
+              "$ref" : "#/definitions/Task"
+            }
+          },
           "500" : {
             "description" : "Internal server error",
             "schema" : {
