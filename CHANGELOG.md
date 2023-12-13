@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.2.2](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.2)
+
+> Release Date: 11 Dec 2023
+
+Prevent `AutoRotateCredentialPolicyInputSpec.EnableAutoRotatePolicy` being omitted when set to `false` 
+
 ## [v0.2.1](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.1)
 
 > Release Date: 22 Nov 2023
