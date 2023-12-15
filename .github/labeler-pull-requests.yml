@@ -1,12 +1,24 @@
 ---
 chore:
-  - '.github/**/*'
-  - '.gitignore'
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**/*
+          - .gitignore
 documentation:
-  - '**/*.md'
+  - changed-files:
+      - any-glob-to-any-file:
+          - **/*.md
 github-actions:
-  - '.github/workflows/**/*'
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**/*
 needs-review:
-  - '**'
-  - '.*'
-  - '.*/**'
+  - changed-files:
+      - any-glob-to-any-file:
+          - **
+sdk:
+  - changed-files:
+      - any-glob-to-any-file:
+          - client/**/*
+          - models/**/*
+          - scripts/**/*
