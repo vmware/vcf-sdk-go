@@ -22,7 +22,7 @@ import (
 type NsxTClusterSpec struct {
 
 	// Vlan id of Geneve
-	GeneveVlanID int32 `json:"geneveVlanId,omitempty"`
+	GeneveVlanID int32 `json:"geneveVlanId"`
 
 	// The IP address pool specification
 	IPAddressPoolSpec *IPAddressPoolSpec `json:"ipAddressPoolSpec,omitempty"`

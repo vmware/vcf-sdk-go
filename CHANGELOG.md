@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.2.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.3)
+
+> Release Date: 27 Feb 2024
+
+Made GeneveVlanID in NsxTClusterSpec а required field.
+
 ## [v0.2.2](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.2)
 
 > Release Date: 11 Dec 2023
