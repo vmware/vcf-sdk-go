@@ -6505,10 +6505,7 @@
           "200" : {
             "description" : "Ok",
             "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/Personality"
-              }
+              "$ref" : "#/definitions/PageOfPersonality"
             }
           },
           "500" : {
@@ -21524,6 +21521,22 @@
           "description" : "The list of elements included in this page",
           "items" : {
             "$ref" : "#/definitions/Upgradable"
+          }
+        },
+        "pageMetadata" : {
+          "description" : "Pageable elements pagination metadata information",
+          "$ref" : "#/definitions/PageMetadata"
+        }
+      },
+      "description" : "Represents a page of elements of a single type"
+    },
+    "PageOfPersonality" : {
+      "properties" : {
+        "elements" : {
+          "type" : "array",
+          "description" : "The list of elements included in this page",
+          "items" : {
+            "$ref" : "#/definitions/Personality"
           }
         },
         "pageMetadata" : {
