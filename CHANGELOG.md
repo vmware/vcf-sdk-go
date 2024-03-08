@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.2.4](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.4)
+
+> Release Date: 11 Mar 2024
+
+Patch personalities API
+
 ## [v0.2.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.3)
 
 > Release Date: 27 Feb 2024
