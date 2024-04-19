@@ -20,6 +20,7 @@ rename v_san_health_check vsan_health_check
 echo "Replace package names and occurrences of incorrect abbreviations with correct ones"
 find client -type f -name '*.go' -exec sed -i "" 's/a_v_ns/avns/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/n_s_x_t/nsxt/g' {} +
+find client -type f -name '*.go' -exec sed -i "" 's/nsx_t/nsxt/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/p_s_cs/pscs/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/v_centers/vcenters/g' {} +
 find client -type f -name '*.go' -exec sed -i "" 's/v_san_health_check/vsan_health_check/g' {} +

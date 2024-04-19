@@ -127,7 +127,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli.Manifests = manifests.New(transport, formats)
 	cli.NSXTClusters = nsxt_clusters.New(transport, formats)
 	cli.NetworkPools = network_pools.New(transport, formats)
-	cli.NSXTEdgeClusters = nsx_t_edge_clusters.New(transport, formats)
+	cli.NSXTEdgeClusters = nsxt_edge_clusters.New(transport, formats)
 	cli.Operations = operations.New(transport, formats)
 	cli.OperationsForLogs = operations_for_logs.New(transport, formats)
 	cli.PsCs = pscs.New(transport, formats)
@@ -241,7 +241,7 @@ type VcfClient struct {
 
 	NetworkPools network_pools.ClientService
 
-	NSXTEdgeClusters nsx_t_edge_clusters.ClientService
+	NSXTEdgeClusters nsxt_edge_clusters.ClientService
 
 	Operations operations.ClientService
 
