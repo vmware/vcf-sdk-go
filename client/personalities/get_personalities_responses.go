@@ -54,7 +54,7 @@ GetPersonalitiesOK describes a response with status code 200, with default heade
 Ok
 */
 type GetPersonalitiesOK struct {
-	Payload []*models.Personality
+	Payload *models.PageOfPersonality
 }
 
 // IsSuccess returns true when this get personalities o k response has a 2xx status code
@@ -95,14 +95,16 @@ func (o *GetPersonalitiesOK) String() string {
 	return fmt.Sprintf("[GET /v1/personalities][%d] getPersonalitiesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetPersonalitiesOK) GetPayload() []*models.Personality {
+func (o *GetPersonalitiesOK) GetPayload() *models.PageOfPersonality {
 	return o.Payload
 }
 
 func (o *GetPersonalitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.PageOfPersonality)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
