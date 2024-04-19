@@ -34,7 +34,7 @@ import (
 	"github.com/vmware/vcf-sdk-go/client/manifests"
 	"github.com/vmware/vcf-sdk-go/client/nsxt_clusters"
 	"github.com/vmware/vcf-sdk-go/client/network_pools"
-	"github.com/vmware/vcf-sdk-go/client/nsx_t_edge_clusters"
+	"github.com/vmware/vcf-sdk-go/client/nsxt_edge_clusters"
 	"github.com/vmware/vcf-sdk-go/client/operations"
 	"github.com/vmware/vcf-sdk-go/client/operations_for_logs"
 	"github.com/vmware/vcf-sdk-go/client/pscs"
