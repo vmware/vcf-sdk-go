@@ -7095,7 +7095,7 @@
           "required" : true,
           "type" : "array",
           "items" : {
-            "type" : "file"
+            "type" : "string"
           },
           "collectionFormat" : "multi"
         } ],
@@ -12831,8 +12831,7 @@
         "geneveVlanId" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Vlan id of Geneve. (This field is deprecated, instead please use transportVlan in uplinkProfiles)",
-          "deprecated" : true
+          "description" : "Vlan id of Geneve. (This field is deprecated, instead please use transportVlan in uplinkProfiles)"
         },
         "ipAddressPoolSpec" : {
           "description" : "The IP address pool specification. (This field is deprecated. Please use ipAddressPoolsSpec instead for providing IP address pools)",
@@ -13229,8 +13228,7 @@
           "description" : "Transport zone name"
         }
       },
-      "description" : "Spec contains required parameters for NSX Transport Zone",
-      "deprecated" : true
+      "description" : "Spec contains required parameters for NSX Transport Zone"
     },
     "BundleRecall" : {
       "required" : [ "recalledBundleIds", "replacementBundleStatus" ],
@@ -16982,8 +16980,7 @@
         "secondaryAzOverlayVlanId" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Secondary AZ Overlay Vlan Id. This field is deprecated. The secondary AZ overlay vlan id should be mentioned in the uplinkProfile field instead",
-          "deprecated" : true
+          "description" : "Secondary AZ Overlay Vlan Id. This field is deprecated. The secondary AZ overlay vlan id should be mentioned in the uplinkProfile field instead"
         },
         "vsanNetworkSpecs" : {
           "type" : "array",
@@ -17789,8 +17786,7 @@
         },
         "isUsedByNsxt" : {
           "type" : "boolean",
-          "description" : "Flag indicating whether the DVS is used by NSX.\n This property is deprecated in favor of nsxtSwitchConfig field",
-          "deprecated" : true
+          "description" : "Flag indicating whether the DVS is used by NSX.\n This property is deprecated in favor of nsxtSwitchConfig field"
         },
         "mtu" : {
           "type" : "integer",
@@ -20958,8 +20954,7 @@
       "properties" : {
         "isUsedByNsxt" : {
           "type" : "boolean",
-          "description" : "Boolean to identify if the vSphere distributed switch is used by NSX. This property is deprecated in favor of nsxtSwitchConfig field.",
-          "deprecated" : true
+          "description" : "Boolean to identify if the vSphere distributed switch is used by NSX. This property is deprecated in favor of nsxtSwitchConfig field."
         },
         "nsxtSwitchConfig" : {
           "$ref" : "#/definitions/NsxtSwitchConfig",
