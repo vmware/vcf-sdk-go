@@ -45,7 +45,7 @@ func (o *UpdateVersionAliasConfigurationsReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/system/settings/version-aliases] updateVersionAliasConfigurations", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *UpdateVersionAliasConfigurationsOK) IsServerError() bool {
 // IsCode returns true when this update version alias configurations o k response a status code equal to that given
 func (o *UpdateVersionAliasConfigurationsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update version alias configurations o k response
+func (o *UpdateVersionAliasConfigurationsOK) Code() int {
+	return 200
 }
 
 func (o *UpdateVersionAliasConfigurationsOK) Error() string {
@@ -151,6 +156,11 @@ func (o *UpdateVersionAliasConfigurationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update version alias configurations bad request response
+func (o *UpdateVersionAliasConfigurationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateVersionAliasConfigurationsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/settings/version-aliases][%d] updateVersionAliasConfigurationsBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *UpdateVersionAliasConfigurationsInternalServerError) IsServerError() bo
 // IsCode returns true when this update version alias configurations internal server error response a status code equal to that given
 func (o *UpdateVersionAliasConfigurationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update version alias configurations internal server error response
+func (o *UpdateVersionAliasConfigurationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateVersionAliasConfigurationsInternalServerError) Error() string {

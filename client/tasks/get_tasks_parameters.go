@@ -81,6 +81,34 @@ type GetTasksParams struct {
 	*/
 	Limit *int32
 
+	/* OrderBy.
+
+	   orderBy
+	*/
+	OrderBy *string
+
+	/* OrderDirection.
+
+	   orderDirection
+	*/
+	OrderDirection *string
+
+	/* PageNumber.
+
+	   Page number.
+
+	   Format: int32
+	*/
+	PageNumber *int32
+
+	/* PageSize.
+
+	   Size of the page you want to retrieve. Max page size allowed is 100.
+
+	   Format: int32
+	*/
+	PageSize *int32
+
 	/* ResourceID.
 
 	   resourceId
@@ -92,6 +120,12 @@ type GetTasksParams struct {
 	   resourceType
 	*/
 	ResourceType *string
+
+	/* TaskName.
+
+	   Search filter when task name contains text.
+	*/
+	TaskName *string
 
 	/* TaskStatus.
 
@@ -180,6 +214,50 @@ func (o *GetTasksParams) SetLimit(limit *int32) {
 	o.Limit = limit
 }
 
+// WithOrderBy adds the orderBy to the get tasks params
+func (o *GetTasksParams) WithOrderBy(orderBy *string) *GetTasksParams {
+	o.SetOrderBy(orderBy)
+	return o
+}
+
+// SetOrderBy adds the orderBy to the get tasks params
+func (o *GetTasksParams) SetOrderBy(orderBy *string) {
+	o.OrderBy = orderBy
+}
+
+// WithOrderDirection adds the orderDirection to the get tasks params
+func (o *GetTasksParams) WithOrderDirection(orderDirection *string) *GetTasksParams {
+	o.SetOrderDirection(orderDirection)
+	return o
+}
+
+// SetOrderDirection adds the orderDirection to the get tasks params
+func (o *GetTasksParams) SetOrderDirection(orderDirection *string) {
+	o.OrderDirection = orderDirection
+}
+
+// WithPageNumber adds the pageNumber to the get tasks params
+func (o *GetTasksParams) WithPageNumber(pageNumber *int32) *GetTasksParams {
+	o.SetPageNumber(pageNumber)
+	return o
+}
+
+// SetPageNumber adds the pageNumber to the get tasks params
+func (o *GetTasksParams) SetPageNumber(pageNumber *int32) {
+	o.PageNumber = pageNumber
+}
+
+// WithPageSize adds the pageSize to the get tasks params
+func (o *GetTasksParams) WithPageSize(pageSize *int32) *GetTasksParams {
+	o.SetPageSize(pageSize)
+	return o
+}
+
+// SetPageSize adds the pageSize to the get tasks params
+func (o *GetTasksParams) SetPageSize(pageSize *int32) {
+	o.PageSize = pageSize
+}
+
 // WithResourceID adds the resourceID to the get tasks params
 func (o *GetTasksParams) WithResourceID(resourceID *string) *GetTasksParams {
 	o.SetResourceID(resourceID)
@@ -200,6 +278,17 @@ func (o *GetTasksParams) WithResourceType(resourceType *string) *GetTasksParams 
 // SetResourceType adds the resourceType to the get tasks params
 func (o *GetTasksParams) SetResourceType(resourceType *string) {
 	o.ResourceType = resourceType
+}
+
+// WithTaskName adds the taskName to the get tasks params
+func (o *GetTasksParams) WithTaskName(taskName *string) *GetTasksParams {
+	o.SetTaskName(taskName)
+	return o
+}
+
+// SetTaskName adds the taskName to the get tasks params
+func (o *GetTasksParams) SetTaskName(taskName *string) {
+	o.TaskName = taskName
 }
 
 // WithTaskStatus adds the taskStatus to the get tasks params
@@ -266,6 +355,74 @@ func (o *GetTasksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regi
 		}
 	}
 
+	if o.OrderBy != nil {
+
+		// query param orderBy
+		var qrOrderBy string
+
+		if o.OrderBy != nil {
+			qrOrderBy = *o.OrderBy
+		}
+		qOrderBy := qrOrderBy
+		if qOrderBy != "" {
+
+			if err := r.SetQueryParam("orderBy", qOrderBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.OrderDirection != nil {
+
+		// query param orderDirection
+		var qrOrderDirection string
+
+		if o.OrderDirection != nil {
+			qrOrderDirection = *o.OrderDirection
+		}
+		qOrderDirection := qrOrderDirection
+		if qOrderDirection != "" {
+
+			if err := r.SetQueryParam("orderDirection", qOrderDirection); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PageNumber != nil {
+
+		// query param pageNumber
+		var qrPageNumber int32
+
+		if o.PageNumber != nil {
+			qrPageNumber = *o.PageNumber
+		}
+		qPageNumber := swag.FormatInt32(qrPageNumber)
+		if qPageNumber != "" {
+
+			if err := r.SetQueryParam("pageNumber", qPageNumber); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PageSize != nil {
+
+		// query param pageSize
+		var qrPageSize int32
+
+		if o.PageSize != nil {
+			qrPageSize = *o.PageSize
+		}
+		qPageSize := swag.FormatInt32(qrPageSize)
+		if qPageSize != "" {
+
+			if err := r.SetQueryParam("pageSize", qPageSize); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.ResourceID != nil {
 
 		// query param resourceId
@@ -295,6 +452,23 @@ func (o *GetTasksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regi
 		if qResourceType != "" {
 
 			if err := r.SetQueryParam("resourceType", qResourceType); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.TaskName != nil {
+
+		// query param taskName
+		var qrTaskName string
+
+		if o.TaskName != nil {
+			qrTaskName = *o.TaskName
+		}
+		qTaskName := qrTaskName
+		if qTaskName != "" {
+
+			if err := r.SetQueryParam("taskName", qTaskName); err != nil {
 				return err
 			}
 		}

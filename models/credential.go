@@ -245,6 +245,11 @@ func (m *Credential) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *Credential) contextValidateAutoRotatePolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AutoRotatePolicy != nil {
+
+		if swag.IsZero(m.AutoRotatePolicy) { // not required
+			return nil
+		}
+
 		if err := m.AutoRotatePolicy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("autoRotatePolicy")
@@ -261,6 +266,11 @@ func (m *Credential) contextValidateAutoRotatePolicy(ctx context.Context, format
 func (m *Credential) contextValidateExpiry(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Expiry != nil {
+
+		if swag.IsZero(m.Expiry) { // not required
+			return nil
+		}
+
 		if err := m.Expiry.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expiry")
@@ -277,6 +287,7 @@ func (m *Credential) contextValidateExpiry(ctx context.Context, formats strfmt.R
 func (m *Credential) contextValidateResource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Resource != nil {
+
 		if err := m.Resource.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resource")

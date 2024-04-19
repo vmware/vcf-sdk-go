@@ -51,7 +51,7 @@ func (o *CreateNetworkPoolReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/network-pools] createNetworkPool", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CreateNetworkPoolOK) IsServerError() bool {
 // IsCode returns true when this create network pool o k response a status code equal to that given
 func (o *CreateNetworkPoolOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create network pool o k response
+func (o *CreateNetworkPoolOK) Code() int {
+	return 200
 }
 
 func (o *CreateNetworkPoolOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CreateNetworkPoolCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create network pool created response
+func (o *CreateNetworkPoolCreated) Code() int {
+	return 201
+}
+
 func (o *CreateNetworkPoolCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/network-pools][%d] createNetworkPoolCreated  %+v", 201, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CreateNetworkPoolBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create network pool bad request response
+func (o *CreateNetworkPoolBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateNetworkPoolBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/network-pools][%d] createNetworkPoolBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CreateNetworkPoolInternalServerError) IsServerError() bool {
 // IsCode returns true when this create network pool internal server error response a status code equal to that given
 func (o *CreateNetworkPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create network pool internal server error response
+func (o *CreateNetworkPoolInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateNetworkPoolInternalServerError) Error() string {

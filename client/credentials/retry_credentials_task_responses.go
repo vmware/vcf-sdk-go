@@ -63,7 +63,7 @@ func (o *RetryCredentialsTaskReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/credentials/tasks/{id}] retryCredentialsTask", response, response.Code())
 	}
 }
 
@@ -104,6 +104,11 @@ func (o *RetryCredentialsTaskOK) IsServerError() bool {
 // IsCode returns true when this retry credentials task o k response a status code equal to that given
 func (o *RetryCredentialsTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the retry credentials task o k response
+func (o *RetryCredentialsTaskOK) Code() int {
+	return 200
 }
 
 func (o *RetryCredentialsTaskOK) Error() string {
@@ -169,6 +174,11 @@ func (o *RetryCredentialsTaskAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the retry credentials task accepted response
+func (o *RetryCredentialsTaskAccepted) Code() int {
+	return 202
+}
+
 func (o *RetryCredentialsTaskAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/credentials/tasks/{id}][%d] retryCredentialsTaskAccepted  %+v", 202, o.Payload)
 }
@@ -230,6 +240,11 @@ func (o *RetryCredentialsTaskBadRequest) IsServerError() bool {
 // IsCode returns true when this retry credentials task bad request response a status code equal to that given
 func (o *RetryCredentialsTaskBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the retry credentials task bad request response
+func (o *RetryCredentialsTaskBadRequest) Code() int {
+	return 400
 }
 
 func (o *RetryCredentialsTaskBadRequest) Error() string {
@@ -295,6 +310,11 @@ func (o *RetryCredentialsTaskUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the retry credentials task unauthorized response
+func (o *RetryCredentialsTaskUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RetryCredentialsTaskUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /v1/credentials/tasks/{id}][%d] retryCredentialsTaskUnauthorized  %+v", 401, o.Payload)
 }
@@ -358,6 +378,11 @@ func (o *RetryCredentialsTaskForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the retry credentials task forbidden response
+func (o *RetryCredentialsTaskForbidden) Code() int {
+	return 403
+}
+
 func (o *RetryCredentialsTaskForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /v1/credentials/tasks/{id}][%d] retryCredentialsTaskForbidden  %+v", 403, o.Payload)
 }
@@ -419,6 +444,11 @@ func (o *RetryCredentialsTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this retry credentials task internal server error response a status code equal to that given
 func (o *RetryCredentialsTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the retry credentials task internal server error response
+func (o *RetryCredentialsTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RetryCredentialsTaskInternalServerError) Error() string {

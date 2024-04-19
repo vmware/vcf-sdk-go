@@ -89,6 +89,11 @@ func (m *SecuritySpec) contextValidateRootCaCerts(ctx context.Context, formats s
 	for i := 0; i < len(m.RootCaCerts); i++ {
 
 		if m.RootCaCerts[i] != nil {
+
+			if swag.IsZero(m.RootCaCerts[i]) { // not required
+				return nil
+			}
+
 			if err := m.RootCaCerts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rootCaCerts" + "." + strconv.Itoa(i))

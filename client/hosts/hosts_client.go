@@ -33,19 +33,21 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AssignTagsToExistingHost(params *AssignTagsToExistingHostParams, opts ...ClientOption) (*AssignTagsToExistingHostOK, error)
-
-	AssignableTagsToHost(params *AssignableTagsToHostParams, opts ...ClientOption) (*AssignableTagsToHostOK, error)
+	AssignTagsToHost(params *AssignTagsToHostParams, opts ...ClientOption) (*AssignTagsToHostOK, error)
 
 	CommissionHosts(params *CommissionHostsParams, opts ...ClientOption) (*CommissionHostsOK, *CommissionHostsAccepted, error)
 
 	DecommissionHosts(params *DecommissionHostsParams, opts ...ClientOption) (*DecommissionHostsOK, *DecommissionHostsAccepted, error)
+
+	GetAssignableTagForHost(params *GetAssignableTagForHostParams, opts ...ClientOption) (*GetAssignableTagForHostOK, error)
 
 	GetCriteria(params *GetCriteriaParams, opts ...ClientOption) (*GetCriteriaOK, error)
 
 	GetCriterion(params *GetCriterionParams, opts ...ClientOption) (*GetCriterionOK, error)
 
 	GetHost(params *GetHostParams, opts ...ClientOption) (*GetHostOK, error)
+
+	GetHostCommissionValidationByID(params *GetHostCommissionValidationByIDParams, opts ...ClientOption) (*GetHostCommissionValidationByIDOK, error)
 
 	GetHostQueryResponse1(params *GetHostQueryResponse1Params, opts ...ClientOption) (*GetHostQueryResponse1OK, error)
 
@@ -57,34 +59,32 @@ type ClientService interface {
 
 	GetTagsAssignedToHosts(params *GetTagsAssignedToHostsParams, opts ...ClientOption) (*GetTagsAssignedToHostsOK, error)
 
-	GetValidationForCommissionHosts(params *GetValidationForCommissionHostsParams, opts ...ClientOption) (*GetValidationForCommissionHostsOK, error)
-
 	PostQuery(params *PostQueryParams, opts ...ClientOption) (*PostQueryOK, error)
 
 	RemoveTagsFromHost(params *RemoveTagsFromHostParams, opts ...ClientOption) (*RemoveTagsFromHostOK, error)
 
-	ValidateHostsOperations(params *ValidateHostsOperationsParams, opts ...ClientOption) (*ValidateHostsOperationsOK, *ValidateHostsOperationsAccepted, error)
+	ValidateHostCommissionSpec(params *ValidateHostCommissionSpecParams, opts ...ClientOption) (*ValidateHostCommissionSpecOK, *ValidateHostCommissionSpecAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-AssignTagsToExistingHost assigns tags to host
+AssignTagsToHost assigns tags to a host
 */
-func (a *Client) AssignTagsToExistingHost(params *AssignTagsToExistingHostParams, opts ...ClientOption) (*AssignTagsToExistingHostOK, error) {
+func (a *Client) AssignTagsToHost(params *AssignTagsToHostParams, opts ...ClientOption) (*AssignTagsToHostOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewAssignTagsToExistingHostParams()
+		params = NewAssignTagsToHostParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "assignTagsToExistingHost",
+		ID:                 "assignTagsToHost",
 		Method:             "PUT",
 		PathPattern:        "/v1/hosts/{id}/tags",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &AssignTagsToExistingHostReader{formats: a.formats},
+		Reader:             &AssignTagsToHostReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -96,51 +96,13 @@ func (a *Client) AssignTagsToExistingHost(params *AssignTagsToExistingHostParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*AssignTagsToExistingHostOK)
+	success, ok := result.(*AssignTagsToHostOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for assignTagsToExistingHost: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AssignableTagsToHost gets assignable tags to host
-*/
-func (a *Client) AssignableTagsToHost(params *AssignableTagsToHostParams, opts ...ClientOption) (*AssignableTagsToHostOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAssignableTagsToHostParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "assignableTagsToHost",
-		Method:             "GET",
-		PathPattern:        "/v1/hosts/{id}/tags/assignable-tags",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AssignableTagsToHostReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AssignableTagsToHostOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for assignableTagsToHost: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for assignTagsToHost: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -223,6 +185,44 @@ func (a *Client) DecommissionHosts(params *DecommissionHostsParams, opts ...Clie
 }
 
 /*
+GetAssignableTagForHost gets tags assignable to a host
+*/
+func (a *Client) GetAssignableTagForHost(params *GetAssignableTagForHostParams, opts ...ClientOption) (*GetAssignableTagForHostOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAssignableTagForHostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAssignableTagForHost",
+		Method:             "GET",
+		PathPattern:        "/v1/hosts/{id}/tags/assignable-tags",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAssignableTagForHostReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAssignableTagForHostOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAssignableTagForHost: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetCriteria gets all criteria
 */
 func (a *Client) GetCriteria(params *GetCriteriaParams, opts ...ClientOption) (*GetCriteriaOK, error) {
@@ -299,7 +299,7 @@ func (a *Client) GetCriterion(params *GetCriterionParams, opts ...ClientOption) 
 }
 
 /*
-GetHost gets a host
+GetHost gets a host by its ID
 */
 func (a *Client) GetHost(params *GetHostParams, opts ...ClientOption) (*GetHostOK, error) {
 	// TODO: Validate the params before sending
@@ -333,6 +333,44 @@ func (a *Client) GetHost(params *GetHostParams, opts ...ClientOption) (*GetHostO
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getHost: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetHostCommissionValidationByID retrieves the results of a host commission validation by its ID
+*/
+func (a *Client) GetHostCommissionValidationByID(params *GetHostCommissionValidationByIDParams, opts ...ClientOption) (*GetHostCommissionValidationByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetHostCommissionValidationByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getHostCommissionValidationByID",
+		Method:             "GET",
+		PathPattern:        "/v1/hosts/validations/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetHostCommissionValidationByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetHostCommissionValidationByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getHostCommissionValidationByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -413,7 +451,7 @@ func (a *Client) GetHostTagManagerURL(params *GetHostTagManagerURLParams, opts .
 }
 
 /*
-GetHosts gets the hosts
+GetHosts gets all hosts
 */
 func (a *Client) GetHosts(params *GetHostsParams, opts ...ClientOption) (*GetHostsOK, error) {
 	// TODO: Validate the params before sending
@@ -527,44 +565,6 @@ func (a *Client) GetTagsAssignedToHosts(params *GetTagsAssignedToHostsParams, op
 }
 
 /*
-GetValidationForCommissionHosts gets the status of the validation of the input specification to commission the hosts
-*/
-func (a *Client) GetValidationForCommissionHosts(params *GetValidationForCommissionHostsParams, opts ...ClientOption) (*GetValidationForCommissionHostsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetValidationForCommissionHostsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getValidationForCommissionHosts",
-		Method:             "GET",
-		PathPattern:        "/v1/hosts/validations/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetValidationForCommissionHostsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetValidationForCommissionHostsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getValidationForCommissionHosts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
 PostQuery posts a query
 */
 func (a *Client) PostQuery(params *PostQueryParams, opts ...ClientOption) (*PostQueryOK, error) {
@@ -641,22 +641,22 @@ func (a *Client) RemoveTagsFromHost(params *RemoveTagsFromHostParams, opts ...Cl
 }
 
 /*
-ValidateHostsOperations validates the input spec for hosts operations
+ValidateHostCommissionSpec performs validation of the host commission spec specification
 */
-func (a *Client) ValidateHostsOperations(params *ValidateHostsOperationsParams, opts ...ClientOption) (*ValidateHostsOperationsOK, *ValidateHostsOperationsAccepted, error) {
+func (a *Client) ValidateHostCommissionSpec(params *ValidateHostCommissionSpecParams, opts ...ClientOption) (*ValidateHostCommissionSpecOK, *ValidateHostCommissionSpecAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateHostsOperationsParams()
+		params = NewValidateHostCommissionSpecParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateHostsOperations",
+		ID:                 "validateHostCommissionSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/hosts/validations",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateHostsOperationsReader{formats: a.formats},
+		Reader:             &ValidateHostCommissionSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -669,9 +669,9 @@ func (a *Client) ValidateHostsOperations(params *ValidateHostsOperationsParams, 
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *ValidateHostsOperationsOK:
+	case *ValidateHostCommissionSpecOK:
 		return value, nil, nil
-	case *ValidateHostsOperationsAccepted:
+	case *ValidateHostCommissionSpecAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

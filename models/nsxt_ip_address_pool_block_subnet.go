@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTIPAddressPoolBlockSubnet NSX-T IP address pool block subnet representation
+// NSXTIPAddressPoolBlockSubnet NSX IP address pool block subnet representation
 //
 // swagger:model NsxtIpAddressPoolBlockSubnet
 type NSXTIPAddressPoolBlockSubnet struct {

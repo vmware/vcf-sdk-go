@@ -47,7 +47,7 @@ type ClientService interface {
 }
 
 /*
-DeleteAliasVersionsBySoftwareTypeAndBaseVersion deletes version alias configuration
+DeleteAliasVersionsBySoftwareTypeAndBaseVersion removes version alias configuration by component type and version
 
 Delete Version Alias Configuration by bundle component type, version, and aliases.
 */
@@ -88,9 +88,9 @@ func (a *Client) DeleteAliasVersionsBySoftwareTypeAndBaseVersion(params *DeleteA
 }
 
 /*
-DeleteVersionAliasBySoftwareType deletes version alias for a bundle component type
+DeleteVersionAliasBySoftwareType removes version alias configuration by component type
 
-Delete Version Alias for a bundle component type.
+Removes Version Alias Configuration by component type
 */
 func (a *Client) DeleteVersionAliasBySoftwareType(params *DeleteVersionAliasBySoftwareTypeParams, opts ...ClientOption) (*DeleteVersionAliasBySoftwareTypeOK, *DeleteVersionAliasBySoftwareTypeNoContent, error) {
 	// TODO: Validate the params before sending
@@ -129,7 +129,7 @@ func (a *Client) DeleteVersionAliasBySoftwareType(params *DeleteVersionAliasBySo
 }
 
 /*
-GetVersionAliasConfiguration gets version alias configuration
+GetVersionAliasConfiguration retrieves version alias configuration
 
 Get the Version Alias Configuration.
 */
@@ -169,7 +169,7 @@ func (a *Client) GetVersionAliasConfiguration(params *GetVersionAliasConfigurati
 }
 
 /*
-UpdateVersionAliasConfiguration updates version alias configuration
+UpdateVersionAliasConfiguration updates the version alias configuration by component type
 
 Update Version Alias Configuration.
 */

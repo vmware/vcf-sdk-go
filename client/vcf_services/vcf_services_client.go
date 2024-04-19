@@ -41,7 +41,7 @@ type ClientService interface {
 }
 
 /*
-GetVcfService gets a vcf service
+GetVcfService retrieves an SDDC manager service by its ID
 */
 func (a *Client) GetVcfService(params *GetVcfServiceParams, opts ...ClientOption) (*GetVcfServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) GetVcfService(params *GetVcfServiceParams, opts ...ClientOption
 }
 
 /*
-GetVcfServices gets the vcf services
+GetVcfServices retrieves a list of SDDC manager services
 */
 func (a *Client) GetVcfServices(params *GetVcfServicesParams, opts ...ClientOption) (*GetVcfServicesOK, error) {
 	// TODO: Validate the params before sending

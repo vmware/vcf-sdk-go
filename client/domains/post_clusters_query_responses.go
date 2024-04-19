@@ -45,7 +45,7 @@ func (o *PostClustersQueryReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/domains/{domainId}/clusters/queries] postClustersQuery", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *PostClustersQueryOK) IsServerError() bool {
 // IsCode returns true when this post clusters query o k response a status code equal to that given
 func (o *PostClustersQueryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the post clusters query o k response
+func (o *PostClustersQueryOK) Code() int {
+	return 200
 }
 
 func (o *PostClustersQueryOK) Error() string {
@@ -151,6 +156,11 @@ func (o *PostClustersQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post clusters query bad request response
+func (o *PostClustersQueryBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostClustersQueryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/queries][%d] postClustersQueryBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *PostClustersQueryInternalServerError) IsServerError() bool {
 // IsCode returns true when this post clusters query internal server error response a status code equal to that given
 func (o *PostClustersQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the post clusters query internal server error response
+func (o *PostClustersQueryInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PostClustersQueryInternalServerError) Error() string {

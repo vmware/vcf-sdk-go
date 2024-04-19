@@ -234,6 +234,11 @@ func (m *ClusterSpec) ContextValidate(ctx context.Context, formats strfmt.Regist
 func (m *ClusterSpec) contextValidateAdvancedOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AdvancedOptions != nil {
+
+		if swag.IsZero(m.AdvancedOptions) { // not required
+			return nil
+		}
+
 		if err := m.AdvancedOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("advancedOptions")
@@ -250,6 +255,7 @@ func (m *ClusterSpec) contextValidateAdvancedOptions(ctx context.Context, format
 func (m *ClusterSpec) contextValidateDatastoreSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DatastoreSpec != nil {
+
 		if err := m.DatastoreSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("datastoreSpec")
@@ -268,6 +274,11 @@ func (m *ClusterSpec) contextValidateHostSpecs(ctx context.Context, formats strf
 	for i := 0; i < len(m.HostSpecs); i++ {
 
 		if m.HostSpecs[i] != nil {
+
+			if swag.IsZero(m.HostSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.HostSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("hostSpecs" + "." + strconv.Itoa(i))
@@ -286,6 +297,7 @@ func (m *ClusterSpec) contextValidateHostSpecs(ctx context.Context, formats strf
 func (m *ClusterSpec) contextValidateNetworkSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NetworkSpec != nil {
+
 		if err := m.NetworkSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("networkSpec")
@@ -302,6 +314,11 @@ func (m *ClusterSpec) contextValidateNetworkSpec(ctx context.Context, formats st
 func (m *ClusterSpec) contextValidateVxRailDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VxRailDetails != nil {
+
+		if swag.IsZero(m.VxRailDetails) { // not required
+			return nil
+		}
+
 		if err := m.VxRailDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vxRailDetails")

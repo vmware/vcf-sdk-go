@@ -51,7 +51,7 @@ func (o *ValidateResourceCertificatesReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/domains/{id}/resource-certificates/validations] validateResourceCertificates", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ValidateResourceCertificatesOK) IsServerError() bool {
 // IsCode returns true when this validate resource certificates o k response a status code equal to that given
 func (o *ValidateResourceCertificatesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the validate resource certificates o k response
+func (o *ValidateResourceCertificatesOK) Code() int {
+	return 200
 }
 
 func (o *ValidateResourceCertificatesOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ValidateResourceCertificatesCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the validate resource certificates created response
+func (o *ValidateResourceCertificatesCreated) Code() int {
+	return 201
+}
+
 func (o *ValidateResourceCertificatesCreated) Error() string {
 	return fmt.Sprintf("[PUT /v1/domains/{id}/resource-certificates/validations][%d] validateResourceCertificatesCreated  %+v", 201, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ValidateResourceCertificatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the validate resource certificates not found response
+func (o *ValidateResourceCertificatesNotFound) Code() int {
+	return 404
+}
+
 func (o *ValidateResourceCertificatesNotFound) Error() string {
 	return fmt.Sprintf("[PUT /v1/domains/{id}/resource-certificates/validations][%d] validateResourceCertificatesNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *ValidateResourceCertificatesInternalServerError) IsServerError() bool {
 // IsCode returns true when this validate resource certificates internal server error response a status code equal to that given
 func (o *ValidateResourceCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the validate resource certificates internal server error response
+func (o *ValidateResourceCertificatesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ValidateResourceCertificatesInternalServerError) Error() string {

@@ -33,6 +33,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	GetLocalOsUserAccounts(params *GetLocalOsUserAccountsParams, opts ...ClientOption) (*GetLocalOsUserAccountsOK, error)
+
 	GetSDDCManager(params *GetSDDCManagerParams, opts ...ClientOption) (*GetSDDCManagerOK, error)
 
 	GetSDDCManagers(params *GetSDDCManagersParams, opts ...ClientOption) (*GetSDDCManagersOK, error)
@@ -41,7 +43,45 @@ type ClientService interface {
 }
 
 /*
-GetSDDCManager gets a SDDC manager
+GetLocalOsUserAccounts gets local o s user accounts from the SDDC manager appliance
+*/
+func (a *Client) GetLocalOsUserAccounts(params *GetLocalOsUserAccountsParams, opts ...ClientOption) (*GetLocalOsUserAccountsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetLocalOsUserAccountsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getLocalOsUserAccounts",
+		Method:             "GET",
+		PathPattern:        "/v1/sddc-manager/local-os-user-accounts",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetLocalOsUserAccountsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetLocalOsUserAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getLocalOsUserAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSDDCManager retrieves the details of an SDDC manager by its id
 */
 func (a *Client) GetSDDCManager(params *GetSDDCManagerParams, opts ...ClientOption) (*GetSDDCManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +119,7 @@ func (a *Client) GetSDDCManager(params *GetSDDCManagerParams, opts ...ClientOpti
 }
 
 /*
-GetSDDCManagers gets the SDDC managers
+GetSDDCManagers retrieves a list of SDDC managers
 */
 func (a *Client) GetSDDCManagers(params *GetSDDCManagersParams, opts ...ClientOption) (*GetSDDCManagersOK, error) {
 	// TODO: Validate the params before sending

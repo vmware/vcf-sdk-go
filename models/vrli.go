@@ -17,30 +17,30 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// Vrli Spec contains parameters of a vRealize Log Insight instance
+// Vrli Spec contains parameters of a VMware Aria Operations for Logs instance
 //
 // swagger:model Vrli
 type Vrli struct {
 
-	// The ID of the vRealize Log Insight instance
+	// The ID of the VMware Aria Operations for Logs instance
 	ID string `json:"id,omitempty"`
 
-	// The Fully Qualified Domain Name of the vRealize Log Insight load balancer
+	// The Fully Qualified Domain Name of the VMware Aria Operations for Logs load balancer
 	// Example: load-balancer.vrack.vsphere.local
 	LoadBalancerFqdn string `json:"loadBalancerFqdn,omitempty"`
 
-	// The IP address of the vRealize Log Insight load balancer
+	// The IP address of the VMware Aria Operations for Logs load balancer
 	// Example: 10.0.0.15
 	LoadBalancerIPAddress string `json:"loadBalancerIpAddress,omitempty"`
 
-	// The nodes of the vRealize Log Insight instance
+	// The nodes of the VMware Aria Operations for Logs instance
 	Nodes []*VrealizeProductNode `json:"nodes"`
 
-	// The status of the vRealize Log Insight instance
+	// The status of the VMware Aria Operations for Logs instance
 	// Example: ACTIVE, ERROR
 	Status string `json:"status,omitempty"`
 
-	// The version of the vRealize Log Insight instance
+	// The version of the VMware Aria Operations for Logs instance
 	// Example: 4.8.0-13036238
 	Version string `json:"version,omitempty"`
 }
@@ -104,6 +104,11 @@ func (m *Vrli) contextValidateNodes(ctx context.Context, formats strfmt.Registry
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

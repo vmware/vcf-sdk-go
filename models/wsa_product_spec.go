@@ -18,16 +18,16 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// WSAProductSpec Spec contains information for a vRealize product
+// WSAProductSpec Spec contains information for a VMware Aria product
 //
 // swagger:model WsaProductSpec
 type WSAProductSpec struct {
 
-	// The credentials of the vRealize product Admin
+	// The credentials of the VMware Aria product Admin
 	// Required: true
 	AdminCredentials *CredentialsSpec `json:"adminCredentials"`
 
-	// The certificate chain of the vRealize product.
+	// The certificate chain of the VMware Aria product.
 	CertificateChain string `json:"certificateChain,omitempty"`
 
 	// Default admin credentials for Workspace ONE Access
@@ -37,11 +37,11 @@ type WSAProductSpec struct {
 	// The ID of the product
 	ID string `json:"id,omitempty"`
 
-	// Fully Qualified Domain Name for the vRealize product load balancer
+	// Fully Qualified Domain Name for the VMware Aria product load balancer
 	// Required: true
 	LoadBalancerFqdn *string `json:"loadBalancerFqdn"`
 
-	// The nodes of the vRealize product instance
+	// The nodes of the VMware Aria product instance
 	// Required: true
 	Nodes []*ProductNode `json:"nodes"`
 
@@ -49,7 +49,7 @@ type WSAProductSpec struct {
 	// Required: true
 	Type *string `json:"type"`
 
-	// The version of the vRealize product instance
+	// The version of the VMware Aria product instance
 	// Required: true
 	Version *string `json:"version"`
 }
@@ -207,6 +207,7 @@ func (m *WSAProductSpec) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *WSAProductSpec) contextValidateAdminCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AdminCredentials != nil {
+
 		if err := m.AdminCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("adminCredentials")
@@ -223,6 +224,7 @@ func (m *WSAProductSpec) contextValidateAdminCredentials(ctx context.Context, fo
 func (m *WSAProductSpec) contextValidateDefaultAdminCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultAdminCredentials != nil {
+
 		if err := m.DefaultAdminCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("defaultAdminCredentials")
@@ -241,6 +243,11 @@ func (m *WSAProductSpec) contextValidateNodes(ctx context.Context, formats strfm
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

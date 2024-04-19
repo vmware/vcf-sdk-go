@@ -27,7 +27,8 @@ type DvsSpec struct {
 	// Required: true
 	DvsName *string `json:"dvsName"`
 
-	// Flag indicating whether the DVS is used by NSX-T
+	// Flag indicating whether the DVS is used by NSX.
+	//  This property is deprecated in favor of nsxtSwitchConfig field
 	IsUsedByNSXT bool `json:"isUsedByNsxt,omitempty"`
 
 	// DVS MTU (default value is 9000)
@@ -43,9 +44,15 @@ type DvsSpec struct {
 	// List of NIOC specs for networks
 	NiocSpecs []*NiocSpec `json:"niocSpecs"`
 
-	// Vmnics to be attached to the DVS
-	// Required: true
+	// The NSX Configurations to be associated with vSphere Distributed Switch
+	NSXTSwitchConfig *NSXTSwitchConfig `json:"nsxtSwitchConfig,omitempty"`
+
+	// Vmnics to be attached to the DVS.
+	//  This property is deprecated in favor of vmnicsToUplinks fields
 	Vmnics []string `json:"vmnics"`
+
+	// The map of vSphere Distributed Switch uplinks to the NSX switch uplinks.
+	VmnicsToUplinks []*UplinkMapping `json:"vmnicsToUplinks"`
 }
 
 // Validate validates this dvs spec
@@ -68,7 +75,11 @@ func (m *DvsSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateVmnics(formats); err != nil {
+	if err := m.validateNSXTSwitchConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVmnicsToUplinks(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -138,10 +149,46 @@ func (m *DvsSpec) validateNiocSpecs(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *DvsSpec) validateVmnics(formats strfmt.Registry) error {
+func (m *DvsSpec) validateNSXTSwitchConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.NSXTSwitchConfig) { // not required
+		return nil
+	}
 
-	if err := validate.Required("vmnics", "body", m.Vmnics); err != nil {
-		return err
+	if m.NSXTSwitchConfig != nil {
+		if err := m.NSXTSwitchConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxtSwitchConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxtSwitchConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DvsSpec) validateVmnicsToUplinks(formats strfmt.Registry) error {
+	if swag.IsZero(m.VmnicsToUplinks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VmnicsToUplinks); i++ {
+		if swag.IsZero(m.VmnicsToUplinks[i]) { // not required
+			continue
+		}
+
+		if m.VmnicsToUplinks[i] != nil {
+			if err := m.VmnicsToUplinks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vmnicsToUplinks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vmnicsToUplinks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -152,6 +199,14 @@ func (m *DvsSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 	var res []error
 
 	if err := m.contextValidateNiocSpecs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNSXTSwitchConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVmnicsToUplinks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -166,11 +221,62 @@ func (m *DvsSpec) contextValidateNiocSpecs(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.NiocSpecs); i++ {
 
 		if m.NiocSpecs[i] != nil {
+
+			if swag.IsZero(m.NiocSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NiocSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("niocSpecs" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("niocSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DvsSpec) contextValidateNSXTSwitchConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NSXTSwitchConfig != nil {
+
+		if swag.IsZero(m.NSXTSwitchConfig) { // not required
+			return nil
+		}
+
+		if err := m.NSXTSwitchConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxtSwitchConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxtSwitchConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DvsSpec) contextValidateVmnicsToUplinks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VmnicsToUplinks); i++ {
+
+		if m.VmnicsToUplinks[i] != nil {
+
+			if swag.IsZero(m.VmnicsToUplinks[i]) { // not required
+				return nil
+			}
+
+			if err := m.VmnicsToUplinks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vmnicsToUplinks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vmnicsToUplinks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

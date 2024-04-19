@@ -45,7 +45,7 @@ func (o *GetClusterReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{id}] getCluster", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetClusterOK) IsServerError() bool {
 // IsCode returns true when this get cluster o k response a status code equal to that given
 func (o *GetClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get cluster o k response
+func (o *GetClusterOK) Code() int {
+	return 200
 }
 
 func (o *GetClusterOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get cluster not found response
+func (o *GetClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *GetClusterNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}][%d] getClusterNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this get cluster internal server error response a status code equal to that given
 func (o *GetClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get cluster internal server error response
+func (o *GetClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetClusterInternalServerError) Error() string {

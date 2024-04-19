@@ -51,7 +51,7 @@ func (o *AddTrustedCertificateReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/sddc-manager/trusted-certificates] addTrustedCertificate", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *AddTrustedCertificateOK) IsServerError() bool {
 // IsCode returns true when this add trusted certificate o k response a status code equal to that given
 func (o *AddTrustedCertificateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the add trusted certificate o k response
+func (o *AddTrustedCertificateOK) Code() int {
+	return 200
 }
 
 func (o *AddTrustedCertificateOK) Error() string {
@@ -143,6 +148,11 @@ func (o *AddTrustedCertificateBadRequest) IsServerError() bool {
 // IsCode returns true when this add trusted certificate bad request response a status code equal to that given
 func (o *AddTrustedCertificateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the add trusted certificate bad request response
+func (o *AddTrustedCertificateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AddTrustedCertificateBadRequest) Error() string {
@@ -208,6 +218,11 @@ func (o *AddTrustedCertificateConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the add trusted certificate conflict response
+func (o *AddTrustedCertificateConflict) Code() int {
+	return 409
+}
+
 func (o *AddTrustedCertificateConflict) Error() string {
 	return fmt.Sprintf("[POST /v1/sddc-manager/trusted-certificates][%d] addTrustedCertificateConflict  %+v", 409, o.Payload)
 }
@@ -269,6 +284,11 @@ func (o *AddTrustedCertificateInternalServerError) IsServerError() bool {
 // IsCode returns true when this add trusted certificate internal server error response a status code equal to that given
 func (o *AddTrustedCertificateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the add trusted certificate internal server error response
+func (o *AddTrustedCertificateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddTrustedCertificateInternalServerError) Error() string {

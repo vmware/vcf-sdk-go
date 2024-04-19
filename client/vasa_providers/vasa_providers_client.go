@@ -33,111 +33,35 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AddStorageContainersToVasaProvider(params *AddStorageContainersToVasaProviderParams, opts ...ClientOption) (*AddStorageContainersToVasaProviderCreated, error)
-
-	AddUsersToVasaProvider(params *AddUsersToVasaProviderParams, opts ...ClientOption) (*AddUsersToVasaProviderCreated, error)
-
 	AddVasaProvider(params *AddVasaProviderParams, opts ...ClientOption) (*AddVasaProviderCreated, error)
 
-	DeleteStorageContainerOfVasaProvider(params *DeleteStorageContainerOfVasaProviderParams, opts ...ClientOption) (*DeleteStorageContainerOfVasaProviderNoContent, error)
+	AddVasaProviderStorageContainer(params *AddVasaProviderStorageContainerParams, opts ...ClientOption) (*AddVasaProviderStorageContainerCreated, error)
 
-	DeleteVasaProvider(params *DeleteVasaProviderParams, opts ...ClientOption) (*DeleteVasaProviderNoContent, error)
-
-	GetStorageContainersOfVasaProvider(params *GetStorageContainersOfVasaProviderParams, opts ...ClientOption) (*GetStorageContainersOfVasaProviderOK, error)
-
-	GetUsersOfVasaProvider(params *GetUsersOfVasaProviderParams, opts ...ClientOption) (*GetUsersOfVasaProviderOK, error)
-
-	GetValidationOfVasaProvider(params *GetValidationOfVasaProviderParams, opts ...ClientOption) (*GetValidationOfVasaProviderOK, error)
+	AddVasaProviderUser(params *AddVasaProviderUserParams, opts ...ClientOption) (*AddVasaProviderUserCreated, error)
 
 	GetVasaProvider(params *GetVasaProviderParams, opts ...ClientOption) (*GetVasaProviderOK, error)
 
+	GetVasaProviderStorageContainers(params *GetVasaProviderStorageContainersParams, opts ...ClientOption) (*GetVasaProviderStorageContainersOK, error)
+
+	GetVasaProviderUser(params *GetVasaProviderUserParams, opts ...ClientOption) (*GetVasaProviderUserOK, error)
+
+	GetVasaProviderValidation(params *GetVasaProviderValidationParams, opts ...ClientOption) (*GetVasaProviderValidationOK, error)
+
 	GetVasaProviders(params *GetVasaProvidersParams, opts ...ClientOption) (*GetVasaProvidersOK, error)
 
-	UpdateStorageContainerOfVasaProvider(params *UpdateStorageContainerOfVasaProviderParams, opts ...ClientOption) (*UpdateStorageContainerOfVasaProviderOK, error)
+	RemoveVasaProvider(params *RemoveVasaProviderParams, opts ...ClientOption) (*RemoveVasaProviderNoContent, error)
 
-	UpdateUserOfVasaProvider(params *UpdateUserOfVasaProviderParams, opts ...ClientOption) (*UpdateUserOfVasaProviderOK, error)
+	RemoveVasaProviderStorageContainer(params *RemoveVasaProviderStorageContainerParams, opts ...ClientOption) (*RemoveVasaProviderStorageContainerNoContent, error)
 
 	UpdateVasaProvider(params *UpdateVasaProviderParams, opts ...ClientOption) (*UpdateVasaProviderOK, error)
 
-	ValidateVasaProvider(params *ValidateVasaProviderParams, opts ...ClientOption) (*ValidateVasaProviderOK, *ValidateVasaProviderAccepted, error)
+	UpdateVasaProviderStorageContainer(params *UpdateVasaProviderStorageContainerParams, opts ...ClientOption) (*UpdateVasaProviderStorageContainerOK, error)
+
+	UpdateVasaProviderUser(params *UpdateVasaProviderUserParams, opts ...ClientOption) (*UpdateVasaProviderUserOK, error)
+
+	ValidateVasaProviderSpec(params *ValidateVasaProviderSpecParams, opts ...ClientOption) (*ValidateVasaProviderSpecOK, *ValidateVasaProviderSpecAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-AddStorageContainersToVasaProvider adds the storage containers to a v a s a provider
-*/
-func (a *Client) AddStorageContainersToVasaProvider(params *AddStorageContainersToVasaProviderParams, opts ...ClientOption) (*AddStorageContainersToVasaProviderCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAddStorageContainersToVasaProviderParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "addStorageContainersToVasaProvider",
-		Method:             "POST",
-		PathPattern:        "/v1/vasa-providers/{id}/storage-containers",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AddStorageContainersToVasaProviderReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AddStorageContainersToVasaProviderCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for addStorageContainersToVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AddUsersToVasaProvider adds the users to a v a s a provider
-*/
-func (a *Client) AddUsersToVasaProvider(params *AddUsersToVasaProviderParams, opts ...ClientOption) (*AddUsersToVasaProviderCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAddUsersToVasaProviderParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "addUsersToVasaProvider",
-		Method:             "POST",
-		PathPattern:        "/v1/vasa-providers/{id}/users",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AddUsersToVasaProviderReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AddUsersToVasaProviderCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for addUsersToVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -179,98 +103,22 @@ func (a *Client) AddVasaProvider(params *AddVasaProviderParams, opts ...ClientOp
 }
 
 /*
-DeleteStorageContainerOfVasaProvider deletes a storage container of a v a s a provider
+AddVasaProviderStorageContainer adds the storage containers to a v a s a provider
 */
-func (a *Client) DeleteStorageContainerOfVasaProvider(params *DeleteStorageContainerOfVasaProviderParams, opts ...ClientOption) (*DeleteStorageContainerOfVasaProviderNoContent, error) {
+func (a *Client) AddVasaProviderStorageContainer(params *AddVasaProviderStorageContainerParams, opts ...ClientOption) (*AddVasaProviderStorageContainerCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteStorageContainerOfVasaProviderParams()
+		params = NewAddVasaProviderStorageContainerParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteStorageContainerOfVasaProvider",
-		Method:             "DELETE",
-		PathPattern:        "/v1/vasa-providers/{id}/storage-containers/{storageContainerId}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteStorageContainerOfVasaProviderReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteStorageContainerOfVasaProviderNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteStorageContainerOfVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteVasaProvider deletes a v a s a provider
-*/
-func (a *Client) DeleteVasaProvider(params *DeleteVasaProviderParams, opts ...ClientOption) (*DeleteVasaProviderNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteVasaProviderParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteVasaProvider",
-		Method:             "DELETE",
-		PathPattern:        "/v1/vasa-providers/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteVasaProviderReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteVasaProviderNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetStorageContainersOfVasaProvider gets the storage containers of a v a s a provider
-*/
-func (a *Client) GetStorageContainersOfVasaProvider(params *GetStorageContainersOfVasaProviderParams, opts ...ClientOption) (*GetStorageContainersOfVasaProviderOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetStorageContainersOfVasaProviderParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getStorageContainersOfVasaProvider",
-		Method:             "GET",
+		ID:                 "addVasaProviderStorageContainer",
+		Method:             "POST",
 		PathPattern:        "/v1/vasa-providers/{id}/storage-containers",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetStorageContainersOfVasaProviderReader{formats: a.formats},
+		Reader:             &AddVasaProviderStorageContainerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -282,33 +130,33 @@ func (a *Client) GetStorageContainersOfVasaProvider(params *GetStorageContainers
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetStorageContainersOfVasaProviderOK)
+	success, ok := result.(*AddVasaProviderStorageContainerCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getStorageContainersOfVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for addVasaProviderStorageContainer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetUsersOfVasaProvider gets the users of a v a s a provider
+AddVasaProviderUser adds the users to a v a s a provider
 */
-func (a *Client) GetUsersOfVasaProvider(params *GetUsersOfVasaProviderParams, opts ...ClientOption) (*GetUsersOfVasaProviderOK, error) {
+func (a *Client) AddVasaProviderUser(params *AddVasaProviderUserParams, opts ...ClientOption) (*AddVasaProviderUserCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsersOfVasaProviderParams()
+		params = NewAddVasaProviderUserParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsersOfVasaProvider",
-		Method:             "GET",
+		ID:                 "addVasaProviderUser",
+		Method:             "POST",
 		PathPattern:        "/v1/vasa-providers/{id}/users",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsersOfVasaProviderReader{formats: a.formats},
+		Reader:             &AddVasaProviderUserReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -320,51 +168,13 @@ func (a *Client) GetUsersOfVasaProvider(params *GetUsersOfVasaProviderParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsersOfVasaProviderOK)
+	success, ok := result.(*AddVasaProviderUserCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsersOfVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetValidationOfVasaProvider gets the status of the validation of the v a s a provider
-*/
-func (a *Client) GetValidationOfVasaProvider(params *GetValidationOfVasaProviderParams, opts ...ClientOption) (*GetValidationOfVasaProviderOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetValidationOfVasaProviderParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getValidationOfVasaProvider",
-		Method:             "GET",
-		PathPattern:        "/v1/vasa-providers/validations/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetValidationOfVasaProviderReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetValidationOfVasaProviderOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getValidationOfVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for addVasaProviderUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -407,6 +217,120 @@ func (a *Client) GetVasaProvider(params *GetVasaProviderParams, opts ...ClientOp
 }
 
 /*
+GetVasaProviderStorageContainers gets the storage containers of a v a s a provider
+*/
+func (a *Client) GetVasaProviderStorageContainers(params *GetVasaProviderStorageContainersParams, opts ...ClientOption) (*GetVasaProviderStorageContainersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVasaProviderStorageContainersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getVasaProviderStorageContainers",
+		Method:             "GET",
+		PathPattern:        "/v1/vasa-providers/{id}/storage-containers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVasaProviderStorageContainersReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVasaProviderStorageContainersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVasaProviderStorageContainers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetVasaProviderUser gets the users of a v a s a provider
+*/
+func (a *Client) GetVasaProviderUser(params *GetVasaProviderUserParams, opts ...ClientOption) (*GetVasaProviderUserOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVasaProviderUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getVasaProviderUser",
+		Method:             "GET",
+		PathPattern:        "/v1/vasa-providers/{id}/users",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVasaProviderUserReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVasaProviderUserOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVasaProviderUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetVasaProviderValidation gets the status of the validation of the v a s a provider
+*/
+func (a *Client) GetVasaProviderValidation(params *GetVasaProviderValidationParams, opts ...ClientOption) (*GetVasaProviderValidationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVasaProviderValidationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getVasaProviderValidation",
+		Method:             "GET",
+		PathPattern:        "/v1/vasa-providers/validations/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVasaProviderValidationReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVasaProviderValidationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVasaProviderValidation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetVasaProviders gets the v a s a providers
 */
 func (a *Client) GetVasaProviders(params *GetVasaProvidersParams, opts ...ClientOption) (*GetVasaProvidersOK, error) {
@@ -445,22 +369,22 @@ func (a *Client) GetVasaProviders(params *GetVasaProvidersParams, opts ...Client
 }
 
 /*
-UpdateStorageContainerOfVasaProvider updates the storage container of a v a s a provider
+RemoveVasaProvider deletes a v a s a provider
 */
-func (a *Client) UpdateStorageContainerOfVasaProvider(params *UpdateStorageContainerOfVasaProviderParams, opts ...ClientOption) (*UpdateStorageContainerOfVasaProviderOK, error) {
+func (a *Client) RemoveVasaProvider(params *RemoveVasaProviderParams, opts ...ClientOption) (*RemoveVasaProviderNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateStorageContainerOfVasaProviderParams()
+		params = NewRemoveVasaProviderParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateStorageContainerOfVasaProvider",
-		Method:             "PATCH",
-		PathPattern:        "/v1/vasa-providers/{id}/storage-containers/{storageContainerId}",
-		ProducesMediaTypes: []string{"application/json"},
+		ID:                 "removeVasaProvider",
+		Method:             "DELETE",
+		PathPattern:        "/v1/vasa-providers/{id}",
+		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateStorageContainerOfVasaProviderReader{formats: a.formats},
+		Reader:             &RemoveVasaProviderReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -472,33 +396,33 @@ func (a *Client) UpdateStorageContainerOfVasaProvider(params *UpdateStorageConta
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateStorageContainerOfVasaProviderOK)
+	success, ok := result.(*RemoveVasaProviderNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateStorageContainerOfVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for removeVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-UpdateUserOfVasaProvider updates the user of a v a s a provider
+RemoveVasaProviderStorageContainer deletes a storage container of a v a s a provider
 */
-func (a *Client) UpdateUserOfVasaProvider(params *UpdateUserOfVasaProviderParams, opts ...ClientOption) (*UpdateUserOfVasaProviderOK, error) {
+func (a *Client) RemoveVasaProviderStorageContainer(params *RemoveVasaProviderStorageContainerParams, opts ...ClientOption) (*RemoveVasaProviderStorageContainerNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUserOfVasaProviderParams()
+		params = NewRemoveVasaProviderStorageContainerParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUserOfVasaProvider",
-		Method:             "PATCH",
-		PathPattern:        "/v1/vasa-providers/{id}/users/{userId}",
-		ProducesMediaTypes: []string{"application/json"},
+		ID:                 "removeVasaProviderStorageContainer",
+		Method:             "DELETE",
+		PathPattern:        "/v1/vasa-providers/{id}/storage-containers/{storageContainerId}",
+		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUserOfVasaProviderReader{formats: a.formats},
+		Reader:             &RemoveVasaProviderStorageContainerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -510,13 +434,13 @@ func (a *Client) UpdateUserOfVasaProvider(params *UpdateUserOfVasaProviderParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUserOfVasaProviderOK)
+	success, ok := result.(*RemoveVasaProviderStorageContainerNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUserOfVasaProvider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for removeVasaProviderStorageContainer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -559,22 +483,98 @@ func (a *Client) UpdateVasaProvider(params *UpdateVasaProviderParams, opts ...Cl
 }
 
 /*
-ValidateVasaProvider validates vasa provider input specification
+UpdateVasaProviderStorageContainer updates the storage container of a v a s a provider
 */
-func (a *Client) ValidateVasaProvider(params *ValidateVasaProviderParams, opts ...ClientOption) (*ValidateVasaProviderOK, *ValidateVasaProviderAccepted, error) {
+func (a *Client) UpdateVasaProviderStorageContainer(params *UpdateVasaProviderStorageContainerParams, opts ...ClientOption) (*UpdateVasaProviderStorageContainerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateVasaProviderParams()
+		params = NewUpdateVasaProviderStorageContainerParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateVasaProvider",
+		ID:                 "updateVasaProviderStorageContainer",
+		Method:             "PATCH",
+		PathPattern:        "/v1/vasa-providers/{id}/storage-containers/{storageContainerId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVasaProviderStorageContainerReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVasaProviderStorageContainerOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVasaProviderStorageContainer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateVasaProviderUser updates the user of a v a s a provider
+*/
+func (a *Client) UpdateVasaProviderUser(params *UpdateVasaProviderUserParams, opts ...ClientOption) (*UpdateVasaProviderUserOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVasaProviderUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateVasaProviderUser",
+		Method:             "PATCH",
+		PathPattern:        "/v1/vasa-providers/{id}/users/{userId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVasaProviderUserReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVasaProviderUserOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVasaProviderUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ValidateVasaProviderSpec validates vasa provider input specification
+*/
+func (a *Client) ValidateVasaProviderSpec(params *ValidateVasaProviderSpecParams, opts ...ClientOption) (*ValidateVasaProviderSpecOK, *ValidateVasaProviderSpecAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewValidateVasaProviderSpecParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "validateVasaProviderSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/vasa-providers/validations",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateVasaProviderReader{formats: a.formats},
+		Reader:             &ValidateVasaProviderSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -587,9 +587,9 @@ func (a *Client) ValidateVasaProvider(params *ValidateVasaProviderParams, opts .
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *ValidateVasaProviderOK:
+	case *ValidateVasaProviderSpecOK:
 		return value, nil, nil
-	case *ValidateVasaProviderAccepted:
+	case *ValidateVasaProviderSpecAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

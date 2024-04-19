@@ -18,7 +18,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// EdgeClusterExpansionSpec This specification contains the parameters required to expand a NSX-T edge cluster.
+// EdgeClusterExpansionSpec This specification contains the parameters required to expand a NSX edge cluster.
 //
 // swagger:model EdgeClusterExpansionSpec
 type EdgeClusterExpansionSpec struct {
@@ -41,6 +41,9 @@ type EdgeClusterExpansionSpec struct {
 	// Specifications for Edge Node
 	// Required: true
 	EdgeNodeSpecs []*NsxTEdgeNodeSpec `json:"edgeNodeSpecs"`
+
+	// Specifications for new NSX IP address pool(s)
+	NewIPAddressPoolSpecs []*IPAddressPoolSpec `json:"newIpAddressPoolSpecs"`
 
 	// Set to true to bypass normal ICMP-based check of Edge TEP / host TEP routability (default is false, meaning do check)
 	SkipTepRoutabilityCheck bool `json:"skipTepRoutabilityCheck,omitempty"`
@@ -66,6 +69,10 @@ func (m *EdgeClusterExpansionSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEdgeNodeSpecs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNewIPAddressPoolSpecs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -129,11 +136,41 @@ func (m *EdgeClusterExpansionSpec) validateEdgeNodeSpecs(formats strfmt.Registry
 	return nil
 }
 
+func (m *EdgeClusterExpansionSpec) validateNewIPAddressPoolSpecs(formats strfmt.Registry) error {
+	if swag.IsZero(m.NewIPAddressPoolSpecs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NewIPAddressPoolSpecs); i++ {
+		if swag.IsZero(m.NewIPAddressPoolSpecs[i]) { // not required
+			continue
+		}
+
+		if m.NewIPAddressPoolSpecs[i] != nil {
+			if err := m.NewIPAddressPoolSpecs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this edge cluster expansion spec based on the context it is used
 func (m *EdgeClusterExpansionSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateEdgeNodeSpecs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNewIPAddressPoolSpecs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -148,11 +185,41 @@ func (m *EdgeClusterExpansionSpec) contextValidateEdgeNodeSpecs(ctx context.Cont
 	for i := 0; i < len(m.EdgeNodeSpecs); i++ {
 
 		if m.EdgeNodeSpecs[i] != nil {
+
+			if swag.IsZero(m.EdgeNodeSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.EdgeNodeSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("edgeNodeSpecs" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("edgeNodeSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EdgeClusterExpansionSpec) contextValidateNewIPAddressPoolSpecs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NewIPAddressPoolSpecs); i++ {
+
+		if m.NewIPAddressPoolSpecs[i] != nil {
+
+			if swag.IsZero(m.NewIPAddressPoolSpecs[i]) { // not required
+				return nil
+			}
+
+			if err := m.NewIPAddressPoolSpecs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

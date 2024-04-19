@@ -45,7 +45,7 @@ func (o *GetVCENTERSReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/vcenters] getVcenters", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetVCENTERSOK) IsServerError() bool {
 // IsCode returns true when this get Vcenters o k response a status code equal to that given
 func (o *GetVCENTERSOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get Vcenters o k response
+func (o *GetVCENTERSOK) Code() int {
+	return 200
 }
 
 func (o *GetVCENTERSOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetVCENTERSBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get Vcenters bad request response
+func (o *GetVCENTERSBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetVCENTERSBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/vcenters][%d] getVcentersBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetVCENTERSInternalServerError) IsServerError() bool {
 // IsCode returns true when this get Vcenters internal server error response a status code equal to that given
 func (o *GetVCENTERSInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get Vcenters internal server error response
+func (o *GetVCENTERSInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetVCENTERSInternalServerError) Error() string {

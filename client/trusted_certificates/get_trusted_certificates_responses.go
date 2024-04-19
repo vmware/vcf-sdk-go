@@ -39,7 +39,7 @@ func (o *GetTrustedCertificatesReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/sddc-manager/trusted-certificates] getTrustedCertificates", response, response.Code())
 	}
 }
 
@@ -80,6 +80,11 @@ func (o *GetTrustedCertificatesOK) IsServerError() bool {
 // IsCode returns true when this get trusted certificates o k response a status code equal to that given
 func (o *GetTrustedCertificatesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get trusted certificates o k response
+func (o *GetTrustedCertificatesOK) Code() int {
+	return 200
 }
 
 func (o *GetTrustedCertificatesOK) Error() string {
@@ -143,6 +148,11 @@ func (o *GetTrustedCertificatesInternalServerError) IsServerError() bool {
 // IsCode returns true when this get trusted certificates internal server error response a status code equal to that given
 func (o *GetTrustedCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get trusted certificates internal server error response
+func (o *GetTrustedCertificatesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetTrustedCertificatesInternalServerError) Error() string {

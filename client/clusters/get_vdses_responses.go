@@ -51,7 +51,7 @@ func (o *GetVdsesReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{clusterId}/vdses] getVdses", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetVdsesOK) IsServerError() bool {
 // IsCode returns true when this get vdses o k response a status code equal to that given
 func (o *GetVdsesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get vdses o k response
+func (o *GetVdsesOK) Code() int {
+	return 200
 }
 
 func (o *GetVdsesOK) Error() string {
@@ -153,6 +158,11 @@ func (o *GetVdsesBadRequest) IsServerError() bool {
 // IsCode returns true when this get vdses bad request response a status code equal to that given
 func (o *GetVdsesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the get vdses bad request response
+func (o *GetVdsesBadRequest) Code() int {
+	return 400
 }
 
 func (o *GetVdsesBadRequest) Error() string {
@@ -218,6 +228,11 @@ func (o *GetVdsesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get vdses not found response
+func (o *GetVdsesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetVdsesNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/vdses][%d] getVdsesNotFound  %+v", 404, o.Payload)
 }
@@ -279,6 +294,11 @@ func (o *GetVdsesInternalServerError) IsServerError() bool {
 // IsCode returns true when this get vdses internal server error response a status code equal to that given
 func (o *GetVdsesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get vdses internal server error response
+func (o *GetVdsesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetVdsesInternalServerError) Error() string {

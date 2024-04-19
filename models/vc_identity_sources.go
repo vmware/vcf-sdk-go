@@ -84,6 +84,11 @@ func (m *VcIdentitySources) ContextValidate(ctx context.Context, formats strfmt.
 func (m *VcIdentitySources) contextValidateLdap(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Ldap != nil {
+
+		if swag.IsZero(m.Ldap) { // not required
+			return nil
+		}
+
 		if err := m.Ldap.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ldap")

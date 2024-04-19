@@ -45,7 +45,7 @@ func (o *GetCredentialsSubTaskReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/credentials/tasks/{id}/subtasks/{subtaskId}] getCredentialsSubTask", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetCredentialsSubTaskOK) IsServerError() bool {
 // IsCode returns true when this get credentials sub task o k response a status code equal to that given
 func (o *GetCredentialsSubTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get credentials sub task o k response
+func (o *GetCredentialsSubTaskOK) Code() int {
+	return 200
 }
 
 func (o *GetCredentialsSubTaskOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetCredentialsSubTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get credentials sub task bad request response
+func (o *GetCredentialsSubTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetCredentialsSubTaskBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/tasks/{id}/subtasks/{subtaskId}][%d] getCredentialsSubTaskBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetCredentialsSubTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this get credentials sub task internal server error response a status code equal to that given
 func (o *GetCredentialsSubTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get credentials sub task internal server error response
+func (o *GetCredentialsSubTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetCredentialsSubTaskInternalServerError) Error() string {

@@ -51,7 +51,7 @@ func (o *ValidateNtpConfigurationReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/system/ntp-configuration/validations] validateNtpConfiguration", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ValidateNtpConfigurationOK) IsServerError() bool {
 // IsCode returns true when this validate ntp configuration o k response a status code equal to that given
 func (o *ValidateNtpConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the validate ntp configuration o k response
+func (o *ValidateNtpConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *ValidateNtpConfigurationOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ValidateNtpConfigurationAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the validate ntp configuration accepted response
+func (o *ValidateNtpConfigurationAccepted) Code() int {
+	return 202
+}
+
 func (o *ValidateNtpConfigurationAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/system/ntp-configuration/validations][%d] validateNtpConfigurationAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ValidateNtpConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the validate ntp configuration bad request response
+func (o *ValidateNtpConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *ValidateNtpConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/system/ntp-configuration/validations][%d] validateNtpConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -280,6 +295,11 @@ func (o *ValidateNtpConfigurationInternalServerError) IsServerError() bool {
 // IsCode returns true when this validate ntp configuration internal server error response a status code equal to that given
 func (o *ValidateNtpConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the validate ntp configuration internal server error response
+func (o *ValidateNtpConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ValidateNtpConfigurationInternalServerError) Error() string {

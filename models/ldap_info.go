@@ -87,6 +87,11 @@ func (m *LdapInfo) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *LdapInfo) contextValidateSourceDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SourceDetails != nil {
+
+		if swag.IsZero(m.SourceDetails) { // not required
+			return nil
+		}
+
 		if err := m.SourceDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sourceDetails")

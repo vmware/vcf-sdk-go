@@ -93,6 +93,11 @@ func (m *Psc) ContextValidate(ctx context.Context, formats strfmt.Registry) erro
 func (m *Psc) contextValidateDomain(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Domain != nil {
+
+		if swag.IsZero(m.Domain) { // not required
+			return nil
+		}
+
 		if err := m.Domain.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("domain")

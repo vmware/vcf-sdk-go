@@ -51,7 +51,7 @@ func (o *DeleteNetworkPoolReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/network-pools/{id}] deleteNetworkPool", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *DeleteNetworkPoolNoContent) IsServerError() bool {
 // IsCode returns true when this delete network pool no content response a status code equal to that given
 func (o *DeleteNetworkPoolNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete network pool no content response
+func (o *DeleteNetworkPoolNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteNetworkPoolNoContent) Error() string {
@@ -143,6 +148,11 @@ func (o *DeleteNetworkPoolBadRequest) IsServerError() bool {
 // IsCode returns true when this delete network pool bad request response a status code equal to that given
 func (o *DeleteNetworkPoolBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete network pool bad request response
+func (o *DeleteNetworkPoolBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteNetworkPoolBadRequest) Error() string {
@@ -208,6 +218,11 @@ func (o *DeleteNetworkPoolNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete network pool not found response
+func (o *DeleteNetworkPoolNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteNetworkPoolNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /v1/network-pools/{id}][%d] deleteNetworkPoolNotFound  %+v", 404, o.Payload)
 }
@@ -269,6 +284,11 @@ func (o *DeleteNetworkPoolInternalServerError) IsServerError() bool {
 // IsCode returns true when this delete network pool internal server error response a status code equal to that given
 func (o *DeleteNetworkPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete network pool internal server error response
+func (o *DeleteNetworkPoolInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteNetworkPoolInternalServerError) Error() string {

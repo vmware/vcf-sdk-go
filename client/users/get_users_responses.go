@@ -51,7 +51,7 @@ func (o *GetUsersReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/users] getUsers", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetUsersOK) IsServerError() bool {
 // IsCode returns true when this get users o k response a status code equal to that given
 func (o *GetUsersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get users o k response
+func (o *GetUsersOK) Code() int {
+	return 200
 }
 
 func (o *GetUsersOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetUsersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get users bad request response
+func (o *GetUsersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetUsersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetUsersUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get users unauthorized response
+func (o *GetUsersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetUsersUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/users][%d] getUsersUnauthorized  %+v", 401, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetUsersInternalServerError) IsServerError() bool {
 // IsCode returns true when this get users internal server error response a status code equal to that given
 func (o *GetUsersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get users internal server error response
+func (o *GetUsersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetUsersInternalServerError) Error() string {

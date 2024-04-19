@@ -15,18 +15,18 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NsxTClusterReference Represents an NSX-T Cluster reference
+// NsxTClusterReference Represents an NSX Cluster reference
 //
 // swagger:model NsxTClusterReference
 type NsxTClusterReference struct {
 
-	// ID of the NSX-T cluster
+	// ID of the NSX cluster
 	ID string `json:"id,omitempty"`
 
-	// VIP (Virtual IP Address) of the NSX-T cluster
+	// VIP (Virtual IP Address) of the NSX cluster
 	Vip string `json:"vip,omitempty"`
 
-	// FQDN for VIP of the NSX-T cluster
+	// FQDN for VIP of the NSX cluster
 	VipFqdn string `json:"vipFqdn,omitempty"`
 }
 

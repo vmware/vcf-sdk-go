@@ -45,7 +45,7 @@ func (o *PostQueryReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/hosts/queries] postQuery", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *PostQueryOK) IsServerError() bool {
 // IsCode returns true when this post query o k response a status code equal to that given
 func (o *PostQueryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the post query o k response
+func (o *PostQueryOK) Code() int {
+	return 200
 }
 
 func (o *PostQueryOK) Error() string {
@@ -151,6 +156,11 @@ func (o *PostQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post query bad request response
+func (o *PostQueryBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostQueryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/hosts/queries][%d] postQueryBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *PostQueryInternalServerError) IsServerError() bool {
 // IsCode returns true when this post query internal server error response a status code equal to that given
 func (o *PostQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the post query internal server error response
+func (o *PostQueryInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PostQueryInternalServerError) Error() string {

@@ -51,7 +51,7 @@ func (o *CreateDomainReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/domains] createDomain", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CreateDomainOK) IsServerError() bool {
 // IsCode returns true when this create domain o k response a status code equal to that given
 func (o *CreateDomainOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create domain o k response
+func (o *CreateDomainOK) Code() int {
+	return 200
 }
 
 func (o *CreateDomainOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CreateDomainAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the create domain accepted response
+func (o *CreateDomainAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateDomainAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/domains][%d] createDomainAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CreateDomainBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create domain bad request response
+func (o *CreateDomainBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateDomainBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/domains][%d] createDomainBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CreateDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this create domain internal server error response a status code equal to that given
 func (o *CreateDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create domain internal server error response
+func (o *CreateDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateDomainInternalServerError) Error() string {

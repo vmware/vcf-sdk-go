@@ -63,7 +63,7 @@ func (o *GetCredentialReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/credentials/{id}] getCredential", response, response.Code())
 	}
 }
 
@@ -104,6 +104,11 @@ func (o *GetCredentialOK) IsServerError() bool {
 // IsCode returns true when this get credential o k response a status code equal to that given
 func (o *GetCredentialOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get credential o k response
+func (o *GetCredentialOK) Code() int {
+	return 200
 }
 
 func (o *GetCredentialOK) Error() string {
@@ -169,6 +174,11 @@ func (o *GetCredentialBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get credential bad request response
+func (o *GetCredentialBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetCredentialBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialBadRequest  %+v", 400, o.Payload)
 }
@@ -230,6 +240,11 @@ func (o *GetCredentialUnauthorized) IsServerError() bool {
 // IsCode returns true when this get credential unauthorized response a status code equal to that given
 func (o *GetCredentialUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get credential unauthorized response
+func (o *GetCredentialUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetCredentialUnauthorized) Error() string {
@@ -295,6 +310,11 @@ func (o *GetCredentialForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get credential forbidden response
+func (o *GetCredentialForbidden) Code() int {
+	return 403
+}
+
 func (o *GetCredentialForbidden) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialForbidden  %+v", 403, o.Payload)
 }
@@ -358,6 +378,11 @@ func (o *GetCredentialNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get credential not found response
+func (o *GetCredentialNotFound) Code() int {
+	return 404
+}
+
 func (o *GetCredentialNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials/{id}][%d] getCredentialNotFound  %+v", 404, o.Payload)
 }
@@ -419,6 +444,11 @@ func (o *GetCredentialInternalServerError) IsServerError() bool {
 // IsCode returns true when this get credential internal server error response a status code equal to that given
 func (o *GetCredentialInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get credential internal server error response
+func (o *GetCredentialInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetCredentialInternalServerError) Error() string {

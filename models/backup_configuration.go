@@ -155,6 +155,11 @@ func (m *BackupConfiguration) contextValidateBackupLocations(ctx context.Context
 	for i := 0; i < len(m.BackupLocations); i++ {
 
 		if m.BackupLocations[i] != nil {
+
+			if swag.IsZero(m.BackupLocations[i]) { // not required
+				return nil
+			}
+
 			if err := m.BackupLocations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("backupLocations" + "." + strconv.Itoa(i))
@@ -175,6 +180,11 @@ func (m *BackupConfiguration) contextValidateBackupSchedules(ctx context.Context
 	for i := 0; i < len(m.BackupSchedules); i++ {
 
 		if m.BackupSchedules[i] != nil {
+
+			if swag.IsZero(m.BackupSchedules[i]) { // not required
+				return nil
+			}
+
 			if err := m.BackupSchedules[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("backupSchedules" + "." + strconv.Itoa(i))
@@ -193,6 +203,11 @@ func (m *BackupConfiguration) contextValidateBackupSchedules(ctx context.Context
 func (m *BackupConfiguration) contextValidateEncryption(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Encryption != nil {
+
+		if swag.IsZero(m.Encryption) { // not required
+			return nil
+		}
+
 		if err := m.Encryption.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("encryption")

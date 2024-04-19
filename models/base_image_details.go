@@ -111,6 +111,11 @@ func (m *BaseImageDetails) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *BaseImageDetails) contextValidateReleaseDate(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ReleaseDate != nil {
+
+		if swag.IsZero(m.ReleaseDate) { // not required
+			return nil
+		}
+
 		if err := m.ReleaseDate.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("releaseDate")

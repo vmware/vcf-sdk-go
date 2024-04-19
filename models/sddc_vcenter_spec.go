@@ -50,11 +50,6 @@ type SDDCVcenterSpec struct {
 	// Min Length: 7
 	VcenterIP string `json:"vcenterIp,omitempty"`
 
-	// vCenter Netmask
-	// Max Length: 15
-	// Min Length: 7
-	VcenterNetmask string `json:"vcenterNetmask,omitempty"`
-
 	// vCenter VM size
 	// Example: One among:xlarge, large, medium, small, tiny
 	VMSize string `json:"vmSize,omitempty"`
@@ -73,10 +68,6 @@ func (m *SDDCVcenterSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVcenterIP(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVcenterNetmask(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -122,22 +113,6 @@ func (m *SDDCVcenterSpec) validateVcenterIP(formats strfmt.Registry) error {
 	}
 
 	if err := validate.MaxLength("vcenterIp", "body", m.VcenterIP, 15); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SDDCVcenterSpec) validateVcenterNetmask(formats strfmt.Registry) error {
-	if swag.IsZero(m.VcenterNetmask) { // not required
-		return nil
-	}
-
-	if err := validate.MinLength("vcenterNetmask", "body", m.VcenterNetmask, 7); err != nil {
-		return err
-	}
-
-	if err := validate.MaxLength("vcenterNetmask", "body", m.VcenterNetmask, 15); err != nil {
 		return err
 	}
 

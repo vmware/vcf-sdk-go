@@ -45,7 +45,7 @@ func (o *SaveManifestReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/manifests] saveManifest", response, response.Code())
 	}
 }
 
@@ -85,6 +85,11 @@ func (o *SaveManifestAccepted) IsServerError() bool {
 // IsCode returns true when this save manifest accepted response a status code equal to that given
 func (o *SaveManifestAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the save manifest accepted response
+func (o *SaveManifestAccepted) Code() int {
+	return 202
 }
 
 func (o *SaveManifestAccepted) Error() string {
@@ -137,6 +142,11 @@ func (o *SaveManifestBadRequest) IsServerError() bool {
 // IsCode returns true when this save manifest bad request response a status code equal to that given
 func (o *SaveManifestBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the save manifest bad request response
+func (o *SaveManifestBadRequest) Code() int {
+	return 400
 }
 
 func (o *SaveManifestBadRequest) Error() string {
@@ -200,6 +210,11 @@ func (o *SaveManifestInternalServerError) IsServerError() bool {
 // IsCode returns true when this save manifest internal server error response a status code equal to that given
 func (o *SaveManifestInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the save manifest internal server error response
+func (o *SaveManifestInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SaveManifestInternalServerError) Error() string {

@@ -78,6 +78,7 @@ func (m *DatastoreMountSpec) ContextValidate(ctx context.Context, formats strfmt
 func (m *DatastoreMountSpec) contextValidateDatastoreSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DatastoreSpec != nil {
+
 		if err := m.DatastoreSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("datastoreSpec")

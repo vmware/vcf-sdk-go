@@ -72,11 +72,11 @@ type GenerateCertificatesParams struct {
 	*/
 	CertificateGenerationSpec *models.CertificatesGenerationSpec
 
-	/* DomainName.
+	/* ID.
 
 	   Domain ID or Name
 	*/
-	DomainName string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -142,15 +142,15 @@ func (o *GenerateCertificatesParams) SetCertificateGenerationSpec(certificateGen
 	o.CertificateGenerationSpec = certificateGenerationSpec
 }
 
-// WithDomainName adds the domainName to the generate certificates params
-func (o *GenerateCertificatesParams) WithDomainName(domainName string) *GenerateCertificatesParams {
-	o.SetDomainName(domainName)
+// WithID adds the id to the generate certificates params
+func (o *GenerateCertificatesParams) WithID(id string) *GenerateCertificatesParams {
+	o.SetID(id)
 	return o
 }
 
-// SetDomainName adds the domainName to the generate certificates params
-func (o *GenerateCertificatesParams) SetDomainName(domainName string) {
-	o.DomainName = domainName
+// SetID adds the id to the generate certificates params
+func (o *GenerateCertificatesParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -166,8 +166,8 @@ func (o *GenerateCertificatesParams) WriteToRequest(r runtime.ClientRequest, reg
 		}
 	}
 
-	// path param domainName
-	if err := r.SetPathParam("domainName", o.DomainName); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

@@ -51,7 +51,7 @@ func (o *CancelTaskReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/tasks/{id}] cancelTask", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *CancelTaskOK) IsServerError() bool {
 // IsCode returns true when this cancel task o k response a status code equal to that given
 func (o *CancelTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the cancel task o k response
+func (o *CancelTaskOK) Code() int {
+	return 200
 }
 
 func (o *CancelTaskOK) Error() string {
@@ -143,6 +148,11 @@ func (o *CancelTaskNotFound) IsServerError() bool {
 // IsCode returns true when this cancel task not found response a status code equal to that given
 func (o *CancelTaskNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the cancel task not found response
+func (o *CancelTaskNotFound) Code() int {
+	return 404
 }
 
 func (o *CancelTaskNotFound) Error() string {
@@ -208,6 +218,11 @@ func (o *CancelTaskConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the cancel task conflict response
+func (o *CancelTaskConflict) Code() int {
+	return 409
+}
+
 func (o *CancelTaskConflict) Error() string {
 	return fmt.Sprintf("[DELETE /v1/tasks/{id}][%d] cancelTaskConflict  %+v", 409, o.Payload)
 }
@@ -269,6 +284,11 @@ func (o *CancelTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this cancel task internal server error response a status code equal to that given
 func (o *CancelTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cancel task internal server error response
+func (o *CancelTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CancelTaskInternalServerError) Error() string {

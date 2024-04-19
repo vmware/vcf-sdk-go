@@ -105,6 +105,11 @@ func (m *QueryResponseOfobject) ContextValidate(ctx context.Context, formats str
 func (m *QueryResponseOfobject) contextValidateQueryInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.QueryInfo != nil {
+
+		if swag.IsZero(m.QueryInfo) { // not required
+			return nil
+		}
+
 		if err := m.QueryInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("queryInfo")
@@ -121,6 +126,11 @@ func (m *QueryResponseOfobject) contextValidateQueryInfo(ctx context.Context, fo
 func (m *QueryResponseOfobject) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Result != nil {
+
+		if swag.IsZero(m.Result) { // not required
+			return nil
+		}
+
 		if err := m.Result.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")

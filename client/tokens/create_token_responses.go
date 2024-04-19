@@ -51,7 +51,7 @@ func (o *CreateTokenReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/tokens] createToken", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CreateTokenOK) IsServerError() bool {
 // IsCode returns true when this create token o k response a status code equal to that given
 func (o *CreateTokenOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create token o k response
+func (o *CreateTokenOK) Code() int {
+	return 200
 }
 
 func (o *CreateTokenOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CreateTokenCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the create token created response
+func (o *CreateTokenCreated) Code() int {
+	return 201
+}
+
 func (o *CreateTokenCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/tokens][%d] createTokenCreated  %+v", 201, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CreateTokenBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create token bad request response
+func (o *CreateTokenBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateTokenBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/tokens][%d] createTokenBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CreateTokenInternalServerError) IsServerError() bool {
 // IsCode returns true when this create token internal server error response a status code equal to that given
 func (o *CreateTokenInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create token internal server error response
+func (o *CreateTokenInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateTokenInternalServerError) Error() string {

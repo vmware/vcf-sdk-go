@@ -39,7 +39,7 @@ func (o *GetDatastoreCriterion1Reader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{domainId}/datastores/criteria/{name}] getDatastoreCriterion_1", response, response.Code())
 	}
 }
 
@@ -80,6 +80,11 @@ func (o *GetDatastoreCriterion1OK) IsServerError() bool {
 // IsCode returns true when this get datastore criterion1 o k response a status code equal to that given
 func (o *GetDatastoreCriterion1OK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get datastore criterion1 o k response
+func (o *GetDatastoreCriterion1OK) Code() int {
+	return 200
 }
 
 func (o *GetDatastoreCriterion1OK) Error() string {
@@ -143,6 +148,11 @@ func (o *GetDatastoreCriterion1NotFound) IsServerError() bool {
 // IsCode returns true when this get datastore criterion1 not found response a status code equal to that given
 func (o *GetDatastoreCriterion1NotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the get datastore criterion1 not found response
+func (o *GetDatastoreCriterion1NotFound) Code() int {
+	return 404
 }
 
 func (o *GetDatastoreCriterion1NotFound) Error() string {

@@ -212,6 +212,11 @@ func (m *DatastoreSpec) contextValidateNfsDatastoreSpecs(ctx context.Context, fo
 	for i := 0; i < len(m.NfsDatastoreSpecs); i++ {
 
 		if m.NfsDatastoreSpecs[i] != nil {
+
+			if swag.IsZero(m.NfsDatastoreSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NfsDatastoreSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nfsDatastoreSpecs" + "." + strconv.Itoa(i))
@@ -230,6 +235,11 @@ func (m *DatastoreSpec) contextValidateNfsDatastoreSpecs(ctx context.Context, fo
 func (m *DatastoreSpec) contextValidateVmfsDatastoreSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VmfsDatastoreSpec != nil {
+
+		if swag.IsZero(m.VmfsDatastoreSpec) { // not required
+			return nil
+		}
+
 		if err := m.VmfsDatastoreSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vmfsDatastoreSpec")
@@ -246,6 +256,11 @@ func (m *DatastoreSpec) contextValidateVmfsDatastoreSpec(ctx context.Context, fo
 func (m *DatastoreSpec) contextValidateVSANDatastoreSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VSANDatastoreSpec != nil {
+
+		if swag.IsZero(m.VSANDatastoreSpec) { // not required
+			return nil
+		}
+
 		if err := m.VSANDatastoreSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vsanDatastoreSpec")
@@ -262,6 +277,11 @@ func (m *DatastoreSpec) contextValidateVSANDatastoreSpec(ctx context.Context, fo
 func (m *DatastoreSpec) contextValidateVSANRemoteDatastoreClusterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VSANRemoteDatastoreClusterSpec != nil {
+
+		if swag.IsZero(m.VSANRemoteDatastoreClusterSpec) { // not required
+			return nil
+		}
+
 		if err := m.VSANRemoteDatastoreClusterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vsanRemoteDatastoreClusterSpec")
@@ -280,6 +300,11 @@ func (m *DatastoreSpec) contextValidateVvolDatastoreSpecs(ctx context.Context, f
 	for i := 0; i < len(m.VvolDatastoreSpecs); i++ {
 
 		if m.VvolDatastoreSpecs[i] != nil {
+
+			if swag.IsZero(m.VvolDatastoreSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.VvolDatastoreSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vvolDatastoreSpecs" + "." + strconv.Itoa(i))

@@ -134,6 +134,11 @@ func (m *CredentialsUpdateSpec) ContextValidate(ctx context.Context, formats str
 func (m *CredentialsUpdateSpec) contextValidateAutoRotatePolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AutoRotatePolicy != nil {
+
+		if swag.IsZero(m.AutoRotatePolicy) { // not required
+			return nil
+		}
+
 		if err := m.AutoRotatePolicy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("autoRotatePolicy")
@@ -152,6 +157,11 @@ func (m *CredentialsUpdateSpec) contextValidateElements(ctx context.Context, for
 	for i := 0; i < len(m.Elements); i++ {
 
 		if m.Elements[i] != nil {
+
+			if swag.IsZero(m.Elements[i]) { // not required
+				return nil
+			}
+
 			if err := m.Elements[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("elements" + "." + strconv.Itoa(i))

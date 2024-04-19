@@ -51,7 +51,7 @@ func (o *ConfigureCertificateAuthorityReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/certificate-authorities] configureCertificateAuthority", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ConfigureCertificateAuthorityOK) IsServerError() bool {
 // IsCode returns true when this configure certificate authority o k response a status code equal to that given
 func (o *ConfigureCertificateAuthorityOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the configure certificate authority o k response
+func (o *ConfigureCertificateAuthorityOK) Code() int {
+	return 200
 }
 
 func (o *ConfigureCertificateAuthorityOK) Error() string {
@@ -153,6 +158,11 @@ func (o *ConfigureCertificateAuthorityBadRequest) IsServerError() bool {
 // IsCode returns true when this configure certificate authority bad request response a status code equal to that given
 func (o *ConfigureCertificateAuthorityBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the configure certificate authority bad request response
+func (o *ConfigureCertificateAuthorityBadRequest) Code() int {
+	return 400
 }
 
 func (o *ConfigureCertificateAuthorityBadRequest) Error() string {
@@ -218,6 +228,11 @@ func (o *ConfigureCertificateAuthorityNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the configure certificate authority not found response
+func (o *ConfigureCertificateAuthorityNotFound) Code() int {
+	return 404
+}
+
 func (o *ConfigureCertificateAuthorityNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/certificate-authorities][%d] configureCertificateAuthorityNotFound  %+v", 404, o.Payload)
 }
@@ -279,6 +294,11 @@ func (o *ConfigureCertificateAuthorityInternalServerError) IsServerError() bool 
 // IsCode returns true when this configure certificate authority internal server error response a status code equal to that given
 func (o *ConfigureCertificateAuthorityInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the configure certificate authority internal server error response
+func (o *ConfigureCertificateAuthorityInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ConfigureCertificateAuthorityInternalServerError) Error() string {

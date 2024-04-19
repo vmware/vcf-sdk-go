@@ -64,7 +64,7 @@ type ResourcePoolSpec struct {
 	MemorySharesLevel string `json:"memorySharesLevel,omitempty"`
 
 	// Memory shares value, only required when shares level is '0'
-	MemorySharesValue int32 `json:"memorySharesValue"`
+	MemorySharesValue int32 `json:"memorySharesValue,omitempty"`
 
 	// Resource Pool name
 	// Required: true

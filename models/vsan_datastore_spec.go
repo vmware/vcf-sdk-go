@@ -29,9 +29,11 @@ type VSANDatastoreSpec struct {
 	// Enable vSAN deduplication and compression
 	DedupAndCompressionEnabled bool `json:"dedupAndCompressionEnabled,omitempty"`
 
+	// Enable vSAN ESA configuration.
+	EsaConfig *EsaConfig `json:"esaConfig,omitempty"`
+
 	// Number of vSphere host failures to tolerate in the vSAN cluster
-	// Required: true
-	FailuresToTolerate *int32 `json:"failuresToTolerate"`
+	FailuresToTolerate int32 `json:"failuresToTolerate,omitempty"`
 
 	// License key for the vSAN data store to be applied in vCenter
 	LicenseKey string `json:"licenseKey,omitempty"`
@@ -45,7 +47,7 @@ func (m *VSANDatastoreSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateFailuresToTolerate(formats); err != nil {
+	if err := m.validateEsaConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -64,17 +66,57 @@ func (m *VSANDatastoreSpec) validateDatastoreName(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *VSANDatastoreSpec) validateFailuresToTolerate(formats strfmt.Registry) error {
+func (m *VSANDatastoreSpec) validateEsaConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.EsaConfig) { // not required
+		return nil
+	}
 
-	if err := validate.Required("failuresToTolerate", "body", m.FailuresToTolerate); err != nil {
-		return err
+	if m.EsaConfig != nil {
+		if err := m.EsaConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("esaConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("esaConfig")
+			}
+			return err
+		}
 	}
 
 	return nil
 }
 
-// ContextValidate validates this Vsan datastore spec based on context it is used
+// ContextValidate validate this Vsan datastore spec based on the context it is used
 func (m *VSANDatastoreSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEsaConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VSANDatastoreSpec) contextValidateEsaConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EsaConfig != nil {
+
+		if swag.IsZero(m.EsaConfig) { // not required
+			return nil
+		}
+
+		if err := m.EsaConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("esaConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("esaConfig")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

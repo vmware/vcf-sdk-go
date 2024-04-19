@@ -51,7 +51,7 @@ func (o *GetHostQueryResponse1Reader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/hosts/queries/{id}] getHostQueryResponse_1", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetHostQueryResponse1OK) IsServerError() bool {
 // IsCode returns true when this get host query response1 o k response a status code equal to that given
 func (o *GetHostQueryResponse1OK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get host query response1 o k response
+func (o *GetHostQueryResponse1OK) Code() int {
+	return 200
 }
 
 func (o *GetHostQueryResponse1OK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetHostQueryResponse1BadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get host query response1 bad request response
+func (o *GetHostQueryResponse1BadRequest) Code() int {
+	return 400
+}
+
 func (o *GetHostQueryResponse1BadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/queries/{id}][%d] getHostQueryResponse1BadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetHostQueryResponse1NotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get host query response1 not found response
+func (o *GetHostQueryResponse1NotFound) Code() int {
+	return 404
+}
+
 func (o *GetHostQueryResponse1NotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/queries/{id}][%d] getHostQueryResponse1NotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetHostQueryResponse1InternalServerError) IsServerError() bool {
 // IsCode returns true when this get host query response1 internal server error response a status code equal to that given
 func (o *GetHostQueryResponse1InternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get host query response1 internal server error response
+func (o *GetHostQueryResponse1InternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetHostQueryResponse1InternalServerError) Error() string {

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTIPAddressPoolRange NSX-T IP address pool range representation
+// NSXTIPAddressPoolRange NSX IP address pool range representation
 //
 // swagger:model NsxtIpAddressPoolRange
 type NSXTIPAddressPoolRange struct {

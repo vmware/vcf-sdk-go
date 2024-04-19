@@ -51,7 +51,7 @@ func (o *DeleteIPPoolFromNetworkOfNetworkPoolReader) ReadResponse(response runti
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/network-pools/{id}/networks/{networkId}/ip-pools] deleteIpPoolFromNetworkOfNetworkPool", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *DeleteIPPoolFromNetworkOfNetworkPoolNoContent) IsServerError() bool {
 // IsCode returns true when this delete Ip pool from network of network pool no content response a status code equal to that given
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete Ip pool from network of network pool no content response
+func (o *DeleteIPPoolFromNetworkOfNetworkPoolNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolNoContent) Error() string {
@@ -143,6 +148,11 @@ func (o *DeleteIPPoolFromNetworkOfNetworkPoolBadRequest) IsServerError() bool {
 // IsCode returns true when this delete Ip pool from network of network pool bad request response a status code equal to that given
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete Ip pool from network of network pool bad request response
+func (o *DeleteIPPoolFromNetworkOfNetworkPoolBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolBadRequest) Error() string {
@@ -208,6 +218,11 @@ func (o *DeleteIPPoolFromNetworkOfNetworkPoolNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete Ip pool from network of network pool not found response
+func (o *DeleteIPPoolFromNetworkOfNetworkPoolNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /v1/network-pools/{id}/networks/{networkId}/ip-pools][%d] deleteIpPoolFromNetworkOfNetworkPoolNotFound  %+v", 404, o.Payload)
 }
@@ -269,6 +284,11 @@ func (o *DeleteIPPoolFromNetworkOfNetworkPoolInternalServerError) IsServerError(
 // IsCode returns true when this delete Ip pool from network of network pool internal server error response a status code equal to that given
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete Ip pool from network of network pool internal server error response
+func (o *DeleteIPPoolFromNetworkOfNetworkPoolInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteIPPoolFromNetworkOfNetworkPoolInternalServerError) Error() string {

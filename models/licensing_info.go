@@ -25,6 +25,9 @@ type LicensingInfo struct {
 	// Number of days remaining to subscribe
 	DaysRemainingToSubscribe int32 `json:"daysRemainingToSubscribe,omitempty"`
 
+	// The set of entitlements associated with the resource
+	Entitlements *Entitlements `json:"entitlements,omitempty"`
+
 	// Flag indicating the resource is registered for subscription or not
 	IsRegistered bool `json:"isRegistered,omitempty"`
 
@@ -32,16 +35,20 @@ type LicensingInfo struct {
 	IsSubscribed bool `json:"isSubscribed,omitempty"`
 
 	// Licensing mode
-	// Example: One among: SUBSCRIPTION, PERPETUAL, MIXED
+	// Example: One among: SUBSCRIPTION, PERPETUAL
 	LicensingMode string `json:"licensingMode,omitempty"`
 
 	// ID of the resource, need not be set for the resource of the type : SYSTEM
 	ResourceID string `json:"resourceId,omitempty"`
 
 	// Type of the resource
-	// Example: One among: SYSTEM, DOMAIN
+	// Example: One among: SYSTEM, DOMAIN, CLUSTER
 	// Required: true
 	ResourceType *string `json:"resourceType"`
+
+	// Subscribed state
+	// Example: One among: UNSUBSCRIBED, PARTIALLY_SUBSCRIBED, SUBSCRIBED
+	SubscribedState string `json:"subscribedState,omitempty"`
 
 	// Status of the subscription mode
 	// Example: One among: UNSUBSCRIBED, ACTIVE, EXPIRED
@@ -52,6 +59,10 @@ type LicensingInfo struct {
 func (m *LicensingInfo) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEntitlements(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateResourceType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -59,6 +70,25 @@ func (m *LicensingInfo) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *LicensingInfo) validateEntitlements(formats strfmt.Registry) error {
+	if swag.IsZero(m.Entitlements) { // not required
+		return nil
+	}
+
+	if m.Entitlements != nil {
+		if err := m.Entitlements.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entitlements")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entitlements")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -71,8 +101,38 @@ func (m *LicensingInfo) validateResourceType(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this licensing info based on context it is used
+// ContextValidate validate this licensing info based on the context it is used
 func (m *LicensingInfo) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEntitlements(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *LicensingInfo) contextValidateEntitlements(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Entitlements != nil {
+
+		if swag.IsZero(m.Entitlements) { // not required
+			return nil
+		}
+
+		if err := m.Entitlements.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entitlements")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entitlements")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

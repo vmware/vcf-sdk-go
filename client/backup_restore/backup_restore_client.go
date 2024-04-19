@@ -33,155 +33,38 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	BackupTasks(params *BackupTasksParams, opts ...ClientOption) (*BackupTasksOK, *BackupTasksAccepted, error)
+	GetBackupConfiguration(params *GetBackupConfigurationParams, opts ...ClientOption) (*GetBackupConfigurationOK, error)
 
-	ConfigureBackupSettings(params *ConfigureBackupSettingsParams, opts ...ClientOption) (*ConfigureBackupSettingsOK, *ConfigureBackupSettingsAccepted, error)
+	GetRestoreTask(params *GetRestoreTaskParams, opts ...ClientOption) (*GetRestoreTaskOK, error)
 
-	EditBackupSettings(params *EditBackupSettingsParams, opts ...ClientOption) (*EditBackupSettingsOK, *EditBackupSettingsAccepted, error)
+	SetBackupConfiguration(params *SetBackupConfigurationParams, opts ...ClientOption) (*SetBackupConfigurationOK, *SetBackupConfigurationAccepted, error)
 
-	GetBackupSettings(params *GetBackupSettingsParams, opts ...ClientOption) (*GetBackupSettingsOK, error)
+	StartBackup(params *StartBackupParams, opts ...ClientOption) (*StartBackupOK, *StartBackupAccepted, error)
 
-	RestoresTasks(params *RestoresTasksParams, opts ...ClientOption) (*RestoresTasksOK, error)
+	StartRestore(params *StartRestoreParams, opts ...ClientOption) (*StartRestoreOK, *StartRestoreAccepted, error)
 
-	RestoresTasks1(params *RestoresTasks1Params, opts ...ClientOption) (*RestoresTasks1OK, *RestoresTasks1Accepted, error)
+	UpdateBackupConfiguration(params *UpdateBackupConfigurationParams, opts ...ClientOption) (*UpdateBackupConfigurationOK, *UpdateBackupConfigurationAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-BackupTasks triggers backup
+GetBackupConfiguration retrieves the backup configuration for SDDC manager and n s x manager
 */
-func (a *Client) BackupTasks(params *BackupTasksParams, opts ...ClientOption) (*BackupTasksOK, *BackupTasksAccepted, error) {
+func (a *Client) GetBackupConfiguration(params *GetBackupConfigurationParams, opts ...ClientOption) (*GetBackupConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewBackupTasksParams()
+		params = NewGetBackupConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "backupTasks",
-		Method:             "POST",
-		PathPattern:        "/v1/backups/tasks",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BackupTasksReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *BackupTasksOK:
-		return value, nil, nil
-	case *BackupTasksAccepted:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for backup_restore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-ConfigureBackupSettings configures backup settings to backup n s x and SDDC manager
-*/
-func (a *Client) ConfigureBackupSettings(params *ConfigureBackupSettingsParams, opts ...ClientOption) (*ConfigureBackupSettingsOK, *ConfigureBackupSettingsAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewConfigureBackupSettingsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "configureBackupSettings",
-		Method:             "PUT",
-		PathPattern:        "/v1/system/backup-configuration",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ConfigureBackupSettingsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *ConfigureBackupSettingsOK:
-		return value, nil, nil
-	case *ConfigureBackupSettingsAccepted:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for backup_restore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-EditBackupSettings edits backup configuration to backup n s x and SDDC manager
-*/
-func (a *Client) EditBackupSettings(params *EditBackupSettingsParams, opts ...ClientOption) (*EditBackupSettingsOK, *EditBackupSettingsAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewEditBackupSettingsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "editBackupSettings",
-		Method:             "PATCH",
-		PathPattern:        "/v1/system/backup-configuration",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &EditBackupSettingsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *EditBackupSettingsOK:
-		return value, nil, nil
-	case *EditBackupSettingsAccepted:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for backup_restore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetBackupSettings gets backup configuration used to backup n s x and SDDC manager
-*/
-func (a *Client) GetBackupSettings(params *GetBackupSettingsParams, opts ...ClientOption) (*GetBackupSettingsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetBackupSettingsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getBackupSettings",
+		ID:                 "getBackupConfiguration",
 		Method:             "GET",
 		PathPattern:        "/v1/system/backup-configuration",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBackupSettingsReader{formats: a.formats},
+		Reader:             &GetBackupConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -193,33 +76,33 @@ func (a *Client) GetBackupSettings(params *GetBackupSettingsParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetBackupSettingsOK)
+	success, ok := result.(*GetBackupConfigurationOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBackupSettings: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getBackupConfiguration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-RestoresTasks fetches the restores task
+GetRestoreTask retrieves the restore task
 */
-func (a *Client) RestoresTasks(params *RestoresTasksParams, opts ...ClientOption) (*RestoresTasksOK, error) {
+func (a *Client) GetRestoreTask(params *GetRestoreTaskParams, opts ...ClientOption) (*GetRestoreTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewRestoresTasksParams()
+		params = NewGetRestoreTaskParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "restoresTasks",
+		ID:                 "getRestoreTask",
 		Method:             "GET",
 		PathPattern:        "/v1/restores/tasks/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &RestoresTasksReader{formats: a.formats},
+		Reader:             &GetRestoreTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -231,33 +114,33 @@ func (a *Client) RestoresTasks(params *RestoresTasksParams, opts ...ClientOption
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*RestoresTasksOK)
+	success, ok := result.(*GetRestoreTaskOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for restoresTasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getRestoreTask: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-RestoresTasks1 triggers restore
+SetBackupConfiguration configures the backup configuration for SDDC manager and n s x manager
 */
-func (a *Client) RestoresTasks1(params *RestoresTasks1Params, opts ...ClientOption) (*RestoresTasks1OK, *RestoresTasks1Accepted, error) {
+func (a *Client) SetBackupConfiguration(params *SetBackupConfigurationParams, opts ...ClientOption) (*SetBackupConfigurationOK, *SetBackupConfigurationAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewRestoresTasks1Params()
+		params = NewSetBackupConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "restoresTasks_1",
-		Method:             "POST",
-		PathPattern:        "/v1/restores/tasks",
+		ID:                 "setBackupConfiguration",
+		Method:             "PUT",
+		PathPattern:        "/v1/system/backup-configuration",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &RestoresTasks1Reader{formats: a.formats},
+		Reader:             &SetBackupConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -270,9 +153,126 @@ func (a *Client) RestoresTasks1(params *RestoresTasks1Params, opts ...ClientOpti
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *RestoresTasks1OK:
+	case *SetBackupConfigurationOK:
 		return value, nil, nil
-	case *RestoresTasks1Accepted:
+	case *SetBackupConfigurationAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for backup_restore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StartBackup starts a backup operation
+*/
+func (a *Client) StartBackup(params *StartBackupParams, opts ...ClientOption) (*StartBackupOK, *StartBackupAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStartBackupParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "startBackup",
+		Method:             "POST",
+		PathPattern:        "/v1/backups/tasks",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StartBackupReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *StartBackupOK:
+		return value, nil, nil
+	case *StartBackupAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for backup_restore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StartRestore starts a restore operation
+*/
+func (a *Client) StartRestore(params *StartRestoreParams, opts ...ClientOption) (*StartRestoreOK, *StartRestoreAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStartRestoreParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "startRestore",
+		Method:             "POST",
+		PathPattern:        "/v1/restores/tasks",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StartRestoreReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *StartRestoreOK:
+		return value, nil, nil
+	case *StartRestoreAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for backup_restore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateBackupConfiguration updates the backup configuration for SDDC manager and n s x manager
+*/
+func (a *Client) UpdateBackupConfiguration(params *UpdateBackupConfigurationParams, opts ...ClientOption) (*UpdateBackupConfigurationOK, *UpdateBackupConfigurationAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateBackupConfigurationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateBackupConfiguration",
+		Method:             "PATCH",
+		PathPattern:        "/v1/system/backup-configuration",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateBackupConfigurationReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *UpdateBackupConfigurationOK:
+		return value, nil, nil
+	case *UpdateBackupConfigurationAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

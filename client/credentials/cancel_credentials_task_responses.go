@@ -51,7 +51,7 @@ func (o *CancelCredentialsTaskReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/credentials/tasks/{id}] cancelCredentialsTask", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CancelCredentialsTaskOK) IsServerError() bool {
 // IsCode returns true when this cancel credentials task o k response a status code equal to that given
 func (o *CancelCredentialsTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the cancel credentials task o k response
+func (o *CancelCredentialsTaskOK) Code() int {
+	return 200
 }
 
 func (o *CancelCredentialsTaskOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CancelCredentialsTaskNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the cancel credentials task no content response
+func (o *CancelCredentialsTaskNoContent) Code() int {
+	return 204
+}
+
 func (o *CancelCredentialsTaskNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /v1/credentials/tasks/{id}][%d] cancelCredentialsTaskNoContent  %+v", 204, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CancelCredentialsTaskBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cancel credentials task bad request response
+func (o *CancelCredentialsTaskBadRequest) Code() int {
+	return 400
+}
+
 func (o *CancelCredentialsTaskBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/credentials/tasks/{id}][%d] cancelCredentialsTaskBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CancelCredentialsTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this cancel credentials task internal server error response a status code equal to that given
 func (o *CancelCredentialsTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cancel credentials task internal server error response
+func (o *CancelCredentialsTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CancelCredentialsTaskInternalServerError) Error() string {

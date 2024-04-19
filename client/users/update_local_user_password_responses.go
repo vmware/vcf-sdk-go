@@ -39,7 +39,7 @@ func (o *UpdateLocalUserPasswordReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/users/local/admin] updateLocalUserPassword", response, response.Code())
 	}
 }
 
@@ -79,6 +79,11 @@ func (o *UpdateLocalUserPasswordNoContent) IsServerError() bool {
 // IsCode returns true when this update local user password no content response a status code equal to that given
 func (o *UpdateLocalUserPasswordNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the update local user password no content response
+func (o *UpdateLocalUserPasswordNoContent) Code() int {
+	return 204
 }
 
 func (o *UpdateLocalUserPasswordNoContent) Error() string {
@@ -131,6 +136,11 @@ func (o *UpdateLocalUserPasswordInternalServerError) IsServerError() bool {
 // IsCode returns true when this update local user password internal server error response a status code equal to that given
 func (o *UpdateLocalUserPasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update local user password internal server error response
+func (o *UpdateLocalUserPasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateLocalUserPasswordInternalServerError) Error() string {

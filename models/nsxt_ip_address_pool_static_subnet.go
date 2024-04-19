@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTIPAddressPoolStaticSubnet NSX-T IP address pool static subnet representation
+// NSXTIPAddressPoolStaticSubnet NSX IP address pool static subnet representation
 //
 // swagger:model NsxtIpAddressPoolStaticSubnet
 type NSXTIPAddressPoolStaticSubnet struct {
@@ -91,6 +91,11 @@ func (m *NSXTIPAddressPoolStaticSubnet) contextValidateIPAddressPoolRanges(ctx c
 	for i := 0; i < len(m.IPAddressPoolRanges); i++ {
 
 		if m.IPAddressPoolRanges[i] != nil {
+
+			if swag.IsZero(m.IPAddressPoolRanges[i]) { // not required
+				return nil
+			}
+
 			if err := m.IPAddressPoolRanges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ipAddressPoolRanges" + "." + strconv.Itoa(i))

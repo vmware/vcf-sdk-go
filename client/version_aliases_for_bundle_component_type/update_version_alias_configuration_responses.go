@@ -45,7 +45,7 @@ func (o *UpdateVersionAliasConfigurationReader) ReadResponse(response runtime.Cl
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/system/settings/version-aliases/{bundleComponentType}/{version}] updateVersionAliasConfiguration", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *UpdateVersionAliasConfigurationOK) IsServerError() bool {
 // IsCode returns true when this update version alias configuration o k response a status code equal to that given
 func (o *UpdateVersionAliasConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update version alias configuration o k response
+func (o *UpdateVersionAliasConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *UpdateVersionAliasConfigurationOK) Error() string {
@@ -151,6 +156,11 @@ func (o *UpdateVersionAliasConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update version alias configuration bad request response
+func (o *UpdateVersionAliasConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateVersionAliasConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/settings/version-aliases/{bundleComponentType}/{version}][%d] updateVersionAliasConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *UpdateVersionAliasConfigurationInternalServerError) IsServerError() boo
 // IsCode returns true when this update version alias configuration internal server error response a status code equal to that given
 func (o *UpdateVersionAliasConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update version alias configuration internal server error response
+func (o *UpdateVersionAliasConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateVersionAliasConfigurationInternalServerError) Error() string {

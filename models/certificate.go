@@ -446,6 +446,11 @@ func (m *Certificate) contextValidateCaChain(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.CaChain); i++ {
 
 		if m.CaChain[i] != nil {
+
+			if swag.IsZero(m.CaChain[i]) { // not required
+				return nil
+			}
+
 			if err := m.CaChain[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("caChain" + "." + strconv.Itoa(i))

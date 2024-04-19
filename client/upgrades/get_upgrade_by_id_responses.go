@@ -45,7 +45,7 @@ func (o *GetUpgradeByIDReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/upgrades/{upgradeId}] getUpgradeById", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetUpgradeByIDOK) IsServerError() bool {
 // IsCode returns true when this get upgrade by Id o k response a status code equal to that given
 func (o *GetUpgradeByIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get upgrade by Id o k response
+func (o *GetUpgradeByIDOK) Code() int {
+	return 200
 }
 
 func (o *GetUpgradeByIDOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetUpgradeByIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get upgrade by Id not found response
+func (o *GetUpgradeByIDNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUpgradeByIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/upgrades/{upgradeId}][%d] getUpgradeByIdNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetUpgradeByIDInternalServerError) IsServerError() bool {
 // IsCode returns true when this get upgrade by Id internal server error response a status code equal to that given
 func (o *GetUpgradeByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get upgrade by Id internal server error response
+func (o *GetUpgradeByIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetUpgradeByIDInternalServerError) Error() string {

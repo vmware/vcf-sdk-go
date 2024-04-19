@@ -35,15 +35,15 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*CreateAvnsOK, *CreateAvnsAccepted, error)
 
-	GetAllAvns(params *GetAllAvnsParams, opts ...ClientOption) (*GetAllAvnsOK, error)
+	GetAvns(params *GetAvnsParams, opts ...ClientOption) (*GetAvnsOK, error)
 
-	ValidateAvns(params *ValidateAvnsParams, opts ...ClientOption) (*ValidateAvnsOK, error)
+	ValidateAvnSpec(params *ValidateAvnSpecParams, opts ...ClientOption) (*ValidateAvnSpecOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-CreateAvns creates a v ns
+CreateAvns creates application virtual networks a v n
 */
 func (a *Client) CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*CreateAvnsOK, *CreateAvnsAccepted, error) {
 	// TODO: Validate the params before sending
@@ -82,24 +82,24 @@ func (a *Client) CreateAvns(params *CreateAvnsParams, opts ...ClientOption) (*Cr
 }
 
 /*
-GetAllAvns fetches all a v ns
+GetAvns retrieves application virtual network a v n details
 
 Returns all matching AVNs
 */
-func (a *Client) GetAllAvns(params *GetAllAvnsParams, opts ...ClientOption) (*GetAllAvnsOK, error) {
+func (a *Client) GetAvns(params *GetAvnsParams, opts ...ClientOption) (*GetAvnsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllAvnsParams()
+		params = NewGetAvnsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllAvns",
+		ID:                 "getAvns",
 		Method:             "GET",
 		PathPattern:        "/v1/avns",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllAvnsReader{formats: a.formats},
+		Reader:             &GetAvnsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,35 +111,35 @@ func (a *Client) GetAllAvns(params *GetAllAvnsParams, opts ...ClientOption) (*Ge
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllAvnsOK)
+	success, ok := result.(*GetAvnsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllAvns: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAvns: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-ValidateAvns validates a v n creation spec
+ValidateAvnSpec performs validation of the avns creation spec specification
 
 Returns Validation report
 */
-func (a *Client) ValidateAvns(params *ValidateAvnsParams, opts ...ClientOption) (*ValidateAvnsOK, error) {
+func (a *Client) ValidateAvnSpec(params *ValidateAvnSpecParams, opts ...ClientOption) (*ValidateAvnSpecOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateAvnsParams()
+		params = NewValidateAvnSpecParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateAvns",
+		ID:                 "validateAvnSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/avns/validations",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateAvnsReader{formats: a.formats},
+		Reader:             &ValidateAvnSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -151,13 +151,13 @@ func (a *Client) ValidateAvns(params *ValidateAvnsParams, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ValidateAvnsOK)
+	success, ok := result.(*ValidateAvnSpecOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for validateAvns: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for validateAvnSpec: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

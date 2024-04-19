@@ -45,7 +45,7 @@ func (o *GetTagsAssignedToClustersReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/tags] getTagsAssignedToClusters", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetTagsAssignedToClustersOK) IsServerError() bool {
 // IsCode returns true when this get tags assigned to clusters o k response a status code equal to that given
 func (o *GetTagsAssignedToClustersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get tags assigned to clusters o k response
+func (o *GetTagsAssignedToClustersOK) Code() int {
+	return 200
 }
 
 func (o *GetTagsAssignedToClustersOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetTagsAssignedToClustersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get tags assigned to clusters bad request response
+func (o *GetTagsAssignedToClustersBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetTagsAssignedToClustersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/tags][%d] getTagsAssignedToClustersBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetTagsAssignedToClustersInternalServerError) IsServerError() bool {
 // IsCode returns true when this get tags assigned to clusters internal server error response a status code equal to that given
 func (o *GetTagsAssignedToClustersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get tags assigned to clusters internal server error response
+func (o *GetTagsAssignedToClustersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetTagsAssignedToClustersInternalServerError) Error() string {

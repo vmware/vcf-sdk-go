@@ -117,6 +117,11 @@ func (m *SDDCManager) ContextValidate(ctx context.Context, formats strfmt.Regist
 func (m *SDDCManager) contextValidateBasicAuthDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BasicAuthDetails != nil {
+
+		if swag.IsZero(m.BasicAuthDetails) { // not required
+			return nil
+		}
+
 		if err := m.BasicAuthDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("basicAuthDetails")
@@ -133,6 +138,11 @@ func (m *SDDCManager) contextValidateBasicAuthDetails(ctx context.Context, forma
 func (m *SDDCManager) contextValidateDomain(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Domain != nil {
+
+		if swag.IsZero(m.Domain) { // not required
+			return nil
+		}
+
 		if err := m.Domain.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("domain")

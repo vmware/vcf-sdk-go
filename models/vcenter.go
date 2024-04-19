@@ -87,6 +87,11 @@ func (m *Vcenter) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 func (m *Vcenter) contextValidateDomain(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Domain != nil {
+
+		if swag.IsZero(m.Domain) { // not required
+			return nil
+		}
+
 		if err := m.Domain.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("domain")

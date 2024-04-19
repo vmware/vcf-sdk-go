@@ -33,13 +33,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	AssignTagsToExistingDomain(params *AssignTagsToExistingDomainParams, opts ...ClientOption) (*AssignTagsToExistingDomainOK, error)
-
-	AssignableTagsToDomain(params *AssignableTagsToDomainParams, opts ...ClientOption) (*AssignableTagsToDomainOK, error)
+	AssignTagsToDomain(params *AssignTagsToDomainParams, opts ...ClientOption) (*AssignTagsToDomainOK, error)
 
 	CreateDomain(params *CreateDomainParams, opts ...ClientOption) (*CreateDomainOK, *CreateDomainAccepted, error)
 
 	DeleteDomain(params *DeleteDomainParams, opts ...ClientOption) (*DeleteDomainOK, *DeleteDomainAccepted, error)
+
+	GetAssignableTagsForDomain(params *GetAssignableTagsForDomainParams, opts ...ClientOption) (*GetAssignableTagsForDomainOK, error)
 
 	GetClusterCriteria(params *GetClusterCriteriaParams, opts ...ClientOption) (*GetClusterCriteriaOK, error)
 
@@ -77,28 +77,28 @@ type ClientService interface {
 
 	UpdateDomain(params *UpdateDomainParams, opts ...ClientOption) (*UpdateDomainOK, *UpdateDomainAccepted, error)
 
-	ValidateDomainsOperations(params *ValidateDomainsOperationsParams, opts ...ClientOption) (*ValidateDomainsOperationsOK, error)
+	ValidateDomainCreationSpec(params *ValidateDomainCreationSpecParams, opts ...ClientOption) (*ValidateDomainCreationSpecOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-AssignTagsToExistingDomain assigns tags to domain
+AssignTagsToDomain assigns tags to a domain
 */
-func (a *Client) AssignTagsToExistingDomain(params *AssignTagsToExistingDomainParams, opts ...ClientOption) (*AssignTagsToExistingDomainOK, error) {
+func (a *Client) AssignTagsToDomain(params *AssignTagsToDomainParams, opts ...ClientOption) (*AssignTagsToDomainOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewAssignTagsToExistingDomainParams()
+		params = NewAssignTagsToDomainParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "assignTagsToExistingDomain",
+		ID:                 "assignTagsToDomain",
 		Method:             "PUT",
 		PathPattern:        "/v1/domains/{id}/tags",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &AssignTagsToExistingDomainReader{formats: a.formats},
+		Reader:             &AssignTagsToDomainReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -110,51 +110,13 @@ func (a *Client) AssignTagsToExistingDomain(params *AssignTagsToExistingDomainPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*AssignTagsToExistingDomainOK)
+	success, ok := result.(*AssignTagsToDomainOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for assignTagsToExistingDomain: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AssignableTagsToDomain gets assignable tags to domain
-*/
-func (a *Client) AssignableTagsToDomain(params *AssignableTagsToDomainParams, opts ...ClientOption) (*AssignableTagsToDomainOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAssignableTagsToDomainParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "assignableTagsToDomain",
-		Method:             "GET",
-		PathPattern:        "/v1/domains/{id}/tags/assignable-tags",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AssignableTagsToDomainReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AssignableTagsToDomainOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for assignableTagsToDomain: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for assignTagsToDomain: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -198,7 +160,7 @@ func (a *Client) CreateDomain(params *CreateDomainParams, opts ...ClientOption) 
 }
 
 /*
-DeleteDomain deletes a domain if it has been previously initialized for deletion
+DeleteDomain removes a domain if it has been previously initialized for deletion
 */
 func (a *Client) DeleteDomain(params *DeleteDomainParams, opts ...ClientOption) (*DeleteDomainOK, *DeleteDomainAccepted, error) {
 	// TODO: Validate the params before sending
@@ -233,6 +195,44 @@ func (a *Client) DeleteDomain(params *DeleteDomainParams, opts ...ClientOption) 
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for domains: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetAssignableTagsForDomain gets tags assignable to a domain
+*/
+func (a *Client) GetAssignableTagsForDomain(params *GetAssignableTagsForDomainParams, opts ...ClientOption) (*GetAssignableTagsForDomainOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAssignableTagsForDomainParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAssignableTagsForDomain",
+		Method:             "GET",
+		PathPattern:        "/v1/domains/{id}/tags/assignable-tags",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAssignableTagsForDomainReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAssignableTagsForDomainOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAssignableTagsForDomain: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -503,7 +503,7 @@ func (a *Client) GetDatastoresCriteria1(params *GetDatastoresCriteria1Params, op
 }
 
 /*
-GetDomain gets a domain
+GetDomain gets a domain by its ID
 */
 func (a *Client) GetDomain(params *GetDomainParams, opts ...ClientOption) (*GetDomainOK, error) {
 	// TODO: Validate the params before sending
@@ -541,7 +541,7 @@ func (a *Client) GetDomain(params *GetDomainParams, opts ...ClientOption) (*GetD
 }
 
 /*
-GetDomainEndpoints gets endpoints of a domain
+GetDomainEndpoints retrieves a list of endpoints or u r ls for a domain by its ID
 */
 func (a *Client) GetDomainEndpoints(params *GetDomainEndpointsParams, opts ...ClientOption) (*GetDomainEndpointsOK, error) {
 	// TODO: Validate the params before sending
@@ -617,7 +617,7 @@ func (a *Client) GetDomainTagManagerURL(params *GetDomainTagManagerURLParams, op
 }
 
 /*
-GetDomains gets the domains
+GetDomains retrieves a list of domains
 */
 func (a *Client) GetDomains(params *GetDomainsParams, opts ...ClientOption) (*GetDomainsOK, error) {
 	// TODO: Validate the params before sending
@@ -655,7 +655,7 @@ func (a *Client) GetDomains(params *GetDomainsParams, opts ...ClientOption) (*Ge
 }
 
 /*
-GetTagsAssignedToDomain gets tags assigned to domain
+GetTagsAssignedToDomain gets tags assigned to a domain
 */
 func (a *Client) GetTagsAssignedToDomain(params *GetTagsAssignedToDomainParams, opts ...ClientOption) (*GetTagsAssignedToDomainOK, error) {
 	// TODO: Validate the params before sending
@@ -693,7 +693,7 @@ func (a *Client) GetTagsAssignedToDomain(params *GetTagsAssignedToDomainParams, 
 }
 
 /*
-GetTagsAssignedToDomains gets tags assigned to domains
+GetTagsAssignedToDomains gets tags assigned to all domains
 */
 func (a *Client) GetTagsAssignedToDomains(params *GetTagsAssignedToDomainsParams, opts ...ClientOption) (*GetTagsAssignedToDomainsOK, error) {
 	// TODO: Validate the params before sending
@@ -922,22 +922,22 @@ func (a *Client) UpdateDomain(params *UpdateDomainParams, opts ...ClientOption) 
 }
 
 /*
-ValidateDomainsOperations validates the input spec for domains operations
+ValidateDomainCreationSpec performs validation of the domain creation spec specification
 */
-func (a *Client) ValidateDomainsOperations(params *ValidateDomainsOperationsParams, opts ...ClientOption) (*ValidateDomainsOperationsOK, error) {
+func (a *Client) ValidateDomainCreationSpec(params *ValidateDomainCreationSpecParams, opts ...ClientOption) (*ValidateDomainCreationSpecOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateDomainsOperationsParams()
+		params = NewValidateDomainCreationSpecParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateDomainsOperations",
+		ID:                 "validateDomainCreationSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/domains/validations",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateDomainsOperationsReader{formats: a.formats},
+		Reader:             &ValidateDomainCreationSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -949,13 +949,13 @@ func (a *Client) ValidateDomainsOperations(params *ValidateDomainsOperationsPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ValidateDomainsOperationsOK)
+	success, ok := result.(*ValidateDomainCreationSpecOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for validateDomainsOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for validateDomainCreationSpec: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

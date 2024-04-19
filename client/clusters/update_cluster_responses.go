@@ -57,7 +57,7 @@ func (o *UpdateClusterReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/clusters/{id}] updateCluster", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *UpdateClusterOK) IsServerError() bool {
 // IsCode returns true when this update cluster o k response a status code equal to that given
 func (o *UpdateClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update cluster o k response
+func (o *UpdateClusterOK) Code() int {
+	return 200
 }
 
 func (o *UpdateClusterOK) Error() string {
@@ -163,6 +168,11 @@ func (o *UpdateClusterAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the update cluster accepted response
+func (o *UpdateClusterAccepted) Code() int {
+	return 202
+}
+
 func (o *UpdateClusterAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/clusters/{id}][%d] updateClusterAccepted  %+v", 202, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *UpdateClusterBadRequest) IsServerError() bool {
 // IsCode returns true when this update cluster bad request response a status code equal to that given
 func (o *UpdateClusterBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the update cluster bad request response
+func (o *UpdateClusterBadRequest) Code() int {
+	return 400
 }
 
 func (o *UpdateClusterBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *UpdateClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update cluster not found response
+func (o *UpdateClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateClusterNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/clusters/{id}][%d] updateClusterNotFound  %+v", 404, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *UpdateClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this update cluster internal server error response a status code equal to that given
 func (o *UpdateClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update cluster internal server error response
+func (o *UpdateClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateClusterInternalServerError) Error() string {

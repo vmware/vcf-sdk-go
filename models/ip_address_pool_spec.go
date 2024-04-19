@@ -26,7 +26,7 @@ type IPAddressPoolSpec struct {
 	// Description of the IP address pool
 	Description string `json:"description,omitempty"`
 
-	// Ignore unavailable NSX-T cluster(s) during IP pool spec validation
+	// Ignore unavailable NSX cluster(s) during IP pool spec validation
 	IgnoreUnavailableNSXTCluster bool `json:"ignoreUnavailableNsxtCluster,omitempty"`
 
 	// Name of the IP address pool
@@ -109,6 +109,11 @@ func (m *IPAddressPoolSpec) contextValidateSubnets(ctx context.Context, formats 
 	for i := 0; i < len(m.Subnets); i++ {
 
 		if m.Subnets[i] != nil {
+
+			if swag.IsZero(m.Subnets[i]) { // not required
+				return nil
+			}
+
 			if err := m.Subnets[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subnets" + "." + strconv.Itoa(i))

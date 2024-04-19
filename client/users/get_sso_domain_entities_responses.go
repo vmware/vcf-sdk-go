@@ -51,7 +51,7 @@ func (o *GetSSODomainEntitiesReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/sso-domains/{sso-domain}/entities] getSSODomainEntities", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetSSODomainEntitiesOK) IsServerError() bool {
 // IsCode returns true when this get Sso domain entities o k response a status code equal to that given
 func (o *GetSSODomainEntitiesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get Sso domain entities o k response
+func (o *GetSSODomainEntitiesOK) Code() int {
+	return 200
 }
 
 func (o *GetSSODomainEntitiesOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetSSODomainEntitiesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get Sso domain entities unauthorized response
+func (o *GetSSODomainEntitiesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetSSODomainEntitiesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesUnauthorized  %+v", 401, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetSSODomainEntitiesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get Sso domain entities forbidden response
+func (o *GetSSODomainEntitiesForbidden) Code() int {
+	return 403
+}
+
 func (o *GetSSODomainEntitiesForbidden) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains/{sso-domain}/entities][%d] getSsoDomainEntitiesForbidden  %+v", 403, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetSSODomainEntitiesInternalServerError) IsServerError() bool {
 // IsCode returns true when this get Sso domain entities internal server error response a status code equal to that given
 func (o *GetSSODomainEntitiesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get Sso domain entities internal server error response
+func (o *GetSSODomainEntitiesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetSSODomainEntitiesInternalServerError) Error() string {

@@ -35,15 +35,15 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetPrecheckTask(params *GetPrecheckTaskParams, opts ...ClientOption) (*GetPrecheckTaskOK, error)
 
-	PrecheckSystem(params *PrecheckSystemParams, opts ...ClientOption) (*PrecheckSystemOK, *PrecheckSystemAccepted, error)
+	StartPrecheck(params *StartPrecheckParams, opts ...ClientOption) (*StartPrecheckOK, *StartPrecheckAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetPrecheckTask gets precheck task by ID
+GetPrecheckTask retrieves a precheck task by its id
 
-Monitor the progress of precheck task by the precheck task ID
+Monitor the progress of precheck task by the precheck task ID. As this API is deprecated, please use the new LCM Prechecks API - /v1/system/check-sets/{taskId}
 */
 func (a *Client) GetPrecheckTask(params *GetPrecheckTaskParams, opts ...ClientOption) (*GetPrecheckTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -81,24 +81,24 @@ func (a *Client) GetPrecheckTask(params *GetPrecheckTaskParams, opts ...ClientOp
 }
 
 /*
-PrecheckSystem prechecks system
+StartPrecheck starts a system precheck
 
-Perform precheck of resource(ex: Domain, Cluster). If only resource is specified, all resources/software components under it are included. If resource(Domain, Cluster etc) and specific resources/software components are provided, only those are included in precheck
+Perform precheck of resource(ex: Domain, Cluster). If only resource is specified, all resources/software components under it are included. If resource(Domain, Cluster etc) and specific resources/software components are provided, only those are included in precheck. As this API is deprecated, please use the new LCM Prechecks API - /v1/system/check-sets/queries and /v1/system/check-sets
 */
-func (a *Client) PrecheckSystem(params *PrecheckSystemParams, opts ...ClientOption) (*PrecheckSystemOK, *PrecheckSystemAccepted, error) {
+func (a *Client) StartPrecheck(params *StartPrecheckParams, opts ...ClientOption) (*StartPrecheckOK, *StartPrecheckAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPrecheckSystemParams()
+		params = NewStartPrecheckParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "precheckSystem",
+		ID:                 "startPrecheck",
 		Method:             "POST",
 		PathPattern:        "/v1/system/prechecks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PrecheckSystemReader{formats: a.formats},
+		Reader:             &StartPrecheckReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,9 +111,9 @@ func (a *Client) PrecheckSystem(params *PrecheckSystemParams, opts ...ClientOpti
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *PrecheckSystemOK:
+	case *StartPrecheckOK:
 		return value, nil, nil
-	case *PrecheckSystemAccepted:
+	case *StartPrecheckAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

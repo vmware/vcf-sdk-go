@@ -45,7 +45,7 @@ func (o *GetVcfServicesReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/vcf-services] getVcfServices", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetVcfServicesOK) IsServerError() bool {
 // IsCode returns true when this get vcf services o k response a status code equal to that given
 func (o *GetVcfServicesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get vcf services o k response
+func (o *GetVcfServicesOK) Code() int {
+	return 200
 }
 
 func (o *GetVcfServicesOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetVcfServicesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get vcf services bad request response
+func (o *GetVcfServicesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetVcfServicesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/vcf-services][%d] getVcfServicesBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetVcfServicesInternalServerError) IsServerError() bool {
 // IsCode returns true when this get vcf services internal server error response a status code equal to that given
 func (o *GetVcfServicesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get vcf services internal server error response
+func (o *GetVcfServicesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetVcfServicesInternalServerError) Error() string {

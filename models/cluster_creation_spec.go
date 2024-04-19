@@ -26,6 +26,9 @@ type ClusterCreationSpec struct {
 	// Required: true
 	ComputeSpec *ComputeSpec `json:"computeSpec"`
 
+	// Enable deployment of the cluster without licensing the infrastructure.
+	DeployWithoutLicenseKeys bool `json:"deployWithoutLicenseKeys,omitempty"`
+
 	// ID of the domain to which the clusters will be added
 	// Required: true
 	DomainID *string `json:"domainId"`
@@ -95,6 +98,7 @@ func (m *ClusterCreationSpec) ContextValidate(ctx context.Context, formats strfm
 func (m *ClusterCreationSpec) contextValidateComputeSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ComputeSpec != nil {
+
 		if err := m.ComputeSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("computeSpec")

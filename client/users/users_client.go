@@ -35,10 +35,6 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	AddUsers(params *AddUsersParams, opts ...ClientOption) (*AddUsersOK, *AddUsersCreated, error)
 
-	DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserNoContent, error)
-
-	GetAllUIUsersUsingGET(params *GetAllUIUsersUsingGETParams, opts ...ClientOption) (*GetAllUIUsersUsingGETOK, error)
-
 	GetLocalAccount(params *GetLocalAccountParams, opts ...ClientOption) (*GetLocalAccountOK, error)
 
 	GetRoles(params *GetRolesParams, opts ...ClientOption) (*GetRolesOK, error)
@@ -47,7 +43,11 @@ type ClientService interface {
 
 	GetSSODomains(params *GetSSODomainsParams, opts ...ClientOption) (*GetSSODomainsOK, error)
 
+	GetUIUsers(params *GetUIUsersParams, opts ...ClientOption) (*GetUIUsersOK, error)
+
 	GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUsersOK, error)
+
+	RemoveUser(params *RemoveUserParams, opts ...ClientOption) (*RemoveUserNoContent, error)
 
 	UpdateLocalUserPassword(params *UpdateLocalUserPasswordParams, opts ...ClientOption) (*UpdateLocalUserPasswordNoContent, error)
 
@@ -55,7 +55,7 @@ type ClientService interface {
 }
 
 /*
-AddUsers adds users
+AddUsers assigns access to users in SDDC manager
 
 Add list of users
 */
@@ -92,84 +92,6 @@ func (a *Client) AddUsers(params *AddUsersParams, opts ...ClientOption) (*AddUse
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for users: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteUser deletes a user
-
-Delete the user by the ID, if it exists
-*/
-func (a *Client) DeleteUser(params *DeleteUserParams, opts ...ClientOption) (*DeleteUserNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteUserParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteUser",
-		Method:             "DELETE",
-		PathPattern:        "/v1/users/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteUserReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteUserNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetAllUIUsersUsingGET gets all Ui users
-*/
-func (a *Client) GetAllUIUsersUsingGET(params *GetAllUIUsersUsingGETParams, opts ...ClientOption) (*GetAllUIUsersUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetAllUIUsersUsingGETParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getAllUiUsersUsingGET",
-		Method:             "GET",
-		PathPattern:        "/v1/users/ui",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetAllUIUsersUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetAllUIUsersUsingGETOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUiUsersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -214,7 +136,7 @@ func (a *Client) GetLocalAccount(params *GetLocalAccountParams, opts ...ClientOp
 }
 
 /*
-GetRoles gets all roles
+GetRoles retrieves a list of roles from SDDC manager
 
 Get a list of all roles
 */
@@ -254,7 +176,7 @@ func (a *Client) GetRoles(params *GetRolesParams, opts ...ClientOption) (*GetRol
 }
 
 /*
-GetSSODomainEntities gets all entities of SSO domain
+GetSSODomainEntities retrieves a list of users and groups from a domain in v center single sign on
 
 Get a list of all entities in the SSO domain
 */
@@ -294,7 +216,7 @@ func (a *Client) GetSSODomainEntities(params *GetSSODomainEntitiesParams, opts .
 }
 
 /*
-GetSSODomains gets all SSO domains
+GetSSODomains retrieives a list of domains from v center single sign on
 
 Get a list of all SSO domains
 */
@@ -334,7 +256,47 @@ func (a *Client) GetSSODomains(params *GetSSODomainsParams, opts ...ClientOption
 }
 
 /*
-GetUsers gets all users
+GetUIUsers retrieves a list of users assigned access via SDDC manager
+
+Retrieve a list of users assigned access via SDDC Manager
+*/
+func (a *Client) GetUIUsers(params *GetUIUsersParams, opts ...ClientOption) (*GetUIUsersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetUIUsersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getUiUsers",
+		Method:             "GET",
+		PathPattern:        "/v1/users/ui",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetUIUsersReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetUIUsersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getUiUsers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetUsers retrieves a list of users from SDDC manager
 
 Get a list of all users
 */
@@ -370,6 +332,46 @@ func (a *Client) GetUsers(params *GetUsersParams, opts ...ClientOption) (*GetUse
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getUsers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RemoveUser removes access for a user in SDDC manager
+
+Delete the user by the ID, if it exists
+*/
+func (a *Client) RemoveUser(params *RemoveUserParams, opts ...ClientOption) (*RemoveUserNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRemoveUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "removeUser",
+		Method:             "DELETE",
+		PathPattern:        "/v1/users/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RemoveUserReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RemoveUserNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for removeUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -72,11 +72,11 @@ type GeneratesCSRsParams struct {
 	*/
 	CSRSGenerationSpec *models.CSRSGenerationSpec
 
-	/* DomainName.
+	/* ID.
 
 	   Domain ID or Name
 	*/
-	DomainName string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -142,15 +142,15 @@ func (o *GeneratesCSRsParams) SetCSRSGenerationSpec(cSRSGenerationSpec *models.C
 	o.CSRSGenerationSpec = cSRSGenerationSpec
 }
 
-// WithDomainName adds the domainName to the generates c s rs params
-func (o *GeneratesCSRsParams) WithDomainName(domainName string) *GeneratesCSRsParams {
-	o.SetDomainName(domainName)
+// WithID adds the id to the generates c s rs params
+func (o *GeneratesCSRsParams) WithID(id string) *GeneratesCSRsParams {
+	o.SetID(id)
 	return o
 }
 
-// SetDomainName adds the domainName to the generates c s rs params
-func (o *GeneratesCSRsParams) SetDomainName(domainName string) {
-	o.DomainName = domainName
+// SetID adds the id to the generates c s rs params
+func (o *GeneratesCSRsParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -166,8 +166,8 @@ func (o *GeneratesCSRsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
-	// path param domainName
-	if err := r.SetPathParam("domainName", o.DomainName); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

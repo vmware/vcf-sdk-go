@@ -45,7 +45,7 @@ func (o *GetDomainsReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains] getDomains", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetDomainsOK) IsServerError() bool {
 // IsCode returns true when this get domains o k response a status code equal to that given
 func (o *GetDomainsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get domains o k response
+func (o *GetDomainsOK) Code() int {
+	return 200
 }
 
 func (o *GetDomainsOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetDomainsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get domains bad request response
+func (o *GetDomainsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetDomainsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains][%d] getDomainsBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetDomainsInternalServerError) IsServerError() bool {
 // IsCode returns true when this get domains internal server error response a status code equal to that given
 func (o *GetDomainsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get domains internal server error response
+func (o *GetDomainsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetDomainsInternalServerError) Error() string {

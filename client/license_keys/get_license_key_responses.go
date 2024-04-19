@@ -45,7 +45,7 @@ func (o *GetLicenseKeyReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/license-keys/{key}] getLicenseKey", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetLicenseKeyOK) IsServerError() bool {
 // IsCode returns true when this get license key o k response a status code equal to that given
 func (o *GetLicenseKeyOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get license key o k response
+func (o *GetLicenseKeyOK) Code() int {
+	return 200
 }
 
 func (o *GetLicenseKeyOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetLicenseKeyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get license key not found response
+func (o *GetLicenseKeyNotFound) Code() int {
+	return 404
+}
+
 func (o *GetLicenseKeyNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/license-keys/{key}][%d] getLicenseKeyNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetLicenseKeyInternalServerError) IsServerError() bool {
 // IsCode returns true when this get license key internal server error response a status code equal to that given
 func (o *GetLicenseKeyInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get license key internal server error response
+func (o *GetLicenseKeyInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetLicenseKeyInternalServerError) Error() string {

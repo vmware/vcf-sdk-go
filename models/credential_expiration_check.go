@@ -157,6 +157,11 @@ func (m *CredentialExpirationCheck) contextValidateErrors(ctx context.Context, f
 	for i := 0; i < len(m.Errors); i++ {
 
 		if m.Errors[i] != nil {
+
+			if swag.IsZero(m.Errors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Errors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errors" + "." + strconv.Itoa(i))
@@ -175,6 +180,11 @@ func (m *CredentialExpirationCheck) contextValidateErrors(ctx context.Context, f
 func (m *CredentialExpirationCheck) contextValidateExpiry(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Expiry != nil {
+
+		if swag.IsZero(m.Expiry) { // not required
+			return nil
+		}
+
 		if err := m.Expiry.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expiry")
@@ -191,6 +201,11 @@ func (m *CredentialExpirationCheck) contextValidateExpiry(ctx context.Context, f
 func (m *CredentialExpirationCheck) contextValidateResource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Resource != nil {
+
+		if swag.IsZero(m.Resource) { // not required
+			return nil
+		}
+
 		if err := m.Resource.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resource")

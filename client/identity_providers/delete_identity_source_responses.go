@@ -57,7 +57,7 @@ func (o *DeleteIdentitySourceReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/identity-providers/{id}/identity-sources/{domainName}] deleteIdentitySource", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *DeleteIdentitySourceOK) IsServerError() bool {
 // IsCode returns true when this delete identity source o k response a status code equal to that given
 func (o *DeleteIdentitySourceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete identity source o k response
+func (o *DeleteIdentitySourceOK) Code() int {
+	return 200
 }
 
 func (o *DeleteIdentitySourceOK) Error() string {
@@ -161,6 +166,11 @@ func (o *DeleteIdentitySourceNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete identity source no content response
+func (o *DeleteIdentitySourceNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteIdentitySourceNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /v1/identity-providers/{id}/identity-sources/{domainName}][%d] deleteIdentitySourceNoContent  %+v", 204, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *DeleteIdentitySourceBadRequest) IsServerError() bool {
 // IsCode returns true when this delete identity source bad request response a status code equal to that given
 func (o *DeleteIdentitySourceBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete identity source bad request response
+func (o *DeleteIdentitySourceBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteIdentitySourceBadRequest) Error() string {
@@ -285,6 +300,11 @@ func (o *DeleteIdentitySourceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete identity source not found response
+func (o *DeleteIdentitySourceNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteIdentitySourceNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /v1/identity-providers/{id}/identity-sources/{domainName}][%d] deleteIdentitySourceNotFound  %+v", 404, o.Payload)
 }
@@ -346,6 +366,11 @@ func (o *DeleteIdentitySourceInternalServerError) IsServerError() bool {
 // IsCode returns true when this delete identity source internal server error response a status code equal to that given
 func (o *DeleteIdentitySourceInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete identity source internal server error response
+func (o *DeleteIdentitySourceInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteIdentitySourceInternalServerError) Error() string {

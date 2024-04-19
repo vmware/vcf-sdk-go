@@ -30,7 +30,7 @@ type AsyncPatch struct {
 	ProductVersion *string `json:"productVersion"`
 
 	// Sddc hot patch info for each sddc manager service (lcm, dm, om, commonsvc)
-	SDDCHotPatchInfo map[string]List `json:"sddcHotPatchInfo,omitempty"`
+	SDDCHotPatchInfo map[string]MapOfstringAndListOfSDDCHotPatchInfo `json:"sddcHotPatchInfo,omitempty"`
 
 	// Supported SKU types of the async patch bundle
 	// Example: One among: VXRAIL, VSAN
@@ -76,13 +76,10 @@ func (m *AsyncPatch) validateSDDCHotPatchInfo(formats strfmt.Registry) error {
 
 	for k := range m.SDDCHotPatchInfo {
 
-		if err := m.SDDCHotPatchInfo[k].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("sddcHotPatchInfo" + "." + k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("sddcHotPatchInfo" + "." + k)
+		if val, ok := m.SDDCHotPatchInfo[k]; ok {
+			if err := val.Validate(formats); err != nil {
+				return err
 			}
-			return err
 		}
 
 	}
@@ -117,13 +114,10 @@ func (m *AsyncPatch) contextValidateSDDCHotPatchInfo(ctx context.Context, format
 
 	for k := range m.SDDCHotPatchInfo {
 
-		if err := m.SDDCHotPatchInfo[k].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("sddcHotPatchInfo" + "." + k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("sddcHotPatchInfo" + "." + k)
+		if val, ok := m.SDDCHotPatchInfo[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
 			}
-			return err
 		}
 
 	}

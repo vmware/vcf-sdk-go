@@ -64,11 +64,11 @@ GetCSRsParams contains all the parameters to send to the API endpoint
 */
 type GetCSRsParams struct {
 
-	/* DomainName.
+	/* ID.
 
 	   Domain ID or Name
 	*/
-	DomainName string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,15 +123,15 @@ func (o *GetCSRsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDomainName adds the domainName to the get c s rs params
-func (o *GetCSRsParams) WithDomainName(domainName string) *GetCSRsParams {
-	o.SetDomainName(domainName)
+// WithID adds the id to the get c s rs params
+func (o *GetCSRsParams) WithID(id string) *GetCSRsParams {
+	o.SetID(id)
 	return o
 }
 
-// SetDomainName adds the domainName to the get c s rs params
-func (o *GetCSRsParams) SetDomainName(domainName string) {
-	o.DomainName = domainName
+// SetID adds the id to the get c s rs params
+func (o *GetCSRsParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -142,8 +142,8 @@ func (o *GetCSRsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 	}
 	var res []error
 
-	// path param domainName
-	if err := r.SetPathParam("domainName", o.DomainName); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NsxTCluster NSX-T Cluster representation
+// NsxTCluster NSX Cluster representation
 //
 // swagger:model NsxTCluster
 type NsxTCluster struct {
@@ -28,23 +28,26 @@ type NsxTCluster struct {
 	// ID of the cluster
 	ID string `json:"id,omitempty"`
 
-	// Boolean to identify if the NSX-T cluster can be shared to create a new workload domain
+	// Boolean to identify if the NSX cluster can be shared to create a new workload domain
 	IsShareable bool `json:"isShareable,omitempty"`
 
-	// Boolean to identify if the NSX-T cluster is shared among workload domains
+	// Boolean to identify if the NSX cluster is shared among workload domains
 	IsShared bool `json:"isShared,omitempty"`
 
-	// Boolean to identify if the NSX-T cluster is compatible with Vlcm
+	// Boolean to identify if the NSX cluster is compatible with Vlcm
 	IsVlcmCompatible bool `json:"isVlcmCompatible,omitempty"`
 
-	// Information about the NSX-T managers associated with the cluster
+	// Native ID of the NSX cluster
+	NativeID string `json:"nativeId,omitempty"`
+
+	// Information about the NSX managers associated with the cluster
 	Nodes []*NsxTManager `json:"nodes"`
 
-	// NSX-T cluster status. To get NSX-T cluster status invoke nsxt-clusters query API with criterion NSXT_CLUSTERS_WITH_STATUS
+	// NSX cluster status. To get NSX cluster status invoke nsxt-clusters query API with criterion NSXT_CLUSTERS_WITH_STATUS
 	// Example: One among: INITIALIZING, STABLE, DEGRADED, UNSTABLE, UNAVAILABLE, UNIDENTIFIED, UNDEFINED
 	Status string `json:"status,omitempty"`
 
-	// Version of the NSX-T managers associated with the cluster
+	// Version of the NSX managers associated with the cluster
 	Version string `json:"version,omitempty"`
 
 	// VIP (Virtual IP Address) of the cluster
@@ -147,6 +150,11 @@ func (m *NsxTCluster) contextValidateDomains(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.Domains); i++ {
 
 		if m.Domains[i] != nil {
+
+			if swag.IsZero(m.Domains[i]) { // not required
+				return nil
+			}
+
 			if err := m.Domains[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("domains" + "." + strconv.Itoa(i))
@@ -167,6 +175,11 @@ func (m *NsxTCluster) contextValidateNodes(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

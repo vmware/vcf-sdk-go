@@ -51,7 +51,7 @@ func (o *DecommissionHostsReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/hosts] decommissionHosts", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *DecommissionHostsOK) IsServerError() bool {
 // IsCode returns true when this decommission hosts o k response a status code equal to that given
 func (o *DecommissionHostsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the decommission hosts o k response
+func (o *DecommissionHostsOK) Code() int {
+	return 200
 }
 
 func (o *DecommissionHostsOK) Error() string {
@@ -157,6 +162,11 @@ func (o *DecommissionHostsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the decommission hosts accepted response
+func (o *DecommissionHostsAccepted) Code() int {
+	return 202
+}
+
 func (o *DecommissionHostsAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /v1/hosts][%d] decommissionHostsAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *DecommissionHostsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the decommission hosts bad request response
+func (o *DecommissionHostsBadRequest) Code() int {
+	return 400
+}
+
 func (o *DecommissionHostsBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/hosts][%d] decommissionHostsBadRequest  %+v", 400, o.Payload)
 }
@@ -280,6 +295,11 @@ func (o *DecommissionHostsInternalServerError) IsServerError() bool {
 // IsCode returns true when this decommission hosts internal server error response a status code equal to that given
 func (o *DecommissionHostsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the decommission hosts internal server error response
+func (o *DecommissionHostsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DecommissionHostsInternalServerError) Error() string {

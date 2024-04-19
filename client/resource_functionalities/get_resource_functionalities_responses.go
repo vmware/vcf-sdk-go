@@ -45,7 +45,7 @@ func (o *GetResourceFunctionalitiesReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/resource-functionalities] getResourceFunctionalities", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetResourceFunctionalitiesOK) IsServerError() bool {
 // IsCode returns true when this get resource functionalities o k response a status code equal to that given
 func (o *GetResourceFunctionalitiesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get resource functionalities o k response
+func (o *GetResourceFunctionalitiesOK) Code() int {
+	return 200
 }
 
 func (o *GetResourceFunctionalitiesOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetResourceFunctionalitiesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get resource functionalities bad request response
+func (o *GetResourceFunctionalitiesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetResourceFunctionalitiesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/resource-functionalities][%d] getResourceFunctionalitiesBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetResourceFunctionalitiesInternalServerError) IsServerError() bool {
 // IsCode returns true when this get resource functionalities internal server error response a status code equal to that given
 func (o *GetResourceFunctionalitiesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get resource functionalities internal server error response
+func (o *GetResourceFunctionalitiesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetResourceFunctionalitiesInternalServerError) Error() string {

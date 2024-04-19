@@ -64,11 +64,11 @@ DownloadCSRParams contains all the parameters to send to the API endpoint
 */
 type DownloadCSRParams struct {
 
-	/* DomainName.
+	/* ID.
 
 	   Domain ID or Name
 	*/
-	DomainName string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,15 +123,15 @@ func (o *DownloadCSRParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDomainName adds the domainName to the download CSR params
-func (o *DownloadCSRParams) WithDomainName(domainName string) *DownloadCSRParams {
-	o.SetDomainName(domainName)
+// WithID adds the id to the download CSR params
+func (o *DownloadCSRParams) WithID(id string) *DownloadCSRParams {
+	o.SetID(id)
 	return o
 }
 
-// SetDomainName adds the domainName to the download CSR params
-func (o *DownloadCSRParams) SetDomainName(domainName string) {
-	o.DomainName = domainName
+// SetID adds the id to the download CSR params
+func (o *DownloadCSRParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -142,8 +142,8 @@ func (o *DownloadCSRParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	// path param domainName
-	if err := r.SetPathParam("domainName", o.DomainName); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

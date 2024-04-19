@@ -26,15 +26,24 @@ type DomainCreationSpec struct {
 	// Required: true
 	ComputeSpec *ComputeSpec `json:"computeSpec"`
 
+	// Enable deployment of the domain without licensing the infrastructure.
+	DeployWithoutLicenseKeys bool `json:"deployWithoutLicenseKeys,omitempty"`
+
 	// Name of the workload domain
 	// Required: true
 	DomainName *string `json:"domainName"`
 
-	// Specification details for NSX-T configuration
+	// Specifications for network separation configuration
+	NetworkSeparationSpec *NetworkSeparationSpec `json:"networkSeparationSpec,omitempty"`
+
+	// Specification details for NSX configuration
 	NsxTSpec *NsxTSpec `json:"nsxTSpec,omitempty"`
 
 	// Organization name of the workload domain
 	OrgName string `json:"orgName,omitempty"`
+
+	// SSO domain specification
+	SSODomainSpec *SSODomainSpec `json:"ssoDomainSpec,omitempty"`
 
 	// Specification details for vCenter
 	// Required: true
@@ -53,7 +62,15 @@ func (m *DomainCreationSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateNetworkSeparationSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateNsxTSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSSODomainSpec(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -96,6 +113,25 @@ func (m *DomainCreationSpec) validateDomainName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *DomainCreationSpec) validateNetworkSeparationSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetworkSeparationSpec) { // not required
+		return nil
+	}
+
+	if m.NetworkSeparationSpec != nil {
+		if err := m.NetworkSeparationSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("networkSeparationSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("networkSeparationSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *DomainCreationSpec) validateNsxTSpec(formats strfmt.Registry) error {
 	if swag.IsZero(m.NsxTSpec) { // not required
 		return nil
@@ -107,6 +143,25 @@ func (m *DomainCreationSpec) validateNsxTSpec(formats strfmt.Registry) error {
 				return ve.ValidateName("nsxTSpec")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("nsxTSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DomainCreationSpec) validateSSODomainSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.SSODomainSpec) { // not required
+		return nil
+	}
+
+	if m.SSODomainSpec != nil {
+		if err := m.SSODomainSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ssoDomainSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ssoDomainSpec")
 			}
 			return err
 		}
@@ -143,7 +198,15 @@ func (m *DomainCreationSpec) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworkSeparationSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNsxTSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSSODomainSpec(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -160,6 +223,7 @@ func (m *DomainCreationSpec) ContextValidate(ctx context.Context, formats strfmt
 func (m *DomainCreationSpec) contextValidateComputeSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ComputeSpec != nil {
+
 		if err := m.ComputeSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("computeSpec")
@@ -173,9 +237,35 @@ func (m *DomainCreationSpec) contextValidateComputeSpec(ctx context.Context, for
 	return nil
 }
 
+func (m *DomainCreationSpec) contextValidateNetworkSeparationSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NetworkSeparationSpec != nil {
+
+		if swag.IsZero(m.NetworkSeparationSpec) { // not required
+			return nil
+		}
+
+		if err := m.NetworkSeparationSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("networkSeparationSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("networkSeparationSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *DomainCreationSpec) contextValidateNsxTSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NsxTSpec != nil {
+
+		if swag.IsZero(m.NsxTSpec) { // not required
+			return nil
+		}
+
 		if err := m.NsxTSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxTSpec")
@@ -189,9 +279,31 @@ func (m *DomainCreationSpec) contextValidateNsxTSpec(ctx context.Context, format
 	return nil
 }
 
+func (m *DomainCreationSpec) contextValidateSSODomainSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SSODomainSpec != nil {
+
+		if swag.IsZero(m.SSODomainSpec) { // not required
+			return nil
+		}
+
+		if err := m.SSODomainSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ssoDomainSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ssoDomainSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *DomainCreationSpec) contextValidateVcenterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VcenterSpec != nil {
+
 		if err := m.VcenterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vcenterSpec")

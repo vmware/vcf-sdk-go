@@ -128,6 +128,7 @@ func (m *LocalUser) ContextValidate(ctx context.Context, formats strfmt.Registry
 func (m *LocalUser) contextValidateRole(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Role != nil {
+
 		if err := m.Role.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("role")

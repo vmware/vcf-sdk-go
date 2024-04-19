@@ -26,6 +26,10 @@ type ComputeSpec struct {
 	// List of clusters to be added to workload domain
 	// Required: true
 	ClusterSpecs []*ClusterSpec `json:"clusterSpecs"`
+
+	// Skip failed ESXi Hosts and proceed with the rest of the ESXi Hosts during add Cluster. This is not supported for VCF VxRail.
+	// Example: false
+	SkipFailedHosts bool `json:"skipFailedHosts,omitempty"`
 }
 
 // Validate validates this compute spec
@@ -88,6 +92,11 @@ func (m *ComputeSpec) contextValidateClusterSpecs(ctx context.Context, formats s
 	for i := 0; i < len(m.ClusterSpecs); i++ {
 
 		if m.ClusterSpecs[i] != nil {
+
+			if swag.IsZero(m.ClusterSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.ClusterSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("clusterSpecs" + "." + strconv.Itoa(i))

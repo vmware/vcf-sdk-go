@@ -95,6 +95,11 @@ func (m *CredentialsValidation) contextValidateValidationChecks(ctx context.Cont
 	for i := 0; i < len(m.ValidationChecks); i++ {
 
 		if m.ValidationChecks[i] != nil {
+
+			if swag.IsZero(m.ValidationChecks[i]) { // not required
+				return nil
+			}
+
 			if err := m.ValidationChecks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("validationChecks" + "." + strconv.Itoa(i))

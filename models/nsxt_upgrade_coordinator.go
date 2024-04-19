@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTUpgradeCoordinator NSXT Upgrade coordinator Upgrade Resource
+// NSXTUpgradeCoordinator NSX Upgrade coordinator Upgrade Resource
 //
 // swagger:model NsxtUpgradeCoordinator
 type NSXTUpgradeCoordinator struct {

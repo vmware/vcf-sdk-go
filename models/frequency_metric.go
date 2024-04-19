@@ -18,7 +18,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// FrequencyMetric Represents a single metric representing freequency
+// FrequencyMetric Represents a single metric representing frequency
 //
 // swagger:model FrequencyMetric
 type FrequencyMetric struct {

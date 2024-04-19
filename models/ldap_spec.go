@@ -150,6 +150,7 @@ func (m *LdapSpec) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *LdapSpec) contextValidateSourceDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SourceDetails != nil {
+
 		if err := m.SourceDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sourceDetails")

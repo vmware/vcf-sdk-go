@@ -35,13 +35,13 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetCEIPStatus(params *GetCEIPStatusParams, opts ...ClientOption) (*GetCEIPStatusOK, error)
 
-	UpdateCEIPStatus(params *UpdateCEIPStatusParams, opts ...ClientOption) (*UpdateCEIPStatusOK, *UpdateCEIPStatusAccepted, error)
+	SetCEIPStatus(params *SetCEIPStatusParams, opts ...ClientOption) (*SetCEIPStatusOK, *SetCEIPStatusAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetCEIPStatus gets CEIP status
+GetCEIPStatus retrieves the CEIP status
 
 Get CEIP status and instance id
 */
@@ -81,24 +81,24 @@ func (a *Client) GetCEIPStatus(params *GetCEIPStatusParams, opts ...ClientOption
 }
 
 /*
-UpdateCEIPStatus opts in or opt out of CEIP
+SetCEIPStatus configures CEIP to opt in or opt out
 
 Opt-in or Opt-out of CEIP
 */
-func (a *Client) UpdateCEIPStatus(params *UpdateCEIPStatusParams, opts ...ClientOption) (*UpdateCEIPStatusOK, *UpdateCEIPStatusAccepted, error) {
+func (a *Client) SetCEIPStatus(params *SetCEIPStatusParams, opts ...ClientOption) (*SetCEIPStatusOK, *SetCEIPStatusAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateCEIPStatusParams()
+		params = NewSetCEIPStatusParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateCeipStatus",
+		ID:                 "setCeipStatus",
 		Method:             "PATCH",
 		PathPattern:        "/v1/system/ceip",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateCEIPStatusReader{formats: a.formats},
+		Reader:             &SetCEIPStatusReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,9 +111,9 @@ func (a *Client) UpdateCEIPStatus(params *UpdateCEIPStatusParams, opts ...Client
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *UpdateCEIPStatusOK:
+	case *SetCEIPStatusOK:
 		return value, nil, nil
-	case *UpdateCEIPStatusAccepted:
+	case *SetCEIPStatusAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

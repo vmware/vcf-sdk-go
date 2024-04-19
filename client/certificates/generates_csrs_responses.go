@@ -63,7 +63,7 @@ func (o *GeneratesCSRsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/domains/{id}/csrs] generatesCSRs", response, response.Code())
 	}
 }
 
@@ -106,12 +106,17 @@ func (o *GeneratesCSRsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the generates c s rs o k response
+func (o *GeneratesCSRsOK) Code() int {
+	return 200
+}
+
 func (o *GeneratesCSRsOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsOK  %+v", 200, o.Payload)
 }
 
 func (o *GeneratesCSRsOK) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsOK  %+v", 200, o.Payload)
 }
 
 func (o *GeneratesCSRsOK) GetPayload() *models.Task {
@@ -169,12 +174,17 @@ func (o *GeneratesCSRsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the generates c s rs accepted response
+func (o *GeneratesCSRsAccepted) Code() int {
+	return 202
+}
+
 func (o *GeneratesCSRsAccepted) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsAccepted  %+v", 202, o.Payload)
 }
 
 func (o *GeneratesCSRsAccepted) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsAccepted  %+v", 202, o.Payload)
 }
 
 func (o *GeneratesCSRsAccepted) GetPayload() *models.Task {
@@ -232,12 +242,17 @@ func (o *GeneratesCSRsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generates c s rs bad request response
+func (o *GeneratesCSRsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GeneratesCSRsBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *GeneratesCSRsBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *GeneratesCSRsBadRequest) GetPayload() *models.Error {
@@ -295,12 +310,17 @@ func (o *GeneratesCSRsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the generates c s rs not found response
+func (o *GeneratesCSRsNotFound) Code() int {
+	return 404
+}
+
 func (o *GeneratesCSRsNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GeneratesCSRsNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GeneratesCSRsNotFound) GetPayload() *models.Error {
@@ -358,12 +378,17 @@ func (o *GeneratesCSRsConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the generates c s rs conflict response
+func (o *GeneratesCSRsConflict) Code() int {
+	return 409
+}
+
 func (o *GeneratesCSRsConflict) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsConflict  %+v", 409, o.Payload)
 }
 
 func (o *GeneratesCSRsConflict) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsConflict  %+v", 409, o.Payload)
 }
 
 func (o *GeneratesCSRsConflict) GetPayload() *models.Error {
@@ -421,12 +446,17 @@ func (o *GeneratesCSRsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the generates c s rs internal server error response
+func (o *GeneratesCSRsInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GeneratesCSRsInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GeneratesCSRsInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/csrs][%d] generatesCSRsInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/csrs][%d] generatesCSRsInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GeneratesCSRsInternalServerError) GetPayload() *models.Error {

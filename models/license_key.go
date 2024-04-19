@@ -22,7 +22,7 @@ import (
 // swagger:model LicenseKey
 type LicenseKey struct {
 
-	// Description of the license key
+	// Description of the license key given by user
 	// Required: true
 	Description *string `json:"description"`
 
@@ -44,9 +44,12 @@ type LicenseKey struct {
 	LicenseKeyValidity *LicenseKeyValidity `json:"licenseKeyValidity,omitempty"`
 
 	// The type of the product to which the license key is applicable
-	// Example: One among: VCENTER, VSAN, ESXI, NSXT, NSXIO, WCP, HORIZON_VIEW
+	// Example: One among: VCENTER, VSAN, SDDC_MANAGER, ESXI, NSXT, NSXIO, WCP, HORIZON_VIEW
 	// Required: true
 	ProductType *string `json:"productType"`
+
+	// Product version
+	ProductVersion string `json:"productVersion,omitempty"`
 }
 
 // Validate validates this license key
@@ -165,6 +168,11 @@ func (m *LicenseKey) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *LicenseKey) contextValidateLicenseKeyUsage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LicenseKeyUsage != nil {
+
+		if swag.IsZero(m.LicenseKeyUsage) { // not required
+			return nil
+		}
+
 		if err := m.LicenseKeyUsage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("licenseKeyUsage")
@@ -181,6 +189,11 @@ func (m *LicenseKey) contextValidateLicenseKeyUsage(ctx context.Context, formats
 func (m *LicenseKey) contextValidateLicenseKeyValidity(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LicenseKeyValidity != nil {
+
+		if swag.IsZero(m.LicenseKeyValidity) { // not required
+			return nil
+		}
+
 		if err := m.LicenseKeyValidity.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("licenseKeyValidity")

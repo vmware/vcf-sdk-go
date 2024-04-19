@@ -18,7 +18,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// DomainIntegration This specification contains information related to the existing vRealize Operations instance deployment
+// DomainIntegration This specification contains information related to the existing VMware Aria Operations instance deployment
 //
 // swagger:model DomainIntegration
 type DomainIntegration struct {

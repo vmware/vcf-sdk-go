@@ -30,7 +30,7 @@ type DomainUpdateSpec struct {
 	// Name of the domain
 	Name string `json:"name,omitempty"`
 
-	// NSX-T Specification for the domain
+	// NSX Specification for the domain
 	NsxTSpec *NsxTSpec `json:"nsxTSpec,omitempty"`
 }
 
@@ -111,6 +111,11 @@ func (m *DomainUpdateSpec) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *DomainUpdateSpec) contextValidateClusterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterSpec != nil {
+
+		if swag.IsZero(m.ClusterSpec) { // not required
+			return nil
+		}
+
 		if err := m.ClusterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterSpec")
@@ -127,6 +132,11 @@ func (m *DomainUpdateSpec) contextValidateClusterSpec(ctx context.Context, forma
 func (m *DomainUpdateSpec) contextValidateNsxTSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NsxTSpec != nil {
+
+		if swag.IsZero(m.NsxTSpec) { // not required
+			return nil
+		}
+
 		if err := m.NsxTSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxTSpec")

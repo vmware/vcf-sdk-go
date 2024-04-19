@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// WSA Spec contains parameters of a vRealize Automation instance
+// WSA Spec contains parameters of a VMware Aria Automation instance
 //
 // swagger:model Wsa
 type WSA struct {
@@ -104,6 +104,11 @@ func (m *WSA) contextValidateNodes(ctx context.Context, formats strfmt.Registry)
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

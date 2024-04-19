@@ -64,17 +64,17 @@ UploadCertificatesParams contains all the parameters to send to the API endpoint
 */
 type UploadCertificatesParams struct {
 
-	/* DomainName.
-
-	   Domain ID or Name
-	*/
-	DomainName string
-
 	/* File.
 
 	   file
 	*/
 	File runtime.NamedReadCloser
+
+	/* ID.
+
+	   Domain ID or Name
+	*/
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -129,17 +129,6 @@ func (o *UploadCertificatesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDomainName adds the domainName to the upload certificates params
-func (o *UploadCertificatesParams) WithDomainName(domainName string) *UploadCertificatesParams {
-	o.SetDomainName(domainName)
-	return o
-}
-
-// SetDomainName adds the domainName to the upload certificates params
-func (o *UploadCertificatesParams) SetDomainName(domainName string) {
-	o.DomainName = domainName
-}
-
 // WithFile adds the file to the upload certificates params
 func (o *UploadCertificatesParams) WithFile(file runtime.NamedReadCloser) *UploadCertificatesParams {
 	o.SetFile(file)
@@ -151,6 +140,17 @@ func (o *UploadCertificatesParams) SetFile(file runtime.NamedReadCloser) {
 	o.File = file
 }
 
+// WithID adds the id to the upload certificates params
+func (o *UploadCertificatesParams) WithID(id string) *UploadCertificatesParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the upload certificates params
+func (o *UploadCertificatesParams) SetID(id string) {
+	o.ID = id
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *UploadCertificatesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -158,13 +158,13 @@ func (o *UploadCertificatesParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-
-	// path param domainName
-	if err := r.SetPathParam("domainName", o.DomainName); err != nil {
-		return err
-	}
 	// form file param file
 	if err := r.SetFileParam("file", o.File); err != nil {
+		return err
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

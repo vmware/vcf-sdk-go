@@ -18,10 +18,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// NetworkSpec This specification contains cluster network configuration
+// NetworkSpec This specification contains cluster's network configuration.
 //
 // swagger:model NetworkSpec
 type NetworkSpec struct {
+
+	// The list of network profiles
+	NetworkProfiles []*NetworkProfile `json:"networkProfiles"`
 
 	// NSX configuration to add to the cluster
 	// Required: true
@@ -36,6 +39,10 @@ type NetworkSpec struct {
 func (m *NetworkSpec) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateNetworkProfiles(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateNsxClusterSpec(formats); err != nil {
 		res = append(res, err)
 	}
@@ -47,6 +54,32 @@ func (m *NetworkSpec) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NetworkSpec) validateNetworkProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetworkProfiles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NetworkProfiles); i++ {
+		if swag.IsZero(m.NetworkProfiles[i]) { // not required
+			continue
+		}
+
+		if m.NetworkProfiles[i] != nil {
+			if err := m.NetworkProfiles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -101,6 +134,10 @@ func (m *NetworkSpec) validateVdsSpecs(formats strfmt.Registry) error {
 func (m *NetworkSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateNetworkProfiles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNsxClusterSpec(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -115,9 +152,35 @@ func (m *NetworkSpec) ContextValidate(ctx context.Context, formats strfmt.Regist
 	return nil
 }
 
+func (m *NetworkSpec) contextValidateNetworkProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NetworkProfiles); i++ {
+
+		if m.NetworkProfiles[i] != nil {
+
+			if swag.IsZero(m.NetworkProfiles[i]) { // not required
+				return nil
+			}
+
+			if err := m.NetworkProfiles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *NetworkSpec) contextValidateNsxClusterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NsxClusterSpec != nil {
+
 		if err := m.NsxClusterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxClusterSpec")
@@ -136,6 +199,11 @@ func (m *NetworkSpec) contextValidateVdsSpecs(ctx context.Context, formats strfm
 	for i := 0; i < len(m.VdsSpecs); i++ {
 
 		if m.VdsSpecs[i] != nil {
+
+			if swag.IsZero(m.VdsSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.VdsSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vdsSpecs" + "." + strconv.Itoa(i))

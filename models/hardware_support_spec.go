@@ -95,6 +95,7 @@ func (m *HardwareSupportSpec) ContextValidate(ctx context.Context, formats strfm
 func (m *HardwareSupportSpec) contextValidatePackageSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PackageSpec != nil {
+
 		if err := m.PackageSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("packageSpec")

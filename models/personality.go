@@ -289,6 +289,11 @@ func (m *Personality) ContextValidate(ctx context.Context, formats strfmt.Regist
 func (m *Personality) contextValidateKbArticles(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.KbArticles != nil {
+
+		if swag.IsZero(m.KbArticles) { // not required
+			return nil
+		}
+
 		if err := m.KbArticles.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("kbArticles")
@@ -305,6 +310,7 @@ func (m *Personality) contextValidateKbArticles(ctx context.Context, formats str
 func (m *Personality) contextValidateSoftwareInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SoftwareInfo != nil {
+
 		if err := m.SoftwareInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("softwareInfo")

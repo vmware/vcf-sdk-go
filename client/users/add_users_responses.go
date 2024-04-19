@@ -57,7 +57,7 @@ func (o *AddUsersReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/users] addUsers", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *AddUsersOK) IsServerError() bool {
 // IsCode returns true when this add users o k response a status code equal to that given
 func (o *AddUsersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the add users o k response
+func (o *AddUsersOK) Code() int {
+	return 200
 }
 
 func (o *AddUsersOK) Error() string {
@@ -163,6 +168,11 @@ func (o *AddUsersCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the add users created response
+func (o *AddUsersCreated) Code() int {
+	return 201
+}
+
 func (o *AddUsersCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/users][%d] addUsersCreated  %+v", 201, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *AddUsersBadRequest) IsServerError() bool {
 // IsCode returns true when this add users bad request response a status code equal to that given
 func (o *AddUsersBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the add users bad request response
+func (o *AddUsersBadRequest) Code() int {
+	return 400
 }
 
 func (o *AddUsersBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *AddUsersUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the add users unauthorized response
+func (o *AddUsersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AddUsersUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /v1/users][%d] addUsersUnauthorized  %+v", 401, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *AddUsersInternalServerError) IsServerError() bool {
 // IsCode returns true when this add users internal server error response a status code equal to that given
 func (o *AddUsersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the add users internal server error response
+func (o *AddUsersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddUsersInternalServerError) Error() string {

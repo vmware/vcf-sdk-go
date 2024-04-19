@@ -45,7 +45,7 @@ type ClientService interface {
 
 	GetNetworkPool(params *GetNetworkPoolParams, opts ...ClientOption) (*GetNetworkPoolOK, error)
 
-	GetNetworkPools(params *GetNetworkPoolsParams, opts ...ClientOption) (*GetNetworkPoolsOK, error)
+	GetNetworkPoolByID(params *GetNetworkPoolByIDParams, opts ...ClientOption) (*GetNetworkPoolByIDOK, error)
 
 	GetNetworksOfNetworkPool(params *GetNetworksOfNetworkPoolParams, opts ...ClientOption) (*GetNetworksOfNetworkPoolOK, error)
 
@@ -256,9 +256,9 @@ func (a *Client) GetNetworkOfNetworkPool(params *GetNetworkOfNetworkPoolParams, 
 }
 
 /*
-GetNetworkPool gets a network pool
+GetNetworkPool gets the list of all network pools
 
-Get a Network Pool by ID, if it exists
+Get the Network Pools
 */
 func (a *Client) GetNetworkPool(params *GetNetworkPoolParams, opts ...ClientOption) (*GetNetworkPoolOK, error) {
 	// TODO: Validate the params before sending
@@ -268,7 +268,7 @@ func (a *Client) GetNetworkPool(params *GetNetworkPoolParams, opts ...ClientOpti
 	op := &runtime.ClientOperation{
 		ID:                 "getNetworkPool",
 		Method:             "GET",
-		PathPattern:        "/v1/network-pools/{id}",
+		PathPattern:        "/v1/network-pools",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -296,24 +296,24 @@ func (a *Client) GetNetworkPool(params *GetNetworkPoolParams, opts ...ClientOpti
 }
 
 /*
-GetNetworkPools gets the network pools
+GetNetworkPoolByID gets a network pool
 
-Get the Network Pools
+Get a Network Pool by ID, if it exists
 */
-func (a *Client) GetNetworkPools(params *GetNetworkPoolsParams, opts ...ClientOption) (*GetNetworkPoolsOK, error) {
+func (a *Client) GetNetworkPoolByID(params *GetNetworkPoolByIDParams, opts ...ClientOption) (*GetNetworkPoolByIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNetworkPoolsParams()
+		params = NewGetNetworkPoolByIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNetworkPools",
+		ID:                 "getNetworkPoolByID",
 		Method:             "GET",
-		PathPattern:        "/v1/network-pools",
+		PathPattern:        "/v1/network-pools/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNetworkPoolsReader{formats: a.formats},
+		Reader:             &GetNetworkPoolByIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -325,13 +325,13 @@ func (a *Client) GetNetworkPools(params *GetNetworkPoolsParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNetworkPoolsOK)
+	success, ok := result.(*GetNetworkPoolByIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNetworkPools: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getNetworkPoolByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

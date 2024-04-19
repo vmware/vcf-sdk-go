@@ -98,6 +98,7 @@ func (m *HardwareSupportPackage) ContextValidate(ctx context.Context, formats st
 func (m *HardwareSupportPackage) contextValidatePkg(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Pkg != nil {
+
 		if err := m.Pkg.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pkg")

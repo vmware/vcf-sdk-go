@@ -32,23 +32,23 @@ type NsxTEdgeNodeSpec struct {
 	EdgeNodeName *string `json:"edgeNodeName"`
 
 	// Edge TEP 1 IP
-	// Required: true
-	EdgeTep1IP *string `json:"edgeTep1IP"`
+	EdgeTep1IP string `json:"edgeTep1IP,omitempty"`
 
 	// Edge TEP 2 IP
-	// Required: true
-	EdgeTep2IP *string `json:"edgeTep2IP"`
+	EdgeTep2IP string `json:"edgeTep2IP,omitempty"`
 
 	// Edge TEP Gateway IP
-	// Required: true
-	EdgeTepGateway *string `json:"edgeTepGateway"`
+	EdgeTepGateway string `json:"edgeTepGateway,omitempty"`
+
+	// Specifications for Edge Node
+	EdgeTepIPAddressPool *EdgeTepIPAddressPoolSpec `json:"edgeTepIpAddressPool,omitempty"`
 
 	// Edge TEP VLAN
 	// Required: true
 	EdgeTepVlan *int32 `json:"edgeTepVlan"`
 
 	// First NSX enabled VDS uplink for the Edge node
-	// Example: One among: uplink1, uplink2, uplink3, uplink4
+	// Example: One among: uplink1, uplink2, uplink3, uplink4, uplink5, uplink6, uplink7, uplink8
 	FirstNsxVdsUplink string `json:"firstNsxVdsUplink,omitempty"`
 
 	// Is inter-rack cluster(true for L2 non-uniform and L3 : At least one of management, uplink, Edge and host TEP networks is different for hosts of the cluster, false for L2 uniform :   All hosts in cluster have identical management, uplink, Edge and host TEP networks)
@@ -64,11 +64,17 @@ type NsxTEdgeNodeSpec struct {
 	ManagementIP *string `json:"managementIP"`
 
 	// Second NSX enabled VDS uplink for the Edge node
-	// Example: One among: uplink1, uplink2, uplink3, uplink4
+	// Example: One among: uplink1, uplink2, uplink3, uplink4, uplink5, uplink6, uplink7, uplink8
 	SecondNsxVdsUplink string `json:"secondNsxVdsUplink,omitempty"`
 
 	// Specifications of Tier0 uplinks for the Edge Node
 	UplinkNetwork []*NsxTEdgeUplinkNetwork `json:"uplinkNetwork"`
+
+	// Management Network Name
+	VMManagementPortgroupName string `json:"vmManagementPortgroupName,omitempty"`
+
+	// Management Vlan Id
+	VMManagementPortgroupVlan int32 `json:"vmManagementPortgroupVlan,omitempty"`
 }
 
 // Validate validates this nsx t edge node spec
@@ -83,15 +89,7 @@ func (m *NsxTEdgeNodeSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateEdgeTep1IP(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEdgeTep2IP(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEdgeTepGateway(formats); err != nil {
+	if err := m.validateEdgeTepIPAddressPool(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -139,28 +137,20 @@ func (m *NsxTEdgeNodeSpec) validateEdgeNodeName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NsxTEdgeNodeSpec) validateEdgeTep1IP(formats strfmt.Registry) error {
-
-	if err := validate.Required("edgeTep1IP", "body", m.EdgeTep1IP); err != nil {
-		return err
+func (m *NsxTEdgeNodeSpec) validateEdgeTepIPAddressPool(formats strfmt.Registry) error {
+	if swag.IsZero(m.EdgeTepIPAddressPool) { // not required
+		return nil
 	}
 
-	return nil
-}
-
-func (m *NsxTEdgeNodeSpec) validateEdgeTep2IP(formats strfmt.Registry) error {
-
-	if err := validate.Required("edgeTep2IP", "body", m.EdgeTep2IP); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NsxTEdgeNodeSpec) validateEdgeTepGateway(formats strfmt.Registry) error {
-
-	if err := validate.Required("edgeTepGateway", "body", m.EdgeTepGateway); err != nil {
-		return err
+	if m.EdgeTepIPAddressPool != nil {
+		if err := m.EdgeTepIPAddressPool.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edgeTepIpAddressPool")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edgeTepIpAddressPool")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -232,6 +222,10 @@ func (m *NsxTEdgeNodeSpec) validateUplinkNetwork(formats strfmt.Registry) error 
 func (m *NsxTEdgeNodeSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateEdgeTepIPAddressPool(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateUplinkNetwork(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -242,11 +236,37 @@ func (m *NsxTEdgeNodeSpec) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
+func (m *NsxTEdgeNodeSpec) contextValidateEdgeTepIPAddressPool(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EdgeTepIPAddressPool != nil {
+
+		if swag.IsZero(m.EdgeTepIPAddressPool) { // not required
+			return nil
+		}
+
+		if err := m.EdgeTepIPAddressPool.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("edgeTepIpAddressPool")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("edgeTepIpAddressPool")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NsxTEdgeNodeSpec) contextValidateUplinkNetwork(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.UplinkNetwork); i++ {
 
 		if m.UplinkNetwork[i] != nil {
+
+			if swag.IsZero(m.UplinkNetwork[i]) { // not required
+				return nil
+			}
+
 			if err := m.UplinkNetwork[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("uplinkNetwork" + "." + strconv.Itoa(i))

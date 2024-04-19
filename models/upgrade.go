@@ -31,7 +31,7 @@ type Upgrade struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// NSX-T upgrade specifications
+	// NSX upgrade specifications
 	NSXTUpgradeUserInputSpec *NSXTUpgradeUserInputSpec `json:"nsxtUpgradeUserInputSpec,omitempty"`
 
 	// Boolean to represent components will be upgraded in parallel on not
@@ -205,6 +205,11 @@ func (m *Upgrade) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 func (m *Upgrade) contextValidateNSXTUpgradeUserInputSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NSXTUpgradeUserInputSpec != nil {
+
+		if swag.IsZero(m.NSXTUpgradeUserInputSpec) { // not required
+			return nil
+		}
+
 		if err := m.NSXTUpgradeUserInputSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxtUpgradeUserInputSpec")
@@ -223,6 +228,11 @@ func (m *Upgrade) contextValidateResourceUpgradeSpecs(ctx context.Context, forma
 	for i := 0; i < len(m.ResourceUpgradeSpecs); i++ {
 
 		if m.ResourceUpgradeSpecs[i] != nil {
+
+			if swag.IsZero(m.ResourceUpgradeSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.ResourceUpgradeSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resourceUpgradeSpecs" + "." + strconv.Itoa(i))

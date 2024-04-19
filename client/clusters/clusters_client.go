@@ -35,9 +35,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	AddDatastoreToCluster(params *AddDatastoreToClusterParams, opts ...ClientOption) (*AddDatastoreToClusterOK, *AddDatastoreToClusterAccepted, error)
 
-	AssignTagsToExistingCluster(params *AssignTagsToExistingClusterParams, opts ...ClientOption) (*AssignTagsToExistingClusterOK, error)
-
-	AssignableTagsToCluster(params *AssignableTagsToClusterParams, opts ...ClientOption) (*AssignableTagsToClusterOK, error)
+	AssignTagsToCluster(params *AssignTagsToClusterParams, opts ...ClientOption) (*AssignTagsToClusterOK, error)
 
 	CreateCluster(params *CreateClusterParams, opts ...ClientOption) (*CreateClusterOK, *CreateClusterAccepted, error)
 
@@ -46,6 +44,12 @@ type ClientService interface {
 	GetCluster(params *GetClusterParams, opts ...ClientOption) (*GetClusterOK, error)
 
 	GetClusterDatastores(params *GetClusterDatastoresParams, opts ...ClientOption) (*GetClusterDatastoresOK, error)
+
+	GetClusterNetworkConfiguration(params *GetClusterNetworkConfigurationParams, opts ...ClientOption) (*GetClusterNetworkConfigurationOK, error)
+
+	GetClusterNetworkConfigurationCriteria(params *GetClusterNetworkConfigurationCriteriaParams, opts ...ClientOption) (*GetClusterNetworkConfigurationCriteriaOK, error)
+
+	GetClusterNetworkConfigurationQueryResponse(params *GetClusterNetworkConfigurationQueryResponseParams, opts ...ClientOption) (*GetClusterNetworkConfigurationQueryResponseOK, error)
 
 	GetClusterTagManagerURL(params *GetClusterTagManagerURLParams, opts ...ClientOption) (*GetClusterTagManagerURLOK, error)
 
@@ -63,11 +67,15 @@ type ClientService interface {
 
 	GetHostQueryResponse(params *GetHostQueryResponseParams, opts ...ClientOption) (*GetHostQueryResponseOK, error)
 
+	GetTagAssignableForCluster(params *GetTagAssignableForClusterParams, opts ...ClientOption) (*GetTagAssignableForClusterOK, error)
+
 	GetTagsAssignedToCluster(params *GetTagsAssignedToClusterParams, opts ...ClientOption) (*GetTagsAssignedToClusterOK, error)
 
 	GetTagsAssignedToClusters(params *GetTagsAssignedToClustersParams, opts ...ClientOption) (*GetTagsAssignedToClustersOK, error)
 
 	GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVdsesOK, error)
+
+	ImportVdsToInventory(params *ImportVdsToInventoryParams, opts ...ClientOption) (*ImportVdsToInventoryAccepted, error)
 
 	PostDatastoreQuery(params *PostDatastoreQueryParams, opts ...ClientOption) (*PostDatastoreQueryOK, error)
 
@@ -75,15 +83,15 @@ type ClientService interface {
 
 	RemoveDatastoreFromCluster(params *RemoveDatastoreFromClusterParams, opts ...ClientOption) (*RemoveDatastoreFromClusterOK, *RemoveDatastoreFromClusterAccepted, error)
 
-	RemoveTagsFromExistingCluster(params *RemoveTagsFromExistingClusterParams, opts ...ClientOption) (*RemoveTagsFromExistingClusterOK, error)
+	RemoveTagsFromCluster(params *RemoveTagsFromClusterParams, opts ...ClientOption) (*RemoveTagsFromClusterOK, error)
 
 	UpdateCluster(params *UpdateClusterParams, opts ...ClientOption) (*UpdateClusterOK, *UpdateClusterAccepted, error)
 
-	ValidateClusterOperations(params *ValidateClusterOperationsParams, opts ...ClientOption) (*ValidateClusterOperationsOK, error)
+	ValidateClusterCreationSpec(params *ValidateClusterCreationSpecParams, opts ...ClientOption) (*ValidateClusterCreationSpecOK, error)
 
-	ValidateClustersOperations(params *ValidateClustersOperationsParams, opts ...ClientOption) (*ValidateClustersOperationsOK, error)
+	ValidateClusterUpdateSpec(params *ValidateClusterUpdateSpecParams, opts ...ClientOption) (*ValidateClusterUpdateSpecOK, error)
 
-	ValidateVSANRemoteDatastore(params *ValidateVSANRemoteDatastoreParams, opts ...ClientOption) (*ValidateVSANRemoteDatastoreOK, error)
+	ValidateVSANRemoteDatastoreSpec(params *ValidateVSANRemoteDatastoreSpecParams, opts ...ClientOption) (*ValidateVSANRemoteDatastoreSpecOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -128,22 +136,22 @@ func (a *Client) AddDatastoreToCluster(params *AddDatastoreToClusterParams, opts
 }
 
 /*
-AssignTagsToExistingCluster assigns tags to cluster
+AssignTagsToCluster assigns tags to cluster
 */
-func (a *Client) AssignTagsToExistingCluster(params *AssignTagsToExistingClusterParams, opts ...ClientOption) (*AssignTagsToExistingClusterOK, error) {
+func (a *Client) AssignTagsToCluster(params *AssignTagsToClusterParams, opts ...ClientOption) (*AssignTagsToClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewAssignTagsToExistingClusterParams()
+		params = NewAssignTagsToClusterParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "assignTagsToExistingCluster",
+		ID:                 "assignTagsToCluster",
 		Method:             "PUT",
 		PathPattern:        "/v1/clusters/{id}/tags",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &AssignTagsToExistingClusterReader{formats: a.formats},
+		Reader:             &AssignTagsToClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -155,51 +163,13 @@ func (a *Client) AssignTagsToExistingCluster(params *AssignTagsToExistingCluster
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*AssignTagsToExistingClusterOK)
+	success, ok := result.(*AssignTagsToClusterOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for assignTagsToExistingCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AssignableTagsToCluster gets assignable tags to cluster
-*/
-func (a *Client) AssignableTagsToCluster(params *AssignableTagsToClusterParams, opts ...ClientOption) (*AssignableTagsToClusterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAssignableTagsToClusterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "assignableTagsToCluster",
-		Method:             "GET",
-		PathPattern:        "/v1/clusters/{id}/tags/assignable-tags",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AssignableTagsToClusterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AssignableTagsToClusterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for assignableTagsToCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for assignTagsToCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -282,7 +252,7 @@ func (a *Client) DeleteCluster(params *DeleteClusterParams, opts ...ClientOption
 }
 
 /*
-GetCluster gets a cluster
+GetCluster gets a cluster by its ID
 */
 func (a *Client) GetCluster(params *GetClusterParams, opts ...ClientOption) (*GetClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -330,7 +300,7 @@ func (a *Client) GetClusterDatastores(params *GetClusterDatastoresParams, opts .
 	op := &runtime.ClientOperation{
 		ID:                 "getClusterDatastores",
 		Method:             "GET",
-		PathPattern:        "/v1/clusters/{clusterId}/datastores",
+		PathPattern:        "/v1/clusters/{id}/datastores",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -354,6 +324,120 @@ func (a *Client) GetClusterDatastores(params *GetClusterDatastoresParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getClusterDatastores: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetClusterNetworkConfiguration gets cluster network configuration
+*/
+func (a *Client) GetClusterNetworkConfiguration(params *GetClusterNetworkConfigurationParams, opts ...ClientOption) (*GetClusterNetworkConfigurationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterNetworkConfigurationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getClusterNetworkConfiguration",
+		Method:             "POST",
+		PathPattern:        "/v1/clusters/{id}/network/queries",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetClusterNetworkConfigurationReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterNetworkConfigurationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getClusterNetworkConfiguration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetClusterNetworkConfigurationCriteria gets cluster network configuration criteria
+*/
+func (a *Client) GetClusterNetworkConfigurationCriteria(params *GetClusterNetworkConfigurationCriteriaParams, opts ...ClientOption) (*GetClusterNetworkConfigurationCriteriaOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterNetworkConfigurationCriteriaParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getClusterNetworkConfigurationCriteria",
+		Method:             "GET",
+		PathPattern:        "/v1/clusters/{id}/network/criteria",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetClusterNetworkConfigurationCriteriaReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterNetworkConfigurationCriteriaOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getClusterNetworkConfigurationCriteria: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetClusterNetworkConfigurationQueryResponse gets cluster network configuration query response
+*/
+func (a *Client) GetClusterNetworkConfigurationQueryResponse(params *GetClusterNetworkConfigurationQueryResponseParams, opts ...ClientOption) (*GetClusterNetworkConfigurationQueryResponseOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetClusterNetworkConfigurationQueryResponseParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getClusterNetworkConfigurationQueryResponse",
+		Method:             "GET",
+		PathPattern:        "/v1/clusters/{id}/network/queries/{queryId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetClusterNetworkConfigurationQueryResponseReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetClusterNetworkConfigurationQueryResponseOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getClusterNetworkConfigurationQueryResponse: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -396,7 +480,7 @@ func (a *Client) GetClusterTagManagerURL(params *GetClusterTagManagerURLParams, 
 }
 
 /*
-GetClusters gets the clusters
+GetClusters retrieves a list of clusters
 */
 func (a *Client) GetClusters(params *GetClustersParams, opts ...ClientOption) (*GetClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -662,7 +746,45 @@ func (a *Client) GetHostQueryResponse(params *GetHostQueryResponseParams, opts .
 }
 
 /*
-GetTagsAssignedToCluster gets tags assigned to cluster
+GetTagAssignableForCluster gets tags assignable to a cluster
+*/
+func (a *Client) GetTagAssignableForCluster(params *GetTagAssignableForClusterParams, opts ...ClientOption) (*GetTagAssignableForClusterOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetTagAssignableForClusterParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getTagAssignableForCluster",
+		Method:             "GET",
+		PathPattern:        "/v1/clusters/{id}/tags/assignable-tags",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetTagAssignableForClusterReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetTagAssignableForClusterOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getTagAssignableForCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetTagsAssignedToCluster gets tags assigned to a cluster by its ID
 */
 func (a *Client) GetTagsAssignedToCluster(params *GetTagsAssignedToClusterParams, opts ...ClientOption) (*GetTagsAssignedToClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -772,6 +894,44 @@ func (a *Client) GetVdses(params *GetVdsesParams, opts ...ClientOption) (*GetVds
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getVdses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ImportVdsToInventory imports vds to inventory for the given cluster
+*/
+func (a *Client) ImportVdsToInventory(params *ImportVdsToInventoryParams, opts ...ClientOption) (*ImportVdsToInventoryAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImportVdsToInventoryParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "importVdsToInventory",
+		Method:             "POST",
+		PathPattern:        "/v1/clusters/{clusterId}/vdses",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ImportVdsToInventoryReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImportVdsToInventoryAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for importVdsToInventory: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -891,22 +1051,22 @@ func (a *Client) RemoveDatastoreFromCluster(params *RemoveDatastoreFromClusterPa
 }
 
 /*
-RemoveTagsFromExistingCluster removes tags from cluster
+RemoveTagsFromCluster removes tags from a cluster
 */
-func (a *Client) RemoveTagsFromExistingCluster(params *RemoveTagsFromExistingClusterParams, opts ...ClientOption) (*RemoveTagsFromExistingClusterOK, error) {
+func (a *Client) RemoveTagsFromCluster(params *RemoveTagsFromClusterParams, opts ...ClientOption) (*RemoveTagsFromClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewRemoveTagsFromExistingClusterParams()
+		params = NewRemoveTagsFromClusterParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "removeTagsFromExistingCluster",
+		ID:                 "removeTagsFromCluster",
 		Method:             "DELETE",
 		PathPattern:        "/v1/clusters/{id}/tags",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &RemoveTagsFromExistingClusterReader{formats: a.formats},
+		Reader:             &RemoveTagsFromClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -918,13 +1078,13 @@ func (a *Client) RemoveTagsFromExistingCluster(params *RemoveTagsFromExistingClu
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*RemoveTagsFromExistingClusterOK)
+	success, ok := result.(*RemoveTagsFromClusterOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for removeTagsFromExistingCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for removeTagsFromCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -968,60 +1128,22 @@ func (a *Client) UpdateCluster(params *UpdateClusterParams, opts ...ClientOption
 }
 
 /*
-ValidateClusterOperations validates input specification for updating given cluster
+ValidateClusterCreationSpec performs validation of the cluster creation spec specification
 */
-func (a *Client) ValidateClusterOperations(params *ValidateClusterOperationsParams, opts ...ClientOption) (*ValidateClusterOperationsOK, error) {
+func (a *Client) ValidateClusterCreationSpec(params *ValidateClusterCreationSpecParams, opts ...ClientOption) (*ValidateClusterCreationSpecOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateClusterOperationsParams()
+		params = NewValidateClusterCreationSpecParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateClusterOperations",
-		Method:             "POST",
-		PathPattern:        "/v1/clusters/{id}/validations",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ValidateClusterOperationsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ValidateClusterOperationsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for validateClusterOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-ValidateClustersOperations validates the input specification for cluster creation
-*/
-func (a *Client) ValidateClustersOperations(params *ValidateClustersOperationsParams, opts ...ClientOption) (*ValidateClustersOperationsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewValidateClustersOperationsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "validateClustersOperations",
+		ID:                 "validateClusterCreationSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/clusters/validations",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateClustersOperationsReader{formats: a.formats},
+		Reader:             &ValidateClusterCreationSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1033,33 +1155,71 @@ func (a *Client) ValidateClustersOperations(params *ValidateClustersOperationsPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ValidateClustersOperationsOK)
+	success, ok := result.(*ValidateClusterCreationSpecOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for validateClustersOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for validateClusterCreationSpec: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-ValidateVSANRemoteDatastore validates the input spec for mounting v SAN remote datastore to an existing cluster
+ValidateClusterUpdateSpec performs validation of the cluster update spec specification
 */
-func (a *Client) ValidateVSANRemoteDatastore(params *ValidateVSANRemoteDatastoreParams, opts ...ClientOption) (*ValidateVSANRemoteDatastoreOK, error) {
+func (a *Client) ValidateClusterUpdateSpec(params *ValidateClusterUpdateSpecParams, opts ...ClientOption) (*ValidateClusterUpdateSpecOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateVSANRemoteDatastoreParams()
+		params = NewValidateClusterUpdateSpecParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateVsanRemoteDatastore",
+		ID:                 "validateClusterUpdateSpec",
+		Method:             "POST",
+		PathPattern:        "/v1/clusters/{id}/validations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ValidateClusterUpdateSpecReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ValidateClusterUpdateSpecOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for validateClusterUpdateSpec: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ValidateVSANRemoteDatastoreSpec performs validation of the datastore mount spec specification
+*/
+func (a *Client) ValidateVSANRemoteDatastoreSpec(params *ValidateVSANRemoteDatastoreSpecParams, opts ...ClientOption) (*ValidateVSANRemoteDatastoreSpecOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewValidateVSANRemoteDatastoreSpecParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "validateVsanRemoteDatastoreSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/clusters/{clusterId}/datastores/validation",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateVSANRemoteDatastoreReader{formats: a.formats},
+		Reader:             &ValidateVSANRemoteDatastoreSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1071,13 +1231,13 @@ func (a *Client) ValidateVSANRemoteDatastore(params *ValidateVSANRemoteDatastore
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ValidateVSANRemoteDatastoreOK)
+	success, ok := result.(*ValidateVSANRemoteDatastoreSpecOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for validateVsanRemoteDatastore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for validateVsanRemoteDatastoreSpec: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

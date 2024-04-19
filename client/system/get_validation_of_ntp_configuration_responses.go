@@ -45,7 +45,7 @@ func (o *GetValidationOfNtpConfigurationReader) ReadResponse(response runtime.Cl
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/system/ntp-configuration/validations/{id}] getValidationOfNtpConfiguration", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetValidationOfNtpConfigurationOK) IsServerError() bool {
 // IsCode returns true when this get validation of ntp configuration o k response a status code equal to that given
 func (o *GetValidationOfNtpConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get validation of ntp configuration o k response
+func (o *GetValidationOfNtpConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *GetValidationOfNtpConfigurationOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetValidationOfNtpConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get validation of ntp configuration bad request response
+func (o *GetValidationOfNtpConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetValidationOfNtpConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/ntp-configuration/validations/{id}][%d] getValidationOfNtpConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -211,6 +221,11 @@ func (o *GetValidationOfNtpConfigurationInternalServerError) IsServerError() boo
 // IsCode returns true when this get validation of ntp configuration internal server error response a status code equal to that given
 func (o *GetValidationOfNtpConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get validation of ntp configuration internal server error response
+func (o *GetValidationOfNtpConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetValidationOfNtpConfigurationInternalServerError) Error() string {

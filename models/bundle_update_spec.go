@@ -24,7 +24,7 @@ type BundleUpdateSpec struct {
 	// Bundle Download Specification.
 	BundleDownloadSpec *BundleDownloadSpec `json:"bundleDownloadSpec,omitempty"`
 
-	// Path to the software compatibility sets file
+	// [Deprecated] Path to the software compatibility sets file
 	CompatibilitySetsFilePath string `json:"compatibilitySetsFilePath,omitempty"`
 }
 
@@ -78,6 +78,11 @@ func (m *BundleUpdateSpec) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *BundleUpdateSpec) contextValidateBundleDownloadSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BundleDownloadSpec != nil {
+
+		if swag.IsZero(m.BundleDownloadSpec) { // not required
+			return nil
+		}
+
 		if err := m.BundleDownloadSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bundleDownloadSpec")

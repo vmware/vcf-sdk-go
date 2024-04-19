@@ -39,7 +39,7 @@ func (o *GetCriterionReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/hosts/criteria/{name}] getCriterion", response, response.Code())
 	}
 }
 
@@ -80,6 +80,11 @@ func (o *GetCriterionOK) IsServerError() bool {
 // IsCode returns true when this get criterion o k response a status code equal to that given
 func (o *GetCriterionOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get criterion o k response
+func (o *GetCriterionOK) Code() int {
+	return 200
 }
 
 func (o *GetCriterionOK) Error() string {
@@ -143,6 +148,11 @@ func (o *GetCriterionNotFound) IsServerError() bool {
 // IsCode returns true when this get criterion not found response a status code equal to that given
 func (o *GetCriterionNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the get criterion not found response
+func (o *GetCriterionNotFound) Code() int {
+	return 404
 }
 
 func (o *GetCriterionNotFound) Error() string {

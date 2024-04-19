@@ -33,171 +33,54 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ConvertToJSONSpec(params *ConvertToJSONSpecParams, opts ...ClientOption) (*ConvertToJSONSpecOK, error)
+	ExportBringupDetailReport(params *ExportBringupDetailReportParams, opts ...ClientOption) (*ExportBringupDetailReportOK, *ExportBringupDetailReportNoContent, error)
 
-	CreateSDDC(params *CreateSDDCParams, opts ...ClientOption) (*CreateSDDCOK, *CreateSDDCAccepted, error)
+	ExportBringupValidationReport(params *ExportBringupValidationReportParams, opts ...ClientOption) (*ExportBringupValidationReportOK, error)
 
-	GetAllSDDCValidations(params *GetAllSDDCValidationsParams, opts ...ClientOption) (*GetAllSDDCValidationsOK, error)
+	GetBringupAppInfo(params *GetBringupAppInfoParams, opts ...ClientOption) (*GetBringupAppInfoOK, error)
 
-	GetBringupDetailReport(params *GetBringupDetailReportParams, opts ...ClientOption) (*GetBringupDetailReportOK, *GetBringupDetailReportNoContent, error)
+	GetBringupTaskByID(params *GetBringupTaskByIDParams, opts ...ClientOption) (*GetBringupTaskByIDOK, error)
 
-	GetBringupInfo(params *GetBringupInfoParams, opts ...ClientOption) (*GetBringupInfoOK, error)
+	GetBringupTasks(params *GetBringupTasksParams, opts ...ClientOption) (*GetBringupTasksOK, error)
 
-	GetBringupValidationReport(params *GetBringupValidationReportParams, opts ...ClientOption) (*GetBringupValidationReportOK, error)
+	GetBringupValidation(params *GetBringupValidationParams, opts ...ClientOption) (*GetBringupValidationOK, error)
+
+	GetBringupValidations(params *GetBringupValidationsParams, opts ...ClientOption) (*GetBringupValidationsOK, error)
 
 	GetSDDCManagerInfo(params *GetSDDCManagerInfoParams, opts ...ClientOption) (*GetSDDCManagerInfoOK, error)
 
-	GetSDDCValidation(params *GetSDDCValidationParams, opts ...ClientOption) (*GetSDDCValidationOK, error)
-
-	RetrieveAllSddcs(params *RetrieveAllSddcsParams, opts ...ClientOption) (*RetrieveAllSddcsOK, error)
-
-	RetrieveSDDC(params *RetrieveSDDCParams, opts ...ClientOption) (*RetrieveSDDCOK, error)
+	RetryBringupValidation(params *RetryBringupValidationParams, opts ...ClientOption) (*RetryBringupValidationOK, error)
 
 	RetrySDDC(params *RetrySDDCParams, opts ...ClientOption) (*RetrySDDCOK, *RetrySDDCAccepted, error)
 
-	RetrySDDCValidation(params *RetrySDDCValidationParams, opts ...ClientOption) (*RetrySDDCValidationOK, error)
+	StartBringup(params *StartBringupParams, opts ...ClientOption) (*StartBringupOK, *StartBringupAccepted, error)
 
-	ValidateSDDCSpec(params *ValidateSDDCSpecParams, opts ...ClientOption) (*ValidateSDDCSpecOK, *ValidateSDDCSpecAccepted, error)
+	StartBringupSpecConversion(params *StartBringupSpecConversionParams, opts ...ClientOption) (*StartBringupSpecConversionOK, error)
+
+	ValidateBringupSpec(params *ValidateBringupSpecParams, opts ...ClientOption) (*ValidateBringupSpecOK, *ValidateBringupSpecAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-ConvertToJSONSpec converts SDDC specification Json excel file
-
-SDDC specification incorporates all the client inputs regarding VMW component parameters constituting the SDDC: NTP, DNS spec, ESXi, VC, VSAN, NSX spec et al.
-*/
-func (a *Client) ConvertToJSONSpec(params *ConvertToJSONSpecParams, opts ...ClientOption) (*ConvertToJSONSpecOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewConvertToJSONSpecParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "convertToJsonSpec",
-		Method:             "POST",
-		PathPattern:        "/v1/system/sddc-spec-converter",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ConvertToJSONSpecReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ConvertToJSONSpecOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for convertToJsonSpec: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-CreateSDDC creates SDDC
-*/
-func (a *Client) CreateSDDC(params *CreateSDDCParams, opts ...ClientOption) (*CreateSDDCOK, *CreateSDDCAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreateSDDCParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "createSddc",
-		Method:             "POST",
-		PathPattern:        "/v1/sddcs",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreateSDDCReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *CreateSDDCOK:
-		return value, nil, nil
-	case *CreateSDDCAccepted:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for sddc: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetAllSDDCValidations gets all SDDC specification validations
-*/
-func (a *Client) GetAllSDDCValidations(params *GetAllSDDCValidationsParams, opts ...ClientOption) (*GetAllSDDCValidationsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetAllSDDCValidationsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getAllSddcValidations",
-		Method:             "GET",
-		PathPattern:        "/v1/sddcs/validations",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetAllSDDCValidationsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetAllSDDCValidationsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllSddcValidations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetBringupDetailReport gets SDDC report by ID
+ExportBringupDetailReport gets bringup report by ID
 
 Returns the bringup report. Reports are generated in PDF and CSV formats.
 */
-func (a *Client) GetBringupDetailReport(params *GetBringupDetailReportParams, opts ...ClientOption) (*GetBringupDetailReportOK, *GetBringupDetailReportNoContent, error) {
+func (a *Client) ExportBringupDetailReport(params *ExportBringupDetailReportParams, opts ...ClientOption) (*ExportBringupDetailReportOK, *ExportBringupDetailReportNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetBringupDetailReportParams()
+		params = NewExportBringupDetailReportParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getBringupDetailReport",
+		ID:                 "exportBringupDetailReport",
 		Method:             "GET",
 		PathPattern:        "/v1/sddcs/{id}/detail-report",
 		ProducesMediaTypes: []string{"application/pdf", "text/csv"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBringupDetailReportReader{formats: a.formats},
+		Reader:             &ExportBringupDetailReportReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -210,9 +93,9 @@ func (a *Client) GetBringupDetailReport(params *GetBringupDetailReportParams, op
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *GetBringupDetailReportOK:
+	case *ExportBringupDetailReportOK:
 		return value, nil, nil
-	case *GetBringupDetailReportNoContent:
+	case *ExportBringupDetailReportNoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -221,64 +104,24 @@ func (a *Client) GetBringupDetailReport(params *GetBringupDetailReportParams, op
 }
 
 /*
-GetBringupInfo gets bringup info
-
-GET Method to retrieve information about Bringup app
-*/
-func (a *Client) GetBringupInfo(params *GetBringupInfoParams, opts ...ClientOption) (*GetBringupInfoOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetBringupInfoParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getBringupInfo",
-		Method:             "GET",
-		PathPattern:        "/v1/sddcs/about",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetBringupInfoReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetBringupInfoOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBringupInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetBringupValidationReport gets validation report by ID
+ExportBringupValidationReport gets validation report by ID
 
 Returns the bringup report for a validation. Reports are generated in PDF format.
 */
-func (a *Client) GetBringupValidationReport(params *GetBringupValidationReportParams, opts ...ClientOption) (*GetBringupValidationReportOK, error) {
+func (a *Client) ExportBringupValidationReport(params *ExportBringupValidationReportParams, opts ...ClientOption) (*ExportBringupValidationReportOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetBringupValidationReportParams()
+		params = NewExportBringupValidationReportParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getBringupValidationReport",
+		ID:                 "exportBringupValidationReport",
 		Method:             "GET",
 		PathPattern:        "/v1/sddcs/validations/{validationId}/report",
 		ProducesMediaTypes: []string{"application/pdf"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBringupValidationReportReader{formats: a.formats},
+		Reader:             &ExportBringupValidationReportReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -290,13 +133,205 @@ func (a *Client) GetBringupValidationReport(params *GetBringupValidationReportPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetBringupValidationReportOK)
+	success, ok := result.(*ExportBringupValidationReportOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBringupValidationReport: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for exportBringupValidationReport: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetBringupAppInfo gets information about the bringup application
+
+GET Method to retrieve information about Bringup app
+*/
+func (a *Client) GetBringupAppInfo(params *GetBringupAppInfoParams, opts ...ClientOption) (*GetBringupAppInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBringupAppInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getBringupAppInfo",
+		Method:             "GET",
+		PathPattern:        "/v1/sddcs/about",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetBringupAppInfoReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetBringupAppInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBringupAppInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetBringupTaskByID gets a bringup task by its id
+*/
+func (a *Client) GetBringupTaskByID(params *GetBringupTaskByIDParams, opts ...ClientOption) (*GetBringupTaskByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBringupTaskByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getBringupTaskByID",
+		Method:             "GET",
+		PathPattern:        "/v1/sddcs/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetBringupTaskByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetBringupTaskByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBringupTaskByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetBringupTasks retrieves all bringup tasks
+*/
+func (a *Client) GetBringupTasks(params *GetBringupTasksParams, opts ...ClientOption) (*GetBringupTasksOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBringupTasksParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getBringupTasks",
+		Method:             "GET",
+		PathPattern:        "/v1/sddcs",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetBringupTasksReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetBringupTasksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBringupTasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetBringupValidation retrieves the results of a bringup validation by its ID
+*/
+func (a *Client) GetBringupValidation(params *GetBringupValidationParams, opts ...ClientOption) (*GetBringupValidationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBringupValidationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getBringupValidation",
+		Method:             "GET",
+		PathPattern:        "/v1/sddcs/validations/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetBringupValidationReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetBringupValidationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBringupValidation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetBringupValidations retrieves a list of bringup validations
+*/
+func (a *Client) GetBringupValidations(params *GetBringupValidationsParams, opts ...ClientOption) (*GetBringupValidationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBringupValidationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getBringupValidations",
+		Method:             "GET",
+		PathPattern:        "/v1/sddcs/validations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetBringupValidationsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetBringupValidationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBringupValidations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -341,22 +376,24 @@ func (a *Client) GetSDDCManagerInfo(params *GetSDDCManagerInfoParams, opts ...Cl
 }
 
 /*
-GetSDDCValidation gets SDDC specification validation status by ID
+RetryBringupValidation retries bringup validation
+
+Retry a completed SDDC validation
 */
-func (a *Client) GetSDDCValidation(params *GetSDDCValidationParams, opts ...ClientOption) (*GetSDDCValidationOK, error) {
+func (a *Client) RetryBringupValidation(params *RetryBringupValidationParams, opts ...ClientOption) (*RetryBringupValidationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetSDDCValidationParams()
+		params = NewRetryBringupValidationParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getSddcValidation",
-		Method:             "GET",
+		ID:                 "retryBringupValidation",
+		Method:             "PATCH",
 		PathPattern:        "/v1/sddcs/validations/{id}",
-		ProducesMediaTypes: []string{"application/json"},
+		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetSDDCValidationReader{formats: a.formats},
+		Reader:             &RetryBringupValidationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -368,89 +405,13 @@ func (a *Client) GetSDDCValidation(params *GetSDDCValidationParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetSDDCValidationOK)
+	success, ok := result.(*RetryBringupValidationOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getSddcValidation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-RetrieveAllSddcs retrieves all s d d cs
-*/
-func (a *Client) RetrieveAllSddcs(params *RetrieveAllSddcsParams, opts ...ClientOption) (*RetrieveAllSddcsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewRetrieveAllSddcsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "retrieveAllSddcs",
-		Method:             "GET",
-		PathPattern:        "/v1/sddcs",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &RetrieveAllSddcsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*RetrieveAllSddcsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for retrieveAllSddcs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-RetrieveSDDC retrieves a SDDC
-*/
-func (a *Client) RetrieveSDDC(params *RetrieveSDDCParams, opts ...ClientOption) (*RetrieveSDDCOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewRetrieveSDDCParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "retrieveSDDC",
-		Method:             "GET",
-		PathPattern:        "/v1/sddcs/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &RetrieveSDDCReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*RetrieveSDDCOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for retrieveSDDC: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for retryBringupValidation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -494,64 +455,22 @@ func (a *Client) RetrySDDC(params *RetrySDDCParams, opts ...ClientOption) (*Retr
 }
 
 /*
-RetrySDDCValidation retries SDDC validation
-
-Retry a completed SDDC validation
+StartBringup deploys a management domain
 */
-func (a *Client) RetrySDDCValidation(params *RetrySDDCValidationParams, opts ...ClientOption) (*RetrySDDCValidationOK, error) {
+func (a *Client) StartBringup(params *StartBringupParams, opts ...ClientOption) (*StartBringupOK, *StartBringupAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewRetrySDDCValidationParams()
+		params = NewStartBringupParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "retrySddcValidation",
-		Method:             "PATCH",
-		PathPattern:        "/v1/sddcs/validations/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &RetrySDDCValidationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*RetrySDDCValidationOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for retrySddcValidation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-ValidateSDDCSpec validates SDDC specification before creation
-
-SDDC specification incorporates all the client inputs regarding VMW component parameters constituting the SDDC: NTP, DNS spec, ESXi, VC, VSAN, NSX spec et al.
-*/
-func (a *Client) ValidateSDDCSpec(params *ValidateSDDCSpecParams, opts ...ClientOption) (*ValidateSDDCSpecOK, *ValidateSDDCSpecAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewValidateSDDCSpecParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "validateSddcSpec",
+		ID:                 "startBringup",
 		Method:             "POST",
-		PathPattern:        "/v1/sddcs/validations",
+		PathPattern:        "/v1/sddcs",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateSDDCSpecReader{formats: a.formats},
+		Reader:             &StartBringupReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -564,9 +483,90 @@ func (a *Client) ValidateSDDCSpec(params *ValidateSDDCSpecParams, opts ...Client
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *ValidateSDDCSpecOK:
+	case *StartBringupOK:
 		return value, nil, nil
-	case *ValidateSDDCSpecAccepted:
+	case *StartBringupAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for sddc: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StartBringupSpecConversion converts SDDC specification Json excel file
+
+SDDC specification incorporates all the client inputs regarding VMW component parameters constituting the SDDC: NTP, DNS spec, ESXi, VC, VSAN, NSX spec et al.
+*/
+func (a *Client) StartBringupSpecConversion(params *StartBringupSpecConversionParams, opts ...ClientOption) (*StartBringupSpecConversionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStartBringupSpecConversionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "startBringupSpecConversion",
+		Method:             "POST",
+		PathPattern:        "/v1/system/sddc-spec-converter",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StartBringupSpecConversionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StartBringupSpecConversionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for startBringupSpecConversion: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ValidateBringupSpec performs validation of the Sddc spec specification
+
+SDDC specification incorporates all the client inputs regarding VMW component parameters constituting the SDDC: NTP, DNS spec, ESXi, VC, VSAN, NSX spec et al.
+*/
+func (a *Client) ValidateBringupSpec(params *ValidateBringupSpecParams, opts ...ClientOption) (*ValidateBringupSpecOK, *ValidateBringupSpecAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewValidateBringupSpecParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "validateBringupSpec",
+		Method:             "POST",
+		PathPattern:        "/v1/sddcs/validations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ValidateBringupSpecReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *ValidateBringupSpecOK:
+		return value, nil, nil
+	case *ValidateBringupSpecAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

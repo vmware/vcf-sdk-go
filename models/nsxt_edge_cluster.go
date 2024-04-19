@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTEdgeCluster Nsxt Edge Cluster Upgrade Resource
+// NSXTEdgeCluster NSX Edge Cluster Upgrade Resource
 //
 // swagger:model NsxtEdgeCluster
 type NSXTEdgeCluster struct {

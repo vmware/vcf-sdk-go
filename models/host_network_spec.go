@@ -22,6 +22,9 @@ import (
 // swagger:model HostNetworkSpec
 type HostNetworkSpec struct {
 
+	// Network profile name
+	NetworkProfileName string `json:"networkProfileName,omitempty"`
+
 	// List of the vSphere host vmNics
 	VMNics []*VMNic `json:"vmNics"`
 }
@@ -85,6 +88,11 @@ func (m *HostNetworkSpec) contextValidateVMNics(ctx context.Context, formats str
 	for i := 0; i < len(m.VMNics); i++ {
 
 		if m.VMNics[i] != nil {
+
+			if swag.IsZero(m.VMNics[i]) { // not required
+				return nil
+			}
+
 			if err := m.VMNics[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vmNics" + "." + strconv.Itoa(i))

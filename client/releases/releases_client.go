@@ -43,7 +43,7 @@ type ClientService interface {
 }
 
 /*
-GetFutureReleases returns all known to the system future target versions for a domain
+GetFutureReleases retrives a list of future release by domain ID
 
 Returns all known to the system future target versions for a domain. If some of them are not allowed (e.g. stepping stone) includes message why.
 */
@@ -83,7 +83,7 @@ func (a *Client) GetFutureReleases(params *GetFutureReleasesParams, opts ...Clie
 }
 
 /*
-GetReleases gets releases
+GetReleases retrieves a list of release including current and target versions
 
 Get all Releases, with option to get current release for a domain, get release by version or get future releases for a versionor get all the applicable target release.
 */
@@ -123,7 +123,7 @@ func (a *Client) GetReleases(params *GetReleasesParams, opts ...ClientOption) (*
 }
 
 /*
-GetSystemRelease gets system release
+GetSystemRelease retrieves the lowest deployed release of v mware cloud foundation
 
 Returns release for the lowest deployed VCF version for a domain on the environment.If Management domain is ahead of WLD domain, VCF BOM version for the WLDdomain will be returned.
 */

@@ -41,7 +41,7 @@ type ClientService interface {
 }
 
 /*
-GetVcenter gets a v center
+GetVcenter retrieves a v center server by its ID
 */
 func (a *Client) GetVcenter(params *GetVcenterParams, opts ...ClientOption) (*GetVcenterOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) GetVcenter(params *GetVcenterParams, opts ...ClientOption) (*Ge
 }
 
 /*
-GetVCENTERS gets v centers
+GetVCENTERS retrieves a list of v center servers
 */
 func (a *Client) GetVCENTERS(params *GetVCENTERSParams, opts ...ClientOption) (*GetVCENTERSOK, error) {
 	// TODO: Validate the params before sending

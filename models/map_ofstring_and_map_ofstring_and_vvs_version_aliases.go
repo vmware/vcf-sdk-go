@@ -18,7 +18,7 @@ import (
 // MapOfstringAndMapOfstringAndVvsVersionAliases map ofstring and map ofstring and vvs version aliases
 //
 // swagger:model MapOfstringAndMapOfstringAndVvsVersionAliases
-type MapOfstringAndMapOfstringAndVvsVersionAliases map[string]Map
+type MapOfstringAndMapOfstringAndVvsVersionAliases map[string]map[string]MapOfstringAndVvsVersionAliases
 
 // Validate validates this map ofstring and map ofstring and vvs version aliases
 func (m MapOfstringAndMapOfstringAndVvsVersionAliases) Validate(formats strfmt.Registry) error {
@@ -26,13 +26,14 @@ func (m MapOfstringAndMapOfstringAndVvsVersionAliases) Validate(formats strfmt.R
 
 	for k := range m {
 
-		if err := m[k].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName(k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName(k)
+		for kk := range m[k] {
+
+			if val, ok := m[k][kk]; ok {
+				if err := val.Validate(formats); err != nil {
+					return err
+				}
 			}
-			return err
+
 		}
 
 	}
@@ -49,13 +50,14 @@ func (m MapOfstringAndMapOfstringAndVvsVersionAliases) ContextValidate(ctx conte
 
 	for k := range m {
 
-		if err := m[k].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName(k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName(k)
+		for kk := range m[k] {
+
+			if val, ok := m[k][kk]; ok {
+				if err := val.ContextValidate(ctx, formats); err != nil {
+					return err
+				}
 			}
-			return err
+
 		}
 
 	}

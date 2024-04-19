@@ -93,6 +93,11 @@ func (m *ErrorCodePack) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *ErrorCodePack) contextValidateErrorCode(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ErrorCode != nil {
+
+		if swag.IsZero(m.ErrorCode) { // not required
+			return nil
+		}
+
 		if err := m.ErrorCode.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorCode")

@@ -57,7 +57,7 @@ func (o *UpdateBundleCompatibilitySetsReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/bundles/] updateBundleCompatibilitySets", response, response.Code())
 	}
 }
 
@@ -97,6 +97,11 @@ func (o *UpdateBundleCompatibilitySetsOK) IsServerError() bool {
 // IsCode returns true when this update bundle compatibility sets o k response a status code equal to that given
 func (o *UpdateBundleCompatibilitySetsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update bundle compatibility sets o k response
+func (o *UpdateBundleCompatibilitySetsOK) Code() int {
+	return 200
 }
 
 func (o *UpdateBundleCompatibilitySetsOK) Error() string {
@@ -150,6 +155,11 @@ func (o *UpdateBundleCompatibilitySetsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the update bundle compatibility sets accepted response
+func (o *UpdateBundleCompatibilitySetsAccepted) Code() int {
+	return 202
+}
+
 func (o *UpdateBundleCompatibilitySetsAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/bundles/][%d] updateBundleCompatibilitySetsAccepted ", 202)
 }
@@ -200,6 +210,11 @@ func (o *UpdateBundleCompatibilitySetsBadRequest) IsServerError() bool {
 // IsCode returns true when this update bundle compatibility sets bad request response a status code equal to that given
 func (o *UpdateBundleCompatibilitySetsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the update bundle compatibility sets bad request response
+func (o *UpdateBundleCompatibilitySetsBadRequest) Code() int {
+	return 400
 }
 
 func (o *UpdateBundleCompatibilitySetsBadRequest) Error() string {
@@ -265,6 +280,11 @@ func (o *UpdateBundleCompatibilitySetsConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the update bundle compatibility sets conflict response
+func (o *UpdateBundleCompatibilitySetsConflict) Code() int {
+	return 409
+}
+
 func (o *UpdateBundleCompatibilitySetsConflict) Error() string {
 	return fmt.Sprintf("[PATCH /v1/bundles/][%d] updateBundleCompatibilitySetsConflict  %+v", 409, o.Payload)
 }
@@ -326,6 +346,11 @@ func (o *UpdateBundleCompatibilitySetsInternalServerError) IsServerError() bool 
 // IsCode returns true when this update bundle compatibility sets internal server error response a status code equal to that given
 func (o *UpdateBundleCompatibilitySetsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update bundle compatibility sets internal server error response
+func (o *UpdateBundleCompatibilitySetsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateBundleCompatibilitySetsInternalServerError) Error() string {

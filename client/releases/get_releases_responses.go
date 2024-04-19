@@ -45,7 +45,7 @@ func (o *GetReleasesReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/releases] getReleases", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetReleasesOK) IsServerError() bool {
 // IsCode returns true when this get releases o k response a status code equal to that given
 func (o *GetReleasesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get releases o k response
+func (o *GetReleasesOK) Code() int {
+	return 200
 }
 
 func (o *GetReleasesOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetReleasesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get releases not found response
+func (o *GetReleasesNotFound) Code() int {
+	return 404
+}
+
 func (o *GetReleasesNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/releases][%d] getReleasesNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetReleasesInternalServerError) IsServerError() bool {
 // IsCode returns true when this get releases internal server error response a status code equal to that given
 func (o *GetReleasesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get releases internal server error response
+func (o *GetReleasesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetReleasesInternalServerError) Error() string {

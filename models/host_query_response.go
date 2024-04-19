@@ -105,6 +105,11 @@ func (m *HostQueryResponse) ContextValidate(ctx context.Context, formats strfmt.
 func (m *HostQueryResponse) contextValidateQueryInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.QueryInfo != nil {
+
+		if swag.IsZero(m.QueryInfo) { // not required
+			return nil
+		}
+
 		if err := m.QueryInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("queryInfo")
@@ -121,6 +126,11 @@ func (m *HostQueryResponse) contextValidateQueryInfo(ctx context.Context, format
 func (m *HostQueryResponse) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Result != nil {
+
+		if swag.IsZero(m.Result) { // not required
+			return nil
+		}
+
 		if err := m.Result.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")

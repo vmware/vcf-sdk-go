@@ -45,7 +45,7 @@ func (o *PostDatastoreQuery1Reader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/domains/{domainId}/datastores/queries] postDatastoreQuery_1", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *PostDatastoreQuery1OK) IsServerError() bool {
 // IsCode returns true when this post datastore query1 o k response a status code equal to that given
 func (o *PostDatastoreQuery1OK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the post datastore query1 o k response
+func (o *PostDatastoreQuery1OK) Code() int {
+	return 200
 }
 
 func (o *PostDatastoreQuery1OK) Error() string {
@@ -151,6 +156,11 @@ func (o *PostDatastoreQuery1BadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post datastore query1 bad request response
+func (o *PostDatastoreQuery1BadRequest) Code() int {
+	return 400
+}
+
 func (o *PostDatastoreQuery1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/datastores/queries][%d] postDatastoreQuery1BadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *PostDatastoreQuery1InternalServerError) IsServerError() bool {
 // IsCode returns true when this post datastore query1 internal server error response a status code equal to that given
 func (o *PostDatastoreQuery1InternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the post datastore query1 internal server error response
+func (o *PostDatastoreQuery1InternalServerError) Code() int {
+	return 500
 }
 
 func (o *PostDatastoreQuery1InternalServerError) Error() string {

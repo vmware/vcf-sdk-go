@@ -45,7 +45,7 @@ func (o *GetIdentityProviderByIDReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/identity-providers/{id}] getIdentityProviderById", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetIdentityProviderByIDOK) IsServerError() bool {
 // IsCode returns true when this get identity provider by Id o k response a status code equal to that given
 func (o *GetIdentityProviderByIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get identity provider by Id o k response
+func (o *GetIdentityProviderByIDOK) Code() int {
+	return 200
 }
 
 func (o *GetIdentityProviderByIDOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetIdentityProviderByIDUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get identity provider by Id unauthorized response
+func (o *GetIdentityProviderByIDUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetIdentityProviderByIDUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/identity-providers/{id}][%d] getIdentityProviderByIdUnauthorized  %+v", 401, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetIdentityProviderByIDInternalServerError) IsServerError() bool {
 // IsCode returns true when this get identity provider by Id internal server error response a status code equal to that given
 func (o *GetIdentityProviderByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get identity provider by Id internal server error response
+func (o *GetIdentityProviderByIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetIdentityProviderByIDInternalServerError) Error() string {

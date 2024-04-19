@@ -51,7 +51,7 @@ func (o *GetClusterDatastoresReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{id}/datastores] getClusterDatastores", response, response.Code())
 	}
 }
 
@@ -94,12 +94,17 @@ func (o *GetClusterDatastoresOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get cluster datastores o k response
+func (o *GetClusterDatastoresOK) Code() int {
+	return 200
+}
+
 func (o *GetClusterDatastoresOK) Error() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresOK  %+v", 200, o.Payload)
 }
 
 func (o *GetClusterDatastoresOK) String() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresOK  %+v", 200, o.Payload)
 }
 
 func (o *GetClusterDatastoresOK) GetPayload() []*models.Datastore {
@@ -155,12 +160,17 @@ func (o *GetClusterDatastoresBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get cluster datastores bad request response
+func (o *GetClusterDatastoresBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetClusterDatastoresBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *GetClusterDatastoresBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *GetClusterDatastoresBadRequest) GetPayload() *models.Error {
@@ -218,12 +228,17 @@ func (o *GetClusterDatastoresNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get cluster datastores not found response
+func (o *GetClusterDatastoresNotFound) Code() int {
+	return 404
+}
+
 func (o *GetClusterDatastoresNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetClusterDatastoresNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetClusterDatastoresNotFound) GetPayload() *models.Error {
@@ -281,12 +296,17 @@ func (o *GetClusterDatastoresInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the get cluster datastores internal server error response
+func (o *GetClusterDatastoresInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GetClusterDatastoresInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GetClusterDatastoresInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores][%d] getClusterDatastoresInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores][%d] getClusterDatastoresInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GetClusterDatastoresInternalServerError) GetPayload() *models.Error {

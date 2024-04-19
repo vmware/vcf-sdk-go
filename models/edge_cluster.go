@@ -31,11 +31,17 @@ type EdgeCluster struct {
 	// ID of the egde cluster
 	ID string `json:"id,omitempty"`
 
+	// Whether or not this edge cluster's tier 0 is managed by system
+	IsTier0ManagedBySystem bool `json:"isTier0ManagedBySystem,omitempty"`
+
 	// Name of the edge cluster
 	Name string `json:"name,omitempty"`
 
-	// NSX-T cluster associated with the edge cluster
+	// NSX cluster associated with the edge cluster
 	NSXTCluster *NsxTClusterReference `json:"nsxtCluster,omitempty"`
+
+	// Whether or not host/TEP network checks were done for this edge cluster
+	SkipTepRoutabilityCheck bool `json:"skipTepRoutabilityCheck,omitempty"`
 }
 
 // Validate validates this edge cluster
@@ -158,6 +164,11 @@ func (m *EdgeCluster) contextValidateClusters(ctx context.Context, formats strfm
 	for i := 0; i < len(m.Clusters); i++ {
 
 		if m.Clusters[i] != nil {
+
+			if swag.IsZero(m.Clusters[i]) { // not required
+				return nil
+			}
+
 			if err := m.Clusters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("clusters" + "." + strconv.Itoa(i))
@@ -178,6 +189,11 @@ func (m *EdgeCluster) contextValidateEdgeNodes(ctx context.Context, formats strf
 	for i := 0; i < len(m.EdgeNodes); i++ {
 
 		if m.EdgeNodes[i] != nil {
+
+			if swag.IsZero(m.EdgeNodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.EdgeNodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("edgeNodes" + "." + strconv.Itoa(i))
@@ -196,6 +212,11 @@ func (m *EdgeCluster) contextValidateEdgeNodes(ctx context.Context, formats strf
 func (m *EdgeCluster) contextValidateNSXTCluster(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NSXTCluster != nil {
+
+		if swag.IsZero(m.NSXTCluster) { // not required
+			return nil
+		}
+
 		if err := m.NSXTCluster.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxtCluster")

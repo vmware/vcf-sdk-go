@@ -39,7 +39,7 @@ func (o *GetDepotSettingsReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/system/settings/depot] getDepotSettings", response, response.Code())
 	}
 }
 
@@ -54,7 +54,7 @@ GetDepotSettingsOK describes a response with status code 200, with default heade
 Ok
 */
 type GetDepotSettingsOK struct {
-	Payload []*models.DepotSettings
+	Payload *models.DepotSettings
 }
 
 // IsSuccess returns true when this get depot settings o k response has a 2xx status code
@@ -82,6 +82,11 @@ func (o *GetDepotSettingsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get depot settings o k response
+func (o *GetDepotSettingsOK) Code() int {
+	return 200
+}
+
 func (o *GetDepotSettingsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/system/settings/depot][%d] getDepotSettingsOK  %+v", 200, o.Payload)
 }
@@ -90,14 +95,16 @@ func (o *GetDepotSettingsOK) String() string {
 	return fmt.Sprintf("[GET /v1/system/settings/depot][%d] getDepotSettingsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetDepotSettingsOK) GetPayload() []*models.DepotSettings {
+func (o *GetDepotSettingsOK) GetPayload() *models.DepotSettings {
 	return o.Payload
 }
 
 func (o *GetDepotSettingsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.DepotSettings)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -141,6 +148,11 @@ func (o *GetDepotSettingsInternalServerError) IsServerError() bool {
 // IsCode returns true when this get depot settings internal server error response a status code equal to that given
 func (o *GetDepotSettingsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get depot settings internal server error response
+func (o *GetDepotSettingsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetDepotSettingsInternalServerError) Error() string {

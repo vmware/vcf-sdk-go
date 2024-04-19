@@ -23,11 +23,23 @@ type Logs struct {
 	// Collect API Logs.
 	APILogs bool `json:"apiLogs,omitempty"`
 
+	// Collect VMware Aria Automation support logs.
+	AutomationLogs bool `json:"automationLogs,omitempty"`
+
 	// Collect ESX Logs.
 	EsxLogs bool `json:"esxLogs,omitempty"`
 
+	// Collect VMware Aria Suite Lifecycle support logs.
+	LifecycleLogs bool `json:"lifecycleLogs,omitempty"`
+
 	// Collect NSX Logs.
 	NsxLogs bool `json:"nsxLogs,omitempty"`
+
+	// Collect VMware Aria Operations For Logs support logs.
+	OperationsForLogs bool `json:"operationsForLogs,omitempty"`
+
+	// Collect VMware Aria Operations support logs.
+	OperationsLogs bool `json:"operationsLogs,omitempty"`
 
 	// Collect SDDC Manager Logs.
 	SDDCManagerLogs bool `json:"sddcManagerLogs,omitempty"`
@@ -41,16 +53,16 @@ type Logs struct {
 	// Collect VMScreenshots.
 	VMScreenshots bool `json:"vmScreenshots,omitempty"`
 
-	// Collect VRA Logs.
+	// [Deprecated] Collect VMware Aria Automation Logs.
 	VRALogs bool `json:"vraLogs,omitempty"`
 
-	// Collect VRLi Logs.
+	// [Deprecated] Collect VMware Aria Operations For Logs Logs.
 	VrliLogs bool `json:"vrliLogs,omitempty"`
 
-	// Collect VROps Logs.
+	// [Deprecated] Collect VMware Aria Operations Logs.
 	VROPSLogs bool `json:"vropsLogs,omitempty"`
 
-	// Collect VRSLCM Logs.
+	// [Deprecated] Collect VMware Aria Suite Lifecycle Logs.
 	VRSLCMLogs bool `json:"vrslcmLogs,omitempty"`
 
 	// Collect VXRailManager Logs.

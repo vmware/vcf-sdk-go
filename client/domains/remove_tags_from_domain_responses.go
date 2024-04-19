@@ -45,7 +45,7 @@ func (o *RemoveTagsFromDomainReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/domains/{id}/tags] removeTagsFromDomain", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *RemoveTagsFromDomainOK) IsServerError() bool {
 // IsCode returns true when this remove tags from domain o k response a status code equal to that given
 func (o *RemoveTagsFromDomainOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove tags from domain o k response
+func (o *RemoveTagsFromDomainOK) Code() int {
+	return 200
 }
 
 func (o *RemoveTagsFromDomainOK) Error() string {
@@ -151,6 +156,11 @@ func (o *RemoveTagsFromDomainBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the remove tags from domain bad request response
+func (o *RemoveTagsFromDomainBadRequest) Code() int {
+	return 400
+}
+
 func (o *RemoveTagsFromDomainBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/domains/{id}/tags][%d] removeTagsFromDomainBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *RemoveTagsFromDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this remove tags from domain internal server error response a status code equal to that given
 func (o *RemoveTagsFromDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the remove tags from domain internal server error response
+func (o *RemoveTagsFromDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RemoveTagsFromDomainInternalServerError) Error() string {

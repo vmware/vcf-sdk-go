@@ -105,6 +105,11 @@ func (m *CertificateAuthorityCreationSpec) ContextValidate(ctx context.Context, 
 func (m *CertificateAuthorityCreationSpec) contextValidateMicrosoftCertificateAuthoritySpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MicrosoftCertificateAuthoritySpec != nil {
+
+		if swag.IsZero(m.MicrosoftCertificateAuthoritySpec) { // not required
+			return nil
+		}
+
 		if err := m.MicrosoftCertificateAuthoritySpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("microsoftCertificateAuthoritySpec")
@@ -121,6 +126,11 @@ func (m *CertificateAuthorityCreationSpec) contextValidateMicrosoftCertificateAu
 func (m *CertificateAuthorityCreationSpec) contextValidateOpenSSLCertificateAuthoritySpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.OpenSSLCertificateAuthoritySpec != nil {
+
+		if swag.IsZero(m.OpenSSLCertificateAuthoritySpec) { // not required
+			return nil
+		}
+
 		if err := m.OpenSSLCertificateAuthoritySpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("openSSLCertificateAuthoritySpec")

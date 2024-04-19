@@ -18,7 +18,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// NsxTSpec This specification contains the parameters required to install and configure NSX-T in a workload domain
+// NsxTSpec This specification contains the parameters required to install and configure NSX in a workload domain
 //
 // swagger:model NsxTSpec
 type NsxTSpec struct {
@@ -42,7 +42,7 @@ type NsxTSpec struct {
 	// Required: true
 	NsxManagerSpecs []*NsxManagerSpec `json:"nsxManagerSpecs"`
 
-	// Virtual IP address which would act as proxy/alias for NSX-T Managers
+	// Virtual IP address which would act as proxy/alias for NSX Managers
 	// Required: true
 	Vip *string `json:"vip"`
 
@@ -162,6 +162,11 @@ func (m *NsxTSpec) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *NsxTSpec) contextValidateIPAddressPoolSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IPAddressPoolSpec != nil {
+
+		if swag.IsZero(m.IPAddressPoolSpec) { // not required
+			return nil
+		}
+
 		if err := m.IPAddressPoolSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ipAddressPoolSpec")
@@ -180,6 +185,11 @@ func (m *NsxTSpec) contextValidateNsxManagerSpecs(ctx context.Context, formats s
 	for i := 0; i < len(m.NsxManagerSpecs); i++ {
 
 		if m.NsxManagerSpecs[i] != nil {
+
+			if swag.IsZero(m.NsxManagerSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NsxManagerSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxManagerSpecs" + "." + strconv.Itoa(i))

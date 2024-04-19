@@ -253,6 +253,11 @@ func (m *SDDCNetworkSpec) contextValidateIncludeIPAddressRanges(ctx context.Cont
 	for i := 0; i < len(m.IncludeIPAddressRanges); i++ {
 
 		if m.IncludeIPAddressRanges[i] != nil {
+
+			if swag.IsZero(m.IncludeIPAddressRanges[i]) { // not required
+				return nil
+			}
+
 			if err := m.IncludeIPAddressRanges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("includeIpAddressRanges" + "." + strconv.Itoa(i))

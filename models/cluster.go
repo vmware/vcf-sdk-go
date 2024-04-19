@@ -22,6 +22,9 @@ import (
 // swagger:model Cluster
 type Cluster struct {
 
+	// Capacity information for the cluster
+	Capacity *Capacity `json:"capacity,omitempty"`
+
 	// List of hosts associated with the cluster
 	Hosts []*HostReference `json:"hosts"`
 
@@ -30,6 +33,9 @@ type Cluster struct {
 
 	// Status of the cluster if default or not
 	IsDefault bool `json:"isDefault,omitempty"`
+
+	// Is vSphere cluster managed by vSphere Lifecycle Manager - true for managed, false for not managed
+	IsImageBased bool `json:"isImageBased,omitempty"`
 
 	// Status of the cluster if Stretched or not
 	IsStretched bool `json:"isStretched,omitempty"`
@@ -41,7 +47,7 @@ type Cluster struct {
 	PrimaryDatastoreName string `json:"primaryDatastoreName,omitempty"`
 
 	// Storage type of the primary datastore
-	// Example: One among: VSAN, NFS, FC, VVOL_FC, VVOL_ISCSI, VVOL_NFS, VSAN_REMOTE
+	// Example: One among: VSAN, VSAN_ESA, NFS, FC, VVOL_FC, VVOL_ISCSI, VVOL_NFS, VSAN_REMOTE
 	PrimaryDatastoreType string `json:"primaryDatastoreType,omitempty"`
 
 	// Deprecated, this list will always be returned empty
@@ -54,6 +60,10 @@ type Cluster struct {
 // Validate validates this cluster
 func (m *Cluster) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateCapacity(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateHosts(formats); err != nil {
 		res = append(res, err)
@@ -70,6 +80,25 @@ func (m *Cluster) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Cluster) validateCapacity(formats strfmt.Registry) error {
+	if swag.IsZero(m.Capacity) { // not required
+		return nil
+	}
+
+	if m.Capacity != nil {
+		if err := m.Capacity.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("capacity")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("capacity")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -155,6 +184,10 @@ func (m *Cluster) validateVdsSpecs(formats strfmt.Registry) error {
 func (m *Cluster) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCapacity(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateHosts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -173,11 +206,37 @@ func (m *Cluster) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 	return nil
 }
 
+func (m *Cluster) contextValidateCapacity(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Capacity != nil {
+
+		if swag.IsZero(m.Capacity) { // not required
+			return nil
+		}
+
+		if err := m.Capacity.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("capacity")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("capacity")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Cluster) contextValidateHosts(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Hosts); i++ {
 
 		if m.Hosts[i] != nil {
+
+			if swag.IsZero(m.Hosts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Hosts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("hosts" + "." + strconv.Itoa(i))
@@ -198,6 +257,11 @@ func (m *Cluster) contextValidateTags(ctx context.Context, formats strfmt.Regist
 	for i := 0; i < len(m.Tags); i++ {
 
 		if m.Tags[i] != nil {
+
+			if swag.IsZero(m.Tags[i]) { // not required
+				return nil
+			}
+
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
@@ -218,6 +282,11 @@ func (m *Cluster) contextValidateVdsSpecs(ctx context.Context, formats strfmt.Re
 	for i := 0; i < len(m.VdsSpecs); i++ {
 
 		if m.VdsSpecs[i] != nil {
+
+			if swag.IsZero(m.VdsSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.VdsSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vdsSpecs" + "." + strconv.Itoa(i))

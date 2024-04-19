@@ -39,7 +39,7 @@ func (o *GetCEIPStatusReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/system/ceip] getCeipStatus", response, response.Code())
 	}
 }
 
@@ -80,6 +80,11 @@ func (o *GetCEIPStatusOK) IsServerError() bool {
 // IsCode returns true when this get Ceip status o k response a status code equal to that given
 func (o *GetCEIPStatusOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get Ceip status o k response
+func (o *GetCEIPStatusOK) Code() int {
+	return 200
 }
 
 func (o *GetCEIPStatusOK) Error() string {
@@ -143,6 +148,11 @@ func (o *GetCEIPStatusInternalServerError) IsServerError() bool {
 // IsCode returns true when this get Ceip status internal server error response a status code equal to that given
 func (o *GetCEIPStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get Ceip status internal server error response
+func (o *GetCEIPStatusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetCEIPStatusInternalServerError) Error() string {

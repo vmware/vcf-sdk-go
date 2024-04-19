@@ -77,6 +77,12 @@ type GetLicenseKeysParams struct {
 	*/
 	ProductType []string
 
+	/* ProductVersion.
+
+	   Product Version, gets the license keys matching the major version of the product version
+	*/
+	ProductVersion *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -152,6 +158,17 @@ func (o *GetLicenseKeysParams) SetProductType(productType []string) {
 	o.ProductType = productType
 }
 
+// WithProductVersion adds the productVersion to the get license keys params
+func (o *GetLicenseKeysParams) WithProductVersion(productVersion *string) *GetLicenseKeysParams {
+	o.SetProductVersion(productVersion)
+	return o
+}
+
+// SetProductVersion adds the productVersion to the get license keys params
+func (o *GetLicenseKeysParams) SetProductVersion(productVersion *string) {
+	o.ProductVersion = productVersion
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetLicenseKeysParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -179,6 +196,23 @@ func (o *GetLicenseKeysParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		// query array param productType
 		if err := r.SetQueryParam("productType", joinedProductType...); err != nil {
 			return err
+		}
+	}
+
+	if o.ProductVersion != nil {
+
+		// query param productVersion
+		var qrProductVersion string
+
+		if o.ProductVersion != nil {
+			qrProductVersion = *o.ProductVersion
+		}
+		qProductVersion := qrProductVersion
+		if qProductVersion != "" {
+
+			if err := r.SetQueryParam("productVersion", qProductVersion); err != nil {
+				return err
+			}
 		}
 	}
 

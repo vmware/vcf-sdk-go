@@ -90,6 +90,11 @@ func (m *QueryInfo) ContextValidate(ctx context.Context, formats strfmt.Registry
 func (m *QueryInfo) contextValidateErrorResponse(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ErrorResponse != nil {
+
+		if swag.IsZero(m.ErrorResponse) { // not required
+			return nil
+		}
+
 		if err := m.ErrorResponse.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorResponse")

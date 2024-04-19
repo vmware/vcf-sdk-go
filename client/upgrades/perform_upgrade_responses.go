@@ -63,7 +63,7 @@ func (o *PerformUpgradeReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/upgrades] performUpgrade", response, response.Code())
 	}
 }
 
@@ -104,6 +104,11 @@ func (o *PerformUpgradeOK) IsServerError() bool {
 // IsCode returns true when this perform upgrade o k response a status code equal to that given
 func (o *PerformUpgradeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the perform upgrade o k response
+func (o *PerformUpgradeOK) Code() int {
+	return 200
 }
 
 func (o *PerformUpgradeOK) Error() string {
@@ -169,6 +174,11 @@ func (o *PerformUpgradeAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the perform upgrade accepted response
+func (o *PerformUpgradeAccepted) Code() int {
+	return 202
+}
+
 func (o *PerformUpgradeAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/upgrades][%d] performUpgradeAccepted  %+v", 202, o.Payload)
 }
@@ -230,6 +240,11 @@ func (o *PerformUpgradeBadRequest) IsServerError() bool {
 // IsCode returns true when this perform upgrade bad request response a status code equal to that given
 func (o *PerformUpgradeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the perform upgrade bad request response
+func (o *PerformUpgradeBadRequest) Code() int {
+	return 400
 }
 
 func (o *PerformUpgradeBadRequest) Error() string {
@@ -295,6 +310,11 @@ func (o *PerformUpgradeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the perform upgrade forbidden response
+func (o *PerformUpgradeForbidden) Code() int {
+	return 403
+}
+
 func (o *PerformUpgradeForbidden) Error() string {
 	return fmt.Sprintf("[POST /v1/upgrades][%d] performUpgradeForbidden  %+v", 403, o.Payload)
 }
@@ -358,6 +378,11 @@ func (o *PerformUpgradeFailedDependency) IsCode(code int) bool {
 	return code == 424
 }
 
+// Code gets the status code for the perform upgrade failed dependency response
+func (o *PerformUpgradeFailedDependency) Code() int {
+	return 424
+}
+
 func (o *PerformUpgradeFailedDependency) Error() string {
 	return fmt.Sprintf("[POST /v1/upgrades][%d] performUpgradeFailedDependency  %+v", 424, o.Payload)
 }
@@ -419,6 +444,11 @@ func (o *PerformUpgradeInternalServerError) IsServerError() bool {
 // IsCode returns true when this perform upgrade internal server error response a status code equal to that given
 func (o *PerformUpgradeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the perform upgrade internal server error response
+func (o *PerformUpgradeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PerformUpgradeInternalServerError) Error() string {

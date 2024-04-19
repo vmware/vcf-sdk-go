@@ -45,7 +45,7 @@ func (o *DeletePersonalityReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/personalities] deletePersonality", response, response.Code())
 	}
 }
 
@@ -85,6 +85,11 @@ func (o *DeletePersonalityOK) IsServerError() bool {
 // IsCode returns true when this delete personality o k response a status code equal to that given
 func (o *DeletePersonalityOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete personality o k response
+func (o *DeletePersonalityOK) Code() int {
+	return 200
 }
 
 func (o *DeletePersonalityOK) Error() string {
@@ -137,6 +142,11 @@ func (o *DeletePersonalityNotFound) IsServerError() bool {
 // IsCode returns true when this delete personality not found response a status code equal to that given
 func (o *DeletePersonalityNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the delete personality not found response
+func (o *DeletePersonalityNotFound) Code() int {
+	return 404
 }
 
 func (o *DeletePersonalityNotFound) Error() string {
@@ -200,6 +210,11 @@ func (o *DeletePersonalityInternalServerError) IsServerError() bool {
 // IsCode returns true when this delete personality internal server error response a status code equal to that given
 func (o *DeletePersonalityInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete personality internal server error response
+func (o *DeletePersonalityInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeletePersonalityInternalServerError) Error() string {

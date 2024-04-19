@@ -67,11 +67,17 @@ type Host struct {
 	// Information about the network pool this host is part of
 	Networkpool *NetworkPoolReference `json:"networkpool,omitempty"`
 
+	// Information about Networks on the host
+	Networks []*Network `json:"networks"`
+
 	// Information about physical NICs on the host
 	PhysicalNics []*PhysicalNic `json:"physicalNics"`
 
 	// Serial Number of the host
 	SerialNumber *OptionalOfstring `json:"serialNumber,omitempty"`
+
+	// Software Spec contains base image, hardware support manager, and components details
+	SoftwareInfo *SoftwareInfo `json:"softwareInfo,omitempty"`
 
 	// SSH Thumbprint of the host
 	SSHThumbprint *OptionalOfstring `json:"sshThumbprint,omitempty"`
@@ -118,11 +124,19 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateNetworks(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validatePhysicalNics(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateSerialNumber(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSoftwareInfo(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -269,6 +283,32 @@ func (m *Host) validateNetworkpool(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateNetworks(formats strfmt.Registry) error {
+	if swag.IsZero(m.Networks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Networks); i++ {
+		if swag.IsZero(m.Networks[i]) { // not required
+			continue
+		}
+
+		if m.Networks[i] != nil {
+			if err := m.Networks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("networks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *Host) validatePhysicalNics(formats strfmt.Registry) error {
 	if swag.IsZero(m.PhysicalNics) { // not required
 		return nil
@@ -306,6 +346,25 @@ func (m *Host) validateSerialNumber(formats strfmt.Registry) error {
 				return ve.ValidateName("serialNumber")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("serialNumber")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Host) validateSoftwareInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.SoftwareInfo) { // not required
+		return nil
+	}
+
+	if m.SoftwareInfo != nil {
+		if err := m.SoftwareInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("softwareInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("softwareInfo")
 			}
 			return err
 		}
@@ -425,11 +484,19 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePhysicalNics(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateSerialNumber(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSoftwareInfo(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -458,6 +525,11 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 func (m *Host) contextValidateCluster(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Cluster != nil {
+
+		if swag.IsZero(m.Cluster) { // not required
+			return nil
+		}
+
 		if err := m.Cluster.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cluster")
@@ -474,6 +546,11 @@ func (m *Host) contextValidateCluster(ctx context.Context, formats strfmt.Regist
 func (m *Host) contextValidateCPU(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CPU != nil {
+
+		if swag.IsZero(m.CPU) { // not required
+			return nil
+		}
+
 		if err := m.CPU.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cpu")
@@ -490,6 +567,11 @@ func (m *Host) contextValidateCPU(ctx context.Context, formats strfmt.Registry) 
 func (m *Host) contextValidateDomain(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Domain != nil {
+
+		if swag.IsZero(m.Domain) { // not required
+			return nil
+		}
+
 		if err := m.Domain.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("domain")
@@ -508,6 +590,11 @@ func (m *Host) contextValidateIPAddresses(ctx context.Context, formats strfmt.Re
 	for i := 0; i < len(m.IPAddresses); i++ {
 
 		if m.IPAddresses[i] != nil {
+
+			if swag.IsZero(m.IPAddresses[i]) { // not required
+				return nil
+			}
+
 			if err := m.IPAddresses[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ipAddresses" + "." + strconv.Itoa(i))
@@ -526,6 +613,11 @@ func (m *Host) contextValidateIPAddresses(ctx context.Context, formats strfmt.Re
 func (m *Host) contextValidateMemory(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Memory != nil {
+
+		if swag.IsZero(m.Memory) { // not required
+			return nil
+		}
+
 		if err := m.Memory.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("memory")
@@ -542,6 +634,11 @@ func (m *Host) contextValidateMemory(ctx context.Context, formats strfmt.Registr
 func (m *Host) contextValidateNetworkpool(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Networkpool != nil {
+
+		if swag.IsZero(m.Networkpool) { // not required
+			return nil
+		}
+
 		if err := m.Networkpool.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("networkpool")
@@ -555,11 +652,41 @@ func (m *Host) contextValidateNetworkpool(ctx context.Context, formats strfmt.Re
 	return nil
 }
 
+func (m *Host) contextValidateNetworks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Networks); i++ {
+
+		if m.Networks[i] != nil {
+
+			if swag.IsZero(m.Networks[i]) { // not required
+				return nil
+			}
+
+			if err := m.Networks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("networks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *Host) contextValidatePhysicalNics(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.PhysicalNics); i++ {
 
 		if m.PhysicalNics[i] != nil {
+
+			if swag.IsZero(m.PhysicalNics[i]) { // not required
+				return nil
+			}
+
 			if err := m.PhysicalNics[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("physicalNics" + "." + strconv.Itoa(i))
@@ -578,6 +705,11 @@ func (m *Host) contextValidatePhysicalNics(ctx context.Context, formats strfmt.R
 func (m *Host) contextValidateSerialNumber(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SerialNumber != nil {
+
+		if swag.IsZero(m.SerialNumber) { // not required
+			return nil
+		}
+
 		if err := m.SerialNumber.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serialNumber")
@@ -591,9 +723,35 @@ func (m *Host) contextValidateSerialNumber(ctx context.Context, formats strfmt.R
 	return nil
 }
 
+func (m *Host) contextValidateSoftwareInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SoftwareInfo != nil {
+
+		if swag.IsZero(m.SoftwareInfo) { // not required
+			return nil
+		}
+
+		if err := m.SoftwareInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("softwareInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("softwareInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Host) contextValidateSSHThumbprint(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SSHThumbprint != nil {
+
+		if swag.IsZero(m.SSHThumbprint) { // not required
+			return nil
+		}
+
 		if err := m.SSHThumbprint.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sshThumbprint")
@@ -610,6 +768,11 @@ func (m *Host) contextValidateSSHThumbprint(ctx context.Context, formats strfmt.
 func (m *Host) contextValidateSSLThumbprint(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SSLThumbprint != nil {
+
+		if swag.IsZero(m.SSLThumbprint) { // not required
+			return nil
+		}
+
 		if err := m.SSLThumbprint.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sslThumbprint")
@@ -626,6 +789,11 @@ func (m *Host) contextValidateSSLThumbprint(ctx context.Context, formats strfmt.
 func (m *Host) contextValidateStorage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Storage != nil {
+
+		if swag.IsZero(m.Storage) { // not required
+			return nil
+		}
+
 		if err := m.Storage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("storage")
@@ -644,6 +812,11 @@ func (m *Host) contextValidateTags(ctx context.Context, formats strfmt.Registry)
 	for i := 0; i < len(m.Tags); i++ {
 
 		if m.Tags[i] != nil {
+
+			if swag.IsZero(m.Tags[i]) { // not required
+				return nil
+			}
+
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))

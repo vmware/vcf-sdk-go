@@ -28,7 +28,7 @@ type TrustedCertificateSpec struct {
 	Certificate *string `json:"certificate"`
 
 	// Certificate usage
-	// Example: One among: TRUSTED_FOR_OUTBOUND, TRUSTED_FOR_INBOUND
+	// Example: TRUSTED_FOR_OUTBOUND
 	// Required: true
 	CertificateUsageType *string `json:"certificateUsageType"`
 }

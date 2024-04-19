@@ -51,7 +51,7 @@ func (o *AddIPPoolToNetworkOfNetworkPoolReader) ReadResponse(response runtime.Cl
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/network-pools/{id}/networks/{networkId}/ip-pools] addIpPoolToNetworkOfNetworkPool", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *AddIPPoolToNetworkOfNetworkPoolOK) IsServerError() bool {
 // IsCode returns true when this add Ip pool to network of network pool o k response a status code equal to that given
 func (o *AddIPPoolToNetworkOfNetworkPoolOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the add Ip pool to network of network pool o k response
+func (o *AddIPPoolToNetworkOfNetworkPoolOK) Code() int {
+	return 200
 }
 
 func (o *AddIPPoolToNetworkOfNetworkPoolOK) Error() string {
@@ -157,6 +162,11 @@ func (o *AddIPPoolToNetworkOfNetworkPoolBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the add Ip pool to network of network pool bad request response
+func (o *AddIPPoolToNetworkOfNetworkPoolBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddIPPoolToNetworkOfNetworkPoolBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/network-pools/{id}/networks/{networkId}/ip-pools][%d] addIpPoolToNetworkOfNetworkPoolBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *AddIPPoolToNetworkOfNetworkPoolNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the add Ip pool to network of network pool not found response
+func (o *AddIPPoolToNetworkOfNetworkPoolNotFound) Code() int {
+	return 404
+}
+
 func (o *AddIPPoolToNetworkOfNetworkPoolNotFound) Error() string {
 	return fmt.Sprintf("[POST /v1/network-pools/{id}/networks/{networkId}/ip-pools][%d] addIpPoolToNetworkOfNetworkPoolNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *AddIPPoolToNetworkOfNetworkPoolInternalServerError) IsServerError() boo
 // IsCode returns true when this add Ip pool to network of network pool internal server error response a status code equal to that given
 func (o *AddIPPoolToNetworkOfNetworkPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the add Ip pool to network of network pool internal server error response
+func (o *AddIPPoolToNetworkOfNetworkPoolInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddIPPoolToNetworkOfNetworkPoolInternalServerError) Error() string {

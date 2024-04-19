@@ -85,6 +85,11 @@ func (m *VSANRemoteDatastoreClusterSpec) contextValidateVSANRemoteDatastoreSpec(
 	for i := 0; i < len(m.VSANRemoteDatastoreSpec); i++ {
 
 		if m.VSANRemoteDatastoreSpec[i] != nil {
+
+			if swag.IsZero(m.VSANRemoteDatastoreSpec[i]) { // not required
+				return nil
+			}
+
 			if err := m.VSANRemoteDatastoreSpec[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vsanRemoteDatastoreSpec" + "." + strconv.Itoa(i))

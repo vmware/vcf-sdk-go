@@ -130,6 +130,11 @@ func (m *BackupSchedule) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *BackupSchedule) contextValidateRetentionPolicy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RetentionPolicy != nil {
+
+		if swag.IsZero(m.RetentionPolicy) { // not required
+			return nil
+		}
+
 		if err := m.RetentionPolicy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("retentionPolicy")

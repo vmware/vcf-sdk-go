@@ -45,7 +45,7 @@ func (o *AddVasaProviderReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/vasa-providers] addVasaProvider", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *AddVasaProviderCreated) IsServerError() bool {
 // IsCode returns true when this add vasa provider created response a status code equal to that given
 func (o *AddVasaProviderCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the add vasa provider created response
+func (o *AddVasaProviderCreated) Code() int {
+	return 201
 }
 
 func (o *AddVasaProviderCreated) Error() string {
@@ -151,6 +156,11 @@ func (o *AddVasaProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the add vasa provider bad request response
+func (o *AddVasaProviderBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddVasaProviderBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/vasa-providers][%d] addVasaProviderBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *AddVasaProviderInternalServerError) IsServerError() bool {
 // IsCode returns true when this add vasa provider internal server error response a status code equal to that given
 func (o *AddVasaProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the add vasa provider internal server error response
+func (o *AddVasaProviderInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddVasaProviderInternalServerError) Error() string {

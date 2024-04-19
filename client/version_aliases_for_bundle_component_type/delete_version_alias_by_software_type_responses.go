@@ -51,7 +51,7 @@ func (o *DeleteVersionAliasBySoftwareTypeReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/system/settings/version-aliases/{bundleComponentType}] deleteVersionAliasBySoftwareType", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *DeleteVersionAliasBySoftwareTypeOK) IsServerError() bool {
 // IsCode returns true when this delete version alias by software type o k response a status code equal to that given
 func (o *DeleteVersionAliasBySoftwareTypeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete version alias by software type o k response
+func (o *DeleteVersionAliasBySoftwareTypeOK) Code() int {
+	return 200
 }
 
 func (o *DeleteVersionAliasBySoftwareTypeOK) Error() string {
@@ -144,6 +149,11 @@ func (o *DeleteVersionAliasBySoftwareTypeNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete version alias by software type no content response
+func (o *DeleteVersionAliasBySoftwareTypeNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteVersionAliasBySoftwareTypeNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /v1/system/settings/version-aliases/{bundleComponentType}][%d] deleteVersionAliasBySoftwareTypeNoContent ", 204)
 }
@@ -194,6 +204,11 @@ func (o *DeleteVersionAliasBySoftwareTypeBadRequest) IsServerError() bool {
 // IsCode returns true when this delete version alias by software type bad request response a status code equal to that given
 func (o *DeleteVersionAliasBySoftwareTypeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete version alias by software type bad request response
+func (o *DeleteVersionAliasBySoftwareTypeBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteVersionAliasBySoftwareTypeBadRequest) Error() string {
@@ -257,6 +272,11 @@ func (o *DeleteVersionAliasBySoftwareTypeInternalServerError) IsServerError() bo
 // IsCode returns true when this delete version alias by software type internal server error response a status code equal to that given
 func (o *DeleteVersionAliasBySoftwareTypeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete version alias by software type internal server error response
+func (o *DeleteVersionAliasBySoftwareTypeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteVersionAliasBySoftwareTypeInternalServerError) Error() string {

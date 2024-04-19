@@ -18,24 +18,24 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VROPS This specification contains information related to the existing vRealize Operations instance deployment
+// VROPS This specification contains information related to the existing VMware Aria Operations instance deployment
 //
 // swagger:model Vrops
 type VROPS struct {
 
-	// The ID of the vRealize Operations instance
+	// The ID of the VMware Aria Operations instance
 	// Required: true
 	ID *string `json:"id"`
 
-	// Fully Qualified Domain Name for the vRealize Operations load balancer
+	// Fully Qualified Domain Name for the VMware Aria Operations load balancer
 	// Required: true
 	LoadBalancerFqdn *string `json:"loadBalancerFqdn"`
 
-	// IP for the vRealize Operations load balancer
+	// IP for the VMware Aria Operations load balancer
 	// Required: true
 	LoadBalancerIP *string `json:"loadBalancerIp"`
 
-	// The nodes of the vRealize Operations instance
+	// The nodes of the VMware Aria Operations instance
 	// Required: true
 	Nodes []*VROPSNode `json:"nodes"`
 
@@ -43,7 +43,7 @@ type VROPS struct {
 	// Required: true
 	Status *string `json:"status"`
 
-	// The version of the vRealize Operations instance
+	// The version of the VMware Aria Operations instance
 	// Required: true
 	Version *string `json:"version"`
 }
@@ -173,6 +173,11 @@ func (m *VROPS) contextValidateNodes(ctx context.Context, formats strfmt.Registr
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

@@ -112,6 +112,11 @@ func (m *Network) contextValidateIPPools(ctx context.Context, formats strfmt.Reg
 	for i := 0; i < len(m.IPPools); i++ {
 
 		if m.IPPools[i] != nil {
+
+			if swag.IsZero(m.IPPools[i]) { // not required
+				return nil
+			}
+
 			if err := m.IPPools[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ipPools" + "." + strconv.Itoa(i))

@@ -18,60 +18,50 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SDDCNSXTSpec Spec contains parameters for NSX-T deployment and configurations
+// SDDCNSXTSpec Spec contains parameters for NSX deployment and configurations
 //
 // swagger:model SddcNsxtSpec
 type SDDCNSXTSpec struct {
 
-	// NSX-T IP address pool specification
+	// NSX IP address pool specification
 	IPAddressPoolSpec *IPAddressPoolSpec `json:"ipAddressPoolSpec,omitempty"`
 
-	// NSX-T admin password. The password must be at least 12 characters long. Must contain at-least 1 uppercase, 1 lowercase, 1 special character and 1 digit. In addition, a character cannot be repeated 3 or more times consectively.
+	// NSX admin password. The password must be at least 12 characters long. Must contain at-least 1 uppercase, 1 lowercase, 1 special character and 1 digit. In addition, a character cannot be repeated 3 or more times consectively.
 	NSXTAdminPassword string `json:"nsxtAdminPassword,omitempty"`
 
-	// NSX-T audit password. The password must be at least 12 characters long. Must contain at-least 1 uppercase, 1 lowercase, 1 special character and 1 digit. In addition, a character cannot be repeated 3 or more times consectively.
+	// NSX audit password. The password must be at least 12 characters long. Must contain at-least 1 uppercase, 1 lowercase, 1 special character and 1 digit. In addition, a character cannot be repeated 3 or more times consectively.
 	NSXTAuditPassword string `json:"nsxtAuditPassword,omitempty"`
 
-	// NSX-T Manager license
+	// NSX Manager license
 	NSXTLicense string `json:"nsxtLicense,omitempty"`
 
-	// NSX-T Manager size
+	// NSX Manager size
 	// Example: One among:medium, large
 	// Required: true
 	NSXTManagerSize *string `json:"nsxtManagerSize"`
 
-	// NSX-T Managers
+	// NSX Managers
 	// Required: true
 	NSXTManagers []*NSXTManagerSpec `json:"nsxtManagers"`
 
-	// NSX-T OverLay Transport zone
+	// NSX Overlay Transport zone.
+	//  This property is deprecated in favor of nsxtSwitchConfig field
 	OverLayTransportZone *NSXTTransportZone `json:"overLayTransportZone,omitempty"`
 
-	// If true, allow root login for NSX-T Manager and deny if false. Deprecated as of 4.5, the root login will be always enabled for NSX-T Data Center Appliance.
-	RootLoginEnabledForNSXTManager bool `json:"rootLoginEnabledForNsxtManager,omitempty"`
-
-	// NSX-T Manager root password. Password should have 1) At least eight characters, 2) At least one lower-case letter, 3) At least one upper-case letter 4) At least one digit 5) At least one special character, 6) At least five different characters , 7) No dictionary words, 6) No palindromes
+	// NSX Manager root password. Password should have 1) At least eight characters, 2) At least one lower-case letter, 3) At least one upper-case letter 4) At least one digit 5) At least one special character, 6) At least five different characters , 7) No dictionary words, 6) No palindromes
 	// Required: true
 	RootNSXTManagerPassword *string `json:"rootNsxtManagerPassword"`
 
-	// If true, enable SSH for NSX-T Manager and disable if false. Deprecated as of 4.5, the SSH connection will be always enabled for NSX-T Data Center Appliance.
-	SSHEnabledForNSXTManager bool `json:"sshEnabledForNsxtManager,omitempty"`
-
 	// Transport VLAN ID
-	// Required: true
-	TransportVlanID int32 `json:"transportVlanId"`
+	TransportVlanID int32 `json:"transportVlanId,omitempty"`
 
-	// Virtual IP address which would act as proxy/alias for NSX-T Managers
+	// Virtual IP address which would act as proxy/alias for NSX Managers
 	// Required: true
 	Vip *string `json:"vip"`
 
 	// FQDN for VIP so that common SSL certificates can be installed across all managers
 	// Required: true
 	VipFqdn *string `json:"vipFqdn"`
-
-	// NSX-T VLAN transport zone.
-	// This property is deprecated, and it is a no-operation
-	VlanTransportZone *NSXTTransportZone `json:"vlanTransportZone,omitempty"`
 }
 
 // Validate validates this Sddc Nsxt spec
@@ -103,10 +93,6 @@ func (m *SDDCNSXTSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVipFqdn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVlanTransportZone(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -217,25 +203,6 @@ func (m *SDDCNSXTSpec) validateVipFqdn(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SDDCNSXTSpec) validateVlanTransportZone(formats strfmt.Registry) error {
-	if swag.IsZero(m.VlanTransportZone) { // not required
-		return nil
-	}
-
-	if m.VlanTransportZone != nil {
-		if err := m.VlanTransportZone.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vlanTransportZone")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vlanTransportZone")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this Sddc Nsxt spec based on the context it is used
 func (m *SDDCNSXTSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -252,10 +219,6 @@ func (m *SDDCNSXTSpec) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVlanTransportZone(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -265,6 +228,11 @@ func (m *SDDCNSXTSpec) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *SDDCNSXTSpec) contextValidateIPAddressPoolSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IPAddressPoolSpec != nil {
+
+		if swag.IsZero(m.IPAddressPoolSpec) { // not required
+			return nil
+		}
+
 		if err := m.IPAddressPoolSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ipAddressPoolSpec")
@@ -283,6 +251,11 @@ func (m *SDDCNSXTSpec) contextValidateNSXTManagers(ctx context.Context, formats 
 	for i := 0; i < len(m.NSXTManagers); i++ {
 
 		if m.NSXTManagers[i] != nil {
+
+			if swag.IsZero(m.NSXTManagers[i]) { // not required
+				return nil
+			}
+
 			if err := m.NSXTManagers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxtManagers" + "." + strconv.Itoa(i))
@@ -301,27 +274,16 @@ func (m *SDDCNSXTSpec) contextValidateNSXTManagers(ctx context.Context, formats 
 func (m *SDDCNSXTSpec) contextValidateOverLayTransportZone(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.OverLayTransportZone != nil {
+
+		if swag.IsZero(m.OverLayTransportZone) { // not required
+			return nil
+		}
+
 		if err := m.OverLayTransportZone.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("overLayTransportZone")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("overLayTransportZone")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *SDDCNSXTSpec) contextValidateVlanTransportZone(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.VlanTransportZone != nil {
-		if err := m.VlanTransportZone.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vlanTransportZone")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vlanTransportZone")
 			}
 			return err
 		}

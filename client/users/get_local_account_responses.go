@@ -51,7 +51,7 @@ func (o *GetLocalAccountReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/users/local/admin] getLocalAccount", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetLocalAccountOK) IsServerError() bool {
 // IsCode returns true when this get local account o k response a status code equal to that given
 func (o *GetLocalAccountOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get local account o k response
+func (o *GetLocalAccountOK) Code() int {
+	return 200
 }
 
 func (o *GetLocalAccountOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetLocalAccountBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get local account bad request response
+func (o *GetLocalAccountBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetLocalAccountBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetLocalAccountUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get local account unauthorized response
+func (o *GetLocalAccountUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetLocalAccountUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/users/local/admin][%d] getLocalAccountUnauthorized  %+v", 401, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetLocalAccountInternalServerError) IsServerError() bool {
 // IsCode returns true when this get local account internal server error response a status code equal to that given
 func (o *GetLocalAccountInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get local account internal server error response
+func (o *GetLocalAccountInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetLocalAccountInternalServerError) Error() string {

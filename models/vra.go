@@ -17,30 +17,30 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VRA Spec contains parameters of a vRealize Automation instance
+// VRA Spec contains parameters of a VMware Aria Automation instance
 //
 // swagger:model Vra
 type VRA struct {
 
-	// The ID of the vRealize Automation instance
+	// The ID of the VMware Aria Automation instance
 	ID string `json:"id,omitempty"`
 
-	// The Fully Qualified Domain Name of the vRealize Automation load balancer
+	// The Fully Qualified Domain Name of the VMware Aria Automation load balancer
 	// Example: vra-lb.vrack.vsphere.local
 	LoadBalancerFqdn string `json:"loadBalancerFqdn,omitempty"`
 
-	// The IP address of the vRealize Automation load balancer
+	// The IP address of the VMware Aria Automation load balancer
 	// Example: 10.0.0.15
 	LoadBalancerIPAddress string `json:"loadBalancerIpAddress,omitempty"`
 
-	// The nodes of the vRealize Automation instance
+	// The nodes of the VMware Aria Automation instance
 	Nodes []*VrealizeProductNode `json:"nodes"`
 
-	// The status of the vRealize Automation instance
+	// The status of the VMware Aria Automation instance
 	// Example: ACTIVE, ERROR
 	Status string `json:"status,omitempty"`
 
-	// The version of the vRealize Automation instance
+	// The version of the VMware Aria Automation instance
 	// Example: 8.1.0-13036238
 	Version string `json:"version,omitempty"`
 }
@@ -104,6 +104,11 @@ func (m *VRA) contextValidateNodes(ctx context.Context, formats strfmt.Registry)
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

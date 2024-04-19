@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PersonalityUploadSpecReferred Personality upload specification for uploading the personality from a referred vCentercluster. This mode of uplaoding personality is useful when the source vCenter cluster isinternal to the target VCF deployment.
+// PersonalityUploadSpecReferred Personality upload specification for uploading the personality from a referred vCentercluster. This mode of uploading personality is useful when the source vCenter cluster is internal to the target VCF deployment.
 //
 // swagger:model PersonalityUploadSpecReferred
 type PersonalityUploadSpecReferred struct {

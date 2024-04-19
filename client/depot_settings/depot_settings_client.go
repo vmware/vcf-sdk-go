@@ -41,9 +41,9 @@ type ClientService interface {
 }
 
 /*
-GetDepotSettings gets depot settings
+GetDepotSettings retrieves the depot configuration
 
-Get the Depot Settings, In a fresh setup, this would be empty
+Get the depot configuration. In a fresh setup, this would be empty.
 */
 func (a *Client) GetDepotSettings(params *GetDepotSettingsParams, opts ...ClientOption) (*GetDepotSettingsOK, error) {
 	// TODO: Validate the params before sending
@@ -81,9 +81,9 @@ func (a *Client) GetDepotSettings(params *GetDepotSettingsParams, opts ...Client
 }
 
 /*
-UpdateDepotSettings updates depot settings
+UpdateDepotSettings configures the depot credentials
 
-Update Depot Settings. Depot Settings can be updated with VMware Depot Account
+Update depot settings. Depot settings can be updated with VMware Depot account
 */
 func (a *Client) UpdateDepotSettings(params *UpdateDepotSettingsParams, opts ...ClientOption) (*UpdateDepotSettingsOK, *UpdateDepotSettingsAccepted, error) {
 	// TODO: Validate the params before sending

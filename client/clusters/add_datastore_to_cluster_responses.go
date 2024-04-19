@@ -57,7 +57,7 @@ func (o *AddDatastoreToClusterReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/clusters/{id}/datastores] addDatastoreToCluster", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *AddDatastoreToClusterOK) IsServerError() bool {
 // IsCode returns true when this add datastore to cluster o k response a status code equal to that given
 func (o *AddDatastoreToClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the add datastore to cluster o k response
+func (o *AddDatastoreToClusterOK) Code() int {
+	return 200
 }
 
 func (o *AddDatastoreToClusterOK) Error() string {
@@ -163,6 +168,11 @@ func (o *AddDatastoreToClusterAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the add datastore to cluster accepted response
+func (o *AddDatastoreToClusterAccepted) Code() int {
+	return 202
+}
+
 func (o *AddDatastoreToClusterAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/clusters/{id}/datastores][%d] addDatastoreToClusterAccepted  %+v", 202, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *AddDatastoreToClusterBadRequest) IsServerError() bool {
 // IsCode returns true when this add datastore to cluster bad request response a status code equal to that given
 func (o *AddDatastoreToClusterBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the add datastore to cluster bad request response
+func (o *AddDatastoreToClusterBadRequest) Code() int {
+	return 400
 }
 
 func (o *AddDatastoreToClusterBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *AddDatastoreToClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the add datastore to cluster not found response
+func (o *AddDatastoreToClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *AddDatastoreToClusterNotFound) Error() string {
 	return fmt.Sprintf("[POST /v1/clusters/{id}/datastores][%d] addDatastoreToClusterNotFound  %+v", 404, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *AddDatastoreToClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this add datastore to cluster internal server error response a status code equal to that given
 func (o *AddDatastoreToClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the add datastore to cluster internal server error response
+func (o *AddDatastoreToClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddDatastoreToClusterInternalServerError) Error() string {

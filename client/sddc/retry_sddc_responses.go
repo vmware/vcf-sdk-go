@@ -63,7 +63,7 @@ func (o *RetrySDDCReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/sddcs/{id}] retrySddc", response, response.Code())
 	}
 }
 
@@ -104,6 +104,11 @@ func (o *RetrySDDCOK) IsServerError() bool {
 // IsCode returns true when this retry Sddc o k response a status code equal to that given
 func (o *RetrySDDCOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the retry Sddc o k response
+func (o *RetrySDDCOK) Code() int {
+	return 200
 }
 
 func (o *RetrySDDCOK) Error() string {
@@ -169,6 +174,11 @@ func (o *RetrySDDCAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the retry Sddc accepted response
+func (o *RetrySDDCAccepted) Code() int {
+	return 202
+}
+
 func (o *RetrySDDCAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/sddcs/{id}][%d] retrySddcAccepted  %+v", 202, o.Payload)
 }
@@ -230,6 +240,11 @@ func (o *RetrySDDCBadRequest) IsServerError() bool {
 // IsCode returns true when this retry Sddc bad request response a status code equal to that given
 func (o *RetrySDDCBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the retry Sddc bad request response
+func (o *RetrySDDCBadRequest) Code() int {
+	return 400
 }
 
 func (o *RetrySDDCBadRequest) Error() string {
@@ -295,6 +310,11 @@ func (o *RetrySDDCNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the retry Sddc not found response
+func (o *RetrySDDCNotFound) Code() int {
+	return 404
+}
+
 func (o *RetrySDDCNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/sddcs/{id}][%d] retrySddcNotFound  %+v", 404, o.Payload)
 }
@@ -358,6 +378,11 @@ func (o *RetrySDDCMethodNotAllowed) IsCode(code int) bool {
 	return code == 405
 }
 
+// Code gets the status code for the retry Sddc method not allowed response
+func (o *RetrySDDCMethodNotAllowed) Code() int {
+	return 405
+}
+
 func (o *RetrySDDCMethodNotAllowed) Error() string {
 	return fmt.Sprintf("[PATCH /v1/sddcs/{id}][%d] retrySddcMethodNotAllowed  %+v", 405, o.Payload)
 }
@@ -419,6 +444,11 @@ func (o *RetrySDDCInternalServerError) IsServerError() bool {
 // IsCode returns true when this retry Sddc internal server error response a status code equal to that given
 func (o *RetrySDDCInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the retry Sddc internal server error response
+func (o *RetrySDDCInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RetrySDDCInternalServerError) Error() string {
