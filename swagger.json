@@ -8563,7 +8563,7 @@
           "description" : "One among: PDF, CSV",
           "required" : false,
           "type" : "string",
-          "default" : "pdf",
+          "default" : "PDF",
           "enum" : [ "PDF", "CSV" ]
         } ],
         "responses" : {
@@ -9870,7 +9870,7 @@
           "description" : "Supported bringup designs - EMS, VXRAIL",
           "required" : false,
           "type" : "string",
-          "default" : "ems",
+          "default" : "EMS",
           "enum" : [ "EMS", "VXRAIL" ]
         } ],
         "responses" : {
