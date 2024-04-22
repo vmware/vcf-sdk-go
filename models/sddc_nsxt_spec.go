@@ -53,7 +53,8 @@ type SDDCNSXTSpec struct {
 	RootNSXTManagerPassword *string `json:"rootNsxtManagerPassword"`
 
 	// Transport VLAN ID
-	TransportVlanID int32 `json:"transportVlanId,omitempty"`
+	// Required: true
+	TransportVlanID *int32 `json:"transportVlanId"`
 
 	// Virtual IP address which would act as proxy/alias for NSX Managers
 	// Required: true
@@ -85,6 +86,10 @@ func (m *SDDCNSXTSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRootNSXTManagerPassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTransportVlanID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -179,6 +184,15 @@ func (m *SDDCNSXTSpec) validateOverLayTransportZone(formats strfmt.Registry) err
 func (m *SDDCNSXTSpec) validateRootNSXTManagerPassword(formats strfmt.Registry) error {
 
 	if err := validate.Required("rootNsxtManagerPassword", "body", m.RootNSXTManagerPassword); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SDDCNSXTSpec) validateTransportVlanID(formats strfmt.Registry) error {
+
+	if err := validate.Required("transportVlanId", "body", m.TransportVlanID); err != nil {
 		return err
 	}
 

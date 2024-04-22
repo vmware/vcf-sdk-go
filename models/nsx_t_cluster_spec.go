@@ -15,6 +15,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NsxTClusterSpec This specification contains NSX configuration for a new cluster.
@@ -23,7 +24,8 @@ import (
 type NsxTClusterSpec struct {
 
 	// Vlan id of Geneve. (This field is deprecated, instead please use transportVlan in uplinkProfiles)
-	GeneveVlanID int32 `json:"geneveVlanId,omitempty"`
+	// Required: true
+	GeneveVlanID *int32 `json:"geneveVlanId"`
 
 	// The IP address pool specification. (This field is deprecated. Please use ipAddressPoolsSpec instead for providing IP address pools)
 	IPAddressPoolSpec *IPAddressPoolSpec `json:"ipAddressPoolSpec,omitempty"`
@@ -38,6 +40,10 @@ type NsxTClusterSpec struct {
 // Validate validates this nsx t cluster spec
 func (m *NsxTClusterSpec) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateGeneveVlanID(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateIPAddressPoolSpec(formats); err != nil {
 		res = append(res, err)
@@ -54,6 +60,15 @@ func (m *NsxTClusterSpec) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NsxTClusterSpec) validateGeneveVlanID(formats strfmt.Registry) error {
+
+	if err := validate.Required("geneveVlanId", "body", m.GeneveVlanID); err != nil {
+		return err
+	}
+
 	return nil
 }
 

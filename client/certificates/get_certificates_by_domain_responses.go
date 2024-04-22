@@ -32,6 +32,12 @@ func (o *GetCertificatesByDomainReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return result, nil
+	case 202:
+		result := NewGetCertificatesByDomainAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 404:
 		result := NewGetCertificatesByDomainNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -108,6 +114,74 @@ func (o *GetCertificatesByDomainOK) GetPayload() *models.PageOfCertificate {
 func (o *GetCertificatesByDomainOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfCertificate)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetCertificatesByDomainAccepted creates a GetCertificatesByDomainAccepted with default headers values
+func NewGetCertificatesByDomainAccepted() *GetCertificatesByDomainAccepted {
+	return &GetCertificatesByDomainAccepted{}
+}
+
+/*
+GetCertificatesByDomainAccepted describes a response with status code 202, with default header values.
+
+Accepted
+*/
+type GetCertificatesByDomainAccepted struct {
+	Payload *models.Task
+}
+
+// IsSuccess returns true when this get certificates by domain accepted response has a 2xx status code
+func (o *GetCertificatesByDomainAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get certificates by domain accepted response has a 3xx status code
+func (o *GetCertificatesByDomainAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get certificates by domain accepted response has a 4xx status code
+func (o *GetCertificatesByDomainAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get certificates by domain accepted response has a 5xx status code
+func (o *GetCertificatesByDomainAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get certificates by domain accepted response a status code equal to that given
+func (o *GetCertificatesByDomainAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
+// Code gets the status code for the get certificates by domain accepted response
+func (o *GetCertificatesByDomainAccepted) Code() int {
+	return 202
+}
+
+func (o *GetCertificatesByDomainAccepted) Error() string {
+	return fmt.Sprintf("[GET /v1/domains/{id}/resource-certificates][%d] getCertificatesByDomainAccepted  %+v", 202, o.Payload)
+}
+
+func (o *GetCertificatesByDomainAccepted) String() string {
+	return fmt.Sprintf("[GET /v1/domains/{id}/resource-certificates][%d] getCertificatesByDomainAccepted  %+v", 202, o.Payload)
+}
+
+func (o *GetCertificatesByDomainAccepted) GetPayload() *models.Task {
+	return o.Payload
+}
+
+func (o *GetCertificatesByDomainAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Task)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

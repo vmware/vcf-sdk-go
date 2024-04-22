@@ -11,8 +11,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AutoRotateCredentialPolicyInputSpec Represents password auto rotate config details
@@ -21,7 +23,8 @@ import (
 type AutoRotateCredentialPolicyInputSpec struct {
 
 	//  Enable or disable  auto rotate policy
-	EnableAutoRotatePolicy bool `json:"enableAutoRotatePolicy,omitempty"`
+	// Required: true
+	EnableAutoRotatePolicy *bool `json:"enableAutoRotatePolicy"`
 
 	// Frequency in days
 	FrequencyInDays int32 `json:"frequencyInDays,omitempty"`
@@ -29,6 +32,24 @@ type AutoRotateCredentialPolicyInputSpec struct {
 
 // Validate validates this auto rotate credential policy input spec
 func (m *AutoRotateCredentialPolicyInputSpec) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEnableAutoRotatePolicy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AutoRotateCredentialPolicyInputSpec) validateEnableAutoRotatePolicy(formats strfmt.Registry) error {
+
+	if err := validate.Required("enableAutoRotatePolicy", "body", m.EnableAutoRotatePolicy); err != nil {
+		return err
+	}
+
 	return nil
 }
 

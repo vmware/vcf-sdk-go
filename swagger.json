@@ -4194,6 +4194,12 @@
               "$ref" : "#/definitions/PageOfCertificate"
             }
           },
+          "202" : {
+            "description" : "Accepted",
+            "schema" : {
+              "$ref" : "#/definitions/Task"
+            }
+          },
           "500" : {
             "description" : "Internal server error",
             "schema" : {
@@ -12824,6 +12830,7 @@
       "description" : "This specification contains the parameters required to expand a NSX edge cluster."
     },
     "NsxTClusterSpec" : {
+      "required" : [ "geneveVlanId" ],
       "properties" : {
         "geneveVlanId" : {
           "type" : "integer",
@@ -18199,7 +18206,7 @@
       }
     },
     "SddcNsxtSpec" : {
-      "required" : [ "nsxtManagerSize", "nsxtManagers", "rootNsxtManagerPassword", "vip", "vipFqdn" ],
+      "required" : [ "nsxtManagerSize", "nsxtManagers", "rootNsxtManagerPassword", "vip", "vipFqdn", "transportVlanId" ],
       "properties" : {
         "ipAddressPoolSpec" : {
           "description" : "NSX IP address pool specification",
@@ -24430,6 +24437,7 @@
       "description" : "Represents a page of elements of a single type"
     },
     "AutoRotateCredentialPolicyInputSpec" : {
+      "required" : [ "enableAutoRotatePolicy" ],
       "properties" : {
         "enableAutoRotatePolicy" : {
           "type" : "boolean",
