@@ -14322,7 +14322,7 @@
       "description" : "Hardware Support Package Specification"
     },
     "ResourcePoolSpec" : {
-      "required" : [ "memoryReservationExpandable", "name" ],
+      "required" : [ "memoryReservationExpandable", "name", "memorySharesValue" ],
       "properties" : {
         "cpuLimit" : {
           "type" : "integer",
