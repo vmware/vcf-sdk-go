@@ -38,6 +38,12 @@ func (o *PostHostQueryReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPostHostQueryNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPostHostQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -174,6 +180,74 @@ func (o *PostHostQueryBadRequest) GetPayload() *models.Error {
 }
 
 func (o *PostHostQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPostHostQueryNotFound creates a PostHostQueryNotFound with default headers values
+func NewPostHostQueryNotFound() *PostHostQueryNotFound {
+	return &PostHostQueryNotFound{}
+}
+
+/*
+PostHostQueryNotFound describes a response with status code 404, with default header values.
+
+Cluster Not Found
+*/
+type PostHostQueryNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this post host query not found response has a 2xx status code
+func (o *PostHostQueryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post host query not found response has a 3xx status code
+func (o *PostHostQueryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post host query not found response has a 4xx status code
+func (o *PostHostQueryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post host query not found response has a 5xx status code
+func (o *PostHostQueryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post host query not found response a status code equal to that given
+func (o *PostHostQueryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the post host query not found response
+func (o *PostHostQueryNotFound) Code() int {
+	return 404
+}
+
+func (o *PostHostQueryNotFound) Error() string {
+	return fmt.Sprintf("[POST /v1/clusters/{id}/hosts/queries][%d] postHostQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostHostQueryNotFound) String() string {
+	return fmt.Sprintf("[POST /v1/clusters/{id}/hosts/queries][%d] postHostQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostHostQueryNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PostHostQueryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

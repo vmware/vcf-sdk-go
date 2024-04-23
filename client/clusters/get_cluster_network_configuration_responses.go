@@ -38,6 +38,12 @@ func (o *GetClusterNetworkConfigurationReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetClusterNetworkConfigurationNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewGetClusterNetworkConfigurationInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -174,6 +180,74 @@ func (o *GetClusterNetworkConfigurationBadRequest) GetPayload() *models.Error {
 }
 
 func (o *GetClusterNetworkConfigurationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterNetworkConfigurationNotFound creates a GetClusterNetworkConfigurationNotFound with default headers values
+func NewGetClusterNetworkConfigurationNotFound() *GetClusterNetworkConfigurationNotFound {
+	return &GetClusterNetworkConfigurationNotFound{}
+}
+
+/*
+GetClusterNetworkConfigurationNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type GetClusterNetworkConfigurationNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get cluster network configuration not found response has a 2xx status code
+func (o *GetClusterNetworkConfigurationNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster network configuration not found response has a 3xx status code
+func (o *GetClusterNetworkConfigurationNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster network configuration not found response has a 4xx status code
+func (o *GetClusterNetworkConfigurationNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster network configuration not found response has a 5xx status code
+func (o *GetClusterNetworkConfigurationNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster network configuration not found response a status code equal to that given
+func (o *GetClusterNetworkConfigurationNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get cluster network configuration not found response
+func (o *GetClusterNetworkConfigurationNotFound) Code() int {
+	return 404
+}
+
+func (o *GetClusterNetworkConfigurationNotFound) Error() string {
+	return fmt.Sprintf("[POST /v1/clusters/{id}/network/queries][%d] getClusterNetworkConfigurationNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetClusterNetworkConfigurationNotFound) String() string {
+	return fmt.Sprintf("[POST /v1/clusters/{id}/network/queries][%d] getClusterNetworkConfigurationNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetClusterNetworkConfigurationNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetClusterNetworkConfigurationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -32,6 +32,12 @@ func (o *GetConfigsReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewGetConfigsBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewGetConfigsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -108,6 +114,74 @@ func (o *GetConfigsOK) GetPayload() *models.PageOfConfigDriftSpec {
 func (o *GetConfigsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfConfigDriftSpec)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetConfigsBadRequest creates a GetConfigsBadRequest with default headers values
+func NewGetConfigsBadRequest() *GetConfigsBadRequest {
+	return &GetConfigsBadRequest{}
+}
+
+/*
+GetConfigsBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type GetConfigsBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get configs bad request response has a 2xx status code
+func (o *GetConfigsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get configs bad request response has a 3xx status code
+func (o *GetConfigsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get configs bad request response has a 4xx status code
+func (o *GetConfigsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get configs bad request response has a 5xx status code
+func (o *GetConfigsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get configs bad request response a status code equal to that given
+func (o *GetConfigsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get configs bad request response
+func (o *GetConfigsBadRequest) Code() int {
+	return 400
+}
+
+func (o *GetConfigsBadRequest) Error() string {
+	return fmt.Sprintf("[GET /v1/config-drifts][%d] getConfigsBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetConfigsBadRequest) String() string {
+	return fmt.Sprintf("[GET /v1/config-drifts][%d] getConfigsBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetConfigsBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetConfigsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

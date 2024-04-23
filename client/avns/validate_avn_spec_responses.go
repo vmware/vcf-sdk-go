@@ -32,6 +32,12 @@ func (o *ValidateAvnSpecReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewValidateAvnSpecBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewValidateAvnSpecInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -102,6 +108,74 @@ func (o *ValidateAvnSpecOK) GetPayload() *models.Validation {
 func (o *ValidateAvnSpecOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Validation)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewValidateAvnSpecBadRequest creates a ValidateAvnSpecBadRequest with default headers values
+func NewValidateAvnSpecBadRequest() *ValidateAvnSpecBadRequest {
+	return &ValidateAvnSpecBadRequest{}
+}
+
+/*
+ValidateAvnSpecBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ValidateAvnSpecBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this validate avn spec bad request response has a 2xx status code
+func (o *ValidateAvnSpecBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate avn spec bad request response has a 3xx status code
+func (o *ValidateAvnSpecBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate avn spec bad request response has a 4xx status code
+func (o *ValidateAvnSpecBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate avn spec bad request response has a 5xx status code
+func (o *ValidateAvnSpecBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate avn spec bad request response a status code equal to that given
+func (o *ValidateAvnSpecBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the validate avn spec bad request response
+func (o *ValidateAvnSpecBadRequest) Code() int {
+	return 400
+}
+
+func (o *ValidateAvnSpecBadRequest) Error() string {
+	return fmt.Sprintf("[POST /v1/avns/validations][%d] validateAvnSpecBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ValidateAvnSpecBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/avns/validations][%d] validateAvnSpecBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ValidateAvnSpecBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *ValidateAvnSpecBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

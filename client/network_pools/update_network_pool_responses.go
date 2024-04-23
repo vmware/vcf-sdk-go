@@ -32,6 +32,12 @@ func (o *UpdateNetworkPoolReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewUpdateNetworkPoolBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewUpdateNetworkPoolNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -108,6 +114,74 @@ func (o *UpdateNetworkPoolOK) GetPayload() *models.NetworkPool {
 func (o *UpdateNetworkPoolOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.NetworkPool)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUpdateNetworkPoolBadRequest creates a UpdateNetworkPoolBadRequest with default headers values
+func NewUpdateNetworkPoolBadRequest() *UpdateNetworkPoolBadRequest {
+	return &UpdateNetworkPoolBadRequest{}
+}
+
+/*
+UpdateNetworkPoolBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type UpdateNetworkPoolBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this update network pool bad request response has a 2xx status code
+func (o *UpdateNetworkPoolBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update network pool bad request response has a 3xx status code
+func (o *UpdateNetworkPoolBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update network pool bad request response has a 4xx status code
+func (o *UpdateNetworkPoolBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update network pool bad request response has a 5xx status code
+func (o *UpdateNetworkPoolBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update network pool bad request response a status code equal to that given
+func (o *UpdateNetworkPoolBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the update network pool bad request response
+func (o *UpdateNetworkPoolBadRequest) Code() int {
+	return 400
+}
+
+func (o *UpdateNetworkPoolBadRequest) Error() string {
+	return fmt.Sprintf("[PATCH /v1/network-pools/{id}][%d] updateNetworkPoolBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UpdateNetworkPoolBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /v1/network-pools/{id}][%d] updateNetworkPoolBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UpdateNetworkPoolBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *UpdateNetworkPoolBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

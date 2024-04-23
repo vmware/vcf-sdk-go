@@ -32,6 +32,18 @@ func (o *GetDatastoresCriteriaReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return result, nil
+	case 404:
+		result := NewGetDatastoresCriteriaNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDatastoresCriteriaInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("[GET /v1/clusters/{id}/datastores/criteria] getDatastoresCriteria", response, response.Code())
 	}
@@ -96,6 +108,142 @@ func (o *GetDatastoresCriteriaOK) GetPayload() *models.PageOfDatastoreCriterion 
 func (o *GetDatastoresCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfDatastoreCriterion)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatastoresCriteriaNotFound creates a GetDatastoresCriteriaNotFound with default headers values
+func NewGetDatastoresCriteriaNotFound() *GetDatastoresCriteriaNotFound {
+	return &GetDatastoresCriteriaNotFound{}
+}
+
+/*
+GetDatastoresCriteriaNotFound describes a response with status code 404, with default header values.
+
+Cluster Not Found
+*/
+type GetDatastoresCriteriaNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get datastores criteria not found response has a 2xx status code
+func (o *GetDatastoresCriteriaNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get datastores criteria not found response has a 3xx status code
+func (o *GetDatastoresCriteriaNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get datastores criteria not found response has a 4xx status code
+func (o *GetDatastoresCriteriaNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get datastores criteria not found response has a 5xx status code
+func (o *GetDatastoresCriteriaNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get datastores criteria not found response a status code equal to that given
+func (o *GetDatastoresCriteriaNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get datastores criteria not found response
+func (o *GetDatastoresCriteriaNotFound) Code() int {
+	return 404
+}
+
+func (o *GetDatastoresCriteriaNotFound) Error() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria][%d] getDatastoresCriteriaNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDatastoresCriteriaNotFound) String() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria][%d] getDatastoresCriteriaNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDatastoresCriteriaNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetDatastoresCriteriaNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatastoresCriteriaInternalServerError creates a GetDatastoresCriteriaInternalServerError with default headers values
+func NewGetDatastoresCriteriaInternalServerError() *GetDatastoresCriteriaInternalServerError {
+	return &GetDatastoresCriteriaInternalServerError{}
+}
+
+/*
+GetDatastoresCriteriaInternalServerError describes a response with status code 500, with default header values.
+
+Internal Server Error
+*/
+type GetDatastoresCriteriaInternalServerError struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get datastores criteria internal server error response has a 2xx status code
+func (o *GetDatastoresCriteriaInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get datastores criteria internal server error response has a 3xx status code
+func (o *GetDatastoresCriteriaInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get datastores criteria internal server error response has a 4xx status code
+func (o *GetDatastoresCriteriaInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get datastores criteria internal server error response has a 5xx status code
+func (o *GetDatastoresCriteriaInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get datastores criteria internal server error response a status code equal to that given
+func (o *GetDatastoresCriteriaInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get datastores criteria internal server error response
+func (o *GetDatastoresCriteriaInternalServerError) Code() int {
+	return 500
+}
+
+func (o *GetDatastoresCriteriaInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria][%d] getDatastoresCriteriaInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetDatastoresCriteriaInternalServerError) String() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/datastores/criteria][%d] getDatastoresCriteriaInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetDatastoresCriteriaInternalServerError) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetDatastoresCriteriaInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

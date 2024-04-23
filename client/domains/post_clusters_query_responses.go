@@ -38,6 +38,12 @@ func (o *PostClustersQueryReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPostClustersQueryNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPostClustersQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -174,6 +180,74 @@ func (o *PostClustersQueryBadRequest) GetPayload() *models.Error {
 }
 
 func (o *PostClustersQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPostClustersQueryNotFound creates a PostClustersQueryNotFound with default headers values
+func NewPostClustersQueryNotFound() *PostClustersQueryNotFound {
+	return &PostClustersQueryNotFound{}
+}
+
+/*
+PostClustersQueryNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PostClustersQueryNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this post clusters query not found response has a 2xx status code
+func (o *PostClustersQueryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post clusters query not found response has a 3xx status code
+func (o *PostClustersQueryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post clusters query not found response has a 4xx status code
+func (o *PostClustersQueryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post clusters query not found response has a 5xx status code
+func (o *PostClustersQueryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post clusters query not found response a status code equal to that given
+func (o *PostClustersQueryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the post clusters query not found response
+func (o *PostClustersQueryNotFound) Code() int {
+	return 404
+}
+
+func (o *PostClustersQueryNotFound) Error() string {
+	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/queries][%d] postClustersQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostClustersQueryNotFound) String() string {
+	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/queries][%d] postClustersQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostClustersQueryNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PostClustersQueryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
