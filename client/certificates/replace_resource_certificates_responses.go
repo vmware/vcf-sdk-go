@@ -32,6 +32,12 @@ func (o *ReplaceResourceCertificatesReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return result, nil
+	case 202:
+		result := NewReplaceResourceCertificatesAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 404:
 		result := NewReplaceResourceCertificatesNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -106,6 +112,74 @@ func (o *ReplaceResourceCertificatesOK) GetPayload() *models.Task {
 }
 
 func (o *ReplaceResourceCertificatesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Task)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewReplaceResourceCertificatesAccepted creates a ReplaceResourceCertificatesAccepted with default headers values
+func NewReplaceResourceCertificatesAccepted() *ReplaceResourceCertificatesAccepted {
+	return &ReplaceResourceCertificatesAccepted{}
+}
+
+/*
+ReplaceResourceCertificatesAccepted describes a response with status code 202, with default header values.
+
+Accepted
+*/
+type ReplaceResourceCertificatesAccepted struct {
+	Payload *models.Task
+}
+
+// IsSuccess returns true when this replace resource certificates accepted response has a 2xx status code
+func (o *ReplaceResourceCertificatesAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace resource certificates accepted response has a 3xx status code
+func (o *ReplaceResourceCertificatesAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace resource certificates accepted response has a 4xx status code
+func (o *ReplaceResourceCertificatesAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace resource certificates accepted response has a 5xx status code
+func (o *ReplaceResourceCertificatesAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace resource certificates accepted response a status code equal to that given
+func (o *ReplaceResourceCertificatesAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
+// Code gets the status code for the replace resource certificates accepted response
+func (o *ReplaceResourceCertificatesAccepted) Code() int {
+	return 202
+}
+
+func (o *ReplaceResourceCertificatesAccepted) Error() string {
+	return fmt.Sprintf("[PUT /v1/domains/{id}/resource-certificates][%d] replaceResourceCertificatesAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ReplaceResourceCertificatesAccepted) String() string {
+	return fmt.Sprintf("[PUT /v1/domains/{id}/resource-certificates][%d] replaceResourceCertificatesAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ReplaceResourceCertificatesAccepted) GetPayload() *models.Task {
+	return o.Payload
+}
+
+func (o *ReplaceResourceCertificatesAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Task)
 
