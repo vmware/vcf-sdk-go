@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v0.3.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.0)
+
+> Release Date: 23 May 2024
+
+Support APIs from VCF 5.1.1
+Move to go-swagger 0.30.5
+
 ## [v0.2.4](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.4)
 
 > Release Date: 11 Mar 2024
