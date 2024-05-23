@@ -51,7 +51,7 @@ func (o *DeleteExternalIdentityProviderReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/identity-providers/{id}] deleteExternalIdentityProvider", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *DeleteExternalIdentityProviderOK) IsServerError() bool {
 // IsCode returns true when this delete external identity provider o k response a status code equal to that given
 func (o *DeleteExternalIdentityProviderOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete external identity provider o k response
+func (o *DeleteExternalIdentityProviderOK) Code() int {
+	return 200
 }
 
 func (o *DeleteExternalIdentityProviderOK) Error() string {
@@ -155,6 +160,11 @@ func (o *DeleteExternalIdentityProviderNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete external identity provider no content response
+func (o *DeleteExternalIdentityProviderNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteExternalIdentityProviderNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /v1/identity-providers/{id}][%d] deleteExternalIdentityProviderNoContent  %+v", 204, o.Payload)
 }
@@ -214,6 +224,11 @@ func (o *DeleteExternalIdentityProviderNotFound) IsServerError() bool {
 // IsCode returns true when this delete external identity provider not found response a status code equal to that given
 func (o *DeleteExternalIdentityProviderNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the delete external identity provider not found response
+func (o *DeleteExternalIdentityProviderNotFound) Code() int {
+	return 404
 }
 
 func (o *DeleteExternalIdentityProviderNotFound) Error() string {
@@ -277,6 +292,11 @@ func (o *DeleteExternalIdentityProviderInternalServerError) IsServerError() bool
 // IsCode returns true when this delete external identity provider internal server error response a status code equal to that given
 func (o *DeleteExternalIdentityProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete external identity provider internal server error response
+func (o *DeleteExternalIdentityProviderInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteExternalIdentityProviderInternalServerError) Error() string {

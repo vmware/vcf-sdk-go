@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PersonalityUploadSpecRaw Personality upload specification for uploading the personality from raw files exported from avCenter cluster. This mode of uplaoding personality is useful when the source vCenter cluster isoutside the target VCF deployment.
+// PersonalityUploadSpecRaw Personality upload specification for uploading the personality from raw files exported from avCenter cluster. This mode of uploading personality is useful when the source vCenter cluster is outside the target VCF deployment.
 //
 // swagger:model PersonalityUploadSpecRaw
 type PersonalityUploadSpecRaw struct {

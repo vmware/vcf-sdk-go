@@ -33,23 +33,25 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetCriteria1(params *GetCriteria1Params, opts ...ClientOption) (*GetCriteria1OK, error)
+	GetNsxCluster(params *GetNsxClusterParams, opts ...ClientOption) (*GetNsxClusterOK, error)
 
-	GetCriterion1(params *GetCriterion1Params, opts ...ClientOption) (*GetCriterion1OK, error)
+	GetNsxClusterQueryResponse(params *GetNsxClusterQueryResponseParams, opts ...ClientOption) (*GetNsxClusterQueryResponseOK, *GetNsxClusterQueryResponseAccepted, error)
 
-	GetNSXTCluster(params *GetNSXTClusterParams, opts ...ClientOption) (*GetNSXTClusterOK, error)
+	GetNsxClusters(params *GetNsxClustersParams, opts ...ClientOption) (*GetNsxClustersOK, error)
 
-	GetNSXTClusterQueryResponse(params *GetNSXTClusterQueryResponseParams, opts ...ClientOption) (*GetNSXTClusterQueryResponseOK, *GetNSXTClusterQueryResponseAccepted, error)
+	GetNsxCriteria(params *GetNsxCriteriaParams, opts ...ClientOption) (*GetNsxCriteriaOK, error)
 
-	GetNSXTClusters(params *GetNSXTClustersParams, opts ...ClientOption) (*GetNSXTClustersOK, error)
+	GetNsxCriterion(params *GetNsxCriterionParams, opts ...ClientOption) (*GetNsxCriterionOK, error)
 
-	GetNSXTIPAddressPool(params *GetNSXTIPAddressPoolParams, opts ...ClientOption) (*GetNSXTIPAddressPoolOK, error)
+	GetNsxIPAddressPool(params *GetNsxIPAddressPoolParams, opts ...ClientOption) (*GetNsxIPAddressPoolOK, error)
 
-	GetNSXTIPAddressPools(params *GetNSXTIPAddressPoolsParams, opts ...ClientOption) (*GetNSXTIPAddressPoolsOK, error)
+	GetNsxIPAddressPools(params *GetNsxIPAddressPoolsParams, opts ...ClientOption) (*GetNsxIPAddressPoolsOK, error)
+
+	GetNsxTransportZones(params *GetNsxTransportZonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNsxTransportZonesOK, error)
 
 	GetValidationResultUsingGET(params *GetValidationResultUsingGETParams, opts ...ClientOption) (*GetValidationResultUsingGETOK, error)
 
-	PostQuery1(params *PostQuery1Params, opts ...ClientOption) (*PostQuery1OK, *PostQuery1Accepted, error)
+	StartNsxCriteriaQuery(params *StartNsxCriteriaQueryParams, opts ...ClientOption) (*StartNsxCriteriaQueryOK, *StartNsxCriteriaQueryAccepted, error)
 
 	ValidateIPPoolUsingPOST(params *ValidateIPPoolUsingPOSTParams, opts ...ClientOption) (*ValidateIPPoolUsingPOSTOK, error)
 
@@ -57,98 +59,22 @@ type ClientService interface {
 }
 
 /*
-GetCriteria1 gets all n s x t criteria
+GetNsxCluster retrieves the details of an n s x cluster by its ID
 */
-func (a *Client) GetCriteria1(params *GetCriteria1Params, opts ...ClientOption) (*GetCriteria1OK, error) {
+func (a *Client) GetNsxCluster(params *GetNsxClusterParams, opts ...ClientOption) (*GetNsxClusterOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCriteria1Params()
+		params = NewGetNsxClusterParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getCriteria_1",
-		Method:             "GET",
-		PathPattern:        "/v1/nsxt-clusters/criteria",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetCriteria1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetCriteria1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getCriteria_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetCriterion1 gets a n s x t criterion
-*/
-func (a *Client) GetCriterion1(params *GetCriterion1Params, opts ...ClientOption) (*GetCriterion1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetCriterion1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getCriterion_1",
-		Method:             "GET",
-		PathPattern:        "/v1/nsxt-clusters/criteria/{name}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetCriterion1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetCriterion1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getCriterion_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetNSXTCluster gets a n s x t cluster
-*/
-func (a *Client) GetNSXTCluster(params *GetNSXTClusterParams, opts ...ClientOption) (*GetNSXTClusterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetNSXTClusterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getNsxtCluster",
+		ID:                 "getNsxCluster",
 		Method:             "GET",
 		PathPattern:        "/v1/nsxt-clusters/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNSXTClusterReader{formats: a.formats},
+		Reader:             &GetNsxClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -160,33 +86,33 @@ func (a *Client) GetNSXTCluster(params *GetNSXTClusterParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNSXTClusterOK)
+	success, ok := result.(*GetNsxClusterOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNsxtCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getNsxCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetNSXTClusterQueryResponse gets n s x t cluster query response
+GetNsxClusterQueryResponse gets n s x cluster query response
 */
-func (a *Client) GetNSXTClusterQueryResponse(params *GetNSXTClusterQueryResponseParams, opts ...ClientOption) (*GetNSXTClusterQueryResponseOK, *GetNSXTClusterQueryResponseAccepted, error) {
+func (a *Client) GetNsxClusterQueryResponse(params *GetNsxClusterQueryResponseParams, opts ...ClientOption) (*GetNsxClusterQueryResponseOK, *GetNsxClusterQueryResponseAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNSXTClusterQueryResponseParams()
+		params = NewGetNsxClusterQueryResponseParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNsxtClusterQueryResponse",
+		ID:                 "getNsxClusterQueryResponse",
 		Method:             "GET",
 		PathPattern:        "/v1/nsxt-clusters/queries/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNSXTClusterQueryResponseReader{formats: a.formats},
+		Reader:             &GetNsxClusterQueryResponseReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -199,9 +125,9 @@ func (a *Client) GetNSXTClusterQueryResponse(params *GetNSXTClusterQueryResponse
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *GetNSXTClusterQueryResponseOK:
+	case *GetNsxClusterQueryResponseOK:
 		return value, nil, nil
-	case *GetNSXTClusterQueryResponseAccepted:
+	case *GetNsxClusterQueryResponseAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -210,22 +136,22 @@ func (a *Client) GetNSXTClusterQueryResponse(params *GetNSXTClusterQueryResponse
 }
 
 /*
-GetNSXTClusters gets the n s x t clusters
+GetNsxClusters retrieves a list of n s x clusters
 */
-func (a *Client) GetNSXTClusters(params *GetNSXTClustersParams, opts ...ClientOption) (*GetNSXTClustersOK, error) {
+func (a *Client) GetNsxClusters(params *GetNsxClustersParams, opts ...ClientOption) (*GetNsxClustersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNSXTClustersParams()
+		params = NewGetNsxClustersParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNsxtClusters",
+		ID:                 "getNsxClusters",
 		Method:             "GET",
 		PathPattern:        "/v1/nsxt-clusters",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNSXTClustersReader{formats: a.formats},
+		Reader:             &GetNsxClustersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -237,33 +163,109 @@ func (a *Client) GetNSXTClusters(params *GetNSXTClustersParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNSXTClustersOK)
+	success, ok := result.(*GetNsxClustersOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNsxtClusters: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getNsxClusters: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetNSXTIPAddressPool gets a n s x t IP address pool
+GetNsxCriteria gets all n s x criteria
 */
-func (a *Client) GetNSXTIPAddressPool(params *GetNSXTIPAddressPoolParams, opts ...ClientOption) (*GetNSXTIPAddressPoolOK, error) {
+func (a *Client) GetNsxCriteria(params *GetNsxCriteriaParams, opts ...ClientOption) (*GetNsxCriteriaOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNSXTIPAddressPoolParams()
+		params = NewGetNsxCriteriaParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNsxtIpAddressPool",
+		ID:                 "getNsxCriteria",
+		Method:             "GET",
+		PathPattern:        "/v1/nsxt-clusters/criteria",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetNsxCriteriaReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetNsxCriteriaOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxCriteria: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetNsxCriterion gets a n s x criterion
+*/
+func (a *Client) GetNsxCriterion(params *GetNsxCriterionParams, opts ...ClientOption) (*GetNsxCriterionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetNsxCriterionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getNsxCriterion",
+		Method:             "GET",
+		PathPattern:        "/v1/nsxt-clusters/criteria/{name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetNsxCriterionReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetNsxCriterionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxCriterion: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetNsxIPAddressPool retrieves an n s x IP address pool by its name
+*/
+func (a *Client) GetNsxIPAddressPool(params *GetNsxIPAddressPoolParams, opts ...ClientOption) (*GetNsxIPAddressPoolOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetNsxIPAddressPoolParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getNsxIpAddressPool",
 		Method:             "GET",
 		PathPattern:        "/v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNSXTIPAddressPoolReader{formats: a.formats},
+		Reader:             &GetNsxIPAddressPoolReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -275,33 +277,33 @@ func (a *Client) GetNSXTIPAddressPool(params *GetNSXTIPAddressPoolParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNSXTIPAddressPoolOK)
+	success, ok := result.(*GetNsxIPAddressPoolOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNsxtIpAddressPool: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getNsxIpAddressPool: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetNSXTIPAddressPools gets the n s x t IP address pools
+GetNsxIPAddressPools retrives a list of n s x IP address pools by the n s x cluster ID
 */
-func (a *Client) GetNSXTIPAddressPools(params *GetNSXTIPAddressPoolsParams, opts ...ClientOption) (*GetNSXTIPAddressPoolsOK, error) {
+func (a *Client) GetNsxIPAddressPools(params *GetNsxIPAddressPoolsParams, opts ...ClientOption) (*GetNsxIPAddressPoolsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNSXTIPAddressPoolsParams()
+		params = NewGetNsxIPAddressPoolsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNsxtIpAddressPools",
+		ID:                 "getNsxIpAddressPools",
 		Method:             "GET",
 		PathPattern:        "/v1/nsxt-clusters/{nsxt-cluster-id}/ip-address-pools",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNSXTIPAddressPoolsReader{formats: a.formats},
+		Reader:             &GetNsxIPAddressPoolsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -313,13 +315,52 @@ func (a *Client) GetNSXTIPAddressPools(params *GetNSXTIPAddressPoolsParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNSXTIPAddressPoolsOK)
+	success, ok := result.(*GetNsxIPAddressPoolsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNsxtIpAddressPools: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getNsxIpAddressPools: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetNsxTransportZones retrieves list of all n s x transport zones
+*/
+func (a *Client) GetNsxTransportZones(params *GetNsxTransportZonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNsxTransportZonesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetNsxTransportZonesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getNsxTransportZones",
+		Method:             "GET",
+		PathPattern:        "/v1/nsxt-clusters/{nsxt-cluster-id}/transport-zones",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetNsxTransportZonesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetNsxTransportZonesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxTransportZones: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -362,22 +403,22 @@ func (a *Client) GetValidationResultUsingGET(params *GetValidationResultUsingGET
 }
 
 /*
-PostQuery1 posts a query
+StartNsxCriteriaQuery starts a query with n s x criteria
 */
-func (a *Client) PostQuery1(params *PostQuery1Params, opts ...ClientOption) (*PostQuery1OK, *PostQuery1Accepted, error) {
+func (a *Client) StartNsxCriteriaQuery(params *StartNsxCriteriaQueryParams, opts ...ClientOption) (*StartNsxCriteriaQueryOK, *StartNsxCriteriaQueryAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostQuery1Params()
+		params = NewStartNsxCriteriaQueryParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postQuery_1",
+		ID:                 "startNsxCriteriaQuery",
 		Method:             "POST",
 		PathPattern:        "/v1/nsxt-clusters/queries",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostQuery1Reader{formats: a.formats},
+		Reader:             &StartNsxCriteriaQueryReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -390,9 +431,9 @@ func (a *Client) PostQuery1(params *PostQuery1Params, opts ...ClientOption) (*Po
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *PostQuery1OK:
+	case *StartNsxCriteriaQueryOK:
 		return value, nil, nil
-	case *PostQuery1Accepted:
+	case *StartNsxCriteriaQueryAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

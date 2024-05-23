@@ -26,6 +26,9 @@ type VSANSpec struct {
 	// Required: true
 	DatastoreName *string `json:"datastoreName"`
 
+	// vSAN ESA configuration.
+	EsaConfig *VSANEsaConfig `json:"esaConfig,omitempty"`
+
 	// HCL File
 	HclFile string `json:"hclFile,omitempty"`
 
@@ -34,10 +37,6 @@ type VSANSpec struct {
 
 	// VSAN feature Deduplication and Compression flag, one flag for both features
 	VSANDedup bool `json:"vsanDedup,omitempty"`
-
-	// Virtual SAN config name
-	// Required: true
-	VSANName *string `json:"vsanName"`
 }
 
 // Validate validates this Vsan spec
@@ -48,7 +47,7 @@ func (m *VSANSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateVSANName(formats); err != nil {
+	if err := m.validateEsaConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -67,17 +66,57 @@ func (m *VSANSpec) validateDatastoreName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VSANSpec) validateVSANName(formats strfmt.Registry) error {
+func (m *VSANSpec) validateEsaConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.EsaConfig) { // not required
+		return nil
+	}
 
-	if err := validate.Required("vsanName", "body", m.VSANName); err != nil {
-		return err
+	if m.EsaConfig != nil {
+		if err := m.EsaConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("esaConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("esaConfig")
+			}
+			return err
+		}
 	}
 
 	return nil
 }
 
-// ContextValidate validates this Vsan spec based on context it is used
+// ContextValidate validate this Vsan spec based on the context it is used
 func (m *VSANSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEsaConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VSANSpec) contextValidateEsaConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EsaConfig != nil {
+
+		if swag.IsZero(m.EsaConfig) { // not required
+			return nil
+		}
+
+		if err := m.EsaConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("esaConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("esaConfig")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

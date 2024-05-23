@@ -133,6 +133,7 @@ func (m *VxManagerSpec) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *VxManagerSpec) contextValidateDefaultAdminUserCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultAdminUserCredentials != nil {
+
 		if err := m.DefaultAdminUserCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("defaultAdminUserCredentials")
@@ -149,6 +150,7 @@ func (m *VxManagerSpec) contextValidateDefaultAdminUserCredentials(ctx context.C
 func (m *VxManagerSpec) contextValidateDefaultRootUserCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultRootUserCredentials != nil {
+
 		if err := m.DefaultRootUserCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("defaultRootUserCredentials")

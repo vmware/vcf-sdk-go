@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTResources Nsxt Upgrade Resources for an NSXT instance
+// NSXTResources NSX Upgrade Resources for an NSX instance
 //
 // swagger:model NsxtResources
 type NSXTResources struct {
@@ -25,7 +25,7 @@ type NSXTResources struct {
 	// Bundle id used to compute the upgradability
 	BundleID string `json:"bundleId,omitempty"`
 
-	// Domain id associated with the NSX-T cluster
+	// Domain id associated with the NSX cluster
 	DomainID string `json:"domainId,omitempty"`
 
 	// List of edge clusters that are candidates for upgrade
@@ -37,7 +37,7 @@ type NSXTResources struct {
 	// Manager cluster that is a candidate for upgrade
 	NSXTManagerCluster *NSXTManagerCluster `json:"nsxtManagerCluster,omitempty"`
 
-	// Upgrade coordinator pertaining to the NSX-T instance
+	// Upgrade coordinator pertaining to the NSX instance
 	NSXTUpgradeCoordinator *NSXTUpgradeCoordinator `json:"nsxtUpgradeCoordinator,omitempty"`
 }
 
@@ -188,6 +188,11 @@ func (m *NSXTResources) contextValidateNSXTEdgeClusters(ctx context.Context, for
 	for i := 0; i < len(m.NSXTEdgeClusters); i++ {
 
 		if m.NSXTEdgeClusters[i] != nil {
+
+			if swag.IsZero(m.NSXTEdgeClusters[i]) { // not required
+				return nil
+			}
+
 			if err := m.NSXTEdgeClusters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxtEdgeClusters" + "." + strconv.Itoa(i))
@@ -208,6 +213,11 @@ func (m *NSXTResources) contextValidateNSXTHostClusters(ctx context.Context, for
 	for i := 0; i < len(m.NSXTHostClusters); i++ {
 
 		if m.NSXTHostClusters[i] != nil {
+
+			if swag.IsZero(m.NSXTHostClusters[i]) { // not required
+				return nil
+			}
+
 			if err := m.NSXTHostClusters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxtHostClusters" + "." + strconv.Itoa(i))
@@ -226,6 +236,11 @@ func (m *NSXTResources) contextValidateNSXTHostClusters(ctx context.Context, for
 func (m *NSXTResources) contextValidateNSXTManagerCluster(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NSXTManagerCluster != nil {
+
+		if swag.IsZero(m.NSXTManagerCluster) { // not required
+			return nil
+		}
+
 		if err := m.NSXTManagerCluster.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxtManagerCluster")
@@ -242,6 +257,11 @@ func (m *NSXTResources) contextValidateNSXTManagerCluster(ctx context.Context, f
 func (m *NSXTResources) contextValidateNSXTUpgradeCoordinator(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NSXTUpgradeCoordinator != nil {
+
+		if swag.IsZero(m.NSXTUpgradeCoordinator) { // not required
+			return nil
+		}
+
 		if err := m.NSXTUpgradeCoordinator.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxtUpgradeCoordinator")

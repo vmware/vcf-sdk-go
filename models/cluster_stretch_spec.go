@@ -23,16 +23,24 @@ import (
 // swagger:model ClusterStretchSpec
 type ClusterStretchSpec struct {
 
+	// Enable stretch of the cluster without licensing the AZ2 hosts.
+	DeployWithoutLicenseKeys bool `json:"deployWithoutLicenseKeys,omitempty"`
+
 	// List of vSphere host information from the free pool to consume in the workload domain
 	// Required: true
 	HostSpecs []*HostSpec `json:"hostSpecs"`
 
-	// Edge cluster configured for multi AZ
+	// This parameter is required for stretching the clusters that host Edge Cluster VMs. It is an acknowledgement, that the necessary network configurations are considered for the edge cluster to work with vSAN stretched cluster during a failover.
 	IsEdgeClusterConfiguredForMultiAZ bool `json:"isEdgeClusterConfiguredForMultiAZ,omitempty"`
 
-	// Secondary AZ Overlay Vlan Id
-	// Required: true
-	SecondaryAzOverlayVlanID *int32 `json:"secondaryAzOverlayVlanId"`
+	// The network profile to be associated with Secondary AZ Hosts in NSX.
+	NetworkProfiles []*StretchClusterNetworkProfile `json:"networkProfiles"`
+
+	// NSX configuration to be associated with the Secondary AZ Hosts
+	NsxStretchClusterSpec *NsxStretchClusterSpec `json:"nsxStretchClusterSpec,omitempty"`
+
+	// Secondary AZ Overlay Vlan Id. This field is deprecated. The secondary AZ overlay vlan id should be mentioned in the uplinkProfile field instead
+	SecondaryAzOverlayVlanID int32 `json:"secondaryAzOverlayVlanId,omitempty"`
 
 	// vSAN Network Pool Specs
 	VSANNetworkSpecs []*VSANNetworkSpec `json:"vsanNetworkSpecs"`
@@ -53,7 +61,11 @@ func (m *ClusterStretchSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateSecondaryAzOverlayVlanID(formats); err != nil {
+	if err := m.validateNetworkProfiles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNsxStretchClusterSpec(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -98,10 +110,46 @@ func (m *ClusterStretchSpec) validateHostSpecs(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ClusterStretchSpec) validateSecondaryAzOverlayVlanID(formats strfmt.Registry) error {
+func (m *ClusterStretchSpec) validateNetworkProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetworkProfiles) { // not required
+		return nil
+	}
 
-	if err := validate.Required("secondaryAzOverlayVlanId", "body", m.SecondaryAzOverlayVlanID); err != nil {
-		return err
+	for i := 0; i < len(m.NetworkProfiles); i++ {
+		if swag.IsZero(m.NetworkProfiles[i]) { // not required
+			continue
+		}
+
+		if m.NetworkProfiles[i] != nil {
+			if err := m.NetworkProfiles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ClusterStretchSpec) validateNsxStretchClusterSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.NsxStretchClusterSpec) { // not required
+		return nil
+	}
+
+	if m.NsxStretchClusterSpec != nil {
+		if err := m.NsxStretchClusterSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxStretchClusterSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxStretchClusterSpec")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -161,6 +209,14 @@ func (m *ClusterStretchSpec) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworkProfiles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNsxStretchClusterSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVSANNetworkSpecs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -180,6 +236,11 @@ func (m *ClusterStretchSpec) contextValidateHostSpecs(ctx context.Context, forma
 	for i := 0; i < len(m.HostSpecs); i++ {
 
 		if m.HostSpecs[i] != nil {
+
+			if swag.IsZero(m.HostSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.HostSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("hostSpecs" + "." + strconv.Itoa(i))
@@ -195,11 +256,62 @@ func (m *ClusterStretchSpec) contextValidateHostSpecs(ctx context.Context, forma
 	return nil
 }
 
+func (m *ClusterStretchSpec) contextValidateNetworkProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NetworkProfiles); i++ {
+
+		if m.NetworkProfiles[i] != nil {
+
+			if swag.IsZero(m.NetworkProfiles[i]) { // not required
+				return nil
+			}
+
+			if err := m.NetworkProfiles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("networkProfiles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ClusterStretchSpec) contextValidateNsxStretchClusterSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NsxStretchClusterSpec != nil {
+
+		if swag.IsZero(m.NsxStretchClusterSpec) { // not required
+			return nil
+		}
+
+		if err := m.NsxStretchClusterSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxStretchClusterSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxStretchClusterSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ClusterStretchSpec) contextValidateVSANNetworkSpecs(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.VSANNetworkSpecs); i++ {
 
 		if m.VSANNetworkSpecs[i] != nil {
+
+			if swag.IsZero(m.VSANNetworkSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.VSANNetworkSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vsanNetworkSpecs" + "." + strconv.Itoa(i))
@@ -218,6 +330,7 @@ func (m *ClusterStretchSpec) contextValidateVSANNetworkSpecs(ctx context.Context
 func (m *ClusterStretchSpec) contextValidateWitnessSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.WitnessSpec != nil {
+
 		if err := m.WitnessSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("witnessSpec")

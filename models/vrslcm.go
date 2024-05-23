@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VRSLCM This specification contains information related to the existing vRealize Suite Lifecycle Manager instance deployment
+// VRSLCM This specification contains information related to the existing VMware Aria Suite Lifecycle instance deployment
 //
 // swagger:model Vrslcm
 type VRSLCM struct {
@@ -26,11 +26,11 @@ type VRSLCM struct {
 	// Required: true
 	Fqdn *string `json:"fqdn"`
 
-	// The ID of the vRealize Suite Lifecycle Manager instance
+	// The ID of the VMware Aria Suite Lifecycle instance
 	// Required: true
 	ID *string `json:"id"`
 
-	// IP Address of vRealize Suite Lifecycle Manager appliance
+	// IP Address of VMware Aria Suite Lifecycle appliance
 	// Required: true
 	IPAddress *string `json:"ipAddress"`
 

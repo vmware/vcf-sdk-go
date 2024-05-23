@@ -45,7 +45,7 @@ func (o *GetBundleReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/bundles/{id}] getBundle", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetBundleOK) IsServerError() bool {
 // IsCode returns true when this get bundle o k response a status code equal to that given
 func (o *GetBundleOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get bundle o k response
+func (o *GetBundleOK) Code() int {
+	return 200
 }
 
 func (o *GetBundleOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetBundleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get bundle not found response
+func (o *GetBundleNotFound) Code() int {
+	return 404
+}
+
 func (o *GetBundleNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/bundles/{id}][%d] getBundleNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetBundleInternalServerError) IsServerError() bool {
 // IsCode returns true when this get bundle internal server error response a status code equal to that given
 func (o *GetBundleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get bundle internal server error response
+func (o *GetBundleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetBundleInternalServerError) Error() string {

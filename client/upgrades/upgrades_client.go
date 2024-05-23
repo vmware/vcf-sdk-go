@@ -33,103 +33,25 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CommitRescheduleUpgrade(params *CommitRescheduleUpgradeParams, opts ...ClientOption) (*CommitRescheduleUpgradeOK, error)
-
-	GetPrecheckUsingGET(params *GetPrecheckUsingGETParams, opts ...ClientOption) (*GetPrecheckUsingGETOK, error)
-
 	GetUpgradeByID(params *GetUpgradeByIDParams, opts ...ClientOption) (*GetUpgradeByIDOK, error)
+
+	GetUpgradePrecheckByID(params *GetUpgradePrecheckByIDParams, opts ...ClientOption) (*GetUpgradePrecheckByIDOK, error)
 
 	GetUpgrades(params *GetUpgradesParams, opts ...ClientOption) (*GetUpgradesOK, error)
 
-	PerformPrechecksUsingPOST(params *PerformPrechecksUsingPOSTParams, opts ...ClientOption) (*PerformPrechecksUsingPOSTOK, *PerformPrechecksUsingPOSTAccepted, error)
-
 	PerformUpgrade(params *PerformUpgradeParams, opts ...ClientOption) (*PerformUpgradeOK, *PerformUpgradeAccepted, error)
+
+	StartUpgradePrecheck(params *StartUpgradePrecheckParams, opts ...ClientOption) (*StartUpgradePrecheckOK, *StartUpgradePrecheckAccepted, error)
+
+	UpdateUpgradeSchedule(params *UpdateUpgradeScheduleParams, opts ...ClientOption) (*UpdateUpgradeScheduleOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-CommitRescheduleUpgrade commits reschedule upgrade
+GetUpgradeByID retrieves an upgrade by ID
 
-Commit/Reschedule an existing upgrade. It moves the upgrade from DRAFT state to SCHEDULED state and/or changes the upgrade scheduled date/time.
-*/
-func (a *Client) CommitRescheduleUpgrade(params *CommitRescheduleUpgradeParams, opts ...ClientOption) (*CommitRescheduleUpgradeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCommitRescheduleUpgradeParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "commitRescheduleUpgrade",
-		Method:             "PATCH",
-		PathPattern:        "/v1/upgrades/{upgradeId}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CommitRescheduleUpgradeReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CommitRescheduleUpgradeOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for commitRescheduleUpgrade: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetPrecheckUsingGET gets precheck
-*/
-func (a *Client) GetPrecheckUsingGET(params *GetPrecheckUsingGETParams, opts ...ClientOption) (*GetPrecheckUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetPrecheckUsingGETParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getPrecheckUsingGET",
-		Method:             "GET",
-		PathPattern:        "/v1/upgrades/{upgradeId}/prechecks/{precheckId}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetPrecheckUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetPrecheckUsingGETOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPrecheckUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetUpgradeByID gets upgrade by Id
-
-Get Upgrade By Id
+Retrieve an upgrade by ID
 */
 func (a *Client) GetUpgradeByID(params *GetUpgradeByIDParams, opts ...ClientOption) (*GetUpgradeByIDOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +89,49 @@ func (a *Client) GetUpgradeByID(params *GetUpgradeByIDParams, opts ...ClientOpti
 }
 
 /*
-GetUpgrades gets upgrades
+GetUpgradePrecheckByID retrieves an upgrade precheck task by ID
 
-Get Upgrades
+Gets upgrade precheck details
+*/
+func (a *Client) GetUpgradePrecheckByID(params *GetUpgradePrecheckByIDParams, opts ...ClientOption) (*GetUpgradePrecheckByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetUpgradePrecheckByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getUpgradePrecheckByID",
+		Method:             "GET",
+		PathPattern:        "/v1/upgrades/{upgradeId}/prechecks/{precheckId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetUpgradePrecheckByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetUpgradePrecheckByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getUpgradePrecheckByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetUpgrades retrieves a list of upgrades
+
+Retrieve a list of upgrades
 */
 func (a *Client) GetUpgrades(params *GetUpgradesParams, opts ...ClientOption) (*GetUpgradesOK, error) {
 	// TODO: Validate the params before sending
@@ -207,46 +169,7 @@ func (a *Client) GetUpgrades(params *GetUpgradesParams, opts ...ClientOption) (*
 }
 
 /*
-PerformPrechecksUsingPOST performs prechecks
-*/
-func (a *Client) PerformPrechecksUsingPOST(params *PerformPrechecksUsingPOSTParams, opts ...ClientOption) (*PerformPrechecksUsingPOSTOK, *PerformPrechecksUsingPOSTAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPerformPrechecksUsingPOSTParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "performPrechecksUsingPOST",
-		Method:             "POST",
-		PathPattern:        "/v1/upgrades/{upgradeId}/prechecks",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PerformPrechecksUsingPOSTReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *PerformPrechecksUsingPOSTOK:
-		return value, nil, nil
-	case *PerformPrechecksUsingPOSTAccepted:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for upgrades: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PerformUpgrade performs upgrade
+PerformUpgrade starts an upgrade operation
 
 Schedule/Trigger Upgrade of a Resource. Ex: Resource can be DOMAIN, CLUSTER, UNMANAGED_HOST etc. Performing upgrades are supported on VMware Cloud Foundation 3.5 BOM resources and above.
 */
@@ -283,6 +206,87 @@ func (a *Client) PerformUpgrade(params *PerformUpgradeParams, opts ...ClientOpti
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for upgrades: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StartUpgradePrecheck starts an upgrade precheck operation
+
+Perform Upgrade Prechecks
+*/
+func (a *Client) StartUpgradePrecheck(params *StartUpgradePrecheckParams, opts ...ClientOption) (*StartUpgradePrecheckOK, *StartUpgradePrecheckAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStartUpgradePrecheckParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "startUpgradePrecheck",
+		Method:             "POST",
+		PathPattern:        "/v1/upgrades/{upgradeId}/prechecks",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StartUpgradePrecheckReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *StartUpgradePrecheckOK:
+		return value, nil, nil
+	case *StartUpgradePrecheckAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for upgrades: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateUpgradeSchedule changes a d r a f t upgrade to a s c h e d u l e d state
+
+Commit/Reschedule an existing upgrade. It moves the upgrade from DRAFT state to SCHEDULED state and/or changes the upgrade scheduled date/time.
+*/
+func (a *Client) UpdateUpgradeSchedule(params *UpdateUpgradeScheduleParams, opts ...ClientOption) (*UpdateUpgradeScheduleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateUpgradeScheduleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateUpgradeSchedule",
+		Method:             "PATCH",
+		PathPattern:        "/v1/upgrades/{upgradeId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateUpgradeScheduleReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateUpgradeScheduleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateUpgradeSchedule: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

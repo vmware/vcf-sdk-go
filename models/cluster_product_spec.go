@@ -18,30 +18,30 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ClusterProductSpec Spec contains information for a vRealize product
+// ClusterProductSpec Spec contains information for a VMware Aria product
 //
 // swagger:model ClusterProductSpec
 type ClusterProductSpec struct {
 
-	// The credentials of the vRealize product Admin
+	// The credentials of the VMware Aria product Admin
 	// Required: true
 	AdminCredentials *CredentialsSpec `json:"adminCredentials"`
 
-	// The certificate chain of the vRealize product.
+	// The certificate chain of the VMware Aria product.
 	CertificateChain string `json:"certificateChain,omitempty"`
 
 	// The ID of the product
 	ID string `json:"id,omitempty"`
 
-	// Fully Qualified Domain Name for the vRealize product load balancer
+	// Fully Qualified Domain Name for the VMware Aria product load balancer
 	// Required: true
 	LoadBalancerFqdn *string `json:"loadBalancerFqdn"`
 
-	// The nodes of the vRealize product instance
+	// The nodes of the VMware Aria product instance
 	// Required: true
 	Nodes []*ProductNode `json:"nodes"`
 
-	// The version of the vRealize product instance
+	// The version of the VMware Aria product instance
 	// Required: true
 	Version *string `json:"version"`
 }
@@ -158,6 +158,7 @@ func (m *ClusterProductSpec) ContextValidate(ctx context.Context, formats strfmt
 func (m *ClusterProductSpec) contextValidateAdminCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AdminCredentials != nil {
+
 		if err := m.AdminCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("adminCredentials")
@@ -176,6 +177,11 @@ func (m *ClusterProductSpec) contextValidateNodes(ctx context.Context, formats s
 	for i := 0; i < len(m.Nodes); i++ {
 
 		if m.Nodes[i] != nil {
+
+			if swag.IsZero(m.Nodes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Nodes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nodes" + "." + strconv.Itoa(i))

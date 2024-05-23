@@ -37,6 +37,9 @@ type Task struct {
 	// Represents task can be cancellable or not.
 	IsCancellable bool `json:"isCancellable,omitempty"`
 
+	// Indicates whether a task is eligible for retry or not.
+	IsRetryable bool `json:"isRetryable,omitempty"`
+
 	// Localizable Task description
 	LocalizableDescriptionPack *MessagePack `json:"localizableDescriptionPack,omitempty"`
 
@@ -51,7 +54,7 @@ type Task struct {
 	Resources []*Resource `json:"resources"`
 
 	// Task status
-	// Example: One among: PENDING, IN_PROGRESS, SUCCESSFUL, FAILED, CANCELLED
+	// Example: One among: PENDING, IN_PROGRESS, In Progress, SUCCESSFUL, Successful, FAILED, Failed, CANCELLED, Cancelled, COMPLETED_WITH_WARNING, SKIPPED
 	Status string `json:"status,omitempty"`
 
 	// List of sub-tasks of the task
@@ -216,6 +219,11 @@ func (m *Task) contextValidateErrors(ctx context.Context, formats strfmt.Registr
 	for i := 0; i < len(m.Errors); i++ {
 
 		if m.Errors[i] != nil {
+
+			if swag.IsZero(m.Errors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Errors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errors" + "." + strconv.Itoa(i))
@@ -234,6 +242,11 @@ func (m *Task) contextValidateErrors(ctx context.Context, formats strfmt.Registr
 func (m *Task) contextValidateLocalizableDescriptionPack(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LocalizableDescriptionPack != nil {
+
+		if swag.IsZero(m.LocalizableDescriptionPack) { // not required
+			return nil
+		}
+
 		if err := m.LocalizableDescriptionPack.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("localizableDescriptionPack")
@@ -252,6 +265,11 @@ func (m *Task) contextValidateResources(ctx context.Context, formats strfmt.Regi
 	for i := 0; i < len(m.Resources); i++ {
 
 		if m.Resources[i] != nil {
+
+			if swag.IsZero(m.Resources[i]) { // not required
+				return nil
+			}
+
 			if err := m.Resources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resources" + "." + strconv.Itoa(i))
@@ -272,6 +290,11 @@ func (m *Task) contextValidateSubTasks(ctx context.Context, formats strfmt.Regis
 	for i := 0; i < len(m.SubTasks); i++ {
 
 		if m.SubTasks[i] != nil {
+
+			if swag.IsZero(m.SubTasks[i]) { // not required
+				return nil
+			}
+
 			if err := m.SubTasks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subTasks" + "." + strconv.Itoa(i))

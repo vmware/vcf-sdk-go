@@ -34,7 +34,7 @@ type ProductVersion struct {
 	PublicName *string `json:"publicName"`
 
 	// URL for the release.
-	ReleaseURL *URL `json:"releaseURL,omitempty"`
+	ReleaseURL string `json:"releaseURL,omitempty"`
 
 	// Version for the product, e.g 6.7.0-11675023
 	// Required: true
@@ -50,10 +50,6 @@ func (m *ProductVersion) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePublicName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateReleaseURL(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -85,25 +81,6 @@ func (m *ProductVersion) validatePublicName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProductVersion) validateReleaseURL(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReleaseURL) { // not required
-		return nil
-	}
-
-	if m.ReleaseURL != nil {
-		if err := m.ReleaseURL.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("releaseURL")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("releaseURL")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *ProductVersion) validateVersion(formats strfmt.Registry) error {
 
 	if err := validate.Required("version", "body", m.Version); err != nil {
@@ -113,33 +90,8 @@ func (m *ProductVersion) validateVersion(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this product version based on the context it is used
+// ContextValidate validates this product version based on context it is used
 func (m *ProductVersion) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateReleaseURL(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ProductVersion) contextValidateReleaseURL(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ReleaseURL != nil {
-		if err := m.ReleaseURL.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("releaseURL")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("releaseURL")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 

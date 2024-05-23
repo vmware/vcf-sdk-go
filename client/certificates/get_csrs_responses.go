@@ -45,7 +45,7 @@ func (o *GetCSRsReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{id}/csrs] getCSRs", response, response.Code())
 	}
 }
 
@@ -88,12 +88,17 @@ func (o *GetCSRsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get c s rs o k response
+func (o *GetCSRsOK) Code() int {
+	return 200
+}
+
 func (o *GetCSRsOK) Error() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs][%d] getCSRsOK  %+v", 200, o.Payload)
 }
 
 func (o *GetCSRsOK) String() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs][%d] getCSRsOK  %+v", 200, o.Payload)
 }
 
 func (o *GetCSRsOK) GetPayload() *models.PageOfCSR {
@@ -151,12 +156,17 @@ func (o *GetCSRsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get c s rs not found response
+func (o *GetCSRsNotFound) Code() int {
+	return 404
+}
+
 func (o *GetCSRsNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs][%d] getCSRsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetCSRsNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs][%d] getCSRsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetCSRsNotFound) GetPayload() *models.Error {
@@ -214,12 +224,17 @@ func (o *GetCSRsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the get c s rs internal server error response
+func (o *GetCSRsInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GetCSRsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs][%d] getCSRsInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GetCSRsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs][%d] getCSRsInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs][%d] getCSRsInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GetCSRsInternalServerError) GetPayload() *models.Error {

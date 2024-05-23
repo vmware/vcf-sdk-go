@@ -69,7 +69,7 @@ func (o *ReplaceCertificatesReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/domains/{id}/certificates] replaceCertificates", response, response.Code())
 	}
 }
 
@@ -112,12 +112,17 @@ func (o *ReplaceCertificatesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the replace certificates o k response
+func (o *ReplaceCertificatesOK) Code() int {
+	return 200
+}
+
 func (o *ReplaceCertificatesOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesOK  %+v", 200, o.Payload)
 }
 
 func (o *ReplaceCertificatesOK) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesOK  %+v", 200, o.Payload)
 }
 
 func (o *ReplaceCertificatesOK) GetPayload() *models.Task {
@@ -175,12 +180,17 @@ func (o *ReplaceCertificatesAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the replace certificates accepted response
+func (o *ReplaceCertificatesAccepted) Code() int {
+	return 202
+}
+
 func (o *ReplaceCertificatesAccepted) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesAccepted  %+v", 202, o.Payload)
 }
 
 func (o *ReplaceCertificatesAccepted) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesAccepted  %+v", 202, o.Payload)
 }
 
 func (o *ReplaceCertificatesAccepted) GetPayload() *models.Task {
@@ -238,12 +248,17 @@ func (o *ReplaceCertificatesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the replace certificates bad request response
+func (o *ReplaceCertificatesBadRequest) Code() int {
+	return 400
+}
+
 func (o *ReplaceCertificatesBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ReplaceCertificatesBadRequest) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ReplaceCertificatesBadRequest) GetPayload() *models.Error {
@@ -301,12 +316,17 @@ func (o *ReplaceCertificatesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the replace certificates forbidden response
+func (o *ReplaceCertificatesForbidden) Code() int {
+	return 403
+}
+
 func (o *ReplaceCertificatesForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ReplaceCertificatesForbidden) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ReplaceCertificatesForbidden) GetPayload() *models.Error {
@@ -364,12 +384,17 @@ func (o *ReplaceCertificatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace certificates not found response
+func (o *ReplaceCertificatesNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceCertificatesNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ReplaceCertificatesNotFound) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ReplaceCertificatesNotFound) GetPayload() *models.Error {
@@ -427,12 +452,17 @@ func (o *ReplaceCertificatesConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the replace certificates conflict response
+func (o *ReplaceCertificatesConflict) Code() int {
+	return 409
+}
+
 func (o *ReplaceCertificatesConflict) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesConflict  %+v", 409, o.Payload)
 }
 
 func (o *ReplaceCertificatesConflict) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesConflict  %+v", 409, o.Payload)
 }
 
 func (o *ReplaceCertificatesConflict) GetPayload() *models.Error {
@@ -490,12 +520,17 @@ func (o *ReplaceCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the replace certificates internal server error response
+func (o *ReplaceCertificatesInternalServerError) Code() int {
+	return 500
+}
+
 func (o *ReplaceCertificatesInternalServerError) Error() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ReplaceCertificatesInternalServerError) String() string {
-	return fmt.Sprintf("[PATCH /v1/domains/{domainName}/certificates][%d] replaceCertificatesInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/domains/{id}/certificates][%d] replaceCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ReplaceCertificatesInternalServerError) GetPayload() *models.Error {

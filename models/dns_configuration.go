@@ -88,6 +88,11 @@ func (m *DNSConfiguration) contextValidateDNSServers(ctx context.Context, format
 	for i := 0; i < len(m.DNSServers); i++ {
 
 		if m.DNSServers[i] != nil {
+
+			if swag.IsZero(m.DNSServers[i]) { // not required
+				return nil
+			}
+
 			if err := m.DNSServers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))

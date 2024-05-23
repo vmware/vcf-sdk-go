@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NsxTQueryResponse Represents a NSX-T cluster query response.
+// NsxTQueryResponse Represents a NSX cluster query response.
 //
 // swagger:model NsxTQueryResponse
 type NsxTQueryResponse struct {
@@ -105,6 +105,11 @@ func (m *NsxTQueryResponse) ContextValidate(ctx context.Context, formats strfmt.
 func (m *NsxTQueryResponse) contextValidateQueryInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.QueryInfo != nil {
+
+		if swag.IsZero(m.QueryInfo) { // not required
+			return nil
+		}
+
 		if err := m.QueryInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("queryInfo")
@@ -121,6 +126,11 @@ func (m *NsxTQueryResponse) contextValidateQueryInfo(ctx context.Context, format
 func (m *NsxTQueryResponse) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Result != nil {
+
+		if swag.IsZero(m.Result) { // not required
+			return nil
+		}
+
 		if err := m.Result.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")

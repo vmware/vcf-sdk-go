@@ -72,11 +72,11 @@ type ReplaceCertificatesParams struct {
 	*/
 	CertificateOperationSpec *models.CertificateOperationSpec
 
-	/* DomainName.
+	/* ID.
 
 	   Domain ID or Name
 	*/
-	DomainName string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -142,15 +142,15 @@ func (o *ReplaceCertificatesParams) SetCertificateOperationSpec(certificateOpera
 	o.CertificateOperationSpec = certificateOperationSpec
 }
 
-// WithDomainName adds the domainName to the replace certificates params
-func (o *ReplaceCertificatesParams) WithDomainName(domainName string) *ReplaceCertificatesParams {
-	o.SetDomainName(domainName)
+// WithID adds the id to the replace certificates params
+func (o *ReplaceCertificatesParams) WithID(id string) *ReplaceCertificatesParams {
+	o.SetID(id)
 	return o
 }
 
-// SetDomainName adds the domainName to the replace certificates params
-func (o *ReplaceCertificatesParams) SetDomainName(domainName string) {
-	o.DomainName = domainName
+// SetID adds the id to the replace certificates params
+func (o *ReplaceCertificatesParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -166,8 +166,8 @@ func (o *ReplaceCertificatesParams) WriteToRequest(r runtime.ClientRequest, reg 
 		}
 	}
 
-	// path param domainName
-	if err := r.SetPathParam("domainName", o.DomainName); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

@@ -51,7 +51,7 @@ func (o *ValidateDNSConfigurationReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/system/dns-configuration/validations] validateDnsConfiguration", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ValidateDNSConfigurationOK) IsServerError() bool {
 // IsCode returns true when this validate Dns configuration o k response a status code equal to that given
 func (o *ValidateDNSConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the validate Dns configuration o k response
+func (o *ValidateDNSConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *ValidateDNSConfigurationOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ValidateDNSConfigurationAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the validate Dns configuration accepted response
+func (o *ValidateDNSConfigurationAccepted) Code() int {
+	return 202
+}
+
 func (o *ValidateDNSConfigurationAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/system/dns-configuration/validations][%d] validateDnsConfigurationAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ValidateDNSConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the validate Dns configuration bad request response
+func (o *ValidateDNSConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *ValidateDNSConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/system/dns-configuration/validations][%d] validateDnsConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -280,6 +295,11 @@ func (o *ValidateDNSConfigurationInternalServerError) IsServerError() bool {
 // IsCode returns true when this validate Dns configuration internal server error response a status code equal to that given
 func (o *ValidateDNSConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the validate Dns configuration internal server error response
+func (o *ValidateDNSConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ValidateDNSConfigurationInternalServerError) Error() string {

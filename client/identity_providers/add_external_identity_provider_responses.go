@@ -51,7 +51,7 @@ func (o *AddExternalIdentityProviderReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/identity-providers] addExternalIdentityProvider", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *AddExternalIdentityProviderOK) IsServerError() bool {
 // IsCode returns true when this add external identity provider o k response a status code equal to that given
 func (o *AddExternalIdentityProviderOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the add external identity provider o k response
+func (o *AddExternalIdentityProviderOK) Code() int {
+	return 200
 }
 
 func (o *AddExternalIdentityProviderOK) Error() string {
@@ -155,6 +160,11 @@ func (o *AddExternalIdentityProviderCreated) IsCode(code int) bool {
 	return code == 201
 }
 
+// Code gets the status code for the add external identity provider created response
+func (o *AddExternalIdentityProviderCreated) Code() int {
+	return 201
+}
+
 func (o *AddExternalIdentityProviderCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/identity-providers][%d] addExternalIdentityProviderCreated  %+v", 201, o.Payload)
 }
@@ -214,6 +224,11 @@ func (o *AddExternalIdentityProviderBadRequest) IsServerError() bool {
 // IsCode returns true when this add external identity provider bad request response a status code equal to that given
 func (o *AddExternalIdentityProviderBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the add external identity provider bad request response
+func (o *AddExternalIdentityProviderBadRequest) Code() int {
+	return 400
 }
 
 func (o *AddExternalIdentityProviderBadRequest) Error() string {
@@ -277,6 +292,11 @@ func (o *AddExternalIdentityProviderInternalServerError) IsServerError() bool {
 // IsCode returns true when this add external identity provider internal server error response a status code equal to that given
 func (o *AddExternalIdentityProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the add external identity provider internal server error response
+func (o *AddExternalIdentityProviderInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddExternalIdentityProviderInternalServerError) Error() string {

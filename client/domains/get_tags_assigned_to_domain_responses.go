@@ -45,7 +45,7 @@ func (o *GetTagsAssignedToDomainReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{id}/tags] getTagsAssignedToDomain", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetTagsAssignedToDomainOK) IsServerError() bool {
 // IsCode returns true when this get tags assigned to domain o k response a status code equal to that given
 func (o *GetTagsAssignedToDomainOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get tags assigned to domain o k response
+func (o *GetTagsAssignedToDomainOK) Code() int {
+	return 200
 }
 
 func (o *GetTagsAssignedToDomainOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetTagsAssignedToDomainBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get tags assigned to domain bad request response
+func (o *GetTagsAssignedToDomainBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetTagsAssignedToDomainBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags][%d] getTagsAssignedToDomainBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetTagsAssignedToDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this get tags assigned to domain internal server error response a status code equal to that given
 func (o *GetTagsAssignedToDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get tags assigned to domain internal server error response
+func (o *GetTagsAssignedToDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetTagsAssignedToDomainInternalServerError) Error() string {

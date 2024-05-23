@@ -135,6 +135,11 @@ func (m *HealthSummarySpec) ContextValidate(ctx context.Context, formats strfmt.
 func (m *HealthSummarySpec) contextValidateHealthChecks(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HealthChecks != nil {
+
+		if swag.IsZero(m.HealthChecks) { // not required
+			return nil
+		}
+
 		if err := m.HealthChecks.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("healthChecks")
@@ -151,6 +156,11 @@ func (m *HealthSummarySpec) contextValidateHealthChecks(ctx context.Context, for
 func (m *HealthSummarySpec) contextValidateOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Options != nil {
+
+		if swag.IsZero(m.Options) { // not required
+			return nil
+		}
+
 		if err := m.Options.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("options")
@@ -167,6 +177,11 @@ func (m *HealthSummarySpec) contextValidateOptions(ctx context.Context, formats 
 func (m *HealthSummarySpec) contextValidateScope(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Scope != nil {
+
+		if swag.IsZero(m.Scope) { // not required
+			return nil
+		}
+
 		if err := m.Scope.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("scope")

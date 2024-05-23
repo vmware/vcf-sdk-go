@@ -122,6 +122,11 @@ func (m *Upgradable) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *Upgradable) contextValidateResource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Resource != nil {
+
+		if swag.IsZero(m.Resource) { // not required
+			return nil
+		}
+
 		if err := m.Resource.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resource")
@@ -140,6 +145,11 @@ func (m *Upgradable) contextValidateSoftwareComponents(ctx context.Context, form
 	for i := 0; i < len(m.SoftwareComponents); i++ {
 
 		if m.SoftwareComponents[i] != nil {
+
+			if swag.IsZero(m.SoftwareComponents[i]) { // not required
+				return nil
+			}
+
 			if err := m.SoftwareComponents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("softwareComponents" + "." + strconv.Itoa(i))

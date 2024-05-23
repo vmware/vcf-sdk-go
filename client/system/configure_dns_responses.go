@@ -51,7 +51,7 @@ func (o *ConfigureDNSReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/system/dns-configuration] configureDns", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ConfigureDNSOK) IsServerError() bool {
 // IsCode returns true when this configure Dns o k response a status code equal to that given
 func (o *ConfigureDNSOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the configure Dns o k response
+func (o *ConfigureDNSOK) Code() int {
+	return 200
 }
 
 func (o *ConfigureDNSOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ConfigureDNSAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the configure Dns accepted response
+func (o *ConfigureDNSAccepted) Code() int {
+	return 202
+}
+
 func (o *ConfigureDNSAccepted) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/dns-configuration][%d] configureDnsAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ConfigureDNSBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the configure Dns bad request response
+func (o *ConfigureDNSBadRequest) Code() int {
+	return 400
+}
+
 func (o *ConfigureDNSBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/dns-configuration][%d] configureDnsBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *ConfigureDNSInternalServerError) IsServerError() bool {
 // IsCode returns true when this configure Dns internal server error response a status code equal to that given
 func (o *ConfigureDNSInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the configure Dns internal server error response
+func (o *ConfigureDNSInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ConfigureDNSInternalServerError) Error() string {

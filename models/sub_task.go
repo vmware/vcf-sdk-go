@@ -215,6 +215,11 @@ func (m *SubTask) contextValidateErrors(ctx context.Context, formats strfmt.Regi
 	for i := 0; i < len(m.Errors); i++ {
 
 		if m.Errors[i] != nil {
+
+			if swag.IsZero(m.Errors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Errors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errors" + "." + strconv.Itoa(i))
@@ -235,6 +240,11 @@ func (m *SubTask) contextValidateResources(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Resources); i++ {
 
 		if m.Resources[i] != nil {
+
+			if swag.IsZero(m.Resources[i]) { // not required
+				return nil
+			}
+
 			if err := m.Resources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resources" + "." + strconv.Itoa(i))
@@ -255,6 +265,11 @@ func (m *SubTask) contextValidateStages(ctx context.Context, formats strfmt.Regi
 	for i := 0; i < len(m.Stages); i++ {
 
 		if m.Stages[i] != nil {
+
+			if swag.IsZero(m.Stages[i]) { // not required
+				return nil
+			}
+
 			if err := m.Stages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("stages" + "." + strconv.Itoa(i))
@@ -275,6 +290,11 @@ func (m *SubTask) contextValidateSubTasks(ctx context.Context, formats strfmt.Re
 	for i := 0; i < len(m.SubTasks); i++ {
 
 		if m.SubTasks[i] != nil {
+
+			if swag.IsZero(m.SubTasks[i]) { // not required
+				return nil
+			}
+
 			if err := m.SubTasks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("subTasks" + "." + strconv.Itoa(i))

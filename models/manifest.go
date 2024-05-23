@@ -24,7 +24,7 @@ import (
 type Manifest struct {
 
 	// Async patches used by async patch tool
-	AsyncPatches map[string]List `json:"asyncPatches,omitempty"`
+	AsyncPatches map[string]MapOfstringAndListOfAsyncPatch `json:"asyncPatches,omitempty"`
 
 	// Creation time for the manifest e.g. 2020-06-08T02:20:15.844Z, in yyyy-MM-dd'T'HH:mm:ss[.SSS]XXX ISO 8601 format
 	// Required: true
@@ -102,13 +102,10 @@ func (m *Manifest) validateAsyncPatches(formats strfmt.Registry) error {
 
 	for k := range m.AsyncPatches {
 
-		if err := m.AsyncPatches[k].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("asyncPatches" + "." + k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("asyncPatches" + "." + k)
+		if val, ok := m.AsyncPatches[k]; ok {
+			if err := val.Validate(formats); err != nil {
+				return err
 			}
-			return err
 		}
 
 	}
@@ -253,13 +250,10 @@ func (m *Manifest) contextValidateAsyncPatches(ctx context.Context, formats strf
 
 	for k := range m.AsyncPatches {
 
-		if err := m.AsyncPatches[k].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("asyncPatches" + "." + k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("asyncPatches" + "." + k)
+		if val, ok := m.AsyncPatches[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
 			}
-			return err
 		}
 
 	}
@@ -272,6 +266,11 @@ func (m *Manifest) contextValidateRecalledBundles(ctx context.Context, formats s
 	for i := 0; i < len(m.RecalledBundles); i++ {
 
 		if m.RecalledBundles[i] != nil {
+
+			if swag.IsZero(m.RecalledBundles[i]) { // not required
+				return nil
+			}
+
 			if err := m.RecalledBundles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("recalledBundles" + "." + strconv.Itoa(i))
@@ -292,6 +291,11 @@ func (m *Manifest) contextValidateReleases(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Releases); i++ {
 
 		if m.Releases[i] != nil {
+
+			if swag.IsZero(m.Releases[i]) { // not required
+				return nil
+			}
+
 			if err := m.Releases[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("releases" + "." + strconv.Itoa(i))

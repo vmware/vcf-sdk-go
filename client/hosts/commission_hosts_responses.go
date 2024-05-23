@@ -51,7 +51,7 @@ func (o *CommissionHostsReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/hosts] commissionHosts", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CommissionHostsOK) IsServerError() bool {
 // IsCode returns true when this commission hosts o k response a status code equal to that given
 func (o *CommissionHostsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the commission hosts o k response
+func (o *CommissionHostsOK) Code() int {
+	return 200
 }
 
 func (o *CommissionHostsOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CommissionHostsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the commission hosts accepted response
+func (o *CommissionHostsAccepted) Code() int {
+	return 202
+}
+
 func (o *CommissionHostsAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/hosts][%d] commissionHostsAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CommissionHostsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the commission hosts bad request response
+func (o *CommissionHostsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CommissionHostsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/hosts][%d] commissionHostsBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CommissionHostsInternalServerError) IsServerError() bool {
 // IsCode returns true when this commission hosts internal server error response a status code equal to that given
 func (o *CommissionHostsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the commission hosts internal server error response
+func (o *CommissionHostsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CommissionHostsInternalServerError) Error() string {

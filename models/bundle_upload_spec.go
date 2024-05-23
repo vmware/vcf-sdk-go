@@ -26,7 +26,7 @@ type BundleUploadSpec struct {
 	// Required: true
 	BundleFilePath *string `json:"bundleFilePath"`
 
-	// Path to the software compatibility sets file
+	// [Deprecated] Path to the software compatibility sets file
 	CompatibilitySetsFilePath string `json:"compatibilitySetsFilePath,omitempty"`
 
 	// Bundle Upload Manifest File Path
@@ -116,6 +116,11 @@ func (m *BundleUploadSpec) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *BundleUploadSpec) contextValidatePartnerExtensionSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PartnerExtensionSpec != nil {
+
+		if swag.IsZero(m.PartnerExtensionSpec) { // not required
+			return nil
+		}
+
 		if err := m.PartnerExtensionSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partnerExtensionSpec")

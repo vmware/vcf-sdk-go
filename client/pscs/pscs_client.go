@@ -41,7 +41,7 @@ type ClientService interface {
 }
 
 /*
-GetPsc gets a p s c
+GetPsc retrieves details of a platform service controller p s c
 */
 func (a *Client) GetPsc(params *GetPscParams, opts ...ClientOption) (*GetPscOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) GetPsc(params *GetPscParams, opts ...ClientOption) (*GetPscOK, 
 }
 
 /*
-GetPscs gets the p s cs
+GetPscs retrieves a list of platform service controller p s c
 */
 func (a *Client) GetPscs(params *GetPscsParams, opts ...ClientOption) (*GetPscsOK, error) {
 	// TODO: Validate the params before sending

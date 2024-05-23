@@ -28,9 +28,6 @@ type PscSpec struct {
 	// Min Length: 8
 	AdminUserSSOPassword *string `json:"adminUserSsoPassword"`
 
-	// PSC Name
-	PscID string `json:"pscId,omitempty"`
-
 	// PSC SSO Domain
 	PscSSOSpec *PscSSOSpec `json:"pscSsoSpec,omitempty"`
 }
@@ -106,6 +103,11 @@ func (m *PscSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 func (m *PscSpec) contextValidatePscSSOSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PscSSOSpec != nil {
+
+		if swag.IsZero(m.PscSSOSpec) { // not required
+			return nil
+		}
+
 		if err := m.PscSSOSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pscSsoSpec")

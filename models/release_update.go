@@ -161,6 +161,11 @@ func (m *ReleaseUpdate) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *ReleaseUpdate) contextValidateReleaseUpdateURL(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ReleaseUpdateURL != nil {
+
+		if swag.IsZero(m.ReleaseUpdateURL) { // not required
+			return nil
+		}
+
 		if err := m.ReleaseUpdateURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("releaseUpdateURL")

@@ -45,7 +45,7 @@ func (o *GetSDDCManagerReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/sddc-managers/{id}] getSddcManager", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetSDDCManagerOK) IsServerError() bool {
 // IsCode returns true when this get Sddc manager o k response a status code equal to that given
 func (o *GetSDDCManagerOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get Sddc manager o k response
+func (o *GetSDDCManagerOK) Code() int {
+	return 200
 }
 
 func (o *GetSDDCManagerOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetSDDCManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get Sddc manager not found response
+func (o *GetSDDCManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *GetSDDCManagerNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/sddc-managers/{id}][%d] getSddcManagerNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetSDDCManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this get Sddc manager internal server error response a status code equal to that given
 func (o *GetSDDCManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get Sddc manager internal server error response
+func (o *GetSDDCManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetSDDCManagerInternalServerError) Error() string {

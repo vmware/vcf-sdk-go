@@ -32,8 +32,20 @@ func (o *GetHostCriteriaReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return result, nil
+	case 404:
+		result := NewGetHostCriteriaNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetHostCriteriaInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{id}/hosts/criteria] getHostCriteria", response, response.Code())
 	}
 }
 
@@ -76,6 +88,11 @@ func (o *GetHostCriteriaOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get host criteria o k response
+func (o *GetHostCriteriaOK) Code() int {
+	return 200
+}
+
 func (o *GetHostCriteriaOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaOK  %+v", 200, o.Payload)
 }
@@ -91,6 +108,142 @@ func (o *GetHostCriteriaOK) GetPayload() *models.PageOfHostCriterion {
 func (o *GetHostCriteriaOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfHostCriterion)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetHostCriteriaNotFound creates a GetHostCriteriaNotFound with default headers values
+func NewGetHostCriteriaNotFound() *GetHostCriteriaNotFound {
+	return &GetHostCriteriaNotFound{}
+}
+
+/*
+GetHostCriteriaNotFound describes a response with status code 404, with default header values.
+
+Cluster Not Found
+*/
+type GetHostCriteriaNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get host criteria not found response has a 2xx status code
+func (o *GetHostCriteriaNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get host criteria not found response has a 3xx status code
+func (o *GetHostCriteriaNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get host criteria not found response has a 4xx status code
+func (o *GetHostCriteriaNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get host criteria not found response has a 5xx status code
+func (o *GetHostCriteriaNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get host criteria not found response a status code equal to that given
+func (o *GetHostCriteriaNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get host criteria not found response
+func (o *GetHostCriteriaNotFound) Code() int {
+	return 404
+}
+
+func (o *GetHostCriteriaNotFound) Error() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetHostCriteriaNotFound) String() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetHostCriteriaNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetHostCriteriaNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetHostCriteriaInternalServerError creates a GetHostCriteriaInternalServerError with default headers values
+func NewGetHostCriteriaInternalServerError() *GetHostCriteriaInternalServerError {
+	return &GetHostCriteriaInternalServerError{}
+}
+
+/*
+GetHostCriteriaInternalServerError describes a response with status code 500, with default header values.
+
+Internal Server Error
+*/
+type GetHostCriteriaInternalServerError struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get host criteria internal server error response has a 2xx status code
+func (o *GetHostCriteriaInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get host criteria internal server error response has a 3xx status code
+func (o *GetHostCriteriaInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get host criteria internal server error response has a 4xx status code
+func (o *GetHostCriteriaInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get host criteria internal server error response has a 5xx status code
+func (o *GetHostCriteriaInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get host criteria internal server error response a status code equal to that given
+func (o *GetHostCriteriaInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get host criteria internal server error response
+func (o *GetHostCriteriaInternalServerError) Code() int {
+	return 500
+}
+
+func (o *GetHostCriteriaInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetHostCriteriaInternalServerError) String() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria][%d] getHostCriteriaInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetHostCriteriaInternalServerError) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetHostCriteriaInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -26,7 +26,7 @@ type Vds struct {
 	// vSphere Distributed Switch id
 	ID string `json:"id,omitempty"`
 
-	// Boolean to identify if the vSphere distributed switch is used by NSX-T
+	// Boolean to identify if the vSphere distributed switch is used by NSX. This property is deprecated in favor of nsxtSwitchConfig field.
 	IsUsedByNSXT bool `json:"isUsedByNsxt,omitempty"`
 
 	// Maximum Transmission Unit
@@ -38,6 +38,9 @@ type Vds struct {
 
 	// List of Network I/O Control Bandwidth Allocations for System Traffic
 	NiocBandwidthAllocations []*NiocBandwidthAllocation `json:"niocBandwidthAllocations"`
+
+	// The configurations associated with the vSphere Distributed Switch managed by NSX
+	NSXTSwitchConfig *NSXTSwitchConfiguration `json:"nsxtSwitchConfig,omitempty"`
 
 	// List of portgroups associated with the vSphere Distributed Switch
 	PortGroups []*Portgroup `json:"portGroups"`
@@ -55,6 +58,10 @@ func (m *Vds) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNiocBandwidthAllocations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNSXTSwitchConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -103,6 +110,25 @@ func (m *Vds) validateNiocBandwidthAllocations(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Vds) validateNSXTSwitchConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.NSXTSwitchConfig) { // not required
+		return nil
+	}
+
+	if m.NSXTSwitchConfig != nil {
+		if err := m.NSXTSwitchConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxtSwitchConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxtSwitchConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Vds) validatePortGroups(formats strfmt.Registry) error {
 	if swag.IsZero(m.PortGroups) { // not required
 		return nil
@@ -137,6 +163,10 @@ func (m *Vds) ContextValidate(ctx context.Context, formats strfmt.Registry) erro
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNSXTSwitchConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePortGroups(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -152,6 +182,11 @@ func (m *Vds) contextValidateNiocBandwidthAllocations(ctx context.Context, forma
 	for i := 0; i < len(m.NiocBandwidthAllocations); i++ {
 
 		if m.NiocBandwidthAllocations[i] != nil {
+
+			if swag.IsZero(m.NiocBandwidthAllocations[i]) { // not required
+				return nil
+			}
+
 			if err := m.NiocBandwidthAllocations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("niocBandwidthAllocations" + "." + strconv.Itoa(i))
@@ -167,11 +202,37 @@ func (m *Vds) contextValidateNiocBandwidthAllocations(ctx context.Context, forma
 	return nil
 }
 
+func (m *Vds) contextValidateNSXTSwitchConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NSXTSwitchConfig != nil {
+
+		if swag.IsZero(m.NSXTSwitchConfig) { // not required
+			return nil
+		}
+
+		if err := m.NSXTSwitchConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxtSwitchConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxtSwitchConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Vds) contextValidatePortGroups(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.PortGroups); i++ {
 
 		if m.PortGroups[i] != nil {
+
+			if swag.IsZero(m.PortGroups[i]) { // not required
+				return nil
+			}
+
 			if err := m.PortGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("portGroups" + "." + strconv.Itoa(i))

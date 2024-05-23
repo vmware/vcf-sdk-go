@@ -18,7 +18,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// NsxTEdgeUplinkNetwork This specification contains input  parameters required to configure  uplink network for NSX-T  edge node VM
+// NsxTEdgeUplinkNetwork This specification contains input  parameters required to configure  uplink network for NSX  edge node VM
 //
 // swagger:model NsxTEdgeUplinkNetwork
 type NsxTEdgeUplinkNetwork struct {
@@ -129,6 +129,11 @@ func (m *NsxTEdgeUplinkNetwork) contextValidateBgpPeers(ctx context.Context, for
 	for i := 0; i < len(m.BgpPeers); i++ {
 
 		if m.BgpPeers[i] != nil {
+
+			if swag.IsZero(m.BgpPeers[i]) { // not required
+				return nil
+			}
+
 			if err := m.BgpPeers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bgpPeers" + "." + strconv.Itoa(i))

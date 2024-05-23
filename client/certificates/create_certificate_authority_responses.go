@@ -45,7 +45,7 @@ func (o *CreateCertificateAuthorityReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/certificate-authorities] createCertificateAuthority", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *CreateCertificateAuthorityOK) IsServerError() bool {
 // IsCode returns true when this create certificate authority o k response a status code equal to that given
 func (o *CreateCertificateAuthorityOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create certificate authority o k response
+func (o *CreateCertificateAuthorityOK) Code() int {
+	return 200
 }
 
 func (o *CreateCertificateAuthorityOK) Error() string {
@@ -149,6 +154,11 @@ func (o *CreateCertificateAuthorityBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create certificate authority bad request response
+func (o *CreateCertificateAuthorityBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateCertificateAuthorityBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/certificate-authorities][%d] createCertificateAuthorityBadRequest  %+v", 400, o.Payload)
 }
@@ -210,6 +220,11 @@ func (o *CreateCertificateAuthorityInternalServerError) IsServerError() bool {
 // IsCode returns true when this create certificate authority internal server error response a status code equal to that given
 func (o *CreateCertificateAuthorityInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create certificate authority internal server error response
+func (o *CreateCertificateAuthorityInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateCertificateAuthorityInternalServerError) Error() string {

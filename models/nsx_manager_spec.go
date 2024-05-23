@@ -95,6 +95,7 @@ func (m *NsxManagerSpec) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *NsxManagerSpec) contextValidateNetworkDetailsSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NetworkDetailsSpec != nil {
+
 		if err := m.NetworkDetailsSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("networkDetailsSpec")

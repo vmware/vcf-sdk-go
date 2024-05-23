@@ -57,7 +57,7 @@ func (o *UpdateDomainReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/domains/{id}] updateDomain", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *UpdateDomainOK) IsServerError() bool {
 // IsCode returns true when this update domain o k response a status code equal to that given
 func (o *UpdateDomainOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update domain o k response
+func (o *UpdateDomainOK) Code() int {
+	return 200
 }
 
 func (o *UpdateDomainOK) Error() string {
@@ -163,6 +168,11 @@ func (o *UpdateDomainAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the update domain accepted response
+func (o *UpdateDomainAccepted) Code() int {
+	return 202
+}
+
 func (o *UpdateDomainAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/domains/{id}][%d] updateDomainAccepted  %+v", 202, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *UpdateDomainBadRequest) IsServerError() bool {
 // IsCode returns true when this update domain bad request response a status code equal to that given
 func (o *UpdateDomainBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the update domain bad request response
+func (o *UpdateDomainBadRequest) Code() int {
+	return 400
 }
 
 func (o *UpdateDomainBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *UpdateDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update domain not found response
+func (o *UpdateDomainNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateDomainNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/domains/{id}][%d] updateDomainNotFound  %+v", 404, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *UpdateDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this update domain internal server error response a status code equal to that given
 func (o *UpdateDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update domain internal server error response
+func (o *UpdateDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateDomainInternalServerError) Error() string {

@@ -57,7 +57,7 @@ func (o *UpdateExternalIdentityProviderReader) ReadResponse(response runtime.Cli
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/identity-providers/{id}] updateExternalIdentityProvider", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *UpdateExternalIdentityProviderOK) IsServerError() bool {
 // IsCode returns true when this update external identity provider o k response a status code equal to that given
 func (o *UpdateExternalIdentityProviderOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update external identity provider o k response
+func (o *UpdateExternalIdentityProviderOK) Code() int {
+	return 200
 }
 
 func (o *UpdateExternalIdentityProviderOK) Error() string {
@@ -161,6 +166,11 @@ func (o *UpdateExternalIdentityProviderNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the update external identity provider no content response
+func (o *UpdateExternalIdentityProviderNoContent) Code() int {
+	return 204
+}
+
 func (o *UpdateExternalIdentityProviderNoContent) Error() string {
 	return fmt.Sprintf("[PATCH /v1/identity-providers/{id}][%d] updateExternalIdentityProviderNoContent  %+v", 204, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UpdateExternalIdentityProviderBadRequest) IsServerError() bool {
 // IsCode returns true when this update external identity provider bad request response a status code equal to that given
 func (o *UpdateExternalIdentityProviderBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the update external identity provider bad request response
+func (o *UpdateExternalIdentityProviderBadRequest) Code() int {
+	return 400
 }
 
 func (o *UpdateExternalIdentityProviderBadRequest) Error() string {
@@ -285,6 +300,11 @@ func (o *UpdateExternalIdentityProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update external identity provider not found response
+func (o *UpdateExternalIdentityProviderNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateExternalIdentityProviderNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/identity-providers/{id}][%d] updateExternalIdentityProviderNotFound  %+v", 404, o.Payload)
 }
@@ -346,6 +366,11 @@ func (o *UpdateExternalIdentityProviderInternalServerError) IsServerError() bool
 // IsCode returns true when this update external identity provider internal server error response a status code equal to that given
 func (o *UpdateExternalIdentityProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update external identity provider internal server error response
+func (o *UpdateExternalIdentityProviderInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateExternalIdentityProviderInternalServerError) Error() string {

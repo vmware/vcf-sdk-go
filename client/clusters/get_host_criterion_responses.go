@@ -32,14 +32,26 @@ func (o *GetHostCriterionReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewGetHostCriterionBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewGetHostCriterionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
+	case 500:
+		result := NewGetHostCriterionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{id}/hosts/criteria/{name}] getHostCriterion", response, response.Code())
 	}
 }
 
@@ -82,6 +94,11 @@ func (o *GetHostCriterionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get host criterion o k response
+func (o *GetHostCriterionOK) Code() int {
+	return 200
+}
+
 func (o *GetHostCriterionOK) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionOK  %+v", 200, o.Payload)
 }
@@ -97,6 +114,74 @@ func (o *GetHostCriterionOK) GetPayload() *models.HostCriterion {
 func (o *GetHostCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.HostCriterion)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetHostCriterionBadRequest creates a GetHostCriterionBadRequest with default headers values
+func NewGetHostCriterionBadRequest() *GetHostCriterionBadRequest {
+	return &GetHostCriterionBadRequest{}
+}
+
+/*
+GetHostCriterionBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type GetHostCriterionBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get host criterion bad request response has a 2xx status code
+func (o *GetHostCriterionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get host criterion bad request response has a 3xx status code
+func (o *GetHostCriterionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get host criterion bad request response has a 4xx status code
+func (o *GetHostCriterionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get host criterion bad request response has a 5xx status code
+func (o *GetHostCriterionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get host criterion bad request response a status code equal to that given
+func (o *GetHostCriterionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get host criterion bad request response
+func (o *GetHostCriterionBadRequest) Code() int {
+	return 400
+}
+
+func (o *GetHostCriterionBadRequest) Error() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetHostCriterionBadRequest) String() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetHostCriterionBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetHostCriterionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -145,6 +230,11 @@ func (o *GetHostCriterionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get host criterion not found response
+func (o *GetHostCriterionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetHostCriterionNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionNotFound  %+v", 404, o.Payload)
 }
@@ -158,6 +248,74 @@ func (o *GetHostCriterionNotFound) GetPayload() *models.Error {
 }
 
 func (o *GetHostCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetHostCriterionInternalServerError creates a GetHostCriterionInternalServerError with default headers values
+func NewGetHostCriterionInternalServerError() *GetHostCriterionInternalServerError {
+	return &GetHostCriterionInternalServerError{}
+}
+
+/*
+GetHostCriterionInternalServerError describes a response with status code 500, with default header values.
+
+Internal Server Error
+*/
+type GetHostCriterionInternalServerError struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get host criterion internal server error response has a 2xx status code
+func (o *GetHostCriterionInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get host criterion internal server error response has a 3xx status code
+func (o *GetHostCriterionInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get host criterion internal server error response has a 4xx status code
+func (o *GetHostCriterionInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get host criterion internal server error response has a 5xx status code
+func (o *GetHostCriterionInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get host criterion internal server error response a status code equal to that given
+func (o *GetHostCriterionInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get host criterion internal server error response
+func (o *GetHostCriterionInternalServerError) Code() int {
+	return 500
+}
+
+func (o *GetHostCriterionInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetHostCriterionInternalServerError) String() string {
+	return fmt.Sprintf("[GET /v1/clusters/{id}/hosts/criteria/{name}][%d] getHostCriterionInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetHostCriterionInternalServerError) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetHostCriterionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

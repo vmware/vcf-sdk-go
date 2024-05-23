@@ -68,13 +68,13 @@ type ValidateEdgeClusterUpdateSpecParams struct {
 
 	/* EdgeClusterUpdateSpec.
 
-	   NSX-T Edge Cluster Update spec to be validated
+	   NSX Edge Cluster Update spec to be validated
 	*/
 	EdgeClusterUpdateSpec *models.EdgeClusterUpdateSpec
 
 	/* ID.
 
-	   NSX-T Edge cluster id
+	   NSX Edge cluster id
 	*/
 	ID string
 

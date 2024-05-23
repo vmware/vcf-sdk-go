@@ -28,6 +28,9 @@ type ResourceUpgradeSpec struct {
 	// Flag for requesting Quick Boot for ESXi upgrade
 	EnableQuickboot bool `json:"enableQuickboot,omitempty"`
 
+	// Flag for requesting Evacuation of Offline VMs for ESXi upgrade
+	EvacuateOfflineVms bool `json:"evacuateOfflineVms,omitempty"`
+
 	// Personality Specifications for vLCM based upgrade
 	PersonalitySpec *PersonalitySpec `json:"personalitySpec,omitempty"`
 
@@ -138,6 +141,11 @@ func (m *ResourceUpgradeSpec) ContextValidate(ctx context.Context, formats strfm
 func (m *ResourceUpgradeSpec) contextValidateCustomISOSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CustomISOSpec != nil {
+
+		if swag.IsZero(m.CustomISOSpec) { // not required
+			return nil
+		}
+
 		if err := m.CustomISOSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("customISOSpec")
@@ -154,6 +162,11 @@ func (m *ResourceUpgradeSpec) contextValidateCustomISOSpec(ctx context.Context, 
 func (m *ResourceUpgradeSpec) contextValidatePersonalitySpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PersonalitySpec != nil {
+
+		if swag.IsZero(m.PersonalitySpec) { // not required
+			return nil
+		}
+
 		if err := m.PersonalitySpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("personalitySpec")

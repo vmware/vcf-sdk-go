@@ -17,12 +17,12 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VRSLCMDeploymentSpec Spec contains parameters for creating a new vRealize Suite Lifecycle Manager instance
+// VRSLCMDeploymentSpec Spec contains parameters for creating a new VMware Aria Suite Lifecycle instance
 //
 // swagger:model VrslcmDeploymentSpec
 type VRSLCMDeploymentSpec struct {
 
-	// The password for an admin API/UI user of vRealize Suite Lifecycle Manager
+	// The password for an admin API/UI user of VMware Aria Suite Lifecycle
 	// Required: true
 	APIPassword *string `json:"apiPassword"`
 
@@ -31,11 +31,11 @@ type VRSLCMDeploymentSpec struct {
 	// Required: true
 	Fqdn *string `json:"fqdn"`
 
-	// The IP to use for deploying a new standalone Tier-1 router in NSX-T. This router will be used subsequently for vrealize load balancers.
+	// The IP to use for deploying a new standalone Tier-1 router in NSX. This router will be used subsequently for VMware Aria load balancers.
 	// Required: true
 	NSXTStandaloneTier1IP *string `json:"nsxtStandaloneTier1Ip"`
 
-	// The password for a root user of vRealize Suite Lifecycle Manager appliance
+	// The password for a root user of VMware Aria Suite Lifecycle appliance
 	// Required: true
 	SSHPassword *string `json:"sshPassword"`
 }

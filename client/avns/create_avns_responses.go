@@ -51,7 +51,7 @@ func (o *CreateAvnsReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/avns] createAvns", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CreateAvnsOK) IsServerError() bool {
 // IsCode returns true when this create avns o k response a status code equal to that given
 func (o *CreateAvnsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create avns o k response
+func (o *CreateAvnsOK) Code() int {
+	return 200
 }
 
 func (o *CreateAvnsOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CreateAvnsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the create avns accepted response
+func (o *CreateAvnsAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateAvnsAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CreateAvnsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create avns bad request response
+func (o *CreateAvnsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateAvnsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/avns][%d] createAvnsBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CreateAvnsInternalServerError) IsServerError() bool {
 // IsCode returns true when this create avns internal server error response a status code equal to that given
 func (o *CreateAvnsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create avns internal server error response
+func (o *CreateAvnsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateAvnsInternalServerError) Error() string {

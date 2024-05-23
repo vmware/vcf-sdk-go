@@ -1,4 +1,4 @@
-SWAGGER_VERSION=0.30.3
+SWAGGER_VERSION=0.30.5
 
 check-swagger:
 	@swagger version | grep ${SWAGGER_VERSION} > /dev/null || { echo "Wrong version of swagger command. Install go-swagger ${SWAGGER_VERSION}"; exit 1; }

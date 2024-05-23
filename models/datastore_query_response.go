@@ -105,6 +105,11 @@ func (m *DatastoreQueryResponse) ContextValidate(ctx context.Context, formats st
 func (m *DatastoreQueryResponse) contextValidateQueryInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.QueryInfo != nil {
+
+		if swag.IsZero(m.QueryInfo) { // not required
+			return nil
+		}
+
 		if err := m.QueryInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("queryInfo")
@@ -121,6 +126,11 @@ func (m *DatastoreQueryResponse) contextValidateQueryInfo(ctx context.Context, f
 func (m *DatastoreQueryResponse) contextValidateResult(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Result != nil {
+
+		if swag.IsZero(m.Result) { // not required
+			return nil
+		}
+
 		if err := m.Result.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("result")

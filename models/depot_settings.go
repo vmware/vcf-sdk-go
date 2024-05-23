@@ -105,6 +105,11 @@ func (m *DepotSettings) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *DepotSettings) contextValidateDellEmcSupportAccount(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DellEmcSupportAccount != nil {
+
+		if swag.IsZero(m.DellEmcSupportAccount) { // not required
+			return nil
+		}
+
 		if err := m.DellEmcSupportAccount.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dellEmcSupportAccount")
@@ -121,6 +126,11 @@ func (m *DepotSettings) contextValidateDellEmcSupportAccount(ctx context.Context
 func (m *DepotSettings) contextValidateVMWAREAccount(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VMWAREAccount != nil {
+
+		if swag.IsZero(m.VMWAREAccount) { // not required
+			return nil
+		}
+
 		if err := m.VMWAREAccount.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vmwareAccount")

@@ -10,15 +10,18 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // MapOfstringAndListOfVxRailContext map ofstring and list of vx rail context
 //
 // swagger:model MapOfstringAndListOfVxRailContext
-type MapOfstringAndListOfVxRailContext map[string]List
+type MapOfstringAndListOfVxRailContext map[string][]VxRailContext
 
 // Validate validates this map ofstring and list of vx rail context
 func (m MapOfstringAndListOfVxRailContext) Validate(formats strfmt.Registry) error {
@@ -26,13 +29,21 @@ func (m MapOfstringAndListOfVxRailContext) Validate(formats strfmt.Registry) err
 
 	for k := range m {
 
-		if err := m[k].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName(k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName(k)
-			}
+		if err := validate.Required(k, "body", m[k]); err != nil {
 			return err
+		}
+
+		for i := 0; i < len(m[k]); i++ {
+
+			if err := m[k][i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName(k + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName(k + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+
 		}
 
 	}
@@ -49,13 +60,21 @@ func (m MapOfstringAndListOfVxRailContext) ContextValidate(ctx context.Context, 
 
 	for k := range m {
 
-		if err := m[k].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName(k)
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName(k)
+		for i := 0; i < len(m[k]); i++ {
+
+			if swag.IsZero(m[k][i]) { // not required
+				return nil
 			}
-			return err
+
+			if err := m[k][i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName(k + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName(k + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+
 		}
 
 	}

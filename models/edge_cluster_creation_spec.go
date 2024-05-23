@@ -18,7 +18,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// EdgeClusterCreationSpec This specification contains the parameters required to add a NSX-T edge cluster spanning multiple VI clusters.
+// EdgeClusterCreationSpec This specification contains the parameters required to add a NSX edge cluster spanning multiple VI clusters.
 //
 // swagger:model EdgeClusterCreationSpec
 type EdgeClusterCreationSpec struct {
@@ -72,26 +72,25 @@ type EdgeClusterCreationSpec struct {
 	// Required: true
 	Mtu *int32 `json:"mtu"`
 
+	// Specifications for new NSX IP address pool(s)
+	NewIPAddressPoolSpecs []*IPAddressPoolSpec `json:"newIpAddressPoolSpecs"`
+
 	// Set to true to bypass normal ICMP-based check of Edge TEP / host TEP routability (default is false, meaning do check)
 	SkipTepRoutabilityCheck bool `json:"skipTepRoutabilityCheck,omitempty"`
 
 	// Name for the Tier-0
-	// Required: true
-	Tier0Name *string `json:"tier0Name"`
+	Tier0Name string `json:"tier0Name,omitempty"`
 
 	// Tier 0 Routing type -eg eBGP, Static
 	// Example: One among: EBGP, STATIC
-	// Required: true
-	Tier0RoutingType *string `json:"tier0RoutingType"`
+	Tier0RoutingType string `json:"tier0RoutingType,omitempty"`
 
 	// High-availability Mode for Tier-0
 	// Example: One among: ACTIVE_ACTIVE, ACTIVE_STANDBY
-	// Required: true
-	Tier0ServicesHighAvailability *string `json:"tier0ServicesHighAvailability"`
+	Tier0ServicesHighAvailability string `json:"tier0ServicesHighAvailability,omitempty"`
 
 	// Name for the Tier-1
-	// Required: true
-	Tier1Name *string `json:"tier1Name"`
+	Tier1Name string `json:"tier1Name,omitempty"`
 
 	// Select whether Tier-1 being created per this spec is hosted on the new Edge cluster or not (default value is false, meaning hosted)
 	Tier1Unhosted bool `json:"tier1Unhosted,omitempty"`
@@ -144,19 +143,7 @@ func (m *EdgeClusterCreationSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateTier0Name(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateTier0RoutingType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateTier0ServicesHighAvailability(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateTier1Name(formats); err != nil {
+	if err := m.validateNewIPAddressPoolSpecs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -285,37 +272,27 @@ func (m *EdgeClusterCreationSpec) validateMtu(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *EdgeClusterCreationSpec) validateTier0Name(formats strfmt.Registry) error {
-
-	if err := validate.Required("tier0Name", "body", m.Tier0Name); err != nil {
-		return err
+func (m *EdgeClusterCreationSpec) validateNewIPAddressPoolSpecs(formats strfmt.Registry) error {
+	if swag.IsZero(m.NewIPAddressPoolSpecs) { // not required
+		return nil
 	}
 
-	return nil
-}
+	for i := 0; i < len(m.NewIPAddressPoolSpecs); i++ {
+		if swag.IsZero(m.NewIPAddressPoolSpecs[i]) { // not required
+			continue
+		}
 
-func (m *EdgeClusterCreationSpec) validateTier0RoutingType(formats strfmt.Registry) error {
+		if m.NewIPAddressPoolSpecs[i] != nil {
+			if err := m.NewIPAddressPoolSpecs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
 
-	if err := validate.Required("tier0RoutingType", "body", m.Tier0RoutingType); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *EdgeClusterCreationSpec) validateTier0ServicesHighAvailability(formats strfmt.Registry) error {
-
-	if err := validate.Required("tier0ServicesHighAvailability", "body", m.Tier0ServicesHighAvailability); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *EdgeClusterCreationSpec) validateTier1Name(formats strfmt.Registry) error {
-
-	if err := validate.Required("tier1Name", "body", m.Tier1Name); err != nil {
-		return err
 	}
 
 	return nil
@@ -333,6 +310,10 @@ func (m *EdgeClusterCreationSpec) ContextValidate(ctx context.Context, formats s
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNewIPAddressPoolSpecs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -342,6 +323,7 @@ func (m *EdgeClusterCreationSpec) ContextValidate(ctx context.Context, formats s
 func (m *EdgeClusterCreationSpec) contextValidateEdgeClusterProfileSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EdgeClusterProfileSpec != nil {
+
 		if err := m.EdgeClusterProfileSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("edgeClusterProfileSpec")
@@ -360,11 +342,41 @@ func (m *EdgeClusterCreationSpec) contextValidateEdgeNodeSpecs(ctx context.Conte
 	for i := 0; i < len(m.EdgeNodeSpecs); i++ {
 
 		if m.EdgeNodeSpecs[i] != nil {
+
+			if swag.IsZero(m.EdgeNodeSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.EdgeNodeSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("edgeNodeSpecs" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("edgeNodeSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EdgeClusterCreationSpec) contextValidateNewIPAddressPoolSpecs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NewIPAddressPoolSpecs); i++ {
+
+		if m.NewIPAddressPoolSpecs[i] != nil {
+
+			if swag.IsZero(m.NewIPAddressPoolSpecs[i]) { // not required
+				return nil
+			}
+
+			if err := m.NewIPAddressPoolSpecs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("newIpAddressPoolSpecs" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

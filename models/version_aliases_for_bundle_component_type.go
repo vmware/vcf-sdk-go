@@ -106,6 +106,11 @@ func (m *VersionAliasesForBundleComponentType) contextValidateVersionAliases(ctx
 	for i := 0; i < len(m.VersionAliases); i++ {
 
 		if m.VersionAliases[i] != nil {
+
+			if swag.IsZero(m.VersionAliases[i]) { // not required
+				return nil
+			}
+
 			if err := m.VersionAliases[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("versionAliases" + "." + strconv.Itoa(i))

@@ -51,7 +51,7 @@ func (o *RefreshAccessTokenReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/tokens/access-token/refresh] refreshAccessToken", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *RefreshAccessTokenOK) IsServerError() bool {
 // IsCode returns true when this refresh access token o k response a status code equal to that given
 func (o *RefreshAccessTokenOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the refresh access token o k response
+func (o *RefreshAccessTokenOK) Code() int {
+	return 200
 }
 
 func (o *RefreshAccessTokenOK) Error() string {
@@ -153,6 +158,11 @@ func (o *RefreshAccessTokenBadRequest) IsServerError() bool {
 // IsCode returns true when this refresh access token bad request response a status code equal to that given
 func (o *RefreshAccessTokenBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the refresh access token bad request response
+func (o *RefreshAccessTokenBadRequest) Code() int {
+	return 400
 }
 
 func (o *RefreshAccessTokenBadRequest) Error() string {
@@ -218,6 +228,11 @@ func (o *RefreshAccessTokenNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the refresh access token not found response
+func (o *RefreshAccessTokenNotFound) Code() int {
+	return 404
+}
+
 func (o *RefreshAccessTokenNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/tokens/access-token/refresh][%d] refreshAccessTokenNotFound  %+v", 404, o.Payload)
 }
@@ -279,6 +294,11 @@ func (o *RefreshAccessTokenInternalServerError) IsServerError() bool {
 // IsCode returns true when this refresh access token internal server error response a status code equal to that given
 func (o *RefreshAccessTokenInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the refresh access token internal server error response
+func (o *RefreshAccessTokenInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RefreshAccessTokenInternalServerError) Error() string {

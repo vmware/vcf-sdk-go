@@ -38,6 +38,12 @@ func (o *PostHostQueryReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPostHostQueryNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPostHostQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -45,7 +51,7 @@ func (o *PostHostQueryReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/clusters/{id}/hosts/queries] postHostQuery", response, response.Code())
 	}
 }
 
@@ -86,6 +92,11 @@ func (o *PostHostQueryOK) IsServerError() bool {
 // IsCode returns true when this post host query o k response a status code equal to that given
 func (o *PostHostQueryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the post host query o k response
+func (o *PostHostQueryOK) Code() int {
+	return 200
 }
 
 func (o *PostHostQueryOK) Error() string {
@@ -151,6 +162,11 @@ func (o *PostHostQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post host query bad request response
+func (o *PostHostQueryBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostHostQueryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/clusters/{id}/hosts/queries][%d] postHostQueryBadRequest  %+v", 400, o.Payload)
 }
@@ -164,6 +180,74 @@ func (o *PostHostQueryBadRequest) GetPayload() *models.Error {
 }
 
 func (o *PostHostQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPostHostQueryNotFound creates a PostHostQueryNotFound with default headers values
+func NewPostHostQueryNotFound() *PostHostQueryNotFound {
+	return &PostHostQueryNotFound{}
+}
+
+/*
+PostHostQueryNotFound describes a response with status code 404, with default header values.
+
+Cluster Not Found
+*/
+type PostHostQueryNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this post host query not found response has a 2xx status code
+func (o *PostHostQueryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post host query not found response has a 3xx status code
+func (o *PostHostQueryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post host query not found response has a 4xx status code
+func (o *PostHostQueryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post host query not found response has a 5xx status code
+func (o *PostHostQueryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post host query not found response a status code equal to that given
+func (o *PostHostQueryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the post host query not found response
+func (o *PostHostQueryNotFound) Code() int {
+	return 404
+}
+
+func (o *PostHostQueryNotFound) Error() string {
+	return fmt.Sprintf("[POST /v1/clusters/{id}/hosts/queries][%d] postHostQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostHostQueryNotFound) String() string {
+	return fmt.Sprintf("[POST /v1/clusters/{id}/hosts/queries][%d] postHostQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostHostQueryNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PostHostQueryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -212,6 +296,11 @@ func (o *PostHostQueryInternalServerError) IsServerError() bool {
 // IsCode returns true when this post host query internal server error response a status code equal to that given
 func (o *PostHostQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the post host query internal server error response
+func (o *PostHostQueryInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PostHostQueryInternalServerError) Error() string {

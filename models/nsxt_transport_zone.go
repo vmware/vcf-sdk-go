@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// NSXTTransportZone Spec contains required parameters for NSX-T Transport Zone
+// NSXTTransportZone Spec contains required parameters for NSX Transport Zone
 //
 // swagger:model NsxtTransportZone
 type NSXTTransportZone struct {

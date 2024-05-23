@@ -66,7 +66,7 @@ type GetCertificateAuthorityByIDParams struct {
 
 	/* ID.
 
-	   CA type
+	   The CA type
 	*/
 	ID string
 

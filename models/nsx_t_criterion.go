@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NsxTCriterion Represents a criterion for querying the NSX-T cluster
+// NsxTCriterion Represents a criterion for querying the NSX cluster
 //
 // swagger:model NsxTCriterion
 type NsxTCriterion struct {

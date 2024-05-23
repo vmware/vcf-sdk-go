@@ -33,42 +33,118 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	Gethealthsummary(params *GethealthsummaryParams, opts ...ClientOption) (*GethealthsummaryOK, error)
+	ExportHealthCheckByID(params *ExportHealthCheckByIDParams, opts ...ClientOption) (*ExportHealthCheckByIDOK, error)
 
-	Gethealthsummarytasks(params *GethealthsummarytasksParams, opts ...ClientOption) (*GethealthsummarytasksOK, error)
+	ExportSupportBundleByID(params *ExportSupportBundleByIDParams, opts ...ClientOption) (*ExportSupportBundleByIDOK, error)
 
-	GetsupportBundle(params *GetsupportBundleParams, opts ...ClientOption) (*GetsupportBundleOK, error)
+	GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts ...ClientOption) (*GetHealthCheckStatusOK, error)
 
-	GetsupportBundleTasks(params *GetsupportBundleTasksParams, opts ...ClientOption) (*GetsupportBundleTasksOK, error)
+	GetHealthCheckTask(params *GetHealthCheckTaskParams, opts ...ClientOption) (*GetHealthCheckTaskOK, error)
 
-	HealthSummary(params *HealthSummaryParams, opts ...ClientOption) (*HealthSummaryOK, *HealthSummaryAccepted, error)
+	GetSupportBundleStatus(params *GetSupportBundleStatusParams, opts ...ClientOption) (*GetSupportBundleStatusOK, error)
 
-	Healthsummarydata(params *HealthsummarydataParams, opts ...ClientOption) (*HealthsummarydataOK, error)
+	GetSupportBundleTask(params *GetSupportBundleTaskParams, opts ...ClientOption) (*GetSupportBundleTaskOK, error)
 
-	SupportBundledata(params *SupportBundledataParams, opts ...ClientOption) (*SupportBundledataOK, error)
+	StartHealthCheck(params *StartHealthCheckParams, opts ...ClientOption) (*StartHealthCheckOK, *StartHealthCheckAccepted, error)
 
-	Supportbundles(params *SupportbundlesParams, opts ...ClientOption) (*SupportbundlesOK, *SupportbundlesAccepted, error)
+	StartSupportBundle(params *StartSupportBundleParams, opts ...ClientOption) (*StartSupportBundleOK, *StartSupportBundleAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-Gethealthsummary fetches the progress of a health summary task
+ExportHealthCheckByID downloads a health check tar gz by its ID
 */
-func (a *Client) Gethealthsummary(params *GethealthsummaryParams, opts ...ClientOption) (*GethealthsummaryOK, error) {
+func (a *Client) ExportHealthCheckByID(params *ExportHealthCheckByIDParams, opts ...ClientOption) (*ExportHealthCheckByIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGethealthsummaryParams()
+		params = NewExportHealthCheckByIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "gethealthsummary",
+		ID:                 "exportHealthCheckByID",
+		Method:             "GET",
+		PathPattern:        "/v1/system/health-summary/{id}/data",
+		ProducesMediaTypes: []string{"application/octet-stream"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ExportHealthCheckByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExportHealthCheckByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for exportHealthCheckByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ExportSupportBundleByID downloads a support bundle tar gz by ID
+*/
+func (a *Client) ExportSupportBundleByID(params *ExportSupportBundleByIDParams, opts ...ClientOption) (*ExportSupportBundleByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExportSupportBundleByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "exportSupportBundleByID",
+		Method:             "GET",
+		PathPattern:        "/v1/system/support-bundles/{id}/data",
+		ProducesMediaTypes: []string{"application/octet-stream"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ExportSupportBundleByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExportSupportBundleByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for exportSupportBundleByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetHealthCheckStatus retrieves the status of the health check operations
+*/
+func (a *Client) GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts ...ClientOption) (*GetHealthCheckStatusOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetHealthCheckStatusParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getHealthCheckStatus",
 		Method:             "GET",
 		PathPattern:        "/v1/system/health-summary/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GethealthsummaryReader{formats: a.formats},
+		Reader:             &GetHealthCheckStatusReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -80,33 +156,33 @@ func (a *Client) Gethealthsummary(params *GethealthsummaryParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GethealthsummaryOK)
+	success, ok := result.(*GetHealthCheckStatusOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for gethealthsummary: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getHealthCheckStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-Gethealthsummarytasks fetches all health summary tasks
+GetHealthCheckTask retieves a list of health check tasks
 */
-func (a *Client) Gethealthsummarytasks(params *GethealthsummarytasksParams, opts ...ClientOption) (*GethealthsummarytasksOK, error) {
+func (a *Client) GetHealthCheckTask(params *GetHealthCheckTaskParams, opts ...ClientOption) (*GetHealthCheckTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGethealthsummarytasksParams()
+		params = NewGetHealthCheckTaskParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "gethealthsummarytasks",
+		ID:                 "getHealthCheckTask",
 		Method:             "GET",
 		PathPattern:        "/v1/system/health-summary",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GethealthsummarytasksReader{formats: a.formats},
+		Reader:             &GetHealthCheckTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -118,33 +194,33 @@ func (a *Client) Gethealthsummarytasks(params *GethealthsummarytasksParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GethealthsummarytasksOK)
+	success, ok := result.(*GetHealthCheckTaskOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for gethealthsummarytasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getHealthCheckTask: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetsupportBundle fetches the progress of support bundle task
+GetSupportBundleStatus retrives the status of the support bundle operation
 */
-func (a *Client) GetsupportBundle(params *GetsupportBundleParams, opts ...ClientOption) (*GetsupportBundleOK, error) {
+func (a *Client) GetSupportBundleStatus(params *GetSupportBundleStatusParams, opts ...ClientOption) (*GetSupportBundleStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetsupportBundleParams()
+		params = NewGetSupportBundleStatusParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getsupportBundle",
+		ID:                 "getSupportBundleStatus",
 		Method:             "GET",
 		PathPattern:        "/v1/system/support-bundles/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetsupportBundleReader{formats: a.formats},
+		Reader:             &GetSupportBundleStatusReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -156,33 +232,33 @@ func (a *Client) GetsupportBundle(params *GetsupportBundleParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetsupportBundleOK)
+	success, ok := result.(*GetSupportBundleStatusOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getsupportBundle: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getSupportBundleStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetsupportBundleTasks fetches all support bundle tasks
+GetSupportBundleTask retrieves a list of support bundle tasks
 */
-func (a *Client) GetsupportBundleTasks(params *GetsupportBundleTasksParams, opts ...ClientOption) (*GetsupportBundleTasksOK, error) {
+func (a *Client) GetSupportBundleTask(params *GetSupportBundleTaskParams, opts ...ClientOption) (*GetSupportBundleTaskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetsupportBundleTasksParams()
+		params = NewGetSupportBundleTaskParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getsupportBundleTasks",
+		ID:                 "getSupportBundleTask",
 		Method:             "GET",
 		PathPattern:        "/v1/system/support-bundles",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetsupportBundleTasksReader{formats: a.formats},
+		Reader:             &GetSupportBundleTaskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -194,33 +270,33 @@ func (a *Client) GetsupportBundleTasks(params *GetsupportBundleTasksParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetsupportBundleTasksOK)
+	success, ok := result.(*GetSupportBundleTaskOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getsupportBundleTasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getSupportBundleTask: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-HealthSummary initiates health summary checks
+StartHealthCheck starts a health check operation using so s
 */
-func (a *Client) HealthSummary(params *HealthSummaryParams, opts ...ClientOption) (*HealthSummaryOK, *HealthSummaryAccepted, error) {
+func (a *Client) StartHealthCheck(params *StartHealthCheckParams, opts ...ClientOption) (*StartHealthCheckOK, *StartHealthCheckAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewHealthSummaryParams()
+		params = NewStartHealthCheckParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "health-summary",
+		ID:                 "startHealthCheck",
 		Method:             "POST",
 		PathPattern:        "/v1/system/health-summary",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &HealthSummaryReader{formats: a.formats},
+		Reader:             &StartHealthCheckReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -233,9 +309,9 @@ func (a *Client) HealthSummary(params *HealthSummaryParams, opts ...ClientOption
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *HealthSummaryOK:
+	case *StartHealthCheckOK:
 		return value, nil, nil
-	case *HealthSummaryAccepted:
+	case *StartHealthCheckAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -244,98 +320,22 @@ func (a *Client) HealthSummary(params *HealthSummaryParams, opts ...ClientOption
 }
 
 /*
-Healthsummarydata downloads health summary bundle
+StartSupportBundle starts a support bundle operation using so s
 */
-func (a *Client) Healthsummarydata(params *HealthsummarydataParams, opts ...ClientOption) (*HealthsummarydataOK, error) {
+func (a *Client) StartSupportBundle(params *StartSupportBundleParams, opts ...ClientOption) (*StartSupportBundleOK, *StartSupportBundleAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewHealthsummarydataParams()
+		params = NewStartSupportBundleParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "healthsummarydata",
-		Method:             "GET",
-		PathPattern:        "/v1/system/health-summary/{id}/data",
-		ProducesMediaTypes: []string{"application/octet-stream"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &HealthsummarydataReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*HealthsummarydataOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for healthsummarydata: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-SupportBundledata downloads support bundles
-*/
-func (a *Client) SupportBundledata(params *SupportBundledataParams, opts ...ClientOption) (*SupportBundledataOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSupportBundledataParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "supportBundledata",
-		Method:             "GET",
-		PathPattern:        "/v1/system/support-bundles/{id}/data",
-		ProducesMediaTypes: []string{"application/octet-stream"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &SupportBundledataReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*SupportBundledataOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for supportBundledata: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-Supportbundles initiates support bundle download
-*/
-func (a *Client) Supportbundles(params *SupportbundlesParams, opts ...ClientOption) (*SupportbundlesOK, *SupportbundlesAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSupportbundlesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "supportbundles",
+		ID:                 "startSupportBundle",
 		Method:             "POST",
 		PathPattern:        "/v1/system/support-bundles",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &SupportbundlesReader{formats: a.formats},
+		Reader:             &StartSupportBundleReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -348,9 +348,9 @@ func (a *Client) Supportbundles(params *SupportbundlesParams, opts ...ClientOpti
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *SupportbundlesOK:
+	case *StartSupportBundleOK:
 		return value, nil, nil
-	case *SupportbundlesAccepted:
+	case *StartSupportBundleAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

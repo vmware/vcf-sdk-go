@@ -37,15 +37,6 @@ type Release struct {
 	// [Deprecated] Whether bundle is applicable or not.
 	IsApplicable bool `json:"isApplicable,omitempty"`
 
-	// know issues of the release, used to display KB link for known issues of the release
-	KnownIssuesDescription string `json:"knownIssuesDescription,omitempty"`
-
-	// know issues of the release, used to display description for known issues of the release
-	KnownIssuesURL string `json:"knownIssuesUrl,omitempty"`
-
-	// Maximum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components
-	MaxCompatibleVcfVersion string `json:"maxCompatibleVcfVersion,omitempty"`
-
 	// Minimum compatible VCF version, used to represent compatibility of SDDC Manager and VMware BOM components
 	// Required: true
 	MinCompatibleVcfVersion *string `json:"minCompatibleVcfVersion"`
@@ -302,6 +293,11 @@ func (m *Release) contextValidateBom(ctx context.Context, formats strfmt.Registr
 	for i := 0; i < len(m.Bom); i++ {
 
 		if m.Bom[i] != nil {
+
+			if swag.IsZero(m.Bom[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bom[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bom" + "." + strconv.Itoa(i))
@@ -322,6 +318,11 @@ func (m *Release) contextValidatePatchBundles(ctx context.Context, formats strfm
 	for i := 0; i < len(m.PatchBundles); i++ {
 
 		if m.PatchBundles[i] != nil {
+
+			if swag.IsZero(m.PatchBundles[i]) { // not required
+				return nil
+			}
+
 			if err := m.PatchBundles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("patchBundles" + "." + strconv.Itoa(i))
@@ -342,6 +343,11 @@ func (m *Release) contextValidateSku(ctx context.Context, formats strfmt.Registr
 	for i := 0; i < len(m.Sku); i++ {
 
 		if m.Sku[i] != nil {
+
+			if swag.IsZero(m.Sku[i]) { // not required
+				return nil
+			}
+
 			if err := m.Sku[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("sku" + "." + strconv.Itoa(i))
@@ -362,6 +368,11 @@ func (m *Release) contextValidateUpdates(ctx context.Context, formats strfmt.Reg
 	for i := 0; i < len(m.Updates); i++ {
 
 		if m.Updates[i] != nil {
+
+			if swag.IsZero(m.Updates[i]) { // not required
+				return nil
+			}
+
 			if err := m.Updates[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("updates" + "." + strconv.Itoa(i))

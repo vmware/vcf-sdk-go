@@ -25,17 +25,18 @@ type IdentityProviderSpec struct {
 	// The root certificate chain required to connect to the external server
 	CertChain []string `json:"certChain"`
 
+	// The identity management configuration when the provider is via broker federation
+	FedIdpSpec *FederatedIdentityProviderSpec `json:"fedIdpSpec,omitempty"`
+
 	// The LDAP specification when the protocol is LDAP
-	// Required: true
-	Ldap *LdapSpec `json:"ldap"`
+	Ldap *LdapSpec `json:"ldap,omitempty"`
 
 	// The user-friendly name for the Identity Provider
 	// Required: true
 	Name *string `json:"name"`
 
 	// The identity management configuration when the provider is based on oidc
-	// Required: true
-	Oidc *OidcSpec `json:"oidc"`
+	Oidc *OidcSpec `json:"oidc,omitempty"`
 
 	// The type of Identity Identity Provider
 	// Required: true
@@ -45,6 +46,10 @@ type IdentityProviderSpec struct {
 // Validate validates this identity provider spec
 func (m *IdentityProviderSpec) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateFedIdpSpec(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateLdap(formats); err != nil {
 		res = append(res, err)
@@ -68,10 +73,28 @@ func (m *IdentityProviderSpec) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *IdentityProviderSpec) validateLdap(formats strfmt.Registry) error {
+func (m *IdentityProviderSpec) validateFedIdpSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.FedIdpSpec) { // not required
+		return nil
+	}
 
-	if err := validate.Required("ldap", "body", m.Ldap); err != nil {
-		return err
+	if m.FedIdpSpec != nil {
+		if err := m.FedIdpSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fedIdpSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fedIdpSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IdentityProviderSpec) validateLdap(formats strfmt.Registry) error {
+	if swag.IsZero(m.Ldap) { // not required
+		return nil
 	}
 
 	if m.Ldap != nil {
@@ -98,9 +121,8 @@ func (m *IdentityProviderSpec) validateName(formats strfmt.Registry) error {
 }
 
 func (m *IdentityProviderSpec) validateOidc(formats strfmt.Registry) error {
-
-	if err := validate.Required("oidc", "body", m.Oidc); err != nil {
-		return err
+	if swag.IsZero(m.Oidc) { // not required
+		return nil
 	}
 
 	if m.Oidc != nil {
@@ -130,6 +152,10 @@ func (m *IdentityProviderSpec) validateType(formats strfmt.Registry) error {
 func (m *IdentityProviderSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateFedIdpSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLdap(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -144,9 +170,35 @@ func (m *IdentityProviderSpec) ContextValidate(ctx context.Context, formats strf
 	return nil
 }
 
+func (m *IdentityProviderSpec) contextValidateFedIdpSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FedIdpSpec != nil {
+
+		if swag.IsZero(m.FedIdpSpec) { // not required
+			return nil
+		}
+
+		if err := m.FedIdpSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fedIdpSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fedIdpSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IdentityProviderSpec) contextValidateLdap(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Ldap != nil {
+
+		if swag.IsZero(m.Ldap) { // not required
+			return nil
+		}
+
 		if err := m.Ldap.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ldap")
@@ -163,6 +215,11 @@ func (m *IdentityProviderSpec) contextValidateLdap(ctx context.Context, formats 
 func (m *IdentityProviderSpec) contextValidateOidc(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Oidc != nil {
+
+		if swag.IsZero(m.Oidc) { // not required
+			return nil
+		}
+
 		if err := m.Oidc.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("oidc")

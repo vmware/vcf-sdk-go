@@ -18,12 +18,12 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VROPSNode Spec contains information for a vRealize product node
+// VROPSNode Spec contains information for a VMware Aria product node
 //
 // swagger:model VropsNode
 type VROPSNode struct {
 
-	// The Fully Qualified Domain Name for the vRealize node (virtual appliance)
+	// The Fully Qualified Domain Name for the VMware Aria node (virtual appliance)
 	// Example: vrealize.node.vrack.vsphere.local
 	// Required: true
 	Fqdn *string `json:"fqdn"`
@@ -31,26 +31,25 @@ type VROPSNode struct {
 	// The ID of the node
 	ID string `json:"id,omitempty"`
 
-	// IP Address of vRealize product appliance
+	// IP Address of VMware Aria product appliance
 	// Example: 10.0.0.17
 	// Required: true
 	IPAddress *string `json:"ipAddress"`
 
-	// The password for a root user of vRealize appliance
+	// The password for a root user of VMware Aria appliance
 	Password string `json:"password,omitempty"`
 
-	// The status of the vRealize product node
+	// The status of the VMware Aria product node
 	// Example: ACTIVE
 	// Required: true
 	Status *string `json:"status"`
 
-	// The type of the vRealize product node
+	// The type of the VMware Aria product node
 	// Example: MASTER, REPLICA, DATA, REMOTE_COLLECTOR, WORKER
-	// Required: true
 	// Enum: [MASTER REPLICA DATA REMOTE_COLLECTOR WORKER]
-	Type *string `json:"type"`
+	Type string `json:"type,omitempty"`
 
-	// The username for a root user of vRealize appliance
+	// The username for a root user of VMware Aria appliance
 	// Example: user
 	Username string `json:"username,omitempty"`
 }
@@ -147,13 +146,12 @@ func (m *VROPSNode) validateTypeEnum(path, location string, value string) error 
 }
 
 func (m *VROPSNode) validateType(formats strfmt.Registry) error {
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
-		return err
+	if swag.IsZero(m.Type) { // not required
+		return nil
 	}
 
 	// value enum
-	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
 		return err
 	}
 

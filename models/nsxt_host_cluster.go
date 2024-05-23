@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTHostCluster Nsxt Host Cluster Upgrade Resource
+// NSXTHostCluster NSX Host Cluster Upgrade Resource
 //
 // swagger:model NsxtHostCluster
 type NSXTHostCluster struct {
@@ -152,6 +152,11 @@ func (m *NSXTHostCluster) contextValidateAvailableHardwareSupportManagers(ctx co
 	for i := 0; i < len(m.AvailableHardwareSupportManagers); i++ {
 
 		if m.AvailableHardwareSupportManagers[i] != nil {
+
+			if swag.IsZero(m.AvailableHardwareSupportManagers[i]) { // not required
+				return nil
+			}
+
 			if err := m.AvailableHardwareSupportManagers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("availableHardwareSupportManagers" + "." + strconv.Itoa(i))
@@ -172,6 +177,11 @@ func (m *NSXTHostCluster) contextValidateConfiguredHardwareSupportManagers(ctx c
 	for i := 0; i < len(m.ConfiguredHardwareSupportManagers); i++ {
 
 		if m.ConfiguredHardwareSupportManagers[i] != nil {
+
+			if swag.IsZero(m.ConfiguredHardwareSupportManagers[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConfiguredHardwareSupportManagers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("configuredHardwareSupportManagers" + "." + strconv.Itoa(i))

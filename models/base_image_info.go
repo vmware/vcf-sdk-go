@@ -94,6 +94,11 @@ func (m *BaseImageInfo) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *BaseImageInfo) contextValidateDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Details != nil {
+
+		if swag.IsZero(m.Details) { // not required
+			return nil
+		}
+
 		if err := m.Details.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("details")

@@ -93,6 +93,11 @@ func (m *NiocBandwidthAllocationSpec) ContextValidate(ctx context.Context, forma
 func (m *NiocBandwidthAllocationSpec) contextValidateNiocTrafficResourceAllocation(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NiocTrafficResourceAllocation != nil {
+
+		if swag.IsZero(m.NiocTrafficResourceAllocation) { // not required
+			return nil
+		}
+
 		if err := m.NiocTrafficResourceAllocation.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("niocTrafficResourceAllocation")

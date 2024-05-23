@@ -37,9 +37,9 @@ type ClientService interface {
 
 	GetBundles(params *GetBundlesParams, opts ...ClientOption) (*GetBundlesOK, error)
 
-	GetBundlesForSkipUpgradeUsingGET(params *GetBundlesForSkipUpgradeUsingGETParams, opts ...ClientOption) (*GetBundlesForSkipUpgradeUsingGETOK, error)
+	GetBundlesForSkipUpgrade(params *GetBundlesForSkipUpgradeParams, opts ...ClientOption) (*GetBundlesForSkipUpgradeOK, error)
 
-	UpdateBundle(params *UpdateBundleParams, opts ...ClientOption) (*UpdateBundleOK, *UpdateBundleAccepted, error)
+	StartBundleDownloadByID(params *StartBundleDownloadByIDParams, opts ...ClientOption) (*StartBundleDownloadByIDOK, *StartBundleDownloadByIDAccepted, error)
 
 	UpdateBundleCompatibilitySets(params *UpdateBundleCompatibilitySetsParams, opts ...ClientOption) (*UpdateBundleCompatibilitySetsOK, *UpdateBundleCompatibilitySetsAccepted, error)
 
@@ -49,7 +49,7 @@ type ClientService interface {
 }
 
 /*
-GetBundle gets a bundle
+GetBundle retrieves a bundle by its ID
 
 Get a Bundle
 */
@@ -89,7 +89,7 @@ func (a *Client) GetBundle(params *GetBundleParams, opts ...ClientOption) (*GetB
 }
 
 /*
-GetBundles gets the bundles
+GetBundles retrieves a list of bundles
 
 Get all Bundles i.e uploaded bundles and also bundles available via depot access.
 */
@@ -129,22 +129,24 @@ func (a *Client) GetBundles(params *GetBundlesParams, opts ...ClientOption) (*Ge
 }
 
 /*
-GetBundlesForSkipUpgradeUsingGET gets bundles for skip upgrade a domain from current version to target version
+GetBundlesForSkipUpgrade retrieves a list of bundles for skip upgrade by domain ID
+
+Get bundles for skip upgrade a domain from current version to target version.
 */
-func (a *Client) GetBundlesForSkipUpgradeUsingGET(params *GetBundlesForSkipUpgradeUsingGETParams, opts ...ClientOption) (*GetBundlesForSkipUpgradeUsingGETOK, error) {
+func (a *Client) GetBundlesForSkipUpgrade(params *GetBundlesForSkipUpgradeParams, opts ...ClientOption) (*GetBundlesForSkipUpgradeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetBundlesForSkipUpgradeUsingGETParams()
+		params = NewGetBundlesForSkipUpgradeParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getBundlesForSkipUpgradeUsingGET",
+		ID:                 "getBundlesForSkipUpgrade",
 		Method:             "GET",
 		PathPattern:        "/v1/bundles/domains/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBundlesForSkipUpgradeUsingGETReader{formats: a.formats},
+		Reader:             &GetBundlesForSkipUpgradeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -156,35 +158,35 @@ func (a *Client) GetBundlesForSkipUpgradeUsingGET(params *GetBundlesForSkipUpgra
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetBundlesForSkipUpgradeUsingGETOK)
+	success, ok := result.(*GetBundlesForSkipUpgradeOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBundlesForSkipUpgradeUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getBundlesForSkipUpgrade: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-UpdateBundle updates a bundle for downloading from depot
+StartBundleDownloadByID starts immediate download or schedule download of a bundle by ID
 
 Update a Bundle for scheduling/triggering download. Only one download can triggered for a Bundle.
 */
-func (a *Client) UpdateBundle(params *UpdateBundleParams, opts ...ClientOption) (*UpdateBundleOK, *UpdateBundleAccepted, error) {
+func (a *Client) StartBundleDownloadByID(params *StartBundleDownloadByIDParams, opts ...ClientOption) (*StartBundleDownloadByIDOK, *StartBundleDownloadByIDAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateBundleParams()
+		params = NewStartBundleDownloadByIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateBundle",
+		ID:                 "startBundleDownloadByID",
 		Method:             "PATCH",
 		PathPattern:        "/v1/bundles/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateBundleReader{formats: a.formats},
+		Reader:             &StartBundleDownloadByIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -197,9 +199,9 @@ func (a *Client) UpdateBundle(params *UpdateBundleParams, opts ...ClientOption) 
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *UpdateBundleOK:
+	case *StartBundleDownloadByIDOK:
 		return value, nil, nil
-	case *UpdateBundleAccepted:
+	case *StartBundleDownloadByIDAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -208,7 +210,7 @@ func (a *Client) UpdateBundle(params *UpdateBundleParams, opts ...ClientOption) 
 }
 
 /*
-UpdateBundleCompatibilitySets updates software compatibility sets for bundles
+UpdateBundleCompatibilitySets updates the software compatability set for all bundles
 
 Update software compatibility sets for Bundles
 */
@@ -249,7 +251,7 @@ func (a *Client) UpdateBundleCompatibilitySets(params *UpdateBundleCompatibility
 }
 
 /*
-UploadBundle uploads a bundle
+UploadBundle uploads a bundle to SDDC manager
 
 Upload Bundle to SDDC Manager. Used when you do not have internet connectivity for downloading bundles from VMWare/VxRail to SDDC Manager. The Bundles are manually downloaded from Depot using Bundle Transfer utility
 */

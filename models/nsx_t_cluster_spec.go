@@ -10,35 +10,65 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// NsxTClusterSpec This specification contains NSX-T configuration for a new cluster.
+// NsxTClusterSpec This specification contains NSX configuration for a new cluster.
 //
 // swagger:model NsxTClusterSpec
 type NsxTClusterSpec struct {
 
-	// Vlan id of Geneve
-	GeneveVlanID int32 `json:"geneveVlanId"`
+	// Vlan id of Geneve. (This field is deprecated, instead please use transportVlan in uplinkProfiles)
+	// Required: true
+	GeneveVlanID *int32 `json:"geneveVlanId"`
 
-	// The IP address pool specification
+	// The IP address pool specification. (This field is deprecated. Please use ipAddressPoolsSpec instead for providing IP address pools)
 	IPAddressPoolSpec *IPAddressPoolSpec `json:"ipAddressPoolSpec,omitempty"`
+
+	// The list of IP address pools specification
+	IPAddressPoolsSpec []*IPAddressPoolSpec `json:"ipAddressPoolsSpec"`
+
+	// The list of uplink profile specifications.
+	UplinkProfiles []*UplinkProfile `json:"uplinkProfiles"`
 }
 
 // Validate validates this nsx t cluster spec
 func (m *NsxTClusterSpec) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateGeneveVlanID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIPAddressPoolSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIPAddressPoolsSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUplinkProfiles(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NsxTClusterSpec) validateGeneveVlanID(formats strfmt.Registry) error {
+
+	if err := validate.Required("geneveVlanId", "body", m.GeneveVlanID); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -61,11 +91,71 @@ func (m *NsxTClusterSpec) validateIPAddressPoolSpec(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *NsxTClusterSpec) validateIPAddressPoolsSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.IPAddressPoolsSpec) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IPAddressPoolsSpec); i++ {
+		if swag.IsZero(m.IPAddressPoolsSpec[i]) { // not required
+			continue
+		}
+
+		if m.IPAddressPoolsSpec[i] != nil {
+			if err := m.IPAddressPoolsSpec[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("ipAddressPoolsSpec" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ipAddressPoolsSpec" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NsxTClusterSpec) validateUplinkProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(m.UplinkProfiles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UplinkProfiles); i++ {
+		if swag.IsZero(m.UplinkProfiles[i]) { // not required
+			continue
+		}
+
+		if m.UplinkProfiles[i] != nil {
+			if err := m.UplinkProfiles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("uplinkProfiles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("uplinkProfiles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this nsx t cluster spec based on the context it is used
 func (m *NsxTClusterSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateIPAddressPoolSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIPAddressPoolsSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUplinkProfiles(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -78,6 +168,11 @@ func (m *NsxTClusterSpec) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *NsxTClusterSpec) contextValidateIPAddressPoolSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IPAddressPoolSpec != nil {
+
+		if swag.IsZero(m.IPAddressPoolSpec) { // not required
+			return nil
+		}
+
 		if err := m.IPAddressPoolSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ipAddressPoolSpec")
@@ -86,6 +181,56 @@ func (m *NsxTClusterSpec) contextValidateIPAddressPoolSpec(ctx context.Context, 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *NsxTClusterSpec) contextValidateIPAddressPoolsSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IPAddressPoolsSpec); i++ {
+
+		if m.IPAddressPoolsSpec[i] != nil {
+
+			if swag.IsZero(m.IPAddressPoolsSpec[i]) { // not required
+				return nil
+			}
+
+			if err := m.IPAddressPoolsSpec[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("ipAddressPoolsSpec" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ipAddressPoolsSpec" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NsxTClusterSpec) contextValidateUplinkProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UplinkProfiles); i++ {
+
+		if m.UplinkProfiles[i] != nil {
+
+			if swag.IsZero(m.UplinkProfiles[i]) { // not required
+				return nil
+			}
+
+			if err := m.UplinkProfiles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("uplinkProfiles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("uplinkProfiles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

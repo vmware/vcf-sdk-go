@@ -23,6 +23,9 @@ type TokenCreationSpec struct {
 	// API Key
 	APIKey string `json:"apiKey,omitempty"`
 
+	// Id Token
+	IDToken string `json:"idToken,omitempty"`
+
 	// User Password
 	Password string `json:"password,omitempty"`
 

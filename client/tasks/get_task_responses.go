@@ -45,7 +45,7 @@ func (o *GetTaskReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/tasks/{id}] getTask", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetTaskOK) IsServerError() bool {
 // IsCode returns true when this get task o k response a status code equal to that given
 func (o *GetTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get task o k response
+func (o *GetTaskOK) Code() int {
+	return 200
 }
 
 func (o *GetTaskOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get task not found response
+func (o *GetTaskNotFound) Code() int {
+	return 404
+}
+
 func (o *GetTaskNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/tasks/{id}][%d] getTaskNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this get task internal server error response a status code equal to that given
 func (o *GetTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get task internal server error response
+func (o *GetTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetTaskInternalServerError) Error() string {

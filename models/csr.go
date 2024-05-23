@@ -114,6 +114,7 @@ func (m *CSR) ContextValidate(ctx context.Context, formats strfmt.Registry) erro
 func (m *CSR) contextValidateResource(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Resource != nil {
+
 		if err := m.Resource.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resource")

@@ -51,7 +51,7 @@ func (o *UpdateProxyConfigurationReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/system/proxy-configuration] updateProxyConfiguration", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *UpdateProxyConfigurationOK) IsServerError() bool {
 // IsCode returns true when this update proxy configuration o k response a status code equal to that given
 func (o *UpdateProxyConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update proxy configuration o k response
+func (o *UpdateProxyConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *UpdateProxyConfigurationOK) Error() string {
@@ -157,6 +162,11 @@ func (o *UpdateProxyConfigurationAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the update proxy configuration accepted response
+func (o *UpdateProxyConfigurationAccepted) Code() int {
+	return 202
+}
+
 func (o *UpdateProxyConfigurationAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/system/proxy-configuration][%d] updateProxyConfigurationAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UpdateProxyConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update proxy configuration bad request response
+func (o *UpdateProxyConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateProxyConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/system/proxy-configuration][%d] updateProxyConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -280,6 +295,11 @@ func (o *UpdateProxyConfigurationInternalServerError) IsServerError() bool {
 // IsCode returns true when this update proxy configuration internal server error response a status code equal to that given
 func (o *UpdateProxyConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update proxy configuration internal server error response
+func (o *UpdateProxyConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateProxyConfigurationInternalServerError) Error() string {

@@ -64,11 +64,11 @@ GetClusterDatastoresParams contains all the parameters to send to the API endpoi
 */
 type GetClusterDatastoresParams struct {
 
-	/* ClusterID.
+	/* ID.
 
 	   Cluster ID
 	*/
-	ClusterID string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,15 +123,15 @@ func (o *GetClusterDatastoresParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithClusterID adds the clusterID to the get cluster datastores params
-func (o *GetClusterDatastoresParams) WithClusterID(clusterID string) *GetClusterDatastoresParams {
-	o.SetClusterID(clusterID)
+// WithID adds the id to the get cluster datastores params
+func (o *GetClusterDatastoresParams) WithID(id string) *GetClusterDatastoresParams {
+	o.SetID(id)
 	return o
 }
 
-// SetClusterID adds the clusterId to the get cluster datastores params
-func (o *GetClusterDatastoresParams) SetClusterID(clusterID string) {
-	o.ClusterID = clusterID
+// SetID adds the id to the get cluster datastores params
+func (o *GetClusterDatastoresParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -142,8 +142,8 @@ func (o *GetClusterDatastoresParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 	var res []error
 
-	// path param clusterId
-	if err := r.SetPathParam("clusterId", o.ClusterID); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

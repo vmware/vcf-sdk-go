@@ -45,7 +45,7 @@ func (o *GetPscReader) ReadResponse(response runtime.ClientResponse, consumer ru
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/pscs/{id}] getPsc", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetPscOK) IsServerError() bool {
 // IsCode returns true when this get psc o k response a status code equal to that given
 func (o *GetPscOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get psc o k response
+func (o *GetPscOK) Code() int {
+	return 200
 }
 
 func (o *GetPscOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetPscNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get psc not found response
+func (o *GetPscNotFound) Code() int {
+	return 404
+}
+
 func (o *GetPscNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/pscs/{id}][%d] getPscNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetPscInternalServerError) IsServerError() bool {
 // IsCode returns true when this get psc internal server error response a status code equal to that given
 func (o *GetPscInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get psc internal server error response
+func (o *GetPscInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetPscInternalServerError) Error() string {

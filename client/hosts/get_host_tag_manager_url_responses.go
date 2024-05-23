@@ -45,7 +45,7 @@ func (o *GetHostTagManagerURLReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/hosts/{id}/tags/tag-manager] getHostTagManagerUrl", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetHostTagManagerURLOK) IsServerError() bool {
 // IsCode returns true when this get host tag manager Url o k response a status code equal to that given
 func (o *GetHostTagManagerURLOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get host tag manager Url o k response
+func (o *GetHostTagManagerURLOK) Code() int {
+	return 200
 }
 
 func (o *GetHostTagManagerURLOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetHostTagManagerURLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get host tag manager Url bad request response
+func (o *GetHostTagManagerURLBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetHostTagManagerURLBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}/tags/tag-manager][%d] getHostTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetHostTagManagerURLInternalServerError) IsServerError() bool {
 // IsCode returns true when this get host tag manager Url internal server error response a status code equal to that given
 func (o *GetHostTagManagerURLInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get host tag manager Url internal server error response
+func (o *GetHostTagManagerURLInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetHostTagManagerURLInternalServerError) Error() string {

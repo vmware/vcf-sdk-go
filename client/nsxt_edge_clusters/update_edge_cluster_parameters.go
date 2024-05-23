@@ -68,7 +68,7 @@ type UpdateEdgeClusterParams struct {
 
 	/* EdgeClusterUpdateSpec.
 
-	   NSX-T Edge cluster update specification
+	   NSX Edge cluster update specification
 	*/
 	EdgeClusterUpdateSpec *models.EdgeClusterUpdateSpec
 

@@ -45,7 +45,7 @@ func (o *GetPrecheckTaskReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/system/prechecks/tasks/{id}] getPrecheckTask", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetPrecheckTaskOK) IsServerError() bool {
 // IsCode returns true when this get precheck task o k response a status code equal to that given
 func (o *GetPrecheckTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get precheck task o k response
+func (o *GetPrecheckTaskOK) Code() int {
+	return 200
 }
 
 func (o *GetPrecheckTaskOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetPrecheckTaskNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get precheck task not found response
+func (o *GetPrecheckTaskNotFound) Code() int {
+	return 404
+}
+
 func (o *GetPrecheckTaskNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/system/prechecks/tasks/{id}][%d] getPrecheckTaskNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetPrecheckTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this get precheck task internal server error response a status code equal to that given
 func (o *GetPrecheckTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get precheck task internal server error response
+func (o *GetPrecheckTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetPrecheckTaskInternalServerError) Error() string {

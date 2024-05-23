@@ -64,7 +64,8 @@ type ResourcePoolSpec struct {
 	MemorySharesLevel string `json:"memorySharesLevel,omitempty"`
 
 	// Memory shares value, only required when shares level is '0'
-	MemorySharesValue int32 `json:"memorySharesValue"`
+	// Required: true
+	MemorySharesValue *int32 `json:"memorySharesValue"`
 
 	// Resource Pool name
 	// Required: true
@@ -96,6 +97,10 @@ func (m *ResourcePoolSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMemorySharesLevel(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemorySharesValue(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -244,6 +249,15 @@ func (m *ResourcePoolSpec) validateMemorySharesLevel(formats strfmt.Registry) er
 
 	// value enum
 	if err := m.validateMemorySharesLevelEnum("memorySharesLevel", "body", m.MemorySharesLevel); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ResourcePoolSpec) validateMemorySharesValue(formats strfmt.Registry) error {
+
+	if err := validate.Required("memorySharesValue", "body", m.MemorySharesValue); err != nil {
 		return err
 	}
 

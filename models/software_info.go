@@ -175,6 +175,11 @@ func (m *SoftwareInfo) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *SoftwareInfo) contextValidateAddOn(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AddOn != nil {
+
+		if swag.IsZero(m.AddOn) { // not required
+			return nil
+		}
+
 		if err := m.AddOn.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("addOn")
@@ -191,6 +196,7 @@ func (m *SoftwareInfo) contextValidateAddOn(ctx context.Context, formats strfmt.
 func (m *SoftwareInfo) contextValidateBaseImage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.BaseImage != nil {
+
 		if err := m.BaseImage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("baseImage")
@@ -222,6 +228,11 @@ func (m *SoftwareInfo) contextValidateComponents(ctx context.Context, formats st
 func (m *SoftwareInfo) contextValidateHardwareSupport(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HardwareSupport != nil {
+
+		if swag.IsZero(m.HardwareSupport) { // not required
+			return nil
+		}
+
 		if err := m.HardwareSupport.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("hardwareSupport")

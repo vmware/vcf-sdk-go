@@ -114,6 +114,11 @@ func (m *ResourceWarning) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *ResourceWarning) contextValidateAssociatedTask(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AssociatedTask != nil {
+
+		if swag.IsZero(m.AssociatedTask) { // not required
+			return nil
+		}
+
 		if err := m.AssociatedTask.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("associatedTask")

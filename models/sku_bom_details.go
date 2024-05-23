@@ -34,7 +34,7 @@ type SkuBomDetails struct {
 	Name string `json:"name,omitempty"`
 
 	// List of patch bundles in this release
-	SkuSpecificPatchBundles []*PatchBundle `json:"skuSpecificPatchBundles"`
+	SkuSpecificPatchBundles []*SkuSpecificPatchBundles `json:"skuSpecificPatchBundles"`
 }
 
 // Validate validates this sku bom details
@@ -131,6 +131,11 @@ func (m *SkuBomDetails) contextValidateBom(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Bom); i++ {
 
 		if m.Bom[i] != nil {
+
+			if swag.IsZero(m.Bom[i]) { // not required
+				return nil
+			}
+
 			if err := m.Bom[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("bom" + "." + strconv.Itoa(i))
@@ -151,6 +156,11 @@ func (m *SkuBomDetails) contextValidateSkuSpecificPatchBundles(ctx context.Conte
 	for i := 0; i < len(m.SkuSpecificPatchBundles); i++ {
 
 		if m.SkuSpecificPatchBundles[i] != nil {
+
+			if swag.IsZero(m.SkuSpecificPatchBundles[i]) { // not required
+				return nil
+			}
+
 			if err := m.SkuSpecificPatchBundles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("skuSpecificPatchBundles" + "." + strconv.Itoa(i))

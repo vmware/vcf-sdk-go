@@ -45,7 +45,7 @@ func (o *GetUpgradablesByDomainReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/upgradables/domains/{domainId}] getUpgradablesByDomain", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetUpgradablesByDomainOK) IsServerError() bool {
 // IsCode returns true when this get upgradables by domain o k response a status code equal to that given
 func (o *GetUpgradablesByDomainOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get upgradables by domain o k response
+func (o *GetUpgradablesByDomainOK) Code() int {
+	return 200
 }
 
 func (o *GetUpgradablesByDomainOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetUpgradablesByDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get upgradables by domain not found response
+func (o *GetUpgradablesByDomainNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUpgradablesByDomainNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}][%d] getUpgradablesByDomainNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetUpgradablesByDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this get upgradables by domain internal server error response a status code equal to that given
 func (o *GetUpgradablesByDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get upgradables by domain internal server error response
+func (o *GetUpgradablesByDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetUpgradablesByDomainInternalServerError) Error() string {

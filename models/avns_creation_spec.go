@@ -106,6 +106,11 @@ func (m *AvnsCreationSpec) contextValidateAvns(ctx context.Context, formats strf
 	for i := 0; i < len(m.Avns); i++ {
 
 		if m.Avns[i] != nil {
+
+			if swag.IsZero(m.Avns[i]) { // not required
+				return nil
+			}
+
 			if err := m.Avns[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("avns" + "." + strconv.Itoa(i))

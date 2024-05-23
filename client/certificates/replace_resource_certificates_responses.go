@@ -51,7 +51,7 @@ func (o *ReplaceResourceCertificatesReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/domains/{id}/resource-certificates] replaceResourceCertificates", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ReplaceResourceCertificatesOK) IsServerError() bool {
 // IsCode returns true when this replace resource certificates o k response a status code equal to that given
 func (o *ReplaceResourceCertificatesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the replace resource certificates o k response
+func (o *ReplaceResourceCertificatesOK) Code() int {
+	return 200
 }
 
 func (o *ReplaceResourceCertificatesOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ReplaceResourceCertificatesAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the replace resource certificates accepted response
+func (o *ReplaceResourceCertificatesAccepted) Code() int {
+	return 202
+}
+
 func (o *ReplaceResourceCertificatesAccepted) Error() string {
 	return fmt.Sprintf("[PUT /v1/domains/{id}/resource-certificates][%d] replaceResourceCertificatesAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ReplaceResourceCertificatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the replace resource certificates not found response
+func (o *ReplaceResourceCertificatesNotFound) Code() int {
+	return 404
+}
+
 func (o *ReplaceResourceCertificatesNotFound) Error() string {
 	return fmt.Sprintf("[PUT /v1/domains/{id}/resource-certificates][%d] replaceResourceCertificatesNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *ReplaceResourceCertificatesInternalServerError) IsServerError() bool {
 // IsCode returns true when this replace resource certificates internal server error response a status code equal to that given
 func (o *ReplaceResourceCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the replace resource certificates internal server error response
+func (o *ReplaceResourceCertificatesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ReplaceResourceCertificatesInternalServerError) Error() string {

@@ -45,7 +45,7 @@ func (o *GetEdgeClusterReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/edge-clusters/{id}] getEdgeCluster", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetEdgeClusterOK) IsServerError() bool {
 // IsCode returns true when this get edge cluster o k response a status code equal to that given
 func (o *GetEdgeClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get edge cluster o k response
+func (o *GetEdgeClusterOK) Code() int {
+	return 200
 }
 
 func (o *GetEdgeClusterOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetEdgeClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get edge cluster not found response
+func (o *GetEdgeClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *GetEdgeClusterNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/edge-clusters/{id}][%d] getEdgeClusterNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetEdgeClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this get edge cluster internal server error response a status code equal to that given
 func (o *GetEdgeClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get edge cluster internal server error response
+func (o *GetEdgeClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetEdgeClusterInternalServerError) Error() string {

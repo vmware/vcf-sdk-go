@@ -35,9 +35,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CancelCredentialsTask(params *CancelCredentialsTaskParams, opts ...ClientOption) (*CancelCredentialsTaskOK, *CancelCredentialsTaskNoContent, error)
 
-	FetchPasswordExpiration(params *FetchPasswordExpirationParams, opts ...ClientOption) (*FetchPasswordExpirationOK, *FetchPasswordExpirationAccepted, error)
-
 	GetCredential(params *GetCredentialParams, opts ...ClientOption) (*GetCredentialOK, error)
+
+	GetCredentialTaskByResourceID(params *GetCredentialTaskByResourceIDParams, opts ...ClientOption) (*GetCredentialTaskByResourceIDOK, error)
 
 	GetCredentials(params *GetCredentialsParams, opts ...ClientOption) (*GetCredentialsOK, error)
 
@@ -45,11 +45,11 @@ type ClientService interface {
 
 	GetCredentialsTask(params *GetCredentialsTaskParams, opts ...ClientOption) (*GetCredentialsTaskOK, error)
 
-	GetCredentialsTaskResourcesCredentials(params *GetCredentialsTaskResourcesCredentialsParams, opts ...ClientOption) (*GetCredentialsTaskResourcesCredentialsOK, error)
-
 	GetCredentialsTasks(params *GetCredentialsTasksParams, opts ...ClientOption) (*GetCredentialsTasksOK, error)
 
-	GetExpirationsForPasswords(params *GetExpirationsForPasswordsParams, opts ...ClientOption) (*GetExpirationsForPasswordsOK, error)
+	GetPasswordExpiration(params *GetPasswordExpirationParams, opts ...ClientOption) (*GetPasswordExpirationOK, *GetPasswordExpirationAccepted, error)
+
+	GetPasswordExpirationByTaskID(params *GetPasswordExpirationByTaskIDParams, opts ...ClientOption) (*GetPasswordExpirationByTaskIDOK, error)
 
 	RetryCredentialsTask(params *RetryCredentialsTaskParams, opts ...ClientOption) (*RetryCredentialsTaskOK, *RetryCredentialsTaskAccepted, error)
 
@@ -59,9 +59,9 @@ type ClientService interface {
 }
 
 /*
-CancelCredentialsTask cancels a failed credentials task for a given ID
+CancelCredentialsTask cancels a failed credential task by its ID
 
-Cancel a failed credentials task for a given ID
+Cancel a failed credential task by its ID
 */
 func (a *Client) CancelCredentialsTask(params *CancelCredentialsTaskParams, opts ...ClientOption) (*CancelCredentialsTaskOK, *CancelCredentialsTaskNoContent, error) {
 	// TODO: Validate the params before sending
@@ -100,50 +100,9 @@ func (a *Client) CancelCredentialsTask(params *CancelCredentialsTaskParams, opts
 }
 
 /*
-FetchPasswordExpiration fetches expiration details of passwords for a list of credentials
+GetCredential retrieves a credential by its ID
 
-Fetch expiration details of passwords for a list of credentials
-*/
-func (a *Client) FetchPasswordExpiration(params *FetchPasswordExpirationParams, opts ...ClientOption) (*FetchPasswordExpirationOK, *FetchPasswordExpirationAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewFetchPasswordExpirationParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "fetchPasswordExpiration",
-		Method:             "POST",
-		PathPattern:        "/v1/credentials/expirations",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &FetchPasswordExpirationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *FetchPasswordExpirationOK:
-		return value, nil, nil
-	case *FetchPasswordExpirationAccepted:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for credentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetCredential gets credential for the given ID
-
-Get Credential for the given ID
+Retrieve a credential by its ID
 */
 func (a *Client) GetCredential(params *GetCredentialParams, opts ...ClientOption) (*GetCredentialOK, error) {
 	// TODO: Validate the params before sending
@@ -181,9 +140,49 @@ func (a *Client) GetCredential(params *GetCredentialParams, opts ...ClientOption
 }
 
 /*
-GetCredentials gets the credentials
+GetCredentialTaskByResourceID retrieces a credential taks by resource ID
 
-Get the Credentials
+Retriece a credential taks by resource ID
+*/
+func (a *Client) GetCredentialTaskByResourceID(params *GetCredentialTaskByResourceIDParams, opts ...ClientOption) (*GetCredentialTaskByResourceIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCredentialTaskByResourceIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getCredentialTaskByResourceID",
+		Method:             "GET",
+		PathPattern:        "/v1/credentials/tasks/{id}/resource-credentials",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCredentialTaskByResourceIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCredentialTaskByResourceIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getCredentialTaskByResourceID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetCredentials retrieves a list of credentials
+
+Retrieve a list of credentials
 */
 func (a *Client) GetCredentials(params *GetCredentialsParams, opts ...ClientOption) (*GetCredentialsOK, error) {
 	// TODO: Validate the params before sending
@@ -221,9 +220,9 @@ func (a *Client) GetCredentials(params *GetCredentialsParams, opts ...ClientOpti
 }
 
 /*
-GetCredentialsSubTask fetches details of a subtask for a given credentials task ID and sub task ID
+GetCredentialsSubTask retrieves a credential sub task by its ID
 
-Fetch details of a subtask for a given credentials task ID and sub-task ID.
+Retrieve a credential sub task by its ID
 */
 func (a *Client) GetCredentialsSubTask(params *GetCredentialsSubTaskParams, opts ...ClientOption) (*GetCredentialsSubTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -261,9 +260,9 @@ func (a *Client) GetCredentialsSubTask(params *GetCredentialsSubTaskParams, opts
 }
 
 /*
-GetCredentialsTask fetches a credentials task
+GetCredentialsTask retrieves a credential task by ID
 
-Fetch credentials task for a given ID
+Retrieve a credential task by ID
 */
 func (a *Client) GetCredentialsTask(params *GetCredentialsTaskParams, opts ...ClientOption) (*GetCredentialsTaskOK, error) {
 	// TODO: Validate the params before sending
@@ -301,49 +300,9 @@ func (a *Client) GetCredentialsTask(params *GetCredentialsTaskParams, opts ...Cl
 }
 
 /*
-GetCredentialsTaskResourcesCredentials fetches resource credentials for a given credentials task ID
+GetCredentialsTasks retrieves a list of credential tasks
 
-Fetch resource credentials for a given credentials task ID
-*/
-func (a *Client) GetCredentialsTaskResourcesCredentials(params *GetCredentialsTaskResourcesCredentialsParams, opts ...ClientOption) (*GetCredentialsTaskResourcesCredentialsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetCredentialsTaskResourcesCredentialsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getCredentialsTaskResourcesCredentials",
-		Method:             "GET",
-		PathPattern:        "/v1/credentials/tasks/{id}/resource-credentials",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetCredentialsTaskResourcesCredentialsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetCredentialsTaskResourcesCredentialsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getCredentialsTaskResourcesCredentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetCredentialsTasks fetches the credentials tasks
-
-Fetch all credentials tasks in reverse chronological order
+Retrieve a list of credential tasks
 */
 func (a *Client) GetCredentialsTasks(params *GetCredentialsTasksParams, opts ...ClientOption) (*GetCredentialsTasksOK, error) {
 	// TODO: Validate the params before sending
@@ -381,24 +340,65 @@ func (a *Client) GetCredentialsTasks(params *GetCredentialsTasksParams, opts ...
 }
 
 /*
-GetExpirationsForPasswords gets the status of the password expiration fetch
+GetPasswordExpiration fetches expiration details of passwords for a list of credentials
 
-Get the status of the password expiration fetch
+Fetch expiration details of passwords for a list of credentials
 */
-func (a *Client) GetExpirationsForPasswords(params *GetExpirationsForPasswordsParams, opts ...ClientOption) (*GetExpirationsForPasswordsOK, error) {
+func (a *Client) GetPasswordExpiration(params *GetPasswordExpirationParams, opts ...ClientOption) (*GetPasswordExpirationOK, *GetPasswordExpirationAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetExpirationsForPasswordsParams()
+		params = NewGetPasswordExpirationParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getExpirationsForPasswords",
+		ID:                 "getPasswordExpiration",
+		Method:             "POST",
+		PathPattern:        "/v1/credentials/expirations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPasswordExpirationReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *GetPasswordExpirationOK:
+		return value, nil, nil
+	case *GetPasswordExpirationAccepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for credentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetPasswordExpirationByTaskID retrives a password expiration task by ID
+
+Retrive a password expiration task by ID
+*/
+func (a *Client) GetPasswordExpirationByTaskID(params *GetPasswordExpirationByTaskIDParams, opts ...ClientOption) (*GetPasswordExpirationByTaskIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPasswordExpirationByTaskIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getPasswordExpirationByTaskID",
 		Method:             "GET",
 		PathPattern:        "/v1/credentials/expirations/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetExpirationsForPasswordsReader{formats: a.formats},
+		Reader:             &GetPasswordExpirationByTaskIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -410,13 +410,13 @@ func (a *Client) GetExpirationsForPasswords(params *GetExpirationsForPasswordsPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetExpirationsForPasswordsOK)
+	success, ok := result.(*GetPasswordExpirationByTaskIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getExpirationsForPasswords: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPasswordExpirationByTaskID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -51,7 +51,7 @@ func (o *GetDatastoreQueryResponseReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}] getDatastoreQueryResponse", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetDatastoreQueryResponseOK) IsServerError() bool {
 // IsCode returns true when this get datastore query response o k response a status code equal to that given
 func (o *GetDatastoreQueryResponseOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get datastore query response o k response
+func (o *GetDatastoreQueryResponseOK) Code() int {
+	return 200
 }
 
 func (o *GetDatastoreQueryResponseOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetDatastoreQueryResponseBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get datastore query response bad request response
+func (o *GetDatastoreQueryResponseBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetDatastoreQueryResponseBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetDatastoreQueryResponseNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get datastore query response not found response
+func (o *GetDatastoreQueryResponseNotFound) Code() int {
+	return 404
+}
+
 func (o *GetDatastoreQueryResponseNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{clusterId}/datastores/queries/{queryId}][%d] getDatastoreQueryResponseNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetDatastoreQueryResponseInternalServerError) IsServerError() bool {
 // IsCode returns true when this get datastore query response internal server error response a status code equal to that given
 func (o *GetDatastoreQueryResponseInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get datastore query response internal server error response
+func (o *GetDatastoreQueryResponseInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetDatastoreQueryResponseInternalServerError) Error() string {

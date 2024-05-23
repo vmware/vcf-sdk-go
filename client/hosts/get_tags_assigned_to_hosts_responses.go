@@ -45,7 +45,7 @@ func (o *GetTagsAssignedToHostsReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/hosts/tags] getTagsAssignedToHosts", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetTagsAssignedToHostsOK) IsServerError() bool {
 // IsCode returns true when this get tags assigned to hosts o k response a status code equal to that given
 func (o *GetTagsAssignedToHostsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get tags assigned to hosts o k response
+func (o *GetTagsAssignedToHostsOK) Code() int {
+	return 200
 }
 
 func (o *GetTagsAssignedToHostsOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetTagsAssignedToHostsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get tags assigned to hosts bad request response
+func (o *GetTagsAssignedToHostsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetTagsAssignedToHostsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/tags][%d] getTagsAssignedToHostsBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetTagsAssignedToHostsInternalServerError) IsServerError() bool {
 // IsCode returns true when this get tags assigned to hosts internal server error response a status code equal to that given
 func (o *GetTagsAssignedToHostsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get tags assigned to hosts internal server error response
+func (o *GetTagsAssignedToHostsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetTagsAssignedToHostsInternalServerError) Error() string {

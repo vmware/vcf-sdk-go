@@ -25,11 +25,17 @@ type IdentityProvider struct {
 	// The Domains of the Identity Provider
 	DomainNames []string `json:"domainNames"`
 
+	// The identity management info when the provider is via broker federation
+	FedIdp *FederatedIdentityProviderInfo `json:"fedIdp,omitempty"`
+
 	// ID of the Identity Provider
 	ID string `json:"id,omitempty"`
 
 	// The Identity Sources of the Identity Provider
 	IdentitySources []*VcIdentitySources `json:"identitySources"`
+
+	// The message conveyed by VCF for managing the Identity Provider
+	IdpMessage string `json:"idpMessage,omitempty"`
 
 	// The LDAP configuration of the Identity Provider
 	Ldap *LdapInfo `json:"ldap,omitempty"`
@@ -52,6 +58,10 @@ type IdentityProvider struct {
 func (m *IdentityProvider) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateFedIdp(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIdentitySources(formats); err != nil {
 		res = append(res, err)
 	}
@@ -67,6 +77,25 @@ func (m *IdentityProvider) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *IdentityProvider) validateFedIdp(formats strfmt.Registry) error {
+	if swag.IsZero(m.FedIdp) { // not required
+		return nil
+	}
+
+	if m.FedIdp != nil {
+		if err := m.FedIdp.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fedIdp")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fedIdp")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -138,6 +167,10 @@ func (m *IdentityProvider) validateOidc(formats strfmt.Registry) error {
 func (m *IdentityProvider) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateFedIdp(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIdentitySources(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -156,11 +189,37 @@ func (m *IdentityProvider) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
+func (m *IdentityProvider) contextValidateFedIdp(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FedIdp != nil {
+
+		if swag.IsZero(m.FedIdp) { // not required
+			return nil
+		}
+
+		if err := m.FedIdp.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fedIdp")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fedIdp")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IdentityProvider) contextValidateIdentitySources(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.IdentitySources); i++ {
 
 		if m.IdentitySources[i] != nil {
+
+			if swag.IsZero(m.IdentitySources[i]) { // not required
+				return nil
+			}
+
 			if err := m.IdentitySources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("identitySources" + "." + strconv.Itoa(i))
@@ -179,6 +238,11 @@ func (m *IdentityProvider) contextValidateIdentitySources(ctx context.Context, f
 func (m *IdentityProvider) contextValidateLdap(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Ldap != nil {
+
+		if swag.IsZero(m.Ldap) { // not required
+			return nil
+		}
+
 		if err := m.Ldap.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ldap")
@@ -195,6 +259,11 @@ func (m *IdentityProvider) contextValidateLdap(ctx context.Context, formats strf
 func (m *IdentityProvider) contextValidateOidc(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Oidc != nil {
+
+		if swag.IsZero(m.Oidc) { // not required
+			return nil
+		}
+
 		if err := m.Oidc.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("oidc")

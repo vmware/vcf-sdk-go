@@ -45,7 +45,7 @@ func (o *GetNetworkPoolReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/network-pools] getNetworkPool", response, response.Code())
 	}
 }
 
@@ -60,7 +60,7 @@ GetNetworkPoolOK describes a response with status code 200, with default header 
 Referenced network pool
 */
 type GetNetworkPoolOK struct {
-	Payload *models.NetworkPool
+	Payload *models.PageOfNetworkPool
 }
 
 // IsSuccess returns true when this get network pool o k response has a 2xx status code
@@ -88,21 +88,26 @@ func (o *GetNetworkPoolOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get network pool o k response
+func (o *GetNetworkPoolOK) Code() int {
+	return 200
+}
+
 func (o *GetNetworkPoolOK) Error() string {
-	return fmt.Sprintf("[GET /v1/network-pools/{id}][%d] getNetworkPoolOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolOK  %+v", 200, o.Payload)
 }
 
 func (o *GetNetworkPoolOK) String() string {
-	return fmt.Sprintf("[GET /v1/network-pools/{id}][%d] getNetworkPoolOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolOK  %+v", 200, o.Payload)
 }
 
-func (o *GetNetworkPoolOK) GetPayload() *models.NetworkPool {
+func (o *GetNetworkPoolOK) GetPayload() *models.PageOfNetworkPool {
 	return o.Payload
 }
 
 func (o *GetNetworkPoolOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NetworkPool)
+	o.Payload = new(models.PageOfNetworkPool)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -151,12 +156,17 @@ func (o *GetNetworkPoolNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get network pool not found response
+func (o *GetNetworkPoolNotFound) Code() int {
+	return 404
+}
+
 func (o *GetNetworkPoolNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/network-pools/{id}][%d] getNetworkPoolNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetNetworkPoolNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/network-pools/{id}][%d] getNetworkPoolNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetNetworkPoolNotFound) GetPayload() *models.Error {
@@ -214,12 +224,17 @@ func (o *GetNetworkPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the get network pool internal server error response
+func (o *GetNetworkPoolInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GetNetworkPoolInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/network-pools/{id}][%d] getNetworkPoolInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GetNetworkPoolInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/network-pools/{id}][%d] getNetworkPoolInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/network-pools][%d] getNetworkPoolInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GetNetworkPoolInternalServerError) GetPayload() *models.Error {

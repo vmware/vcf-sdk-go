@@ -194,6 +194,11 @@ func (m *UpgradablesClusterResource) contextValidateAvailableHardwareSupportMana
 	for i := 0; i < len(m.AvailableHardwareSupportManagers); i++ {
 
 		if m.AvailableHardwareSupportManagers[i] != nil {
+
+			if swag.IsZero(m.AvailableHardwareSupportManagers[i]) { // not required
+				return nil
+			}
+
 			if err := m.AvailableHardwareSupportManagers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("availableHardwareSupportManagers" + "." + strconv.Itoa(i))
@@ -214,6 +219,11 @@ func (m *UpgradablesClusterResource) contextValidateConfiguredHardwareSupportMan
 	for i := 0; i < len(m.ConfiguredHardwareSupportManagers); i++ {
 
 		if m.ConfiguredHardwareSupportManagers[i] != nil {
+
+			if swag.IsZero(m.ConfiguredHardwareSupportManagers[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConfiguredHardwareSupportManagers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("configuredHardwareSupportManagers" + "." + strconv.Itoa(i))
@@ -232,6 +242,11 @@ func (m *UpgradablesClusterResource) contextValidateConfiguredHardwareSupportMan
 func (m *UpgradablesClusterResource) contextValidateSoftwareInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SoftwareInfo != nil {
+
+		if swag.IsZero(m.SoftwareInfo) { // not required
+			return nil
+		}
+
 		if err := m.SoftwareInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("softwareInfo")

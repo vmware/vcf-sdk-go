@@ -33,17 +33,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateEdge(params *CreateEdgeParams, opts ...ClientOption) (*CreateEdgeOK, *CreateEdgeAccepted, error)
+	CreateEdgeCluster(params *CreateEdgeClusterParams, opts ...ClientOption) (*CreateEdgeClusterOK, *CreateEdgeClusterAccepted, error)
 
 	GetEdgeCluster(params *GetEdgeClusterParams, opts ...ClientOption) (*GetEdgeClusterOK, error)
 
-	GetEdgeClusters(params *GetEdgeClustersParams, opts ...ClientOption) (*GetEdgeClustersOK, error)
+	GetEdgeClusterValidationByID(params *GetEdgeClusterValidationByIDParams, opts ...ClientOption) (*GetEdgeClusterValidationByIDOK, error)
 
-	GetValidationForCreateEdgeCluster(params *GetValidationForCreateEdgeClusterParams, opts ...ClientOption) (*GetValidationForCreateEdgeClusterOK, error)
+	GetEdgeClusters(params *GetEdgeClustersParams, opts ...ClientOption) (*GetEdgeClustersOK, error)
 
 	UpdateEdgeCluster(params *UpdateEdgeClusterParams, opts ...ClientOption) (*UpdateEdgeClusterOK, *UpdateEdgeClusterAccepted, error)
 
-	ValidateEdgeClusterSpec(params *ValidateEdgeClusterSpecParams, opts ...ClientOption) (*ValidateEdgeClusterSpecOK, *ValidateEdgeClusterSpecAccepted, error)
+	ValidateEdgeClusterCreationSpec(params *ValidateEdgeClusterCreationSpecParams, opts ...ClientOption) (*ValidateEdgeClusterCreationSpecOK, *ValidateEdgeClusterCreationSpecAccepted, error)
 
 	ValidateEdgeClusterUpdateSpec(params *ValidateEdgeClusterUpdateSpecParams, opts ...ClientOption) (*ValidateEdgeClusterUpdateSpecOK, *ValidateEdgeClusterUpdateSpecAccepted, error)
 
@@ -51,22 +51,22 @@ type ClientService interface {
 }
 
 /*
-CreateEdge creates an edge cluster
+CreateEdgeCluster creates an n s x edge cluster
 */
-func (a *Client) CreateEdge(params *CreateEdgeParams, opts ...ClientOption) (*CreateEdgeOK, *CreateEdgeAccepted, error) {
+func (a *Client) CreateEdgeCluster(params *CreateEdgeClusterParams, opts ...ClientOption) (*CreateEdgeClusterOK, *CreateEdgeClusterAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateEdgeParams()
+		params = NewCreateEdgeClusterParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createEdge",
+		ID:                 "createEdgeCluster",
 		Method:             "POST",
 		PathPattern:        "/v1/edge-clusters",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateEdgeReader{formats: a.formats},
+		Reader:             &CreateEdgeClusterReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,9 +79,9 @@ func (a *Client) CreateEdge(params *CreateEdgeParams, opts ...ClientOption) (*Cr
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateEdgeOK:
+	case *CreateEdgeClusterOK:
 		return value, nil, nil
-	case *CreateEdgeAccepted:
+	case *CreateEdgeClusterAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -90,7 +90,7 @@ func (a *Client) CreateEdge(params *CreateEdgeParams, opts ...ClientOption) (*Cr
 }
 
 /*
-GetEdgeCluster gets an edge cluster
+GetEdgeCluster retrieves an n s x edge cluster by its ID
 */
 func (a *Client) GetEdgeCluster(params *GetEdgeClusterParams, opts ...ClientOption) (*GetEdgeClusterOK, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +128,45 @@ func (a *Client) GetEdgeCluster(params *GetEdgeClusterParams, opts ...ClientOpti
 }
 
 /*
-GetEdgeClusters gets the edge clusters
+GetEdgeClusterValidationByID retrieves the results of a n s x edge cluster validation by its ID
+*/
+func (a *Client) GetEdgeClusterValidationByID(params *GetEdgeClusterValidationByIDParams, opts ...ClientOption) (*GetEdgeClusterValidationByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetEdgeClusterValidationByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getEdgeClusterValidationByID",
+		Method:             "GET",
+		PathPattern:        "/v1/edge-clusters/validations/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetEdgeClusterValidationByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetEdgeClusterValidationByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getEdgeClusterValidationByID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetEdgeClusters retrieves a list of n s x edge clusters
 */
 func (a *Client) GetEdgeClusters(params *GetEdgeClustersParams, opts ...ClientOption) (*GetEdgeClustersOK, error) {
 	// TODO: Validate the params before sending
@@ -166,45 +204,7 @@ func (a *Client) GetEdgeClusters(params *GetEdgeClustersParams, opts ...ClientOp
 }
 
 /*
-GetValidationForCreateEdgeCluster gets the edge cluster spec validation
-*/
-func (a *Client) GetValidationForCreateEdgeCluster(params *GetValidationForCreateEdgeClusterParams, opts ...ClientOption) (*GetValidationForCreateEdgeClusterOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetValidationForCreateEdgeClusterParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getValidationForCreateEdgeCluster",
-		Method:             "GET",
-		PathPattern:        "/v1/edge-clusters/validations/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetValidationForCreateEdgeClusterReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetValidationForCreateEdgeClusterOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getValidationForCreateEdgeCluster: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-UpdateEdgeCluster expands or shrink an n s x t edge cluster
+UpdateEdgeCluster expands or shrink an n s x edge cluster
 */
 func (a *Client) UpdateEdgeCluster(params *UpdateEdgeClusterParams, opts ...ClientOption) (*UpdateEdgeClusterOK, *UpdateEdgeClusterAccepted, error) {
 	// TODO: Validate the params before sending
@@ -243,22 +243,22 @@ func (a *Client) UpdateEdgeCluster(params *UpdateEdgeClusterParams, opts ...Clie
 }
 
 /*
-ValidateEdgeClusterSpec validates an edge cluster spec
+ValidateEdgeClusterCreationSpec performs validiation of the edge cluster creation spec specification
 */
-func (a *Client) ValidateEdgeClusterSpec(params *ValidateEdgeClusterSpecParams, opts ...ClientOption) (*ValidateEdgeClusterSpecOK, *ValidateEdgeClusterSpecAccepted, error) {
+func (a *Client) ValidateEdgeClusterCreationSpec(params *ValidateEdgeClusterCreationSpecParams, opts ...ClientOption) (*ValidateEdgeClusterCreationSpecOK, *ValidateEdgeClusterCreationSpecAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateEdgeClusterSpecParams()
+		params = NewValidateEdgeClusterCreationSpecParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateEdgeClusterSpec",
+		ID:                 "validateEdgeClusterCreationSpec",
 		Method:             "POST",
 		PathPattern:        "/v1/edge-clusters/validations",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateEdgeClusterSpecReader{formats: a.formats},
+		Reader:             &ValidateEdgeClusterCreationSpecReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -271,9 +271,9 @@ func (a *Client) ValidateEdgeClusterSpec(params *ValidateEdgeClusterSpecParams, 
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *ValidateEdgeClusterSpecOK:
+	case *ValidateEdgeClusterCreationSpecOK:
 		return value, nil, nil
-	case *ValidateEdgeClusterSpecAccepted:
+	case *ValidateEdgeClusterCreationSpecAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -282,7 +282,7 @@ func (a *Client) ValidateEdgeClusterSpec(params *ValidateEdgeClusterSpecParams, 
 }
 
 /*
-ValidateEdgeClusterUpdateSpec validates an n s x t edge cluster update spec
+ValidateEdgeClusterUpdateSpec performs validation of the edge cluster update spec specification
 */
 func (a *Client) ValidateEdgeClusterUpdateSpec(params *ValidateEdgeClusterUpdateSpecParams, opts ...ClientOption) (*ValidateEdgeClusterUpdateSpecOK, *ValidateEdgeClusterUpdateSpecAccepted, error) {
 	// TODO: Validate the params before sending

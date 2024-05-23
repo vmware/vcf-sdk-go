@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// EdgeClusterShrinkageSpec This specification contains the parameters required to shrink a NSX-T edge cluster.
+// EdgeClusterShrinkageSpec This specification contains the parameters required to shrink a NSX edge cluster.
 //
 // swagger:model EdgeClusterShrinkageSpec
 type EdgeClusterShrinkageSpec struct {

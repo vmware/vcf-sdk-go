@@ -39,7 +39,11 @@ type ClientService interface {
 
 	GetPersonality(params *GetPersonalityParams, opts ...ClientOption) (*GetPersonalityOK, error)
 
+	RenamePersonalityByID(params *RenamePersonalityByIDParams, opts ...ClientOption) (*RenamePersonalityByIDOK, error)
+
 	UploadPersonality(params *UploadPersonalityParams, opts ...ClientOption) (*UploadPersonalityOK, *UploadPersonalityAccepted, error)
+
+	UploadPersonalityFiles(params *UploadPersonalityFilesParams, opts ...ClientOption) (*UploadPersonalityFilesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -125,7 +129,7 @@ func (a *Client) GetPersonalities(params *GetPersonalitiesParams, opts ...Client
 }
 
 /*
-GetPersonality gets personalities by Id
+GetPersonality gets a personality by its id
 
 Get the Personality for id
 */
@@ -161,6 +165,46 @@ func (a *Client) GetPersonality(params *GetPersonalityParams, opts ...ClientOpti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getPersonality: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RenamePersonalityByID renames personality based on ID
+
+Rename personality with the ID passed in the URL
+*/
+func (a *Client) RenamePersonalityByID(params *RenamePersonalityByIDParams, opts ...ClientOption) (*RenamePersonalityByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRenamePersonalityByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "renamePersonalityById",
+		Method:             "PATCH",
+		PathPattern:        "/v1/personalities/{personalityId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RenamePersonalityByIDReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RenamePersonalityByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for renamePersonalityById: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -202,6 +246,46 @@ func (a *Client) UploadPersonality(params *UploadPersonalityParams, opts ...Clie
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for personalities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UploadPersonalityFiles uploads personality files to SDDC manager
+
+Upload personality files to SDDC Manager
+*/
+func (a *Client) UploadPersonalityFiles(params *UploadPersonalityFilesParams, opts ...ClientOption) (*UploadPersonalityFilesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUploadPersonalityFilesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "uploadPersonalityFiles",
+		Method:             "PUT",
+		PathPattern:        "/v1/personalities/files",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UploadPersonalityFilesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UploadPersonalityFilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for uploadPersonalityFiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -33,36 +33,36 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetHealthCheckQuery(params *GetHealthCheckQueryParams, opts ...ClientOption) (*GetHealthCheckQueryOK, *GetHealthCheckQueryAccepted, error)
+	GetVSANHealthCheckByDomain(params *GetVSANHealthCheckByDomainParams, opts ...ClientOption) (*GetVSANHealthCheckByDomainOK, *GetVSANHealthCheckByDomainAccepted, error)
 
-	GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts ...ClientOption) (*GetHealthCheckStatusOK, error)
+	GetVSANHealthCheckByQueryID(params *GetVSANHealthCheckByQueryIDParams, opts ...ClientOption) (*GetVSANHealthCheckByQueryIDOK, error)
 
-	GetHealthCheckStatusTask(params *GetHealthCheckStatusTaskParams, opts ...ClientOption) (*GetHealthCheckStatusTaskOK, error)
+	GetVSANHealthCheckByTaskID(params *GetVSANHealthCheckByTaskIDParams, opts ...ClientOption) (*GetVSANHealthCheckByTaskIDOK, error)
 
-	SetHealthCheckStatus(params *SetHealthCheckStatusParams, opts ...ClientOption) (*SetHealthCheckStatusOK, *SetHealthCheckStatusAccepted, error)
+	UpdateVSANHealthCheckByDomain(params *UpdateVSANHealthCheckByDomainParams, opts ...ClientOption) (*UpdateVSANHealthCheckByDomainOK, *UpdateVSANHealthCheckByDomainAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetHealthCheckQuery gets v SAN health check status
+GetVSANHealthCheckByDomain retrieves v SAN health check status for a domain by its ID
 
 Get vSAN health check status for all cluster on the domain
 */
-func (a *Client) GetHealthCheckQuery(params *GetHealthCheckQueryParams, opts ...ClientOption) (*GetHealthCheckQueryOK, *GetHealthCheckQueryAccepted, error) {
+func (a *Client) GetVSANHealthCheckByDomain(params *GetVSANHealthCheckByDomainParams, opts ...ClientOption) (*GetVSANHealthCheckByDomainOK, *GetVSANHealthCheckByDomainAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetHealthCheckQueryParams()
+		params = NewGetVSANHealthCheckByDomainParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getHealthCheckQuery",
+		ID:                 "getVsanHealthCheckByDomain",
 		Method:             "GET",
 		PathPattern:        "/v1/domains/{domainId}/health-checks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetHealthCheckQueryReader{formats: a.formats},
+		Reader:             &GetVSANHealthCheckByDomainReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -75,9 +75,9 @@ func (a *Client) GetHealthCheckQuery(params *GetHealthCheckQueryParams, opts ...
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *GetHealthCheckQueryOK:
+	case *GetVSANHealthCheckByDomainOK:
 		return value, nil, nil
-	case *GetHealthCheckQueryAccepted:
+	case *GetVSANHealthCheckByDomainAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -86,24 +86,24 @@ func (a *Client) GetHealthCheckQuery(params *GetHealthCheckQueryParams, opts ...
 }
 
 /*
-GetHealthCheckStatus gets v SAN health check status by query Id
+GetVSANHealthCheckByQueryID retrieves v SAN health check status for a domain and query ID
 
 Get vSAN health check status for a given Query Id
 */
-func (a *Client) GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts ...ClientOption) (*GetHealthCheckStatusOK, error) {
+func (a *Client) GetVSANHealthCheckByQueryID(params *GetVSANHealthCheckByQueryIDParams, opts ...ClientOption) (*GetVSANHealthCheckByQueryIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetHealthCheckStatusParams()
+		params = NewGetVSANHealthCheckByQueryIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getHealthCheckStatus",
+		ID:                 "getVsanHealthCheckByQueryID",
 		Method:             "GET",
 		PathPattern:        "/v1/domains/{domainId}/health-checks/queries/{queryId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetHealthCheckStatusReader{formats: a.formats},
+		Reader:             &GetVSANHealthCheckByQueryIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -115,35 +115,35 @@ func (a *Client) GetHealthCheckStatus(params *GetHealthCheckStatusParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetHealthCheckStatusOK)
+	success, ok := result.(*GetVSANHealthCheckByQueryIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getHealthCheckStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getVsanHealthCheckByQueryID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetHealthCheckStatusTask gets v SAN health check update task status
+GetVSANHealthCheckByTaskID retrieves a v SAN health check by task ID
 
 Get vSAN health check update task status for a given task Id
 */
-func (a *Client) GetHealthCheckStatusTask(params *GetHealthCheckStatusTaskParams, opts ...ClientOption) (*GetHealthCheckStatusTaskOK, error) {
+func (a *Client) GetVSANHealthCheckByTaskID(params *GetVSANHealthCheckByTaskIDParams, opts ...ClientOption) (*GetVSANHealthCheckByTaskIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetHealthCheckStatusTaskParams()
+		params = NewGetVSANHealthCheckByTaskIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getHealthCheckStatusTask",
+		ID:                 "getVsanHealthCheckByTaskID",
 		Method:             "GET",
 		PathPattern:        "/v1/domains/{domainId}/health-checks/tasks/{taskId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetHealthCheckStatusTaskReader{formats: a.formats},
+		Reader:             &GetVSANHealthCheckByTaskIDReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -155,35 +155,35 @@ func (a *Client) GetHealthCheckStatusTask(params *GetHealthCheckStatusTaskParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetHealthCheckStatusTaskOK)
+	success, ok := result.(*GetVSANHealthCheckByTaskIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getHealthCheckStatusTask: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getVsanHealthCheckByTaskID: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-SetHealthCheckStatus updates v SAN health check status
+UpdateVSANHealthCheckByDomain updates the v SAN health check status for a domain
 
 Update vSAN health check status for domain
 */
-func (a *Client) SetHealthCheckStatus(params *SetHealthCheckStatusParams, opts ...ClientOption) (*SetHealthCheckStatusOK, *SetHealthCheckStatusAccepted, error) {
+func (a *Client) UpdateVSANHealthCheckByDomain(params *UpdateVSANHealthCheckByDomainParams, opts ...ClientOption) (*UpdateVSANHealthCheckByDomainOK, *UpdateVSANHealthCheckByDomainAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewSetHealthCheckStatusParams()
+		params = NewUpdateVSANHealthCheckByDomainParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "setHealthCheckStatus",
+		ID:                 "updateVsanHealthCheckByDomain",
 		Method:             "PATCH",
 		PathPattern:        "/v1/domains/{domainId}/health-checks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &SetHealthCheckStatusReader{formats: a.formats},
+		Reader:             &UpdateVSANHealthCheckByDomainReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -196,9 +196,9 @@ func (a *Client) SetHealthCheckStatus(params *SetHealthCheckStatusParams, opts .
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *SetHealthCheckStatusOK:
+	case *UpdateVSANHealthCheckByDomainOK:
 		return value, nil, nil
-	case *SetHealthCheckStatusAccepted:
+	case *UpdateVSANHealthCheckByDomainAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

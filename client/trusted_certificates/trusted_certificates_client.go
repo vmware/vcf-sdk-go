@@ -124,9 +124,9 @@ func (a *Client) DeleteTrustedCertificate(params *DeleteTrustedCertificateParams
 }
 
 /*
-GetTrustedCertificates gets the trusted certificates from the SDDC manager
+GetTrustedCertificates retrieves all trusted certificates from SDDC manager
 
-Get the trusted certificates from the SDDC Manager
+Retrieve all trusted certificates from SDDC Manager
 */
 func (a *Client) GetTrustedCertificates(params *GetTrustedCertificatesParams, opts ...ClientOption) (*GetTrustedCertificatesOK, error) {
 	// TODO: Validate the params before sending

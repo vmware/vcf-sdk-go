@@ -112,6 +112,7 @@ func (m *NiocTrafficResourceAllocation) ContextValidate(ctx context.Context, for
 func (m *NiocTrafficResourceAllocation) contextValidateSharesInfo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SharesInfo != nil {
+
 		if err := m.SharesInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sharesInfo")

@@ -45,7 +45,7 @@ func (o *GetDNSConfigurationReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/system/dns-configuration] getDnsConfiguration", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetDNSConfigurationOK) IsServerError() bool {
 // IsCode returns true when this get Dns configuration o k response a status code equal to that given
 func (o *GetDNSConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get Dns configuration o k response
+func (o *GetDNSConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *GetDNSConfigurationOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetDNSConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get Dns configuration bad request response
+func (o *GetDNSConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetDNSConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration][%d] getDnsConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetDNSConfigurationInternalServerError) IsServerError() bool {
 // IsCode returns true when this get Dns configuration internal server error response a status code equal to that given
 func (o *GetDNSConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get Dns configuration internal server error response
+func (o *GetDNSConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetDNSConfigurationInternalServerError) Error() string {

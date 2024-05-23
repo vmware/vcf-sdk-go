@@ -149,6 +149,11 @@ func (m *SDDCTask) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *SDDCTask) contextValidateLocalizableNamePack(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LocalizableNamePack != nil {
+
+		if swag.IsZero(m.LocalizableNamePack) { // not required
+			return nil
+		}
+
 		if err := m.LocalizableNamePack.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("localizableNamePack")
@@ -167,6 +172,11 @@ func (m *SDDCTask) contextValidateSDDCSubTasks(ctx context.Context, formats strf
 	for i := 0; i < len(m.SDDCSubTasks); i++ {
 
 		if m.SDDCSubTasks[i] != nil {
+
+			if swag.IsZero(m.SDDCSubTasks[i]) { // not required
+				return nil
+			}
+
 			if err := m.SDDCSubTasks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("sddcSubTasks" + "." + strconv.Itoa(i))

@@ -79,6 +79,11 @@ func (m *AdvancedOptions) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *AdvancedOptions) contextValidateHighAvailability(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HighAvailability != nil {
+
+		if swag.IsZero(m.HighAvailability) { // not required
+			return nil
+		}
+
 		if err := m.HighAvailability.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("highAvailability")

@@ -51,7 +51,7 @@ func (o *UploadCertificatesReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/domains/{id}/certificates/uploads] uploadCertificates", response, response.Code())
 	}
 }
 
@@ -94,12 +94,17 @@ func (o *UploadCertificatesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the upload certificates o k response
+func (o *UploadCertificatesOK) Code() int {
+	return 200
+}
+
 func (o *UploadCertificatesOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesOK  %+v", 200, o.Payload)
 }
 
 func (o *UploadCertificatesOK) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesOK  %+v", 200, o.Payload)
 }
 
 func (o *UploadCertificatesOK) GetPayload() interface{} {
@@ -155,12 +160,17 @@ func (o *UploadCertificatesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the upload certificates bad request response
+func (o *UploadCertificatesBadRequest) Code() int {
+	return 400
+}
+
 func (o *UploadCertificatesBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UploadCertificatesBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UploadCertificatesBadRequest) GetPayload() *models.Error {
@@ -218,12 +228,17 @@ func (o *UploadCertificatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the upload certificates not found response
+func (o *UploadCertificatesNotFound) Code() int {
+	return 404
+}
+
 func (o *UploadCertificatesNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UploadCertificatesNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UploadCertificatesNotFound) GetPayload() *models.Error {
@@ -281,12 +296,17 @@ func (o *UploadCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the upload certificates internal server error response
+func (o *UploadCertificatesInternalServerError) Code() int {
+	return 500
+}
+
 func (o *UploadCertificatesInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *UploadCertificatesInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates/uploads][%d] uploadCertificatesInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates/uploads][%d] uploadCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *UploadCertificatesInternalServerError) GetPayload() *models.Error {

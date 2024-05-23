@@ -85,6 +85,11 @@ func (m *VmfsDatastoreSpec) contextValidateFcSpec(ctx context.Context, formats s
 	for i := 0; i < len(m.FcSpec); i++ {
 
 		if m.FcSpec[i] != nil {
+
+			if swag.IsZero(m.FcSpec[i]) { // not required
+				return nil
+			}
+
 			if err := m.FcSpec[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("fcSpec" + "." + strconv.Itoa(i))

@@ -32,14 +32,26 @@ func (o *GetClusterCriterionReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewGetClusterCriterionBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewGetClusterCriterionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
+	case 500:
+		result := NewGetClusterCriterionInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{domainId}/clusters/criteria/{name}] getClusterCriterion", response, response.Code())
 	}
 }
 
@@ -82,6 +94,11 @@ func (o *GetClusterCriterionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get cluster criterion o k response
+func (o *GetClusterCriterionOK) Code() int {
+	return 200
+}
+
 func (o *GetClusterCriterionOK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionOK  %+v", 200, o.Payload)
 }
@@ -97,6 +114,74 @@ func (o *GetClusterCriterionOK) GetPayload() *models.ClusterCriterion {
 func (o *GetClusterCriterionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ClusterCriterion)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterCriterionBadRequest creates a GetClusterCriterionBadRequest with default headers values
+func NewGetClusterCriterionBadRequest() *GetClusterCriterionBadRequest {
+	return &GetClusterCriterionBadRequest{}
+}
+
+/*
+GetClusterCriterionBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type GetClusterCriterionBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get cluster criterion bad request response has a 2xx status code
+func (o *GetClusterCriterionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster criterion bad request response has a 3xx status code
+func (o *GetClusterCriterionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster criterion bad request response has a 4xx status code
+func (o *GetClusterCriterionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster criterion bad request response has a 5xx status code
+func (o *GetClusterCriterionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster criterion bad request response a status code equal to that given
+func (o *GetClusterCriterionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get cluster criterion bad request response
+func (o *GetClusterCriterionBadRequest) Code() int {
+	return 400
+}
+
+func (o *GetClusterCriterionBadRequest) Error() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetClusterCriterionBadRequest) String() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetClusterCriterionBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetClusterCriterionBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -145,6 +230,11 @@ func (o *GetClusterCriterionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get cluster criterion not found response
+func (o *GetClusterCriterionNotFound) Code() int {
+	return 404
+}
+
 func (o *GetClusterCriterionNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionNotFound  %+v", 404, o.Payload)
 }
@@ -158,6 +248,74 @@ func (o *GetClusterCriterionNotFound) GetPayload() *models.Error {
 }
 
 func (o *GetClusterCriterionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetClusterCriterionInternalServerError creates a GetClusterCriterionInternalServerError with default headers values
+func NewGetClusterCriterionInternalServerError() *GetClusterCriterionInternalServerError {
+	return &GetClusterCriterionInternalServerError{}
+}
+
+/*
+GetClusterCriterionInternalServerError describes a response with status code 500, with default header values.
+
+Internal Server Error
+*/
+type GetClusterCriterionInternalServerError struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get cluster criterion internal server error response has a 2xx status code
+func (o *GetClusterCriterionInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster criterion internal server error response has a 3xx status code
+func (o *GetClusterCriterionInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster criterion internal server error response has a 4xx status code
+func (o *GetClusterCriterionInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get cluster criterion internal server error response has a 5xx status code
+func (o *GetClusterCriterionInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get cluster criterion internal server error response a status code equal to that given
+func (o *GetClusterCriterionInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get cluster criterion internal server error response
+func (o *GetClusterCriterionInternalServerError) Code() int {
+	return 500
+}
+
+func (o *GetClusterCriterionInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetClusterCriterionInternalServerError) String() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/criteria/{name}][%d] getClusterCriterionInternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetClusterCriterionInternalServerError) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetClusterCriterionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

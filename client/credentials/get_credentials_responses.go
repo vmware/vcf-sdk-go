@@ -57,7 +57,7 @@ func (o *GetCredentialsReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/credentials] getCredentials", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *GetCredentialsOK) IsServerError() bool {
 // IsCode returns true when this get credentials o k response a status code equal to that given
 func (o *GetCredentialsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get credentials o k response
+func (o *GetCredentialsOK) Code() int {
+	return 200
 }
 
 func (o *GetCredentialsOK) Error() string {
@@ -163,6 +168,11 @@ func (o *GetCredentialsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get credentials bad request response
+func (o *GetCredentialsBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials][%d] getCredentialsBadRequest  %+v", 400, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *GetCredentialsUnauthorized) IsServerError() bool {
 // IsCode returns true when this get credentials unauthorized response a status code equal to that given
 func (o *GetCredentialsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the get credentials unauthorized response
+func (o *GetCredentialsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GetCredentialsUnauthorized) Error() string {
@@ -289,6 +304,11 @@ func (o *GetCredentialsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get credentials forbidden response
+func (o *GetCredentialsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetCredentialsForbidden) Error() string {
 	return fmt.Sprintf("[GET /v1/credentials][%d] getCredentialsForbidden  %+v", 403, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *GetCredentialsInternalServerError) IsServerError() bool {
 // IsCode returns true when this get credentials internal server error response a status code equal to that given
 func (o *GetCredentialsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get credentials internal server error response
+func (o *GetCredentialsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetCredentialsInternalServerError) Error() string {

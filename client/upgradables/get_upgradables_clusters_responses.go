@@ -45,7 +45,7 @@ func (o *GetUpgradablesClustersReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/upgradables/domains/{domainId}/clusters] getUpgradablesClusters", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetUpgradablesClustersOK) IsServerError() bool {
 // IsCode returns true when this get upgradables clusters o k response a status code equal to that given
 func (o *GetUpgradablesClustersOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get upgradables clusters o k response
+func (o *GetUpgradablesClustersOK) Code() int {
+	return 200
 }
 
 func (o *GetUpgradablesClustersOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetUpgradablesClustersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get upgradables clusters not found response
+func (o *GetUpgradablesClustersNotFound) Code() int {
+	return 404
+}
+
 func (o *GetUpgradablesClustersNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/upgradables/domains/{domainId}/clusters][%d] getUpgradablesClustersNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetUpgradablesClustersInternalServerError) IsServerError() bool {
 // IsCode returns true when this get upgradables clusters internal server error response a status code equal to that given
 func (o *GetUpgradablesClustersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get upgradables clusters internal server error response
+func (o *GetUpgradablesClustersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetUpgradablesClustersInternalServerError) Error() string {

@@ -51,7 +51,7 @@ func (o *ValidateEdgeClusterUpdateSpecReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/edge-clusters/{id}/validations] validateEdgeClusterUpdateSpec", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ValidateEdgeClusterUpdateSpecOK) IsServerError() bool {
 // IsCode returns true when this validate edge cluster update spec o k response a status code equal to that given
 func (o *ValidateEdgeClusterUpdateSpecOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the validate edge cluster update spec o k response
+func (o *ValidateEdgeClusterUpdateSpecOK) Code() int {
+	return 200
 }
 
 func (o *ValidateEdgeClusterUpdateSpecOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ValidateEdgeClusterUpdateSpecAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the validate edge cluster update spec accepted response
+func (o *ValidateEdgeClusterUpdateSpecAccepted) Code() int {
+	return 202
+}
+
 func (o *ValidateEdgeClusterUpdateSpecAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/edge-clusters/{id}/validations][%d] validateEdgeClusterUpdateSpecAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ValidateEdgeClusterUpdateSpecBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the validate edge cluster update spec bad request response
+func (o *ValidateEdgeClusterUpdateSpecBadRequest) Code() int {
+	return 400
+}
+
 func (o *ValidateEdgeClusterUpdateSpecBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/edge-clusters/{id}/validations][%d] validateEdgeClusterUpdateSpecBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *ValidateEdgeClusterUpdateSpecInternalServerError) IsServerError() bool 
 // IsCode returns true when this validate edge cluster update spec internal server error response a status code equal to that given
 func (o *ValidateEdgeClusterUpdateSpecInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the validate edge cluster update spec internal server error response
+func (o *ValidateEdgeClusterUpdateSpecInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ValidateEdgeClusterUpdateSpecInternalServerError) Error() string {

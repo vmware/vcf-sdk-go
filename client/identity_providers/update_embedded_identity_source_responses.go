@@ -57,7 +57,7 @@ func (o *UpdateEmbeddedIdentitySourceReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/identity-providers/{id}/identity-sources/{domainName}] updateEmbeddedIdentitySource", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *UpdateEmbeddedIdentitySourceOK) IsServerError() bool {
 // IsCode returns true when this update embedded identity source o k response a status code equal to that given
 func (o *UpdateEmbeddedIdentitySourceOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update embedded identity source o k response
+func (o *UpdateEmbeddedIdentitySourceOK) Code() int {
+	return 200
 }
 
 func (o *UpdateEmbeddedIdentitySourceOK) Error() string {
@@ -161,6 +166,11 @@ func (o *UpdateEmbeddedIdentitySourceNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the update embedded identity source no content response
+func (o *UpdateEmbeddedIdentitySourceNoContent) Code() int {
+	return 204
+}
+
 func (o *UpdateEmbeddedIdentitySourceNoContent) Error() string {
 	return fmt.Sprintf("[PATCH /v1/identity-providers/{id}/identity-sources/{domainName}][%d] updateEmbeddedIdentitySourceNoContent  %+v", 204, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UpdateEmbeddedIdentitySourceBadRequest) IsServerError() bool {
 // IsCode returns true when this update embedded identity source bad request response a status code equal to that given
 func (o *UpdateEmbeddedIdentitySourceBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the update embedded identity source bad request response
+func (o *UpdateEmbeddedIdentitySourceBadRequest) Code() int {
+	return 400
 }
 
 func (o *UpdateEmbeddedIdentitySourceBadRequest) Error() string {
@@ -285,6 +300,11 @@ func (o *UpdateEmbeddedIdentitySourceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update embedded identity source not found response
+func (o *UpdateEmbeddedIdentitySourceNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateEmbeddedIdentitySourceNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/identity-providers/{id}/identity-sources/{domainName}][%d] updateEmbeddedIdentitySourceNotFound  %+v", 404, o.Payload)
 }
@@ -346,6 +366,11 @@ func (o *UpdateEmbeddedIdentitySourceInternalServerError) IsServerError() bool {
 // IsCode returns true when this update embedded identity source internal server error response a status code equal to that given
 func (o *UpdateEmbeddedIdentitySourceInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update embedded identity source internal server error response
+func (o *UpdateEmbeddedIdentitySourceInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateEmbeddedIdentitySourceInternalServerError) Error() string {

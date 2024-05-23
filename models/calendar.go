@@ -120,6 +120,11 @@ func (m *Calendar) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *Calendar) contextValidateTimeZone(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TimeZone != nil {
+
+		if swag.IsZero(m.TimeZone) { // not required
+			return nil
+		}
+
 		if err := m.TimeZone.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("timeZone")

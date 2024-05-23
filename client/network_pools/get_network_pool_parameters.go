@@ -63,13 +63,6 @@ GetNetworkPoolParams contains all the parameters to send to the API endpoint
 	Typically these are written to a http.Request.
 */
 type GetNetworkPoolParams struct {
-
-	/* ID.
-
-	   ID of the network pool to fetch
-	*/
-	ID string
-
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -123,17 +116,6 @@ func (o *GetNetworkPoolParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the get network pool params
-func (o *GetNetworkPoolParams) WithID(id string) *GetNetworkPoolParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the get network pool params
-func (o *GetNetworkPoolParams) SetID(id string) {
-	o.ID = id
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetNetworkPoolParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -141,11 +123,6 @@ func (o *GetNetworkPoolParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

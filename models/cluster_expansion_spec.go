@@ -23,6 +23,9 @@ import (
 // swagger:model ClusterExpansionSpec
 type ClusterExpansionSpec struct {
 
+	// Enable expansion of the cluster without licensing the new hosts.
+	DeployWithoutLicenseKeys bool `json:"deployWithoutLicenseKeys,omitempty"`
+
 	// Use to add host to a cluster with dead host(s). Bypasses validation of disconnected hosts and vSAN cluster health. Review recovery plan VMware Support before using. False if omitted. This property is deprecated and it has no effect when using it.
 	ForceHostAdditionInPresenceofDeadHosts bool `json:"forceHostAdditionInPresenceofDeadHosts,omitempty"`
 
@@ -30,8 +33,11 @@ type ClusterExpansionSpec struct {
 	// Required: true
 	HostSpecs []*HostSpec `json:"hostSpecs"`
 
-	// Is inter-rack cluster(true for L2 non-uniform and L3 : At least one of management, uplink, Edge and host TEP networks is different for hosts of the cluster, false for L2 uniform :  All hosts in cluster have identical management, uplink, Edge and host TEP networks) expansion. Required, only if Cluster contains NSX-T Edge Cluster
+	// Is inter-rack cluster(true for L2 non-uniform and L3 : At least one of management, uplink, Edge and host TEP networks is different for hosts of the cluster, false for L2 uniform :  All hosts in cluster have identical management, uplink, Edge and host TEP networks) expansion. Required, only if Cluster contains NSX Edge Cluster
 	InterRackExpansion bool `json:"interRackExpansion,omitempty"`
+
+	// Network configuration for the cluster
+	NetworkSpec *ClusterExpansionNetworkSpec `json:"networkSpec,omitempty"`
 
 	// Skip thumbprint validation for ESXi hosts during add host operation.
 	// This property is deprecated.
@@ -52,6 +58,10 @@ func (m *ClusterExpansionSpec) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateHostSpecs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNetworkSpec(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -91,6 +101,25 @@ func (m *ClusterExpansionSpec) validateHostSpecs(formats strfmt.Registry) error 
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ClusterExpansionSpec) validateNetworkSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetworkSpec) { // not required
+		return nil
+	}
+
+	if m.NetworkSpec != nil {
+		if err := m.NetworkSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("networkSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("networkSpec")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -149,6 +178,10 @@ func (m *ClusterExpansionSpec) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworkSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVSANNetworkSpecs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -168,6 +201,11 @@ func (m *ClusterExpansionSpec) contextValidateHostSpecs(ctx context.Context, for
 	for i := 0; i < len(m.HostSpecs); i++ {
 
 		if m.HostSpecs[i] != nil {
+
+			if swag.IsZero(m.HostSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.HostSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("hostSpecs" + "." + strconv.Itoa(i))
@@ -183,11 +221,37 @@ func (m *ClusterExpansionSpec) contextValidateHostSpecs(ctx context.Context, for
 	return nil
 }
 
+func (m *ClusterExpansionSpec) contextValidateNetworkSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NetworkSpec != nil {
+
+		if swag.IsZero(m.NetworkSpec) { // not required
+			return nil
+		}
+
+		if err := m.NetworkSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("networkSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("networkSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ClusterExpansionSpec) contextValidateVSANNetworkSpecs(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.VSANNetworkSpecs); i++ {
 
 		if m.VSANNetworkSpecs[i] != nil {
+
+			if swag.IsZero(m.VSANNetworkSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.VSANNetworkSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vsanNetworkSpecs" + "." + strconv.Itoa(i))
@@ -206,6 +270,11 @@ func (m *ClusterExpansionSpec) contextValidateVSANNetworkSpecs(ctx context.Conte
 func (m *ClusterExpansionSpec) contextValidateWitnessSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.WitnessSpec != nil {
+
+		if swag.IsZero(m.WitnessSpec) { // not required
+			return nil
+		}
+
 		if err := m.WitnessSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("witnessSpec")

@@ -15,15 +15,15 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTManagerSpec Spec contains parameters for NSX-T manager
+// NSXTManagerSpec Spec contains parameters for NSX manager
 //
 // swagger:model NsxtManagerSpec
 type NSXTManagerSpec struct {
 
-	// NSX-T Manager hostname
+	// NSX Manager hostname
 	Hostname string `json:"hostname,omitempty"`
 
-	// NSX-T Manager IP Address
+	// NSX Manager IP Address
 	IP string `json:"ip,omitempty"`
 }
 

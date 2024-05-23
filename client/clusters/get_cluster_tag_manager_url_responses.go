@@ -45,7 +45,7 @@ func (o *GetClusterTagManagerURLReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/clusters/{id}/tags/tag-manager] getClusterTagManagerUrl", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetClusterTagManagerURLOK) IsServerError() bool {
 // IsCode returns true when this get cluster tag manager Url o k response a status code equal to that given
 func (o *GetClusterTagManagerURLOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get cluster tag manager Url o k response
+func (o *GetClusterTagManagerURLOK) Code() int {
+	return 200
 }
 
 func (o *GetClusterTagManagerURLOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetClusterTagManagerURLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get cluster tag manager Url bad request response
+func (o *GetClusterTagManagerURLBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetClusterTagManagerURLBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/clusters/{id}/tags/tag-manager][%d] getClusterTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetClusterTagManagerURLInternalServerError) IsServerError() bool {
 // IsCode returns true when this get cluster tag manager Url internal server error response a status code equal to that given
 func (o *GetClusterTagManagerURLInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get cluster tag manager Url internal server error response
+func (o *GetClusterTagManagerURLInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetClusterTagManagerURLInternalServerError) Error() string {

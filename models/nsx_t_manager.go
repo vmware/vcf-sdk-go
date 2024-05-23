@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NsxTManager NSX-T Manager representation
+// NsxTManager NSX Manager representation
 //
 // swagger:model NsxTManager
 type NsxTManager struct {
@@ -29,7 +29,7 @@ type NsxTManager struct {
 	// IP address of the manager
 	IPAddress string `json:"ipAddress,omitempty"`
 
-	// NSX-T Manager VM name in vCenter
+	// NSX Manager VM name in vCenter
 	Name string `json:"name,omitempty"`
 }
 

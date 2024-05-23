@@ -51,7 +51,7 @@ func (o *RetryTaskReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/tasks/{id}] retryTask", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *RetryTaskOK) IsServerError() bool {
 // IsCode returns true when this retry task o k response a status code equal to that given
 func (o *RetryTaskOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the retry task o k response
+func (o *RetryTaskOK) Code() int {
+	return 200
 }
 
 func (o *RetryTaskOK) Error() string {
@@ -143,6 +148,11 @@ func (o *RetryTaskNotFound) IsServerError() bool {
 // IsCode returns true when this retry task not found response a status code equal to that given
 func (o *RetryTaskNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the retry task not found response
+func (o *RetryTaskNotFound) Code() int {
+	return 404
 }
 
 func (o *RetryTaskNotFound) Error() string {
@@ -208,6 +218,11 @@ func (o *RetryTaskConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the retry task conflict response
+func (o *RetryTaskConflict) Code() int {
+	return 409
+}
+
 func (o *RetryTaskConflict) Error() string {
 	return fmt.Sprintf("[PATCH /v1/tasks/{id}][%d] retryTaskConflict  %+v", 409, o.Payload)
 }
@@ -269,6 +284,11 @@ func (o *RetryTaskInternalServerError) IsServerError() bool {
 // IsCode returns true when this retry task internal server error response a status code equal to that given
 func (o *RetryTaskInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the retry task internal server error response
+func (o *RetryTaskInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RetryTaskInternalServerError) Error() string {

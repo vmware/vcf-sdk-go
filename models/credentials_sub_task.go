@@ -156,6 +156,11 @@ func (m *CredentialsSubTask) contextValidateDependentSubTasks(ctx context.Contex
 	for i := 0; i < len(m.DependentSubTasks); i++ {
 
 		if m.DependentSubTasks[i] != nil {
+
+			if swag.IsZero(m.DependentSubTasks[i]) { // not required
+				return nil
+			}
+
 			if err := m.DependentSubTasks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dependentSubTasks" + "." + strconv.Itoa(i))
@@ -176,6 +181,11 @@ func (m *CredentialsSubTask) contextValidateErrors(ctx context.Context, formats 
 	for i := 0; i < len(m.Errors); i++ {
 
 		if m.Errors[i] != nil {
+
+			if swag.IsZero(m.Errors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Errors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errors" + "." + strconv.Itoa(i))

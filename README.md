@@ -10,8 +10,8 @@ A Go SDK for the VMware Cloud Foundation.
 
 Required if building the SDK.
 
-* [Go][golang-install] v1.19
-* [go-swagger][go-swagger] v0.30.3
+* [Go][golang-install] v1.22
+* [go-swagger][go-swagger] v0.30.5
 ## Building the SDK
 
 The SDK is auto-generated from the VMware Cloud Foundation swagger files.

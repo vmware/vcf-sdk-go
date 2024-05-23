@@ -29,6 +29,9 @@ type URL struct {
 	// default port
 	DefaultPort int32 `json:"defaultPort,omitempty"`
 
+	// deserialized fields
+	DeserializedFields URLStreamHandler `json:"deserializedFields,omitempty"`
+
 	// file
 	File string `json:"file,omitempty"`
 
@@ -49,6 +52,9 @@ type URL struct {
 
 	// ref
 	Ref string `json:"ref,omitempty"`
+
+	// serialized hash code
+	SerializedHashCode int32 `json:"serializedHashCode,omitempty"`
 
 	// user info
 	UserInfo string `json:"userInfo,omitempty"`

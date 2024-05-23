@@ -45,7 +45,7 @@ func (o *DownloadCSRReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{id}/csrs/downloads] downloadCSR", response, response.Code())
 	}
 }
 
@@ -88,12 +88,17 @@ func (o *DownloadCSROK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the download Csr o k response
+func (o *DownloadCSROK) Code() int {
+	return 200
+}
+
 func (o *DownloadCSROK) Error() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs/downloads][%d] downloadCsrOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs/downloads][%d] downloadCsrOK  %+v", 200, o.Payload)
 }
 
 func (o *DownloadCSROK) String() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs/downloads][%d] downloadCsrOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs/downloads][%d] downloadCsrOK  %+v", 200, o.Payload)
 }
 
 func (o *DownloadCSROK) GetPayload() strfmt.Base64 {
@@ -149,12 +154,17 @@ func (o *DownloadCSRNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the download Csr not found response
+func (o *DownloadCSRNotFound) Code() int {
+	return 404
+}
+
 func (o *DownloadCSRNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs/downloads][%d] downloadCsrNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs/downloads][%d] downloadCsrNotFound  %+v", 404, o.Payload)
 }
 
 func (o *DownloadCSRNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs/downloads][%d] downloadCsrNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs/downloads][%d] downloadCsrNotFound  %+v", 404, o.Payload)
 }
 
 func (o *DownloadCSRNotFound) GetPayload() *models.Error {
@@ -212,12 +222,17 @@ func (o *DownloadCSRInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the download Csr internal server error response
+func (o *DownloadCSRInternalServerError) Code() int {
+	return 500
+}
+
 func (o *DownloadCSRInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs/downloads][%d] downloadCsrInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs/downloads][%d] downloadCsrInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *DownloadCSRInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/domains/{domainName}/csrs/downloads][%d] downloadCsrInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /v1/domains/{id}/csrs/downloads][%d] downloadCsrInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *DownloadCSRInternalServerError) GetPayload() *models.Error {

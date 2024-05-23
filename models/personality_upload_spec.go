@@ -157,6 +157,11 @@ func (m *PersonalityUploadSpec) ContextValidate(ctx context.Context, formats str
 func (m *PersonalityUploadSpec) contextValidateUploadSpecRawMode(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.UploadSpecRawMode != nil {
+
+		if swag.IsZero(m.UploadSpecRawMode) { // not required
+			return nil
+		}
+
 		if err := m.UploadSpecRawMode.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("uploadSpecRawMode")
@@ -173,6 +178,11 @@ func (m *PersonalityUploadSpec) contextValidateUploadSpecRawMode(ctx context.Con
 func (m *PersonalityUploadSpec) contextValidateUploadSpecRawWithFileUploadIDMode(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.UploadSpecRawWithFileUploadIDMode != nil {
+
+		if swag.IsZero(m.UploadSpecRawWithFileUploadIDMode) { // not required
+			return nil
+		}
+
 		if err := m.UploadSpecRawWithFileUploadIDMode.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("uploadSpecRawWithFileUploadIdMode")
@@ -189,6 +199,11 @@ func (m *PersonalityUploadSpec) contextValidateUploadSpecRawWithFileUploadIDMode
 func (m *PersonalityUploadSpec) contextValidateUploadSpecReferredMode(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.UploadSpecReferredMode != nil {
+
+		if swag.IsZero(m.UploadSpecReferredMode) { // not required
+			return nil
+		}
+
 		if err := m.UploadSpecReferredMode.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("uploadSpecReferredMode")

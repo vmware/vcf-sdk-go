@@ -10,7 +10,6 @@ package models
 
 import (
 	"context"
-	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -42,12 +41,6 @@ type SDDCHostSpec struct {
 	// Required: true
 	IPAddressPrivate *IPAllocation `json:"ipAddressPrivate"`
 
-	// Host key
-	Key string `json:"key,omitempty"`
-
-	// Host server ID
-	ServerID string `json:"serverId,omitempty"`
-
 	// Host SSH thumbprint (RSA SHA256)
 	SSHThumbprint string `json:"sshThumbprint,omitempty"`
 
@@ -57,9 +50,6 @@ type SDDCHostSpec struct {
 	// v switch
 	// Required: true
 	VSwitch *string `json:"vSwitch"`
-
-	// List of Host Vmknic Spec
-	VmknicSpecs []*HostVmknicSpec `json:"vmknicSpecs"`
 
 	// vswitch
 	Vswitch string `json:"vswitch,omitempty"`
@@ -86,10 +76,6 @@ func (m *SDDCHostSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVSwitch(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVmknicSpecs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -174,32 +160,6 @@ func (m *SDDCHostSpec) validateVSwitch(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SDDCHostSpec) validateVmknicSpecs(formats strfmt.Registry) error {
-	if swag.IsZero(m.VmknicSpecs) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.VmknicSpecs); i++ {
-		if swag.IsZero(m.VmknicSpecs[i]) { // not required
-			continue
-		}
-
-		if m.VmknicSpecs[i] != nil {
-			if err := m.VmknicSpecs[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("vmknicSpecs" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("vmknicSpecs" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 // ContextValidate validate this Sddc host spec based on the context it is used
 func (m *SDDCHostSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -212,10 +172,6 @@ func (m *SDDCHostSpec) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVmknicSpecs(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -225,6 +181,7 @@ func (m *SDDCHostSpec) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *SDDCHostSpec) contextValidateCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Credentials != nil {
+
 		if err := m.Credentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("credentials")
@@ -241,6 +198,7 @@ func (m *SDDCHostSpec) contextValidateCredentials(ctx context.Context, formats s
 func (m *SDDCHostSpec) contextValidateIPAddressPrivate(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IPAddressPrivate != nil {
+
 		if err := m.IPAddressPrivate.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ipAddressPrivate")
@@ -249,26 +207,6 @@ func (m *SDDCHostSpec) contextValidateIPAddressPrivate(ctx context.Context, form
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *SDDCHostSpec) contextValidateVmknicSpecs(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.VmknicSpecs); i++ {
-
-		if m.VmknicSpecs[i] != nil {
-			if err := m.VmknicSpecs[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("vmknicSpecs" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("vmknicSpecs" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil

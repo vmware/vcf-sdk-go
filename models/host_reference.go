@@ -97,6 +97,11 @@ func (m *HostReference) contextValidateVMNics(ctx context.Context, formats strfm
 	for i := 0; i < len(m.VMNics); i++ {
 
 		if m.VMNics[i] != nil {
+
+			if swag.IsZero(m.VMNics[i]) { // not required
+				return nil
+			}
+
 			if err := m.VMNics[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("vmNics" + "." + strconv.Itoa(i))

@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// EdgeClusterUpdateSpec This specification contains the parameters required to perform an update operation on an NSX-T edge cluster. The nested expansion and shrinkage specifications need to be populated in a mutually exclusive manner
+// EdgeClusterUpdateSpec This specification contains the parameters required to perform an update operation on an NSX edge cluster. The nested expansion and shrinkage specifications need to be populated in a mutually exclusive manner
 //
 // swagger:model EdgeClusterUpdateSpec
 type EdgeClusterUpdateSpec struct {
@@ -124,6 +124,11 @@ func (m *EdgeClusterUpdateSpec) ContextValidate(ctx context.Context, formats str
 func (m *EdgeClusterUpdateSpec) contextValidateEdgeClusterExpansionSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EdgeClusterExpansionSpec != nil {
+
+		if swag.IsZero(m.EdgeClusterExpansionSpec) { // not required
+			return nil
+		}
+
 		if err := m.EdgeClusterExpansionSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("edgeClusterExpansionSpec")
@@ -140,6 +145,11 @@ func (m *EdgeClusterUpdateSpec) contextValidateEdgeClusterExpansionSpec(ctx cont
 func (m *EdgeClusterUpdateSpec) contextValidateEdgeClusterShrinkageSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EdgeClusterShrinkageSpec != nil {
+
+		if swag.IsZero(m.EdgeClusterShrinkageSpec) { // not required
+			return nil
+		}
+
 		if err := m.EdgeClusterShrinkageSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("edgeClusterShrinkageSpec")

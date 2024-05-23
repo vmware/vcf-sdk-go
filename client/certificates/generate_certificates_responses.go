@@ -63,7 +63,7 @@ func (o *GenerateCertificatesReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/domains/{id}/certificates] generateCertificates", response, response.Code())
 	}
 }
 
@@ -106,12 +106,17 @@ func (o *GenerateCertificatesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the generate certificates o k response
+func (o *GenerateCertificatesOK) Code() int {
+	return 200
+}
+
 func (o *GenerateCertificatesOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesOK  %+v", 200, o.Payload)
 }
 
 func (o *GenerateCertificatesOK) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesOK  %+v", 200, o.Payload)
 }
 
 func (o *GenerateCertificatesOK) GetPayload() *models.Task {
@@ -169,12 +174,17 @@ func (o *GenerateCertificatesAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the generate certificates accepted response
+func (o *GenerateCertificatesAccepted) Code() int {
+	return 202
+}
+
 func (o *GenerateCertificatesAccepted) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesAccepted  %+v", 202, o.Payload)
 }
 
 func (o *GenerateCertificatesAccepted) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesAccepted  %+v", 202, o.Payload)
 }
 
 func (o *GenerateCertificatesAccepted) GetPayload() *models.Task {
@@ -232,12 +242,17 @@ func (o *GenerateCertificatesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generate certificates bad request response
+func (o *GenerateCertificatesBadRequest) Code() int {
+	return 400
+}
+
 func (o *GenerateCertificatesBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *GenerateCertificatesBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *GenerateCertificatesBadRequest) GetPayload() *models.Error {
@@ -295,12 +310,17 @@ func (o *GenerateCertificatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the generate certificates not found response
+func (o *GenerateCertificatesNotFound) Code() int {
+	return 404
+}
+
 func (o *GenerateCertificatesNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GenerateCertificatesNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GenerateCertificatesNotFound) GetPayload() *models.Error {
@@ -358,12 +378,17 @@ func (o *GenerateCertificatesConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the generate certificates conflict response
+func (o *GenerateCertificatesConflict) Code() int {
+	return 409
+}
+
 func (o *GenerateCertificatesConflict) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesConflict  %+v", 409, o.Payload)
 }
 
 func (o *GenerateCertificatesConflict) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesConflict  %+v", 409, o.Payload)
 }
 
 func (o *GenerateCertificatesConflict) GetPayload() *models.Error {
@@ -421,12 +446,17 @@ func (o *GenerateCertificatesInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the generate certificates internal server error response
+func (o *GenerateCertificatesInternalServerError) Code() int {
+	return 500
+}
+
 func (o *GenerateCertificatesInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GenerateCertificatesInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/domains/{domainName}/certificates][%d] generateCertificatesInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /v1/domains/{id}/certificates][%d] generateCertificatesInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *GenerateCertificatesInternalServerError) GetPayload() *models.Error {

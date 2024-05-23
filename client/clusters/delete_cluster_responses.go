@@ -57,7 +57,7 @@ func (o *DeleteClusterReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/clusters/{id}] deleteCluster", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *DeleteClusterOK) IsServerError() bool {
 // IsCode returns true when this delete cluster o k response a status code equal to that given
 func (o *DeleteClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete cluster o k response
+func (o *DeleteClusterOK) Code() int {
+	return 200
 }
 
 func (o *DeleteClusterOK) Error() string {
@@ -163,6 +168,11 @@ func (o *DeleteClusterAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete cluster accepted response
+func (o *DeleteClusterAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteClusterAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /v1/clusters/{id}][%d] deleteClusterAccepted  %+v", 202, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *DeleteClusterBadRequest) IsServerError() bool {
 // IsCode returns true when this delete cluster bad request response a status code equal to that given
 func (o *DeleteClusterBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete cluster bad request response
+func (o *DeleteClusterBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteClusterBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *DeleteClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete cluster not found response
+func (o *DeleteClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteClusterNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /v1/clusters/{id}][%d] deleteClusterNotFound  %+v", 404, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *DeleteClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this delete cluster internal server error response a status code equal to that given
 func (o *DeleteClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete cluster internal server error response
+func (o *DeleteClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteClusterInternalServerError) Error() string {

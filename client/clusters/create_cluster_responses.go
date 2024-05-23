@@ -51,7 +51,7 @@ func (o *CreateClusterReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/clusters] createCluster", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *CreateClusterOK) IsServerError() bool {
 // IsCode returns true when this create cluster o k response a status code equal to that given
 func (o *CreateClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the create cluster o k response
+func (o *CreateClusterOK) Code() int {
+	return 200
 }
 
 func (o *CreateClusterOK) Error() string {
@@ -157,6 +162,11 @@ func (o *CreateClusterAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the create cluster accepted response
+func (o *CreateClusterAccepted) Code() int {
+	return 202
+}
+
 func (o *CreateClusterAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/clusters][%d] createClusterAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *CreateClusterBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the create cluster bad request response
+func (o *CreateClusterBadRequest) Code() int {
+	return 400
+}
+
 func (o *CreateClusterBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/clusters][%d] createClusterBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *CreateClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this create cluster internal server error response a status code equal to that given
 func (o *CreateClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the create cluster internal server error response
+func (o *CreateClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CreateClusterInternalServerError) Error() string {

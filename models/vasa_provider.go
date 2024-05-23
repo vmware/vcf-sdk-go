@@ -164,6 +164,11 @@ func (m *VasaProvider) contextValidateStorageContainers(ctx context.Context, for
 	for i := 0; i < len(m.StorageContainers); i++ {
 
 		if m.StorageContainers[i] != nil {
+
+			if swag.IsZero(m.StorageContainers[i]) { // not required
+				return nil
+			}
+
 			if err := m.StorageContainers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("storageContainers" + "." + strconv.Itoa(i))
@@ -184,6 +189,11 @@ func (m *VasaProvider) contextValidateUsers(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.Users); i++ {
 
 		if m.Users[i] != nil {
+
+			if swag.IsZero(m.Users[i]) { // not required
+				return nil
+			}
+
 			if err := m.Users[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("users" + "." + strconv.Itoa(i))

@@ -51,7 +51,7 @@ func (o *GetClusterQueryResponseReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{domainId}/clusters/{clusterName}/queries/{queryId}] getClusterQueryResponse", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetClusterQueryResponseOK) IsServerError() bool {
 // IsCode returns true when this get cluster query response o k response a status code equal to that given
 func (o *GetClusterQueryResponseOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get cluster query response o k response
+func (o *GetClusterQueryResponseOK) Code() int {
+	return 200
 }
 
 func (o *GetClusterQueryResponseOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetClusterQueryResponseBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get cluster query response bad request response
+func (o *GetClusterQueryResponseBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetClusterQueryResponseBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/{clusterName}/queries/{queryId}][%d] getClusterQueryResponseBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetClusterQueryResponseNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get cluster query response not found response
+func (o *GetClusterQueryResponseNotFound) Code() int {
+	return 404
+}
+
 func (o *GetClusterQueryResponseNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/clusters/{clusterName}/queries/{queryId}][%d] getClusterQueryResponseNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetClusterQueryResponseInternalServerError) IsServerError() bool {
 // IsCode returns true when this get cluster query response internal server error response a status code equal to that given
 func (o *GetClusterQueryResponseInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get cluster query response internal server error response
+func (o *GetClusterQueryResponseInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetClusterQueryResponseInternalServerError) Error() string {

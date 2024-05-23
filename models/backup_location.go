@@ -23,14 +23,15 @@ import (
 type BackupLocation struct {
 
 	// Full directory path to save the backup files
-	DirectoryPath string `json:"directoryPath,omitempty"`
+	// Required: true
+	DirectoryPath *string `json:"directoryPath"`
 
 	// Backup server password
-	// Required: true
-	Password *string `json:"password"`
+	Password string `json:"password,omitempty"`
 
 	// Port number for the backup server to connect
-	Port int32 `json:"port,omitempty"`
+	// Required: true
+	Port *int32 `json:"port"`
 
 	// Protocol to be used for transferring files
 	// Example: SFTP
@@ -38,24 +39,38 @@ type BackupLocation struct {
 	Protocol *string `json:"protocol"`
 
 	// IP address or FQDN  of the backup server
-	Server string `json:"server,omitempty"`
+	// Required: true
+	Server *string `json:"server"`
 
 	// SSH fingerprint of the backup server
 	SSHFingerprint string `json:"sshFingerprint,omitempty"`
 
 	// Password for backup server username
-	Username string `json:"username,omitempty"`
+	// Required: true
+	Username *string `json:"username"`
 }
 
 // Validate validates this backup location
 func (m *BackupLocation) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validatePassword(formats); err != nil {
+	if err := m.validateDirectoryPath(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePort(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServer(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -65,9 +80,18 @@ func (m *BackupLocation) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *BackupLocation) validatePassword(formats strfmt.Registry) error {
+func (m *BackupLocation) validateDirectoryPath(formats strfmt.Registry) error {
 
-	if err := validate.Required("password", "body", m.Password); err != nil {
+	if err := validate.Required("directoryPath", "body", m.DirectoryPath); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupLocation) validatePort(formats strfmt.Registry) error {
+
+	if err := validate.Required("port", "body", m.Port); err != nil {
 		return err
 	}
 
@@ -77,6 +101,24 @@ func (m *BackupLocation) validatePassword(formats strfmt.Registry) error {
 func (m *BackupLocation) validateProtocol(formats strfmt.Registry) error {
 
 	if err := validate.Required("protocol", "body", m.Protocol); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupLocation) validateServer(formats strfmt.Registry) error {
+
+	if err := validate.Required("server", "body", m.Server); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupLocation) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("username", "body", m.Username); err != nil {
 		return err
 	}
 

@@ -32,8 +32,26 @@ func (o *GetDatastoresCriteria1Reader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewGetDatastoresCriteria1BadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewGetDatastoresCriteria1NotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewGetDatastoresCriteria1InternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{domainId}/datastores/criteria] getDatastoresCriteria_1", response, response.Code())
 	}
 }
 
@@ -76,6 +94,11 @@ func (o *GetDatastoresCriteria1OK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get datastores criteria1 o k response
+func (o *GetDatastoresCriteria1OK) Code() int {
+	return 200
+}
+
 func (o *GetDatastoresCriteria1OK) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1OK  %+v", 200, o.Payload)
 }
@@ -91,6 +114,210 @@ func (o *GetDatastoresCriteria1OK) GetPayload() *models.PageOfDatastoreCriterion
 func (o *GetDatastoresCriteria1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PageOfDatastoreCriterion)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatastoresCriteria1BadRequest creates a GetDatastoresCriteria1BadRequest with default headers values
+func NewGetDatastoresCriteria1BadRequest() *GetDatastoresCriteria1BadRequest {
+	return &GetDatastoresCriteria1BadRequest{}
+}
+
+/*
+GetDatastoresCriteria1BadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type GetDatastoresCriteria1BadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get datastores criteria1 bad request response has a 2xx status code
+func (o *GetDatastoresCriteria1BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get datastores criteria1 bad request response has a 3xx status code
+func (o *GetDatastoresCriteria1BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get datastores criteria1 bad request response has a 4xx status code
+func (o *GetDatastoresCriteria1BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get datastores criteria1 bad request response has a 5xx status code
+func (o *GetDatastoresCriteria1BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get datastores criteria1 bad request response a status code equal to that given
+func (o *GetDatastoresCriteria1BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+// Code gets the status code for the get datastores criteria1 bad request response
+func (o *GetDatastoresCriteria1BadRequest) Code() int {
+	return 400
+}
+
+func (o *GetDatastoresCriteria1BadRequest) Error() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1BadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetDatastoresCriteria1BadRequest) String() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1BadRequest  %+v", 400, o.Payload)
+}
+
+func (o *GetDatastoresCriteria1BadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetDatastoresCriteria1BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatastoresCriteria1NotFound creates a GetDatastoresCriteria1NotFound with default headers values
+func NewGetDatastoresCriteria1NotFound() *GetDatastoresCriteria1NotFound {
+	return &GetDatastoresCriteria1NotFound{}
+}
+
+/*
+GetDatastoresCriteria1NotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type GetDatastoresCriteria1NotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get datastores criteria1 not found response has a 2xx status code
+func (o *GetDatastoresCriteria1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get datastores criteria1 not found response has a 3xx status code
+func (o *GetDatastoresCriteria1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get datastores criteria1 not found response has a 4xx status code
+func (o *GetDatastoresCriteria1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get datastores criteria1 not found response has a 5xx status code
+func (o *GetDatastoresCriteria1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get datastores criteria1 not found response a status code equal to that given
+func (o *GetDatastoresCriteria1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the get datastores criteria1 not found response
+func (o *GetDatastoresCriteria1NotFound) Code() int {
+	return 404
+}
+
+func (o *GetDatastoresCriteria1NotFound) Error() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDatastoresCriteria1NotFound) String() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDatastoresCriteria1NotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetDatastoresCriteria1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDatastoresCriteria1InternalServerError creates a GetDatastoresCriteria1InternalServerError with default headers values
+func NewGetDatastoresCriteria1InternalServerError() *GetDatastoresCriteria1InternalServerError {
+	return &GetDatastoresCriteria1InternalServerError{}
+}
+
+/*
+GetDatastoresCriteria1InternalServerError describes a response with status code 500, with default header values.
+
+Internal Server Error
+*/
+type GetDatastoresCriteria1InternalServerError struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get datastores criteria1 internal server error response has a 2xx status code
+func (o *GetDatastoresCriteria1InternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get datastores criteria1 internal server error response has a 3xx status code
+func (o *GetDatastoresCriteria1InternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get datastores criteria1 internal server error response has a 4xx status code
+func (o *GetDatastoresCriteria1InternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get datastores criteria1 internal server error response has a 5xx status code
+func (o *GetDatastoresCriteria1InternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get datastores criteria1 internal server error response a status code equal to that given
+func (o *GetDatastoresCriteria1InternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
+// Code gets the status code for the get datastores criteria1 internal server error response
+func (o *GetDatastoresCriteria1InternalServerError) Code() int {
+	return 500
+}
+
+func (o *GetDatastoresCriteria1InternalServerError) Error() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1InternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetDatastoresCriteria1InternalServerError) String() string {
+	return fmt.Sprintf("[GET /v1/domains/{domainId}/datastores/criteria][%d] getDatastoresCriteria1InternalServerError  %+v", 500, o.Payload)
+}
+
+func (o *GetDatastoresCriteria1InternalServerError) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetDatastoresCriteria1InternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -51,7 +51,7 @@ func (o *ConfigureNtpReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/system/ntp-configuration] configureNtp", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *ConfigureNtpOK) IsServerError() bool {
 // IsCode returns true when this configure ntp o k response a status code equal to that given
 func (o *ConfigureNtpOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the configure ntp o k response
+func (o *ConfigureNtpOK) Code() int {
+	return 200
 }
 
 func (o *ConfigureNtpOK) Error() string {
@@ -157,6 +162,11 @@ func (o *ConfigureNtpAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the configure ntp accepted response
+func (o *ConfigureNtpAccepted) Code() int {
+	return 202
+}
+
 func (o *ConfigureNtpAccepted) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/ntp-configuration][%d] configureNtpAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *ConfigureNtpBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the configure ntp bad request response
+func (o *ConfigureNtpBadRequest) Code() int {
+	return 400
+}
+
 func (o *ConfigureNtpBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/ntp-configuration][%d] configureNtpBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *ConfigureNtpInternalServerError) IsServerError() bool {
 // IsCode returns true when this configure ntp internal server error response a status code equal to that given
 func (o *ConfigureNtpInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the configure ntp internal server error response
+func (o *ConfigureNtpInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ConfigureNtpInternalServerError) Error() string {

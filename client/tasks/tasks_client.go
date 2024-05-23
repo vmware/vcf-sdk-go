@@ -85,7 +85,7 @@ func (a *Client) CancelTask(params *CancelTaskParams, opts ...ClientOption) (*Ca
 }
 
 /*
-GetTask gets a task
+GetTask retrieves a task by its ID
 
 Get a Task by ID, if it exists
 */
@@ -125,9 +125,9 @@ func (a *Client) GetTask(params *GetTaskParams, opts ...ClientOption) (*GetTaskO
 }
 
 /*
-GetTasks gets the tasks
+GetTasks retrieves a list of all tasks
 
-Get the Tasks
+Get the tasks
 */
 func (a *Client) GetTasks(params *GetTasksParams, opts ...ClientOption) (*GetTasksOK, error) {
 	// TODO: Validate the params before sending

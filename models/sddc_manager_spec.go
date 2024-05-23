@@ -34,14 +34,8 @@ type SDDCManagerSpec struct {
 	// Min Length: 7
 	IPAddress *string `json:"ipAddress"`
 
-	// SDDC Manager license key
-	LicenseKey string `json:"licenseKey,omitempty"`
-
 	// The local account is a built-in admin account in VCF that can be used in emergency scenarios. The password of this account must be at least 12 characters long. It also must contain at-least 1 uppercase, 1 lowercase, 1 special character specified in braces [!%@$^#?] and 1 digit. In addition, a character cannot be repeated more than 3 times consecutively.
 	LocalUserPassword string `json:"localUserPassword,omitempty"`
-
-	// SDDC Manager netmask
-	Netmask string `json:"netmask,omitempty"`
 
 	// Root user credentials for the SDDC Manager VM, UserName must be root. Password needs to be a strong password with at least one alphabet and one special character and at least 8 characters in length.
 	// Required: true
@@ -173,6 +167,7 @@ func (m *SDDCManagerSpec) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *SDDCManagerSpec) contextValidateRootUserCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RootUserCredentials != nil {
+
 		if err := m.RootUserCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rootUserCredentials")
@@ -189,6 +184,7 @@ func (m *SDDCManagerSpec) contextValidateRootUserCredentials(ctx context.Context
 func (m *SDDCManagerSpec) contextValidateSecondUserCredentials(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SecondUserCredentials != nil {
+
 		if err := m.SecondUserCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("secondUserCredentials")

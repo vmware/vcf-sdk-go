@@ -21,7 +21,7 @@ import (
 type LicenseKeyUsage struct {
 
 	// Units of the license key
-	// Example: One among: CPUPACKAGE, INSTANCE, VMS, CCU, PLU, DESKTOPVM, SERVERVM, VM, SERVER, CORES, CONCURRENTUSER, NAMEDUSER
+	// Example: One among: CPUPACKAGE, INSTANCE, VMS, CCU, PLU, DESKTOPVM, SERVERVM, VM, SERVER, CORES, CONCURRENTUSER, NAMEDUSER, CPUCORE
 	LicenseUnit string `json:"licenseUnit,omitempty"`
 
 	// The remaining/free units of the license key

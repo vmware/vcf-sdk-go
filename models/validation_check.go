@@ -124,6 +124,11 @@ func (m *ValidationCheck) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *ValidationCheck) contextValidateErrorResponse(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ErrorResponse != nil {
+
+		if swag.IsZero(m.ErrorResponse) { // not required
+			return nil
+		}
+
 		if err := m.ErrorResponse.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorResponse")
@@ -142,6 +147,11 @@ func (m *ValidationCheck) contextValidateNestedValidationChecks(ctx context.Cont
 	for i := 0; i < len(m.NestedValidationChecks); i++ {
 
 		if m.NestedValidationChecks[i] != nil {
+
+			if swag.IsZero(m.NestedValidationChecks[i]) { // not required
+				return nil
+			}
+
 			if err := m.NestedValidationChecks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nestedValidationChecks" + "." + strconv.Itoa(i))

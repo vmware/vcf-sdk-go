@@ -39,7 +39,7 @@ type ClientService interface {
 }
 
 /*
-GetWsas gets all existing workspace o n e access instances
+GetWsas retrieves a list of workspace o n e access instances
 */
 func (a *Client) GetWsas(params *GetWsasParams, opts ...ClientOption) (*GetWsasOK, error) {
 	// TODO: Validate the params before sending

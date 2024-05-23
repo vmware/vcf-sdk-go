@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTUpgradeOptions NSXT Upgrade options
+// NSXTUpgradeOptions NSX Upgrade options
 //
 // swagger:model NsxtUpgradeOptions
 type NSXTUpgradeOptions struct {

@@ -45,7 +45,7 @@ func (o *GetValidationsOfDNSConfigurationReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/system/dns-configuration/validations] getValidationsOfDNSConfiguration", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetValidationsOfDNSConfigurationOK) IsServerError() bool {
 // IsCode returns true when this get validations of Dns configuration o k response a status code equal to that given
 func (o *GetValidationsOfDNSConfigurationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get validations of Dns configuration o k response
+func (o *GetValidationsOfDNSConfigurationOK) Code() int {
+	return 200
 }
 
 func (o *GetValidationsOfDNSConfigurationOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetValidationsOfDNSConfigurationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get validations of Dns configuration bad request response
+func (o *GetValidationsOfDNSConfigurationBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetValidationsOfDNSConfigurationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/system/dns-configuration/validations][%d] getValidationsOfDnsConfigurationBadRequest  %+v", 400, o.Payload)
 }
@@ -211,6 +221,11 @@ func (o *GetValidationsOfDNSConfigurationInternalServerError) IsServerError() bo
 // IsCode returns true when this get validations of Dns configuration internal server error response a status code equal to that given
 func (o *GetValidationsOfDNSConfigurationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get validations of Dns configuration internal server error response
+func (o *GetValidationsOfDNSConfigurationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetValidationsOfDNSConfigurationInternalServerError) Error() string {

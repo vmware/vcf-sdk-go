@@ -45,7 +45,7 @@ func (o *GetNetworkOfNetworkPoolReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/network-pools/{id}/networks/{networkId}] getNetworkOfNetworkPool", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetNetworkOfNetworkPoolOK) IsServerError() bool {
 // IsCode returns true when this get network of network pool o k response a status code equal to that given
 func (o *GetNetworkOfNetworkPoolOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get network of network pool o k response
+func (o *GetNetworkOfNetworkPoolOK) Code() int {
+	return 200
 }
 
 func (o *GetNetworkOfNetworkPoolOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetNetworkOfNetworkPoolNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get network of network pool not found response
+func (o *GetNetworkOfNetworkPoolNotFound) Code() int {
+	return 404
+}
+
 func (o *GetNetworkOfNetworkPoolNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/network-pools/{id}/networks/{networkId}][%d] getNetworkOfNetworkPoolNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetNetworkOfNetworkPoolInternalServerError) IsServerError() bool {
 // IsCode returns true when this get network of network pool internal server error response a status code equal to that given
 func (o *GetNetworkOfNetworkPoolInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get network of network pool internal server error response
+func (o *GetNetworkOfNetworkPoolInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetNetworkOfNetworkPoolInternalServerError) Error() string {

@@ -41,9 +41,11 @@ type ClientService interface {
 
 	DeleteIdentitySource(params *DeleteIdentitySourceParams, opts ...ClientOption) (*DeleteIdentitySourceOK, *DeleteIdentitySourceNoContent, error)
 
-	GetAllIdps(params *GetAllIdpsParams, opts ...ClientOption) (*GetAllIdpsOK, error)
+	GenerateSyncClientToken(params *GenerateSyncClientTokenParams, opts ...ClientOption) (*GenerateSyncClientTokenOK, error)
 
 	GetIdentityProviderByID(params *GetIdentityProviderByIDParams, opts ...ClientOption) (*GetIdentityProviderByIDOK, error)
+
+	GetIdentityProviders(params *GetIdentityProvidersParams, opts ...ClientOption) (*GetIdentityProvidersOK, error)
 
 	UpdateEmbeddedIdentitySource(params *UpdateEmbeddedIdentitySourceParams, opts ...ClientOption) (*UpdateEmbeddedIdentitySourceOK, *UpdateEmbeddedIdentitySourceNoContent, error)
 
@@ -53,7 +55,7 @@ type ClientService interface {
 }
 
 /*
-AddEmbeddedIdentitySource adds an embedded identity source
+AddEmbeddedIdentitySource adds a new identity source to the embedded identity provider
 
 Add an identity source to an embedded IDP by id, if it exists
 */
@@ -94,9 +96,9 @@ func (a *Client) AddEmbeddedIdentitySource(params *AddEmbeddedIdentitySourcePara
 }
 
 /*
-AddExternalIdentityProvider adds an external identity provider
+AddExternalIdentityProvider adds a new external identity provider
 
-Add an External Identity Provider
+Add a new external identity provider
 */
 func (a *Client) AddExternalIdentityProvider(params *AddExternalIdentityProviderParams, opts ...ClientOption) (*AddExternalIdentityProviderOK, *AddExternalIdentityProviderCreated, error) {
 	// TODO: Validate the params before sending
@@ -135,7 +137,7 @@ func (a *Client) AddExternalIdentityProvider(params *AddExternalIdentityProvider
 }
 
 /*
-DeleteExternalIdentityProvider deletes an external identity provider
+DeleteExternalIdentityProvider removes an identity provider
 
 Delete an Identity Provider by its identifier, if it exists
 */
@@ -217,24 +219,24 @@ func (a *Client) DeleteIdentitySource(params *DeleteIdentitySourceParams, opts .
 }
 
 /*
-GetAllIdps gets all identity providers
+GenerateSyncClientToken generates new sync client token
 
-Get a list of all Identity Providers
+Generates a new sync client token
 */
-func (a *Client) GetAllIdps(params *GetAllIdpsParams, opts ...ClientOption) (*GetAllIdpsOK, error) {
+func (a *Client) GenerateSyncClientToken(params *GenerateSyncClientTokenParams, opts ...ClientOption) (*GenerateSyncClientTokenOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllIdpsParams()
+		params = NewGenerateSyncClientTokenParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllIdps",
-		Method:             "GET",
-		PathPattern:        "/v1/identity-providers",
-		ProducesMediaTypes: []string{"application/json"},
+		ID:                 "generateSyncClientToken",
+		Method:             "POST",
+		PathPattern:        "/v1/identity-providers/{id}/sync-client",
+		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllIdpsReader{formats: a.formats},
+		Reader:             &GenerateSyncClientTokenReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -246,20 +248,20 @@ func (a *Client) GetAllIdps(params *GetAllIdpsParams, opts ...ClientOption) (*Ge
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllIdpsOK)
+	success, ok := result.(*GenerateSyncClientTokenOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllIdps: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for generateSyncClientToken: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetIdentityProviderByID gets identity provider by Id
+GetIdentityProviderByID gets an identity provider by its id
 
-Get a specific Identity Provider using it's Id
+Get a specific identity irovider using its id
 */
 func (a *Client) GetIdentityProviderByID(params *GetIdentityProviderByIDParams, opts ...ClientOption) (*GetIdentityProviderByIDOK, error) {
 	// TODO: Validate the params before sending
@@ -297,7 +299,47 @@ func (a *Client) GetIdentityProviderByID(params *GetIdentityProviderByIDParams, 
 }
 
 /*
-UpdateEmbeddedIdentitySource updates an embedded identity source
+GetIdentityProviders gets all identity providers
+
+Get a list of all identity providers
+*/
+func (a *Client) GetIdentityProviders(params *GetIdentityProvidersParams, opts ...ClientOption) (*GetIdentityProvidersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIdentityProvidersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getIdentityProviders",
+		Method:             "GET",
+		PathPattern:        "/v1/identity-providers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIdentityProvidersReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIdentityProvidersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getIdentityProviders: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateEmbeddedIdentitySource updates an identity source
 
 Update the identity source associated with the embedded IDP by name, if it exists
 */
@@ -338,7 +380,7 @@ func (a *Client) UpdateEmbeddedIdentitySource(params *UpdateEmbeddedIdentitySour
 }
 
 /*
-UpdateExternalIdentityProvider updates an external identity provider
+UpdateExternalIdentityProvider updates an identity provider
 
 Update the identity provider by its identifier, if it exists
 */

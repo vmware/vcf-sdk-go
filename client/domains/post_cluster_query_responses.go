@@ -38,6 +38,12 @@ func (o *PostClusterQueryReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPostClusterQueryNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPostClusterQueryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -45,7 +51,7 @@ func (o *PostClusterQueryReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries] postClusterQuery", response, response.Code())
 	}
 }
 
@@ -86,6 +92,11 @@ func (o *PostClusterQueryOK) IsServerError() bool {
 // IsCode returns true when this post cluster query o k response a status code equal to that given
 func (o *PostClusterQueryOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the post cluster query o k response
+func (o *PostClusterQueryOK) Code() int {
+	return 200
 }
 
 func (o *PostClusterQueryOK) Error() string {
@@ -151,6 +162,11 @@ func (o *PostClusterQueryBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the post cluster query bad request response
+func (o *PostClusterQueryBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostClusterQueryBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryBadRequest  %+v", 400, o.Payload)
 }
@@ -164,6 +180,74 @@ func (o *PostClusterQueryBadRequest) GetPayload() *models.Error {
 }
 
 func (o *PostClusterQueryBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPostClusterQueryNotFound creates a PostClusterQueryNotFound with default headers values
+func NewPostClusterQueryNotFound() *PostClusterQueryNotFound {
+	return &PostClusterQueryNotFound{}
+}
+
+/*
+PostClusterQueryNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PostClusterQueryNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this post cluster query not found response has a 2xx status code
+func (o *PostClusterQueryNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post cluster query not found response has a 3xx status code
+func (o *PostClusterQueryNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post cluster query not found response has a 4xx status code
+func (o *PostClusterQueryNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post cluster query not found response has a 5xx status code
+func (o *PostClusterQueryNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post cluster query not found response a status code equal to that given
+func (o *PostClusterQueryNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+// Code gets the status code for the post cluster query not found response
+func (o *PostClusterQueryNotFound) Code() int {
+	return 404
+}
+
+func (o *PostClusterQueryNotFound) Error() string {
+	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostClusterQueryNotFound) String() string {
+	return fmt.Sprintf("[POST /v1/domains/{domainId}/clusters/{clusterName}/queries][%d] postClusterQueryNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostClusterQueryNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PostClusterQueryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -212,6 +296,11 @@ func (o *PostClusterQueryInternalServerError) IsServerError() bool {
 // IsCode returns true when this post cluster query internal server error response a status code equal to that given
 func (o *PostClusterQueryInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the post cluster query internal server error response
+func (o *PostClusterQueryInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PostClusterQueryInternalServerError) Error() string {

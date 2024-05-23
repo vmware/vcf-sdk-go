@@ -122,6 +122,11 @@ func (m *IPAddressPoolSubnetSpec) contextValidateIPAddressPoolRanges(ctx context
 	for i := 0; i < len(m.IPAddressPoolRanges); i++ {
 
 		if m.IPAddressPoolRanges[i] != nil {
+
+			if swag.IsZero(m.IPAddressPoolRanges[i]) { // not required
+				return nil
+			}
+
 			if err := m.IPAddressPoolRanges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ipAddressPoolRanges" + "." + strconv.Itoa(i))

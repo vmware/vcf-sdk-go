@@ -45,7 +45,7 @@ func (o *GetCertificateAuthorityByIDReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/certificate-authorities/{id}] getCertificateAuthorityById", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetCertificateAuthorityByIDOK) IsServerError() bool {
 // IsCode returns true when this get certificate authority by Id o k response a status code equal to that given
 func (o *GetCertificateAuthorityByIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get certificate authority by Id o k response
+func (o *GetCertificateAuthorityByIDOK) Code() int {
+	return 200
 }
 
 func (o *GetCertificateAuthorityByIDOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetCertificateAuthorityByIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get certificate authority by Id not found response
+func (o *GetCertificateAuthorityByIDNotFound) Code() int {
+	return 404
+}
+
 func (o *GetCertificateAuthorityByIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/certificate-authorities/{id}][%d] getCertificateAuthorityByIdNotFound  %+v", 404, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetCertificateAuthorityByIDInternalServerError) IsServerError() bool {
 // IsCode returns true when this get certificate authority by Id internal server error response a status code equal to that given
 func (o *GetCertificateAuthorityByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get certificate authority by Id internal server error response
+func (o *GetCertificateAuthorityByIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetCertificateAuthorityByIDInternalServerError) Error() string {

@@ -24,11 +24,23 @@ type ClusterUpdateSpec struct {
 	// Parameters required to perform cluster compaction, optional otherwise
 	ClusterCompactionSpec *ClusterCompactionSpec `json:"clusterCompactionSpec,omitempty"`
 
+	// Parameters required to check complaince of a cluster before transition to vSphere Lifecycle Manager Images, optional otherwise
+	ClusterComplianceCheckSpec *ClusterComplianceCheckSpec `json:"clusterComplianceCheckSpec,omitempty"`
+
+	// Parameters required to cleanup compliance results of a cluster before transition to vSphere Lifecycle Manager Images, optional otherwise
+	ClusterComplianceCleanupSpec ClusterComplianceCleanupSpec `json:"clusterComplianceCleanupSpec,omitempty"`
+
 	// Parameters required to perform cluster expansion, optional otherwise
 	ClusterExpansionSpec *ClusterExpansionSpec `json:"clusterExpansionSpec,omitempty"`
 
+	// Parameters required to remediate a cluster after transition to vSphere Lifecycle Manager Images, optional otherwise
+	ClusterRemediationSpec ClusterRemediationSpec `json:"clusterRemediationSpec,omitempty"`
+
 	// Parameters required to perform Stretch operation on cluster, optional otherwise
 	ClusterStretchSpec *ClusterStretchSpec `json:"clusterStretchSpec,omitempty"`
+
+	// Parameters required to transition a cluster to vSphere Lifecycle Manager Images, optional otherwise
+	ClusterTransitionSpec ClusterTransitionSpec `json:"clusterTransitionSpec,omitempty"`
 
 	// Parameters required to perform Unstretch operation on cluster, optional otherwise
 	ClusterUnstretchSpec ClusterUnstretchSpec `json:"clusterUnstretchSpec,omitempty"`
@@ -48,6 +60,10 @@ func (m *ClusterUpdateSpec) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateClusterCompactionSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClusterComplianceCheckSpec(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -76,6 +92,25 @@ func (m *ClusterUpdateSpec) validateClusterCompactionSpec(formats strfmt.Registr
 				return ve.ValidateName("clusterCompactionSpec")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("clusterCompactionSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ClusterUpdateSpec) validateClusterComplianceCheckSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.ClusterComplianceCheckSpec) { // not required
+		return nil
+	}
+
+	if m.ClusterComplianceCheckSpec != nil {
+		if err := m.ClusterComplianceCheckSpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusterComplianceCheckSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusterComplianceCheckSpec")
 			}
 			return err
 		}
@@ -130,6 +165,10 @@ func (m *ClusterUpdateSpec) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateClusterComplianceCheckSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateClusterExpansionSpec(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -147,6 +186,11 @@ func (m *ClusterUpdateSpec) ContextValidate(ctx context.Context, formats strfmt.
 func (m *ClusterUpdateSpec) contextValidateClusterCompactionSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterCompactionSpec != nil {
+
+		if swag.IsZero(m.ClusterCompactionSpec) { // not required
+			return nil
+		}
+
 		if err := m.ClusterCompactionSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterCompactionSpec")
@@ -160,9 +204,35 @@ func (m *ClusterUpdateSpec) contextValidateClusterCompactionSpec(ctx context.Con
 	return nil
 }
 
+func (m *ClusterUpdateSpec) contextValidateClusterComplianceCheckSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ClusterComplianceCheckSpec != nil {
+
+		if swag.IsZero(m.ClusterComplianceCheckSpec) { // not required
+			return nil
+		}
+
+		if err := m.ClusterComplianceCheckSpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("clusterComplianceCheckSpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("clusterComplianceCheckSpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ClusterUpdateSpec) contextValidateClusterExpansionSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterExpansionSpec != nil {
+
+		if swag.IsZero(m.ClusterExpansionSpec) { // not required
+			return nil
+		}
+
 		if err := m.ClusterExpansionSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterExpansionSpec")
@@ -179,6 +249,11 @@ func (m *ClusterUpdateSpec) contextValidateClusterExpansionSpec(ctx context.Cont
 func (m *ClusterUpdateSpec) contextValidateClusterStretchSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterStretchSpec != nil {
+
+		if swag.IsZero(m.ClusterStretchSpec) { // not required
+			return nil
+		}
+
 		if err := m.ClusterStretchSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterStretchSpec")

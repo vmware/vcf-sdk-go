@@ -132,6 +132,11 @@ func (m *CertificateValidationTask) contextValidateValidations(ctx context.Conte
 	for i := 0; i < len(m.Validations); i++ {
 
 		if m.Validations[i] != nil {
+
+			if swag.IsZero(m.Validations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Validations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("validations" + "." + strconv.Itoa(i))

@@ -57,7 +57,7 @@ func (o *RemoveDatastoreFromClusterReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/clusters/{id}/datastores/{datastoreId}] removeDatastoreFromCluster", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *RemoveDatastoreFromClusterOK) IsServerError() bool {
 // IsCode returns true when this remove datastore from cluster o k response a status code equal to that given
 func (o *RemoveDatastoreFromClusterOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the remove datastore from cluster o k response
+func (o *RemoveDatastoreFromClusterOK) Code() int {
+	return 200
 }
 
 func (o *RemoveDatastoreFromClusterOK) Error() string {
@@ -163,6 +168,11 @@ func (o *RemoveDatastoreFromClusterAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the remove datastore from cluster accepted response
+func (o *RemoveDatastoreFromClusterAccepted) Code() int {
+	return 202
+}
+
 func (o *RemoveDatastoreFromClusterAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /v1/clusters/{id}/datastores/{datastoreId}][%d] removeDatastoreFromClusterAccepted  %+v", 202, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *RemoveDatastoreFromClusterBadRequest) IsServerError() bool {
 // IsCode returns true when this remove datastore from cluster bad request response a status code equal to that given
 func (o *RemoveDatastoreFromClusterBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the remove datastore from cluster bad request response
+func (o *RemoveDatastoreFromClusterBadRequest) Code() int {
+	return 400
 }
 
 func (o *RemoveDatastoreFromClusterBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *RemoveDatastoreFromClusterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the remove datastore from cluster not found response
+func (o *RemoveDatastoreFromClusterNotFound) Code() int {
+	return 404
+}
+
 func (o *RemoveDatastoreFromClusterNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /v1/clusters/{id}/datastores/{datastoreId}][%d] removeDatastoreFromClusterNotFound  %+v", 404, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *RemoveDatastoreFromClusterInternalServerError) IsServerError() bool {
 // IsCode returns true when this remove datastore from cluster internal server error response a status code equal to that given
 func (o *RemoveDatastoreFromClusterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the remove datastore from cluster internal server error response
+func (o *RemoveDatastoreFromClusterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RemoveDatastoreFromClusterInternalServerError) Error() string {

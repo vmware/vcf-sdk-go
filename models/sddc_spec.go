@@ -27,9 +27,6 @@ type SDDCSpec struct {
 	// Example: true
 	CEIPEnabled bool `json:"ceipEnabled,omitempty"`
 
-	// Passphrase for the vCenter / NSX certificates
-	CertificatesPassphrase string `json:"certificatesPassphrase,omitempty"`
-
 	// Cluster Spec
 	// Required: true
 	ClusterSpec *SDDCClusterSpec `json:"clusterSpec"`
@@ -68,19 +65,18 @@ type SDDCSpec struct {
 	// Required: true
 	NetworkSpecs []*SDDCNetworkSpec `json:"networkSpecs"`
 
-	// NSX-T Spec
+	// NSX Spec
 	NSXTSpec *SDDCNSXTSpec `json:"nsxtSpec,omitempty"`
 
 	// List of NTP servers
 	// Required: true
 	NtpServers []string `json:"ntpServers"`
 
+	// Proxy Spec
+	ProxySpec *ProxySpec `json:"proxySpec,omitempty"`
+
 	// PSC VM spec
 	PscSpecs []*PscSpec `json:"pscSpecs"`
-
-	// Remote site spec.
-	// This field is deprecated and will be removed in a future release.
-	RemoteSiteSpec *RemoteSiteSpec `json:"remoteSiteSpec,omitempty"`
 
 	// Client string that identifies an SDDC by name or instance name. Used for management domain name. Can contain only letters, numbers and the following symbols: '-'.
 	// Example: sfo01-m01
@@ -95,14 +91,10 @@ type SDDCSpec struct {
 	// Security spec
 	SecuritySpec *SecuritySpec `json:"securitySpec,omitempty"`
 
-	// Flag indicating whether cleanup vSAN should be ran
-	// Example: false
-	ShouldCleanupVSAN bool `json:"shouldCleanupVsan,omitempty"`
-
 	// Skip ESXi thumbprint validation
 	SkipEsxThumbprintValidation bool `json:"skipEsxThumbprintValidation,omitempty"`
 
-	// Skip VSAN / VMOTION networks gateway connectivity validation
+	// Skip networks gateway connectivity validation
 	SkipGatewayPingValidation bool `json:"skipGatewayPingValidation,omitempty"`
 
 	// Name of the task to execute
@@ -153,11 +145,11 @@ func (m *SDDCSpec) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validatePscSpecs(formats); err != nil {
+	if err := m.validateProxySpec(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateRemoteSiteSpec(formats); err != nil {
+	if err := m.validatePscSpecs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -344,6 +336,25 @@ func (m *SDDCSpec) validateNtpServers(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SDDCSpec) validateProxySpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProxySpec) { // not required
+		return nil
+	}
+
+	if m.ProxySpec != nil {
+		if err := m.ProxySpec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("proxySpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("proxySpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *SDDCSpec) validatePscSpecs(formats strfmt.Registry) error {
 	if swag.IsZero(m.PscSpecs) { // not required
 		return nil
@@ -365,25 +376,6 @@ func (m *SDDCSpec) validatePscSpecs(formats strfmt.Registry) error {
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *SDDCSpec) validateRemoteSiteSpec(formats strfmt.Registry) error {
-	if swag.IsZero(m.RemoteSiteSpec) { // not required
-		return nil
-	}
-
-	if m.RemoteSiteSpec != nil {
-		if err := m.RemoteSiteSpec.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("remoteSiteSpec")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("remoteSiteSpec")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -539,11 +531,11 @@ func (m *SDDCSpec) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
-	if err := m.contextValidatePscSpecs(ctx, formats); err != nil {
+	if err := m.contextValidateProxySpec(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateRemoteSiteSpec(ctx, formats); err != nil {
+	if err := m.contextValidatePscSpecs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -576,6 +568,7 @@ func (m *SDDCSpec) ContextValidate(ctx context.Context, formats strfmt.Registry)
 func (m *SDDCSpec) contextValidateClusterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ClusterSpec != nil {
+
 		if err := m.ClusterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("clusterSpec")
@@ -592,6 +585,7 @@ func (m *SDDCSpec) contextValidateClusterSpec(ctx context.Context, formats strfm
 func (m *SDDCSpec) contextValidateDNSSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DNSSpec != nil {
+
 		if err := m.DNSSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dnsSpec")
@@ -610,6 +604,11 @@ func (m *SDDCSpec) contextValidateDvsSpecs(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.DvsSpecs); i++ {
 
 		if m.DvsSpecs[i] != nil {
+
+			if swag.IsZero(m.DvsSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.DvsSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dvsSpecs" + "." + strconv.Itoa(i))
@@ -630,6 +629,11 @@ func (m *SDDCSpec) contextValidateHostSpecs(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.HostSpecs); i++ {
 
 		if m.HostSpecs[i] != nil {
+
+			if swag.IsZero(m.HostSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.HostSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("hostSpecs" + "." + strconv.Itoa(i))
@@ -650,6 +654,11 @@ func (m *SDDCSpec) contextValidateNetworkSpecs(ctx context.Context, formats strf
 	for i := 0; i < len(m.NetworkSpecs); i++ {
 
 		if m.NetworkSpecs[i] != nil {
+
+			if swag.IsZero(m.NetworkSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NetworkSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("networkSpecs" + "." + strconv.Itoa(i))
@@ -668,6 +677,11 @@ func (m *SDDCSpec) contextValidateNetworkSpecs(ctx context.Context, formats strf
 func (m *SDDCSpec) contextValidateNSXTSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NSXTSpec != nil {
+
+		if swag.IsZero(m.NSXTSpec) { // not required
+			return nil
+		}
+
 		if err := m.NSXTSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxtSpec")
@@ -681,11 +695,37 @@ func (m *SDDCSpec) contextValidateNSXTSpec(ctx context.Context, formats strfmt.R
 	return nil
 }
 
+func (m *SDDCSpec) contextValidateProxySpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProxySpec != nil {
+
+		if swag.IsZero(m.ProxySpec) { // not required
+			return nil
+		}
+
+		if err := m.ProxySpec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("proxySpec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("proxySpec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *SDDCSpec) contextValidatePscSpecs(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.PscSpecs); i++ {
 
 		if m.PscSpecs[i] != nil {
+
+			if swag.IsZero(m.PscSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.PscSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("pscSpecs" + "." + strconv.Itoa(i))
@@ -701,25 +741,14 @@ func (m *SDDCSpec) contextValidatePscSpecs(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *SDDCSpec) contextValidateRemoteSiteSpec(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.RemoteSiteSpec != nil {
-		if err := m.RemoteSiteSpec.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("remoteSiteSpec")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("remoteSiteSpec")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *SDDCSpec) contextValidateSDDCManagerSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SDDCManagerSpec != nil {
+
+		if swag.IsZero(m.SDDCManagerSpec) { // not required
+			return nil
+		}
+
 		if err := m.SDDCManagerSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sddcManagerSpec")
@@ -736,6 +765,11 @@ func (m *SDDCSpec) contextValidateSDDCManagerSpec(ctx context.Context, formats s
 func (m *SDDCSpec) contextValidateSecuritySpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SecuritySpec != nil {
+
+		if swag.IsZero(m.SecuritySpec) { // not required
+			return nil
+		}
+
 		if err := m.SecuritySpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("securitySpec")
@@ -752,6 +786,7 @@ func (m *SDDCSpec) contextValidateSecuritySpec(ctx context.Context, formats strf
 func (m *SDDCSpec) contextValidateVcenterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VcenterSpec != nil {
+
 		if err := m.VcenterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vcenterSpec")
@@ -768,6 +803,11 @@ func (m *SDDCSpec) contextValidateVcenterSpec(ctx context.Context, formats strfm
 func (m *SDDCSpec) contextValidateVSANSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VSANSpec != nil {
+
+		if swag.IsZero(m.VSANSpec) { // not required
+			return nil
+		}
+
 		if err := m.VSANSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vsanSpec")
@@ -784,6 +824,11 @@ func (m *SDDCSpec) contextValidateVSANSpec(ctx context.Context, formats strfmt.R
 func (m *SDDCSpec) contextValidateVxManagerSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.VxManagerSpec != nil {
+
+		if swag.IsZero(m.VxManagerSpec) { // not required
+			return nil
+		}
+
 		if err := m.VxManagerSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vxManagerSpec")

@@ -51,7 +51,7 @@ func (o *UploadPersonalityReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/personalities] uploadPersonality", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *UploadPersonalityOK) IsServerError() bool {
 // IsCode returns true when this upload personality o k response a status code equal to that given
 func (o *UploadPersonalityOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the upload personality o k response
+func (o *UploadPersonalityOK) Code() int {
+	return 200
 }
 
 func (o *UploadPersonalityOK) Error() string {
@@ -157,6 +162,11 @@ func (o *UploadPersonalityAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the upload personality accepted response
+func (o *UploadPersonalityAccepted) Code() int {
+	return 202
+}
+
 func (o *UploadPersonalityAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/personalities][%d] uploadPersonalityAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UploadPersonalityBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the upload personality bad request response
+func (o *UploadPersonalityBadRequest) Code() int {
+	return 400
+}
+
 func (o *UploadPersonalityBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/personalities][%d] uploadPersonalityBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *UploadPersonalityInternalServerError) IsServerError() bool {
 // IsCode returns true when this upload personality internal server error response a status code equal to that given
 func (o *UploadPersonalityInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the upload personality internal server error response
+func (o *UploadPersonalityInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UploadPersonalityInternalServerError) Error() string {

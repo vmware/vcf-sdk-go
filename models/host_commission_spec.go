@@ -44,7 +44,7 @@ type HostCommissionSpec struct {
 	SSLThumbprint string `json:"sslThumbprint,omitempty"`
 
 	// Storage Type
-	// Example: One among: VSAN, VSAN_REMOTE, NFS, VMFS_FC, VVOL
+	// Example: One among: VSAN, VSAN_ESA, VSAN_REMOTE, NFS, VMFS_FC, VVOL
 	// Required: true
 	StorageType *string `json:"storageType"`
 

@@ -33,9 +33,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetNSXTUpgradeResources(params *GetNSXTUpgradeResourcesParams, opts ...ClientOption) (*GetNSXTUpgradeResourcesOK, error)
+	GetNsxUpgradeResources(params *GetNsxUpgradeResourcesParams, opts ...ClientOption) (*GetNsxUpgradeResourcesOK, error)
 
 	GetUpgradables(params *GetUpgradablesParams, opts ...ClientOption) (*GetUpgradablesOK, error)
+
+	GetUpgradablesAndResourceErrors(params *GetUpgradablesAndResourceErrorsParams, opts ...ClientOption) (*GetUpgradablesAndResourceErrorsOK, error)
 
 	GetUpgradablesByDomain(params *GetUpgradablesByDomainParams, opts ...ClientOption) (*GetUpgradablesByDomainOK, error)
 
@@ -45,24 +47,24 @@ type ClientService interface {
 }
 
 /*
-GetNSXTUpgradeResources gets NSXT upgradable resources
+GetNsxUpgradeResources retrieves a list of all upgradable n s x resources for a domain by its ID
 
-Get the list NSXT upgradable reosurce with resource metadata info
+Get the list NSX upgradable reosurce with resource metadata info
 */
-func (a *Client) GetNSXTUpgradeResources(params *GetNSXTUpgradeResourcesParams, opts ...ClientOption) (*GetNSXTUpgradeResourcesOK, error) {
+func (a *Client) GetNsxUpgradeResources(params *GetNsxUpgradeResourcesParams, opts ...ClientOption) (*GetNsxUpgradeResourcesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNSXTUpgradeResourcesParams()
+		params = NewGetNsxUpgradeResourcesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNsxtUpgradeResources",
+		ID:                 "getNsxUpgradeResources",
 		Method:             "GET",
 		PathPattern:        "/v1/upgradables/domains/{domainId}/nsxt",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNSXTUpgradeResourcesReader{formats: a.formats},
+		Reader:             &GetNsxUpgradeResourcesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -74,18 +76,18 @@ func (a *Client) GetNSXTUpgradeResources(params *GetNSXTUpgradeResourcesParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNSXTUpgradeResourcesOK)
+	success, ok := result.(*GetNsxUpgradeResourcesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNsxtUpgradeResources: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getNsxUpgradeResources: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetUpgradables gets the upgradables
+GetUpgradables retrieves a list of all upgradable resources
 
 Fetches the list of Upgradables in the System. Only one Upgradable becomes AVAILABLE for Upgrade. The Upgradables provides information that can be use for Precheck API and also in the actual Upgrade API call.
 */
@@ -125,7 +127,47 @@ func (a *Client) GetUpgradables(params *GetUpgradablesParams, opts ...ClientOpti
 }
 
 /*
-GetUpgradablesByDomain gets the upgradables
+GetUpgradablesAndResourceErrors gets the upgradables and resource errors
+
+Fetches a class containing the list of Upgradables and list of Resource Upgradable Errors in the System. Only one Upgradable becomes AVAILABLE for Upgrade. The Upgradables provides information that can be use for Precheck API and also in the actual Upgrade API call. Resource Upgradable Errors are the errors collected related to upgrades for corresponding resources.
+*/
+func (a *Client) GetUpgradablesAndResourceErrors(params *GetUpgradablesAndResourceErrorsParams, opts ...ClientOption) (*GetUpgradablesAndResourceErrorsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetUpgradablesAndResourceErrorsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getUpgradablesAndResourceErrors",
+		Method:             "GET",
+		PathPattern:        "/v1/system/upgradables/compliance",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetUpgradablesAndResourceErrorsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetUpgradablesAndResourceErrorsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getUpgradablesAndResourceErrors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetUpgradablesByDomain retrieves a list of all upgradable resources for a domain by its ID
 
 Fetches the list of Upgradables for a given domain. If a target version is provided, Upgradables that are required for given target version become Available. The Upgradables providesinformation that can be use for Precheck API and also in the actual Upgrade API call.This API is used only for management domain, for all cases please use v1/system/upgradables.
 */
@@ -165,7 +207,7 @@ func (a *Client) GetUpgradablesByDomain(params *GetUpgradablesByDomainParams, op
 }
 
 /*
-GetUpgradablesClusters gets registered and available h s m details along with software details
+GetUpgradablesClusters retrieves a list of upgradable packages details from h s m for a domain by its ID
 
 Fetches the list of available hardware support managers and configured hardware support managers for the give resource along with the hardware support packages and Software details.
 */

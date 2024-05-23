@@ -78,6 +78,11 @@ func (m *PageOfobject) ContextValidate(ctx context.Context, formats strfmt.Regis
 func (m *PageOfobject) contextValidatePageMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PageMetadata != nil {
+
+		if swag.IsZero(m.PageMetadata) { // not required
+			return nil
+		}
+
 		if err := m.PageMetadata.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pageMetadata")

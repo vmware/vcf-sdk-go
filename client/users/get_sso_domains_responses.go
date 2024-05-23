@@ -51,7 +51,7 @@ func (o *GetSSODomainsReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/sso-domains] getSSODomains", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetSSODomainsOK) IsServerError() bool {
 // IsCode returns true when this get Sso domains o k response a status code equal to that given
 func (o *GetSSODomainsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get Sso domains o k response
+func (o *GetSSODomainsOK) Code() int {
+	return 200
 }
 
 func (o *GetSSODomainsOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetSSODomainsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the get Sso domains unauthorized response
+func (o *GetSSODomainsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GetSSODomainsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains][%d] getSsoDomainsUnauthorized  %+v", 401, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetSSODomainsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the get Sso domains forbidden response
+func (o *GetSSODomainsForbidden) Code() int {
+	return 403
+}
+
 func (o *GetSSODomainsForbidden) Error() string {
 	return fmt.Sprintf("[GET /v1/sso-domains][%d] getSsoDomainsForbidden  %+v", 403, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetSSODomainsInternalServerError) IsServerError() bool {
 // IsCode returns true when this get Sso domains internal server error response a status code equal to that given
 func (o *GetSSODomainsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get Sso domains internal server error response
+func (o *GetSSODomainsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetSSODomainsInternalServerError) Error() string {

@@ -22,7 +22,7 @@ import (
 // swagger:model Portgroup
 type Portgroup struct {
 
-	// List of active uplinks. This is only supported for VxRail.
+	// List of active uplinks
 	ActiveUplinks []string `json:"activeUplinks"`
 
 	// Port group name
@@ -33,11 +33,11 @@ type Portgroup struct {
 	// Example: One among: STATIC, DYNAMIC, EPHEMERAL
 	PortBindingType string `json:"portBindingType,omitempty"`
 
-	// List of standby uplinks. This is only supported for VxRail.
+	// List of standby uplinks
 	StandbyUplinks []string `json:"standbyUplinks"`
 
 	// Port group transport type
-	// Example: One among: VSAN, VMOTION, MANAGEMENT, PUBLIC, NFS, VREALIZE, ISCSI, EDGE_INFRA_OVERLAY_UPLINK
+	// Example: One among: VSAN, VMOTION, MANAGEMENT, PUBLIC, NFS, VREALIZE, ISCSI, EDGE_INFRA_OVERLAY_UPLINK, VM_MANAGEMENT
 	// Required: true
 	TransportType *string `json:"transportType"`
 

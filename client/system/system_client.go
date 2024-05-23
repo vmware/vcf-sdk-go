@@ -41,7 +41,7 @@ type ClientService interface {
 
 	GetNtpConfiguration(params *GetNtpConfigurationParams, opts ...ClientOption) (*GetNtpConfigurationOK, error)
 
-	GetSystem(params *GetSystemParams, opts ...ClientOption) (*GetSystemOK, error)
+	GetSystemConfiguration(params *GetSystemConfigurationParams, opts ...ClientOption) (*GetSystemConfigurationOK, error)
 
 	GetValidationOfDNSConfiguration(params *GetValidationOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationOfDNSConfigurationOK, error)
 
@@ -51,7 +51,7 @@ type ClientService interface {
 
 	GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationsOfNtpConfigurationOK, error)
 
-	PatchSystem(params *PatchSystemParams, opts ...ClientOption) (*PatchSystemOK, error)
+	UpdateSystemConfiguration(params *UpdateSystemConfigurationParams, opts ...ClientOption) (*UpdateSystemConfigurationOK, error)
 
 	ValidateDNSConfiguration(params *ValidateDNSConfigurationParams, opts ...ClientOption) (*ValidateDNSConfigurationOK, *ValidateDNSConfigurationAccepted, error)
 
@@ -61,7 +61,7 @@ type ClientService interface {
 }
 
 /*
-ConfigureDNS configures the Dns server
+ConfigureDNS updates the DNS configuration
 */
 func (a *Client) ConfigureDNS(params *ConfigureDNSParams, opts ...ClientOption) (*ConfigureDNSOK, *ConfigureDNSAccepted, error) {
 	// TODO: Validate the params before sending
@@ -100,7 +100,7 @@ func (a *Client) ConfigureDNS(params *ConfigureDNSParams, opts ...ClientOption) 
 }
 
 /*
-ConfigureNtp configures the ntp server
+ConfigureNtp updates the n t p configuration
 */
 func (a *Client) ConfigureNtp(params *ConfigureNtpParams, opts ...ClientOption) (*ConfigureNtpOK, *ConfigureNtpAccepted, error) {
 	// TODO: Validate the params before sending
@@ -139,7 +139,7 @@ func (a *Client) ConfigureNtp(params *ConfigureNtpParams, opts ...ClientOption) 
 }
 
 /*
-GetDNSConfiguration gets the current Dns configuration
+GetDNSConfiguration retrieves the DNS configuration
 */
 func (a *Client) GetDNSConfiguration(params *GetDNSConfigurationParams, opts ...ClientOption) (*GetDNSConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +177,7 @@ func (a *Client) GetDNSConfiguration(params *GetDNSConfigurationParams, opts ...
 }
 
 /*
-GetNtpConfiguration gets the current ntp configuration
+GetNtpConfiguration retrieves the n t p configuration
 */
 func (a *Client) GetNtpConfiguration(params *GetNtpConfigurationParams, opts ...ClientOption) (*GetNtpConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -215,24 +215,24 @@ func (a *Client) GetNtpConfiguration(params *GetNtpConfigurationParams, opts ...
 }
 
 /*
-GetSystem gets the system
+GetSystemConfiguration retrieves the system configuration
 
-Get the system
+Retrieve the system configuration
 */
-func (a *Client) GetSystem(params *GetSystemParams, opts ...ClientOption) (*GetSystemOK, error) {
+func (a *Client) GetSystemConfiguration(params *GetSystemConfigurationParams, opts ...ClientOption) (*GetSystemConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetSystemParams()
+		params = NewGetSystemConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getSystem",
+		ID:                 "getSystemConfiguration",
 		Method:             "GET",
 		PathPattern:        "/v1/system",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetSystemReader{formats: a.formats},
+		Reader:             &GetSystemConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -244,18 +244,18 @@ func (a *Client) GetSystem(params *GetSystemParams, opts ...ClientOption) (*GetS
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetSystemOK)
+	success, ok := result.(*GetSystemConfigurationOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getSystem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getSystemConfiguration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetValidationOfDNSConfiguration gets the status of the validation of the input Dns configuration
+GetValidationOfDNSConfiguration retrieves the results of a DNS configuration validation by its ID
 */
 func (a *Client) GetValidationOfDNSConfiguration(params *GetValidationOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationOfDNSConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -293,7 +293,7 @@ func (a *Client) GetValidationOfDNSConfiguration(params *GetValidationOfDNSConfi
 }
 
 /*
-GetValidationOfNtpConfiguration gets the status of the validation of the input ntp servers to configure new ntp server
+GetValidationOfNtpConfiguration retrieves the results of a n t p configuration validation by its ID
 */
 func (a *Client) GetValidationOfNtpConfiguration(params *GetValidationOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationOfNtpConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -331,7 +331,7 @@ func (a *Client) GetValidationOfNtpConfiguration(params *GetValidationOfNtpConfi
 }
 
 /*
-GetValidationsOfDNSConfiguration gets the validations of the input dns servers to configure new DNS server
+GetValidationsOfDNSConfiguration retrieves a list of DNS configuation validations
 */
 func (a *Client) GetValidationsOfDNSConfiguration(params *GetValidationsOfDNSConfigurationParams, opts ...ClientOption) (*GetValidationsOfDNSConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -369,7 +369,7 @@ func (a *Client) GetValidationsOfDNSConfiguration(params *GetValidationsOfDNSCon
 }
 
 /*
-GetValidationsOfNtpConfiguration gets the validations of the input ntp servers to configure new ntp server
+GetValidationsOfNtpConfiguration retrieves a list of n t p configuation validations
 */
 func (a *Client) GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpConfigurationParams, opts ...ClientOption) (*GetValidationsOfNtpConfigurationOK, error) {
 	// TODO: Validate the params before sending
@@ -407,24 +407,24 @@ func (a *Client) GetValidationsOfNtpConfiguration(params *GetValidationsOfNtpCon
 }
 
 /*
-PatchSystem updates system level configuration
+UpdateSystemConfiguration updates paramters of the system configuration
 
-Update system level configuration
+Updates paramters of the system configuration
 */
-func (a *Client) PatchSystem(params *PatchSystemParams, opts ...ClientOption) (*PatchSystemOK, error) {
+func (a *Client) UpdateSystemConfiguration(params *UpdateSystemConfigurationParams, opts ...ClientOption) (*UpdateSystemConfigurationOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchSystemParams()
+		params = NewUpdateSystemConfigurationParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchSystem",
+		ID:                 "updateSystemConfiguration",
 		Method:             "PATCH",
 		PathPattern:        "/v1/system",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchSystemReader{formats: a.formats},
+		Reader:             &UpdateSystemConfigurationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -436,18 +436,18 @@ func (a *Client) PatchSystem(params *PatchSystemParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchSystemOK)
+	success, ok := result.(*UpdateSystemConfigurationOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchSystem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateSystemConfiguration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-ValidateDNSConfiguration validates Dns configuration input spec and system health before DNS configuration
+ValidateDNSConfiguration performs validation of the Dns configuration specification
 */
 func (a *Client) ValidateDNSConfiguration(params *ValidateDNSConfigurationParams, opts ...ClientOption) (*ValidateDNSConfigurationOK, *ValidateDNSConfigurationAccepted, error) {
 	// TODO: Validate the params before sending
@@ -486,7 +486,7 @@ func (a *Client) ValidateDNSConfiguration(params *ValidateDNSConfigurationParams
 }
 
 /*
-ValidateNtpConfiguration validates ntp configuration input spec and system health before ntp configuration
+ValidateNtpConfiguration performs validation of the ntp configuration specification
 */
 func (a *Client) ValidateNtpConfiguration(params *ValidateNtpConfigurationParams, opts ...ClientOption) (*ValidateNtpConfigurationOK, *ValidateNtpConfigurationAccepted, error) {
 	// TODO: Validate the params before sending

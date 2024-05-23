@@ -51,7 +51,7 @@ func (o *DeleteTrustedCertificateReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/sddc-manager/trusted-certificates/{alias}] deleteTrustedCertificate", response, response.Code())
 	}
 }
 
@@ -91,6 +91,11 @@ func (o *DeleteTrustedCertificateOK) IsServerError() bool {
 // IsCode returns true when this delete trusted certificate o k response a status code equal to that given
 func (o *DeleteTrustedCertificateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete trusted certificate o k response
+func (o *DeleteTrustedCertificateOK) Code() int {
+	return 200
 }
 
 func (o *DeleteTrustedCertificateOK) Error() string {
@@ -144,6 +149,11 @@ func (o *DeleteTrustedCertificateNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the delete trusted certificate no content response
+func (o *DeleteTrustedCertificateNoContent) Code() int {
+	return 204
+}
+
 func (o *DeleteTrustedCertificateNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /v1/sddc-manager/trusted-certificates/{alias}][%d] deleteTrustedCertificateNoContent ", 204)
 }
@@ -193,6 +203,11 @@ func (o *DeleteTrustedCertificateNotFound) IsServerError() bool {
 // IsCode returns true when this delete trusted certificate not found response a status code equal to that given
 func (o *DeleteTrustedCertificateNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the delete trusted certificate not found response
+func (o *DeleteTrustedCertificateNotFound) Code() int {
+	return 404
 }
 
 func (o *DeleteTrustedCertificateNotFound) Error() string {
@@ -245,6 +260,11 @@ func (o *DeleteTrustedCertificateInternalServerError) IsServerError() bool {
 // IsCode returns true when this delete trusted certificate internal server error response a status code equal to that given
 func (o *DeleteTrustedCertificateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete trusted certificate internal server error response
+func (o *DeleteTrustedCertificateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteTrustedCertificateInternalServerError) Error() string {

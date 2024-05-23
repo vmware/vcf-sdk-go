@@ -105,6 +105,11 @@ func (m *SupportBundleOption) ContextValidate(ctx context.Context, formats strfm
 func (m *SupportBundleOption) contextValidateConfig(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Config != nil {
+
+		if swag.IsZero(m.Config) { // not required
+			return nil
+		}
+
 		if err := m.Config.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("config")
@@ -121,6 +126,11 @@ func (m *SupportBundleOption) contextValidateConfig(ctx context.Context, formats
 func (m *SupportBundleOption) contextValidateInclude(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Include != nil {
+
+		if swag.IsZero(m.Include) { // not required
+			return nil
+		}
+
 		if err := m.Include.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("include")

@@ -18,26 +18,26 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ProductNode Spec contains information for a vRealize product node
+// ProductNode Spec contains information for a VMware Aria product node
 //
 // swagger:model ProductNode
 type ProductNode struct {
 
-	// The Fully Qualified Domain Name for the vRealize node (virtual appliance)
+	// The Fully Qualified Domain Name for the VMware Aria node (virtual appliance)
 	// Example: vrops.vrack.vsphere.local
 	// Required: true
 	Fqdn *string `json:"fqdn"`
 
-	// The password for a root user of vRealize appliance
+	// The password for a root user of VMware Aria appliance
 	// Required: true
 	Password *string `json:"password"`
 
-	// The type of the vRealize product node
+	// The type of the VMware Aria product node
 	// Example: MASTER, REPLICA, DATA, REMOTECOLLECTOR, WORKER
 	// Enum: [Oneamong:MASTER REPLICA DATA REMOTECOLLECTOR WORKER PRIMARY SECONDARY]
 	Type string `json:"type,omitempty"`
 
-	// The username for a root user of vRealize appliance
+	// The username for a root user of VMware Aria appliance
 	// Required: true
 	Username *string `json:"username"`
 }

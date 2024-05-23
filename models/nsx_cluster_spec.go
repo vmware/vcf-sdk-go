@@ -21,7 +21,7 @@ import (
 // swagger:model NsxClusterSpec
 type NsxClusterSpec struct {
 
-	// NSX-T spec for the new cluster, required for NSX-T based workload domains, optional otherwise
+	// NSX spec for the new cluster, required for NSX based workload domains, optional otherwise
 	NsxTClusterSpec *NsxTClusterSpec `json:"nsxTClusterSpec,omitempty"`
 }
 
@@ -75,6 +75,11 @@ func (m *NsxClusterSpec) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *NsxClusterSpec) contextValidateNsxTClusterSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NsxTClusterSpec != nil {
+
+		if swag.IsZero(m.NsxTClusterSpec) { // not required
+			return nil
+		}
+
 		if err := m.NsxTClusterSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxTClusterSpec")

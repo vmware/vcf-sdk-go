@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTManagerCluster Nsxt Manager Cluster Upgrade Resource
+// NSXTManagerCluster Nsx Manager Cluster Upgrade Resource
 //
 // swagger:model NsxtManagerCluster
 type NSXTManagerCluster struct {

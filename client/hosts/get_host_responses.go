@@ -51,7 +51,7 @@ func (o *GetHostReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/hosts/{id}] getHost", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *GetHostOK) IsServerError() bool {
 // IsCode returns true when this get host o k response a status code equal to that given
 func (o *GetHostOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get host o k response
+func (o *GetHostOK) Code() int {
+	return 200
 }
 
 func (o *GetHostOK) Error() string {
@@ -157,6 +162,11 @@ func (o *GetHostBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get host bad request response
+func (o *GetHostBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetHostBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}][%d] getHostBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *GetHostNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the get host not found response
+func (o *GetHostNotFound) Code() int {
+	return 404
+}
+
 func (o *GetHostNotFound) Error() string {
 	return fmt.Sprintf("[GET /v1/hosts/{id}][%d] getHostNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *GetHostInternalServerError) IsServerError() bool {
 // IsCode returns true when this get host internal server error response a status code equal to that given
 func (o *GetHostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get host internal server error response
+func (o *GetHostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetHostInternalServerError) Error() string {

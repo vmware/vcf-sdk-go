@@ -30,7 +30,7 @@ type UpgradeSpec struct {
 	// Boolean to represent upgrade will be created in DRAFT mode. This allows to run prechecks before user confirm/commit the upgrade.
 	DraftMode bool `json:"draftMode,omitempty"`
 
-	// Resource Upgrade Specifications for NSXT upgrade
+	// Resource Upgrade Specifications for NSX upgrade
 	NSXTUpgradeUserInputSpecs []*NSXTUpgradeUserInputSpec `json:"nsxtUpgradeUserInputSpecs"`
 
 	// Boolean to represent components will be upgraded in parallel on not
@@ -44,6 +44,9 @@ type UpgradeSpec struct {
 	// Resource Upgrade Specifications
 	// Required: true
 	ResourceUpgradeSpecs []*ResourceUpgradeSpec `json:"resourceUpgradeSpecs"`
+
+	// User Input for vCenter upgrade
+	VcenterUpgradeUserInputSpecs []*VcenterUpgradeUserInputSpec `json:"vcenterUpgradeUserInputSpecs"`
 }
 
 // Validate validates this upgrade spec
@@ -63,6 +66,10 @@ func (m *UpgradeSpec) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateResourceUpgradeSpecs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVcenterUpgradeUserInputSpecs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -143,6 +150,32 @@ func (m *UpgradeSpec) validateResourceUpgradeSpecs(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *UpgradeSpec) validateVcenterUpgradeUserInputSpecs(formats strfmt.Registry) error {
+	if swag.IsZero(m.VcenterUpgradeUserInputSpecs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VcenterUpgradeUserInputSpecs); i++ {
+		if swag.IsZero(m.VcenterUpgradeUserInputSpecs[i]) { // not required
+			continue
+		}
+
+		if m.VcenterUpgradeUserInputSpecs[i] != nil {
+			if err := m.VcenterUpgradeUserInputSpecs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vcenterUpgradeUserInputSpecs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vcenterUpgradeUserInputSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this upgrade spec based on the context it is used
 func (m *UpgradeSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -152,6 +185,10 @@ func (m *UpgradeSpec) ContextValidate(ctx context.Context, formats strfmt.Regist
 	}
 
 	if err := m.contextValidateResourceUpgradeSpecs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVcenterUpgradeUserInputSpecs(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -166,6 +203,11 @@ func (m *UpgradeSpec) contextValidateNSXTUpgradeUserInputSpecs(ctx context.Conte
 	for i := 0; i < len(m.NSXTUpgradeUserInputSpecs); i++ {
 
 		if m.NSXTUpgradeUserInputSpecs[i] != nil {
+
+			if swag.IsZero(m.NSXTUpgradeUserInputSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NSXTUpgradeUserInputSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxtUpgradeUserInputSpecs" + "." + strconv.Itoa(i))
@@ -186,11 +228,41 @@ func (m *UpgradeSpec) contextValidateResourceUpgradeSpecs(ctx context.Context, f
 	for i := 0; i < len(m.ResourceUpgradeSpecs); i++ {
 
 		if m.ResourceUpgradeSpecs[i] != nil {
+
+			if swag.IsZero(m.ResourceUpgradeSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.ResourceUpgradeSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resourceUpgradeSpecs" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("resourceUpgradeSpecs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *UpgradeSpec) contextValidateVcenterUpgradeUserInputSpecs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VcenterUpgradeUserInputSpecs); i++ {
+
+		if m.VcenterUpgradeUserInputSpecs[i] != nil {
+
+			if swag.IsZero(m.VcenterUpgradeUserInputSpecs[i]) { // not required
+				return nil
+			}
+
+			if err := m.VcenterUpgradeUserInputSpecs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vcenterUpgradeUserInputSpecs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vcenterUpgradeUserInputSpecs" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

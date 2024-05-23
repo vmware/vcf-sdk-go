@@ -17,7 +17,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NSXTUpgradeUserInputSpec Nsxt Upgrade User Input Specification
+// NSXTUpgradeUserInputSpec NSX Upgrade User Input Specification
 //
 // swagger:model NsxtUpgradeUserInputSpec
 type NSXTUpgradeUserInputSpec struct {
@@ -28,7 +28,7 @@ type NSXTUpgradeUserInputSpec struct {
 	// List of host clusters information if explicit selection is to be made
 	NSXTHostClusterUpgradeSpecs []*NSXTHostClusterUpgradeSpec `json:"nsxtHostClusterUpgradeSpecs"`
 
-	// Identifier of the NSXT instance
+	// Identifier of the NSX instance
 	NSXTID string `json:"nsxtId,omitempty"`
 
 	// List of host clusters information if explicit selection is to be made
@@ -155,6 +155,11 @@ func (m *NSXTUpgradeUserInputSpec) contextValidateNSXTEdgeClusterUpgradeSpecs(ct
 	for i := 0; i < len(m.NSXTEdgeClusterUpgradeSpecs); i++ {
 
 		if m.NSXTEdgeClusterUpgradeSpecs[i] != nil {
+
+			if swag.IsZero(m.NSXTEdgeClusterUpgradeSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NSXTEdgeClusterUpgradeSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxtEdgeClusterUpgradeSpecs" + "." + strconv.Itoa(i))
@@ -175,6 +180,11 @@ func (m *NSXTUpgradeUserInputSpec) contextValidateNSXTHostClusterUpgradeSpecs(ct
 	for i := 0; i < len(m.NSXTHostClusterUpgradeSpecs); i++ {
 
 		if m.NSXTHostClusterUpgradeSpecs[i] != nil {
+
+			if swag.IsZero(m.NSXTHostClusterUpgradeSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.NSXTHostClusterUpgradeSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nsxtHostClusterUpgradeSpecs" + "." + strconv.Itoa(i))
@@ -193,6 +203,11 @@ func (m *NSXTUpgradeUserInputSpec) contextValidateNSXTHostClusterUpgradeSpecs(ct
 func (m *NSXTUpgradeUserInputSpec) contextValidateNSXTUpgradeOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.NSXTUpgradeOptions != nil {
+
+		if swag.IsZero(m.NSXTUpgradeOptions) { // not required
+			return nil
+		}
+
 		if err := m.NSXTUpgradeOptions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxtUpgradeOptions")

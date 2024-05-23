@@ -63,7 +63,7 @@ func (o *UpdateOrRotatePasswordsReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/credentials] updateOrRotatePasswords", response, response.Code())
 	}
 }
 
@@ -104,6 +104,11 @@ func (o *UpdateOrRotatePasswordsOK) IsServerError() bool {
 // IsCode returns true when this update or rotate passwords o k response a status code equal to that given
 func (o *UpdateOrRotatePasswordsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update or rotate passwords o k response
+func (o *UpdateOrRotatePasswordsOK) Code() int {
+	return 200
 }
 
 func (o *UpdateOrRotatePasswordsOK) Error() string {
@@ -169,6 +174,11 @@ func (o *UpdateOrRotatePasswordsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the update or rotate passwords accepted response
+func (o *UpdateOrRotatePasswordsAccepted) Code() int {
+	return 202
+}
+
 func (o *UpdateOrRotatePasswordsAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /v1/credentials][%d] updateOrRotatePasswordsAccepted  %+v", 202, o.Payload)
 }
@@ -230,6 +240,11 @@ func (o *UpdateOrRotatePasswordsBadRequest) IsServerError() bool {
 // IsCode returns true when this update or rotate passwords bad request response a status code equal to that given
 func (o *UpdateOrRotatePasswordsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the update or rotate passwords bad request response
+func (o *UpdateOrRotatePasswordsBadRequest) Code() int {
+	return 400
 }
 
 func (o *UpdateOrRotatePasswordsBadRequest) Error() string {
@@ -295,6 +310,11 @@ func (o *UpdateOrRotatePasswordsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the update or rotate passwords unauthorized response
+func (o *UpdateOrRotatePasswordsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UpdateOrRotatePasswordsUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /v1/credentials][%d] updateOrRotatePasswordsUnauthorized  %+v", 401, o.Payload)
 }
@@ -358,6 +378,11 @@ func (o *UpdateOrRotatePasswordsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the update or rotate passwords forbidden response
+func (o *UpdateOrRotatePasswordsForbidden) Code() int {
+	return 403
+}
+
 func (o *UpdateOrRotatePasswordsForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /v1/credentials][%d] updateOrRotatePasswordsForbidden  %+v", 403, o.Payload)
 }
@@ -419,6 +444,11 @@ func (o *UpdateOrRotatePasswordsInternalServerError) IsServerError() bool {
 // IsCode returns true when this update or rotate passwords internal server error response a status code equal to that given
 func (o *UpdateOrRotatePasswordsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update or rotate passwords internal server error response
+func (o *UpdateOrRotatePasswordsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateOrRotatePasswordsInternalServerError) Error() string {

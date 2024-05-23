@@ -162,6 +162,11 @@ func (m *Bundle) contextValidateComponents(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Components); i++ {
 
 		if m.Components[i] != nil {
+
+			if swag.IsZero(m.Components[i]) { // not required
+				return nil
+			}
+
 			if err := m.Components[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("components" + "." + strconv.Itoa(i))

@@ -103,6 +103,11 @@ func (m *PersonalitySpec) contextValidateHardwareSupportSpecs(ctx context.Contex
 	for i := 0; i < len(m.HardwareSupportSpecs); i++ {
 
 		if m.HardwareSupportSpecs[i] != nil {
+
+			if swag.IsZero(m.HardwareSupportSpecs[i]) { // not required
+				return nil
+			}
+
 			if err := m.HardwareSupportSpecs[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("hardwareSupportSpecs" + "." + strconv.Itoa(i))

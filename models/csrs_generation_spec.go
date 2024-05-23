@@ -116,6 +116,7 @@ func (m *CSRSGenerationSpec) ContextValidate(ctx context.Context, formats strfmt
 func (m *CSRSGenerationSpec) contextValidateCSRGenerationSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CSRGenerationSpec != nil {
+
 		if err := m.CSRGenerationSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("csrGenerationSpec")
@@ -134,6 +135,11 @@ func (m *CSRSGenerationSpec) contextValidateResources(ctx context.Context, forma
 	for i := 0; i < len(m.Resources); i++ {
 
 		if m.Resources[i] != nil {
+
+			if swag.IsZero(m.Resources[i]) { // not required
+				return nil
+			}
+
 			if err := m.Resources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resources" + "." + strconv.Itoa(i))

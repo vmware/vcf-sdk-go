@@ -154,6 +154,11 @@ func (m *Error) contextValidateCauses(ctx context.Context, formats strfmt.Regist
 	for i := 0; i < len(m.Causes); i++ {
 
 		if m.Causes[i] != nil {
+
+			if swag.IsZero(m.Causes[i]) { // not required
+				return nil
+			}
+
 			if err := m.Causes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("causes" + "." + strconv.Itoa(i))
@@ -192,6 +197,11 @@ func (m *Error) contextValidateNestedErrors(ctx context.Context, formats strfmt.
 	for i := 0; i < len(m.NestedErrors); i++ {
 
 		if m.NestedErrors[i] != nil {
+
+			if swag.IsZero(m.NestedErrors[i]) { // not required
+				return nil
+			}
+
 			if err := m.NestedErrors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nestedErrors" + "." + strconv.Itoa(i))

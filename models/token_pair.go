@@ -78,6 +78,11 @@ func (m *TokenPair) ContextValidate(ctx context.Context, formats strfmt.Registry
 func (m *TokenPair) contextValidateRefreshToken(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RefreshToken != nil {
+
+		if swag.IsZero(m.RefreshToken) { // not required
+			return nil
+		}
+
 		if err := m.RefreshToken.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("refreshToken")

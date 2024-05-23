@@ -57,7 +57,7 @@ func (o *DeleteDomainReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/domains/{id}] deleteDomain", response, response.Code())
 	}
 }
 
@@ -98,6 +98,11 @@ func (o *DeleteDomainOK) IsServerError() bool {
 // IsCode returns true when this delete domain o k response a status code equal to that given
 func (o *DeleteDomainOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete domain o k response
+func (o *DeleteDomainOK) Code() int {
+	return 200
 }
 
 func (o *DeleteDomainOK) Error() string {
@@ -163,6 +168,11 @@ func (o *DeleteDomainAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the delete domain accepted response
+func (o *DeleteDomainAccepted) Code() int {
+	return 202
+}
+
 func (o *DeleteDomainAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /v1/domains/{id}][%d] deleteDomainAccepted  %+v", 202, o.Payload)
 }
@@ -224,6 +234,11 @@ func (o *DeleteDomainBadRequest) IsServerError() bool {
 // IsCode returns true when this delete domain bad request response a status code equal to that given
 func (o *DeleteDomainBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete domain bad request response
+func (o *DeleteDomainBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteDomainBadRequest) Error() string {
@@ -289,6 +304,11 @@ func (o *DeleteDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the delete domain not found response
+func (o *DeleteDomainNotFound) Code() int {
+	return 404
+}
+
 func (o *DeleteDomainNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /v1/domains/{id}][%d] deleteDomainNotFound  %+v", 404, o.Payload)
 }
@@ -350,6 +370,11 @@ func (o *DeleteDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this delete domain internal server error response a status code equal to that given
 func (o *DeleteDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the delete domain internal server error response
+func (o *DeleteDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DeleteDomainInternalServerError) Error() string {

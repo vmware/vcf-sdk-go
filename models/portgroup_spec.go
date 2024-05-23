@@ -22,15 +22,22 @@ import (
 // swagger:model PortgroupSpec
 type PortgroupSpec struct {
 
-	// List of active uplinks associated with portgroup. This is only supported for VxRail.
+	// The list of active uplinks associated with portgroup
 	ActiveUplinks []string `json:"activeUplinks"`
 
 	// Port group name
 	// Required: true
 	Name *string `json:"name"`
 
+	// The list of standby uplinks associated with portgroup
+	StandByUplinks []string `json:"standByUplinks"`
+
+	// The teaming policy associated with the portgroup.
+	// Example: One among: loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, failover_explicit, loadbalance_loadbased
+	TeamingPolicy string `json:"teamingPolicy,omitempty"`
+
 	// Port group transport type
-	// Example: One among: VSAN, VMOTION, MANAGEMENT, PUBLIC, NFS, VREALIZE, ISCSI, EDGE_INFRA_OVERLAY_UPLINK
+	// Example: One among: VSAN, VMOTION, MANAGEMENT, PUBLIC, NFS, VREALIZE, ISCSI, EDGE_INFRA_OVERLAY_UPLINK, VM_MANAGEMENT
 	// Required: true
 	TransportType *string `json:"transportType"`
 }

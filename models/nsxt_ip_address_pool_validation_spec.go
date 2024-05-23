@@ -95,6 +95,7 @@ func (m *NSXTIPAddressPoolValidationSpec) ContextValidate(ctx context.Context, f
 func (m *NSXTIPAddressPoolValidationSpec) contextValidateIPAddressPoolSpec(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IPAddressPoolSpec != nil {
+
 		if err := m.IPAddressPoolSpec.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ipAddressPoolSpec")

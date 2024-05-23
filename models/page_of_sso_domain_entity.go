@@ -115,6 +115,11 @@ func (m *PageOfSSODomainEntity) contextValidateElements(ctx context.Context, for
 	for i := 0; i < len(m.Elements); i++ {
 
 		if m.Elements[i] != nil {
+
+			if swag.IsZero(m.Elements[i]) { // not required
+				return nil
+			}
+
 			if err := m.Elements[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("elements" + "." + strconv.Itoa(i))
@@ -133,6 +138,11 @@ func (m *PageOfSSODomainEntity) contextValidateElements(ctx context.Context, for
 func (m *PageOfSSODomainEntity) contextValidatePageMetadata(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PageMetadata != nil {
+
+		if swag.IsZero(m.PageMetadata) { // not required
+			return nil
+		}
+
 		if err := m.PageMetadata.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pageMetadata")

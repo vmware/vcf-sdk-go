@@ -51,7 +51,7 @@ func (o *UpdateDepotSettingsReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/system/settings/depot] updateDepotSettings", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *UpdateDepotSettingsOK) IsServerError() bool {
 // IsCode returns true when this update depot settings o k response a status code equal to that given
 func (o *UpdateDepotSettingsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update depot settings o k response
+func (o *UpdateDepotSettingsOK) Code() int {
+	return 200
 }
 
 func (o *UpdateDepotSettingsOK) Error() string {
@@ -157,6 +162,11 @@ func (o *UpdateDepotSettingsAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the update depot settings accepted response
+func (o *UpdateDepotSettingsAccepted) Code() int {
+	return 202
+}
+
 func (o *UpdateDepotSettingsAccepted) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/settings/depot][%d] updateDepotSettingsAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UpdateDepotSettingsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update depot settings bad request response
+func (o *UpdateDepotSettingsBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateDepotSettingsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/system/settings/depot][%d] updateDepotSettingsBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *UpdateDepotSettingsInternalServerError) IsServerError() bool {
 // IsCode returns true when this update depot settings internal server error response a status code equal to that given
 func (o *UpdateDepotSettingsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update depot settings internal server error response
+func (o *UpdateDepotSettingsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateDepotSettingsInternalServerError) Error() string {

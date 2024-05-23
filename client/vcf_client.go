@@ -14,48 +14,53 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/vmware/vcf-sdk-go/client/avns"
+	"github.com/vmware/vcf-sdk-go/client/automation"
 	"github.com/vmware/vcf-sdk-go/client/backup_restore"
 	"github.com/vmware/vcf-sdk-go/client/bundles"
 	"github.com/vmware/vcf-sdk-go/client/ceip"
 	"github.com/vmware/vcf-sdk-go/client/certificates"
+	"github.com/vmware/vcf-sdk-go/client/check_sets"
 	"github.com/vmware/vcf-sdk-go/client/clusters"
+	"github.com/vmware/vcf-sdk-go/client/compatibility_matrix"
+	"github.com/vmware/vcf-sdk-go/client/config_reconciler"
 	"github.com/vmware/vcf-sdk-go/client/credentials"
 	"github.com/vmware/vcf-sdk-go/client/depot_settings"
 	"github.com/vmware/vcf-sdk-go/client/domains"
 	"github.com/vmware/vcf-sdk-go/client/fips_mode_details"
 	"github.com/vmware/vcf-sdk-go/client/hosts"
+	"github.com/vmware/vcf-sdk-go/client/identity_provider_precheck"
 	"github.com/vmware/vcf-sdk-go/client/identity_providers"
 	"github.com/vmware/vcf-sdk-go/client/license_keys"
 	"github.com/vmware/vcf-sdk-go/client/manifests"
-	"github.com/vmware/vcf-sdk-go/client/network_pools"
 	"github.com/vmware/vcf-sdk-go/client/nsxt_clusters"
+	"github.com/vmware/vcf-sdk-go/client/network_pools"
 	"github.com/vmware/vcf-sdk-go/client/nsxt_edge_clusters"
+	"github.com/vmware/vcf-sdk-go/client/operations"
+	"github.com/vmware/vcf-sdk-go/client/operations_for_logs"
+	"github.com/vmware/vcf-sdk-go/client/pscs"
 	"github.com/vmware/vcf-sdk-go/client/personalities"
 	"github.com/vmware/vcf-sdk-go/client/proxy_configuration"
-	"github.com/vmware/vcf-sdk-go/client/pscs"
 	"github.com/vmware/vcf-sdk-go/client/releases"
 	"github.com/vmware/vcf-sdk-go/client/resource_functionalities"
 	"github.com/vmware/vcf-sdk-go/client/resource_warnings"
 	"github.com/vmware/vcf-sdk-go/client/sddc"
 	"github.com/vmware/vcf-sdk-go/client/sddc_managers"
 	"github.com/vmware/vcf-sdk-go/client/sos"
+	"github.com/vmware/vcf-sdk-go/client/suite_lifecycle"
 	"github.com/vmware/vcf-sdk-go/client/system"
 	"github.com/vmware/vcf-sdk-go/client/system_prechecks"
+	"github.com/vmware/vcf-sdk-go/client/target_upgrade_version"
 	"github.com/vmware/vcf-sdk-go/client/tasks"
 	"github.com/vmware/vcf-sdk-go/client/tokens"
 	"github.com/vmware/vcf-sdk-go/client/trusted_certificates"
 	"github.com/vmware/vcf-sdk-go/client/upgradables"
 	"github.com/vmware/vcf-sdk-go/client/upgrades"
 	"github.com/vmware/vcf-sdk-go/client/users"
-	"github.com/vmware/vcf-sdk-go/client/vasa_providers"
 	"github.com/vmware/vcf-sdk-go/client/vcenters"
+	"github.com/vmware/vcf-sdk-go/client/vsan_health_check"
+	"github.com/vmware/vcf-sdk-go/client/vasa_providers"
 	"github.com/vmware/vcf-sdk-go/client/vcf_services"
 	"github.com/vmware/vcf-sdk-go/client/version_aliases_for_bundle_component_type"
-	"github.com/vmware/vcf-sdk-go/client/vra"
-	"github.com/vmware/vcf-sdk-go/client/vrli"
-	"github.com/vmware/vcf-sdk-go/client/vrops"
-	"github.com/vmware/vcf-sdk-go/client/vrslcm"
-	"github.com/vmware/vcf-sdk-go/client/vsan_health_check"
 	"github.com/vmware/vcf-sdk-go/client/wsa"
 )
 
@@ -102,22 +107,29 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli := new(VcfClient)
 	cli.Transport = transport
 	cli.AvNs = avns.New(transport, formats)
+	cli.Automation = automation.New(transport, formats)
 	cli.BackupRestore = backup_restore.New(transport, formats)
 	cli.Bundles = bundles.New(transport, formats)
 	cli.CEIP = ceip.New(transport, formats)
 	cli.Certificates = certificates.New(transport, formats)
+	cli.CheckSets = check_sets.New(transport, formats)
 	cli.Clusters = clusters.New(transport, formats)
+	cli.CompatibilityMatrix = compatibility_matrix.New(transport, formats)
+	cli.ConfigReconciler = config_reconciler.New(transport, formats)
 	cli.Credentials = credentials.New(transport, formats)
 	cli.DepotSettings = depot_settings.New(transport, formats)
 	cli.Domains = domains.New(transport, formats)
 	cli.FIPSModeDetails = fips_mode_details.New(transport, formats)
 	cli.Hosts = hosts.New(transport, formats)
+	cli.IdentityProviderPrecheck = identity_provider_precheck.New(transport, formats)
 	cli.IdentityProviders = identity_providers.New(transport, formats)
 	cli.LicenseKeys = license_keys.New(transport, formats)
 	cli.Manifests = manifests.New(transport, formats)
 	cli.NSXTClusters = nsxt_clusters.New(transport, formats)
 	cli.NetworkPools = network_pools.New(transport, formats)
 	cli.NSXTEdgeClusters = nsxt_edge_clusters.New(transport, formats)
+	cli.Operations = operations.New(transport, formats)
+	cli.OperationsForLogs = operations_for_logs.New(transport, formats)
 	cli.PsCs = pscs.New(transport, formats)
 	cli.Personalities = personalities.New(transport, formats)
 	cli.ProxyConfiguration = proxy_configuration.New(transport, formats)
@@ -127,8 +139,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli.SDDC = sddc.New(transport, formats)
 	cli.SDDCManagers = sddc_managers.New(transport, formats)
 	cli.SOS = sos.New(transport, formats)
+	cli.SuiteLifecycle = suite_lifecycle.New(transport, formats)
 	cli.System = system.New(transport, formats)
 	cli.SystemPrechecks = system_prechecks.New(transport, formats)
+	cli.TargetUpgradeVersion = target_upgrade_version.New(transport, formats)
 	cli.Tasks = tasks.New(transport, formats)
 	cli.Tokens = tokens.New(transport, formats)
 	cli.TrustedCertificates = trusted_certificates.New(transport, formats)
@@ -136,10 +150,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *VcfClient 
 	cli.Upgrades = upgrades.New(transport, formats)
 	cli.Users = users.New(transport, formats)
 	cli.VCenters = vcenters.New(transport, formats)
-	cli.VRA = vra.New(transport, formats)
-	cli.Vrli = vrli.New(transport, formats)
-	cli.VroPs = vrops.New(transport, formats)
-	cli.VRSLCM = vrslcm.New(transport, formats)
 	cli.VSANHealthCheck = vsan_health_check.New(transport, formats)
 	cli.VasaProviders = vasa_providers.New(transport, formats)
 	cli.VcfServices = vcf_services.New(transport, formats)
@@ -191,6 +201,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type VcfClient struct {
 	AvNs avns.ClientService
 
+	Automation automation.ClientService
+
 	BackupRestore backup_restore.ClientService
 
 	Bundles bundles.ClientService
@@ -199,7 +211,13 @@ type VcfClient struct {
 
 	Certificates certificates.ClientService
 
+	CheckSets check_sets.ClientService
+
 	Clusters clusters.ClientService
+
+	CompatibilityMatrix compatibility_matrix.ClientService
+
+	ConfigReconciler config_reconciler.ClientService
 
 	Credentials credentials.ClientService
 
@@ -210,6 +228,8 @@ type VcfClient struct {
 	FIPSModeDetails fips_mode_details.ClientService
 
 	Hosts hosts.ClientService
+
+	IdentityProviderPrecheck identity_provider_precheck.ClientService
 
 	IdentityProviders identity_providers.ClientService
 
@@ -222,6 +242,10 @@ type VcfClient struct {
 	NetworkPools network_pools.ClientService
 
 	NSXTEdgeClusters nsxt_edge_clusters.ClientService
+
+	Operations operations.ClientService
+
+	OperationsForLogs operations_for_logs.ClientService
 
 	PsCs pscs.ClientService
 
@@ -241,9 +265,13 @@ type VcfClient struct {
 
 	SOS sos.ClientService
 
+	SuiteLifecycle suite_lifecycle.ClientService
+
 	System system.ClientService
 
 	SystemPrechecks system_prechecks.ClientService
+
+	TargetUpgradeVersion target_upgrade_version.ClientService
 
 	Tasks tasks.ClientService
 
@@ -258,14 +286,6 @@ type VcfClient struct {
 	Users users.ClientService
 
 	VCenters vcenters.ClientService
-
-	VRA vra.ClientService
-
-	Vrli vrli.ClientService
-
-	VroPs vrops.ClientService
-
-	VRSLCM vrslcm.ClientService
 
 	VSANHealthCheck vsan_health_check.ClientService
 
@@ -284,22 +304,29 @@ type VcfClient struct {
 func (c *VcfClient) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.AvNs.SetTransport(transport)
+	c.Automation.SetTransport(transport)
 	c.BackupRestore.SetTransport(transport)
 	c.Bundles.SetTransport(transport)
 	c.CEIP.SetTransport(transport)
 	c.Certificates.SetTransport(transport)
+	c.CheckSets.SetTransport(transport)
 	c.Clusters.SetTransport(transport)
+	c.CompatibilityMatrix.SetTransport(transport)
+	c.ConfigReconciler.SetTransport(transport)
 	c.Credentials.SetTransport(transport)
 	c.DepotSettings.SetTransport(transport)
 	c.Domains.SetTransport(transport)
 	c.FIPSModeDetails.SetTransport(transport)
 	c.Hosts.SetTransport(transport)
+	c.IdentityProviderPrecheck.SetTransport(transport)
 	c.IdentityProviders.SetTransport(transport)
 	c.LicenseKeys.SetTransport(transport)
 	c.Manifests.SetTransport(transport)
 	c.NSXTClusters.SetTransport(transport)
 	c.NetworkPools.SetTransport(transport)
 	c.NSXTEdgeClusters.SetTransport(transport)
+	c.Operations.SetTransport(transport)
+	c.OperationsForLogs.SetTransport(transport)
 	c.PsCs.SetTransport(transport)
 	c.Personalities.SetTransport(transport)
 	c.ProxyConfiguration.SetTransport(transport)
@@ -309,8 +336,10 @@ func (c *VcfClient) SetTransport(transport runtime.ClientTransport) {
 	c.SDDC.SetTransport(transport)
 	c.SDDCManagers.SetTransport(transport)
 	c.SOS.SetTransport(transport)
+	c.SuiteLifecycle.SetTransport(transport)
 	c.System.SetTransport(transport)
 	c.SystemPrechecks.SetTransport(transport)
+	c.TargetUpgradeVersion.SetTransport(transport)
 	c.Tasks.SetTransport(transport)
 	c.Tokens.SetTransport(transport)
 	c.TrustedCertificates.SetTransport(transport)
@@ -318,10 +347,6 @@ func (c *VcfClient) SetTransport(transport runtime.ClientTransport) {
 	c.Upgrades.SetTransport(transport)
 	c.Users.SetTransport(transport)
 	c.VCenters.SetTransport(transport)
-	c.VRA.SetTransport(transport)
-	c.Vrli.SetTransport(transport)
-	c.VroPs.SetTransport(transport)
-	c.VRSLCM.SetTransport(transport)
 	c.VSANHealthCheck.SetTransport(transport)
 	c.VasaProviders.SetTransport(transport)
 	c.VcfServices.SetTransport(transport)

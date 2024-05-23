@@ -51,7 +51,7 @@ func (o *UpdateVasaProviderReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/vasa-providers/{id}] updateVasaProvider", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *UpdateVasaProviderOK) IsServerError() bool {
 // IsCode returns true when this update vasa provider o k response a status code equal to that given
 func (o *UpdateVasaProviderOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the update vasa provider o k response
+func (o *UpdateVasaProviderOK) Code() int {
+	return 200
 }
 
 func (o *UpdateVasaProviderOK) Error() string {
@@ -157,6 +162,11 @@ func (o *UpdateVasaProviderBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the update vasa provider bad request response
+func (o *UpdateVasaProviderBadRequest) Code() int {
+	return 400
+}
+
 func (o *UpdateVasaProviderBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/vasa-providers/{id}][%d] updateVasaProviderBadRequest  %+v", 400, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UpdateVasaProviderNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the update vasa provider not found response
+func (o *UpdateVasaProviderNotFound) Code() int {
+	return 404
+}
+
 func (o *UpdateVasaProviderNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /v1/vasa-providers/{id}][%d] updateVasaProviderNotFound  %+v", 404, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *UpdateVasaProviderInternalServerError) IsServerError() bool {
 // IsCode returns true when this update vasa provider internal server error response a status code equal to that given
 func (o *UpdateVasaProviderInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the update vasa provider internal server error response
+func (o *UpdateVasaProviderInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UpdateVasaProviderInternalServerError) Error() string {

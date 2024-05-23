@@ -96,6 +96,7 @@ func (m *ComponentInfo) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *ComponentInfo) contextValidateDetails(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Details != nil {
+
 		if err := m.Details.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("details")

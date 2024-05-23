@@ -45,7 +45,7 @@ func (o *GetDomainTagManagerURLReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/domains/{id}/tags/tag-manager] getDomainTagManagerUrl", response, response.Code())
 	}
 }
 
@@ -86,6 +86,11 @@ func (o *GetDomainTagManagerURLOK) IsServerError() bool {
 // IsCode returns true when this get domain tag manager Url o k response a status code equal to that given
 func (o *GetDomainTagManagerURLOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get domain tag manager Url o k response
+func (o *GetDomainTagManagerURLOK) Code() int {
+	return 200
 }
 
 func (o *GetDomainTagManagerURLOK) Error() string {
@@ -151,6 +156,11 @@ func (o *GetDomainTagManagerURLBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the get domain tag manager Url bad request response
+func (o *GetDomainTagManagerURLBadRequest) Code() int {
+	return 400
+}
+
 func (o *GetDomainTagManagerURLBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v1/domains/{id}/tags/tag-manager][%d] getDomainTagManagerUrlBadRequest  %+v", 400, o.Payload)
 }
@@ -212,6 +222,11 @@ func (o *GetDomainTagManagerURLInternalServerError) IsServerError() bool {
 // IsCode returns true when this get domain tag manager Url internal server error response a status code equal to that given
 func (o *GetDomainTagManagerURLInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the get domain tag manager Url internal server error response
+func (o *GetDomainTagManagerURLInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GetDomainTagManagerURLInternalServerError) Error() string {

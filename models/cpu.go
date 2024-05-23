@@ -94,6 +94,11 @@ func (m *CPU) contextValidateCPUCores(ctx context.Context, formats strfmt.Regist
 	for i := 0; i < len(m.CPUCores); i++ {
 
 		if m.CPUCores[i] != nil {
+
+			if swag.IsZero(m.CPUCores[i]) { // not required
+				return nil
+			}
+
 			if err := m.CPUCores[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cpuCores" + "." + strconv.Itoa(i))

@@ -51,7 +51,7 @@ func (o *UploadBundleReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/bundles] uploadBundle", response, response.Code())
 	}
 }
 
@@ -92,6 +92,11 @@ func (o *UploadBundleOK) IsServerError() bool {
 // IsCode returns true when this upload bundle o k response a status code equal to that given
 func (o *UploadBundleOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the upload bundle o k response
+func (o *UploadBundleOK) Code() int {
+	return 200
 }
 
 func (o *UploadBundleOK) Error() string {
@@ -157,6 +162,11 @@ func (o *UploadBundleAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the upload bundle accepted response
+func (o *UploadBundleAccepted) Code() int {
+	return 202
+}
+
 func (o *UploadBundleAccepted) Error() string {
 	return fmt.Sprintf("[POST /v1/bundles][%d] uploadBundleAccepted  %+v", 202, o.Payload)
 }
@@ -220,6 +230,11 @@ func (o *UploadBundleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the upload bundle bad request response
+func (o *UploadBundleBadRequest) Code() int {
+	return 400
+}
+
 func (o *UploadBundleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/bundles][%d] uploadBundleBadRequest  %+v", 400, o.Payload)
 }
@@ -281,6 +296,11 @@ func (o *UploadBundleInternalServerError) IsServerError() bool {
 // IsCode returns true when this upload bundle internal server error response a status code equal to that given
 func (o *UploadBundleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the upload bundle internal server error response
+func (o *UploadBundleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UploadBundleInternalServerError) Error() string {

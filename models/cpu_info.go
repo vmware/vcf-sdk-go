@@ -105,6 +105,11 @@ func (m *CPUInfo) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 func (m *CPUInfo) contextValidateTotal(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Total != nil {
+
+		if swag.IsZero(m.Total) { // not required
+			return nil
+		}
+
 		if err := m.Total.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("total")
@@ -121,6 +126,11 @@ func (m *CPUInfo) contextValidateTotal(ctx context.Context, formats strfmt.Regis
 func (m *CPUInfo) contextValidateUsed(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Used != nil {
+
+		if swag.IsZero(m.Used) { // not required
+			return nil
+		}
+
 		if err := m.Used.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("used")
