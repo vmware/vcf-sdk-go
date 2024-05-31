@@ -74,7 +74,7 @@ type NsxTEdgeNodeSpec struct {
 	VMManagementPortgroupName string `json:"vmManagementPortgroupName,omitempty"`
 
 	// Management Vlan Id
-	VMManagementPortgroupVlan int32 `json:"vmManagementPortgroupVlan,omitempty"`
+	VMManagementPortgroupVlan int32 `json:"vmManagementPortgroupVlan"`
 }
 
 // Validate validates this nsx t edge node spec
