@@ -50,7 +50,7 @@ type Network struct {
 	UsedIps []string `json:"usedIps"`
 
 	// VLAN ID associated with the network
-	VlanID int32 `json:"vlanId"`
+	VlanID int32 `json:"vlanId,omitempty"`
 }
 
 // Validate validates this network
