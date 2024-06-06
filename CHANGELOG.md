@@ -2,7 +2,7 @@
 
 ## [v0.3.1](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.1)
 
-> Release Date: 03 June 2024
+> Release Date: 07 June 2024
 
 Accept 0 as a valid VLAN ID for network pools and edge node management portgroups
 
