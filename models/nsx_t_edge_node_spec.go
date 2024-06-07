@@ -71,10 +71,10 @@ type NsxTEdgeNodeSpec struct {
 	UplinkNetwork []*NsxTEdgeUplinkNetwork `json:"uplinkNetwork"`
 
 	// Management Network Name
-	VMManagementPortgroupName string `json:"vmManagementPortgroupName,omitempty"`
+	VMManagementPortgroupName *string `json:"vmManagementPortgroupName"`
 
 	// Management Vlan Id
-	VMManagementPortgroupVlan int32 `json:"vmManagementPortgroupVlan,omitempty"`
+	VMManagementPortgroupVlan *int32 `json:"vmManagementPortgroupVlan"`
 }
 
 // Validate validates this nsx t edge node spec
