@@ -1778,6 +1778,12 @@
                 "responses": {
                     "202": {
                         "description": "Accepted",
+                        "headers": {
+                            "location": {
+                                "description": "API to fetch resource certificate installation status.",
+                                "style": "simple"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1857,6 +1863,12 @@
                     },
                     "201": {
                         "description": "Created",
+                        "headers": {
+                            "location": {
+                                "description": "API to fetch certificate validation status",
+                                "style": "simple"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1963,6 +1975,12 @@
                 "responses": {
                     "202": {
                         "description": "Accepted",
+                        "headers": {
+                            "location": {
+                                "description": "API to fetch CSRs generation status.",
+                                "style": "simple"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2119,6 +2137,12 @@
                     },
                     "202": {
                         "description": "Accepted",
+                        "headers": {
+                            "location": {
+                                "description": "API to fetch Certificate generation status.",
+                                "style": "simple"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2181,6 +2205,12 @@
                 "responses": {
                     "202": {
                         "description": "Accepted",
+                        "headers": {
+                            "location": {
+                                "description": "API to fetch certificate installation status.",
+                                "style": "simple"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -3625,16 +3655,6 @@
                     "required": true
                 },
                 "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenPair"
-                                }
-                            }
-                        }
-                    },
                     "201": {
                         "description": "Created",
                         "content": {
@@ -3647,16 +3667,6 @@
                     },
                     "400": {
                         "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -10312,7 +10322,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     }
@@ -10375,7 +10385,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     }
@@ -10459,7 +10469,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     }
@@ -10533,7 +10543,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     }
@@ -11246,6 +11256,71 @@
                     },
                     "404": {
                         "description": "Network Pool not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/license-keys/{licenseKeyOrId}": {
+            "patch": {
+                "tags": [
+                    "License Keys"
+                ],
+                "summary": "Update the license key",
+                "operationId": "updateLicenseKey",
+                "parameters": [
+                    {
+                        "name": "licenseKeyOrId",
+                        "in": "path",
+                        "description": "license key or ID of the LicenseKey",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LicenseKeyUpdateSpec"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "License key with ID / LicenseKey  does not exist",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -14758,7 +14833,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     }
@@ -14824,7 +14899,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     },
@@ -14918,7 +14993,7 @@
                         "schema": {
                             "maximum": 36,
                             "minimum": 36,
-                            "type": "integer"
+                            "type": "string"
                         },
                         "example": "123e4567-e89b-42d3-a456-556642440000"
                     },
@@ -16887,70 +16962,6 @@
                     },
                     "404": {
                         "description": "License key not found"
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "License Keys"
-                ],
-                "summary": "Update the license key",
-                "operationId": "updateLicenseKey",
-                "parameters": [
-                    {
-                        "name": "key",
-                        "in": "path",
-                        "description": "The 29 alpha numeric character license key with hyphens",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "4J6TH-3XK57-480X4-0E9H6-2X00P"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LicenseKeyUpdateSpec"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Ok"
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "License key with ID / LicenseKey  does not exist",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -21122,7 +21133,8 @@
                     "creationTimestamp",
                     "description",
                     "name",
-                    "status"
+                    "status",
+                    "type"
                 ],
                 "type": "object",
                 "properties": {
@@ -21195,6 +21207,7 @@
             },
             "Task": {
                 "required": [
+                    "completionTimestamp",
                     "creationTimestamp",
                     "id",
                     "name",
@@ -23800,14 +23813,14 @@
                     "vlanId": {
                         "maximum": 4094,
                         "minimum": 0,
-                        "type": "integer",
+                        "type": "string",
                         "description": "VLAN ID",
                         "example": "1000"
                     },
                     "mtu": {
                         "maximum": 9000,
                         "minimum": 1500,
-                        "type": "integer",
+                        "type": "string",
                         "description": "MTU size"
                     },
                     "teamingPolicy": {

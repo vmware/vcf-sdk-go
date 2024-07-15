@@ -11,38 +11,17 @@ A Go SDK for the VMware Cloud Foundation.
 Required if building the SDK.
 
 * [Go][golang-install] v1.22
-* [go-swagger][go-swagger] v0.30.5
+* [ogen-go](https://github.com/ogen-go/ogen) v1.2.2
 ## Building the SDK
 
 The SDK is auto-generated from the VMware Cloud Foundation swagger files.
-
-### Check the `go-swagger` Version
-
-Run the following command to check the version of [go-swagger][go-swagger]:
-
-```console
-make check-swagger
-```
 
 ### Generate the SDK
 
 Run the following command to generate the SDK:
 
 ```console
-make swagger
-```
-
->**Note**
->
-> Generating the SDK will validate the swagger and run a script to normalize
-the naming.
-
-### Build the SDK
-
-Run the following command to build the SDK:
-
-```console
-make build
+go generate
 ```
 
 ## Contributing
@@ -106,5 +85,5 @@ POSSIBILITY OF SUCH DAMAGE.
 [contributing]: CONTRIBUTING.md
 [issues]: https://github.com/vmware/vcf-sdk-go/issues
 [golang-install]: https://golang.org/doc/install
-[go-swagger]: https://github.com/go-swagger/go-swagger
+[ogen-go]: https://github.com/ogen-go/ogen
 [vmware-cla-dco]: https://cla.vmware.com/dco

@@ -1,0 +1,9 @@
+# sets generator options.
+generator:
+  # sets generator features.
+  features:
+    disable:
+      # Disables OpenTelemetry integration
+      - 'ogen/otel'
+  # functions to ignore
+  ignore_not_implemented: ["all"]
