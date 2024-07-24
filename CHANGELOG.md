@@ -1,10 +1,22 @@
 # CHANGELOG
 
-## [v0.3.1](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.1)
+## [v0.3.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.3)
+
+> Release Date: 24 July 2024
+
+Fix vSAN ESA config serialization when value is false
+
+## [v0.3.2](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.2)
 
 > Release Date: 07 June 2024
 
 Accept 0 as a valid VLAN ID for network pools and edge node management portgroups
+
+## [v0.3.1](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.1)
+
+> Release Date: 07 June 2024
+
+Do not use this release. Use v0.3.2 instead.
 
 ## [v0.3.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.0)
 
