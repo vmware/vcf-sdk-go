@@ -10237,16 +10237,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "string",
-                                "description": "Required action for CEIP.",
-                                "enum": [
-                                    "ENABLED",
-                                    "DISABLED",
-                                    "DISABLING",
-                                    "ENABLING",
-                                    "ENABLING_FAILED",
-                                    "DISABLING_FAILED"
-                                ]
+                                "$ref": "#/components/schemas/CeipUpdateSpec"
                             }
                         }
                     },
@@ -20991,6 +20982,17 @@
                     }
                 },
                 "description": "This specification contains information related to the existing VMware Aria Suite Lifecycle instance deployment"
+            },
+            "CeipUpdateSpec" : {
+                "required" : [ "status" ],
+                "properties" : {
+                    "status" : {
+                        "type" : "string",
+                        "example" : "One among: ENABLE, DISABLE",
+                        "description" : "User provided CEIP operation"
+                    }
+                },
+                "description" : "Specification for CEIP state change"
             },
             "MessagePack": {
                 "required": [

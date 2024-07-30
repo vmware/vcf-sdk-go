@@ -49,8 +49,8 @@ const (
 
 // Defines values for DomainIntegrationStatus.
 const (
-	DomainIntegrationStatusDISABLED DomainIntegrationStatus = "DISABLED"
-	DomainIntegrationStatusENABLED  DomainIntegrationStatus = "ENABLED"
+	DISABLED DomainIntegrationStatus = "DISABLED"
+	ENABLED  DomainIntegrationStatus = "ENABLED"
 )
 
 // Defines values for FrequencyMetricUnit.
@@ -185,16 +185,6 @@ const (
 const (
 	Csv ExportBringupDetailReportParamsFormat = "csv"
 	Pdf ExportBringupDetailReportParamsFormat = "pdf"
-)
-
-// Defines values for SetCeipStatusJSONBody.
-const (
-	SetCeipStatusJSONBodyDISABLED        SetCeipStatusJSONBody = "DISABLED"
-	SetCeipStatusJSONBodyDISABLING       SetCeipStatusJSONBody = "DISABLING"
-	SetCeipStatusJSONBodyDISABLINGFAILED SetCeipStatusJSONBody = "DISABLING_FAILED"
-	SetCeipStatusJSONBodyENABLED         SetCeipStatusJSONBody = "ENABLED"
-	SetCeipStatusJSONBodyENABLING        SetCeipStatusJSONBody = "ENABLING"
-	SetCeipStatusJSONBodyENABLINGFAILED  SetCeipStatusJSONBody = "ENABLING_FAILED"
 )
 
 // Defines values for StartBringupSpecConversionParamsDesign.
@@ -831,6 +821,12 @@ type Ceip struct {
 	InstanceId *string `json:"instanceId,omitempty"`
 
 	// Status CEIP status
+	Status string `json:"status"`
+}
+
+// CeipUpdateSpec Specification for CEIP state change
+type CeipUpdateSpec struct {
+	// Status User provided CEIP operation
 	Status string `json:"status"`
 }
 
@@ -8892,9 +8888,6 @@ type GetBackupLocationParams struct {
 	Port string `form:"port" json:"port"`
 }
 
-// SetCeipStatusJSONBody defines parameters for SetCeipStatus.
-type SetCeipStatusJSONBody string
-
 // GetLastAssessmentRunInfoParams defines parameters for GetLastAssessmentRunInfo.
 type GetLastAssessmentRunInfoParams struct {
 	// DomainId Id of the domain to filter tasks for, accepts multiple values as comma separated
@@ -9298,7 +9291,7 @@ type SetBackupConfigurationJSONRequestBody = BackupConfigurationSpec
 type ValidateBackupConfigurationsOperationsJSONRequestBody = BackupConfigurationSpec
 
 // SetCeipStatusJSONRequestBody defines body for SetCeipStatus for application/json ContentType.
-type SetCeipStatusJSONRequestBody SetCeipStatusJSONBody
+type SetCeipStatusJSONRequestBody = CeipUpdateSpec
 
 // TriggerCheckRunJSONRequestBody defines body for TriggerCheckRun for application/json ContentType.
 type TriggerCheckRunJSONRequestBody = CheckSetRunInput
