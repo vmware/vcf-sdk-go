@@ -53,7 +53,8 @@ incredibly useful:
 
 ## License
 
-Copyright 2023 VMware, Inc.
+© Broadcom. All Rights Reserved.
+The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -82,5 +83,4 @@ POSSIBILITY OF SUCH DAMAGE.
 [contributing]: CONTRIBUTING.md
 [issues]: https://github.com/vmware/vcf-sdk-go/issues
 [golang-install]: https://golang.org/doc/install
-[go-swagger]: https://github.com/go-swagger/go-swagger
 [vmware-cla-dco]: https://cla.vmware.com/dco
