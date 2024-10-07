@@ -1,20 +1,11 @@
-# Contributing to vcf-sdk-go
+# Contributing
 
-Before you start working with vcf-sdk-go please read our Developer Certificate
-of Origin. All contributions to this repository must be signed as described on
-that page. Your signature certifies that you wrote the patch or have the right
-to pass it on as an open-source patch
+Before you start working with `vmware/vcf-sdk-go` please read our Developer
+Certificate of Origin. All contributions to this repository must be signed as
+described on that page. Your signature certifies that you wrote the patch or have
+the right to pass it on as an open-source patch
 
 For any questions about the DCO process, please refer to our [FAQ](https://cla.vmware.com/dco).
-
-## Getting Started
-
-The SDK is generated using [go-swagger](https://github.com/go-swagger/go-swagger).
-Any changes should come from the official swagger files for VMware Cloud
-Foundation and then processed using `make swagger`.
-
-This will run the correct swagger commands and any fixups needed. After
-the generation, the flow below can be used for submitting a change.
 
 ## Contribution Flow
 
