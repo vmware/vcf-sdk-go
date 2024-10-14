@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [v0.4.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.4.0)
+
+> Release Date: 14 Oct 2024
+
+Support for VCF 5.2.0 APIs\
+Replace `go-swagger` with `oapi-codegen`
+
 ## [v0.3.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.3.3)
 
 > Release Date: 24 July 2024
@@ -22,7 +29,7 @@ Do not use this release. Use v0.3.2 instead.
 
 > Release Date: 23 May 2024
 
-Support for VCF 5.1.1 APIs
+Support for VCF 5.1.1 APIs\
 Move to go-swagger 0.30.5
 
 ## [v0.2.4](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.2.4)
@@ -53,7 +60,7 @@ Include 202 as response code to "/v1/domains/{id}/resource-certificates" API end
 
 > Release Date: 18 Oct 2023
  
-Support APIs from VCF 4.5.2
+Support APIs from VCF 4.5.2\
 Note: PUT “/v1/personalities/files” API omitted as it made the swagger file invalid.
 
 ## [v0.1.3](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.1.3)
