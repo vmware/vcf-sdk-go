@@ -33641,6 +33641,11 @@ func (r GetAvnsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetAvnsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type CreateAvnsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33665,6 +33670,11 @@ func (r CreateAvnsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CreateAvnsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateAvnSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33686,6 +33696,11 @@ func (r ValidateAvnSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateAvnSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartBackupResponse struct {
@@ -33712,6 +33727,11 @@ func (r StartBackupResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartBackupResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBundlesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33733,6 +33753,11 @@ func (r GetBundlesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBundlesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UploadBundleResponse struct {
@@ -33759,6 +33784,11 @@ func (r UploadBundleResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UploadBundleResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateBundleCompatibilitySetsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33783,6 +33813,11 @@ func (r UpdateBundleCompatibilitySetsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateBundleCompatibilitySetsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBundlesForSkipUpgradeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33805,6 +33840,11 @@ func (r GetBundlesForSkipUpgradeResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBundlesForSkipUpgradeResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeleteBundleResponse struct {
@@ -33832,6 +33872,11 @@ func (r DeleteBundleResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteBundleResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBundleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33854,6 +33899,11 @@ func (r GetBundleResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBundleResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartBundleDownloadByIDResponse struct {
@@ -33881,6 +33931,11 @@ func (r StartBundleDownloadByIDResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartBundleDownloadByIDResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCertificateAuthoritiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33902,6 +33957,11 @@ func (r GetCertificateAuthoritiesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCertificateAuthoritiesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ConfigureCertificateAuthorityResponse struct {
@@ -33928,6 +33988,11 @@ func (r ConfigureCertificateAuthorityResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ConfigureCertificateAuthorityResponse) GetBody() []byte {
+	return r.Body
+}
+
 type CreateCertificateAuthorityResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33949,6 +34014,11 @@ func (r CreateCertificateAuthorityResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r CreateCertificateAuthorityResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RemoveCertificateAuthorityResponse struct {
@@ -33975,6 +34045,11 @@ func (r RemoveCertificateAuthorityResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RemoveCertificateAuthorityResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCertificateAuthorityByIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -33997,6 +34072,11 @@ func (r GetCertificateAuthorityByIdResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCertificateAuthorityByIdResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetClustersResponse struct {
@@ -34023,6 +34103,11 @@ func (r GetClustersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetClustersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type CreateClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34045,6 +34130,11 @@ func (r CreateClusterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r CreateClusterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetTagsAssignedToClustersResponse struct {
@@ -34071,6 +34161,11 @@ func (r GetTagsAssignedToClustersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetTagsAssignedToClustersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateClusterCreationSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34093,6 +34188,11 @@ func (r ValidateClusterCreationSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateClusterCreationSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetClusterCreateValidationResponse struct {
@@ -34119,6 +34219,11 @@ func (r GetClusterCreateValidationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetClusterCreateValidationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDatastoreQueryResponse1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34141,6 +34246,11 @@ func (r GetDatastoreQueryResponse1Response) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDatastoreQueryResponse1Response) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateVsanRemoteDatastoreSpecResponse struct {
@@ -34167,6 +34277,11 @@ func (r ValidateVsanRemoteDatastoreSpecResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateVsanRemoteDatastoreSpecResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateVsanRemoteDatastoreMountSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34189,6 +34304,11 @@ func (r ValidateVsanRemoteDatastoreMountSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateVsanRemoteDatastoreMountSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetHostQueryResponse1Response struct {
@@ -34217,6 +34337,11 @@ func (r GetHostQueryResponse1Response) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetHostQueryResponse1Response) GetBody() []byte {
+	return r.Body
+}
+
 type GetVdsesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34242,6 +34367,11 @@ func (r GetVdsesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVdsesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ImportVdsToInventoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34264,6 +34394,11 @@ func (r ImportVdsToInventoryResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ImportVdsToInventoryResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeleteClusterResponse struct {
@@ -34291,6 +34426,11 @@ func (r DeleteClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34313,6 +34453,11 @@ func (r GetClusterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateClusterResponse struct {
@@ -34341,6 +34486,11 @@ func (r UpdateClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterDatastoresResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34364,6 +34514,11 @@ func (r GetClusterDatastoresResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterDatastoresResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AddDatastoreToClusterResponse struct {
@@ -34391,6 +34546,11 @@ func (r AddDatastoreToClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddDatastoreToClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDatastoresCriteria1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34411,6 +34571,11 @@ func (r GetDatastoresCriteria1Response) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDatastoresCriteria1Response) GetBody() []byte {
+	return r.Body
 }
 
 type GetDatastoreCriterion1Response struct {
@@ -34436,6 +34601,11 @@ func (r GetDatastoreCriterion1Response) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDatastoreCriterion1Response) GetBody() []byte {
+	return r.Body
+}
+
 type PostDatastoreQuery1Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34458,6 +34628,11 @@ func (r PostDatastoreQuery1Response) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r PostDatastoreQuery1Response) GetBody() []byte {
+	return r.Body
 }
 
 type RemoveDatastoreFromClusterResponse struct {
@@ -34486,6 +34661,11 @@ func (r RemoveDatastoreFromClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RemoveDatastoreFromClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetHostCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34506,6 +34686,11 @@ func (r GetHostCriteriaResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetHostCriteriaResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetHostCriterionResponse struct {
@@ -34529,6 +34714,11 @@ func (r GetHostCriterionResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetHostCriterionResponse) GetBody() []byte {
+	return r.Body
 }
 
 type PostHostQueryResponse struct {
@@ -34555,6 +34745,11 @@ func (r PostHostQueryResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r PostHostQueryResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterNetworkConfigurationCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34574,6 +34769,11 @@ func (r GetClusterNetworkConfigurationCriteriaResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterNetworkConfigurationCriteriaResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetClusterNetworkConfigurationResponse struct {
@@ -34600,6 +34800,11 @@ func (r GetClusterNetworkConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetClusterNetworkConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterNetworkConfigurationQueryResponseResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34622,6 +34827,11 @@ func (r GetClusterNetworkConfigurationQueryResponseResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterNetworkConfigurationQueryResponseResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RemoveTagsFromClusterResponse struct {
@@ -34648,6 +34858,11 @@ func (r RemoveTagsFromClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RemoveTagsFromClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTagsAssignedToClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34670,6 +34885,11 @@ func (r GetTagsAssignedToClusterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetTagsAssignedToClusterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AssignTagsToClusterResponse struct {
@@ -34696,6 +34916,11 @@ func (r AssignTagsToClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AssignTagsToClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTagAssignableForClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34720,6 +34945,11 @@ func (r GetTagAssignableForClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetTagAssignableForClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterTagManagerUrlResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34742,6 +34972,11 @@ func (r GetClusterTagManagerUrlResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterTagManagerUrlResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateClusterUpdateSpecResponse struct {
@@ -34769,6 +35004,11 @@ func (r ValidateClusterUpdateSpecResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateClusterUpdateSpecResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterUpdateValidationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34791,6 +35031,11 @@ func (r GetClusterUpdateValidationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterUpdateValidationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCompatibilityMatricesResponse struct {
@@ -34817,6 +35062,11 @@ func (r GetCompatibilityMatricesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCompatibilityMatricesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateCompatibilityMatrixResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34838,6 +35088,11 @@ func (r UpdateCompatibilityMatrixResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateCompatibilityMatrixResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCompatibilityMatrixResponse struct {
@@ -34864,6 +35119,11 @@ func (r GetCompatibilityMatrixResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCompatibilityMatrixResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCompatibilityMatrixContentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34888,6 +35148,11 @@ func (r GetCompatibilityMatrixContentResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCompatibilityMatrixContentResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCompatibilityMatrixMetadataResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34910,6 +35175,11 @@ func (r GetCompatibilityMatrixMetadataResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCompatibilityMatrixMetadataResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetComplianceAuditHistoryResponse struct {
@@ -34937,6 +35207,11 @@ func (r GetComplianceAuditHistoryResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditHistoryResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetComplianceAuditResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -34960,6 +35235,11 @@ func (r GetComplianceAuditResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetComplianceAuditItemsResponse struct {
@@ -34987,6 +35267,11 @@ func (r GetComplianceAuditItemsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditItemsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetComplianceConfigurationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35010,6 +35295,11 @@ func (r GetComplianceConfigurationsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetComplianceConfigurationsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetComplianceStandardsResponse struct {
@@ -35036,6 +35326,11 @@ func (r GetComplianceStandardsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceStandardsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ReconcileConfigsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35058,6 +35353,11 @@ func (r ReconcileConfigsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ReconcileConfigsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetReconciliationTaskResponse struct {
@@ -35085,6 +35385,11 @@ func (r GetReconciliationTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetReconciliationTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetConfigsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35107,6 +35412,11 @@ func (r GetConfigsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetConfigsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCredentialsResponse struct {
@@ -35135,6 +35445,11 @@ func (r GetCredentialsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCredentialsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateOrRotatePasswordsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35159,6 +35474,11 @@ func (r UpdateOrRotatePasswordsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateOrRotatePasswordsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetPasswordExpirationResponse struct {
@@ -35188,6 +35508,11 @@ func (r GetPasswordExpirationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetPasswordExpirationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetPasswordExpirationByTaskIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35211,6 +35536,11 @@ func (r GetPasswordExpirationByTaskIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetPasswordExpirationByTaskIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCredentialsTasksResponse struct {
@@ -35237,6 +35567,11 @@ func (r GetCredentialsTasksResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCredentialsTasksResponse) GetBody() []byte {
+	return r.Body
+}
+
 type CancelCredentialsTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35261,6 +35596,11 @@ func (r CancelCredentialsTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CancelCredentialsTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCredentialsTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35283,6 +35623,11 @@ func (r GetCredentialsTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCredentialsTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RetryCredentialsTaskResponse struct {
@@ -35311,6 +35656,11 @@ func (r RetryCredentialsTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RetryCredentialsTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCredentialTaskByResourceIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35335,6 +35685,11 @@ func (r GetCredentialTaskByResourceIDResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCredentialTaskByResourceIDResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCredentialsSubTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35357,6 +35712,11 @@ func (r GetCredentialsSubTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCredentialsSubTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCredentialResponse struct {
@@ -35386,6 +35746,11 @@ func (r GetCredentialResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCredentialResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCustomIsosResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35407,6 +35772,11 @@ func (r GetCustomIsosResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCustomIsosResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UploadCustomIsoResponse struct {
@@ -35433,6 +35803,11 @@ func (r UploadCustomIsoResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UploadCustomIsoResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteCustomIsoByIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35455,6 +35830,11 @@ func (r DeleteCustomIsoByIdResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DeleteCustomIsoByIdResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCustomIsoByIdResponse struct {
@@ -35482,6 +35862,11 @@ func (r GetCustomIsoByIdResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCustomIsoByIdResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RenameCustomIsoByIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35505,6 +35890,11 @@ func (r RenameCustomIsoByIdResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RenameCustomIsoByIdResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDomainsResponse struct {
@@ -35531,6 +35921,11 @@ func (r GetDomainsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDomainsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type CreateDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35553,6 +35948,11 @@ func (r CreateDomainResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r CreateDomainResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetTagsAssignedToDomainsResponse struct {
@@ -35579,6 +35979,11 @@ func (r GetTagsAssignedToDomainsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetTagsAssignedToDomainsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateDomainCreationSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35601,6 +36006,11 @@ func (r ValidateDomainCreationSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateDomainCreationSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DomainCreateValidationResponse struct {
@@ -35627,6 +36037,11 @@ func (r DomainCreateValidationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DomainCreateValidationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetClusterCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35647,6 +36062,11 @@ func (r GetClusterCriteriaResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetClusterCriteriaResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetClusterCriterionResponse struct {
@@ -35672,6 +36092,11 @@ func (r GetClusterCriterionResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetClusterCriterionResponse) GetBody() []byte {
+	return r.Body
+}
+
 type PostClustersQueryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35694,6 +36119,11 @@ func (r PostClustersQueryResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r PostClustersQueryResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetClustersQueryResponseResponse struct {
@@ -35721,6 +36151,11 @@ func (r GetClustersQueryResponseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetClustersQueryResponseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type PostClusterQueryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35743,6 +36178,11 @@ func (r PostClusterQueryResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r PostClusterQueryResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetClusterQueryResponseResponse struct {
@@ -35770,6 +36210,11 @@ func (r GetClusterQueryResponseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetClusterQueryResponseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDatastoresCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35790,6 +36235,11 @@ func (r GetDatastoresCriteriaResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDatastoresCriteriaResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDatastoreCriterionResponse struct {
@@ -35815,6 +36265,11 @@ func (r GetDatastoreCriterionResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDatastoreCriterionResponse) GetBody() []byte {
+	return r.Body
+}
+
 type PostDatastoreQueryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35837,6 +36292,11 @@ func (r PostDatastoreQueryResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r PostDatastoreQueryResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDatastoreQueryResponseResponse struct {
@@ -35864,6 +36324,11 @@ func (r GetDatastoreQueryResponseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDatastoreQueryResponseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVsanHealthCheckByDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35885,6 +36350,11 @@ func (r GetVsanHealthCheckByDomainResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVsanHealthCheckByDomainResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVsanHealthCheckByDomainResponse struct {
@@ -35911,6 +36381,11 @@ func (r UpdateVsanHealthCheckByDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVsanHealthCheckByDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVsanHealthCheckByQueryIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35935,6 +36410,11 @@ func (r GetVsanHealthCheckByQueryIDResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVsanHealthCheckByQueryIDResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVsanHealthCheckByTaskIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35957,6 +36437,11 @@ func (r GetVsanHealthCheckByTaskIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVsanHealthCheckByTaskIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type PerformDomainIsolationPrecheckResponse struct {
@@ -35984,6 +36469,11 @@ func (r PerformDomainIsolationPrecheckResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r PerformDomainIsolationPrecheckResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDomainIsolationPrecheckStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36006,6 +36496,11 @@ func (r GetDomainIsolationPrecheckStatusResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDomainIsolationPrecheckStatusResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeleteDomainResponse struct {
@@ -36033,6 +36528,11 @@ func (r DeleteDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36055,6 +36555,11 @@ func (r GetDomainResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDomainResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateDomainResponse struct {
@@ -36083,6 +36588,11 @@ func (r UpdateDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDomainCertificatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36105,6 +36615,11 @@ func (r GetDomainCertificatesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDomainCertificatesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ReplaceCertificatesResponse struct {
@@ -36134,6 +36649,11 @@ func (r ReplaceCertificatesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ReplaceCertificatesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GenerateCertificatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36160,6 +36680,11 @@ func (r GenerateCertificatesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GenerateCertificatesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UploadCertificatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36182,6 +36707,11 @@ func (r UploadCertificatesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UploadCertificatesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetComplianceAuditHistoryForADomainResponse struct {
@@ -36209,6 +36739,11 @@ func (r GetComplianceAuditHistoryForADomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditHistoryForADomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ComplianceAuditResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36232,6 +36767,11 @@ func (r ComplianceAuditResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ComplianceAuditResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetComplianceAuditTaskResponse struct {
@@ -36259,6 +36799,11 @@ func (r GetComplianceAuditTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RetryComplianceAuditTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36282,6 +36827,11 @@ func (r RetryComplianceAuditTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RetryComplianceAuditTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetComplianceAuditForADomainResponse struct {
@@ -36309,6 +36859,11 @@ func (r GetComplianceAuditForADomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditForADomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetComplianceAuditItemsForADomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36334,6 +36889,11 @@ func (r GetComplianceAuditItemsForADomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetComplianceAuditItemsForADomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCSRsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36356,6 +36916,11 @@ func (r GetCSRsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCSRsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GeneratesCSRsResponse struct {
@@ -36384,6 +36949,11 @@ func (r GeneratesCSRsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GeneratesCSRsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DownloadCSRResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36406,6 +36976,11 @@ func (r DownloadCSRResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DownloadCSRResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDomainEndpointsResponse struct {
@@ -36432,6 +37007,11 @@ func (r GetDomainEndpointsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDomainEndpointsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCertificatesByDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36456,6 +37036,11 @@ func (r GetCertificatesByDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetCertificatesByDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ReplaceResourceCertificatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36478,6 +37063,11 @@ func (r ReplaceResourceCertificatesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ReplaceResourceCertificatesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateResourceCertificatesResponse struct {
@@ -36505,6 +37095,11 @@ func (r ValidateResourceCertificatesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateResourceCertificatesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetResourceCertificatesValidationByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36527,6 +37122,11 @@ func (r GetResourceCertificatesValidationByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetResourceCertificatesValidationByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RemoveTagsFromDomainResponse struct {
@@ -36553,6 +37153,11 @@ func (r RemoveTagsFromDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RemoveTagsFromDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTagsAssignedToDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36575,6 +37180,11 @@ func (r GetTagsAssignedToDomainResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetTagsAssignedToDomainResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AssignTagsToDomainResponse struct {
@@ -36601,6 +37211,11 @@ func (r AssignTagsToDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AssignTagsToDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetAssignableTagsForDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36623,6 +37238,11 @@ func (r GetAssignableTagsForDomainResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetAssignableTagsForDomainResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDomainTagManagerUrlResponse struct {
@@ -36649,6 +37269,11 @@ func (r GetDomainTagManagerUrlResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDomainTagManagerUrlResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateDomainUpdateSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36671,6 +37296,11 @@ func (r ValidateDomainUpdateSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateDomainUpdateSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDomainUpdateValidationResponse struct {
@@ -36697,6 +37327,11 @@ func (r GetDomainUpdateValidationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDomainUpdateValidationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetEdgeClustersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36719,6 +37354,11 @@ func (r GetEdgeClustersResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetEdgeClustersResponse) GetBody() []byte {
+	return r.Body
 }
 
 type CreateEdgeClusterResponse struct {
@@ -36745,6 +37385,11 @@ func (r CreateEdgeClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CreateEdgeClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateEdgeClusterCreationSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36767,6 +37412,11 @@ func (r ValidateEdgeClusterCreationSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateEdgeClusterCreationSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetEdgeClusterValidationByIDResponse struct {
@@ -36793,6 +37443,11 @@ func (r GetEdgeClusterValidationByIDResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetEdgeClusterValidationByIDResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetEdgeClusterQueryCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36817,6 +37472,11 @@ func (r GetEdgeClusterQueryCriteriaResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetEdgeClusterQueryCriteriaResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetEdgeClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36839,6 +37499,11 @@ func (r GetEdgeClusterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetEdgeClusterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateEdgeClusterResponse struct {
@@ -36866,6 +37531,11 @@ func (r UpdateEdgeClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateEdgeClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateEdgeClusterUpdateSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36888,6 +37558,11 @@ func (r ValidateEdgeClusterUpdateSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateEdgeClusterUpdateSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DecommissionHostsResponse struct {
@@ -36914,6 +37589,11 @@ func (r DecommissionHostsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DecommissionHostsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36936,6 +37616,11 @@ func (r GetHostsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetHostsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type CommissionHostsResponse struct {
@@ -36962,6 +37647,11 @@ func (r CommissionHostsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CommissionHostsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -36982,6 +37672,11 @@ func (r GetCriteriaResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCriteriaResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetCriterionResponse struct {
@@ -37005,6 +37700,11 @@ func (r GetCriterionResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCriterionResponse) GetBody() []byte {
+	return r.Body
 }
 
 type PostHostsPrechecks1Response struct {
@@ -37031,6 +37731,11 @@ func (r PostHostsPrechecks1Response) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r PostHostsPrechecks1Response) GetBody() []byte {
+	return r.Body
+}
+
 type GetHostsPrechecksResponseResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37055,6 +37760,11 @@ func (r GetHostsPrechecksResponseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetHostsPrechecksResponseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type PostQueryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37077,6 +37787,11 @@ func (r PostQueryResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r PostQueryResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetHostQueryResponseResponse struct {
@@ -37104,6 +37819,11 @@ func (r GetHostQueryResponseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetHostQueryResponseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTagsAssignedToHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37126,6 +37846,11 @@ func (r GetTagsAssignedToHostsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetTagsAssignedToHostsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateHostCommissionSpecResponse struct {
@@ -37152,6 +37877,11 @@ func (r ValidateHostCommissionSpecResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateHostCommissionSpecResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateCommissionHostsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37174,6 +37904,11 @@ func (r ValidateCommissionHostsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateCommissionHostsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetHostCommissionValidationByIDResponse struct {
@@ -37200,6 +37935,11 @@ func (r GetHostCommissionValidationByIDResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetHostCommissionValidationByIDResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetHostResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37222,6 +37962,11 @@ func (r GetHostResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetHostResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RemoveTagsFromHostResponse struct {
@@ -37248,6 +37993,11 @@ func (r RemoveTagsFromHostResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RemoveTagsFromHostResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTagsAssignedToHostResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37270,6 +38020,11 @@ func (r GetTagsAssignedToHostResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetTagsAssignedToHostResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AssignTagsToHostResponse struct {
@@ -37296,6 +38051,11 @@ func (r AssignTagsToHostResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AssignTagsToHostResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetAssignableTagForHostResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37318,6 +38078,11 @@ func (r GetAssignableTagForHostResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetAssignableTagForHostResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetHostTagManagerUrlResponse struct {
@@ -37344,6 +38109,11 @@ func (r GetHostTagManagerUrlResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetHostTagManagerUrlResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetIdentityPrecheckResultResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37366,6 +38136,11 @@ func (r GetIdentityPrecheckResultResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetIdentityPrecheckResultResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetSddcWs1bOidcInfoResponse struct {
@@ -37393,6 +38168,11 @@ func (r GetSddcWs1bOidcInfoResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSddcWs1bOidcInfoResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetIdentityProvidersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37418,6 +38198,11 @@ func (r GetIdentityProvidersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetIdentityProvidersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type AddExternalIdentityProviderResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37441,6 +38226,11 @@ func (r AddExternalIdentityProviderResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddExternalIdentityProviderResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteExternalIdentityProviderResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37462,6 +38252,11 @@ func (r DeleteExternalIdentityProviderResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DeleteExternalIdentityProviderResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetIdentityProviderByIdResponse struct {
@@ -37488,6 +38283,11 @@ func (r GetIdentityProviderByIdResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetIdentityProviderByIdResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateExternalIdentityProviderResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37510,6 +38310,11 @@ func (r UpdateExternalIdentityProviderResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateExternalIdentityProviderResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AddEmbeddedIdentitySourceResponse struct {
@@ -37536,6 +38341,11 @@ func (r AddEmbeddedIdentitySourceResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddEmbeddedIdentitySourceResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteIdentitySourceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37558,6 +38368,11 @@ func (r DeleteIdentitySourceResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DeleteIdentitySourceResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateEmbeddedIdentitySourceResponse struct {
@@ -37584,6 +38399,11 @@ func (r UpdateEmbeddedIdentitySourceResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateEmbeddedIdentitySourceResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GenerateSyncClientTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37606,6 +38426,11 @@ func (r GenerateSyncClientTokenResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GenerateSyncClientTokenResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetLicenseKeysResponse struct {
@@ -37631,6 +38456,11 @@ func (r GetLicenseKeysResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetLicenseKeysResponse) GetBody() []byte {
+	return r.Body
+}
+
 type AddLicenseKeyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37651,6 +38481,11 @@ func (r AddLicenseKeyResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r AddLicenseKeyResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetLicenseProductTypesResponse struct {
@@ -37676,6 +38511,11 @@ func (r GetLicenseProductTypesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetLicenseProductTypesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RemoveLicenseKeyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37696,6 +38536,11 @@ func (r RemoveLicenseKeyResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RemoveLicenseKeyResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetLicenseKeyResponse struct {
@@ -37722,6 +38567,11 @@ func (r GetLicenseKeyResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetLicenseKeyResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateLicenseKeyResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37744,6 +38594,11 @@ func (r UpdateLicenseKeyResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateLicenseKeyResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetLicenseInformationResponse struct {
@@ -37769,6 +38624,11 @@ func (r GetLicenseInformationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetLicenseInformationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDomainLicensingInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37791,6 +38651,11 @@ func (r GetDomainLicensingInfoResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDomainLicensingInfoResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSystemLicensingInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37811,6 +38676,11 @@ func (r GetSystemLicensingInfoResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetSystemLicensingInfoResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetManifestResponse struct {
@@ -37837,6 +38707,11 @@ func (r GetManifestResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetManifestResponse) GetBody() []byte {
+	return r.Body
+}
+
 type SaveManifestResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37858,6 +38733,11 @@ func (r SaveManifestResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r SaveManifestResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNetworkPoolResponse struct {
@@ -37884,6 +38764,11 @@ func (r GetNetworkPoolResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNetworkPoolResponse) GetBody() []byte {
+	return r.Body
+}
+
 type CreateNetworkPoolResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37906,6 +38791,11 @@ func (r CreateNetworkPoolResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r CreateNetworkPoolResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeleteNetworkPoolResponse struct {
@@ -37932,6 +38822,11 @@ func (r DeleteNetworkPoolResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteNetworkPoolResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetNetworkPoolByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -37954,6 +38849,11 @@ func (r GetNetworkPoolByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetNetworkPoolByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateNetworkPoolResponse struct {
@@ -37980,6 +38880,11 @@ func (r UpdateNetworkPoolResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateNetworkPoolResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetNetworksOfNetworkPoolResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38002,6 +38907,11 @@ func (r GetNetworksOfNetworkPoolResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetNetworksOfNetworkPoolResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNetworkOfNetworkPoolResponse struct {
@@ -38028,6 +38938,11 @@ func (r GetNetworkOfNetworkPoolResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNetworkOfNetworkPoolResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteIpPoolFromNetworkOfNetworkPoolResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38050,6 +38965,11 @@ func (r DeleteIpPoolFromNetworkOfNetworkPoolResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DeleteIpPoolFromNetworkOfNetworkPoolResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AddIpPoolToNetworkOfNetworkPoolResponse struct {
@@ -38077,6 +38997,11 @@ func (r AddIpPoolToNetworkOfNetworkPoolResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddIpPoolToNetworkOfNetworkPoolResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetALBClustersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38101,6 +39026,11 @@ func (r GetALBClustersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetALBClustersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetALBClustersFormFactorsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38122,6 +39052,11 @@ func (r GetALBClustersFormFactorsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetALBClustersFormFactorsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateALBClusterCreationSpecResponse struct {
@@ -38148,6 +39083,11 @@ func (r ValidateALBClusterCreationSpecResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateALBClusterCreationSpecResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateNsxALBCompatibilityResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38169,6 +39109,11 @@ func (r ValidateNsxALBCompatibilityResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateNsxALBCompatibilityResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeleteALBClusterResponse struct {
@@ -38195,6 +39140,11 @@ func (r DeleteALBClusterResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteALBClusterResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetALBClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38217,6 +39167,11 @@ func (r GetALBClusterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetALBClusterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNsxClustersResponse struct {
@@ -38243,6 +39198,11 @@ func (r GetNsxClustersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNsxClustersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetNsxCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38263,6 +39223,11 @@ func (r GetNsxCriteriaResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetNsxCriteriaResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNsxCriterionResponse struct {
@@ -38288,6 +39253,11 @@ func (r GetNsxCriterionResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNsxCriterionResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateIpPoolResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38308,6 +39278,11 @@ func (r ValidateIpPoolResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateIpPoolResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetValidationResultResponse struct {
@@ -38332,6 +39307,11 @@ func (r GetValidationResultResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetValidationResultResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ConnectOpenIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38351,6 +39331,11 @@ func (r ConnectOpenIdResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ConnectOpenIdResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartNsxCriteriaQueryResponse struct {
@@ -38375,6 +39360,11 @@ func (r StartNsxCriteriaQueryResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r StartNsxCriteriaQueryResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNsxClusterQueryResponseResponse struct {
@@ -38403,6 +39393,11 @@ func (r GetNsxClusterQueryResponseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNsxClusterQueryResponseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetNsxClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38425,6 +39420,11 @@ func (r GetNsxClusterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetNsxClusterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNsxIpAddressPoolsResponse struct {
@@ -38451,6 +39451,11 @@ func (r GetNsxIpAddressPoolsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNsxIpAddressPoolsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetNsxIpAddressPoolResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38473,6 +39478,11 @@ func (r GetNsxIpAddressPoolResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetNsxIpAddressPoolResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNsxTransportZonesResponse struct {
@@ -38498,6 +39508,11 @@ func (r GetNsxTransportZonesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNsxTransportZonesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeletePersonalityResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38521,6 +39536,11 @@ func (r DeletePersonalityResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeletePersonalityResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetPersonalitiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38542,6 +39562,11 @@ func (r GetPersonalitiesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetPersonalitiesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UploadPersonalityResponse struct {
@@ -38568,6 +39593,11 @@ func (r UploadPersonalityResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UploadPersonalityResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UploadPersonalityFilesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38592,6 +39622,11 @@ func (r UploadPersonalityFilesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UploadPersonalityFilesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetPersonalityResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38614,6 +39649,11 @@ func (r GetPersonalityResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetPersonalityResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RenamePersonalityByIdResponse struct {
@@ -38641,6 +39681,11 @@ func (r RenamePersonalityByIdResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RenamePersonalityByIdResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetProductVersionCatalogResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38665,6 +39710,11 @@ func (r GetProductVersionCatalogResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetProductVersionCatalogResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UploadProductVersionCatalogResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38686,6 +39736,11 @@ func (r UploadProductVersionCatalogResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UploadProductVersionCatalogResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetPscsResponse struct {
@@ -38712,6 +39767,11 @@ func (r GetPscsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetPscsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetPscResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38734,6 +39794,11 @@ func (r GetPscResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetPscResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetReleasesResponse struct {
@@ -38760,6 +39825,11 @@ func (r GetReleasesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetReleasesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetReleaseByDomainsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38781,6 +39851,11 @@ func (r GetReleaseByDomainsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetReleaseByDomainsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDomainReleaseViewValidationResponse struct {
@@ -38807,6 +39882,11 @@ func (r GetDomainReleaseViewValidationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDomainReleaseViewValidationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteReleaseByDomainIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38827,6 +39907,11 @@ func (r DeleteReleaseByDomainIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DeleteReleaseByDomainIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetReleaseByDomainResponse struct {
@@ -38853,6 +39938,11 @@ func (r GetReleaseByDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetReleaseByDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateReleaseByDomainIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38876,6 +39966,11 @@ func (r UpdateReleaseByDomainIDResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateReleaseByDomainIDResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCustomPatchesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38896,6 +39991,11 @@ func (r GetCustomPatchesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCustomPatchesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetFutureReleasesResponse struct {
@@ -38922,6 +40022,11 @@ func (r GetFutureReleasesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetFutureReleasesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateReleaseByDomainIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38944,6 +40049,11 @@ func (r ValidateReleaseByDomainIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateReleaseByDomainIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetSystemReleaseResponse struct {
@@ -38970,6 +40080,11 @@ func (r GetSystemReleaseResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSystemReleaseResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetResourceFunctionalitiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -38992,6 +40107,11 @@ func (r GetResourceFunctionalitiesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetResourceFunctionalitiesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateResourcesFunctionalitiesResponse struct {
@@ -39018,6 +40138,11 @@ func (r UpdateResourcesFunctionalitiesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateResourcesFunctionalitiesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetResourcesFunctionalitiesAllowedGlobalResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39040,6 +40165,11 @@ func (r GetResourcesFunctionalitiesAllowedGlobalResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetResourcesFunctionalitiesAllowedGlobalResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateResourcesFunctionalities1Response struct {
@@ -39066,6 +40196,11 @@ func (r UpdateResourcesFunctionalities1Response) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateResourcesFunctionalities1Response) GetBody() []byte {
+	return r.Body
+}
+
 type GetResourceWarningsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39088,6 +40223,11 @@ func (r GetResourceWarningsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetResourceWarningsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type CreateResourceWarningResponse struct {
@@ -39114,6 +40254,11 @@ func (r CreateResourceWarningResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CreateResourceWarningResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetResourceWarningResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39136,6 +40281,11 @@ func (r GetResourceWarningResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetResourceWarningResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartLicenseCheckByResourceResponse struct {
@@ -39161,6 +40311,11 @@ func (r StartLicenseCheckByResourceResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartLicenseCheckByResourceResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetLicenseCheckResultByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39182,6 +40337,11 @@ func (r GetLicenseCheckResultByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetLicenseCheckResultByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type SetLicenseKeyForResourceResponse struct {
@@ -39208,6 +40368,11 @@ func (r SetLicenseKeyForResourceResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r SetLicenseKeyForResourceResponse) GetBody() []byte {
+	return r.Body
+}
+
 type StartRestoreResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39232,6 +40397,11 @@ func (r StartRestoreResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartRestoreResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetRestoreTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39254,6 +40424,11 @@ func (r GetRestoreTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetRestoreTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetRolesResponse struct {
@@ -39281,6 +40456,11 @@ func (r GetRolesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetRolesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetLocalOsUserAccountsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39304,6 +40484,11 @@ func (r GetLocalOsUserAccountsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetLocalOsUserAccountsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTrustedCertificatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39325,6 +40510,11 @@ func (r GetTrustedCertificatesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetTrustedCertificatesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AddTrustedCertificateResponse struct {
@@ -39351,6 +40541,11 @@ func (r AddTrustedCertificateResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddTrustedCertificateResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteTrustedCertificateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39373,6 +40568,11 @@ func (r DeleteTrustedCertificateResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteTrustedCertificateResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSddcManagerUpgradablesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39393,6 +40593,11 @@ func (r GetSddcManagerUpgradablesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetSddcManagerUpgradablesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetSddcManagersResponse struct {
@@ -39419,6 +40624,11 @@ func (r GetSddcManagersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSddcManagersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSddcManagerResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39441,6 +40651,11 @@ func (r GetSddcManagerResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetSddcManagerResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetSddcManagerHistoryResponse struct {
@@ -39467,6 +40682,11 @@ func (r GetSddcManagerHistoryResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSddcManagerHistoryResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBringupTasksResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39488,6 +40708,11 @@ func (r GetBringupTasksResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBringupTasksResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartBringupResponse struct {
@@ -39512,6 +40737,11 @@ func (r StartBringupResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r StartBringupResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetBringupAppInfoResponse struct {
@@ -39539,6 +40769,11 @@ func (r GetBringupAppInfoResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetBringupAppInfoResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBringupValidationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39562,6 +40797,11 @@ func (r GetBringupValidationsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBringupValidationsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateBringupSpecResponse struct {
@@ -39590,6 +40830,11 @@ func (r ValidateBringupSpecResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateBringupSpecResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBringupValidationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39616,6 +40861,11 @@ func (r GetBringupValidationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetBringupValidationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RetryBringupValidationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39635,6 +40885,11 @@ func (r RetryBringupValidationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RetryBringupValidationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ExportBringupValidationReportResponse struct {
@@ -39657,6 +40912,11 @@ func (r ExportBringupValidationReportResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ExportBringupValidationReportResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetBringupTaskByIDResponse struct {
@@ -39682,6 +40942,11 @@ func (r GetBringupTaskByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBringupTaskByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RetrySddcResponse struct {
@@ -39710,6 +40975,11 @@ func (r RetrySddcResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RetrySddcResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ExportBringupDetailReportResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39731,6 +41001,11 @@ func (r ExportBringupDetailReportResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ExportBringupDetailReportResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetSddcManagerInfoResponse struct {
@@ -39758,6 +41033,11 @@ func (r GetSddcManagerInfoResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSddcManagerInfoResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSSODomainsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39781,6 +41061,11 @@ func (r GetSSODomainsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetSSODomainsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetSSODomainEntitiesResponse struct {
@@ -39808,6 +41093,11 @@ func (r GetSSODomainEntitiesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSSODomainEntitiesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSystemConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39832,6 +41122,11 @@ func (r GetSystemConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSystemConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateSystemConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39853,6 +41148,11 @@ func (r UpdateSystemConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateSystemConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetBackupConfigurationResponse struct {
@@ -39879,6 +41179,11 @@ func (r GetBackupConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetBackupConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateBackupConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39901,6 +41206,11 @@ func (r UpdateBackupConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateBackupConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type SetBackupConfigurationResponse struct {
@@ -39927,6 +41237,11 @@ func (r SetBackupConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r SetBackupConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetBackupLocationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39949,6 +41264,11 @@ func (r GetBackupLocationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetBackupLocationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ValidateBackupConfigurationsOperationsResponse struct {
@@ -39975,6 +41295,11 @@ func (r ValidateBackupConfigurationsOperationsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ValidateBackupConfigurationsOperationsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetCeipStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -39996,6 +41321,11 @@ func (r GetCeipStatusResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetCeipStatusResponse) GetBody() []byte {
+	return r.Body
 }
 
 type SetCeipStatusResponse struct {
@@ -40023,6 +41353,11 @@ func (r SetCeipStatusResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r SetCeipStatusResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetLastAssessmentRunInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40045,6 +41380,11 @@ func (r GetLastAssessmentRunInfoResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetLastAssessmentRunInfoResponse) GetBody() []byte {
+	return r.Body
 }
 
 type TriggerCheckRunResponse struct {
@@ -40071,6 +41411,11 @@ func (r TriggerCheckRunResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r TriggerCheckRunResponse) GetBody() []byte {
+	return r.Body
+}
+
 type QueryCheckSetsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40093,6 +41438,11 @@ func (r QueryCheckSetsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r QueryCheckSetsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetResultResponse struct {
@@ -40120,6 +41470,11 @@ func (r GetResultResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetResultResponse) GetBody() []byte {
+	return r.Body
+}
+
 type TriggerPartialRetryOfCheckRunResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40142,6 +41497,11 @@ func (r TriggerPartialRetryOfCheckRunResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r TriggerPartialRetryOfCheckRunResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetDnsConfigurationResponse struct {
@@ -40168,6 +41528,11 @@ func (r GetDnsConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetDnsConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ConfigureDnsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40190,6 +41555,11 @@ func (r ConfigureDnsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ConfigureDnsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetValidationsOfDNSConfigurationResponse struct {
@@ -40216,6 +41586,11 @@ func (r GetValidationsOfDNSConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetValidationsOfDNSConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateDnsConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40238,6 +41613,11 @@ func (r ValidateDnsConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateDnsConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetValidationOfDnsConfigurationResponse struct {
@@ -40264,6 +41644,11 @@ func (r GetValidationOfDnsConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetValidationOfDnsConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetHealthCheckTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40287,6 +41672,11 @@ func (r GetHealthCheckTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetHealthCheckTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartHealthCheckResponse struct {
@@ -40315,6 +41705,11 @@ func (r StartHealthCheckResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartHealthCheckResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetHealthCheckStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40340,6 +41735,11 @@ func (r GetHealthCheckStatusResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetHealthCheckStatusResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ExportHealthCheckByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40359,6 +41759,11 @@ func (r ExportHealthCheckByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ExportHealthCheckByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNtpConfigurationResponse struct {
@@ -40385,6 +41790,11 @@ func (r GetNtpConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNtpConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ConfigureNtpResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40407,6 +41817,11 @@ func (r ConfigureNtpResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ConfigureNtpResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetValidationsOfNtpConfigurationResponse struct {
@@ -40433,6 +41848,11 @@ func (r GetValidationsOfNtpConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetValidationsOfNtpConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateNtpConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40455,6 +41875,11 @@ func (r ValidateNtpConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateNtpConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetValidationOfNtpConfigurationResponse struct {
@@ -40481,6 +41906,11 @@ func (r GetValidationOfNtpConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetValidationOfNtpConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type StartPrecheckResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40503,6 +41933,11 @@ func (r StartPrecheckResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r StartPrecheckResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetPrecheckTaskResponse struct {
@@ -40529,6 +41964,11 @@ func (r GetPrecheckTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetPrecheckTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetProxyConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40553,6 +41993,11 @@ func (r GetProxyConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetProxyConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateProxyConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40573,6 +42018,11 @@ func (r UpdateProxyConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateProxyConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartBringupSpecConversionResponse struct {
@@ -40601,6 +42051,11 @@ func (r StartBringupSpecConversionResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartBringupSpecConversionResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetFIPSConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40622,6 +42077,11 @@ func (r GetFIPSConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetFIPSConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeleteDepotSettingsResponse struct {
@@ -40647,6 +42107,11 @@ func (r DeleteDepotSettingsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteDepotSettingsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetDepotSettingsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40668,6 +42133,11 @@ func (r GetDepotSettingsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetDepotSettingsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateDepotSettingsResponse struct {
@@ -40694,6 +42164,11 @@ func (r UpdateDepotSettingsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateDepotSettingsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVersionAliasConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40715,6 +42190,11 @@ func (r GetVersionAliasConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVersionAliasConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVersionAliasConfigurationsResponse struct {
@@ -40741,6 +42221,11 @@ func (r UpdateVersionAliasConfigurationsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVersionAliasConfigurationsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteVersionAliasBySoftwareTypeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40764,6 +42249,11 @@ func (r DeleteVersionAliasBySoftwareTypeResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeleteVersionAliasBySoftwareTypeResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DeleteAliasVersionsBySoftwareTypeAndBaseVersionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40785,6 +42275,11 @@ func (r DeleteAliasVersionsBySoftwareTypeAndBaseVersionResponse) StatusCode() in
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DeleteAliasVersionsBySoftwareTypeAndBaseVersionResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVersionAliasConfigurationResponse struct {
@@ -40811,6 +42306,11 @@ func (r UpdateVersionAliasConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVersionAliasConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSupportBundleTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40834,6 +42334,11 @@ func (r GetSupportBundleTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetSupportBundleTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartSupportBundleResponse struct {
@@ -40862,6 +42367,11 @@ func (r StartSupportBundleResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartSupportBundleResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetSupportBundleStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40887,6 +42397,11 @@ func (r GetSupportBundleStatusResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetSupportBundleStatusResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ExportSupportBundleByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40906,6 +42421,11 @@ func (r ExportSupportBundleByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ExportSupportBundleByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetUpgradablesResponse struct {
@@ -40931,6 +42451,11 @@ func (r GetUpgradablesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetUpgradablesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTasksResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40952,6 +42477,11 @@ func (r GetTasksResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetTasksResponse) GetBody() []byte {
+	return r.Body
 }
 
 type CancelTaskResponse struct {
@@ -40978,6 +42508,11 @@ func (r CancelTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CancelTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41002,6 +42537,11 @@ func (r GetTaskResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetTaskResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RetryTaskResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41024,6 +42564,11 @@ func (r RetryTaskResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RetryTaskResponse) GetBody() []byte {
+	return r.Body
 }
 
 type CreateTokenResponse struct {
@@ -41052,6 +42597,11 @@ func (r CreateTokenResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r CreateTokenResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RefreshAccessTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41077,6 +42627,11 @@ func (r RefreshAccessTokenResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RefreshAccessTokenResponse) GetBody() []byte {
+	return r.Body
+}
+
 type InvalidateRefreshTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41096,6 +42651,11 @@ func (r InvalidateRefreshTokenResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r InvalidateRefreshTokenResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetUpgradablesByDomainResponse struct {
@@ -41122,6 +42682,11 @@ func (r GetUpgradablesByDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetUpgradablesByDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetUpgradablesClustersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41144,6 +42709,11 @@ func (r GetUpgradablesClustersResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetUpgradablesClustersResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetNsxUpgradeResourcesResponse struct {
@@ -41170,6 +42740,11 @@ func (r GetNsxUpgradeResourcesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetNsxUpgradeResourcesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetUpgradesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41193,6 +42768,11 @@ func (r GetUpgradesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetUpgradesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type PerformUpgradeResponse struct {
@@ -41221,6 +42801,11 @@ func (r PerformUpgradeResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r PerformUpgradeResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetUpgradeByIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41245,6 +42830,11 @@ func (r GetUpgradeByIdResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetUpgradeByIdResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateUpgradeScheduleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41267,6 +42857,11 @@ func (r UpdateUpgradeScheduleResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateUpgradeScheduleResponse) GetBody() []byte {
+	return r.Body
 }
 
 type StartUpgradePrecheckResponse struct {
@@ -41294,6 +42889,11 @@ func (r StartUpgradePrecheckResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r StartUpgradePrecheckResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetUpgradePrecheckByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41317,6 +42917,11 @@ func (r GetUpgradePrecheckByIDResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetUpgradePrecheckByIDResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetUsersResponse struct {
@@ -41344,6 +42949,11 @@ func (r GetUsersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetUsersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type AddUsersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41369,6 +42979,11 @@ func (r AddUsersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddUsersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DisableLocalAccountResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41390,6 +43005,11 @@ func (r DisableLocalAccountResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DisableLocalAccountResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetLocalAccountResponse struct {
@@ -41417,6 +43037,11 @@ func (r GetLocalAccountResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetLocalAccountResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateLocalUserPasswordResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41437,6 +43062,11 @@ func (r UpdateLocalUserPasswordResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateLocalUserPasswordResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetUiUsersResponse struct {
@@ -41464,6 +43094,11 @@ func (r GetUiUsersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetUiUsersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RemoveUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41485,6 +43120,11 @@ func (r RemoveUserResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RemoveUserResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVasaProvidersResponse struct {
@@ -41511,6 +43151,11 @@ func (r GetVasaProvidersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVasaProvidersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type AddVasaProviderResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41535,6 +43180,11 @@ func (r AddVasaProviderResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddVasaProviderResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateVasaProviderSpecResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41557,6 +43207,11 @@ func (r ValidateVasaProviderSpecResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateVasaProviderSpecResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVasaProviderValidationResponse struct {
@@ -41584,6 +43239,11 @@ func (r GetVasaProviderValidationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVasaProviderValidationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RemoveVasaProviderResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41608,6 +43268,11 @@ func (r RemoveVasaProviderResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RemoveVasaProviderResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVasaProviderResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41630,6 +43295,11 @@ func (r GetVasaProviderResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVasaProviderResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVasaProviderResponse struct {
@@ -41657,6 +43327,11 @@ func (r UpdateVasaProviderResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVasaProviderResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVasaProviderStorageContainersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41680,6 +43355,11 @@ func (r GetVasaProviderStorageContainersResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVasaProviderStorageContainersResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AddVasaProviderStorageContainerResponse struct {
@@ -41707,6 +43387,11 @@ func (r AddVasaProviderStorageContainerResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddVasaProviderStorageContainerResponse) GetBody() []byte {
+	return r.Body
+}
+
 type RemoveVasaProviderStorageContainerResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41729,6 +43414,11 @@ func (r RemoveVasaProviderStorageContainerResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r RemoveVasaProviderStorageContainerResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVasaProviderStorageContainerResponse struct {
@@ -41756,6 +43446,11 @@ func (r UpdateVasaProviderStorageContainerResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVasaProviderStorageContainerResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVasaProviderUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41779,6 +43474,11 @@ func (r GetVasaProviderUserResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVasaProviderUserResponse) GetBody() []byte {
+	return r.Body
 }
 
 type AddVasaProviderUserResponse struct {
@@ -41806,6 +43506,11 @@ func (r AddVasaProviderUserResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r AddVasaProviderUserResponse) GetBody() []byte {
+	return r.Body
+}
+
 type UpdateVasaProviderUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41829,6 +43534,11 @@ func (r UpdateVasaProviderUserResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r UpdateVasaProviderUserResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVcentersResponse struct {
@@ -41855,6 +43565,11 @@ func (r GetVcentersResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVcentersResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVcenterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41877,6 +43592,11 @@ func (r GetVcenterResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVcenterResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVcfServicesResponse struct {
@@ -41903,6 +43623,11 @@ func (r GetVcfServicesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVcfServicesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVcfServiceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41927,6 +43652,11 @@ func (r GetVcfServiceResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVcfServiceResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVrasResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41947,6 +43677,11 @@ func (r GetVrasResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVrasResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVrliIntegratedDomainsResponse struct {
@@ -41971,6 +43706,11 @@ func (r GetVrliIntegratedDomainsResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVrliIntegratedDomainsResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ConnectVrliWithDomainResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -41991,6 +43731,11 @@ func (r ConnectVrliWithDomainResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ConnectVrliWithDomainResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVrlisResponse struct {
@@ -42015,6 +43760,11 @@ func (r GetVrlisResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVrlisResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVropsIntegratedDomainsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42035,6 +43785,11 @@ func (r GetVropsIntegratedDomainsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVropsIntegratedDomainsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type ConnectVropsWithDomainResponse struct {
@@ -42061,6 +43816,11 @@ func (r ConnectVropsWithDomainResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r ConnectVropsWithDomainResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVropsesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42081,6 +43841,11 @@ func (r GetVropsesResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVropsesResponse) GetBody() []byte {
+	return r.Body
 }
 
 type RollbackVrslcmResponse struct {
@@ -42106,6 +43871,11 @@ func (r RollbackVrslcmResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r RollbackVrslcmResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVrslcmResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42127,6 +43897,11 @@ func (r GetVrslcmResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVrslcmResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVrslcmVersionInInventoryResponse struct {
@@ -42154,6 +43929,11 @@ func (r UpdateVrslcmVersionInInventoryResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVrslcmVersionInInventoryResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVrslcmStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42177,6 +43957,11 @@ func (r GetVrslcmStatusResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVrslcmStatusResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVrslcmsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42197,6 +43982,11 @@ func (r GetVrslcmsResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVrslcmsResponse) GetBody() []byte {
+	return r.Body
 }
 
 type DeployVrslcmResponse struct {
@@ -42224,6 +44014,11 @@ func (r DeployVrslcmResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r DeployVrslcmResponse) GetBody() []byte {
+	return r.Body
+}
+
 type ValidateVrslcmResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42245,6 +44040,11 @@ func (r ValidateVrslcmResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r ValidateVrslcmResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVrslcmValidationResponse struct {
@@ -42269,6 +44069,11 @@ func (r GetVrslcmValidationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVrslcmValidationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVrslcmVersionByIdInInventoryResponse struct {
@@ -42296,6 +44101,11 @@ func (r UpdateVrslcmVersionByIdInInventoryResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVrslcmVersionByIdInInventoryResponse) GetBody() []byte {
+	return r.Body
+}
+
 type DownloadVsanHclResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42317,6 +44127,11 @@ func (r DownloadVsanHclResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r DownloadVsanHclResponse) GetBody() []byte {
+	return r.Body
 }
 
 type GetVsanHclAttributesResponse struct {
@@ -42343,6 +44158,11 @@ func (r GetVsanHclAttributesResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r GetVsanHclAttributesResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetVsanHclConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42365,6 +44185,11 @@ func (r GetVsanHclConfigurationResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetVsanHclConfigurationResponse) GetBody() []byte {
+	return r.Body
 }
 
 type UpdateVsanHclConfigurationResponse struct {
@@ -42392,6 +44217,11 @@ func (r UpdateVsanHclConfigurationResponse) StatusCode() int {
 	return 0
 }
 
+// GetBody returns the response body as a byte array
+func (r UpdateVsanHclConfigurationResponse) GetBody() []byte {
+	return r.Body
+}
+
 type GetWsasResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42412,6 +44242,11 @@ func (r GetWsasResponse) StatusCode() int {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r GetWsasResponse) GetBody() []byte {
+	return r.Body
 }
 
 // GetAvnsWithResponse request returning *GetAvnsResponse

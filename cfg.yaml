@@ -4,3 +4,6 @@ output: ./vcf/vcf.gen.go
 generate:
   models: true
   client: true
+output-options:
+  user-templates:
+    client-with-responses.tmpl: ./templates/client-with-responses.tmpl
