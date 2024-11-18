@@ -28,6 +28,11 @@ const (
 	INPROGRESS           AssessmentOutputStatus = "IN_PROGRESS"
 )
 
+// Defines values for BundleDownloadStatus.
+const (
+	PENDINGSCHEDULEDINPROGRESSSUCCESSFAILED BundleDownloadStatus = "PENDING,SCHEDULED,INPROGRESS,SUCCESS,FAILED;"
+)
+
 // Defines values for ClassificationSource.
 const (
 	CLASSIFIER ClassificationSource = "CLASSIFIER"
@@ -53,8 +58,8 @@ const (
 
 // Defines values for DomainIntegrationStatus.
 const (
-	DISABLED DomainIntegrationStatus = "DISABLED"
-	ENABLED  DomainIntegrationStatus = "ENABLED"
+	DomainIntegrationStatusDISABLED DomainIntegrationStatus = "DISABLED"
+	DomainIntegrationStatusENABLED  DomainIntegrationStatus = "ENABLED"
 )
 
 // Defines values for FrequencyMetricUnit.
@@ -191,6 +196,16 @@ const (
 	Pdf ExportBringupDetailReportParamsFormat = "pdf"
 )
 
+// Defines values for SetCeipStatusJSONBody.
+const (
+	SetCeipStatusJSONBodyDISABLED        SetCeipStatusJSONBody = "DISABLED"
+	SetCeipStatusJSONBodyDISABLING       SetCeipStatusJSONBody = "DISABLING"
+	SetCeipStatusJSONBodyDISABLINGFAILED SetCeipStatusJSONBody = "DISABLING_FAILED"
+	SetCeipStatusJSONBodyENABLED         SetCeipStatusJSONBody = "ENABLED"
+	SetCeipStatusJSONBodyENABLING        SetCeipStatusJSONBody = "ENABLING"
+	SetCeipStatusJSONBodyENABLINGFAILED  SetCeipStatusJSONBody = "ENABLING_FAILED"
+)
+
 // Defines values for StartBringupSpecConversionParamsDesign.
 const (
 	EMS    StartBringupSpecConversionParamsDesign = "EMS"
@@ -282,6 +297,9 @@ type AssessmentMetadata struct {
 
 	// TargetVersion Version of target state definitions that is going to be used for assessment
 	TargetVersion *string `json:"targetVersion,omitempty"`
+
+	// UpgradeId Upgrade Id for the configure upgrade precheck
+	UpgradeId *string `json:"upgradeId,omitempty"`
 }
 
 // AssessmentOutput Result from the baseliner assessment run (execution result, presented artifacts or ask for extra info).
@@ -742,6 +760,33 @@ type BundleComponent struct {
 	Vendor *string `json:"vendor,omitempty"`
 }
 
+// BundleDownload Represents a download record of a bundle. A bundle may be associated with multiple downloads if previous downloads failed
+type BundleDownload struct {
+	// BundleId Bundle id associated with this download
+	BundleId *string `json:"bundleId,omitempty"`
+
+	// DownloadError Describe a download error
+	DownloadError *DownloadBundleError `json:"downloadError,omitempty"`
+
+	// DownloadId Uniquely identity a download
+	DownloadId *string `json:"downloadId,omitempty"`
+
+	// EndTime The actual end download time
+	EndTime *int64 `json:"endTime,omitempty"`
+
+	// ScheduledTime The scheduled time when the download to start
+	ScheduledTime *int64 `json:"scheduledTime,omitempty"`
+
+	// StartTime The actual start download time
+	StartTime *int64 `json:"startTime,omitempty"`
+
+	// Status Bundle download status
+	Status *BundleDownloadStatus `json:"status,omitempty"`
+}
+
+// BundleDownloadStatus Bundle download status
+type BundleDownloadStatus string
+
 // BundleDownloadSpec Bundle Download Specification. This specification gets used in the Bundle Download API
 type BundleDownloadSpec struct {
 	// CancelNow Flag for cancelling the download. If true, scheduledTimestamp/downloadNow is ignored
@@ -825,12 +870,6 @@ type Ceip struct {
 	InstanceId *string `json:"instanceId,omitempty"`
 
 	// Status CEIP status
-	Status string `json:"status"`
-}
-
-// CeipUpdateSpec Specification for CEIP state change
-type CeipUpdateSpec struct {
-	// Status User provided CEIP operation
 	Status string `json:"status"`
 }
 
@@ -1354,7 +1393,7 @@ type ClusterSpec struct {
 	// AdvancedOptions Advanced Options used to add Cluster
 	AdvancedOptions *AdvancedOptions `json:"advancedOptions,omitempty"`
 
-	// ClusterImageId ID of the Cluster Image to be used with the Cluster
+	// ClusterImageId ID of the Cluster Image to be used only with the Cluster managed by vSphere Lifecycle Manager Images
 	ClusterImageId *string `json:"clusterImageId,omitempty"`
 
 	// DatastoreSpec This specification contains cluster storage configuration
@@ -1985,30 +2024,6 @@ type CustomISOSpec struct {
 	Id string `json:"id"`
 }
 
-// CustomIso Custom Iso contains bits to install/update the appropriate Cloud Foundation software components and vendor add ons in your management domain or workload domain hosts.
-type CustomIso struct {
-	// Id Custom Iso Id
-	Id *string `json:"id,omitempty"`
-
-	// Name Custom Image Name
-	Name *string `json:"name,omitempty"`
-
-	// UploadedTimestamp Date when the ISO was uploaded
-	UploadedTimestamp *string `json:"uploadedTimestamp,omitempty"`
-
-	// Vendor Vendor of the Custom Iso
-	Vendor *string `json:"vendor,omitempty"`
-
-	// Version Custom Iso ESXi Version
-	Version *string `json:"version,omitempty"`
-}
-
-// CustomIsoRenameSpec Custom Iso rename spec contains the name field in which the new name is to be entered
-type CustomIsoRenameSpec struct {
-	// Name Custom Iso name
-	Name string `json:"name"`
-}
-
 // DataMetric Represents a single metric representing digital data
 type DataMetric struct {
 	// Unit Unit of the metric
@@ -2468,6 +2483,30 @@ type Domains struct {
 	DomainName *string `json:"domainName,omitempty"`
 }
 
+// DownloadBundleError Describe a download error
+type DownloadBundleError struct {
+	// ErrorCode Error code
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+	// ErrorMessage Error message
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+
+	// Retriable Error is retriable
+	Retriable *bool `json:"retriable,omitempty"`
+
+	// StackTraceStr Exception stack trace string
+	StackTraceStr *string `json:"stackTraceStr,omitempty"`
+}
+
+// DownloadProgressIndicator Download progress indicator
+type DownloadProgressIndicator struct {
+	// DownloadedBytes Number of bytes downloaded
+	DownloadedBytes *int64 `json:"downloadedBytes,omitempty"`
+
+	// IsDownloadCancelled is download cancelled
+	IsDownloadCancelled *bool `json:"isDownloadCancelled,omitempty"`
+}
+
 // DvsSpec Spec contains parameters for DVS
 type DvsSpec struct {
 	// DvsName vSphere Distributed Switch Name. It will be auto-generated if blank
@@ -2544,7 +2583,7 @@ type EdgeClusterCreationSpec struct {
 	EdgeClusterName string `json:"edgeClusterName"`
 
 	// EdgeClusterProfileSpec This specification contains edge cluster profile configurations
-	EdgeClusterProfileSpec NsxTEdgeClusterProfileSpec `json:"edgeClusterProfileSpec"`
+	EdgeClusterProfileSpec *NsxTEdgeClusterProfileSpec `json:"edgeClusterProfileSpec,omitempty"`
 
 	// EdgeClusterProfileType Type of edge cluster profile
 	EdgeClusterProfileType string `json:"edgeClusterProfileType"`
@@ -4379,7 +4418,8 @@ type NsxTCluster struct {
 	// IsShared Boolean to identify if the NSX cluster is shared among workload domains
 	IsShared *bool `json:"isShared,omitempty"`
 
-	// IsVlcmCompatible Boolean to identify if the NSX cluster is compatible with vLCM. This should not be used to determineif vLCM Clusters can be created on the domain
+	// IsVlcmCompatible [Deprecated] Boolean to identify if the NSX cluster is compatible with vLCM. This should not be used to determineif vLCM Clusters can be created on the domain
+	// Deprecated:
 	IsVlcmCompatible *bool `json:"isVlcmCompatible,omitempty"`
 
 	// NativeId [Deprecated] Native ID of the NSX cluster
@@ -4635,6 +4675,9 @@ type NsxtHostCluster struct {
 
 	// Name Cluster name
 	Name *string `json:"name,omitempty"`
+
+	// NsxtComponentId Nsxt Component native id of the nsxt host cluster
+	NsxtComponentId *string `json:"nsxtComponentId,omitempty"`
 
 	// PrimaryCluster Flag to determine if primary cluster for vLCM
 	PrimaryCluster *bool `json:"primaryCluster,omitempty"`
@@ -4989,7 +5032,7 @@ type PackageSpec struct {
 // Page Represents a page of elements of a single type
 type Page struct {
 	// Elements The list of elements included in this page
-	Elements *[]TrustedCertificate `json:"elements,omitempty"`
+	Elements *[]EdgeClusterNsxtEntityCriterion `json:"elements,omitempty"`
 
 	// PageMetadata Represents pageable elements pagination metadata
 	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
@@ -5100,6 +5143,15 @@ type PageOfClusterCriterion struct {
 	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
 }
 
+// PageOfClusterNetworkConfigurationCriterion defines model for PageOfClusterNetworkConfigurationCriterion.
+type PageOfClusterNetworkConfigurationCriterion struct {
+	// Elements The list of elements included in this page
+	Elements *[]ClusterNetworkConfigurationCriterion `json:"elements,omitempty"`
+
+	// PageMetadata Represents pageable elements pagination metadata
+	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
+}
+
 // PageOfCompatibilityMatrix defines model for PageOfCompatibilityMatrix.
 type PageOfCompatibilityMatrix struct {
 	// Elements The list of elements included in this page
@@ -5176,15 +5228,6 @@ type PageOfCredentialsTask struct {
 type PageOfCsr struct {
 	// Elements The list of elements included in this page
 	Elements *[]Csr `json:"elements,omitempty"`
-
-	// PageMetadata Represents pageable elements pagination metadata
-	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
-}
-
-// PageOfCustomIso defines model for PageOfCustomIso.
-type PageOfCustomIso struct {
-	// Elements The list of elements included in this page
-	Elements *[]CustomIso `json:"elements,omitempty"`
 
 	// PageMetadata Represents pageable elements pagination metadata
 	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
@@ -5428,6 +5471,15 @@ type PageOfRole struct {
 type PageOfSddcManager struct {
 	// Elements The list of elements included in this page
 	Elements *[]SddcManager `json:"elements,omitempty"`
+
+	// PageMetadata Represents pageable elements pagination metadata
+	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
+}
+
+// PageOfSddcManagerUpgradable defines model for PageOfSddcManagerUpgradable.
+type PageOfSddcManagerUpgradable struct {
+	// Elements The list of elements included in this page
+	Elements *[]SddcManagerUpgradable `json:"elements,omitempty"`
 
 	// PageMetadata Represents pageable elements pagination metadata
 	PageMetadata *PageMetadata `json:"pageMetadata,omitempty"`
@@ -6632,6 +6684,48 @@ type SddcManager struct {
 	Version *string `json:"version,omitempty"`
 }
 
+// SddcManagerBundle SDDC Manager Bundle consists the bits to perform the upgrade of an SDDC Manager
+type SddcManagerBundle struct {
+	// BundleDownload Represents a download record of a bundle. A bundle may be associated with multiple downloads if previous downloads failed
+	BundleDownload *BundleDownload `json:"bundleDownload,omitempty"`
+
+	// Description Bundle Description
+	Description *string `json:"description,omitempty"`
+
+	// DownloadEndTime Bundle download end time
+	DownloadEndTime *int64 `json:"downloadEndTime,omitempty"`
+
+	// DownloadProgress Download progress indicator
+	DownloadProgress *DownloadProgressIndicator `json:"downloadProgress,omitempty"`
+
+	// DownloadStartTime Bundle download start time
+	DownloadStartTime *int64 `json:"downloadStartTime,omitempty"`
+
+	// DownloadStatus Bundle Download Status
+	DownloadStatus *string `json:"downloadStatus,omitempty"`
+
+	// Id Bundle ID
+	Id *string `json:"id,omitempty"`
+
+	// IsCumulative Is Bundle Cumulative
+	IsCumulative *bool `json:"isCumulative,omitempty"`
+
+	// ReleasedDate Bundle Release Date
+	ReleasedDate *string `json:"releasedDate,omitempty"`
+
+	// SizeMB Bundle Size in MB
+	SizeMB *float64 `json:"sizeMB,omitempty"`
+
+	// Type Bundle Type
+	Type *string `json:"type,omitempty"`
+
+	// Vendor Bundle Vendor
+	Vendor *string `json:"vendor,omitempty"`
+
+	// Version Bundle Version
+	Version *string `json:"version,omitempty"`
+}
+
 // SddcManagerInfo SDDC Manager Information
 type SddcManagerInfo struct {
 	// Fqdn FQDN of the SDDC Manager
@@ -6684,6 +6778,36 @@ type SddcManagerSpec struct {
 
 	// SecondUserCredentials Credentials contains the username and password
 	SecondUserCredentials *SddcCredentials `json:"secondUserCredentials,omitempty"`
+}
+
+// SddcManagerUpgradable SDDC Manager Upgradable consists of release information, bits and the upgrade information  to upgrade SDDC Manager on the system.
+type SddcManagerUpgradable struct {
+	// ApplicabilityStatus SDDC Manager Release Applicability Status
+	ApplicabilityStatus *string `json:"applicabilityStatus,omitempty"`
+
+	// CompatibilityStatus SDDC Manager Release Compatibility Status
+	CompatibilityStatus *string `json:"compatibilityStatus,omitempty"`
+
+	// Description SDDC Manager Release Description
+	Description *string `json:"description,omitempty"`
+
+	// Errors SDDC Manager Release in-applicability reasons
+	Errors *[]MessagePack `json:"errors,omitempty"`
+
+	// ReleaseDate SDDC Manager Release Date
+	ReleaseDate *string `json:"releaseDate,omitempty"`
+
+	// SddcManagerBundle SDDC Manager Bundle consists the bits to perform the upgrade of an SDDC Manager
+	SddcManagerBundle *SddcManagerBundle `json:"sddcManagerBundle,omitempty"`
+
+	// Upgrade Upgrade object which contain details regarding the upgrade
+	Upgrade *Upgrade `json:"upgrade,omitempty"`
+
+	// Version SDDC Manager Release Version
+	Version *string `json:"version,omitempty"`
+
+	// Warnings SDDC Manager Release applicable with warnings reasons
+	Warnings *[]MessagePack `json:"warnings,omitempty"`
 }
 
 // SddcNetworkSpec Defines a network spec
@@ -7058,8 +7182,9 @@ type SsoDomainSpec struct {
 
 // Stage Represents a Stage
 type Stage struct {
-	CompletionTimestamp string `json:"completionTimestamp"`
-	CreationTimestamp   string `json:"creationTimestamp"`
+	// CompletionTimestamp Stage completion timestamp
+	CompletionTimestamp *string `json:"completionTimestamp,omitempty"`
+	CreationTimestamp   string  `json:"creationTimestamp"`
 
 	// Description Stage description
 	Description *string `json:"description,omitempty"`
@@ -7387,13 +7512,16 @@ type TeamingSpec struct {
 // TemporaryNetwork Temporary Network for vCenter Upgrade
 type TemporaryNetwork struct {
 	// Gateway Gateway for vCenter Upgrade temporary network
-	Gateway string `json:"gateway"`
+	Gateway *string `json:"gateway,omitempty"`
 
 	// IpAddress IP Address for vCenter Upgrade temporary network
-	IpAddress string `json:"ipAddress"`
+	IpAddress *string `json:"ipAddress,omitempty"`
+
+	// NetworkMode Network mode for target vCenter server
+	NetworkMode *string `json:"networkMode,omitempty"`
 
 	// SubnetMask Subnet Mask for vCenter Upgrade temporary network
-	SubnetMask string `json:"subnetMask"`
+	SubnetMask *string `json:"subnetMask,omitempty"`
 }
 
 // TokenCreationSpec The spec used to sign the token
@@ -7536,6 +7664,9 @@ type Upgrade struct {
 
 	// TaskId Task ID associated with upgrade
 	TaskId string `json:"taskId"`
+
+	// VcenterUpgradeUserInputSpec vCenter Upgrade User Input Specification
+	VcenterUpgradeUserInputSpec *VcenterUpgradeUserInputSpec `json:"vcenterUpgradeUserInputSpec,omitempty"`
 }
 
 // UpgradeCommitSpec Upgrade Commit/Reschedule Specification
@@ -7548,6 +7679,9 @@ type UpgradeCommitSpec struct {
 
 	// UpgradeNow Flag for enabling Upgrade Now. If true, scheduledTimestamp is ignored
 	UpgradeNow *bool `json:"upgradeNow,omitempty"`
+
+	// VcenterUpgradePatchSpecs User input for vCenter ReducedDowntimeMigration upgrade
+	VcenterUpgradePatchSpecs *[]VcenterUpgradePatchSpec `json:"vcenterUpgradePatchSpecs,omitempty"`
 }
 
 // UpgradeSpec Upgrade Specification
@@ -7825,10 +7959,28 @@ type VcenterSpec struct {
 	VmSize *string `json:"vmSize,omitempty"`
 }
 
+// VcenterUpgradePatchSpec vCenter Upgrade User editable Input Specification
+type VcenterUpgradePatchSpec struct {
+	// ResourceId Resource ID for Upgrade
+	ResourceId string `json:"resourceId"`
+
+	// StartSwitchoverTimestamp Start switchover time. This field is only supported for ReducedDowntimeMigration upgrade mechanism. To unset startSwitchoverTimestamp, provide the value as: 1970-01-01T00:00:00Z
+	StartSwitchoverTimestamp string `json:"startSwitchoverTimestamp"`
+}
+
 // VcenterUpgradeUserInputSpec vCenter Upgrade User Input Specification
 type VcenterUpgradeUserInputSpec struct {
+	// ResourceId Resource ID for Upgrade
+	ResourceId *string `json:"resourceId,omitempty"`
+
+	// StartSwitchoverTimestamp Start switchover time. This field is only supported for ReducedDowntimeMigration upgrade mechanism
+	StartSwitchoverTimestamp *string `json:"startSwitchoverTimestamp,omitempty"`
+
 	// TemporaryNetwork Temporary Network for vCenter Upgrade
 	TemporaryNetwork TemporaryNetwork `json:"temporaryNetwork"`
+
+	// UpgradeMechanism vCenter upgrade mechanism. This field is only supported for vCenter patch upgrades. Minimum supported vCenter target version is 8.0 Update 3b
+	UpgradeMechanism *string `json:"upgradeMechanism,omitempty"`
 }
 
 // VcfService VCF service representation
@@ -8566,31 +8718,6 @@ type GetCredentialsTasksParams struct {
 	Limit *int32 `form:"limit,omitempty" json:"limit,omitempty"`
 }
 
-// GetCustomIsosParams defines parameters for GetCustomIsos.
-type GetCustomIsosParams struct {
-	// Name The name of the Custom ISO
-	Name *string `form:"name,omitempty" json:"name,omitempty"`
-
-	// Vendor The vendor name of the Custom ISO
-	Vendor *string `form:"vendor,omitempty" json:"vendor,omitempty"`
-
-	// DomainId The domain resource ID
-	DomainId *string `form:"domainId,omitempty" json:"domainId,omitempty"`
-
-	// TargetVersion The ESXi target version
-	TargetVersion *string `form:"targetVersion,omitempty" json:"targetVersion,omitempty"`
-}
-
-// UploadCustomIsoMultipartBody defines parameters for UploadCustomIso.
-type UploadCustomIsoMultipartBody struct {
-	File openapi_types.File `json:"file"`
-}
-
-// UploadCustomIsoParams defines parameters for UploadCustomIso.
-type UploadCustomIsoParams struct {
-	Name string `form:"name" json:"name"`
-}
-
 // GetDomainsParams defines parameters for GetDomains.
 type GetDomainsParams struct {
 	// Type The type of the domain
@@ -8716,6 +8843,12 @@ type DeleteNetworkPoolParams struct {
 type GetALBClustersParams struct {
 	// DomainId Domain Id
 	DomainId *string `form:"domainId,omitempty" json:"domainId,omitempty"`
+}
+
+// CreateALBClusterParams defines parameters for CreateALBCluster.
+type CreateALBClusterParams struct {
+	// SkipCompatibilityCheck Pass an optional Skip compatibility checks
+	SkipCompatibilityCheck *bool `form:"skipCompatibilityCheck,omitempty" json:"skipCompatibilityCheck,omitempty"`
 }
 
 // ValidateALBClusterCreationSpecParams defines parameters for ValidateALBClusterCreationSpec.
@@ -8891,6 +9024,9 @@ type GetBackupLocationParams struct {
 	// Port Backup server port
 	Port string `form:"port" json:"port"`
 }
+
+// SetCeipStatusJSONBody defines parameters for SetCeipStatus.
+type SetCeipStatusJSONBody string
 
 // GetLastAssessmentRunInfoParams defines parameters for GetLastAssessmentRunInfo.
 type GetLastAssessmentRunInfoParams struct {
@@ -9087,12 +9223,6 @@ type GetPasswordExpirationJSONRequestBody = CredentialsExpirationSpec
 // RetryCredentialsTaskJSONRequestBody defines body for RetryCredentialsTask for application/json ContentType.
 type RetryCredentialsTaskJSONRequestBody = CredentialsUpdateSpec
 
-// UploadCustomIsoMultipartRequestBody defines body for UploadCustomIso for multipart/form-data ContentType.
-type UploadCustomIsoMultipartRequestBody UploadCustomIsoMultipartBody
-
-// RenameCustomIsoByIdJSONRequestBody defines body for RenameCustomIsoById for application/json ContentType.
-type RenameCustomIsoByIdJSONRequestBody = CustomIsoRenameSpec
-
 // CreateDomainJSONRequestBody defines body for CreateDomain for application/json ContentType.
 type CreateDomainJSONRequestBody = DomainCreationSpec
 
@@ -9219,6 +9349,9 @@ type DeleteIpPoolFromNetworkOfNetworkPoolJSONRequestBody = IpPool
 // AddIpPoolToNetworkOfNetworkPoolJSONRequestBody defines body for AddIpPoolToNetworkOfNetworkPool for application/json ContentType.
 type AddIpPoolToNetworkOfNetworkPoolJSONRequestBody = IpPool
 
+// CreateALBClusterJSONRequestBody defines body for CreateALBCluster for application/json ContentType.
+type CreateALBClusterJSONRequestBody = NsxAlbControllerClusterSpec
+
 // ValidateALBClusterCreationSpecJSONRequestBody defines body for ValidateALBClusterCreationSpec for application/json ContentType.
 type ValidateALBClusterCreationSpecJSONRequestBody = NsxAlbControllerClusterSpec
 
@@ -9295,7 +9428,7 @@ type SetBackupConfigurationJSONRequestBody = BackupConfigurationSpec
 type ValidateBackupConfigurationsOperationsJSONRequestBody = BackupConfigurationSpec
 
 // SetCeipStatusJSONRequestBody defines body for SetCeipStatus for application/json ContentType.
-type SetCeipStatusJSONRequestBody = CeipUpdateSpec
+type SetCeipStatusJSONRequestBody SetCeipStatusJSONBody
 
 // TriggerCheckRunJSONRequestBody defines body for TriggerCheckRun for application/json ContentType.
 type TriggerCheckRunJSONRequestBody = CheckSetRunInput
@@ -9750,23 +9883,6 @@ type ClientInterface interface {
 	// GetCredential request
 	GetCredential(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetCustomIsos request
-	GetCustomIsos(ctx context.Context, params *GetCustomIsosParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// UploadCustomIsoWithBody request with any body
-	UploadCustomIsoWithBody(ctx context.Context, params *UploadCustomIsoParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteCustomIsoById request
-	DeleteCustomIsoById(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetCustomIsoById request
-	GetCustomIsoById(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// RenameCustomIsoByIdWithBody request with any body
-	RenameCustomIsoByIdWithBody(ctx context.Context, customIsoId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	RenameCustomIsoById(ctx context.Context, customIsoId string, body RenameCustomIsoByIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetDomains request
 	GetDomains(ctx context.Context, params *GetDomainsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -10112,9 +10228,9 @@ type ClientInterface interface {
 	GetLicenseKey(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// UpdateLicenseKeyWithBody request with any body
-	UpdateLicenseKeyWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateLicenseKeyWithBody(ctx context.Context, licenseKeyOrId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdateLicenseKey(ctx context.Context, key string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	UpdateLicenseKey(ctx context.Context, licenseKeyOrId string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetLicenseInformation request
 	GetLicenseInformation(ctx context.Context, params *GetLicenseInformationParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -10170,6 +10286,11 @@ type ClientInterface interface {
 
 	// GetALBClusters request
 	GetALBClusters(ctx context.Context, params *GetALBClustersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CreateALBClusterWithBody request with any body
+	CreateALBClusterWithBody(ctx context.Context, params *CreateALBClusterParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	CreateALBCluster(ctx context.Context, params *CreateALBClusterParams, body CreateALBClusterJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetALBClustersFormFactors request
 	GetALBClustersFormFactors(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -12013,78 +12134,6 @@ func (c *Client) GetCredential(ctx context.Context, id string, reqEditors ...Req
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetCustomIsos(ctx context.Context, params *GetCustomIsosParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetCustomIsosRequest(c.Server, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) UploadCustomIsoWithBody(ctx context.Context, params *UploadCustomIsoParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUploadCustomIsoRequestWithBody(c.Server, params, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) DeleteCustomIsoById(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteCustomIsoByIdRequest(c.Server, customIsoId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) GetCustomIsoById(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetCustomIsoByIdRequest(c.Server, customIsoId)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) RenameCustomIsoByIdWithBody(ctx context.Context, customIsoId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRenameCustomIsoByIdRequestWithBody(c.Server, customIsoId, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-func (c *Client) RenameCustomIsoById(ctx context.Context, customIsoId string, body RenameCustomIsoByIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewRenameCustomIsoByIdRequest(c.Server, customIsoId, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 func (c *Client) GetDomains(ctx context.Context, params *GetDomainsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetDomainsRequest(c.Server, params)
 	if err != nil {
@@ -13597,8 +13646,8 @@ func (c *Client) GetLicenseKey(ctx context.Context, key string, reqEditors ...Re
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateLicenseKeyWithBody(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateLicenseKeyRequestWithBody(c.Server, key, contentType, body)
+func (c *Client) UpdateLicenseKeyWithBody(ctx context.Context, licenseKeyOrId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateLicenseKeyRequestWithBody(c.Server, licenseKeyOrId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -13609,8 +13658,8 @@ func (c *Client) UpdateLicenseKeyWithBody(ctx context.Context, key string, conte
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateLicenseKey(ctx context.Context, key string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateLicenseKeyRequest(c.Server, key, body)
+func (c *Client) UpdateLicenseKey(ctx context.Context, licenseKeyOrId string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewUpdateLicenseKeyRequest(c.Server, licenseKeyOrId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -13851,6 +13900,30 @@ func (c *Client) AddIpPoolToNetworkOfNetworkPool(ctx context.Context, id string,
 
 func (c *Client) GetALBClusters(ctx context.Context, params *GetALBClustersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetALBClustersRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateALBClusterWithBody(ctx context.Context, params *CreateALBClusterParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateALBClusterRequestWithBody(c.Server, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CreateALBCluster(ctx context.Context, params *CreateALBClusterParams, body CreateALBClusterJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCreateALBClusterRequest(c.Server, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -20041,265 +20114,6 @@ func NewGetCredentialRequest(server string, id string) (*http.Request, error) {
 	return req, nil
 }
 
-// NewGetCustomIsosRequest generates requests for GetCustomIsos
-func NewGetCustomIsosRequest(server string, params *GetCustomIsosParams) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/custom-isos")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if params.Name != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "name", runtime.ParamLocationQuery, *params.Name); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Vendor != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "vendor", runtime.ParamLocationQuery, *params.Vendor); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.DomainId != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "domainId", runtime.ParamLocationQuery, *params.DomainId); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.TargetVersion != nil {
-
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "targetVersion", runtime.ParamLocationQuery, *params.TargetVersion); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewUploadCustomIsoRequestWithBody generates requests for UploadCustomIso with any type of body
-func NewUploadCustomIsoRequestWithBody(server string, params *UploadCustomIsoParams, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/custom-isos/file")
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "name", runtime.ParamLocationQuery, params.Name); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("POST", queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
-// NewDeleteCustomIsoByIdRequest generates requests for DeleteCustomIsoById
-func NewDeleteCustomIsoByIdRequest(server string, customIsoId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "custom_iso_id", runtime.ParamLocationPath, customIsoId)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/custom-isos/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewGetCustomIsoByIdRequest generates requests for GetCustomIsoById
-func NewGetCustomIsoByIdRequest(server string, customIsoId string) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "custom_iso_id", runtime.ParamLocationPath, customIsoId)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/custom-isos/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewRenameCustomIsoByIdRequest calls the generic RenameCustomIsoById builder with application/json body
-func NewRenameCustomIsoByIdRequest(server string, customIsoId string, body RenameCustomIsoByIdJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewRenameCustomIsoByIdRequestWithBody(server, customIsoId, "application/json", bodyReader)
-}
-
-// NewRenameCustomIsoByIdRequestWithBody generates requests for RenameCustomIsoById with any type of body
-func NewRenameCustomIsoByIdRequestWithBody(server string, customIsoId string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "custom_iso_id", runtime.ParamLocationPath, customIsoId)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/custom-isos/%s", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("PATCH", queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
-
-	return req, nil
-}
-
 // NewGetDomainsRequest generates requests for GetDomains
 func NewGetDomainsRequest(server string, params *GetDomainsParams) (*http.Request, error) {
 	var err error
@@ -24158,23 +23972,23 @@ func NewGetLicenseKeyRequest(server string, key string) (*http.Request, error) {
 }
 
 // NewUpdateLicenseKeyRequest calls the generic UpdateLicenseKey builder with application/json body
-func NewUpdateLicenseKeyRequest(server string, key string, body UpdateLicenseKeyJSONRequestBody) (*http.Request, error) {
+func NewUpdateLicenseKeyRequest(server string, licenseKeyOrId string, body UpdateLicenseKeyJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateLicenseKeyRequestWithBody(server, key, "application/json", bodyReader)
+	return NewUpdateLicenseKeyRequestWithBody(server, licenseKeyOrId, "application/json", bodyReader)
 }
 
 // NewUpdateLicenseKeyRequestWithBody generates requests for UpdateLicenseKey with any type of body
-func NewUpdateLicenseKeyRequestWithBody(server string, key string, contentType string, body io.Reader) (*http.Request, error) {
+func NewUpdateLicenseKeyRequestWithBody(server string, licenseKeyOrId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
 
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "key", runtime.ParamLocationPath, key)
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "licenseKeyOrId", runtime.ParamLocationPath, licenseKeyOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -24829,6 +24643,68 @@ func NewGetALBClustersRequest(server string, params *GetALBClustersParams) (*htt
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewCreateALBClusterRequest calls the generic CreateALBCluster builder with application/json body
+func NewCreateALBClusterRequest(server string, params *CreateALBClusterParams, body CreateALBClusterJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewCreateALBClusterRequestWithBody(server, params, "application/json", bodyReader)
+}
+
+// NewCreateALBClusterRequestWithBody generates requests for CreateALBCluster with any type of body
+func NewCreateALBClusterRequestWithBody(server string, params *CreateALBClusterParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/nsx-alb-clusters")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.SkipCompatibilityCheck != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "skipCompatibilityCheck", runtime.ParamLocationQuery, *params.SkipCompatibilityCheck); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -32531,23 +32407,6 @@ type ClientWithResponsesInterface interface {
 	// GetCredentialWithResponse request
 	GetCredentialWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetCredentialResponse, error)
 
-	// GetCustomIsosWithResponse request
-	GetCustomIsosWithResponse(ctx context.Context, params *GetCustomIsosParams, reqEditors ...RequestEditorFn) (*GetCustomIsosResponse, error)
-
-	// UploadCustomIsoWithBodyWithResponse request with any body
-	UploadCustomIsoWithBodyWithResponse(ctx context.Context, params *UploadCustomIsoParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UploadCustomIsoResponse, error)
-
-	// DeleteCustomIsoByIdWithResponse request
-	DeleteCustomIsoByIdWithResponse(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*DeleteCustomIsoByIdResponse, error)
-
-	// GetCustomIsoByIdWithResponse request
-	GetCustomIsoByIdWithResponse(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*GetCustomIsoByIdResponse, error)
-
-	// RenameCustomIsoByIdWithBodyWithResponse request with any body
-	RenameCustomIsoByIdWithBodyWithResponse(ctx context.Context, customIsoId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RenameCustomIsoByIdResponse, error)
-
-	RenameCustomIsoByIdWithResponse(ctx context.Context, customIsoId string, body RenameCustomIsoByIdJSONRequestBody, reqEditors ...RequestEditorFn) (*RenameCustomIsoByIdResponse, error)
-
 	// GetDomainsWithResponse request
 	GetDomainsWithResponse(ctx context.Context, params *GetDomainsParams, reqEditors ...RequestEditorFn) (*GetDomainsResponse, error)
 
@@ -32893,9 +32752,9 @@ type ClientWithResponsesInterface interface {
 	GetLicenseKeyWithResponse(ctx context.Context, key string, reqEditors ...RequestEditorFn) (*GetLicenseKeyResponse, error)
 
 	// UpdateLicenseKeyWithBodyWithResponse request with any body
-	UpdateLicenseKeyWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error)
+	UpdateLicenseKeyWithBodyWithResponse(ctx context.Context, licenseKeyOrId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error)
 
-	UpdateLicenseKeyWithResponse(ctx context.Context, key string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error)
+	UpdateLicenseKeyWithResponse(ctx context.Context, licenseKeyOrId string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error)
 
 	// GetLicenseInformationWithResponse request
 	GetLicenseInformationWithResponse(ctx context.Context, params *GetLicenseInformationParams, reqEditors ...RequestEditorFn) (*GetLicenseInformationResponse, error)
@@ -32951,6 +32810,11 @@ type ClientWithResponsesInterface interface {
 
 	// GetALBClustersWithResponse request
 	GetALBClustersWithResponse(ctx context.Context, params *GetALBClustersParams, reqEditors ...RequestEditorFn) (*GetALBClustersResponse, error)
+
+	// CreateALBClusterWithBodyWithResponse request with any body
+	CreateALBClusterWithBodyWithResponse(ctx context.Context, params *CreateALBClusterParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateALBClusterResponse, error)
+
+	CreateALBClusterWithResponse(ctx context.Context, params *CreateALBClusterParams, body CreateALBClusterJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateALBClusterResponse, error)
 
 	// GetALBClustersFormFactorsWithResponse request
 	GetALBClustersFormFactorsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetALBClustersFormFactorsResponse, error)
@@ -34463,7 +34327,6 @@ func (r GetClusterResponse) GetBody() []byte {
 type UpdateClusterResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *Task
 	JSON202      *Task
 	JSON400      *Error
 	JSON404      *Error
@@ -34753,6 +34616,7 @@ func (r PostHostQueryResponse) GetBody() []byte {
 type GetClusterNetworkConfigurationCriteriaResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *PageOfClusterNetworkConfigurationCriterion
 }
 
 // Status returns HTTPResponse.Status
@@ -35748,152 +35612,6 @@ func (r GetCredentialResponse) StatusCode() int {
 
 // GetBody returns the response body as a byte array
 func (r GetCredentialResponse) GetBody() []byte {
-	return r.Body
-}
-
-type GetCustomIsosResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *PageOfCustomIso
-	JSON500      *Error
-}
-
-// Status returns HTTPResponse.Status
-func (r GetCustomIsosResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetCustomIsosResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// GetBody returns the response body as a byte array
-func (r GetCustomIsosResponse) GetBody() []byte {
-	return r.Body
-}
-
-type UploadCustomIsoResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON202      *Task
-	JSON400      *Error
-	JSON500      *Error
-}
-
-// Status returns HTTPResponse.Status
-func (r UploadCustomIsoResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r UploadCustomIsoResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// GetBody returns the response body as a byte array
-func (r UploadCustomIsoResponse) GetBody() []byte {
-	return r.Body
-}
-
-type DeleteCustomIsoByIdResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON400      *Error
-	JSON404      *Error
-	JSON500      *Error
-}
-
-// Status returns HTTPResponse.Status
-func (r DeleteCustomIsoByIdResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r DeleteCustomIsoByIdResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// GetBody returns the response body as a byte array
-func (r DeleteCustomIsoByIdResponse) GetBody() []byte {
-	return r.Body
-}
-
-type GetCustomIsoByIdResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *CustomIso
-	JSON400      *Error
-	JSON404      *Error
-	JSON500      *Error
-}
-
-// Status returns HTTPResponse.Status
-func (r GetCustomIsoByIdResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r GetCustomIsoByIdResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// GetBody returns the response body as a byte array
-func (r GetCustomIsoByIdResponse) GetBody() []byte {
-	return r.Body
-}
-
-type RenameCustomIsoByIdResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *CustomIso
-	JSON400      *Error
-	JSON404      *Error
-	JSON500      *Error
-}
-
-// Status returns HTTPResponse.Status
-func (r RenameCustomIsoByIdResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r RenameCustomIsoByIdResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// GetBody returns the response body as a byte array
-func (r RenameCustomIsoByIdResponse) GetBody() []byte {
 	return r.Body
 }
 
@@ -37074,7 +36792,6 @@ type ValidateResourceCertificatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *CertificateValidationTask
-	JSON400      *Error
 	JSON404      *Error
 	JSON500      *Error
 }
@@ -37424,7 +37141,6 @@ type GetEdgeClusterValidationByIDResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Validation
 	JSON400      *Error
-	JSON500      *Validation
 }
 
 // Status returns HTTPResponse.Status
@@ -37570,7 +37286,6 @@ type DecommissionHostsResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Task
 	JSON400      *Error
-	JSON500      *Task
 }
 
 // Status returns HTTPResponse.Status
@@ -37628,7 +37343,7 @@ type CommissionHostsResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Task
 	JSON400      *Error
-	JSON500      *string
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -37858,7 +37573,6 @@ type ValidateHostCommissionSpecResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Validation
 	JSON400      *Error
-	JSON500      *Validation
 }
 
 // Status returns HTTPResponse.Status
@@ -37887,7 +37601,6 @@ type ValidateCommissionHostsResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Validation
 	JSON400      *Error
-	JSON500      *Validation
 }
 
 // Status returns HTTPResponse.Status
@@ -37916,7 +37629,6 @@ type GetHostCommissionValidationByIDResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Validation
 	JSON400      *Error
-	JSON500      *Validation
 }
 
 // Status returns HTTPResponse.Status
@@ -37945,7 +37657,7 @@ type GetHostResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Host
 	JSON400      *Error
-	JSON500      *string
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -38604,6 +38316,7 @@ func (r UpdateLicenseKeyResponse) GetBody() []byte {
 type GetLicenseInformationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *[]LicensingInfo
 	JSON400      *Error
 	JSON500      *Error
 }
@@ -38632,6 +38345,7 @@ func (r GetLicenseInformationResponse) GetBody() []byte {
 type GetDomainLicensingInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *[]LicensingInfo
 	JSON500      *Error
 }
 
@@ -38659,6 +38373,7 @@ func (r GetDomainLicensingInfoResponse) GetBody() []byte {
 type GetSystemLicensingInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *[]LicensingInfo
 	JSON500      *Error
 }
 
@@ -39028,6 +38743,35 @@ func (r GetALBClustersResponse) StatusCode() int {
 
 // GetBody returns the response body as a byte array
 func (r GetALBClustersResponse) GetBody() []byte {
+	return r.Body
+}
+
+type CreateALBClusterResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON202      *Task
+	JSON400      *Error
+	JSON500      *Error
+}
+
+// Status returns HTTPResponse.Status
+func (r CreateALBClusterResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CreateALBClusterResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// GetBody returns the response body as a byte array
+func (r CreateALBClusterResponse) GetBody() []byte {
 	return r.Body
 }
 
@@ -40291,6 +40035,7 @@ func (r GetResourceWarningResponse) GetBody() []byte {
 type StartLicenseCheckByResourceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON202      *ResourcesLicenseCheckResult
 	JSON400      *Error
 	JSON500      *Error
 }
@@ -40319,6 +40064,7 @@ func (r StartLicenseCheckByResourceResponse) GetBody() []byte {
 type GetLicenseCheckResultByIDResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *ResourcesLicenseCheckResult
 	JSON400      *Error
 	JSON500      *Error
 }
@@ -40520,6 +40266,7 @@ func (r GetTrustedCertificatesResponse) GetBody() []byte {
 type AddTrustedCertificateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *PageOfTrustedCertificate
 	JSON400      *Error
 	JSON409      *Error
 	JSON500      *Error
@@ -40576,6 +40323,8 @@ func (r DeleteTrustedCertificateResponse) GetBody() []byte {
 type GetSddcManagerUpgradablesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *PageOfSddcManagerUpgradable
+	JSON400      *Error
 	JSON500      *Error
 }
 
@@ -40748,9 +40497,7 @@ type GetBringupAppInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *VcfService
-	JSON404      *VcfService
-	JSON500      *VcfService
-	JSON501      *VcfService
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -40778,9 +40525,7 @@ type GetBringupValidationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *PageOfValidation
-	JSON404      *Error
 	JSON500      *Error
-	JSON501      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -40809,7 +40554,7 @@ type ValidateBringupSpecResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Validation
 	JSON202      *Validation
-	JSON403      *Validation
+	JSON403      *Error
 	JSON404      *Error
 	JSON500      *Error
 }
@@ -40839,10 +40584,8 @@ type GetBringupValidationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *Validation
-	JSON400      *Validation
+	JSON400      *Error
 	JSON404      *Error
-	JSON500      *Error
-	JSON501      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -40869,6 +40612,10 @@ func (r GetBringupValidationResponse) GetBody() []byte {
 type RetryBringupValidationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *Validation
+	JSON400      *Error
+	JSON405      *Error
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -40895,7 +40642,7 @@ func (r RetryBringupValidationResponse) GetBody() []byte {
 type ExportBringupValidationReportResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *string
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -40983,8 +40730,7 @@ func (r RetrySddcResponse) GetBody() []byte {
 type ExportBringupDetailReportResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *string
-	JSON204      *string
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41012,9 +40758,8 @@ type GetSddcManagerInfoResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *SddcManagerInfo
-	JSON404      *SddcManagerInfo
-	JSON500      *SddcManagerInfo
-	JSON501      *SddcManagerInfo
+	JSON404      *Error
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41567,7 +41312,7 @@ type GetValidationsOfDNSConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Validation
 	JSON400      *Error
-	JSON500      *[]Validation
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41596,7 +41341,7 @@ type ValidateDnsConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Validation
 	JSON400      *Error
-	JSON500      *Validation
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41625,7 +41370,7 @@ type GetValidationOfDnsConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Validation
 	JSON400      *Error
-	JSON500      *Validation
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41829,7 +41574,7 @@ type GetValidationsOfNtpConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Validation
 	JSON400      *Error
-	JSON500      *[]Validation
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41858,7 +41603,7 @@ type ValidateNtpConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Validation
 	JSON400      *Error
-	JSON500      *Validation
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41887,7 +41632,7 @@ type GetValidationOfNtpConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *Validation
 	JSON400      *Error
-	JSON500      *Validation
+	JSON500      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -41974,7 +41719,6 @@ type GetProxyConfigurationResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *ProxyConfiguration
 	JSON400      *Error
-	JSON500      *ProxyConfiguration
 }
 
 // Status returns HTTPResponse.Status
@@ -42001,6 +41745,7 @@ func (r GetProxyConfigurationResponse) GetBody() []byte {
 type UpdateProxyConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON202      *Task
 	JSON400      *Error
 }
 
@@ -42032,7 +41777,6 @@ type StartBringupSpecConversionResponse struct {
 	JSON400      *Error
 	JSON404      *Error
 	JSON500      *Error
-	JSON501      *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -42060,7 +41804,6 @@ type GetFIPSConfigurationResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *Fips
-	JSON500      *Fips
 }
 
 // Status returns HTTPResponse.Status
@@ -42574,10 +42317,8 @@ func (r RetryTaskResponse) GetBody() []byte {
 type CreateTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *TokenPair
 	JSON201      *TokenPair
 	JSON400      *Error
-	JSON401      *Error
 	JSON500      *Error
 }
 
@@ -43190,7 +42931,6 @@ type ValidateVasaProviderSpecResponse struct {
 	HTTPResponse *http.Response
 	JSON202      *Validation
 	JSON400      *Error
-	JSON500      *Validation
 }
 
 // Status returns HTTPResponse.Status
@@ -43220,7 +42960,6 @@ type GetVasaProviderValidationResponse struct {
 	JSON200      *Validation
 	JSON400      *Error
 	JSON404      *Error
-	JSON500      *Validation
 }
 
 // Status returns HTTPResponse.Status
@@ -45106,59 +44845,6 @@ func (c *ClientWithResponses) GetCredentialWithResponse(ctx context.Context, id 
 	return ParseGetCredentialResponse(rsp)
 }
 
-// GetCustomIsosWithResponse request returning *GetCustomIsosResponse
-func (c *ClientWithResponses) GetCustomIsosWithResponse(ctx context.Context, params *GetCustomIsosParams, reqEditors ...RequestEditorFn) (*GetCustomIsosResponse, error) {
-	rsp, err := c.GetCustomIsos(ctx, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetCustomIsosResponse(rsp)
-}
-
-// UploadCustomIsoWithBodyWithResponse request with arbitrary body returning *UploadCustomIsoResponse
-func (c *ClientWithResponses) UploadCustomIsoWithBodyWithResponse(ctx context.Context, params *UploadCustomIsoParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UploadCustomIsoResponse, error) {
-	rsp, err := c.UploadCustomIsoWithBody(ctx, params, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseUploadCustomIsoResponse(rsp)
-}
-
-// DeleteCustomIsoByIdWithResponse request returning *DeleteCustomIsoByIdResponse
-func (c *ClientWithResponses) DeleteCustomIsoByIdWithResponse(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*DeleteCustomIsoByIdResponse, error) {
-	rsp, err := c.DeleteCustomIsoById(ctx, customIsoId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteCustomIsoByIdResponse(rsp)
-}
-
-// GetCustomIsoByIdWithResponse request returning *GetCustomIsoByIdResponse
-func (c *ClientWithResponses) GetCustomIsoByIdWithResponse(ctx context.Context, customIsoId string, reqEditors ...RequestEditorFn) (*GetCustomIsoByIdResponse, error) {
-	rsp, err := c.GetCustomIsoById(ctx, customIsoId, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetCustomIsoByIdResponse(rsp)
-}
-
-// RenameCustomIsoByIdWithBodyWithResponse request with arbitrary body returning *RenameCustomIsoByIdResponse
-func (c *ClientWithResponses) RenameCustomIsoByIdWithBodyWithResponse(ctx context.Context, customIsoId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*RenameCustomIsoByIdResponse, error) {
-	rsp, err := c.RenameCustomIsoByIdWithBody(ctx, customIsoId, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseRenameCustomIsoByIdResponse(rsp)
-}
-
-func (c *ClientWithResponses) RenameCustomIsoByIdWithResponse(ctx context.Context, customIsoId string, body RenameCustomIsoByIdJSONRequestBody, reqEditors ...RequestEditorFn) (*RenameCustomIsoByIdResponse, error) {
-	rsp, err := c.RenameCustomIsoById(ctx, customIsoId, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseRenameCustomIsoByIdResponse(rsp)
-}
-
 // GetDomainsWithResponse request returning *GetDomainsResponse
 func (c *ClientWithResponses) GetDomainsWithResponse(ctx context.Context, params *GetDomainsParams, reqEditors ...RequestEditorFn) (*GetDomainsResponse, error) {
 	rsp, err := c.GetDomains(ctx, params, reqEditors...)
@@ -46260,16 +45946,16 @@ func (c *ClientWithResponses) GetLicenseKeyWithResponse(ctx context.Context, key
 }
 
 // UpdateLicenseKeyWithBodyWithResponse request with arbitrary body returning *UpdateLicenseKeyResponse
-func (c *ClientWithResponses) UpdateLicenseKeyWithBodyWithResponse(ctx context.Context, key string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error) {
-	rsp, err := c.UpdateLicenseKeyWithBody(ctx, key, contentType, body, reqEditors...)
+func (c *ClientWithResponses) UpdateLicenseKeyWithBodyWithResponse(ctx context.Context, licenseKeyOrId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error) {
+	rsp, err := c.UpdateLicenseKeyWithBody(ctx, licenseKeyOrId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseUpdateLicenseKeyResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdateLicenseKeyWithResponse(ctx context.Context, key string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error) {
-	rsp, err := c.UpdateLicenseKey(ctx, key, body, reqEditors...)
+func (c *ClientWithResponses) UpdateLicenseKeyWithResponse(ctx context.Context, licenseKeyOrId string, body UpdateLicenseKeyJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateLicenseKeyResponse, error) {
+	rsp, err := c.UpdateLicenseKey(ctx, licenseKeyOrId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -46449,6 +46135,23 @@ func (c *ClientWithResponses) GetALBClustersWithResponse(ctx context.Context, pa
 		return nil, err
 	}
 	return ParseGetALBClustersResponse(rsp)
+}
+
+// CreateALBClusterWithBodyWithResponse request with arbitrary body returning *CreateALBClusterResponse
+func (c *ClientWithResponses) CreateALBClusterWithBodyWithResponse(ctx context.Context, params *CreateALBClusterParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateALBClusterResponse, error) {
+	rsp, err := c.CreateALBClusterWithBody(ctx, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateALBClusterResponse(rsp)
+}
+
+func (c *ClientWithResponses) CreateALBClusterWithResponse(ctx context.Context, params *CreateALBClusterParams, body CreateALBClusterJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateALBClusterResponse, error) {
+	rsp, err := c.CreateALBCluster(ctx, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCreateALBClusterResponse(rsp)
 }
 
 // GetALBClustersFormFactorsWithResponse request returning *GetALBClustersFormFactorsResponse
@@ -49749,13 +49452,6 @@ func ParseUpdateClusterResponse(rsp *http.Response) (*UpdateClusterResponse, err
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest Task
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
 		var dest Task
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -50146,6 +49842,16 @@ func ParseGetClusterNetworkConfigurationCriteriaResponse(rsp *http.Response) (*G
 	response := &GetClusterNetworkConfigurationCriteriaResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest PageOfClusterNetworkConfigurationCriterion
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	}
 
 	return response, nil
@@ -51577,213 +51283,6 @@ func ParseGetCredentialResponse(rsp *http.Response) (*GetCredentialResponse, err
 			return nil, err
 		}
 		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseGetCustomIsosResponse parses an HTTP response from a GetCustomIsosWithResponse call
-func ParseGetCustomIsosResponse(rsp *http.Response) (*GetCustomIsosResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetCustomIsosResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest PageOfCustomIso
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseUploadCustomIsoResponse parses an HTTP response from a UploadCustomIsoWithResponse call
-func ParseUploadCustomIsoResponse(rsp *http.Response) (*UploadCustomIsoResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &UploadCustomIsoResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
-		var dest Task
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON202 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseDeleteCustomIsoByIdResponse parses an HTTP response from a DeleteCustomIsoByIdWithResponse call
-func ParseDeleteCustomIsoByIdResponse(rsp *http.Response) (*DeleteCustomIsoByIdResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteCustomIsoByIdResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseGetCustomIsoByIdResponse parses an HTTP response from a GetCustomIsoByIdWithResponse call
-func ParseGetCustomIsoByIdResponse(rsp *http.Response) (*GetCustomIsoByIdResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetCustomIsoByIdResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CustomIso
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	return response, nil
-}
-
-// ParseRenameCustomIsoByIdResponse parses an HTTP response from a RenameCustomIsoByIdWithResponse call
-func ParseRenameCustomIsoByIdResponse(rsp *http.Response) (*RenameCustomIsoByIdResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &RenameCustomIsoByIdResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest CustomIso
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
 		var dest Error
@@ -53516,13 +53015,6 @@ func ParseValidateResourceCertificatesResponse(rsp *http.Response) (*ValidateRes
 		}
 		response.JSON201 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -54010,13 +53502,6 @@ func ParseGetEdgeClusterValidationByIDResponse(rsp *http.Response) (*GetEdgeClus
 		}
 		response.JSON400 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
 	}
 
 	return response, nil
@@ -54217,13 +53702,6 @@ func ParseDecommissionHostsResponse(rsp *http.Response) (*DecommissionHostsRespo
 		}
 		response.JSON400 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Task
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
 	}
 
 	return response, nil
@@ -54298,7 +53776,7 @@ func ParseCommissionHostsResponse(rsp *http.Response) (*CommissionHostsResponse,
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest string
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -54603,13 +54081,6 @@ func ParseValidateHostCommissionSpecResponse(rsp *http.Response) (*ValidateHostC
 		}
 		response.JSON400 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
 	}
 
 	return response, nil
@@ -54643,13 +54114,6 @@ func ParseValidateCommissionHostsResponse(rsp *http.Response) (*ValidateCommissi
 		}
 		response.JSON400 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
 	}
 
 	return response, nil
@@ -54682,13 +54146,6 @@ func ParseGetHostCommissionValidationByIDResponse(rsp *http.Response) (*GetHostC
 			return nil, err
 		}
 		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
 
 	}
 
@@ -54724,7 +54181,7 @@ func ParseGetHostResponse(rsp *http.Response) (*GetHostResponse, error) {
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest string
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -55587,6 +55044,13 @@ func ParseGetLicenseInformationResponse(rsp *http.Response) (*GetLicenseInformat
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []LicensingInfo
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -55620,6 +55084,13 @@ func ParseGetDomainLicensingInfoResponse(rsp *http.Response) (*GetDomainLicensin
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []LicensingInfo
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -55646,6 +55117,13 @@ func ParseGetSystemLicensingInfoResponse(rsp *http.Response) (*GetSystemLicensin
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []LicensingInfo
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -56118,6 +55596,46 @@ func ParseGetALBClustersResponse(rsp *http.Response) (*GetALBClustersResponse, e
 			return nil, err
 		}
 		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseCreateALBClusterResponse parses an HTTP response from a CreateALBClusterWithResponse call
+func ParseCreateALBClusterResponse(rsp *http.Response) (*CreateALBClusterResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CreateALBClusterResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
+		var dest Task
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON202 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest Error
@@ -57776,6 +57294,13 @@ func ParseStartLicenseCheckByResourceResponse(rsp *http.Response) (*StartLicense
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
+		var dest ResourcesLicenseCheckResult
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON202 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -57809,6 +57334,13 @@ func ParseGetLicenseCheckResultByIDResponse(rsp *http.Response) (*GetLicenseChec
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest ResourcesLicenseCheckResult
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -58075,6 +57607,13 @@ func ParseAddTrustedCertificateResponse(rsp *http.Response) (*AddTrustedCertific
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest PageOfTrustedCertificate
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -58141,6 +57680,20 @@ func ParseGetSddcManagerUpgradablesResponse(rsp *http.Response) (*GetSddcManager
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest PageOfSddcManagerUpgradable
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -58367,26 +57920,12 @@ func ParseGetBringupAppInfoResponse(rsp *http.Response) (*GetBringupAppInfoRespo
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest VcfService
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest VcfService
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON500 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 501:
-		var dest VcfService
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON501 = &dest
 
 	}
 
@@ -58414,26 +57953,12 @@ func ParseGetBringupValidationsResponse(rsp *http.Response) (*GetBringupValidati
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON500 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 501:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON501 = &dest
 
 	}
 
@@ -58469,7 +57994,7 @@ func ParseValidateBringupSpecResponse(rsp *http.Response) (*ValidateBringupSpecR
 		response.JSON202 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -58516,7 +58041,7 @@ func ParseGetBringupValidationResponse(rsp *http.Response) (*GetBringupValidatio
 		response.JSON200 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -58528,20 +58053,6 @@ func ParseGetBringupValidationResponse(rsp *http.Response) (*GetBringupValidatio
 			return nil, err
 		}
 		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 501:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON501 = &dest
 
 	}
 
@@ -58561,6 +58072,37 @@ func ParseRetryBringupValidationResponse(rsp *http.Response) (*RetryBringupValid
 		HTTPResponse: rsp,
 	}
 
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest Validation
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 405:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON405 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
 	return response, nil
 }
 
@@ -58578,12 +58120,12 @@ func ParseExportBringupValidationReportResponse(rsp *http.Response) (*ExportBrin
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest string
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
+		response.JSON500 = &dest
 
 	}
 
@@ -58705,19 +58247,12 @@ func ParseExportBringupDetailReportResponse(rsp *http.Response) (*ExportBringupD
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest string
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 204:
-		var dest string
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON204 = &dest
+		response.JSON500 = &dest
 
 	}
 
@@ -58746,25 +58281,18 @@ func ParseGetSddcManagerInfoResponse(rsp *http.Response) (*GetSddcManagerInfoRes
 		response.JSON200 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest SddcManagerInfo
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON404 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest SddcManagerInfo
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON500 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 501:
-		var dest SddcManagerInfo
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON501 = &dest
 
 	}
 
@@ -59534,7 +59062,7 @@ func ParseGetValidationsOfDNSConfigurationResponse(rsp *http.Response) (*GetVali
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest []Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -59574,7 +59102,7 @@ func ParseValidateDnsConfigurationResponse(rsp *http.Response) (*ValidateDnsConf
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -59614,7 +59142,7 @@ func ParseGetValidationOfDnsConfigurationResponse(rsp *http.Response) (*GetValid
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -59898,7 +59426,7 @@ func ParseGetValidationsOfNtpConfigurationResponse(rsp *http.Response) (*GetVali
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest []Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -59938,7 +59466,7 @@ func ParseValidateNtpConfigurationResponse(rsp *http.Response) (*ValidateNtpConf
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -59978,7 +59506,7 @@ func ParseGetValidationOfNtpConfigurationResponse(rsp *http.Response) (*GetValid
 		response.JSON400 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
+		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
@@ -60097,13 +59625,6 @@ func ParseGetProxyConfigurationResponse(rsp *http.Response) (*GetProxyConfigurat
 		}
 		response.JSON400 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest ProxyConfiguration
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
 	}
 
 	return response, nil
@@ -60123,6 +59644,13 @@ func ParseUpdateProxyConfigurationResponse(rsp *http.Response) (*UpdateProxyConf
 	}
 
 	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
+		var dest Task
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON202 = &dest
+
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest Error
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -60177,13 +59705,6 @@ func ParseStartBringupSpecConversionResponse(rsp *http.Response) (*StartBringupS
 		}
 		response.JSON500 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 501:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON501 = &dest
-
 	}
 
 	return response, nil
@@ -60209,13 +59730,6 @@ func ParseGetFIPSConfigurationResponse(rsp *http.Response) (*GetFIPSConfiguratio
 			return nil, err
 		}
 		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Fips
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
 
 	}
 
@@ -60871,13 +60385,6 @@ func ParseCreateTokenResponse(rsp *http.Response) (*CreateTokenResponse, error) 
 	}
 
 	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest TokenPair
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest TokenPair
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -60891,13 +60398,6 @@ func ParseCreateTokenResponse(rsp *http.Response) (*CreateTokenResponse, error) 
 			return nil, err
 		}
 		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
 		var dest Error
@@ -61757,13 +61257,6 @@ func ParseValidateVasaProviderSpecResponse(rsp *http.Response) (*ValidateVasaPro
 		}
 		response.JSON400 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
 	}
 
 	return response, nil
@@ -61803,13 +61296,6 @@ func ParseGetVasaProviderValidationResponse(rsp *http.Response) (*GetVasaProvide
 			return nil, err
 		}
 		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest Validation
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
 
 	}
 
