@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/deepmap/oapi-codegen/HEAD/configuration-schema.json
+package: installer
+output: ./installer/vcf_installer.gen.go
+generate:
+  models: true
+  client: true
+output-options:
+  user-templates:
+    client-with-responses.tmpl: ./templates/client-with-responses.tmpl
