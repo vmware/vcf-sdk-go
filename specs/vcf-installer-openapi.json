@@ -7,7 +7,7 @@
         "license": {
             "name": "VMware Cloud Foundation"
         },
-        "version": "9.0.0.0"
+        "version": "9.0.2.0"
     },
     "servers": [
         {
@@ -115,12 +115,12 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "202": {
+                        "description": "Accepted",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/DepotSettings"
                                 }
                             }
                         }
@@ -135,12 +135,12 @@
                             }
                         }
                     },
-                    "202": {
-                        "description": "Accepted",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/DepotSettings"
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -167,16 +167,6 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -189,6 +179,16 @@
                     },
                     "204": {
                         "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -212,16 +212,6 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -241,6 +231,16 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -253,22 +253,22 @@
                 "summary": "Retrieve all VCF (or VVF) installation tasks",
                 "operationId": "getSddcTasks",
                 "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PageOfSddcTask"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageOfSddcTask"
                                 }
                             }
                         }
@@ -357,22 +357,22 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/VcfOperationsDiscoveryResult"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -419,22 +419,22 @@
                             }
                         }
                     },
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/VcenterDiscoveryResult"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "InternalServerError",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VcenterDiscoveryResult"
                                 }
                             }
                         }
@@ -450,16 +450,6 @@
                 "summary": "Retrieve a list of VCF (or VVF) installation validations",
                 "operationId": "getSddcSpecValidations",
                 "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PageOfValidation"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -476,6 +466,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageOfValidation"
                                 }
                             }
                         }
@@ -510,16 +510,6 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "Bad user input",
                         "content": {
@@ -530,8 +520,18 @@
                             }
                         }
                     },
-                    "202": {
-                        "description": "Accepted",
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -540,8 +540,8 @@
                             }
                         }
                     },
-                    "200": {
-                        "description": "Success",
+                    "202": {
+                        "description": "Accepted",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -592,22 +592,22 @@
                     "required": true
                 },
                 "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/SddcNetworkConfigProfileResponse"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "InternalServerError",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SddcNetworkConfigProfileResponse"
                                 }
                             }
                         }
@@ -706,16 +706,6 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "Bad request",
                         "content": {
@@ -726,8 +716,8 @@
                             }
                         }
                     },
-                    "409": {
-                        "description": "Trusted certificate already exists",
+                    "500": {
+                        "description": "Internal server error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -742,6 +732,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PageOfTrustedCertificate"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Trusted certificate already exists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -789,22 +789,22 @@
                     }
                 ],
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PageOfBundle"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -829,16 +829,6 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -855,6 +845,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -893,8 +893,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -903,8 +903,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -956,8 +956,8 @@
                     }
                 ],
                 "responses": {
-                    "404": {
-                        "description": "Task not found",
+                    "500": {
+                        "description": "Unexpected error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -976,8 +976,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Unexpected error",
+                    "404": {
+                        "description": "Task not found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1007,8 +1007,8 @@
                     }
                 ],
                 "responses": {
-                    "404": {
-                        "description": "Task not found",
+                    "409": {
+                        "description": "Task can not be cancelled. Only a IN_PROGRESS task can be cancelled.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1020,8 +1020,8 @@
                     "200": {
                         "description": "Task was cancelled successfully."
                     },
-                    "409": {
-                        "description": "Task can not be cancelled. Only a IN_PROGRESS task can be cancelled.",
+                    "500": {
+                        "description": "Unexpected error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1030,8 +1030,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Unexpected error",
+                    "404": {
+                        "description": "Task not found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1061,6 +1061,9 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "Task was retried successfully."
+                    },
                     "409": {
                         "description": "Task can not be retried. Only a failed Task can be retried.",
                         "content": {
@@ -1071,8 +1074,8 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "Task not found",
+                    "500": {
+                        "description": "Unexpected error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1081,11 +1084,8 @@
                             }
                         }
                     },
-                    "200": {
-                        "description": "Task was retried successfully."
-                    },
-                    "500": {
-                        "description": "Unexpected error",
+                    "404": {
+                        "description": "Task not found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1116,8 +1116,8 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1126,8 +1126,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1159,8 +1159,8 @@
                     "200": {
                         "description": "OK"
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1169,8 +1169,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1191,22 +1191,22 @@
                 "description": "Get the depot sync information.",
                 "operationId": "getDepotSyncInfo",
                 "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/DepotSyncInfo"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DepotSyncInfo"
                                 }
                             }
                         }
@@ -1221,8 +1221,8 @@
                 "description": "Sync depot metadata such as bundle manifest, pvc.",
                 "operationId": "syncDepotMetadata",
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1231,8 +1231,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1263,22 +1263,22 @@
                 "description": "Get the current Proxy configuration",
                 "operationId": "getProxyConfiguration",
                 "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProxyConfiguration"
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "Bad request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProxyConfiguration"
                                 }
                             }
                         }
@@ -1307,22 +1307,22 @@
                     "required": true
                 },
                 "responses": {
-                    "202": {
-                        "description": "Accepted",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Task"
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "Bad request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Task"
                                 }
                             }
                         }
@@ -1343,22 +1343,22 @@
                 "description": "Get CEIP status and instance id",
                 "operationId": "getCeipStatus",
                 "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Ceip"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "InternalServerError",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ceip"
                                 }
                             }
                         }
@@ -1392,12 +1392,12 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "202": {
+                        "description": "Accepted",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/Task"
                                 }
                             }
                         }
@@ -1412,12 +1412,12 @@
                             }
                         }
                     },
-                    "202": {
-                        "description": "Accepted",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Task"
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -1457,8 +1457,8 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1467,8 +1467,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1539,26 +1539,6 @@
                     }
                 },
                 "responses": {
-                    "405": {
-                        "description": "Not allowed",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -1575,6 +1555,26 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/SddcTask"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Not allowed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -1613,8 +1613,8 @@
                     }
                 ],
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
+                    "404": {
+                        "description": "Bundle Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1623,8 +1623,8 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "Bundle Not Found",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1674,16 +1674,6 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -1696,6 +1686,16 @@
                     },
                     "204": {
                         "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     },
                     "409": {
                         "description": "Conflict",
@@ -1739,16 +1739,6 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -1765,6 +1755,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -1790,22 +1790,22 @@
                 "summary": "Retrieve a list of SDDC Manager services",
                 "operationId": "getVcfServices",
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "200": {
                         "description": "Ok",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PageOfVcfService"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -1842,16 +1842,6 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/VcfService"
-                                }
-                            }
-                        }
-                    },
                     "404": {
                         "description": "VcfService not found",
                         "content": {
@@ -1868,6 +1858,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VcfService"
                                 }
                             }
                         }
@@ -2111,12 +2111,12 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "200": {
+                        "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/SddcSpec"
                                 }
                             }
                         }
@@ -2131,12 +2131,12 @@
                             }
                         }
                     },
-                    "200": {
-                        "description": "OK",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/SddcSpec"
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2186,22 +2186,22 @@
                             }
                         }
                     },
-                    "501": {
-                        "description": "Not Implemented",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "200": {
                         "description": "Success",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Validation"
+                                }
+                            }
+                        }
+                    },
+                    "501": {
+                        "description": "Not Implemented",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2296,8 +2296,8 @@
                 "tags": [
                     "Releases"
                 ],
-                "summary": "Retrieve a list of releases including current and target versions",
-                "description": "Get all Releases, with option to get current release for a domain, get release by version or get future releases for a versionor get all the applicable target release.",
+                "summary": "Retrieve a list of release including current and target versions",
+                "description": "Get all Releases, with option to get current release for a domain, get release by version or get future releases for a versionor get all the applicable target release. Domain VCF release calculations consider SDDC-M, BOM stack components(life cycle managed by LCM eg: Vcenter, Esx, Nsx) to compute Management domain VCF version, BOM stack components(life cycle managed by LCM) to compute VI domain VCF version respectively. Eg: Management domain component stack versions: [SDDC-M: 5.2.1.0, VC: 8.0U3, NSX:4.2.1.3, ESX: 8.0U3]. VCF version computed will be 5.2.1.0. VI domain component stack versions: [VC: 9.0.0.0, NSX: 9.0.0.0, ESX: 9.0.0.0]. VCF version computed is 9.0.0.0 for VI domain.",
                 "operationId": "getReleases",
                 "parameters": [
                     {
@@ -2382,16 +2382,6 @@
                     }
                 ],
                 "responses": {
-                    "404": {
-                        "description": "Release Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -2402,8 +2392,8 @@
                             }
                         }
                     },
-                    "403": {
-                        "description": "Forbidden",
+                    "404": {
+                        "description": "Release Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2418,6 +2408,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PageOfRelease"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2519,22 +2519,22 @@
                             }
                         }
                     },
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PageOfReleaseComponentDetail"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "InternalServerError",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageOfReleaseComponentDetail"
                                 }
                             }
                         }
@@ -2558,19 +2558,9 @@
                     "Releases"
                 ],
                 "summary": "Retrieve the lowest deployed release of VMware Cloud Foundation",
-                "description": "Returns release for the lowest deployed VCF version for a domain on the environment. If Management domain is ahead of WLD domain, VCF BOM version for the WLD domain will be returned. NOTE: This operation is not applicable if appliance is in VCF Installer mode.",
+                "description": "Returns release for the lowest deployed VCF version for a domain on the environment.If Management domain is ahead of WLD domain, VCF BOM version for the WLDdomain will be returned. Domain VCF release calculations consider SDDC-M, BOM stack components(life cycle managed by LCM eg: Vcenter, Esx, Nsx) to compute Management domain VCF version, BOM stack components(life cycle managed by LCM) to compute VI domain VCF version respectively. Eg: Management domain component stack versions: [SDDC-M: 5.2.1.0, VC: 8.0U3, NSX:4.2.1.3, ESX: 8.0U3]. VCF version computed will be 5.2.1.0. VI domain component stack versions: [VC: 9.0.0.0, NSX: 9.0.0.0, ESX: 9.0.0.0]. VCF version computed is 9.0.0.0 for VI domain.",
                 "operationId": "getSystemRelease",
                 "responses": {
-                    "404": {
-                        "description": "Release Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -2587,6 +2577,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Release"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Release Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2615,22 +2615,22 @@
                     }
                 ],
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PageOfDomainFutureRelease"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2688,12 +2688,12 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "200": {
+                        "description": "Ok",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/FlexibleProductPatches"
                                 }
                             }
                         }
@@ -2708,12 +2708,12 @@
                             }
                         }
                     },
-                    "200": {
-                        "description": "Ok",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/FlexibleProductPatches"
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2782,16 +2782,6 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "422": {
                         "description": "Unprocessable Entity",
                         "content": {
@@ -2808,6 +2798,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/CustomPatches"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2876,16 +2876,6 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -2902,6 +2892,16 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PageOfBundleDownloadStatusInfo"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -2938,6 +2938,16 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PageOfBundle"
+                                }
+                            }
+                        }
+                    },
                     "500": {
                         "description": "Internal Server Error",
                         "content": {
@@ -2954,16 +2964,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PageOfBundle"
                                 }
                             }
                         }
@@ -3017,6 +3017,13 @@
                     }
                 ],
                 "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "x-vmw-compiler-skip": true
+                    },
                     "500": {
                         "description": "Internal server error",
                         "content": {
@@ -3026,13 +3033,6 @@
                                 }
                             }
                         }
-                    },
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "x-vmw-compiler-skip": true
                     }
                 }
             }
@@ -3454,7 +3454,7 @@
                 "type": "object",
                 "properties": {
                     "name": {
-                        "maxLength": 80,
+                        "maxLength": 16,
                         "minLength": 0,
                         "type": "string",
                         "description": "LAG name"
@@ -3781,9 +3781,9 @@
                 "properties": {
                     "rootPassword": {
                         "maxLength": 2147483647,
-                        "minLength": 8,
+                        "minLength": 15,
                         "type": "string",
-                        "description": "Password for the 'root' user on SDDC Manager appliance. It needs to be a strong password with at least one alphabet and one special character and at least 8 characters in length. If blank, the SDDC Local Admin Password will be used (if provided) or password will be auto-generated."
+                        "description": "Password for the 'root' user on SDDC Manager appliance. The password of this account must be at least 15 characters long. It also must contain at-least 1 uppercase, 1 lowercase, 1 special character  specified in braces [!%@$^#?] and 1 digit. If blank, the SDDC Local Admin Password will be used (if provided) or password will be auto-generated."
                     },
                     "hostname": {
                         "maxLength": 63,
@@ -3793,15 +3793,15 @@
                     },
                     "sshPassword": {
                         "maxLength": 2147483647,
-                        "minLength": 8,
+                        "minLength": 15,
                         "type": "string",
-                        "description": "Password for the 'vcf' user on SDDC Manager appliance. It needs to be a strong password with at least one alphabet and one special character and at least 8 characters in length. If blank, the SDDC Local Admin Password will be used (if provided) or password will be auto-generated."
+                        "description": "Password for the 'vcf' user on SDDC Manager appliance. The password of this account must be at least 15 characters long. It also must contain at-least 1 uppercase, 1 lowercase, 1 special character  specified in braces [!%@$^#?] and 1 digit. If blank, the SDDC Local Admin Password will be used (if provided) or password will be auto-generated."
                     },
                     "localUserPassword": {
                         "maxLength": 2147483647,
                         "minLength": 12,
                         "type": "string",
-                        "description": "The local account is a built-in admin account in VCF that can be used in emergency scenarios. The password of this account must be at least 12 characters long. It also must contain at-least 1 uppercase, 1 lowercase, 1 special character specified in braces [!%@$^#?] and 1 digit. In addition, a character cannot be repeated more than 3 times consecutively. If blank, the password will be auto-generated."
+                        "description": "The local account is a built-in admin account in VCF that can be used in emergency scenarios. The password of this account must be at least 12 characters long. It also must contain at-least 1 uppercase, 1 lowercase, 1 special character specified in braces [!%@$^#?] and 1 digit. If blank, the password will be auto-generated."
                     },
                     "useExistingDeployment": {
                         "type": "boolean",
@@ -4108,9 +4108,9 @@
                     },
                     "vcfInstanceName": {
                         "maxLength": 300,
-                        "minLength": 3,
+                        "minLength": 1,
                         "type": "string",
-                        "description": "VCF Instance name. Minumum length 3, maximum length 300"
+                        "description": "VCF Instance name. Minumum length 1, maximum length 300"
                     }
                 },
                 "description": "VCF Installer specification"
@@ -4389,7 +4389,8 @@
                         "example": "3D:D0:EE:B5:A0:CC:45:08:5C:4F:84:51:CD:00:B6:41:BB:4A:A2:9A:77:1C:A6:4C:6D:84:5A:D0:4F:68:7A:B8"
                     }
                 },
-                "description": "Specification for VCF Operations fleet management"
+                "description": "Specification for VCF Operations fleet management",
+                "deprecated": true
             },
             "VcfOperationsNode": {
                 "required": [
