@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.7.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.7.0)
+
+> Release Date: 2026-01-21
+
+- Added support for VCF 9.0.2 APIs.
+
 ## [v0.6.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.6.0)
 
 > Release Date: 2025-06-18
