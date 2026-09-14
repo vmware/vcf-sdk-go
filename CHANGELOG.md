@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## [v0.8.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.8.0)
+
+> Release Date: 2026-09-15
+
+### Breaking Changes
+
+#### Renamed enum constants
+
+Generating with `oapi-codegen` v2.8.0 prefixes every enum constant with
+its type name. Six constants in package `vcf` were previously generated
+without that prefix and have been renamed. Their string values are
+unchanged; only the Go identifiers differ.
+
+| Old identifier | New identifier |
+| -------------- | -------------- |
+| `vcf.COMPLETED` | `vcf.ExportTaskRestStatusCOMPLETED` |
+| `vcf.FAILED` | `vcf.ExportTaskRestStatusFAILED` |
+| `vcf.INPROGRESS` | `vcf.ExportTaskRestStatusINPROGRESS` |
+| `vcf.NOTSTARTED` | `vcf.ExportTaskRestStatusNOTSTARTED` |
+| `vcf.QUEUED` | `vcf.ExportTaskRestStatusQUEUED` |
+| `vcf.HOST` | `vcf.TransitionResourceSpecTypeHOST` |
+
+### Added
+
+- Support for VCF 9.1.1 APIs.
+- A `Valid()` method on generated enum types, reporting whether a value
+  is one of the values declared in the specification.
+
+### Changed
+
+- Updated `oapi-codegen` to v2.8.0.
+- Updated Go to 1.26.8.
+
 ## [v0.7.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.7.0)
 
 > Release Date: 2026-01-21
