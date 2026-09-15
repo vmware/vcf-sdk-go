@@ -1,16 +1,21 @@
 ---
-name: Issue Triage
+name: Issue Labels
 
 on:
   issues:
     types:
     - opened
 
+permissions:
+  contents: read
+
 jobs:
   label-issues:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-      - name: Apply Issue Triage Labels
+      - name: Apply Labels
         uses: github/issue-labeler@ccca1e16fcb66762200e616fc29b57b940c1cb67 # v3.5
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
