@@ -10,8 +10,8 @@ A Go SDK for the VMware Cloud Foundation.
 
 Required if building the SDK.
 
-* [Go][golang-install] v1.26.3
-* [oapi-codegen](https://github.com/oapi-codegen/runtime) v1.6.0
+* [Go][golang-install] v1.26.8
+* [oapi-codegen][oapi-codegen] v2.8.0, fetched automatically by `go generate`
 
 ### Generate the SDK
 
@@ -82,5 +82,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 [contributing]: CONTRIBUTING.md
 [issues]: https://github.com/vmware/vcf-sdk-go/issues
+[oapi-codegen]: https://github.com/oapi-codegen/oapi-codegen
 [golang-install]: https://golang.org/doc/install
 [vmware-cla-dco]: https://cla.vmware.com/dco

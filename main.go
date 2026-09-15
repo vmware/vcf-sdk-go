@@ -2,8 +2,8 @@
 // The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
 // SPDX-License-Identifier: BSD-2-Clause
 
-//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen -config cfg/cfg.yaml specs/swagger.json
-//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen -config cfg/installer_cfg.yaml specs/vcf-installer-openapi.json
+//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v2.8.0 -config cfg/cfg.yaml specs/swagger.json
+//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v2.8.0 -config cfg/installer_cfg.yaml specs/vcf-installer-openapi.json
 //go:generate go run main.go -add-header
 
 package main
