@@ -3219,7 +3219,7 @@ type CsrGenerationSpec struct {
 	// Email Contact email address
 	//
 	// Example: admin@vmware.com
-	Email *openapi_types.Email `json:"email,omitempty"`
+	Email *string `json:"email,omitempty"`
 
 	// KeyAlgorithm The public key algorithm of the certificate
 	//
