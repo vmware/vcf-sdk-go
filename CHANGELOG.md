@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [v0.8.1](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.8.1)
+
+> Release Date: 2026-09-28
+
+### Changed
+
+- Email attributes will are typed as `string`.
+
 ## [v0.8.0](https://github.com/vmware/vcf-sdk-go/releases/tag/v0.8.0)
 
 > Release Date: 2026-09-23
