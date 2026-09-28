@@ -5,5 +5,10 @@ generate:
   models: true
   client: true
 output-options:
+  type-mapping:
+    string:
+      formats:
+        email:
+          type: string
   user-templates:
     client-with-responses.tmpl: ./templates/client-with-responses.tmpl
