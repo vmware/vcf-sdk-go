@@ -7,16 +7,9 @@ workflows:
         - 'github/issue-labeler@v3.5'
     '.github/workflows/lock.yml':
         - 'dessant/lock-threads@v6.0.2'
-    '.github/workflows/pull-requests.yml':
-        - 'actions/labeler@v7.0.0'
     '.github/workflows/stale.yml':
         - 'actions/stale@v11.0.0'
 dependencies:
-    'actions/labeler@v7.0.0':
-        ref: 'v7.0.0'
-        commit: 'sha1-bf12e9b00b37c5c0ca2b87b79b2daf7891dbda13'
-        owner_id: 44036562
-        repo_id: 177139928
     'actions/stale@v11.0.0':
         ref: 'v11.0.0'
         commit: 'sha1-4391f3da665fdf50b6810c1a66712fb9ba21aa93'
